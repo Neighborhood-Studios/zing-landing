@@ -268,24 +268,43 @@ html, body {
 .form-input::placeholder { color: var(--text3); font-weight: 300; }
 
 /* ── SLIDE 6: WELCOME ── */
-.s6 { justify-content: center; align-items: center; text-align: center; }
-.welcome-inner { display: flex; flex-direction: column; align-items: center; }
+.s6 {
+  justify-content: flex-end; align-items: center; text-align: center;
+  position: relative; overflow: hidden; padding-bottom: 40px;
+}
+.welcome-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 20%;
+  filter: brightness(.55) saturate(.85);
+}
+.welcome-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,13,11,.92) 0%, rgba(13,13,11,.5) 40%, rgba(13,13,11,.15) 100%);
+}
+.welcome-inner {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+}
 .welcome-logos {
-  display: flex; align-items: center; gap: 16px; margin-bottom: 40px;
+  display: flex; align-items: center; gap: 14px; margin-bottom: 36px;
 }
 .welcome-logo-building {
-  height: 28px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 .welcome-x {
-  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300;
-  color: var(--text2);
+  font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300;
+  color: rgba(255,255,255,.5);
 }
 .welcome-logo-zing {
-  height: 28px; filter: brightness(0) saturate(100%) invert(16%) sepia(15%) saturate(746%) hue-rotate(153deg) brightness(93%) contrast(93%);
+  height: 18px;
+  filter: brightness(0) invert(1);
 }
-.welcome-headline { text-align: center; }
+.s6 .headline { color: #fff; text-align: center; }
+.s6 .headline .hl { color: var(--accent); }
+.s6 .subtitle { color: rgba(255,255,255,.65); text-align: center; }
 .welcome-confetti {
-  font-size: 64px; margin-top: 32px;
+  font-size: 56px; margin-top: 28px;
   animation: float 3s ease-in-out infinite;
 }
 .form-label { font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: -6px; letter-spacing: .04em; text-transform: uppercase; }
@@ -497,6 +516,8 @@ html, body {
 
       <!-- SLIDE 6: WELCOME -->
       <div class="slide s6">
+        <img src="forma-building.jpg" alt="" class="welcome-bg">
+        <div class="welcome-veil"></div>
         <div class="welcome-inner">
           <div class="welcome-logos anim a-si" style="animation-delay:.1s">
             <img src="forma-logo.png" alt="Forma" class="welcome-logo-building">
@@ -551,7 +572,7 @@ function goTo(i) {
 
   if (cur === welcomeIdx) {
     btnContinue.innerHTML = 'Meet your cleaner';
-    btnContinue.classList.add('btn-yellow');
+    btnContinue.classList.remove('btn-yellow');
     skipBtn.style.display = 'none';
     document.querySelector('.top-bar').style.display = 'none';
   } else if (cur === signupIdx) {
