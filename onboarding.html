@@ -307,6 +307,33 @@ html, body {
   font-size: 56px; margin-top: 28px;
   animation: float 3s ease-in-out infinite;
 }
+
+/* ── SLIDE 7: MEET CLEANER ── */
+.s7 {
+  justify-content: flex-start; align-items: center; text-align: center;
+  background: var(--bg); padding-top: 20px;
+}
+.cleaner-profile-img {
+  width: 240px; height: 300px; object-fit: cover; object-position: top center;
+  border-radius: 0; margin-bottom: 32px;
+}
+.s7 .headline {
+  font-size: 28px; text-align: center; margin-bottom: 16px;
+}
+.s7 .subtitle {
+  text-align: center; max-width: 320px; margin: 0 auto;
+  font-size: 15px; line-height: 1.7;
+}
+.cleaner-badges {
+  display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; justify-content: center;
+}
+.cleaner-badge {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 100px; padding: 8px 14px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; color: var(--text);
+}
+.cleaner-badge-icon { font-size: 14px; }
 .form-label { font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: -6px; letter-spacing: .04em; text-transform: uppercase; }
 .form-divider {
   display: flex; align-items: center; gap: 12px;
@@ -532,6 +559,21 @@ html, body {
         </div>
       </div>
 
+      <!-- SLIDE 7: MEET YOUR CLEANER -->
+      <div class="slide s7">
+        <img src="liza-profile.png" alt="Liza, your dedicated Zing cleaner" class="cleaner-profile-img anim a-si" style="animation-delay:.1s">
+        <h1 class="headline anim a-fu" style="animation-delay:.25s">
+          Meet <span class="hl">Liza</span>, your dedicated cleaner.
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.4s">Liza has been part of the Forma community for over a year. She knows every floor, every corner, and takes pride in making your space feel like new. Whether it's a quick refresh or a deep clean, she treats your home like her own — because to her, your building is home too.</p>
+        <div class="cleaner-badges anim a-fu" style="animation-delay:.55s">
+          <div class="cleaner-badge"><span class="cleaner-badge-icon">✅</span> Background checked</div>
+          <div class="cleaner-badge"><span class="cleaner-badge-icon">🎓</span> Professionally trained</div>
+          <div class="cleaner-badge"><span class="cleaner-badge-icon">⭐</span> 4.9 avg rating</div>
+          <div class="cleaner-badge"><span class="cleaner-badge-icon">🏠</span> 200+ cleans at Forma</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -567,10 +609,16 @@ function goTo(i) {
   backBtn.style.visibility = cur === 0 ? 'hidden' : 'visible';
 
   // Slide-specific button states
-  const signupIdx = total - 2; // slide 5 (signup)
-  const welcomeIdx = total - 1; // slide 6 (welcome)
+  const signupIdx = total - 3; // slide 5 (signup)
+  const welcomeIdx = total - 2; // slide 6 (welcome)
+  const cleanerIdx = total - 1; // slide 7 (meet cleaner)
 
-  if (cur === welcomeIdx) {
+  if (cur === cleanerIdx) {
+    btnContinue.innerHTML = 'Book your first clean';
+    btnContinue.classList.remove('btn-yellow');
+    skipBtn.style.display = 'none';
+    document.querySelector('.top-bar').style.display = 'none';
+  } else if (cur === welcomeIdx) {
     btnContinue.innerHTML = 'Meet your cleaner';
     btnContinue.classList.remove('btn-yellow');
     skipBtn.style.display = 'none';
@@ -589,8 +637,9 @@ function goTo(i) {
 }
 
 btnContinue.addEventListener('click', () => {
-  const signupIdx = total - 2;
-  const welcomeIdx = total - 1;
+  const signupIdx = total - 3;
+  const welcomeIdx = total - 2;
+  const cleanerIdx = total - 1;
   if (cur === signupIdx) {
     // Submit signup → go to welcome
     const fn = document.getElementById('firstName')?.value;
@@ -602,8 +651,9 @@ btnContinue.addEventListener('click', () => {
     }
     goTo(welcomeIdx);
   } else if (cur === welcomeIdx) {
-    // "Meet your cleaner" — placeholder action
-    alert('Coming soon — your cleaner profile!');
+    goTo(cleanerIdx);
+  } else if (cur === cleanerIdx) {
+    alert('Booking coming soon!');
   } else {
     goTo(cur + 1);
   }
@@ -611,7 +661,7 @@ btnContinue.addEventListener('click', () => {
 
 // Social buttons also go to welcome
 document.querySelectorAll('.btn-social').forEach(btn => {
-  btn.addEventListener('click', () => goTo(total - 1));
+  btn.addEventListener('click', () => goTo(total - 2));
 });
 
 backBtn.addEventListener('click', () => {
@@ -619,7 +669,7 @@ backBtn.addEventListener('click', () => {
   else goTo(cur - 1);
 });
 
-skipBtn.addEventListener('click', () => goTo(total - 2));
+skipBtn.addEventListener('click', () => goTo(total - 3));
 
 // Swipe
 let sx = 0, dx = 0, dragging = false;
