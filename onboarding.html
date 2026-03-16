@@ -334,6 +334,79 @@ html, body {
   font-size: 12px; font-weight: 500; color: var(--text);
 }
 .cleaner-badge-icon { font-size: 14px; }
+
+/* ── SLIDES 8-10: QUESTIONS & HOW IT WORKS ── */
+.question-slide {
+  justify-content: flex-start; padding-top: 12px;
+}
+.question-slide .headline { font-size: 26px; margin-bottom: 8px; }
+.question-slide .subtitle { margin-bottom: 24px; }
+.option-list {
+  display: flex; flex-direction: column; gap: 10px; width: 100%;
+}
+.option-btn {
+  width: 100%; padding: 18px 20px; border-radius: 14px;
+  border: 1.5px solid var(--border); background: var(--card);
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+  color: var(--text); cursor: pointer; text-align: left;
+  transition: border-color .25s, background .25s, transform .15s;
+  display: flex; align-items: center; gap: 12px;
+}
+.option-btn:hover { border-color: var(--accent); }
+.option-btn:active { transform: scale(.98); }
+.option-btn.selected {
+  border-color: var(--accent); background: rgba(186,220,195,.12);
+}
+.option-btn .option-icon { font-size: 20px; flex-shrink: 0; }
+.option-btn .option-check {
+  margin-left: auto; width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--border); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; transition: all .25s;
+}
+.option-btn.selected .option-check {
+  border-color: var(--accent); background: var(--accent);
+}
+.option-btn.selected .option-check::after {
+  content: '✓'; color: #fff; font-size: 12px; font-weight: 700;
+}
+
+/* HOW IT WORKS */
+.how-it-works { justify-content: flex-start; padding-top: 12px; }
+.how-it-works .headline { font-size: 26px; margin-bottom: 6px; }
+.how-it-works .subtitle { margin-bottom: 28px; color: var(--text2); }
+.steps-list {
+  display: flex; flex-direction: column; gap: 20px; width: 100%;
+}
+.step-card {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px;
+  box-shadow: 0 2px 12px rgba(51,82,92,.03);
+}
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--accent); color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 18px;
+  font-weight: 500; flex-shrink: 0;
+}
+.step-content h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 500; color: var(--text);
+  margin-bottom: 4px;
+}
+.step-content p {
+  font-size: 13px; font-weight: 300; color: var(--text2); line-height: 1.6;
+}
+.step-footer {
+  margin-top: 24px; padding: 16px 20px;
+  background: rgba(186,220,195,.1); border: 1px solid rgba(186,220,195,.25);
+  border-radius: 14px; text-align: center;
+}
+.step-footer p {
+  font-size: 13px; font-weight: 400; color: var(--text2); line-height: 1.5;
+}
+.step-footer span { color: var(--accent); font-weight: 600; }
 .form-label { font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: -6px; letter-spacing: .04em; text-transform: uppercase; }
 .form-divider {
   display: flex; align-items: center; gap: 12px;
@@ -574,6 +647,96 @@ html, body {
         </div>
       </div>
 
+      <!-- SLIDE 8: APARTMENT TYPE -->
+      <div class="slide question-slide s8">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          What type of apartment <span class="hl">do you have?</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.2s">This helps us give you accurate pricing for cleaning services.</p>
+        <div class="option-list anim a-fu" style="animation-delay:.3s">
+          <button class="option-btn" data-q="apt" data-val="studio">
+            <span class="option-icon">🏠</span> Studio
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="apt" data-val="1br">
+            <span class="option-icon">🛏️</span> 1 Bedroom
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="apt" data-val="2br">
+            <span class="option-icon">🏡</span> 2 Bedrooms
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="apt" data-val="3br">
+            <span class="option-icon">🏢</span> 3+ Bedrooms
+            <span class="option-check"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SLIDE 9: BATHROOMS -->
+      <div class="slide question-slide s9">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          How many bathrooms <span class="hl">does your place have?</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.2s">This helps us give you accurate pricing for cleaning services.</p>
+        <div class="option-list anim a-fu" style="animation-delay:.3s">
+          <button class="option-btn" data-q="bath" data-val="1">
+            <span class="option-icon">🚿</span> 1 Bathroom
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="bath" data-val="1.5">
+            <span class="option-icon">🚿</span> 1.5 Bathrooms
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="bath" data-val="2">
+            <span class="option-icon">🛁</span> 2 Bathrooms
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="bath" data-val="3">
+            <span class="option-icon">🛁</span> 3 Bathrooms
+            <span class="option-check"></span>
+          </button>
+          <button class="option-btn" data-q="bath" data-val="4">
+            <span class="option-icon">🛁</span> 4 Bathrooms
+            <span class="option-check"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SLIDE 10: HOW IT WORKS -->
+      <div class="slide how-it-works s10">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          How it <span class="hl">works</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.2s">Let us do the hard work</p>
+        <div class="steps-list">
+          <div class="step-card anim a-fu" style="animation-delay:.3s">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Pick your tasks</h4>
+              <p>Choose what you need — just tap, add any details needed and add to your cart.</p>
+            </div>
+          </div>
+          <div class="step-card anim a-fu" style="animation-delay:.4s">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Schedule & Entry</h4>
+              <p>Select a date and let us know how we should access your place.</p>
+            </div>
+          </div>
+          <div class="step-card anim a-fu" style="animation-delay:.5s">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Pay & Confirm</h4>
+              <p>Choose paying by card or Apple Pay and you're done!</p>
+            </div>
+          </div>
+        </div>
+        <div class="step-footer anim a-fu" style="animation-delay:.6s">
+          <p>💬 We'll <span>text to confirm</span> all the details.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -608,40 +771,55 @@ function goTo(i) {
   // Back button visibility
   backBtn.style.visibility = cur === 0 ? 'hidden' : 'visible';
 
-  // Slide-specific button states
-  const signupIdx = total - 3; // slide 5 (signup)
-  const welcomeIdx = total - 2; // slide 6 (welcome)
-  const cleanerIdx = total - 1; // slide 7 (meet cleaner)
+  // Slide indices
+  const signupIdx = total - 6; // slide 5 (signup)
+  const welcomeIdx = total - 5; // slide 6 (welcome)
+  const cleanerIdx = total - 4; // slide 7 (meet cleaner)
+  const aptIdx = total - 3; // slide 8 (apartment type)
+  const bathIdx = total - 2; // slide 9 (bathrooms)
+  const howIdx = total - 1; // slide 10 (how it works)
 
-  if (cur === cleanerIdx) {
+  const postSignup = cur >= welcomeIdx;
+  const topBar = document.querySelector('.top-bar');
+
+  if (cur === howIdx) {
     btnContinue.innerHTML = 'Book your first clean';
     btnContinue.classList.remove('btn-yellow');
     skipBtn.style.display = 'none';
-    document.querySelector('.top-bar').style.display = 'none';
+    topBar.style.display = 'none';
+  } else if (cur === aptIdx || cur === bathIdx) {
+    btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    btnContinue.classList.remove('btn-yellow');
+    skipBtn.style.display = 'none';
+    topBar.style.display = 'none';
+  } else if (cur === cleanerIdx) {
+    btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    btnContinue.classList.remove('btn-yellow');
+    skipBtn.style.display = 'none';
+    topBar.style.display = 'none';
   } else if (cur === welcomeIdx) {
     btnContinue.innerHTML = 'Meet your cleaner';
     btnContinue.classList.remove('btn-yellow');
     skipBtn.style.display = 'none';
-    document.querySelector('.top-bar').style.display = 'none';
+    topBar.style.display = 'none';
   } else if (cur === signupIdx) {
     btnContinue.innerHTML = 'Create Account';
     btnContinue.classList.add('btn-yellow');
     skipBtn.style.display = 'none';
-    document.querySelector('.top-bar').style.display = 'flex';
+    topBar.style.display = 'flex';
   } else {
     btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
     btnContinue.classList.remove('btn-yellow');
     skipBtn.style.display = 'block';
-    document.querySelector('.top-bar').style.display = 'flex';
+    topBar.style.display = 'flex';
   }
 }
 
 btnContinue.addEventListener('click', () => {
-  const signupIdx = total - 3;
-  const welcomeIdx = total - 2;
-  const cleanerIdx = total - 1;
+  const signupIdx = total - 6;
+  const welcomeIdx = total - 5;
+  const howIdx = total - 1;
   if (cur === signupIdx) {
-    // Submit signup → go to welcome
     const fn = document.getElementById('firstName')?.value;
     const ln = document.getElementById('lastName')?.value;
     const em = document.getElementById('email')?.value;
@@ -650,9 +828,7 @@ btnContinue.addEventListener('click', () => {
       return;
     }
     goTo(welcomeIdx);
-  } else if (cur === welcomeIdx) {
-    goTo(cleanerIdx);
-  } else if (cur === cleanerIdx) {
+  } else if (cur === howIdx) {
     alert('Booking coming soon!');
   } else {
     goTo(cur + 1);
@@ -661,7 +837,18 @@ btnContinue.addEventListener('click', () => {
 
 // Social buttons also go to welcome
 document.querySelectorAll('.btn-social').forEach(btn => {
-  btn.addEventListener('click', () => goTo(total - 2));
+  btn.addEventListener('click', () => goTo(total - 5));
+});
+
+// Option button selection
+document.querySelectorAll('.option-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.dataset.q;
+    document.querySelectorAll(`.option-btn[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    // Auto-advance after selection with brief delay
+    setTimeout(() => goTo(cur + 1), 400);
+  });
 });
 
 backBtn.addEventListener('click', () => {
@@ -669,7 +856,7 @@ backBtn.addEventListener('click', () => {
   else goTo(cur - 1);
 });
 
-skipBtn.addEventListener('click', () => goTo(total - 3));
+skipBtn.addEventListener('click', () => goTo(total - 6));
 
 // Swipe
 let sx = 0, dx = 0, dragging = false;
