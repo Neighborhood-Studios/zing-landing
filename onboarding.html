@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#f4f2e8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Zing — Get Started</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f4f2e8;
+  --card: #ffffff;
+  --card-alt: #faf9f5;
+  --accent: #badcc3;
+  --accent-dark: #a8cfb2;
+  --yellow: #badcc3;
+  --text: #33525c;
+  --text2: rgba(51,82,92,0.58);
+  --text3: rgba(51,82,92,0.35);
+  --border: rgba(51,82,92,0.10);
+}
+
+html, body {
+  height: 100%; overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── SHELL ── */
+.app { height: 100%; display: flex; flex-direction: column; }
+
+/* ── TOP BAR ── */
+.top-bar {
+  padding: 12px 24px;
+  padding-top: calc(12px + env(safe-area-inset-top, 0));
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 10;
+}
+.back-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: transform .15s;
+  box-shadow: 0 2px 8px rgba(51,82,92,0.04);
+}
+.back-btn:active { transform: scale(.92); }
+.back-btn svg { width: 20px; height: 20px; stroke: var(--text); fill: none; stroke-width: 2; }
+.progress-bar {
+  flex: 1; height: 3px; background: var(--border);
+  border-radius: 2px; margin: 0 16px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 2px;
+  transition: width .5s cubic-bezier(.4,0,.15,1);
+}
+.skip-btn {
+  background: none; border: none; color: var(--text3);
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  letter-spacing: .02em;
+  cursor: pointer;
+}
+
+/* ── SLIDES ── */
+.slides-viewport { flex: 1; overflow: hidden; position: relative; }
+.slides-track {
+  display: flex; height: 100%;
+  transition: transform .55s cubic-bezier(.4,0,.15,1);
+  will-change: transform;
+}
+.slide {
+  min-width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  padding: 24px 28px 16px;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+
+/* ── BOTTOM ── */
+.bottom-bar {
+  padding: 12px 28px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
+}
+.btn-continue {
+  width: 100%; height: 56px; border-radius: 100px;
+  background: var(--accent); color: var(--text);
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+  letter-spacing: .01em;
+  border: none; cursor: pointer;
+  transition: transform .15s, background .2s, box-shadow .2s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-continue:active { transform: scale(.97); }
+.btn-continue:hover { background: var(--accent-dark); box-shadow: 0 10px 40px rgba(186,220,195,.3); }
+.btn-continue svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+.btn-continue.btn-yellow { background: var(--accent); color: var(--text); }
+
+/* ── TYPOGRAPHY ── */
+.headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px; font-weight: 400; line-height: 1.08;
+  letter-spacing: -.02em;
+  color: var(--text); margin-bottom: 14px;
+}
+.headline .hl {
+  font-style: italic;
+  color: var(--accent);
+}
+.subtitle {
+  font-size: 15px; color: var(--text2); line-height: 1.65; font-weight: 300;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes scaleIn { from { opacity:0; transform:scale(.85); } to { opacity:1; transform:scale(1); } }
+@keyframes slideLeft { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+
+.anim { opacity: 0; }
+.slide.active .anim { animation-fill-mode: both; }
+.slide.active .a-fu { animation: fadeUp .6s ease both; }
+.slide.active .a-si { animation: scaleIn .5s ease both; }
+.slide.active .a-sl { animation: slideLeft .5s ease both; }
+
+/* ── SLIDE 1: A LA CARTE ── */
+.task-carousel-wrap {
+  margin: 24px -28px 0;
+  overflow: hidden;
+}
+.task-carousel {
+  display: flex; gap: 10px;
+  animation: scrollCards 30s linear infinite;
+  width: max-content;
+  padding: 8px 0;
+}
+.task-carousel:hover { animation-play-state: paused; }
+@keyframes scrollCards {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.task-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 10px 18px;
+  display: flex; align-items: center; gap: 10px;
+  white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(51,82,92,.04);
+}
+.task-pill-emoji { font-size: 20px; }
+.task-pill-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.task-pill-price { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: -.01em; }
+.feature-cards {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 20px;
+}
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 2px 12px rgba(51,82,92,.03);
+}
+.fc-icon {
+  flex-shrink: 0; width: 42px; height: 42px;
+  border-radius: 12px; background: rgba(186,220,195,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.fc-text { font-size: 13px; font-weight: 400; color: var(--text); line-height: 1.5; }
+.fc-text span { color: var(--accent); font-weight: 600; }
+
+/* ── SLIDE 2: DEDICATED CLEANERS ── */
+.cleaner-img-wrap {
+  margin: 24px auto 0; max-width: 300px; position: relative;
+}
+.cleaner-img {
+  width: 100%; aspect-ratio: 3/4; border-radius: 18px;
+  background: linear-gradient(135deg, #badcc3 0%, #e4e2d8 40%, #f4f2e8 100%);
+  box-shadow: 0 16px 40px rgba(51,82,92,.08);
+  animation: float 4s ease-in-out infinite;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text2); font-size: 14px; font-weight: 300;
+}
+.trust-badges {
+  display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap;
+}
+.trust-badge {
+  background: var(--card); border-radius: 100px;
+  border: 1px solid var(--border);
+  padding: 8px 14px; display: flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 500; color: var(--text);
+  box-shadow: 0 2px 8px rgba(51,82,92,.03);
+}
+.trust-badge-icon { font-size: 14px; }
+
+/* ── SLIDE 3: EVERY DAY ── */
+.flex-cards {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 24px;
+}
+.flex-card {
+  background: var(--card); border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 18px; display: flex; gap: 14px;
+  box-shadow: 0 2px 12px rgba(51,82,92,.03);
+}
+.flex-card-icon {
+  flex-shrink: 0; font-size: 24px; margin-top: 2px;
+}
+.flex-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 500; margin-bottom: 4px;
+  letter-spacing: -.01em;
+}
+.flex-card p { font-size: 12px; color: var(--text2); line-height: 1.55; font-weight: 300; }
+
+/* ── SLIDE 4: TESTIMONIALS ── */
+.reviews {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 20px;
+}
+.review-card {
+  background: var(--card); border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 18px; box-shadow: 0 2px 12px rgba(51,82,92,.03);
+}
+.review-stars { color: #e8c547; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+.review-quote {
+  font-size: 14px; color: var(--text); line-height: 1.6;
+  font-weight: 300; margin-bottom: 12px;
+}
+.review-quote strong { font-weight: 600; color: var(--accent); }
+.review-author { font-size: 12px; font-weight: 600; color: var(--text); }
+.review-building { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.big-stat {
+  text-align: center; margin-top: 20px;
+  padding: 20px; background: var(--accent);
+  border-radius: 16px;
+}
+.big-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 400; color: var(--text);
+  letter-spacing: -.03em;
+}
+.big-stat-label { font-size: 13px; color: var(--text2); font-weight: 400; }
+
+/* ── SLIDE 5: SIGNUP ── */
+.s5 { justify-content: center; }
+.signup-logo {
+  width: 80px; margin-bottom: 24px;
+  filter: brightness(0) saturate(1) invert(28%) sepia(20%) saturate(800%) hue-rotate(155deg);
+}
+.form-group { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.form-input {
+  width: 100%; height: 52px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--card);
+  padding: 0 20px; font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 400; color: var(--text);
+  outline: none; transition: border-color .25s;
+}
+.form-input:focus { border-color: var(--accent); }
+.form-input::placeholder { color: var(--text3); font-weight: 300; }
+.form-label { font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: -6px; letter-spacing: .04em; text-transform: uppercase; }
+.form-divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--text3); font-size: 12px; font-weight: 400;
+  margin: 2px 0;
+}
+.form-divider::before, .form-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.btn-social {
+  width: 100%; height: 50px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--card);
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+  color: var(--text); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.btn-social:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(186,220,195,.15); }
+.btn-social img { width: 20px; height: 20px; }
+.terms { font-size: 10px; color: var(--text3); text-align: center; line-height: 1.5; margin-top: 12px; font-weight: 300; }
+.terms a { color: var(--accent); text-decoration: none; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button class="back-btn" id="backBtn">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:20%"></div>
+    </div>
+    <button class="skip-btn" id="skipBtn">Skip</button>
+  </div>
+
+  <!-- SLIDES -->
+  <div class="slides-viewport" id="viewport">
+    <div class="slides-track" id="track">
+
+      <!-- SLIDE 1: A LA CARTE -->
+      <div class="slide s1 active">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          Pick only the tasks <span class="hl">you actually need</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.2s">No packages. No minimums. From a quick bathroom refresh to a full apartment clean — it's all à la carte.</p>
+
+        <div class="task-carousel-wrap anim a-fu" style="animation-delay:.35s">
+          <div class="task-carousel">
+            <div class="task-pill"><span class="task-pill-emoji">🛁</span><span class="task-pill-name">Bathroom</span><span class="task-pill-price">$23</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🧹</span><span class="task-pill-name">Floors</span><span class="task-pill-price">$14</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">👕</span><span class="task-pill-name">Folding</span><span class="task-pill-price">$12</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🍽️</span><span class="task-pill-name">Dishes</span><span class="task-pill-price">$10</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🛏️</span><span class="task-pill-name">Bed Making</span><span class="task-pill-price">$10</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🗑️</span><span class="task-pill-name">Trash</span><span class="task-pill-price">$8</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🪟</span><span class="task-pill-name">Windows</span><span class="task-pill-price">$20</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🌿</span><span class="task-pill-name">Plants</span><span class="task-pill-price">$6</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">✨</span><span class="task-pill-name">Full Clean</span><span class="task-pill-price">$89</span></div>
+            <!-- dupe for loop -->
+            <div class="task-pill"><span class="task-pill-emoji">🛁</span><span class="task-pill-name">Bathroom</span><span class="task-pill-price">$23</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🧹</span><span class="task-pill-name">Floors</span><span class="task-pill-price">$14</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">👕</span><span class="task-pill-name">Folding</span><span class="task-pill-price">$12</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🍽️</span><span class="task-pill-name">Dishes</span><span class="task-pill-price">$10</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🛏️</span><span class="task-pill-name">Bed Making</span><span class="task-pill-price">$10</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🗑️</span><span class="task-pill-name">Trash</span><span class="task-pill-price">$8</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🪟</span><span class="task-pill-name">Windows</span><span class="task-pill-price">$20</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">🌿</span><span class="task-pill-name">Plants</span><span class="task-pill-price">$6</span></div>
+            <div class="task-pill"><span class="task-pill-emoji">✨</span><span class="task-pill-name">Full Clean</span><span class="task-pill-price">$89</span></div>
+          </div>
+        </div>
+
+        <div class="feature-cards">
+          <div class="feature-card anim a-sl" style="animation-delay:.45s">
+            <div class="fc-icon">🎯</div>
+            <div class="fc-text">Single tasks from <span>$3</span> — no minimum order</div>
+          </div>
+          <div class="feature-card anim a-sl" style="animation-delay:.55s">
+            <div class="fc-icon">🔄</div>
+            <div class="fc-text">Set up <span>recurring routines</span> or book one-off</div>
+          </div>
+          <div class="feature-card anim a-sl" style="animation-delay:.65s">
+            <div class="fc-icon">🏠</div>
+            <div class="fc-text">Build your own <span>custom package</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: DEDICATED CLEANERS -->
+      <div class="slide s2">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          A dedicated cleaner <span class="hl">already in your building</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.2s">Not a gig worker. Not a stranger. A trained Zing professional who's part of your building's community.</p>
+
+        <div class="cleaner-img-wrap anim a-si" style="animation-delay:.35s">
+          <div class="cleaner-img">
+          </div>
+        </div>
+
+        <div class="trust-badges anim a-fu" style="animation-delay:.55s">
+          <div class="trust-badge"><span class="trust-badge-icon">✅</span> Background checked</div>
+          <div class="trust-badge"><span class="trust-badge-icon">🎓</span> Professionally trained</div>
+          <div class="trust-badge"><span class="trust-badge-icon">🛡️</span> Fully insured</div>
+          <div class="trust-badge"><span class="trust-badge-icon">🤝</span> Same person, every time</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: EVERY DAY -->
+      <div class="slide s3">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          We're here <span class="hl">every single day</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.2s">Because we're on-site full-time, you get flexibility that traditional cleaning services can't offer.</p>
+
+        <div class="flex-cards">
+          <div class="flex-card anim a-sl" style="animation-delay:.35s">
+            <div class="flex-card-icon">⚡</div>
+            <div>
+              <h4>Same-day booking</h4>
+              <p>Need something cleaned today? We're already downstairs. Book and it's done within hours.</p>
+            </div>
+          </div>
+          <div class="flex-card anim a-sl" style="animation-delay:.45s">
+            <div class="flex-card-icon">📅</div>
+            <div>
+              <h4>Your schedule, not ours</h4>
+              <p>Morning, afternoon, or evening — pick a time that works for your life. Change it anytime.</p>
+            </div>
+          </div>
+          <div class="flex-card anim a-sl" style="animation-delay:.55s">
+            <div class="flex-card-icon">🔄</div>
+            <div>
+              <h4>Cancel stress-free</h4>
+              <p>Plans change. Cancel or reschedule instantly through the app. No fees, no guilt.</p>
+            </div>
+          </div>
+          <div class="flex-card anim a-sl" style="animation-delay:.65s">
+            <div class="flex-card-icon">💬</div>
+            <div>
+              <h4>Text us anything</h4>
+              <p>Special request? Just message us. We're flexible because we're local.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: TESTIMONIALS -->
+      <div class="slide s4">
+        <h1 class="headline anim a-fu" style="animation-delay:.1s">
+          Residents can't stop <span class="hl">raving about Zing</span>
+        </h1>
+
+        <div class="big-stat anim a-si" style="animation-delay:.25s">
+          <div class="big-stat-num">4.9★</div>
+          <div class="big-stat-label">from 1,000+ resident ratings</div>
+        </div>
+
+        <div class="reviews">
+          <div class="review-card anim a-sl" style="animation-delay:.4s">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"I used to spend my entire Sunday cleaning. Now I order a <strong>bathroom refresh and floor mop while I'm at brunch</strong>. Game changer."</p>
+            <div class="review-author">Sarah M.</div>
+            <div class="review-building">The Meridian, Austin</div>
+          </div>
+          <div class="review-card anim a-sl" style="animation-delay:.5s">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"Having a dedicated cleaner in our building <strong>feels like living in a hotel</strong>. The convenience is unreal."</p>
+            <div class="review-author">James K.</div>
+            <div class="review-building">Park & Main, Denver</div>
+          </div>
+          <div class="review-card anim a-sl" style="animation-delay:.6s">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"$12 to come home to <strong>a perfectly organized closet</strong>? Yes please. I'm hooked."</p>
+            <div class="review-author">Priya R.</div>
+            <div class="review-building">The Lofts at 5th, Nashville</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: SIGNUP -->
+      <div class="slide s5">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMiIgaGVpZ2h0PSI2MDYiIHZpZXdCb3g9IjAgMCAxMjAyIDYwNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzEyNzBfMTMzKSI+CjxwYXRoIGQ9Ik05MTYuMjc1IDE4NS4wMjJDOTIyLjU5OCAxODQuNTc5IDkyNS44NDYgMTg0LjU4NCA5MzIuMTc4IDE4NC45NzZDOTMzLjQxNiAxOTIuODUgOTMzLjAwMiAyMDcuNjE5IDkzMi45ODQgMjE1LjkwN0w5MzIuODgxIDI2Ny4xNTNMOTMyLjk1MSAzMzMuOTExQzkzMi45NjEgMzQ1LjAwNSA5MzMuNDQzIDM2NC42NSA5MzEuODUzIDM3NS4yMzdDOTA2LjE3OCAzNzQuODg5IDg5MS4xNzYgMzY4LjIxMiA4NjkuNDQ1IDM1NS44Qzg2NS4wODYgMzYwLjIwNSA4NjIuMzU2IDM2NS4zNjggODYwLjg1OSAzNzEuMzgzQzg1OC41MTkgMzgwLjQ3OCA4NTkuOTIyIDM5MC4xMzEgODY0Ljc1NyAzOTguMTgzQzg2OS4yMjggNDA1LjYxNSA4NzYuMzIyIDQxMS4xMDEgODg0LjYzOSA0MTMuNTYxQzg5My42OTYgNDE2LjIgOTA2LjUwNCA0MTUuMDAzIDkxNi4wMjQgNDE1LjE2Qzk0NC4zODMgNDE1LjczMyA5NzIuMDY5IDQxMi4yMjMgOTk5Ljg5MyA0MTkuMzU4QzEwNzIuMzcgNDM3Ljk0OCAxMTE0LjUyIDUwMi44NjMgMTA5NS45NiA1NzYuMTg1QzEwOTQuMjggNTcwLjc0MiAxMDkzLjYgNTY4Ljc3NiAxMDkwLjk2IDU2My42MjhDMTA3Mi43NyA1MzUuNjg1IDEwNDYuOTYgNTM5LjMxNiAxMDE4LjY2IDUzOC41MThDOTkxLjUzIDUzNy43NTIgOTU4LjY1MSA1NDEuMjUgOTMyLjI5OSA1MzcuMjUxQzkxMS43MTEgNTM0LjIzIDg5Mi4xNjQgNTI2LjI2NCA4NzUuMzI3IDUxNC4wMzlDODQ3LjE5MiA0OTMuNjY5IDgyOC4yNzMgNDYyLjk4NCA4MjIuNzA5IDQyOC42OTlDODE3LjQwNyAzOTQuNzA2IDgyOC4xMTggMzYzLjk2MiA4NDcuOTY4IDMzNi42OTNDODM4LjM1OSAzMjQuMjY0IDgzMS40MzIgMzExLjYxNSA4MjguNDA3IDI5Ni4wMkM4MjMuOTY5IDI3My4zMjkgODI4Ljg0IDI0OS44MDYgODQxLjkyNSAyMzAuNzQzQzg1OC44NSAyMDUuOTA3IDg4Ny4xOTQgMTkwLjU5MiA5MTYuMjc1IDE4NS4wMjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzQzLjM5NiAxOTEuODMyQzM3OC43OTQgMTg5Ljk3MSA0MTYuNzUxIDE5Mi40OTMgNDUyLjM2NyAxOTEuNjNDNDU1LjIyNSAxOTEuNTYxIDQ1OS43MzUgMTkyLjM5NSA0NjIuMzgzIDE5My40NzVDNDY1Ljk2NyAxOTguNzU3IDQ2NS4wMzIgMjIwLjMyNSA0NjUuMDE2IDIyNy42Nkw0NjQuOTQ5IDI3NS4xNDdMNDY0LjgwNCAzODcuNjkzQzQ2NC43NTIgMzk3LjYxNCA0NjYuMzcyIDQyMC45MDggNDYzLjIwOCA0MzEuMjNDNDYyLjk1MiA0MzIuMDY1IDQ2MC43MTMgNDMyLjEwMyA0NTkuNjQ1IDQzMi4yNjNDNDQ1LjgxMyA0MzIuMjcgNDMwLjE1IDQyOC40NDEgNDE3LjM3MSA0MjMuMzQ2QzM4NS45ODggNDEwLjk5OSAzNjAuODA4IDM4Ni42NzQgMzQ3LjM4NCAzNTUuNzM5QzM0Mi41OCAzNDQuNDYyIDMzOS40MDIgMzMyLjU2MiAzMzcuOTQgMzIwLjM5M0MzMzYuMzQ4IDMwNy4wNDcgMzM1LjQ0OSAyMDEuMzkgMzM4LjI3IDE5NS4yMThDMzM5LjI4OCAxOTIuOTkyIDM0MS4yNTggMTkyLjUxNyAzNDMuMzk2IDE5MS44MzJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjU4LjQwNyAxOTEuNjM4QzY2OC4xNDcgMTkwLjg0OCA2NzguMzc3IDE5Mi4zNjEgNjg3Ljc4IDE5NC44NDFDNzIwLjk2OSAyMDMuNDI5IDc0OS4zNjUgMjI0Ljg5NCA3NjYuNjggMjU0LjQ4Qzc3My45ODMgMjY3LjE0IDc3OC45ODkgMjgwLjk5MyA3ODEuNDY3IDI5NS4zOThDNzg1LjA2NiAzMTYuMjkgNzgyLjcyNiAzNTAuNTk2IDc4My4zIDM3Mi43MDhDNzgzLjU1MiAzODIuNDA2IDc4NC4wOTIgNDI0LjgxOSA3ODIuMDY2IDQzMi40NDNDNzYyLjk0OCA0MzMuODc5IDczNC4wOTQgNDMyLjI3NCA3MTQuMzA0IDQzMi44NTZDNzAzLjgwMSA0MzMuMTY0IDY2Ny4zODIgNDMzLjM2NSA2NTguMzQxIDQzMS45NEM2NTYuMzA3IDQyMi4yNzYgNjU3LjAxNSAzOTguNjE0IDY1Ny4wMzcgMzg3LjYzNkw2NTcuMDggMzE3LjQyMUw2NTcuMDI1IDIzOC41OTJDNjU3LjAxNiAyMjYuODI0IDY1Ni4yOTIgMjAyLjA1MSA2NTguNDA3IDE5MS42MzhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjE1LjUwOSAxOTEuODc0QzYxOS41MDIgMTkxLjUzOCA2MjQuOTAyIDE5MC42MTggNjI4LjE2NCAxOTIuOTQ1QzYzMS4xMDcgMTk4LjYyNiA2MzAuMTI4IDI0NS4zNzcgNjMwLjExOCAyNTUuODFMNjMwLjEyNCAzNDEuNTg2TDYzMC4xMjEgMzk0LjMzOUM2MzAuMTE4IDQwNi41MzUgNjMwLjUxNCA0MjAuNDA5IDYyOS4wMTIgNDMyLjM5NUM2MTguMDI1IDQzMy4zMjMgNjAwLjMyNiA0MzIuODQ3IDU4OS4wNCA0MzIuODUxTDUxOS4yMzIgNDMyLjgzOUM1MTUuMTA5IDQzMi44OTYgNTEwLjIzOCA0MzMuMjMxIDUwNi42MDcgNDMxLjM0M0M1MDEuNzA3IDQyMy42MjkgNTA1LjA5MyAzNDkuMjggNTA0LjA0NSAzMzQuODVDNTAxLjY4NyAzMDIuMzQxIDUwOS4wNzIgMjY2Ljc3OCA1MjkuNzM2IDI0MC42MjdDNTUxLjQzOCAyMTMuMTY0IDU4MC40NjIgMTk2LjUzOSA2MTUuNTA5IDE5MS44NzRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTY5LjY5MyAzMjcuNjYxQzE5OC42NTggMzI2Ljk1MiAyMjguMDE2IDMyNy45NjYgMjU3LjAyNiAzMjcuNDQ4QzI2Ni45NDIgMzI3LjI3IDI3Ny40MDggMzI3LjIzNiAyODcuMzExIDMyNy42NUMyODcuNyAzMzAuNjMyIDI4Ny42OTggMzM0LjIxMiAyODcuNjg4IDMzNy4yMzdDMjg3LjU5MiAzNjUuNDIxIDI4Ny44MzkgMzkzLjY1MSAyODcuMTE1IDQyMS44MjFDMjg3LjAzNiA0MjQuOTA1IDI4Ni40NDYgNDI4Ljc0NyAyODUuMjggNDMxLjU3NkMyODEuMTY2IDQzMy42NzggMTYyLjY0NCA0MzIuODQgMTQ3Ljk3NCA0MzIuODM3TDI4LjQyMTkgNDMyLjc3MkMzNi42NDg1IDQyMS41NTkgNDYuNDY3NCA0MTAuNzEyIDU0LjU1NzMgMzk5LjY0MUM4NS4zMDA2IDM1Ny41NjkgMTE0LjI4MiAzMzAuNDIzIDE2OS42OTMgMzI3LjY2MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00My42NDU1IDE5MS44ODRDNjguNzIyOCAxOTAuNDkyIDEwNC45OTYgMTkxLjU2OCAxMzAuNjcgMTkxLjU3NUwyOTUuNDA1IDE5MS41MTlMMjQ2LjczNyAyNTEuMjg5QzIzOS4wMjEgMjYxLjI5IDIyNS44MDMgMjcxLjYxNyAyMTQuOTQ5IDI3Ny45QzIwMS40NzQgMjg1LjU5NSAxODYuNzI5IDI5MC44MTMgMTcxLjQxMiAyOTMuMzA3QzE2Ni4xOTUgMjk0LjE3NyAxNjAuOTI0IDI5NC42OTQgMTU1LjYzOCAyOTQuODU2QzE0MS41NiAyOTUuMzI0IDUyLjIxNTYgMjk2LjA1NiA0NS40NzIxIDI5NC4wNjFDNDMuNTU4MSAyOTMuNDk1IDQyLjI5MzMgMjkyLjg1NyA0MS40NzY1IDI5MC45NjlDNDAuMzUxOCAyODguMzY5IDQwLjE2NDYgMjg0LjkwMSA0MC4wMzQ3IDI4Mi4xMTFDMzkuNjM5NiAyNzMuNjA3IDM5LjExIDE5OC41MDggNDAuNzA5MSAxOTQuNDc1QzQxLjQyODMgMTkyLjY2IDQxLjk0MTggMTkyLjY2OCA0My42NDU1IDE5MS44ODRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOTYwLjcwOCAxODQuMjQzQzk2Mi4xMjEgMTg0LjIwMyA5NjMuNTM0IDE4NC4xOTIgOTY0Ljk0NyAxODQuMjA5Qzk5MC44NzUgMTg0LjUxMyAxMDIwLjkyIDE5OS4wMzQgMTAzOC45NSAyMTcuNDY0QzEwNTUuNjIgMjM0LjE4MiAxMDY0LjkzIDI1Ni44NzEgMTA2NC43OSAyODAuNDg0QzEwNjQuNCAzMDguMDYgMTA1Mi4yMyAzMjguMTk3IDEwMzMuMDMgMzQ2Ljg3M0MxMDExLjE1IDM2NS4zNjQgOTg4LjgwOCAzNzUuNDg1IDk1OS42ODUgMzc1LjQ3MkM5NTguNDEgMzUyLjQzNiA5NTguOTk2IDMxNi4wNzYgOTU5LjAxOSAyOTMuMzU3Qzk1OS4wMyAyNzkuODUyIDk1Ny45MjggMTg4LjcyMyA5NjAuNzA4IDE4NC4yNDNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzczLjA2NiAyOS44NzNDMzc2LjM4OCAyOS45MjAxIDM3OS43MDUgMzAuMDc1MiAzODMuMDE2IDMwLjMzOTNDMzk3LjA4OSAzMS41ODg4IDQwOS43NDggMzUuNDMyNyA0MjEuOTM3IDQyLjU0NzJDNDYzLjM0NSA2Ni43MTczIDQ2OC40MzcgMTEwLjkyIDQ2NC40MzUgMTU0LjIzNkM0NjAuNTQ4IDE1NC42NTMgNDU1LjI5MSAxNTQuNjM4IDQ1MS4yOSAxNTQuNzQ0QzM3Ny44MDQgMTU0Ljg4MiAzNTEuODQxIDk1Ljg0NCAzNjAuNDggMzAuNjIxOEwzNzMuMDY2IDI5Ljg3M1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMTIwLjMyIDExOC4wMzJDMTEyNS45NCAxMTcuMTggMTE1MC42MiAxMTcuMzE2IDExNTUuMSAxMTkuODAxQzExNTUuNjkgMTIwLjg0NyAxMTU2LjEgMTIxLjk0NCAxMTU2LjIxIDEyMy4xNDZDMTE1OC44MSAxNTIuNzExIDExNDIuMzYgMTgxLjE2NyAxMTE0Ljc2IDE5Mi41NzJDMTEwNi43OSAxOTUuODY2IDExMDAuNTEgMTk3LjIwNiAxMDkxLjg1IDE5OC4xMjRDMTA4NS43NCAxOTguNjYzIDEwNjQgMTk5LjYxNiAxMDU4LjIxIDE5Ni41NzFDMTA1Ny4wMiAxOTUuODY4IDEwNTYuMzcgMTkzLjEyNiAxMDU2LjMyIDE5MS44MzJDMTA1NS4wOSAxNTIuNzM5IDEwODEuNjQgMTIxLjc5NiAxMTIwLjMyIDExOC4wMzJaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzEyNzBfMTMzIj4KPHJlY3Qgd2lkdGg9IjEyMDIiIGhlaWdodD0iNjA2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Zing" class="signup-logo anim a-si" style="animation-delay:.1s">
+        <h1 class="headline anim a-fu" style="animation-delay:.2s">
+          Let's get you <span class="hl">set up</span>
+        </h1>
+        <p class="subtitle anim a-fu" style="animation-delay:.3s">Create your account in seconds.</p>
+
+        <div class="form-group anim a-fu" style="animation-delay:.4s">
+          <span class="form-label">First name</span>
+          <input type="text" class="form-input" placeholder="First name" id="firstName">
+          <span class="form-label">Last name</span>
+          <input type="text" class="form-input" placeholder="Last name" id="lastName">
+          <span class="form-label">Email</span>
+          <input type="email" class="form-input" placeholder="you@email.com" id="email">
+          <div class="form-divider">or</div>
+          <button class="btn-social">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <button class="btn-social">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            Continue with Apple
+          </button>
+        </div>
+        <p class="terms anim a-fu" style="animation-delay:.6s">By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom-bar" id="bottomBar">
+    <button class="btn-continue" id="btnContinue">
+      Continue
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const track = document.getElementById('track');
+const viewport = document.getElementById('viewport');
+const progressFill = document.getElementById('progressFill');
+const btnContinue = document.getElementById('btnContinue');
+const backBtn = document.getElementById('backBtn');
+const skipBtn = document.getElementById('skipBtn');
+const bottomBar = document.getElementById('bottomBar');
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+function goTo(i) {
+  i = Math.max(0, Math.min(i, total - 1));
+  cur = i;
+  track.style.transform = `translateX(-${cur * 100}%)`;
+  slides.forEach((s, idx) => s.classList.toggle('active', idx === cur));
+  progressFill.style.width = `${((cur + 1) / total) * 100}%`;
+
+  // Back button visibility
+  backBtn.style.visibility = cur === 0 ? 'hidden' : 'visible';
+
+  // Last slide: change button
+  if (cur === total - 1) {
+    btnContinue.innerHTML = 'Create Account';
+    btnContinue.classList.add('btn-yellow');
+    skipBtn.style.display = 'none';
+  } else {
+    btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    btnContinue.classList.remove('btn-yellow');
+    skipBtn.style.display = 'block';
+  }
+}
+
+btnContinue.addEventListener('click', () => {
+  if (cur === total - 1) {
+    // Submit signup
+    const fn = document.getElementById('firstName')?.value;
+    const ln = document.getElementById('lastName')?.value;
+    const em = document.getElementById('email')?.value;
+    if (!fn || !ln || !em) {
+      alert('Please fill in all fields');
+      return;
+    }
+    alert('Welcome to Zing, ' + fn + '! 🎉');
+  } else {
+    goTo(cur + 1);
+  }
+});
+
+backBtn.addEventListener('click', () => {
+  if (cur === 0) window.location.href = 'index.html';
+  else goTo(cur - 1);
+});
+
+skipBtn.addEventListener('click', () => goTo(total - 1));
+
+// Swipe
+let sx = 0, dx = 0, dragging = false;
+viewport.addEventListener('touchstart', e => {
+  sx = e.touches[0].clientX; dragging = true;
+  track.style.transition = 'none';
+}, { passive: true });
+viewport.addEventListener('touchmove', e => {
+  if (!dragging) return;
+  dx = e.touches[0].clientX - sx;
+  track.style.transform = `translateX(${-(cur * viewport.offsetWidth) + dx}px)`;
+}, { passive: true });
+viewport.addEventListener('touchend', () => {
+  dragging = false;
+  track.style.transition = 'transform .55s cubic-bezier(.4,0,.15,1)';
+  if (Math.abs(dx) > 50) { dx < 0 ? goTo(cur + 1) : goTo(cur - 1); }
+  else goTo(cur);
+  dx = 0;
+});
+
+goTo(0);
+</script>
+
+</body>
+</html>
