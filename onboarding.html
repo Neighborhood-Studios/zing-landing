@@ -310,30 +310,44 @@ html, body {
 
 /* ── SLIDE 7: MEET CLEANER ── */
 .s7 {
-  justify-content: flex-start; align-items: center; text-align: center;
-  background: var(--bg); padding-top: 20px;
+  padding: 0; position: relative; overflow: hidden;
 }
-.cleaner-profile-img {
-  width: 240px; height: 300px; object-fit: cover; object-position: top center;
-  border-radius: 0; margin-bottom: 32px;
+.s7-photo-area {
+  position: relative; width: 100%; flex-shrink: 0;
+  height: 55vh; min-height: 320px;
+  background: linear-gradient(180deg, #4a4a4a 0%, #6b6b6b 30%, #8a8a8a 60%, #b0b0b0 100%);
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
 }
-.s7 .headline {
-  font-size: 28px; text-align: center; margin-bottom: 16px;
+.s7-photo-area img {
+  height: 100%; width: auto; max-width: 100%;
+  object-fit: contain; object-position: bottom center;
+  position: relative; z-index: 1;
 }
-.s7 .subtitle {
-  text-align: center; max-width: 320px; margin: 0 auto;
-  font-size: 15px; line-height: 1.7;
+.s7-card {
+  position: relative; z-index: 2;
+  background: var(--bg);
+  border-radius: 24px 24px 0 0;
+  margin-top: -28px;
+  padding: 32px 28px 16px;
+  flex: 1;
+}
+.s7-card .headline {
+  font-size: 26px; margin-bottom: 12px;
+}
+.s7-card .subtitle {
+  font-size: 14px; line-height: 1.7; margin-bottom: 18px;
 }
 .cleaner-badges {
-  display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; justify-content: center;
+  display: flex; gap: 8px; flex-wrap: wrap;
 }
 .cleaner-badge {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 100px; padding: 8px 14px;
+  background: rgba(186,220,195,.1); border: 1px solid rgba(186,220,195,.25);
+  border-radius: 100px; padding: 7px 13px;
   display: flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 500; color: var(--text);
+  font-size: 11px; font-weight: 500; color: var(--text);
 }
-.cleaner-badge-icon { font-size: 14px; }
+.cleaner-badge-icon { font-size: 13px; }
 
 /* ── SLIDES 8-10: QUESTIONS & HOW IT WORKS ── */
 .question-slide {
@@ -622,16 +636,20 @@ html, body {
 
       <!-- SLIDE 7: MEET YOUR CLEANER -->
       <div class="slide s7">
-        <img src="liza-profile.png" alt="Liza, your dedicated Zing cleaner" class="cleaner-profile-img anim a-si" style="animation-delay:.1s">
-        <h1 class="headline anim a-fu" style="animation-delay:.25s">
-          Meet <span class="hl">Liza</span>, your dedicated cleaner.
-        </h1>
-        <p class="subtitle anim a-fu" style="animation-delay:.4s">Liza has been part of the Forma community for over a year. She knows every floor, every corner, and takes pride in making your space feel like new. Whether it's a quick refresh or a deep clean, she treats your home like her own — because to her, your building is home too.</p>
-        <div class="cleaner-badges anim a-fu" style="animation-delay:.55s">
-          <div class="cleaner-badge"><span class="cleaner-badge-icon">✅</span> Background checked</div>
-          <div class="cleaner-badge"><span class="cleaner-badge-icon">🎓</span> Professionally trained</div>
-          <div class="cleaner-badge"><span class="cleaner-badge-icon">⭐</span> 4.9 avg rating</div>
-          <div class="cleaner-badge"><span class="cleaner-badge-icon">🏠</span> 200+ cleans at Forma</div>
+        <div class="s7-photo-area">
+          <img src="liza-profile.png" alt="Liza, your dedicated Zing cleaner" class="anim a-si" style="animation-delay:.1s">
+        </div>
+        <div class="s7-card">
+          <h1 class="headline anim a-fu" style="animation-delay:.25s">
+            Meet <span class="hl">Liza</span>, your dedicated cleaner.
+          </h1>
+          <p class="subtitle anim a-fu" style="animation-delay:.4s">Liza has been part of the Forma community for over a year. She knows every floor, every corner, and takes pride in making your space feel like new. Whether it's a quick refresh or a deep clean, she treats your home like her own — because to her, your building is home too.</p>
+          <div class="cleaner-badges anim a-fu" style="animation-delay:.55s">
+            <div class="cleaner-badge"><span class="cleaner-badge-icon">✅</span> Background checked</div>
+            <div class="cleaner-badge"><span class="cleaner-badge-icon">🎓</span> Professionally trained</div>
+            <div class="cleaner-badge"><span class="cleaner-badge-icon">⭐</span> 4.9 avg rating</div>
+            <div class="cleaner-badge"><span class="cleaner-badge-icon">🏠</span> 200+ cleans at Forma</div>
+          </div>
         </div>
       </div>
 
