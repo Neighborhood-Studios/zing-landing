@@ -266,6 +266,28 @@ html, body {
 }
 .form-input:focus { border-color: var(--accent); }
 .form-input::placeholder { color: var(--text3); font-weight: 300; }
+
+/* ── SLIDE 6: WELCOME ── */
+.s6 { justify-content: center; align-items: center; text-align: center; }
+.welcome-inner { display: flex; flex-direction: column; align-items: center; }
+.welcome-logos {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 40px;
+}
+.welcome-logo-building {
+  height: 22px; filter: brightness(0) saturate(100%) invert(16%) sepia(15%) saturate(746%) hue-rotate(153deg) brightness(93%) contrast(93%);
+}
+.welcome-x {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300;
+  color: var(--text2);
+}
+.welcome-logo-zing {
+  height: 28px; filter: brightness(0) saturate(100%) invert(16%) sepia(15%) saturate(746%) hue-rotate(153deg) brightness(93%) contrast(93%);
+}
+.welcome-headline { text-align: center; }
+.welcome-confetti {
+  font-size: 64px; margin-top: 32px;
+  animation: float 3s ease-in-out infinite;
+}
 .form-label { font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: -6px; letter-spacing: .04em; text-transform: uppercase; }
 .form-divider {
   display: flex; align-items: center; gap: 12px;
@@ -473,6 +495,22 @@ html, body {
         <p class="terms anim a-fu" style="animation-delay:.6s">By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a></p>
       </div>
 
+      <!-- SLIDE 6: WELCOME -->
+      <div class="slide s6">
+        <div class="welcome-inner">
+          <div class="welcome-logos anim a-si" style="animation-delay:.1s">
+            <img src="forma-logo.png" alt="Forma" class="welcome-logo-building">
+            <span class="welcome-x">×</span>
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMiIgaGVpZ2h0PSI2MDYiIHZpZXdCb3g9IjAgMCAxMjAyIDYwNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzEyNzBfMTMzKSI+CjxwYXRoIGQ9Ik05MTYuMjc1IDE4NS4wMjJDOTIyLjU5OCAxODQuNTc5IDkyNS44NDYgMTg0LjU4NCA5MzIuMTc4IDE4NC45NzZDOTMzLjQxNiAxOTIuODUgOTMzLjAwMiAyMDcuNjE5IDkzMi45ODQgMjE1LjkwN0w5MzIuODgxIDI2Ny4xNTNMOTMyLjk1MSAzMzMuOTExQzkzMi45NjEgMzQ1LjAwNSA5MzMuNDQzIDM2NC42NSA5MzEuODUzIDM3NS4yMzdDOTA2LjE3OCAzNzQuODg5IDg5MS4xNzYgMzY4LjIxMiA4NjkuNDQ1IDM1NS44Qzg2NS4wODYgMzYwLjIwNSA4NjIuMzU2IDM2NS4zNjggODYwLjg1OSAzNzEuMzgzQzg1OC41MTkgMzgwLjQ3OCA4NTkuOTIyIDM5MC4xMzEgODY0Ljc1NyAzOTguMTgzQzg2OS4yMjggNDA1LjYxNSA4NzYuMzIyIDQxMS4xMDEgODg0LjYzOSA0MTMuNTYxQzg5My42OTYgNDE2LjIgOTA2LjUwNCA0MTUuMDAzIDkxNi4wMjQgNDE1LjE2Qzk0NC4zODMgNDE1LjczMyA5NzIuMDY5IDQxMi4yMjMgOTk5Ljg5MyA0MTkuMzU4QzEwNzIuMzcgNDM3Ljk0OCAxMTE0LjUyIDUwMi44NjMgMTA5NS45NiA1NzYuMTg1QzEwOTQuMjggNTcwLjc0MiAxMDkzLjYgNTY4Ljc3NiAxMDkwLjk2IDU2My42MjhDMTA3Mi43NyA1MzUuNjg1IDEwNDYuOTYgNTM5LjMxNiAxMDE4LjY2IDUzOC41MThDOTkxLjUzIDUzNy43NTIgOTU4LjY1MSA1NDEuMjUgOTMyLjI5OSA1MzcuMjUxQzkxMS43MTEgNTM0LjIzIDg5Mi4xNjQgNTI2LjI2NCA4NzUuMzI3IDUxNC4wMzlDODQ3LjE5MiA0OTMuNjY5IDgyOC4yNzMgNDYyLjk4NCA4MjIuNzA5IDQyOC42OTlDODE3LjQwNyAzOTQuNzA2IDgyOC4xMTggMzYzLjk2MiA4NDcuOTY4IDMzNi42OTNDODM4LjM1OSAzMjQuMjY0IDgzMS40MzIgMzExLjYxNSA4MjguNDA3IDI5Ni4wMkM4MjMuOTY5IDI3My4zMjkgODI4Ljg0IDI0OS44MDYgODQxLjkyNSAyMzAuNzQzQzg1OC44NSAyMDUuOTA3IDg4Ny4xOTQgMTkwLjU5MiA5MTYuMjc1IDE4NS4wMjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzQzLjM5NiAxOTEuODMyQzM3OC43OTQgMTg5Ljk3MSA0MTYuNzUxIDE5Mi40OTMgNDUyLjM2NyAxOTEuNjNDNDU1LjIyNSAxOTEuNTYxIDQ1OS43MzUgMTkyLjM5NSA0NjIuMzgzIDE5My40NzVDNDY1Ljk2NyAxOTguNzU3IDQ2NS4wMzIgMjIwLjMyNSA0NjUuMDE2IDIyNy42Nkw0NjQuOTQ5IDI3NS4xNDdMNDY0LjgwNCAzODcuNjkzQzQ2NC43NTIgMzk3LjYxNCA0NjYuMzcyIDQyMC45MDggNDYzLjIwOCA0MzEuMjNDNDYyLjk1MiA0MzIuMDY1IDQ2MC43MTMgNDMyLjEwMyA0NTkuNjQ1IDQzMi4yNjNDNDQ1LjgxMyA0MzIuMjcgNDMwLjE1IDQyOC40NDEgNDE3LjM3MSA0MjMuMzQ2QzM4NS45ODggNDEwLjk5OSAzNjAuODA4IDM4Ni42NzQgMzQ3LjM4NCAzNTUuNzM5QzM0Mi41OCAzNDQuNDYyIDMzOS40MDIgMzMyLjU2MiAzMzcuOTQgMzIwLjM5M0MzMzYuMzQ4IDMwNy4wNDcgMzM1LjQ0OSAyMDEuMzkgMzM4LjI3IDE5NS4yMThDMzM5LjI4OCAxOTIuOTkyIDM0MS4yNTggMTkyLjUxNyAzNDMuMzk2IDE5MS44MzJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjU4LjQwNyAxOTEuNjM4QzY2OC4xNDcgMTkwLjg0OCA2NzguMzc3IDE5Mi4zNjEgNjg3Ljc4IDE5NC44NDFDNzIwLjk2OSAyMDMuNDI5IDc0OS4zNjUgMjI0Ljg5NCA3NjYuNjggMjU0LjQ4Qzc3My45ODMgMjY3LjE0IDc3OC45ODkgMjgwLjk5MyA3ODEuNDY3IDI5NS4zOThDNzg1LjA2NiAzMTYuMjkgNzgyLjcyNiAzNTAuNTk2IDc4My4zIDM3Mi43MDhDNzgzLjU1MiAzODIuNDA2IDc4NC4wOTIgNDI0LjgxOSA3ODIuMDY2IDQzMi40NDNDNzYyLjk0OCA0MzMuODc5IDczNC4wOTQgNDMyLjI3NCA3MTQuMzA0IDQzMi44NTZDNzAzLjgwMSA0MzMuMTY0IDY2Ny4zODIgNDMzLjM2NSA2NTguMzQxIDQzMS45NEM2NTYuMzA3IDQyMi4yNzYgNjU3LjAxNSAzOTguNjE0IDY1Ny4wMzcgMzg3LjYzNkw2NTcuMDggMzE3LjQyMUw2NTcuMDI1IDIzOC41OTJDNjU3LjAxNiAyMjYuODI0IDY1Ni4yOTIgMjAyLjA1MSA2NTguNDA3IDE5MS42MzhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjE1LjUwOSAxOTEuODc0QzYxOS41MDIgMTkxLjUzOCA2MjQuOTAyIDE5MC42MTggNjI4LjE2NCAxOTIuOTQ1QzYzMS4xMDcgMTk4LjYyNiA2MzAuMTI4IDI0NS4zNzcgNjMwLjExOCAyNTUuODFMNjMwLjEyNCAzNDEuNTg2TDYzMC4xMjEgMzk0LjMzOUM2MzAuMTE4IDQwNi41MzUgNjMwLjUxNCA0MjAuNDA5IDYyOS4wMTIgNDMyLjM5NUM2MTguMDI1IDQzMy4zMjMgNjAwLjMyNiA0MzIuODQ3IDU4OS4wNCA0MzIuODUxTDUxOS4yMzIgNDMyLjgzOUM1MTUuMTA5IDQzMi44OTYgNTEwLjIzOCA0MzMuMjMxIDUwNi42MDcgNDMxLjM0M0M1MDEuNzA3IDQyMy42MjkgNTA1LjA5MyAzNDkuMjggNTA0LjA0NSAzMzQuODVDNTAxLjY4NyAzMDIuMzQxIDUwOS4wNzIgMjY2Ljc3OCA1MjkuNzM2IDI0MC42MjdDNTUxLjQzOCAyMTMuMTY0IDU4MC40NjIgMTk2LjUzOSA2MTUuNTA5IDE5MS44NzRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTY5LjY5MyAzMjcuNjYxQzE5OC42NTggMzI2Ljk1MiAyMjguMDE2IDMyNy45NjYgMjU3LjAyNiAzMjcuNDQ4QzI2Ni45NDIgMzI3LjI3IDI3Ny40MDggMzI3LjIzNiAyODcuMzExIDMyNy42NUMyODcuNyAzMzAuNjMyIDI4Ny42OTggMzM0LjIxMiAyODcuNjg4IDMzNy4yMzdDMjg3LjU5MiAzNjUuNDIxIDI4Ny44MzkgMzkzLjY1MSAyODcuMTE1IDQyMS44MjFDMjg3LjAzNiA0MjQuOTA1IDI4Ni40NDYgNDI4Ljc0NyAyODUuMjggNDMxLjU3NkMyODEuMTY2IDQzMy42NzggMTYyLjY0NCA0MzIuODQgMTQ3Ljk3NCA0MzIuODM3TDI4LjQyMTkgNDMyLjc3MkMzNi42NDg1IDQyMS41NTkgNDYuNDY3NCA0MTAuNzEyIDU0LjU1NzMgMzk5LjY0MUM4NS4zMDA2IDM1Ny41NjkgMTE0LjI4MiAzMzAuNDIzIDE2OS42OTMgMzI3LjY2MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00My42NDU1IDE5MS44ODRDNjguNzIyOCAxOTAuNDkyIDEwNC45OTYgMTkxLjU2OCAxMzAuNjcgMTkxLjU3NUwyOTUuNDA1IDE5MS41MTlMMjQ2LjczNyAyNTEuMjg5QzIzOS4wMjEgMjYxLjI5IDIyNS44MDMgMjcxLjYxNyAyMTQuOTQ5IDI3Ny45QzIwMS40NzQgMjg1LjU5NSAxODYuNzI5IDI5MC44MTMgMTcxLjQxMiAyOTMuMzA3QzE2Ni4xOTUgMjk0LjE3NyAxNjAuOTI0IDI5NC42OTQgMTU1LjYzOCAyOTQuODU2QzE0MS41NiAyOTUuMzI0IDUyLjIxNTYgMjk2LjA1NiA0NS40NzIxIDI5NC4wNjFDNDMuNTU4MSAyOTMuNDk1IDQyLjI5MzMgMjkyLjg1NyA0MS40NzY1IDI5MC45NjlDNDAuMzUxOCAyODguMzY5IDQwLjE2NDYgMjg0LjkwMSA0MC4wMzQ3IDI4Mi4xMTFDMzkuNjM5NiAyNzMuNjA3IDM5LjExIDE5OC41MDggNDAuNzA5MSAxOTQuNDc1QzQxLjQyODMgMTkyLjY2IDQxLjk0MTggMTkyLjY2OCA0My42NDU1IDE5MS44ODRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOTYwLjcwOCAxODQuMjQzQzk2Mi4xMjEgMTg0LjIwMyA5NjMuNTM0IDE4NC4xOTIgOTY0Ljk0NyAxODQuMjA5Qzk5MC44NzUgMTg0LjUxMyAxMDIwLjkyIDE5OS4wMzQgMTAzOC45NSAyMTcuNDY0QzEwNTUuNjIgMjM0LjE4MiAxMDY0LjkzIDI1Ni44NzEgMTA2NC43OSAyODAuNDg0QzEwNjQuNCAzMDguMDYgMTA1Mi4yMyAzMjguMTk3IDEwMzMuMDMgMzQ2Ljg3M0MxMDExLjE1IDM2NS4zNjQgOTg4LjgwOCAzNzUuNDg1IDk1OS42ODUgMzc1LjQ3MkM5NTguNDEgMzUyLjQzNiA5NTguOTk2IDMxNi4wNzYgOTU5LjAxOSAyOTMuMzU3Qzk1OS4wMyAyNzkuODUyIDk1Ny45MjggMTg4LjcyMyA5NjAuNzA4IDE4NC4yNDNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzczLjA2NiAyOS44NzNDMzc2LjM4OCAyOS45MjAxIDM3OS43MDUgMzAuMDc1MiAzODMuMDE2IDMwLjMzOTNDMzk3LjA4OSAzMS41ODg4IDQwOS43NDggMzUuNDMyNyA0MjEuOTM3IDQyLjU0NzJDNDYzLjM0NSA2Ni43MTczIDQ2OC40MzcgMTEwLjkyIDQ2NC40MzUgMTU0LjIzNkM0NjAuNTQ4IDE1NC42NTMgNDU1LjI5MSAxNTQuNjM4IDQ1MS4yOSAxNTQuNzQ0QzM3Ny44MDQgMTU0Ljg4MiAzNTEuODQxIDk1Ljg0NCAzNjAuNDggMzAuNjIxOEwzNzMuMDY2IDI5Ljg3M1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMTIwLjMyIDExOC4wMzJDMTEyNS45NCAxMTcuMTggMTE1MC42MiAxMTcuMzE2IDExNTUuMSAxMTkuODAxQzExNTUuNjkgMTIwLjg0NyAxMTU2LjEgMTIxLjk0NCAxMTU2LjIxIDEyMy4xNDZDMTE1OC44MSAxNTIuNzExIDExNDIuMzYgMTgxLjE2NyAxMTE0Ljc2IDE5Mi41NzJDMTEwNi43OSAxOTUuODY2IDExMDAuNTEgMTk3LjIwNiAxMDkxLjg1IDE5OC4xMjRDMTA4NS43NCAxOTguNjYzIDEwNjQgMTk5LjYxNiAxMDU4LjIxIDE5Ni41NzFDMTA1Ny4wMiAxOTUuODY4IDEwNTYuMzcgMTkzLjEyNiAxMDU2LjMyIDE5MS44MzJDMTA1NS4wOSAxNTIuNzM5IDEwODEuNjQgMTIxLjc5NiAxMTIwLjMyIDExOC4wMzJaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzEyNzBfMTMzIj4KPHJlY3Qgd2lkdGg9IjEyMDIiIGhlaWdodD0iNjA2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Zing" class="welcome-logo-zing">
+          </div>
+          <h1 class="headline welcome-headline anim a-fu" style="animation-delay:.3s">
+            We're in <span class="hl">your building</span>
+          </h1>
+          <p class="subtitle anim a-fu" style="animation-delay:.45s">Welcome home. Your dedicated Zing housekeeper is ready and waiting.</p>
+          <div class="welcome-confetti anim a-si" style="animation-delay:.5s">🎉</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -507,21 +545,33 @@ function goTo(i) {
   // Back button visibility
   backBtn.style.visibility = cur === 0 ? 'hidden' : 'visible';
 
-  // Last slide: change button
-  if (cur === total - 1) {
+  // Slide-specific button states
+  const signupIdx = total - 2; // slide 5 (signup)
+  const welcomeIdx = total - 1; // slide 6 (welcome)
+
+  if (cur === welcomeIdx) {
+    btnContinue.innerHTML = 'Meet your cleaner';
+    btnContinue.classList.add('btn-yellow');
+    skipBtn.style.display = 'none';
+    document.querySelector('.top-bar').style.display = 'none';
+  } else if (cur === signupIdx) {
     btnContinue.innerHTML = 'Create Account';
     btnContinue.classList.add('btn-yellow');
     skipBtn.style.display = 'none';
+    document.querySelector('.top-bar').style.display = 'flex';
   } else {
     btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
     btnContinue.classList.remove('btn-yellow');
     skipBtn.style.display = 'block';
+    document.querySelector('.top-bar').style.display = 'flex';
   }
 }
 
 btnContinue.addEventListener('click', () => {
-  if (cur === total - 1) {
-    // Submit signup
+  const signupIdx = total - 2;
+  const welcomeIdx = total - 1;
+  if (cur === signupIdx) {
+    // Submit signup → go to welcome
     const fn = document.getElementById('firstName')?.value;
     const ln = document.getElementById('lastName')?.value;
     const em = document.getElementById('email')?.value;
@@ -529,10 +579,18 @@ btnContinue.addEventListener('click', () => {
       alert('Please fill in all fields');
       return;
     }
-    alert('Welcome to Zing, ' + fn + '! 🎉');
+    goTo(welcomeIdx);
+  } else if (cur === welcomeIdx) {
+    // "Meet your cleaner" — placeholder action
+    alert('Coming soon — your cleaner profile!');
   } else {
     goTo(cur + 1);
   }
+});
+
+// Social buttons also go to welcome
+document.querySelectorAll('.btn-social').forEach(btn => {
+  btn.addEventListener('click', () => goTo(total - 1));
 });
 
 backBtn.addEventListener('click', () => {
@@ -540,7 +598,7 @@ backBtn.addEventListener('click', () => {
   else goTo(cur - 1);
 });
 
-skipBtn.addEventListener('click', () => goTo(total - 1));
+skipBtn.addEventListener('click', () => goTo(total - 2));
 
 // Swipe
 let sx = 0, dx = 0, dragging = false;
