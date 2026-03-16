@@ -802,13 +802,10 @@ function goTo(i) {
     topBar.style.display = 'none';
     btnContinue.innerHTML = 'Meet your cleaner';
   } else if (cur === cleanerIdx) {
-    // Slide 6 (Liza): show top bar transparent over gray bg
+    // Slide 6 (Liza): transparent top bar over gray bg, normal back button
     topBar.style.display = 'flex';
     topBar.style.background = 'transparent';
-    topBar.querySelector('.progress-bar').style.background = 'rgba(255,255,255,.2)';
-    topBar.querySelector('.back-btn').style.background = 'rgba(255,255,255,.15)';
-    topBar.querySelector('.back-btn').style.borderColor = 'rgba(255,255,255,.2)';
-    topBar.querySelector('.back-btn svg').style.stroke = '#fff';
+    topBar.querySelector('.progress-bar').style.background = 'rgba(255,255,255,.25)';
     btnContinue.innerHTML = 'Continue ' + arrowSvg;
   } else if (cur === aptIdx || cur === bathIdx) {
     // Slides 7-8 (apt, bath): show top bar with progress, Continue arrow
