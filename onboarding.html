@@ -345,29 +345,17 @@ html, body {
   display: flex; flex-direction: column; gap: 10px; width: 100%;
 }
 .option-btn {
-  width: 100%; padding: 18px 20px; border-radius: 14px;
+  width: 100%; padding: 16px 22px; border-radius: 14px;
   border: 1.5px solid var(--border); background: var(--card);
   font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
   color: var(--text); cursor: pointer; text-align: left;
-  transition: border-color .25s, background .25s, transform .15s;
-  display: flex; align-items: center; gap: 12px;
+  transition: border-color .3s, background .3s, transform .15s, box-shadow .3s;
 }
-.option-btn:hover { border-color: var(--accent); }
+.option-btn:hover { border-color: rgba(186,220,195,.6); }
 .option-btn:active { transform: scale(.98); }
 .option-btn.selected {
-  border-color: var(--accent); background: rgba(186,220,195,.12);
-}
-.option-btn .option-icon { font-size: 20px; flex-shrink: 0; }
-.option-btn .option-check {
-  margin-left: auto; width: 22px; height: 22px; border-radius: 50%;
-  border: 2px solid var(--border); display: flex; align-items: center;
-  justify-content: center; flex-shrink: 0; transition: all .25s;
-}
-.option-btn.selected .option-check {
-  border-color: var(--accent); background: var(--accent);
-}
-.option-btn.selected .option-check::after {
-  content: '✓'; color: #fff; font-size: 12px; font-weight: 700;
+  border-color: var(--accent); background: rgba(186,220,195,.1);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 
 /* HOW IT WORKS */
@@ -654,22 +642,10 @@ html, body {
         </h1>
         <p class="subtitle anim a-fu" style="animation-delay:.2s">This helps us give you accurate pricing for cleaning services.</p>
         <div class="option-list anim a-fu" style="animation-delay:.3s">
-          <button class="option-btn" data-q="apt" data-val="studio">
-            <span class="option-icon">🏠</span> Studio
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="apt" data-val="1br">
-            <span class="option-icon">🛏️</span> 1 Bedroom
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="apt" data-val="2br">
-            <span class="option-icon">🏡</span> 2 Bedrooms
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="apt" data-val="3br">
-            <span class="option-icon">🏢</span> 3+ Bedrooms
-            <span class="option-check"></span>
-          </button>
+          <button class="option-btn" data-q="apt" data-val="studio">Studio</button>
+          <button class="option-btn" data-q="apt" data-val="1br">1 Bedroom</button>
+          <button class="option-btn" data-q="apt" data-val="2br">2 Bedrooms</button>
+          <button class="option-btn" data-q="apt" data-val="3br">3+ Bedrooms</button>
         </div>
       </div>
 
@@ -680,26 +656,11 @@ html, body {
         </h1>
         <p class="subtitle anim a-fu" style="animation-delay:.2s">This helps us give you accurate pricing for cleaning services.</p>
         <div class="option-list anim a-fu" style="animation-delay:.3s">
-          <button class="option-btn" data-q="bath" data-val="1">
-            <span class="option-icon">🚿</span> 1 Bathroom
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="bath" data-val="1.5">
-            <span class="option-icon">🚿</span> 1.5 Bathrooms
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="bath" data-val="2">
-            <span class="option-icon">🛁</span> 2 Bathrooms
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="bath" data-val="3">
-            <span class="option-icon">🛁</span> 3 Bathrooms
-            <span class="option-check"></span>
-          </button>
-          <button class="option-btn" data-q="bath" data-val="4">
-            <span class="option-icon">🛁</span> 4 Bathrooms
-            <span class="option-check"></span>
-          </button>
+          <button class="option-btn" data-q="bath" data-val="1">1 Bathroom</button>
+          <button class="option-btn" data-q="bath" data-val="1.5">1.5 Bathrooms</button>
+          <button class="option-btn" data-q="bath" data-val="2">2 Bathrooms</button>
+          <button class="option-btn" data-q="bath" data-val="3">3 Bathrooms</button>
+          <button class="option-btn" data-q="bath" data-val="4">4 Bathrooms</button>
         </div>
       </div>
 
@@ -766,60 +727,65 @@ function goTo(i) {
   cur = i;
   track.style.transform = `translateX(-${cur * 100}%)`;
   slides.forEach((s, idx) => s.classList.toggle('active', idx === cur));
-  progressFill.style.width = `${((cur + 1) / total) * 100}%`;
+  // Slide indices (10 total: 0-4 pre-signup, 5 signup, 6 welcome, 7-9 post-signup)
+  const signupIdx = 4;    // slide 5 (signup)
+  const welcomeIdx = 5;   // slide 6 (welcome)
+  const cleanerIdx = 6;   // slide 7 (meet cleaner)
+  const aptIdx = 7;       // slide 8 (apartment type)
+  const bathIdx = 8;      // slide 9 (bathrooms)
+  const howIdx = 9;       // slide 10 (how it works)
 
-  // Back button visibility
+  const topBar = document.querySelector('.top-bar');
+  const arrowSvg = '<svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
+  // --- Progress bar logic ---
+  // Phase 1 (slides 0–4): 5 steps, 20% each
+  // Phase 2 (slides 6–9): 4 steps, 25% each (Liza → apt → bath → how-it-works)
+  // Slides 5 (signup) and 5 (welcome) hide the bar
+  if (cur <= signupIdx) {
+    // Pre-signup: slides 0-4
+    progressFill.style.width = `${((cur + 1) / 5) * 100}%`;
+  } else if (cur >= cleanerIdx) {
+    // Post-signup: slides 6-9 → maps to steps 1-4
+    const postStep = cur - cleanerIdx + 1; // 1,2,3,4
+    progressFill.style.width = `${(postStep / 4) * 100}%`;
+  }
+
+  // --- Back button ---
   backBtn.style.visibility = cur === 0 ? 'hidden' : 'visible';
 
-  // Slide indices
-  const signupIdx = total - 6; // slide 5 (signup)
-  const welcomeIdx = total - 5; // slide 6 (welcome)
-  const cleanerIdx = total - 4; // slide 7 (meet cleaner)
-  const aptIdx = total - 3; // slide 8 (apartment type)
-  const bathIdx = total - 2; // slide 9 (bathrooms)
-  const howIdx = total - 1; // slide 10 (how it works)
+  // --- Top bar + skip + button states ---
+  skipBtn.style.display = 'none'; // default hide skip
+  btnContinue.classList.remove('btn-yellow');
 
-  const postSignup = cur >= welcomeIdx;
-  const topBar = document.querySelector('.top-bar');
-
-  if (cur === howIdx) {
-    btnContinue.innerHTML = 'Book your first clean';
-    btnContinue.classList.remove('btn-yellow');
-    skipBtn.style.display = 'none';
-    topBar.style.display = 'none';
-  } else if (cur === aptIdx || cur === bathIdx) {
-    btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    btnContinue.classList.remove('btn-yellow');
-    skipBtn.style.display = 'none';
-    topBar.style.display = 'none';
-  } else if (cur === cleanerIdx) {
-    btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    btnContinue.classList.remove('btn-yellow');
-    skipBtn.style.display = 'none';
-    topBar.style.display = 'none';
-  } else if (cur === welcomeIdx) {
-    btnContinue.innerHTML = 'Meet your cleaner';
-    btnContinue.classList.remove('btn-yellow');
-    skipBtn.style.display = 'none';
-    topBar.style.display = 'none';
+  if (cur <= 3) {
+    // Slides 0-3: show top bar, show skip, Continue arrow
+    topBar.style.display = 'flex';
+    skipBtn.style.display = 'block';
+    btnContinue.innerHTML = 'Continue ' + arrowSvg;
   } else if (cur === signupIdx) {
+    // Slide 4 (signup): show top bar, Create Account button
+    topBar.style.display = 'flex';
     btnContinue.innerHTML = 'Create Account';
     btnContinue.classList.add('btn-yellow');
-    skipBtn.style.display = 'none';
+  } else if (cur === welcomeIdx) {
+    // Slide 5 (welcome): hide top bar
+    topBar.style.display = 'none';
+    btnContinue.innerHTML = 'Meet your cleaner';
+  } else if (cur === cleanerIdx || cur === aptIdx || cur === bathIdx) {
+    // Slides 6-8 (Liza, apt, bath): show top bar with progress, Continue arrow
     topBar.style.display = 'flex';
-  } else {
-    btnContinue.innerHTML = 'Continue <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    btnContinue.classList.remove('btn-yellow');
-    skipBtn.style.display = 'block';
+    btnContinue.innerHTML = 'Continue ' + arrowSvg;
+  } else if (cur === howIdx) {
+    // Slide 9 (how it works): show top bar with full progress, Book button
     topBar.style.display = 'flex';
+    btnContinue.innerHTML = 'Book your first clean';
   }
 }
 
 btnContinue.addEventListener('click', () => {
-  const signupIdx = total - 6;
-  const welcomeIdx = total - 5;
-  const howIdx = total - 1;
-  if (cur === signupIdx) {
+  if (cur === 4) {
+    // Signup slide — validate then go to welcome
     const fn = document.getElementById('firstName')?.value;
     const ln = document.getElementById('lastName')?.value;
     const em = document.getElementById('email')?.value;
@@ -827,17 +793,18 @@ btnContinue.addEventListener('click', () => {
       alert('Please fill in all fields');
       return;
     }
-    goTo(welcomeIdx);
-  } else if (cur === howIdx) {
+    goTo(5); // welcome
+  } else if (cur === 9) {
+    // How it works — final action
     alert('Booking coming soon!');
   } else {
     goTo(cur + 1);
   }
 });
 
-// Social buttons also go to welcome
+// Social buttons go to welcome (slide 5)
 document.querySelectorAll('.btn-social').forEach(btn => {
-  btn.addEventListener('click', () => goTo(total - 5));
+  btn.addEventListener('click', () => goTo(5));
 });
 
 // Option button selection
@@ -856,7 +823,7 @@ backBtn.addEventListener('click', () => {
   else goTo(cur - 1);
 });
 
-skipBtn.addEventListener('click', () => goTo(total - 6));
+skipBtn.addEventListener('click', () => goTo(4)); // skip to signup
 
 // Swipe
 let sx = 0, dx = 0, dragging = false;
