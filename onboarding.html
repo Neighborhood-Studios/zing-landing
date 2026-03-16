@@ -743,11 +743,15 @@ const slides = document.querySelectorAll('.slide');
 const total = slides.length;
 let cur = 0;
 
+const topBar = document.querySelector('.top-bar');
+const arrowSvg = '<svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
 function goTo(i) {
   i = Math.max(0, Math.min(i, total - 1));
   cur = i;
   track.style.transform = `translateX(-${cur * 100}%)`;
   slides.forEach((s, idx) => s.classList.toggle('active', idx === cur));
+
   // Reset top bar styles (undo Liza slide overrides)
   topBar.style.background = '';
   topBar.querySelector('.progress-bar').style.background = '';
@@ -755,16 +759,13 @@ function goTo(i) {
   topBar.querySelector('.back-btn').style.borderColor = '';
   topBar.querySelector('.back-btn svg').style.stroke = '';
 
-  // Slide indices (10 total: 0-4 pre-signup, 5 signup, 6 welcome, 7-9 post-signup)
-  const signupIdx = 4;    // slide 5 (signup)
-  const welcomeIdx = 5;   // slide 6 (welcome)
-  const cleanerIdx = 6;   // slide 7 (meet cleaner)
-  const aptIdx = 7;       // slide 8 (apartment type)
-  const bathIdx = 8;      // slide 9 (bathrooms)
-  const howIdx = 9;       // slide 10 (how it works)
-
-  const topBar = document.querySelector('.top-bar');
-  const arrowSvg = '<svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  // Slide indices
+  const signupIdx = 4;
+  const welcomeIdx = 5;
+  const cleanerIdx = 6;
+  const aptIdx = 7;
+  const bathIdx = 8;
+  const howIdx = 9;
 
   // --- Progress bar logic ---
   // Phase 1 (slides 0–4): 5 steps, 20% each
