@@ -182,12 +182,10 @@ html, body {
   margin: 24px auto 0; max-width: 300px; position: relative;
 }
 .cleaner-img {
-  width: 100%; aspect-ratio: 3/4; border-radius: 18px;
-  background: linear-gradient(135deg, #badcc3 0%, #e4e2d8 40%, #f4f2e8 100%);
+  width: 100%; border-radius: 18px;
   box-shadow: 0 16px 40px rgba(51,82,92,.08);
   animation: float 4s ease-in-out infinite;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text2); font-size: 14px; font-weight: 300;
+  object-fit: cover;
 }
 .trust-badges {
   display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap;
@@ -364,8 +362,7 @@ html, body {
         <p class="subtitle anim a-fu" style="animation-delay:.2s">Not a gig worker. Not a stranger. A trained Zing professional who's part of your building's community.</p>
 
         <div class="cleaner-img-wrap anim a-si" style="animation-delay:.35s">
-          <div class="cleaner-img">
-          </div>
+          <img src="cleaner-hero.jpg" alt="Your Zing cleaner" class="cleaner-img">
         </div>
 
         <div class="trust-badges anim a-fu" style="animation-delay:.55s">
