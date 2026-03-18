@@ -80,7 +80,7 @@ html, body {
   min-width: 100%; height: 100%;
   display: flex; flex-direction: column;
   padding: 24px 28px 16px;
-  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
 
 /* ── BOTTOM ── */
@@ -133,12 +133,13 @@ html, body {
 .task-carousel-wrap {
   margin: 24px -28px 0;
   overflow: hidden;
+  padding: 4px 0;
 }
 .task-carousel {
   display: flex; gap: 10px;
   animation: scrollCards 30s linear infinite;
   width: max-content;
-  padding: 8px 0;
+  padding: 8px 0 8px 28px;
 }
 .task-carousel:hover { animation-play-state: paused; }
 @keyframes scrollCards {
