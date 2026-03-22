@@ -819,7 +819,11 @@ function goTo(i) {
 }
 
 btnContinue.addEventListener('click', () => {
-  if (cur === 4) {
+  if (cur === 3) {
+    // Raving slide — redirect to app
+    window.location.href = 'https://app.justzingit.com';
+    return;
+  } else if (cur === 4) {
     // Signup slide — validate then go to welcome
     const fn = document.getElementById('firstName')?.value;
     const ln = document.getElementById('lastName')?.value;
