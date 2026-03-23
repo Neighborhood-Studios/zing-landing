@@ -820,8 +820,8 @@ function goTo(i) {
 
 btnContinue.addEventListener('click', () => {
   if (cur === 3) {
-    // Raving slide — redirect to app
-    window.location.href = 'https://app.justzingit.com';
+    // Raving slide — continue to signup
+    goTo(cur + 1);
     return;
   } else if (cur === 4) {
     // Signup slide — validate then go to welcome
@@ -834,8 +834,8 @@ btnContinue.addEventListener('click', () => {
     }
     goTo(5); // welcome
   } else if (cur === 9) {
-    // How it works — final action
-    alert('Booking coming soon!');
+    // How it works — redirect to app for booking
+    window.location.href = 'https://app.justzingit.com';
   } else {
     goTo(cur + 1);
   }
