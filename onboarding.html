@@ -108,6 +108,7 @@ html, body {
   font-size: 34px; font-weight: 400; line-height: 1.08;
   letter-spacing: -.02em;
   color: var(--text); margin-bottom: 14px;
+  flex-shrink: 0;
 }
 .headline .hl {
   font-style: italic;
@@ -115,6 +116,7 @@ html, body {
 }
 .subtitle {
   font-size: 15px; color: var(--text2); line-height: 1.65; font-weight: 300;
+  flex-shrink: 0;
 }
 
 /* ── ANIMATIONS ── */
@@ -133,6 +135,7 @@ html, body {
 .task-carousel-wrap {
   margin: 20px -28px 0;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .task-carousel {
   display: flex; gap: 10px;
@@ -160,6 +163,7 @@ html, body {
 .feature-cards {
   display: flex; flex-direction: column; gap: 10px;
   margin-top: 20px;
+  flex-shrink: 0;
 }
 .feature-card {
   background: var(--card);
@@ -878,8 +882,10 @@ viewport.addEventListener('touchmove', e => {
 viewport.addEventListener('touchend', () => {
   dragging = false;
   track.style.transition = 'transform .55s cubic-bezier(.4,0,.15,1)';
-  if (Math.abs(dx) > 50) { dx < 0 ? goTo(cur + 1) : goTo(cur - 1); }
-  else goTo(cur);
+  if (Math.abs(dx) > 50) {
+    if (dx < 0 && cur === 3) { window.location.href = 'https://app.justzingit.com/signup'; return; }
+    dx < 0 ? goTo(cur + 1) : goTo(cur - 1);
+  } else goTo(cur);
   dx = 0;
 });
 
