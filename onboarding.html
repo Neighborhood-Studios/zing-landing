@@ -6,6 +6,15 @@
 <meta name="theme-color" content="#f4f2e8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Zing — Get Started</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2P1N3F26FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // Disable auto page_view; each onboarding step fires its own page_view from goTo()
+  gtag('config', 'G-2P1N3F26FD', { send_page_view: false });
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -748,15 +757,42 @@ const bottomBar = document.getElementById('bottomBar');
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
 let cur = 0;
+let lastTrackedStep = -1;
 
 const topBar = document.querySelector('.top-bar');
 const arrowSvg = '<svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
+const stepTitles = [
+  'Tasks',
+  'Dedicated cleaner',
+  'Every day',
+  'Raving residents',
+  'Signup',
+  'Welcome',
+  'Meet Liza',
+  'Apartment type',
+  'Bathrooms',
+  'How it works'
+];
+
+function trackStep(i) {
+  if (i === lastTrackedStep) return;
+  lastTrackedStep = i;
+  if (typeof gtag !== 'function') return;
+  const stepNum = i + 1;
+  gtag('event', 'page_view', {
+    page_title: `Onboarding — Step ${stepNum}: ${stepTitles[i] || ''}`.trim(),
+    page_location: `${location.origin}${location.pathname}#step-${stepNum}`,
+    page_path: `/onboarding/step-${stepNum}`
+  });
+}
 
 function goTo(i) {
   i = Math.max(0, Math.min(i, total - 1));
   cur = i;
   track.style.transform = `translateX(-${cur * 100}%)`;
   slides.forEach((s, idx) => s.classList.toggle('active', idx === cur));
+  trackStep(cur);
 
   // Reset top bar styles (undo Liza slide overrides)
   topBar.style.background = '';
