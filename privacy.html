@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zing — Privacy Policy & Terms of Service</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2P1N3F26FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2P1N3F26FD');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f2e8; --s1:#eceadf; --s2:#e4e2d8; --s3:#d8d6cc;
+  --border:rgba(51,82,92,0.10); --border2:rgba(51,82,92,0.18);
+  --text:#33525c; --t2:rgba(51,82,92,0.58); --t3:rgba(51,82,92,0.35);
+  --accent:#badcc3;
+  --accent-d:rgba(186,220,195,0.10);
+  --accent-b:rgba(186,220,195,0.28);
+  --accent-dim:rgba(186,220,195,0.55);
+}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100vw}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;width:100%;max-width:100vw;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit} img,video{display:block;max-width:100%}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:100;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(244,242,232,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{height:26px;filter:brightness(0) saturate(100%) invert(16%) sepia(15%) saturate(746%) hue-rotate(153deg) brightness(93%) contrast(93%)}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;background:#badcc3;color:#33525c;padding:11px 26px;border-radius:100px;font-size:13px;font-weight:600;transition:background .2s,transform .2s,box-shadow .2s}
+.nav-btn:hover{background:#a8cfb2;transform:translateY(-1px);box-shadow:0 10px 40px rgba(186,220,195,.3)}
+.nav-login-mobile{display:none}
+.nav-actions{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text);transition:opacity .3s}
+.nav-links a:hover{opacity:.65}
+.nav-btn svg{width:14px;height:14px;transition:transform .25s}
+.nav-btn:hover svg{transform:translateX(3px)}
+
+/* LEGAL CONTENT */
+.legal-wrap{max-width:780px;margin:0 auto;padding:140px 32px 100px}
+.legal-hero{margin-bottom:72px}
+.legal-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5vw,64px);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.legal-hero h1 em{font-style:italic;color:var(--accent)}
+.legal-hero p{font-size:15px;font-weight:300;color:var(--t2);line-height:1.7}
+.legal-nav{display:flex;gap:16px;margin-bottom:64px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.legal-nav a{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border2);color:var(--text);transition:background .2s,border-color .2s}
+.legal-nav a:hover,.legal-nav a.active{background:var(--accent-d);border-color:var(--accent-b);color:var(--text)}
+.legal-section{margin-bottom:80px}
+.legal-section > h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.6vw,42px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:12px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.legal-section > h2 em{font-style:italic;color:var(--accent)}
+.legal-section .effective{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-bottom:40px;display:block}
+.legal-section h3{font-size:16px;font-weight:600;margin-top:36px;margin-bottom:10px;color:var(--text)}
+.legal-section p{font-size:14.5px;font-weight:300;line-height:1.8;color:var(--t2);margin-bottom:14px}
+.legal-section ul{margin:8px 0 18px 20px;list-style:none}
+.legal-section ul li{position:relative;font-size:14.5px;font-weight:300;line-height:1.8;color:var(--t2);padding-left:18px;margin-bottom:6px}
+.legal-section ul li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.legal-section a{color:var(--text);font-weight:500;border-bottom:1px solid var(--accent-b);transition:border-color .2s}
+.legal-section a:hover{border-color:var(--accent)}
+.legal-contact{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-top:24px;font-size:14px;font-weight:300;line-height:1.8;color:var(--t2)}
+.legal-contact strong{font-weight:500;color:var(--text)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:72px 64px 52px}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;padding-bottom:52px;border-bottom:1px solid var(--border)}
+.ft-logo{height:22px;filter:brightness(0) saturate(1) invert(28%) sepia(20%) saturate(800%) hue-rotate(155deg);margin-bottom:18px;display:block}
+.ft-tag{font-size:13px;font-weight:300;color:var(--t3);line-height:1.7;max-width:220px}
+.ft-hl{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:14px}
+.ft-addr{font-size:13px;font-weight:300;color:var(--t2);line-height:1.8}
+.ft-top>div:last-child{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:center}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:11px;color:var(--t3)}
+
+::-webkit-scrollbar{width:3px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--s3);border-radius:3px}
+
+@media(max-width:880px){
+  .nav{padding:0 22px}
+  .nav-links{display:none}
+  .nav-login-mobile{display:inline-flex;align-items:center;font-size:14px;font-weight:600;color:var(--text);margin-right:0}
+  .nav-actions{gap:12px}
+  .legal-wrap{padding:120px 20px 72px}
+  .legal-nav{flex-wrap:wrap;gap:10px}
+  .legal-nav a{padding:8px 16px;font-size:12px}
+  footer{padding:56px 24px 44px}
+  .ft-top{grid-template-columns:1fr;gap:32px}
+  .ft-bot{flex-direction:column;gap:10px;text-align:center}
+}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">
+    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMiIgaGVpZ2h0PSI2MDYiIHZpZXdCb3g9IjAgMCAxMjAyIDYwNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzEyNzBfMTMzKSI+CjxwYXRoIGQ9Ik05MTYuMjc1IDE4NS4wMjJDOTIyLjU5OCAxODQuNTc5IDkyNS44NDYgMTg0LjU4NCA5MzIuMTc4IDE4NC45NzZDOTMzLjQxNiAxOTIuODUgOTMzLjAwMiAyMDcuNjE5IDkzMi45ODQgMjE1LjkwN0w5MzIuODgxIDI2Ny4xNTNMOTMyLjk1MSAzMzMuOTExQzkzMi45NjEgMzQ1LjAwNSA5MzMuNDQzIDM2NC42NSA5MzEuODUzIDM3NS4yMzdDOTA2LjE3OCAzNzQuODg5IDg5MS4xNzYgMzY4LjIxMiA4NjkuNDQ1IDM1NS44Qzg2NS4wODYgMzYwLjIwNSA4NjIuMzU2IDM2NS4zNjggODYwLjg1OSAzNzEuMzgzQzg1OC41MTkgMzgwLjQ3OCA4NTkuOTIyIDM5MC4xMzEgODY0Ljc1NyAzOTguMTgzQzg2OS4yMjggNDA1LjYxNSA4NzYuMzIyIDQxMS4xMDEgODg0LjYzOSA0MTMuNTYxQzg5My42OTYgNDE2LjIgOTA2LjUwNCA0MTUuMDAzIDkxNi4wMjQgNDE1LjE2Qzk0NC4zODMgNDE1LjczMyA5NzIuMDY5IDQxMi4yMjMgOTk5Ljg5MyA0MTkuMzU4QzEwNzIuMzcgNDM3Ljk0OCAxMTE0LjUyIDUwMi44NjMgMTA5NS45NiA1NzYuMTg1QzEwOTQuMjggNTcwLjc0MiAxMDkzLjYgNTY4Ljc3NiAxMDkwLjk2IDU2My42MjhDMTA3Mi43NyA1MzUuNjg1IDEwNDYuOTYgNTM5LjMxNiAxMDE4LjY2IDUzOC41MThDOTkxLjUzIDUzNy43NTIgOTU4LjY1MSA1NDEuMjUgOTMyLjI5OSA1MzcuMjUxQzkxMS43MTEgNTM0LjIzIDg5Mi4xNjQgNTI2LjI2NCA4NzUuMzI3IDUxNC4wMzlDODQ3LjE5MiA0OTMuNjY5IDgyOC4yNzMgNDYyLjk4NCA4MjIuNzA5IDQyOC42OTlDODE3LjQwNyAzOTQuNzA2IDgyOC4xMTggMzYzLjk2MiA4NDcuOTY4IDMzNi42OTNDODM4LjM1OSAzMjQuMjY0IDgzMS40MzIgMzExLjYxNSA4MjguNDA3IDI5Ni4wMkM4MjMuOTY5IDI3My4zMjkgODI4Ljg0IDI0OS44MDYgODQxLjkyNSAyMzAuNzQzQzg1OC44NSAyMDUuOTA3IDg4Ny4xOTQgMTkwLjU5MiA5MTYuMjc1IDE4NS4wMjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzQzLjM5NiAxOTEuODMyQzM3OC43OTQgMTg5Ljk3MSA0MTYuNzUxIDE5Mi40OTMgNDUyLjM2NyAxOTEuNjNDNDU1LjIyNSAxOTEuNTYxIDQ1OS43MzUgMTkyLjM5NSA0NjIuMzgzIDE5My40NzVDNDY1Ljk2NyAxOTguNzU3IDQ2NS4wMzIgMjIwLjMyNSA0NjUuMDE2IDIyNy42Nkw0NjQuOTQ5IDI3NS4xNDdMNDY0LjgwNCAzODcuNjkzQzQ2NC43NTIgMzk3LjYxNCA0NjYuMzcyIDQyMC45MDggNDYzLjIwOCA0MzEuMjNDNDYyLjk1MiA0MzIuMDY1IDQ2MC43MTMgNDMyLjEwMyA0NTkuNjQ1IDQzMi4yNjNDNDQ1LjgxMyA0MzIuMjcgNDMwLjE1IDQyOC40NDEgNDE3LjM3MSA0MjMuMzQ2QzM4NS45ODggNDEwLjk5OSAzNjAuODA4IDM4Ni42NzQgMzQ3LjM4NCAzNTUuNzM5QzM0Mi41OCAzNDQuNDYyIDMzOS40MDIgMzMyLjU2MiAzMzcuOTQgMzIwLjM5M0MzMzYuMzQ4IDMwNy4wNDcgMzM1LjQ0OSAyMDEuMzkgMzM4LjI3IDE5NS4yMThDMzM5LjI4OCAxOTIuOTkyIDM0MS4yNTggMTkyLjUxNyAzNDMuMzk2IDE5MS44MzJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjU4LjQwNyAxOTEuNjM4QzY2OC4xNDcgMTkwLjg0OCA2NzguMzc3IDE5Mi4zNjEgNjg3Ljc4IDE5NC44NDFDNzIwLjk2OSAyMDMuNDI5IDc0OS4zNjUgMjI0Ljg5NCA3NjYuNjggMjU0LjQ4Qzc3My45ODMgMjY3LjE0IDc3OC45ODkgMjgwLjk5MyA3ODEuNDY3IDI5NS4zOThDNzg1LjA2NiAzMTYuMjkgNzgyLjcyNiAzNTAuNTk2IDc4My4zIDM3Mi43MDhDNzgzLjU1MiAzODIuNDA2IDc4NC4wOTIgNDI0LjgxOSA3ODIuMDY2IDQzMi40NDNDNzYyLjk0OCA0MzMuODc5IDczNC4wOTQgNDMyLjI3NCA3MTQuMzA0IDQzMi44NTZDNzAzLjgwMSA0MzMuMTY0IDY2Ny4zODIgNDMzLjM2NSA2NTguMzQxIDQzMS45NEM2NTYuMzA3IDQyMi4yNzYgNjU3LjAxNSAzOTguNjE0IDY1Ny4wMzcgMzg3LjYzNkw2NTcuMDggMzE3LjQyMUw2NTcuMDI1IDIzOC41OTJDNjU3LjAxNiAyMjYuODI0IDY1Ni4yOTIgMjAyLjA1MSA2NTguNDA3IDE5MS42MzhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjE1LjUwOSAxOTEuODc0QzYxOS41MDIgMTkxLjUzOCA2MjQuOTAyIDE5MC42MTggNjI4LjE2NCAxOTIuOTQ1QzYzMS4xMDcgMTk4LjYyNiA2MzAuMTI4IDI0NS4zNzcgNjMwLjExOCAyNTUuODFMNjMwLjEyNCAzNDEuNTg2TDYzMC4xMjEgMzk0LjMzOUM2MzAuMTE4IDQwNi41MzUgNjMwLjUxNCA0MjAuNDA5IDYyOS4wMTIgNDMyLjM5NUM2MTguMDI1IDQzMy4zMjMgNjAwLjMyNiA0MzIuODQ3IDU4OS4wNCA0MzIuODUxTDUxOS4yMzIgNDMyLjgzOUM1MTUuMTA5IDQzMi44OTYgNTEwLjIzOCA0MzMuMjMxIDUwNi42MDcgNDMxLjM0M0M1MDEuNzA3IDQyMy42MjkgNTA1LjA5MyAzNDkuMjggNTA0LjA0NSAzMzQuODVDNTAxLjY4NyAzMDIuMzQxIDUwOS4wNzIgMjY2Ljc3OCA1MjkuNzM2IDI0MC42MjdDNTUxLjQzOCAyMTMuMTY0IDU4MC40NjIgMTk2LjUzOSA2MTUuNTA5IDE5MS44NzRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTY5LjY5MyAzMjcuNjYxQzE5OC42NTggMzI2Ljk1MiAyMjguMDE2IDMyNy45NjYgMjU3LjAyNiAzMjcuNDQ4QzI2Ni45NDIgMzI3LjI3IDI3Ny40MDggMzI3LjIzNiAyODcuMzExIDMyNy42NUMyODcuNyAzMzAuNjMyIDI4Ny42OTggMzM0LjIxMiAyODcuNjg4IDMzNy4yMzdDMjg3LjU5MiAzNjUuNDIxIDI4Ny44MzkgMzkzLjY1MSAyODcuMTE1IDQyMS44MjFDMjg3LjAzNiA0MjQuOTA1IDI4Ni40NDYgNDI4Ljc0NyAyODUuMjggNDMxLjU3NkMyODEuMTY2IDQzMy42NzggMTYyLjY0NCA0MzIuODQgMTQ3Ljk3NCA0MzIuODM3TDI4LjQyMTkgNDMyLjc3MkMzNi42NDg1IDQyMS41NTkgNDYuNDY3NCA0MTAuNzEyIDU0LjU1NzMgMzk5LjY0MUM4NS4zMDA2IDM1Ny41NjkgMTE0LjI4MiAzMzAuNDIzIDE2OS42OTMgMzI3LjY2MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00My42NDU1IDE5MS44ODRDNjguNzIyOCAxOTAuNDkyIDEwNC45OTYgMTkxLjU2OCAxMzAuNjcgMTkxLjU3NUwyOTUuNDA1IDE5MS41MTlMMjQ2LjczNyAyNTEuMjg5QzIzOS4wMjEgMjYxLjI5IDIyNS44MDMgMjcxLjYxNyAyMTQuOTQ5IDI3Ny45QzIwMS40NzQgMjg1LjU5NSAxODYuNzI5IDI5MC44MTMgMTcxLjQxMiAyOTMuMzA3QzE2Ni4xOTUgMjk0LjE3NyAxNjAuOTI0IDI5NC42OTQgMTU1LjYzOCAyOTQuODU2QzE0MS41NiAyOTUuMzI0IDUyLjIxNTYgMjk2LjA1NiA0NS40NzIxIDI5NC4wNjFDNDMuNTU4MSAyOTMuNDk1IDQyLjI5MzMgMjkyLjg1NyA0MS40NzY1IDI5MC45NjlDNDAuMzUxOCAyODguMzY5IDQwLjE2NDYgMjg0LjkwMSA0MC4wMzQ3IDI4Mi4xMTFDMzkuNjM5NiAyNzMuNjA3IDM5LjExIDE5OC41MDggNDAuNzA5MSAxOTQuNDc1QzQxLjQyODMgMTkyLjY2IDQxLjk0MTggMTkyLjY2OCA0My42NDU1IDE5MS44ODRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOTYwLjcwOCAxODQuMjQzQzk2Mi4xMjEgMTg0LjIwMyA5NjMuNTM0IDE4NC4xOTIgOTY0Ljk0NyAxODQuMjA5Qzk5MC44NzUgMTg0LjUxMyAxMDIwLjkyIDE5OS4wMzQgMTAzOC45NSAyMTcuNDY0QzEwNTUuNjIgMjM0LjE4MiAxMDY0LjkzIDI1Ni44NzEgMTA2NC43OSAyODAuNDg0QzEwNjQuNCAzMDguMDYgMTA1Mi4yMyAzMjguMTk3IDEwMzMuMDMgMzQ2Ljg3M0MxMDExLjE1IDM2NS4zNjQgOTg4LjgwOCAzNzUuNDg1IDk1OS42ODUgMzc1LjQ3MkM5NTguNDEgMzUyLjQzNiA5NTguOTk2IDMxNi4wNzYgOTU5LjAxOSAyOTMuMzU3Qzk1OS4wMyAyNzkuODUyIDk1Ny45MjggMTg4LjcyMyA5NjAuNzA4IDE4NC4yNDNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzczLjA2NiAyOS44NzNDMzc2LjM4OCAyOS45MjAxIDM3OS43MDUgMzAuMDc1MiAzODMuMDE2IDMwLjMzOTNDMzk3LjA4OSAzMS41ODg4IDQwOS43NDggMzUuNDMyNyA0MjEuOTM3IDQyLjU0NzJDNDYzLjM0NSA2Ni43MTczIDQ2OC40MzcgMTEwLjkyIDQ2NC40MzUgMTU0LjIzNkM0NjAuNTQ4IDE1NC42NTMgNDU1LjI5MSAxNTQuNjM4IDQ1MS4yOSAxNTQuNzQ0QzM3Ny44MDQgMTU0Ljg4MiAzNTEuODQxIDk1Ljg0NCAzNjAuNDggMzAuNjIxOEwzNzMuMDY2IDI5Ljg3M1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMTIwLjMyIDExOC4wMzJDMTEyNS45NCAxMTcuMTggMTE1MC42MiAxMTcuMzE2IDExNTUuMSAxMTkuODAxQzExNTUuNjkgMTIwLjg0NyAxMTU2LjEgMTIxLjk0NCAxMTU2LjIxIDEyMy4xNDZDMTE1OC44MSAxNTIuNzExIDExNDIuMzYgMTgxLjE2NyAxMTE0Ljc2IDE5Mi41NzJDMTEwNi43OSAxOTUuODY2IDExMDAuNTEgMTk3LjIwNiAxMDkxLjg1IDE5OC4xMjRDMTA4NS43NCAxOTguNjYzIDEwNjQgMTk5LjYxNiAxMDU4LjIxIDE5Ni41NzFDMTA1Ny4wMiAxOTUuODY4IDEwNTYuMzcgMTkzLjEyNiAxMDU2LjMyIDE5MS44MzJDMTA1NS4wOSAxNTIuNzM5IDEwODEuNjQgMTIxLjc5NiAxMTIwLjMyIDExOC4wMzJaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzEyNzBfMTMzIj4KPHJlY3Qgd2lkdGg9IjEyMDIiIGhlaWdodD0iNjA2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Zing" class="nav-logo"/>
+  </a>
+  <div class="nav-actions">
+    <a href="https://app.justzingit.com" class="nav-login-mobile">Login</a>
+    <div class="nav-links">
+      <a href="index.html">For Residents</a>
+      <a href="properties.html">For Properties</a>
+      <a href="https://app.justzingit.com">Login</a>
+    </div>
+    <a href="https://app.justzingit.com/signup" class="nav-btn">
+      Get Started
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+</nav>
+
+<main class="legal-wrap">
+
+  <div class="legal-hero">
+    <h1>Privacy &amp; <em>Terms</em></h1>
+    <p>Everything you need to know about how Zing handles your data and the terms that govern our services.</p>
+  </div>
+
+  <div class="legal-nav">
+    <a href="#terms" class="active">Terms of Service</a>
+    <a href="#privacy">Privacy Policy</a>
+  </div>
+
+  <!-- TERMS OF SERVICE -->
+  <section class="legal-section" id="terms">
+    <h2>Terms of <em>Service</em></h2>
+    <span class="effective">Effective Date: January 20, 2026</span>
+
+    <h3>1. Introduction</h3>
+    <p>Welcome to Zing ("we", "us", "our"). These Terms of Service ("Terms") govern your use of our services, including the Zing app and website at justzingit.com ("Site"), and any orders you place for apartment cleaning services ("Services"). By accessing or using the Site or placing an order, you agree to these Terms.</p>
+
+    <h3>2. Services</h3>
+    <p>Zing provides on-demand, à la carte apartment cleaning services. You can schedule single tasks or full apartment cleans, set recurring services, and customize tasks through our booking system.</p>
+
+    <h3>3. Using Our Services</h3>
+    <ul>
+      <li>You must be at least 18 years old to use our Services.</li>
+      <li>You agree to provide accurate account information and to keep it updated.</li>
+      <li>You authorize Zing and its representatives to contact you regarding your orders — including order confirmations and notifications when your cleaner is on the way — via email, text, or app notifications.</li>
+    </ul>
+
+    <h3>4. Booking and Payment</h3>
+    <ul>
+      <li>Orders are confirmed once payment details are provided and the service is scheduled.</li>
+      <li>Payment must be made in full at the time of booking unless otherwise agreed.</li>
+      <li>Pricing may change and will be communicated before you complete your order.</li>
+    </ul>
+
+    <h3>5. Cancellations and Refunds</h3>
+    <ul>
+      <li>You may cancel or reschedule a booking according to the cancellation policy displayed at booking.</li>
+      <li>Refund eligibility is based on the terms presented during booking and applicable law.</li>
+    </ul>
+
+    <h3>6. User Responsibilities</h3>
+    <p>You agree to:</p>
+    <ul>
+      <li>Provide safe and reasonable access to the residence.</li>
+      <li>Inform cleaners of any hazards before service begins.</li>
+      <li>Respect our staff; abusive behavior is prohibited and may result in termination of services without refund.</li>
+    </ul>
+
+    <h3>7. Intellectual Property</h3>
+    <p>All content on the Site (texts, images, logos) is owned by Zing or its licensors and protected by intellectual property laws.</p>
+
+    <h3>8. Disclaimer of Warranties</h3>
+    <p>Your use of the Site and Services is at your own risk. Services are provided "as is" and "as available," except where prohibited by law.</p>
+
+    <h3>9. Limitation of Liability</h3>
+    <p>Except where prohibited by law, Zing is not liable for indirect, incidental, or consequential damages arising from your use of the Site or Services.</p>
+
+    <h3>10. Governing Law</h3>
+    <p>These Terms are governed by the laws of the State of Florida, United States.</p>
+
+    <h3>11. SMS Messaging Terms — JustZingIt</h3>
+    <p>By providing your mobile phone number and opting in, you consent to receive SMS messages from JustZingIt related to apartment cleaning services.</p>
+    <p><strong>a. Message types may include:</strong></p>
+    <ul>
+      <li>Account verification and one-time passcodes (OTP)</li>
+      <li>Booking confirmations and reminders</li>
+      <li>Cleaner arrival and service status notifications</li>
+      <li>Receipts and service follow-ups</li>
+    </ul>
+    <p>Message frequency varies based on user activity. Message and data rates may apply.</p>
+    <p>You can opt out at any time by replying <strong>STOP</strong> to any message. For help, reply <strong>HELP</strong> or contact support at <a href="mailto:support@justzingit.com">support@justzingit.com</a>.</p>
+    <p>Consent to receive SMS messages is not a condition of purchase.</p>
+
+    <h3>12. Contact Us</h3>
+    <p>If you have questions about these Terms, you can contact us at:</p>
+    <div class="legal-contact">
+      <strong>📍 Address:</strong> 2222 Ponce de Leon, Miami, FL 33134<br/>
+      <strong>📧 Email:</strong> <a href="mailto:alvaro@justzingit.com">alvaro@justzingit.com</a>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section class="legal-section" id="privacy">
+    <h2>Privacy <em>Policy</em></h2>
+    <span class="effective">Effective Date: January 20, 2026</span>
+
+    <p>This Privacy Policy explains how Zing ("we", "us", "our") collects, uses, and protects your personal information when you use our website justzingit.com and our Services.</p>
+
+    <h3>1. Information We Collect</h3>
+
+    <p><strong>a. Information You Provide</strong></p>
+    <ul>
+      <li>Account info: name, email, phone number</li>
+      <li>Order details: tasks requested, scheduling preferences</li>
+      <li>Payment details (handled securely via third-party processors)</li>
+    </ul>
+
+    <p><strong>b. Automatically Collected Information</strong></p>
+    <ul>
+      <li>Device and browser information (e.g., IP address, browser type)</li>
+      <li>Usage data, such as pages visited and time stamps</li>
+    </ul>
+
+    <p><strong>c. Communications</strong></p>
+    <p>We collect information when you contact us or receive communications from us — for example, messages about your cleaning order or notifications when your cleaner is on the way.</p>
+
+    <h3>2. How We Use Your Information</h3>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Provide, maintain, and improve our Services</li>
+      <li>Process and confirm your booking</li>
+      <li>Send you order notifications and service updates</li>
+      <li>Respond to your inquiries</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+
+    <h3>3. Sharing Your Information</h3>
+    <p>We may share your information with:</p>
+    <ul>
+      <li>Service providers who assist with operations (e.g., payment processors)</li>
+      <li>Cleaning professionals assigned to deliver your Services</li>
+      <li>When required by law or to protect our rights</li>
+    </ul>
+    <p><strong>We do not sell your personal information.</strong></p>
+
+    <h3>4. Cookies and Tracking</h3>
+    <p>Our Site may use cookies and similar technologies to improve your browsing experience and analyze usage.</p>
+
+    <h3>5. Data Security</h3>
+    <p>We implement reasonable security measures to protect your data. However, no system is completely secure, and we cannot guarantee absolute protection.</p>
+
+    <h3>6. Your Rights</h3>
+    <p>Depending on your jurisdiction, you may have rights to:</p>
+    <ul>
+      <li>Access your personal data</li>
+      <li>Request corrections or deletion</li>
+      <li>Opt out of marketing communications</li>
+    </ul>
+    <p>To exercise your rights, email <a href="mailto:alvaro@justzingit.com">alvaro@justzingit.com</a>.</p>
+
+    <h3>7. Children's Privacy</h3>
+    <p>Our Services are not intended for children under 13. We do not knowingly collect personal data from children under this age.</p>
+
+    <h3>8. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy. We will notify you of material changes by posting a notice on our Site.</p>
+
+    <h3>9. Contact Information</h3>
+    <div class="legal-contact">
+      <strong>📍 Address:</strong> 2222 Ponce de Leon, Miami, FL 33134<br/>
+      <strong>📧 Email:</strong> <a href="mailto:alvaro@justzingit.com">alvaro@justzingit.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="ft-top">
+    <div>
+      <a href="index.html">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMiIgaGVpZ2h0PSI2MDYiIHZpZXdCb3g9IjAgMCAxMjAyIDYwNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzEyNzBfMTMzKSI+CjxwYXRoIGQ9Ik05MTYuMjc1IDE4NS4wMjJDOTIyLjU5OCAxODQuNTc5IDkyNS44NDYgMTg0LjU4NCA5MzIuMTc4IDE4NC45NzZDOTMzLjQxNiAxOTIuODUgOTMzLjAwMiAyMDcuNjE5IDkzMi45ODQgMjE1LjkwN0w5MzIuODgxIDI2Ny4xNTNMOTMyLjk1MSAzMzMuOTExQzkzMi45NjEgMzQ1LjAwNSA5MzMuNDQzIDM2NC42NSA5MzEuODUzIDM3NS4yMzdDOTA2LjE3OCAzNzQuODg5IDg5MS4xNzYgMzY4LjIxMiA4NjkuNDQ1IDM1NS44Qzg2NS4wODYgMzYwLjIwNSA4NjIuMzU2IDM2NS4zNjggODYwLjg1OSAzNzEuMzgzQzg1OC41MTkgMzgwLjQ3OCA4NTkuOTIyIDM5MC4xMzEgODY0Ljc1NyAzOTguMTgzQzg2OS4yMjggNDA1LjYxNSA4NzYuMzIyIDQxMS4xMDEgODg0LjYzOSA0MTMuNTYxQzg5My42OTYgNDE2LjIgOTA2LjUwNCA0MTUuMDAzIDkxNi4wMjQgNDE1LjE2Qzk0NC4zODMgNDE1LjczMyA5NzIuMDY5IDQxMi4yMjMgOTk5Ljg5MyA0MTkuMzU4QzEwNzIuMzcgNDM3Ljk0OCAxMTE0LjUyIDUwMi44NjMgMTA5NS45NiA1NzYuMTg1QzEwOTQuMjggNTcwLjc0MiAxMDkzLjYgNTY4Ljc3NiAxMDkwLjk2IDU2My42MjhDMTA3Mi43NyA1MzUuNjg1IDEwNDYuOTYgNTM5LjMxNiAxMDE4LjY2IDUzOC41MThDOTkxLjUzIDUzNy43NTIgOTU4LjY1MSA1NDEuMjUgOTMyLjI5OSA1MzcuMjUxQzkxMS43MTEgNTM0LjIzIDg5Mi4xNjQgNTI2LjI2NCA4NzUuMzI3IDUxNC4wMzlDODQ3LjE5MiA0OTMuNjY5IDgyOC4yNzMgNDYyLjk4NCA4MjIuNzA5IDQyOC42OTlDODE3LjQwNyAzOTQuNzA2IDgyOC4xMTggMzYzLjk2MiA4NDcuOTY4IDMzNi42OTNDODM4LjM1OSAzMjQuMjY0IDgzMS40MzIgMzExLjYxNSA4MjguNDA3IDI5Ni4wMkM4MjMuOTY5IDI3My4zMjkgODI4Ljg0IDI0OS44MDYgODQxLjkyNSAyMzAuNzQzQzg1OC44NSAyMDUuOTA3IDg4Ny4xOTQgMTkwLjU5MiA5MTYuMjc1IDE4NS4wMjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzQzLjM5NiAxOTEuODMyQzM3OC43OTQgMTg5Ljk3MSA0MTYuNzUxIDE5Mi40OTMgNDUyLjM2NyAxOTEuNjNDNDU1LjIyNSAxOTEuNTYxIDQ1OS43MzUgMTkyLjM5NSA0NjIuMzgzIDE5My40NzVDNDY1Ljk2NyAxOTguNzU3IDQ2NS4wMzIgMjIwLjMyNSA0NjUuMDE2IDIyNy42Nkw0NjQuOTQ5IDI3NS4xNDdMNDY0LjgwNCAzODcuNjkzQzQ2NC43NTIgMzk3LjYxNCA0NjYuMzcyIDQyMC45MDggNDYzLjIwOCA0MzEuMjNDNDYyLjk1MiA0MzIuMDY1IDQ2MC43MTMgNDMyLjEwMyA0NTkuNjQ1IDQzMi4yNjNDNDQ1LjgxMyA0MzIuMjcgNDMwLjE1IDQyOC40NDEgNDE3LjM3MSA0MjMuMzQ2QzM4NS45ODggNDEwLjk5OSAzNjAuODA4IDM4Ni42NzQgMzQ3LjM4NCAzNTUuNzM5QzM0Mi41OCAzNDQuNDYyIDMzOS40MDIgMzMyLjU2MiAzMzcuOTQgMzIwLjM5M0MzMzYuMzQ4IDMwNy4wNDcgMzM1LjQ0OSAyMDEuMzkgMzM4LjI3IDE5NS4yMThDMzM5LjI4OCAxOTIuOTkyIDM0MS4yNTggMTkyLjUxNyAzNDMuMzk2IDE5MS44MzJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjU4LjQwNyAxOTEuNjM4QzY2OC4xNDcgMTkwLjg0OCA2NzguMzc3IDE5Mi4zNjEgNjg3Ljc4IDE5NC44NDFDNzIwLjk2OSAyMDMuNDI5IDc0OS4zNjUgMjI0Ljg5NCA3NjYuNjggMjU0LjQ4Qzc3My45ODMgMjY3LjE0IDc3OC45ODkgMjgwLjk5MyA3ODEuNDY3IDI5NS4zOThDNzg1LjA2NiAzMTYuMjkgNzgyLjcyNiAzNTAuNTk2IDc4My4zIDM3Mi43MDhDNzgzLjU1MiAzODIuNDA2IDc4NC4wOTIgNDI0LjgxOSA3ODIuMDY2IDQzMi40NDNDNzYyLjk0OCA0MzMuODc5IDczNC4wOTQgNDMyLjI3NCA3MTQuMzA0IDQzMi44NTZDNzAzLjgwMSA0MzMuMTY0IDY2Ny4zODIgNDMzLjM2NSA2NTguMzQxIDQzMS45NEM2NTYuMzA3IDQyMi4yNzYgNjU3LjAxNSAzOTguNjE0IDY1Ny4wMzcgMzg3LjYzNkw2NTcuMDggMzE3LjQyMUw2NTcuMDI1IDIzOC41OTJDNjU3LjAxNiAyMjYuODI0IDY1Ni4yOTIgMjAyLjA1MSA2NTguNDA3IDE5MS42MzhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjE1LjUwOSAxOTEuODc0QzYxOS41MDIgMTkxLjUzOCA2MjQuOTAyIDE5MC42MTggNjI4LjE2NCAxOTIuOTQ1QzYzMS4xMDcgMTk4LjYyNiA2MzAuMTI4IDI0NS4zNzcgNjMwLjExOCAyNTUuODFMNjMwLjEyNCAzNDEuNTg2TDYzMC4xMjEgMzk0LjMzOUM2MzAuMTE4IDQwNi41MzUgNjMwLjUxNCA0MjAuNDA5IDYyOS4wMTIgNDMyLjM5NUM2MTguMDI1IDQzMy4zMjMgNjAwLjMyNiA0MzIuODQ3IDU4OS4wNCA0MzIuODUxTDUxOS4yMzIgNDMyLjgzOUM1MTUuMTA5IDQzMi44OTYgNTEwLjIzOCA0MzMuMjMxIDUwNi42MDcgNDMxLjM0M0M1MDEuNzA3IDQyMy42MjkgNTA1LjA5MyAzNDkuMjggNTA0LjA0NSAzMzQuODVDNTAxLjY4NyAzMDIuMzQxIDUwOS4wNzIgMjY2Ljc3OCA1MjkuNzM2IDI0MC42MjdDNTUxLjQzOCAyMTMuMTY0IDU4MC40NjIgMTk2LjUzOSA2MTUuNTA5IDE5MS44NzRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTY5LjY5MyAzMjcuNjYxQzE5OC42NTggMzI2Ljk1MiAyMjguMDE2IDMyNy45NjYgMjU3LjAyNiAzMjcuNDQ4QzI2Ni45NDIgMzI3LjI3IDI3Ny40MDggMzI3LjIzNiAyODcuMzExIDMyNy42NUMyODcuNyAzMzAuNjMyIDI4Ny42OTggMzM0LjIxMiAyODcuNjg4IDMzNy4yMzdDMjg3LjU5MiAzNjUuNDIxIDI4Ny44MzkgMzkzLjY1MSAyODcuMTE1IDQyMS44MjFDMjg3LjAzNiA0MjQuOTA1IDI4Ni40NDYgNDI4Ljc0NyAyODUuMjggNDMxLjU3NkMyODEuMTY2IDQzMy42NzggMTYyLjY0NCA0MzIuODQgMTQ3Ljk3NCA0MzIuODM3TDI4LjQyMTkgNDMyLjc3MkMzNi42NDg1IDQyMS41NTkgNDYuNDY3NCA0MTAuNzEyIDU0LjU1NzMgMzk5LjY0MUM4NS4zMDA2IDM1Ny41NjkgMTE0LjI4MiAzMzAuNDIzIDE2OS42OTMgMzI3LjY2MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00My42NDU1IDE5MS44ODRDNjguNzIyOCAxOTAuNDkyIDEwNC45OTYgMTkxLjU2OCAxMzAuNjcgMTkxLjU3NUwyOTUuNDA1IDE5MS41MTlMMjQ2LjczNyAyNTEuMjg5QzIzOS4wMjEgMjYxLjI5IDIyNS44MDMgMjcxLjYxNyAyMTQuOTQ5IDI3Ny45QzIwMS40NzQgMjg1LjU5NSAxODYuNzI5IDI5MC44MTMgMTcxLjQxMiAyOTMuMzA3QzE2Ni4xOTUgMjk0LjE3NyAxNjAuOTI0IDI5NC42OTQgMTU1LjYzOCAyOTQuODU2QzE0MS41NiAyOTUuMzI0IDUyLjIxNTYgMjk2LjA1NiA0NS40NzIxIDI5NC4wNjFDNDMuNTU4MSAyOTMuNDk1IDQyLjI5MzMgMjkyLjg1NyA0MS40NzY1IDI5MC45NjlDNDAuMzUxOCAyODguMzY5IDQwLjE2NDYgMjg0LjkwMSA0MC4wMzQ3IDI4Mi4xMTFDMzkuNjM5NiAyNzMuNjA3IDM5LjExIDE5OC41MDggNDAuNzA5MSAxOTQuNDc1QzQxLjQyODMgMTkyLjY2IDQxLjk0MTggMTkyLjY2OCA0My42NDU1IDE5MS44ODRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOTYwLjcwOCAxODQuMjQzQzk2Mi4xMjEgMTg0LjIwMyA5NjMuNTM0IDE4NC4xOTIgOTY0Ljk0NyAxODQuMjA5Qzk5MC44NzUgMTg0LjUxMyAxMDIwLjkyIDE5OS4wMzQgMTAzOC45NSAyMTcuNDY0QzEwNTUuNjIgMjM0LjE4MiAxMDY0LjkzIDI1Ni44NzEgMTA2NC43OSAyODAuNDg0QzEwNjQuNCAzMDguMDYgMTA1Mi4yMyAzMjguMTk3IDEwMzMuMDMgMzQ2Ljg3M0MxMDExLjE1IDM2NS4zNjQgOTg4LjgwOCAzNzUuNDg1IDk1OS42ODUgMzc1LjQ3MkM5NTguNDEgMzUyLjQzNiA5NTguOTk2IDMxNi4wNzYgOTU5LjAxOSAyOTMuMzU3Qzk1OS4wMyAyNzkuODUyIDk1Ny45MjggMTg4LjcyMyA5NjAuNzA4IDE4NC4yNDNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzczLjA2NiAyOS44NzNDMzc2LjM4OCAyOS45MjAxIDM3OS43MDUgMzAuMDc1MiAzODMuMDE2IDMwLjMzOTNDMzk3LjA4OSAzMS41ODg4IDQwOS43NDggMzUuNDMyNyA0MjEuOTM3IDQyLjU0NzJDNDYzLjM0NSA2Ni43MTczIDQ2OC40MzcgMTEwLjkyIDQ2NC40MzUgMTU0LjIzNkM0NjAuNTQ4IDE1NC42NTMgNDU1LjI5MSAxNTQuNjM4IDQ1MS4yOSAxNTQuNzQ0QzM3Ny44MDQgMTU0Ljg4MiAzNTEuODQxIDk1Ljg0NCAzNjAuNDggMzAuNjIxOEwzNzMuMDY2IDI5Ljg3M1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMTIwLjMyIDExOC4wMzJDMTEyNS45NCAxMTcuMTggMTE1MC42MiAxMTcuMzE2IDExNTUuMSAxMTkuODAxQzExNTUuNjkgMTIwLjg0NyAxMTU2LjEgMTIxLjk0NCAxMTU2LjIxIDEyMy4xNDZDMTE1OC44MSAxNTIuNzExIDExNDIuMzYgMTgxLjE2NyAxMTE0Ljc2IDE5Mi41NzJDMTEwNi43OSAxOTUuODY2IDExMDAuNTEgMTk3LjIwNiAxMDkxLjg1IDE5OC4xMjRDMTA4NS43NCAxOTguNjYzIDEwNjQgMTk5LjYxNiAxMDU4LjIxIDE5Ni41NzFDMTA1Ny4wMiAxOTUuODY4IDEwNTYuMzcgMTkzLjEyNiAxMDU2LjMyIDE5MS44MzJDMTA1NS4wOSAxNTIuNzM5IDEwODEuNjQgMTIxLjc5NiAxMTIwLjMyIDExOC4wMzJaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzEyNzBfMTMzIj4KPHJlY3Qgd2lkdGg9IjEyMDIiIGhlaWdodD0iNjA2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Zing" class="ft-logo"/>
+      </a>
+      <p class="ft-tag">Hotel-style housekeeping dedicated to your building. Your cleaner. Your building. Anytime.</p>
+    </div>
+    <div>
+      <div class="ft-hl">Miami</div>
+      <div class="ft-addr">2222 Ponce de Leon<br/>Miami, FL 33134</div>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 Zing. All Rights Reserved.</span>
+    <span>Hotel-style housekeeping in your building.</span>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll for anchor links
+document.querySelectorAll('.legal-nav a').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+      // Update active state
+      document.querySelectorAll('.legal-nav a').forEach(l=>l.classList.remove('active'));
+      this.classList.add('active');
+    }
+  });
+});
+// Highlight active section on scroll
+const sections=document.querySelectorAll('.legal-section');
+const navLinks=document.querySelectorAll('.legal-nav a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    const top=s.offsetTop-180;
+    if(scrollY>=top) current=s.getAttribute('id');
+  });
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+current) a.classList.add('active');
+  });
+},{passive:true});
+</script>
+</body>
+</html>
