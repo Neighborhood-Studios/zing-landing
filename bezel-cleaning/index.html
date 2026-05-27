@@ -79,10 +79,10 @@
   /* the lobby display canvas — vertical 1080x1920 */
   .lobby-frame {
     width: 1080px;
-    height: 1920px;
+    min-height: 1920px;
     transform-origin: top center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 28px;
     box-shadow:
       0 40px 120px -20px rgba(0,0,0,0.5),
@@ -308,12 +308,12 @@ const mondaySlots = [
 
 // Bezel logo (placeholder mark — geometric circle with diamond)
 const BezelLogo = ({ size = 56 }) => (
-  <img src="bezel-logo.jpg" alt="Bezel" style={{ height: size, width: 'auto', objectFit: 'contain' }} />
+  <img src="bezel-logo.jpg" alt="Bezel" style={{ height: size, width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }} />
 );
 
 // Zing wordmark
 const ZingLogo = ({ size = 48 }) => (
-  <img src="https://neighborhood-studios.github.io/zing-landing/forma-logo.png" alt="Zing" style={{ height: size, width: 'auto', objectFit: 'contain' }} />
+  <img src="zing-logo.svg" alt="Zing" style={{ height: size, width: 'auto', objectFit: 'contain', filter: 'brightness(0) saturate(1) invert(18%) sepia(15%) saturate(1200%) hue-rotate(130deg) brightness(95%)' }} />
 );
 
 // elegant divider with dot
