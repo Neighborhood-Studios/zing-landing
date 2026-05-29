@@ -226,6 +226,20 @@ const bookingSlots = [
   { time: '5:00pm',  status: 'available' },
 ];
 
+const weeklyStats = [
+  { label: 'residents booked', value: '12', accent: '#6B8068' },
+  { label: 'most requested', value: 'Bathroom Refresh', accent: '#C8A876' },
+  { label: 'avg clean time', value: '45 min', accent: '#A8B5A0' },
+];
+
+const activityFeed = [
+  'a resident on floor 14 just booked',
+  'kitchen deep clean completed',
+  'now servicing floor 18',
+  'bathroom refresh starting in 12 min',
+  'a resident scheduled monday at 10am',
+];
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SHARED: Brand Lockup
 // ─────────────────────────────────────────────────────────────────────────────
@@ -321,6 +335,53 @@ const BottomCTA = ({ headline, subline }) => (
 // ACTIVE SCREEN — 7am–6pm
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────────
+// LIVE ACTIVITY TICKER
+// ─────────────────────────────────────────────────────────────────────────────
+
+const LiveActivityTicker = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % activityFeed.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.8 }}
+      className="mt-3 rounded-[12px] px-4 py-2.5 flex items-center gap-3"
+      style={{
+        background: 'linear-gradient(135deg, rgba(31,58,56,0.06) 0%, rgba(168,181,160,0.12) 100%)',
+        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 0 0 1px rgba(31,58,56,0.04)'
+      }}
+    >
+      <div className="shrink-0 flex items-center gap-1.5">
+        <div className="w-1.5 h-1.5 rounded-full bg-sage-deep live-dot"></div>
+        <span className="font-sans text-[9px] font-medium text-sage-deep uppercase tracking-[0.16em]">live</span>
+      </div>
+      <div className="flex-1 overflow-hidden" style={{ height: 18 }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.4 }}
+            className="font-sans text-[12px] text-teal-2/60 lowercase tracking-tight"
+          >
+            {activityFeed[currentIndex]}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
+
 const ActiveScreen = () => (
   <div className="kiosk-frame ambient-bg grain flex flex-col">
 
@@ -366,6 +427,45 @@ const ActiveScreen = () => (
           {cleaner.role.toLowerCase()}
         </div>
       </div>
+    </motion.div>
+
+    {/* WEEKLY STATS + LIVE ACTIVITY */}
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.45 }}
+      className="relative z-10 mx-8 mb-1"
+    >
+      {/* Stats row */}
+      <div className="flex items-center gap-2.5 mb-3">
+        <div className="font-sans text-[9px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">this week</div>
+        <div className="flex-1 h-px bg-teal/10"></div>
+      </div>
+      <div className="flex gap-2.5">
+        {weeklyStats.map((stat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: 6 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
+            className="flex-1 rounded-[14px] px-3.5 py-3 bg-cream-2/80 relative overflow-hidden"
+            style={{
+              boxShadow: '0 2px 8px -4px rgba(31,58,56,0.08), 0 0 0 1px rgba(31,58,56,0.03), inset 0 1px 0 rgba(255,255,255,0.4)'
+            }}
+          >
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: stat.accent }}></div>
+              <span className="font-sans text-[9px] text-teal-2/50 uppercase tracking-[0.14em]">{stat.label}</span>
+            </div>
+            <div className="font-serif text-[18px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.02em' }}>
+              {stat.value}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Live activity ticker */}
+      <LiveActivityTicker />
     </motion.div>
 
     <div className="relative z-10 mx-10 hairline"></div>
