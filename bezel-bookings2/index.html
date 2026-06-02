@@ -221,7 +221,7 @@ function getWeekDays() {
   const monday = new Date(edtDate);
   monday.setDate(edtDate.getDate() - (day === 0 ? 6 : day - 1));
   const days = [];
-  const abbrevs = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
+  const abbrevs = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   for (let i = 0; i < 5; i++) {
     const d = new Date(monday);
     d.setDate(monday.getDate() + i);
@@ -501,7 +501,7 @@ const ActiveScreen = () => (
         {/* Header — THIS WEEK with gold dividers */}
         <div className="flex items-center gap-4 px-7 pt-5 pb-3">
           <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(200,168,118,0.5))' }}></div>
-          <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em]" style={{ color: 'rgba(45,79,76,0.45)' }}>this week</span>
+          <span className="font-sans text-[14px] font-semibold uppercase tracking-[0.3em]" style={{ color: 'rgba(45,79,76,0.5)' }}>this week</span>
           <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(200,168,118,0.5), transparent)' }}></div>
         </div>
 
@@ -523,42 +523,42 @@ const ActiveScreen = () => (
                 >
                   {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
 
-                  {/* Day abbreviation */}
-                  <div className="w-[52px] font-sans text-[12px] font-medium uppercase" style={{ letterSpacing: '0.2em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
+                  {/* Day name */}
+                  <div className="font-sans text-[15px] font-semibold" style={{ width: 110, letterSpacing: '0.04em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
                     {day.abbrev}
                   </div>
 
                   {/* Vertical divider */}
-                  <div style={{ width: 1, height: 32, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
+                  <div style={{ width: 1, height: 36, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
 
                   {/* Date number */}
-                  <div className="w-[44px] font-serif text-[32px] font-medium text-center" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+                  <div className="font-serif text-[32px] font-medium text-center" style={{ width: 44, lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
                     {day.date}
                   </div>
 
                   {/* Status circle icon */}
-                  <div className="flex-1 flex justify-center">
+                  <div className="flex justify-center" style={{ width: 48 }}>
                     {sched.icon === 'check' && (
-                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <circle cx="15" cy="15" r="13" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
-                        <path d="M10 15.5L13.5 19L20 12" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                        <circle cx="19" cy="19" r="17" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                        <path d="M12 19.5L16.5 24L26 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )}
                     {sched.icon === 'empty' && (
-                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <circle cx="15" cy="15" r="12" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="1.5"/>
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                        <circle cx="19" cy="19" r="15.5" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="2"/>
                       </svg>
                     )}
                     {sched.icon === 'half' && (
-                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <path d="M15 2 A13 13 0 0 0 15 28 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
-                        <circle cx="15" cy="15" r="12.25" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="1.5" fill="none"/>
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                        <path d="M19 2 A17 17 0 0 0 19 36 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                        <circle cx="19" cy="19" r="16" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="2" fill="none"/>
                       </svg>
                     )}
                   </div>
 
                   {/* Spots count + label */}
-                  <div className="flex flex-col items-center" style={{ minWidth: 52 }}>
+                  <div className="flex flex-col items-center" style={{ minWidth: 56 }}>
                     <div className="font-serif text-[34px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
                       {sched.spots}
                     </div>
