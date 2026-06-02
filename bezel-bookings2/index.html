@@ -235,7 +235,7 @@ function getWeekDays() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const cleaner = {
-  name: 'Liza',
+  name: 'Elizabeth',
   role: 'Your Bezel cleaner',
   status: 'Live in your building',
 };
@@ -344,20 +344,7 @@ const BottomCTA = ({ headline, subline }) => (
       {/* QR code */}
       <div className="shrink-0 bg-cream rounded-[14px] p-2.5"
            style={{ boxShadow: '0 8px 24px -6px rgba(0,0,0,0.3)' }}>
-        <div className="w-[90px] h-[90px] qr-pattern rounded-[8px] relative overflow-hidden">
-          <div className="absolute inset-0 mix-blend-multiply" style={{
-            backgroundImage: `
-              repeating-linear-gradient(0deg, transparent 0 8px, #1F3A38 8px 16px, transparent 16px 22px, #1F3A38 22px 28px, transparent 28px 38px),
-              repeating-linear-gradient(90deg, transparent 0 6px, #1F3A38 6px 12px, transparent 12px 22px, #1F3A38 22px 26px, transparent 26px 36px)
-            `,
-            opacity: 0.85
-          }}></div>
-          {[['top-0.5','left-0.5'],['top-0.5','right-0.5'],['bottom-0.5','left-0.5']].map(([v,h],i) => (
-            <div key={i} className={`absolute ${v} ${h} w-5 h-5 border-[3px] border-teal bg-cream`}>
-              <div className="w-full h-full bg-teal scale-50 origin-center"></div>
-            </div>
-          ))}
-        </div>
+        <img src="qr-code.jpg" alt="Scan to book" className="rounded-[8px]" style={{ width: 90, height: 90, objectFit: 'cover' }} />
       </div>
     </div>
   </motion.div>
@@ -438,7 +425,7 @@ const ActiveScreen = () => (
              style={{
                boxShadow: '0 16px 40px -12px rgba(31,58,56,0.28), 0 0 0 1px rgba(31,58,56,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
              }}>
-          <img src="cleaner-liza.jpg" alt="Liza" className="w-full h-full" style={{ objectFit: 'cover' }} />
+          <img src="cleaner-elizabeth.jpg" alt="Elizabeth" className="w-full h-full" style={{ objectFit: 'cover' }} />
         </div>
         {/* Live badge */}
         <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream-2/95 backdrop-blur-md"
@@ -453,10 +440,10 @@ const ActiveScreen = () => (
         <div className="font-serif text-[44px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.03em' }}>
           {cleaner.name}
         </div>
-        <div className="font-sans text-[16px] text-teal-2/65 mt-2 lowercase">
-          {cleaner.status.toLowerCase()}
+        <div className="font-serif text-[22px] font-medium mt-2" style={{ color: '#6B8068', lineHeight: 1.2 }}>
+          {cleaner.status}
         </div>
-        <div className="font-sans text-[14px] text-teal-2/45 mt-1 lowercase">
+        <div className="font-sans text-[14px] text-teal-2/45 mt-1.5 lowercase">
           {cleaner.role.toLowerCase()}
         </div>
       </div>
