@@ -324,27 +324,22 @@ const BottomCTA = ({ headline, subline }) => (
     <div className="relative flex items-center gap-6">
       {/* Text side */}
       <div className="flex-1">
-        <div className="font-serif text-[28px] font-medium text-cream tracking-tight"
-             style={{ lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+        <div className="font-serif text-[42px] font-medium text-cream tracking-tight"
+             style={{ lineHeight: 1.05, letterSpacing: '-0.025em' }}>
           {headline}
         </div>
-        {subline && (
-          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cream/10 border border-cream/15">
-            <div className="w-1.5 h-1.5 rounded-full bg-gold"></div>
-            <span className="font-sans text-[13px] text-cream/80 lowercase">{subline}</span>
-          </div>
-        )}
         <div className="mt-4 flex items-center gap-3">
           <span className="font-serif text-[18px] text-cream/90">justzingit.com</span>
-          <div className="w-1 h-1 rounded-full bg-cream/30"></div>
-          <span className="font-sans text-[11px] text-cream/50 lowercase">scan to book</span>
         </div>
       </div>
 
       {/* QR code */}
-      <div className="shrink-0 bg-cream rounded-[14px] p-2.5"
-           style={{ boxShadow: '0 8px 24px -6px rgba(0,0,0,0.3)' }}>
-        <img src="qr-code.jpg" alt="Scan to book" className="rounded-[8px]" style={{ width: 90, height: 90, objectFit: 'cover' }} />
+      <div className="shrink-0 flex flex-col items-center gap-2">
+        <div className="bg-cream rounded-[14px] p-2.5"
+             style={{ boxShadow: '0 8px 24px -6px rgba(0,0,0,0.3)' }}>
+          <img src="qr-code.jpg" alt="Scan to book" className="rounded-[8px]" style={{ width: 90, height: 90, objectFit: 'cover' }} />
+        </div>
+        <span className="font-sans text-[10px] text-cream/60 uppercase tracking-[0.2em]">scan to book</span>
       </div>
     </div>
   </motion.div>
@@ -581,7 +576,6 @@ const ActiveScreen = () => (
     <div className="relative z-10">
       <BottomCTA
         headline="Book your clean today"
-        subline="next available · 9:00am"
       />
     </div>
   </div>
