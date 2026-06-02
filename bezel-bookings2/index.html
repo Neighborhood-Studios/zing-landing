@@ -158,6 +158,13 @@
     background: linear-gradient(90deg, transparent, rgba(31,58,56,0.2), transparent);
   }
 
+  .week-row-high {
+    background: linear-gradient(135deg, rgba(168,181,160,0.15) 0%, rgba(200,168,118,0.08) 100%);
+  }
+  .week-row-low {
+    background: linear-gradient(135deg, rgba(216,223,208,0.22) 0%, rgba(196,206,188,0.10) 100%);
+  }
+
   /* QR placeholder pattern */
   .qr-pattern {
     background-image:
@@ -206,6 +213,23 @@ function getMode() {
   return 'recharging';                          // 7:00 PM – 6:59 AM
 }
 
+function getWeekDays() {
+  const now = new Date();
+  const edtStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+  const edtDate = new Date(edtStr);
+  const day = edtDate.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+  const monday = new Date(edtDate);
+  monday.setDate(edtDate.getDate() - (day === 0 ? 6 : day - 1));
+  const days = [];
+  const abbrevs = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
+  for (let i = 0; i < 5; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    days.push({ abbrev: abbrevs[i], date: d.getDate() });
+  }
+  return days;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // CONFIG
 // ─────────────────────────────────────────────────────────────────────────────
@@ -230,6 +254,14 @@ const weeklyStats = [
   { label: 'residents booked', value: '12', accent: '#6B8068' },
   { label: 'most requested', value: 'Bathroom Refresh', accent: '#C8A876' },
   { label: 'avg clean time', value: '45 min', accent: '#A8B5A0' },
+];
+
+const weeklySchedule = [
+  { spots: 6, icon: 'check' },   // Monday — high availability
+  { spots: 2, icon: 'empty' },   // Tuesday — low
+  { spots: 4, icon: 'check' },   // Wednesday — medium
+  { spots: 2, icon: 'half' },    // Thursday — low
+  { spots: 3, icon: 'empty' },   // Friday — medium
 ];
 
 const activityFeed = [
@@ -354,25 +386,26 @@ const LiveActivityTicker = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.8 }}
-      className="mt-3 rounded-[12px] px-4 py-2.5 flex items-center gap-3"
+      className="mt-4 rounded-[16px] px-6 py-5 flex items-center gap-4"
       style={{
-        background: 'linear-gradient(135deg, rgba(31,58,56,0.06) 0%, rgba(168,181,160,0.12) 100%)',
-        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 0 0 1px rgba(31,58,56,0.04)'
+        background: 'linear-gradient(135deg, rgba(31,58,56,0.08) 0%, rgba(168,181,160,0.16) 100%)',
+        boxShadow: '0 4px 16px -6px rgba(31,58,56,0.10), inset 0 1px 0 rgba(255,255,255,0.35), 0 0 0 1px rgba(31,58,56,0.06)'
       }}
     >
-      <div className="shrink-0 flex items-center gap-1.5">
-        <div className="w-1.5 h-1.5 rounded-full bg-sage-deep live-dot"></div>
-        <span className="font-sans text-[9px] font-medium text-sage-deep uppercase tracking-[0.16em]">live</span>
+      <div className="shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ background: 'rgba(107,128,104,0.12)', border: '1px solid rgba(107,128,104,0.15)' }}>
+        <div className="w-2.5 h-2.5 rounded-full bg-sage-deep live-dot"></div>
+        <span className="font-sans text-[11px] font-semibold text-sage-deep uppercase tracking-[0.16em]">live</span>
       </div>
-      <div className="flex-1 overflow-hidden" style={{ height: 18 }}>
+      <div className="flex-1 overflow-hidden" style={{ height: 28 }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.4 }}
-            className="font-sans text-[12px] text-teal-2/60 lowercase tracking-tight"
+            className="font-sans text-[19px] font-medium lowercase tracking-tight"
+            style={{ color: 'rgba(45,79,76,0.72)' }}
           >
             {activityFeed[currentIndex]}
           </motion.div>
@@ -470,71 +503,91 @@ const ActiveScreen = () => (
 
     <div className="relative z-10 mx-10 hairline"></div>
 
-    {/* NEXT AVAILABLE BOOKINGS */}
-    <div className="relative z-10 flex-1 flex flex-col px-8 pt-6 pb-4">
+    {/* THIS WEEK — WEEKLY CALENDAR CARD */}
+    <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="mb-5"
+        className="rounded-[20px] overflow-hidden flex-1 flex flex-col"
+        style={{
+          background: 'rgba(250,246,238,0.92)',
+          boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)'
+        }}
       >
-        <div className="font-sans text-[10px] text-teal-2/50 uppercase tracking-[0.28em] mb-1.5">book a clean</div>
-        <div className="font-serif text-[34px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.025em' }}>
-          next available
+        {/* Header — THIS WEEK with gold dividers */}
+        <div className="flex items-center gap-4 px-7 pt-5 pb-3">
+          <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(200,168,118,0.5))' }}></div>
+          <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em]" style={{ color: 'rgba(45,79,76,0.45)' }}>this week</span>
+          <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(200,168,118,0.5), transparent)' }}></div>
+        </div>
+
+        {/* Day rows */}
+        <div className="flex-1 flex flex-col justify-center px-4 pb-4">
+          {getWeekDays().map((day, i) => {
+            const sched = weeklySchedule[i];
+            const isHigh = sched.spots >= 5;
+            const isLow = sched.spots <= 2;
+            const isLast = i === 4;
+
+            return (
+              <React.Fragment key={i}>
+                <motion.div
+                  initial={{ opacity: 0, x: 8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + i * 0.07 }}
+                  className={`flex items-center gap-4 py-4 px-4 rounded-[14px] relative overflow-hidden ${isHigh ? 'week-row-high' : ''} ${isLow ? 'week-row-low' : ''}`}
+                >
+                  {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
+
+                  {/* Day abbreviation */}
+                  <div className="w-[52px] font-sans text-[12px] font-medium uppercase" style={{ letterSpacing: '0.2em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
+                    {day.abbrev}
+                  </div>
+
+                  {/* Vertical divider */}
+                  <div style={{ width: 1, height: 32, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
+
+                  {/* Date number */}
+                  <div className="w-[44px] font-serif text-[32px] font-medium text-center" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+                    {day.date}
+                  </div>
+
+                  {/* Status circle icon */}
+                  <div className="flex-1 flex justify-center">
+                    {sched.icon === 'check' && (
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <circle cx="15" cy="15" r="13" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                        <path d="M10 15.5L13.5 19L20 12" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                    {sched.icon === 'empty' && (
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <circle cx="15" cy="15" r="12" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="1.5"/>
+                      </svg>
+                    )}
+                    {sched.icon === 'half' && (
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M15 2 A13 13 0 0 0 15 28 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                        <circle cx="15" cy="15" r="12.25" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="1.5" fill="none"/>
+                      </svg>
+                    )}
+                  </div>
+
+                  {/* Spots count + label */}
+                  <div className="flex flex-col items-center" style={{ minWidth: 52 }}>
+                    <div className="font-serif text-[34px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+                      {sched.spots}
+                    </div>
+                    <span className="font-sans text-[8px] uppercase mt-1" style={{ letterSpacing: '0.18em', color: isLow ? 'rgba(45,79,76,0.18)' : 'rgba(45,79,76,0.42)' }}>spots left</span>
+                  </div>
+                </motion.div>
+                {!isLast && <div className="mx-3" style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(31,58,56,0.07), transparent)' }}></div>}
+              </React.Fragment>
+            );
+          })}
         </div>
       </motion.div>
-
-      {/* Slots grid — 2 columns */}
-      <div className="grid grid-cols-2 gap-3 flex-1 content-start">
-        {bookingSlots.map((slot, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 + i * 0.06 }}
-            className={`rounded-[18px] px-5 py-4 relative overflow-hidden min-h-[68px] flex items-center ${
-              slot.status === 'available'
-                ? 'bg-cream-2/85'
-                : 'bg-gradient-to-br from-sage-3/50 to-sage-2/25'
-            }`}
-            style={{
-              boxShadow: '0 4px 14px -8px rgba(31,58,56,0.1), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.35)'
-            }}
-          >
-            {slot.status === 'available' && (
-              <div className="absolute inset-0 shimmer-overlay pointer-events-none opacity-25"></div>
-            )}
-            <div className="relative flex items-center justify-between w-full">
-              <div>
-                <div className="font-serif text-[26px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.02em' }}>
-                  {slot.time.replace(/(am|pm)/, '')}
-                  <span className="text-[12px] text-teal-2/50 ml-0.5">{slot.time.match(/(am|pm)/)?.[0]}</span>
-                </div>
-                <div className="mt-2 flex items-center gap-1.5">
-                  <div className={`w-1.5 h-1.5 rounded-full ${slot.status === 'available' ? 'bg-sage-deep' : 'bg-gold'}`}></div>
-                  <span className="font-sans text-[11px] text-teal-2/60 lowercase tracking-tight">
-                    {slot.status === 'available' ? 'available' : 'almost full'}
-                  </span>
-                </div>
-              </div>
-              {slot.status === 'available' ? (
-                <div className="w-9 h-9 rounded-full border border-sage/40 flex items-center justify-center">
-                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="7" stroke="#6B8068" strokeWidth="1.4" opacity="0.6"/>
-                    <path d="M10 6 L10 10 L13 12" stroke="#6B8068" strokeWidth="1.4" strokeLinecap="round" opacity="0.7"/>
-                  </svg>
-                </div>
-              ) : (
-                <div className="w-9 h-9 rounded-full bg-gold/20 flex items-center justify-center">
-                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 4 V16 M4 10 H16" stroke="#C8A876" strokeWidth="1.4" strokeLinecap="round" opacity="0.7"/>
-                  </svg>
-                </div>
-              )}
-            </div>
-          </motion.div>
-        ))}
-      </div>
     </div>
 
     {/* BOTTOM CTA */}
