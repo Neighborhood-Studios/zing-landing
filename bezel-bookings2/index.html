@@ -221,7 +221,7 @@ function getWeekDays() {
   const monday = new Date(edtDate);
   monday.setDate(edtDate.getDate() - (day === 0 ? 6 : day - 1));
   const days = [];
-  const abbrevs = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const abbrevs = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   for (let i = 0; i < 5; i++) {
     const d = new Date(monday);
     d.setDate(monday.getDate() + i);
@@ -368,18 +368,18 @@ const LiveActivityTicker = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.8 }}
-      className="mt-4 rounded-[16px] px-6 py-5 flex items-center gap-4 relative overflow-hidden"
+      className="mt-5 rounded-[20px] px-8 py-7 flex items-center gap-5 relative overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #D8DFD0 0%, rgba(196,206,188,0.8) 50%, rgba(168,181,160,0.4) 100%)',
-        boxShadow: '0 12px 40px -12px rgba(107,128,104,0.4), 0 0 0 1px rgba(107,128,104,0.15), inset 0 1px 0 rgba(255,255,255,0.5)'
+        background: 'linear-gradient(135deg, #D8DFD0 0%, rgba(196,206,188,0.85) 50%, rgba(168,181,160,0.45) 100%)',
+        boxShadow: '0 16px 48px -12px rgba(107,128,104,0.45), 0 0 0 1.5px rgba(107,128,104,0.22), inset 0 1px 0 rgba(255,255,255,0.55)'
       }}
     >
       <div className="absolute inset-0 shimmer-overlay pointer-events-none"></div>
-      <div className="relative shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ background: 'rgba(107,128,104,0.18)', border: '1px solid rgba(107,128,104,0.2)' }}>
-        <div className="w-2.5 h-2.5 rounded-full bg-sage-deep live-dot"></div>
-        <span className="font-sans text-[11px] font-semibold text-sage-deep uppercase tracking-[0.16em]">live</span>
+      <div className="relative shrink-0 flex items-center gap-2.5 px-4 py-2 rounded-full" style={{ background: 'rgba(107,128,104,0.18)', border: '1px solid rgba(107,128,104,0.2)' }}>
+        <div className="w-3 h-3 rounded-full bg-sage-deep live-dot"></div>
+        <span className="font-sans text-[12px] font-semibold text-sage-deep uppercase tracking-[0.16em]">live</span>
       </div>
-      <div className="relative flex-1 overflow-hidden" style={{ height: 28 }}>
+      <div className="relative flex-1 overflow-hidden" style={{ height: 36 }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -387,8 +387,8 @@ const LiveActivityTicker = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.4 }}
-            className="font-sans text-[19px] font-medium lowercase tracking-tight"
-            style={{ color: 'rgba(45,79,76,0.72)' }}
+            className="font-sans text-[24px] font-semibold lowercase tracking-tight"
+            style={{ color: 'rgba(45,79,76,0.82)', lineHeight: '36px' }}
           >
             {activityFeed[currentIndex]}
           </motion.div>
@@ -609,7 +609,7 @@ const WeeklyCalendarCard = () => (
               className={`flex items-center gap-4 py-4 px-4 rounded-[14px] relative overflow-hidden ${isHigh ? 'week-row-high' : ''} ${isLow ? 'week-row-low' : ''}`}
             >
               {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
-              <div className="font-sans text-[15px] font-semibold" style={{ width: 110, letterSpacing: '0.04em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
+              <div className="font-sans text-[15px] font-semibold uppercase" style={{ width: 72, letterSpacing: '0.14em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
                 {day.abbrev}
               </div>
               <div style={{ width: 1, height: 36, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
