@@ -488,89 +488,7 @@ const ActiveScreen = () => (
 
     {/* THIS WEEK — WEEKLY CALENDAR CARD */}
     <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="rounded-[20px] overflow-hidden flex-1 flex flex-col"
-        style={{
-          background: 'rgba(250,246,238,0.92)',
-          boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)'
-        }}
-      >
-        {/* Header — THIS WEEK with gold dividers */}
-        <div className="flex items-center gap-4 px-7 pt-5 pb-3">
-          <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(200,168,118,0.5))' }}></div>
-          <span className="font-sans text-[14px] font-semibold uppercase tracking-[0.3em]" style={{ color: 'rgba(45,79,76,0.5)' }}>this week</span>
-          <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(200,168,118,0.5), transparent)' }}></div>
-        </div>
-
-        {/* Day rows */}
-        <div className="flex-1 flex flex-col justify-center px-4 pb-4">
-          {getWeekDays().map((day, i) => {
-            const sched = weeklySchedule[i];
-            const isHigh = sched.spots >= 5;
-            const isLow = sched.spots <= 2;
-            const isLast = i === 4;
-
-            return (
-              <React.Fragment key={i}>
-                <motion.div
-                  initial={{ opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 + i * 0.07 }}
-                  className={`flex items-center gap-4 py-4 px-4 rounded-[14px] relative overflow-hidden ${isHigh ? 'week-row-high' : ''} ${isLow ? 'week-row-low' : ''}`}
-                >
-                  {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
-
-                  {/* Day name */}
-                  <div className="font-sans text-[15px] font-semibold" style={{ width: 110, letterSpacing: '0.04em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
-                    {day.abbrev}
-                  </div>
-
-                  {/* Vertical divider */}
-                  <div style={{ width: 1, height: 36, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
-
-                  {/* Date number */}
-                  <div className="font-serif text-[32px] font-medium text-center" style={{ width: 44, lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
-                    {day.date}
-                  </div>
-
-                  {/* Status circle icon */}
-                  <div className="flex justify-center" style={{ width: 48 }}>
-                    {sched.icon === 'check' && (
-                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-                        <circle cx="19" cy="19" r="17" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
-                        <path d="M12 19.5L16.5 24L26 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    )}
-                    {sched.icon === 'empty' && (
-                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-                        <circle cx="19" cy="19" r="15.5" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="2"/>
-                      </svg>
-                    )}
-                    {sched.icon === 'half' && (
-                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-                        <path d="M19 2 A17 17 0 0 0 19 36 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
-                        <circle cx="19" cy="19" r="16" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="2" fill="none"/>
-                      </svg>
-                    )}
-                  </div>
-
-                  {/* Spots count + label */}
-                  <div className="flex flex-col items-center" style={{ minWidth: 56 }}>
-                    <div className="font-serif text-[34px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
-                      {sched.spots}
-                    </div>
-                    <span className="font-sans text-[8px] uppercase mt-1" style={{ letterSpacing: '0.18em', color: isLow ? 'rgba(45,79,76,0.18)' : 'rgba(45,79,76,0.42)' }}>spots left</span>
-                  </div>
-                </motion.div>
-                {!isLast && <div className="mx-3" style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(31,58,56,0.07), transparent)' }}></div>}
-              </React.Fragment>
-            );
-          })}
-        </div>
-      </motion.div>
+      <WeeklyCalendarCard />
     </div>
 
     {/* BOTTOM CTA */}
@@ -618,41 +536,40 @@ const AwayScreen = () => (
   <div className="kiosk-frame ambient-bg grain flex flex-col">
     <FloatingParticles />
 
-    <div className="relative z-10 pt-10 pb-5 flex justify-center">
+    <div className="relative z-10 pt-8 pb-4 flex justify-center">
       <BrandLockup />
     </div>
     <div className="relative z-10 mx-10 hairline"></div>
 
-    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-10">
-      <motion.div
-        className="absolute rounded-full breathe"
-        style={{
-          width: 320, height: 320,
-          background: 'radial-gradient(circle, rgba(168,181,160,0.25) 0%, rgba(168,181,160,0.05) 50%, transparent 70%)',
-          filter: 'blur(8px)'
-        }}
-      />
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="text-center relative"
-      >
-        <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-5">
-          evening · bezel residences
-        </div>
-        <h1 className="font-serif font-medium text-teal tracking-tight"
-            style={{ fontSize: 56, lineHeight: 1, letterSpacing: '-0.03em' }}>
-          Your team<br/>isn't here.
-        </h1>
-        <p className="font-sans text-[17px] text-teal-2/55 mt-5 lowercase" style={{ lineHeight: 1.4 }}>
-          cleaners have wrapped up for the day
-        </p>
-      </motion.div>
+    {/* Header message */}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3 }}
+      className="relative z-10 text-center px-10 pt-7 pb-5"
+    >
+      <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-4">
+        evening · bezel residences
+      </div>
+      <h1 className="font-serif font-medium text-teal tracking-tight"
+          style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">tomorrow.</span>
+      </h1>
+      <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>
+        book your spot ahead of time
+      </p>
+    </motion.div>
+
+    <div className="relative z-10 mx-10 hairline"></div>
+
+    {/* Weekly calendar */}
+    <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
+      <WeeklyCalendarCard />
     </div>
 
+    {/* BOTTOM CTA */}
     <div className="relative z-10">
-      <BottomCTA headline="Book your next clean" subline="next available tomorrow" />
+      <BottomCTA headline="Book your clean today" />
     </div>
   </div>
 );
@@ -661,54 +578,116 @@ const AwayScreen = () => (
 // RECHARGING SCREEN — 7pm–7am
 // ─────────────────────────────────────────────────────────────────────────────
 
+const WeeklyCalendarCard = () => (
+  <motion.div
+    initial={{ opacity: 0, y: 8 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.4 }}
+    className="rounded-[20px] overflow-hidden flex flex-col"
+    style={{
+      background: 'rgba(250,246,238,0.92)',
+      boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)'
+    }}
+  >
+    <div className="flex items-center gap-4 px-7 pt-5 pb-3">
+      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(200,168,118,0.5))' }}></div>
+      <span className="font-sans text-[14px] font-semibold uppercase tracking-[0.3em]" style={{ color: 'rgba(45,79,76,0.5)' }}>this week</span>
+      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(200,168,118,0.5), transparent)' }}></div>
+    </div>
+    <div className="flex flex-col justify-center px-4 pb-4">
+      {getWeekDays().map((day, i) => {
+        const sched = weeklySchedule[i];
+        const isHigh = sched.spots >= 5;
+        const isLow = sched.spots <= 2;
+        const isLast = i === 4;
+        return (
+          <React.Fragment key={i}>
+            <motion.div
+              initial={{ opacity: 0, x: 8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.07 }}
+              className={`flex items-center gap-4 py-4 px-4 rounded-[14px] relative overflow-hidden ${isHigh ? 'week-row-high' : ''} ${isLow ? 'week-row-low' : ''}`}
+            >
+              {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
+              <div className="font-sans text-[15px] font-semibold" style={{ width: 110, letterSpacing: '0.04em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
+                {day.abbrev}
+              </div>
+              <div style={{ width: 1, height: 36, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
+              <div className="font-serif text-[32px] font-medium text-center" style={{ width: 44, lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+                {day.date}
+              </div>
+              <div className="flex justify-center" style={{ width: 48 }}>
+                {sched.icon === 'check' && (
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <circle cx="19" cy="19" r="17" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                    <path d="M12 19.5L16.5 24L26 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+                {sched.icon === 'empty' && (
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <circle cx="19" cy="19" r="15.5" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="2"/>
+                  </svg>
+                )}
+                {sched.icon === 'half' && (
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <path d="M19 2 A17 17 0 0 0 19 36 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                    <circle cx="19" cy="19" r="16" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="2" fill="none"/>
+                  </svg>
+                )}
+              </div>
+              <div className="flex flex-col items-center" style={{ minWidth: 56 }}>
+                <div className="font-serif text-[34px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+                  {sched.spots}
+                </div>
+                <span className="font-sans text-[8px] uppercase mt-1" style={{ letterSpacing: '0.18em', color: isLow ? 'rgba(45,79,76,0.18)' : 'rgba(45,79,76,0.42)' }}>spots left</span>
+              </div>
+            </motion.div>
+            {!isLast && <div className="mx-3" style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(31,58,56,0.07), transparent)' }}></div>}
+          </React.Fragment>
+        );
+      })}
+    </div>
+  </motion.div>
+);
+
 const RechargingScreen = () => (
   <div className="kiosk-frame ambient-bg grain flex flex-col">
     <FloatingParticles />
 
-    <div className="relative z-10 pt-10 pb-5 flex justify-center">
+    <div className="relative z-10 pt-8 pb-4 flex justify-center">
       <BrandLockup />
     </div>
     <div className="relative z-10 mx-10 hairline"></div>
 
-    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-10">
-      <motion.div
-        className="absolute rounded-full breathe"
-        style={{
-          width: 340, height: 340,
-          background: 'radial-gradient(circle, rgba(168,181,160,0.2) 0%, rgba(168,181,160,0.05) 50%, transparent 70%)',
-          filter: 'blur(10px)'
-        }}
-      />
-      <motion.div
-        className="absolute rounded-full"
-        style={{
-          width: 240, height: 240,
-          background: 'radial-gradient(circle, rgba(200,168,118,0.14) 0%, transparent 70%)',
-          filter: 'blur(4px)',
-          animation: 'breathe 7s ease-in-out infinite reverse'
-        }}
-      />
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="text-center relative"
-      >
-        <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-5">
-          goodnight · bezel residences
-        </div>
-        <h1 className="font-serif font-medium text-teal tracking-tight"
-            style={{ fontSize: 54, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-          The team is<br/><span className="serif-italic text-sage-deep">recharging.</span>
-        </h1>
-        <p className="font-sans text-[17px] text-teal-2/55 mt-5 lowercase max-w-[380px] mx-auto" style={{ lineHeight: 1.4 }}>
-          cleaners return tomorrow morning —<br/>book your spot ahead of time
-        </p>
-      </motion.div>
+    {/* Header message */}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3 }}
+      className="relative z-10 text-center px-10 pt-7 pb-5"
+    >
+      <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-4">
+        goodnight · bezel residences
+      </div>
+      <h1 className="font-serif font-medium text-teal tracking-tight"
+          style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">tomorrow.</span>
+      </h1>
+      <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>
+        book your spot ahead of time
+      </p>
+    </motion.div>
+
+    <div className="relative z-10 mx-10 hairline"></div>
+
+    {/* Weekly calendar */}
+    <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
+      <WeeklyCalendarCard />
     </div>
 
+    {/* BOTTOM CTA */}
     <div className="relative z-10">
-      <BottomCTA headline="Book your next clean" subline="slots open tomorrow" />
+      <BottomCTA headline="Book your clean today" />
     </div>
   </div>
 );
