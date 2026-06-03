@@ -627,37 +627,42 @@ const WeeklyCalendarCard = () => (
               initial={{ opacity: 0, x: 8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 + i * 0.07 }}
-              className={`flex items-center gap-4 py-4 px-4 rounded-[14px] relative overflow-hidden ${isHigh ? 'week-row-high' : ''} ${isLow ? 'week-row-low' : ''}`}
+              className={`flex items-center py-4 px-5 rounded-[14px] relative overflow-hidden ${isHigh ? 'week-row-high' : ''} ${isLow ? 'week-row-low' : ''}`}
             >
               {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
-              <div className="font-sans text-[17px] font-semibold" style={{ width: 120, letterSpacing: '0.04em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
+              {/* Day name */}
+              <div className="font-sans text-[17px] font-semibold" style={{ width: 130, flexShrink: 0, letterSpacing: '0.04em', color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38' }}>
                 {day.name}
               </div>
-              <div style={{ width: 1, height: 36, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)' }}></div>
-              <div className="font-serif text-[34px] font-medium text-center" style={{ width: 48, lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+              {/* Divider */}
+              <div style={{ width: 1, height: 36, flexShrink: 0, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)', marginLeft: 8, marginRight: 16 }}></div>
+              {/* Date number */}
+              <div className="font-serif text-[36px] font-medium text-center" style={{ width: 52, flexShrink: 0, lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
                 {day.date}
               </div>
-              <div className="flex justify-center" style={{ width: 52, marginLeft: -4, marginRight: -4 }}>
+              {/* Icon */}
+              <div className="flex justify-center" style={{ width: 52, flexShrink: 0, marginLeft: 16, marginRight: 16 }}>
                 {sched.icon === 'check' && (
-                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-                    <circle cx="22" cy="22" r="19" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
-                    <path d="M14 22.5L19 27L30 16" stroke="white" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                    <circle cx="23" cy="23" r="20" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                    <path d="M15 23.5L20 28L31 17" stroke="white" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
                 {sched.icon === 'empty' && (
-                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-                    <circle cx="22" cy="22" r="18" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="2.2"/>
+                  <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                    <circle cx="23" cy="23" r="19" stroke={isLow ? '#D8DFD0' : '#A8B5A0'} strokeWidth="2.2"/>
                   </svg>
                 )}
                 {sched.icon === 'half' && (
-                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-                    <path d="M22 3 A19 19 0 0 0 22 41 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
-                    <circle cx="22" cy="22" r="18.5" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="2" fill="none"/>
+                  <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                    <path d="M23 3 A20 20 0 0 0 23 43 Z" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
+                    <circle cx="23" cy="23" r="19.5" stroke={isLow ? '#C4CEBC' : '#1F3A38'} strokeWidth="2" fill="none"/>
                   </svg>
                 )}
               </div>
-              <div className="ml-auto flex flex-col items-center" style={{ minWidth: 60 }}>
-                <div className="font-serif text-[36px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+              {/* Spots */}
+              <div className="flex flex-col items-center" style={{ flexShrink: 0, minWidth: 64 }}>
+                <div className="font-serif text-[38px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
                   {sched.spots}
                 </div>
                 <span className="font-sans text-[9px] uppercase mt-1" style={{ letterSpacing: '0.18em', color: isLow ? 'rgba(45,79,76,0.18)' : 'rgba(45,79,76,0.42)' }}>spots left</span>
