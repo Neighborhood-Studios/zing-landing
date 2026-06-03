@@ -237,6 +237,12 @@ function getMode() {
   return 'recharging';                          // 7:00 PM – 6:59 AM
 }
 
+function ordinal(n) {
+  const s = ['th','st','nd','rd'];
+  const v = n % 100;
+  return { num: n, suffix: s[(v - 20) % 10] || s[v] || s[0] };
+}
+
 function getWeekDays() {
   const now = new Date();
   const edtStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
@@ -249,7 +255,7 @@ function getWeekDays() {
   for (let i = 0; i < 5; i++) {
     const d = new Date(monday);
     d.setDate(monday.getDate() + i);
-    days.push({ name: names[i], date: d.getDate() });
+    days.push({ name: names[i], date: d.getDate(), ord: ordinal(d.getDate()) });
   }
   return days;
 }
@@ -613,7 +619,7 @@ const WeeklyCalendarCard = () => (
     style={{
       background: 'rgba(250,246,238,0.92)',
       boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)',
-      maxWidth: 560
+      maxWidth: 620
     }}
   >
     <div className="flex items-center gap-4 px-7 pt-5 pb-3">
@@ -641,13 +647,18 @@ const WeeklyCalendarCard = () => (
                 {day.name}
               </div>
               {/* Divider */}
-              <div style={{ width: 1, height: 36, flexShrink: 0, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)', marginLeft: 8, marginRight: 16 }}></div>
-              {/* Date number */}
-              <div className="font-serif text-[36px] font-medium text-center" style={{ width: 52, flexShrink: 0, lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
-                {day.date}
+              <div style={{ width: 1, height: 36, flexShrink: 0, background: isLow ? 'rgba(31,58,56,0.06)' : 'rgba(31,58,56,0.12)', marginLeft: 12, marginRight: 20 }}></div>
+              {/* Date number with ordinal */}
+              <div className="flex items-baseline" style={{ width: 68, flexShrink: 0, justifyContent: 'center' }}>
+                <span className="font-serif text-[36px] font-medium" style={{ lineHeight: 1, letterSpacing: '-0.02em', color: isLow ? 'rgba(45,79,76,0.22)' : '#1F3A38' }}>
+                  {day.ord.num}
+                </span>
+                <span className="font-sans text-[14px] font-semibold" style={{ marginLeft: 1, color: isLow ? 'rgba(45,79,76,0.22)' : 'rgba(31,58,56,0.45)' }}>
+                  {day.ord.suffix}
+                </span>
               </div>
               {/* Icon */}
-              <div className="flex justify-center" style={{ width: 52, flexShrink: 0, marginLeft: 20, marginRight: 24 }}>
+              <div className="flex justify-center" style={{ width: 52, flexShrink: 0, marginLeft: 24, marginRight: 28 }}>
                 {sched.icon === 'check' && (
                   <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
                     <circle cx="23" cy="23" r="20" fill={isLow ? '#C4CEBC' : '#1F3A38'}/>
