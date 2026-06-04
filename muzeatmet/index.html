@@ -59,7 +59,7 @@
     align-items: center;
     justify-content: center;
     padding: 2rem 1.75rem;
-    padding-bottom: 6rem; /* room for sticky button */
+    padding-bottom: 7rem; /* room for sticky button + powered-by */
     max-width: 480px;
     margin: 0 auto;
     width: 100%;
@@ -74,34 +74,22 @@
   }
 
   .logos .muze-logo {
-    height: 48px;
+    height: 58px;
     width: auto;
     object-fit: contain;
     filter: brightness(0);
   }
 
-  .logos .divider {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(51, 82, 92, 0.35);
-  }
-
-  .logos .divider .line {
-    width: 1px;
-    height: 1.5rem;
-    background: rgba(51, 82, 92, 0.2);
-  }
-
-  .logos .divider .x {
+  .logos .x {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 15px;
-    color: rgba(51, 82, 92, 0.4);
+    font-size: 22px;
+    color: rgba(51, 82, 92, 0.35);
+    user-select: none;
   }
 
   .logos .zing-logo {
-    height: 24px;
+    height: 30px;
     width: auto;
     object-fit: contain;
     filter: brightness(0) saturate(1) invert(18%) sepia(15%) saturate(1200%) hue-rotate(130deg) brightness(95%);
@@ -204,10 +192,12 @@
     left: 0;
     right: 0;
     z-index: 50;
-    padding: 1rem 1.5rem calc(1rem + env(safe-area-inset-bottom));
-    background: linear-gradient(to top, var(--bg) 60%, transparent);
+    padding: 0.75rem 1.5rem calc(0.75rem + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   .cta-btn {
@@ -251,12 +241,27 @@
   }
 
   /* ── Responsive ── */
-  @media (max-height: 640px) {
-    .page { gap: 1.25rem; padding-top: 1.25rem; }
-    .features { gap: 0.65rem; }
-    .headline h1 { font-size: 1.4rem; }
+  @media (max-height: 700px) {
+    .page { gap: 1.1rem; padding-top: 1rem; padding-bottom: 7rem; }
+    .features { gap: 0.5rem; }
+    .headline h1 { font-size: 1.35rem; margin-bottom: 0.3rem; }
+    .headline p { font-size: 0.82rem; }
     .feature-icon { width: 30px; height: 30px; border-radius: 8px; }
     .feature-icon svg { width: 15px; height: 15px; }
+    .feature-text strong { font-size: 0.82rem; }
+    .feature-text span { font-size: 0.75rem; }
+    .logos .muze-logo { height: 48px; }
+    .logos .zing-logo { height: 24px; }
+    .sep { display: none; }
+  }
+
+  @media (max-height: 600px) {
+    .page { gap: 0.85rem; padding-top: 0.75rem; }
+    .features { gap: 0.35rem; }
+    .headline h1 { font-size: 1.25rem; }
+    .logos .muze-logo { height: 40px; }
+    .logos .zing-logo { height: 20px; }
+    .logos .x { font-size: 18px; }
   }
 
   @media (min-height: 800px) {
@@ -272,11 +277,7 @@
   <!-- Co-branded logos -->
   <div class="logos">
     <img src="muze-logo.png" alt="Muze at Met" class="muze-logo" />
-    <div class="divider">
-      <div class="line"></div>
-      <span class="x">×</span>
-      <div class="line"></div>
-    </div>
+    <span class="x">×</span>
     <img src="zing-logo.svg" alt="Zing" class="zing-logo" />
   </div>
 
@@ -334,16 +335,16 @@
   </div>
 
   <div class="sep"></div>
-  <div class="powered">Housekeeping by Zing · justzingit.com</div>
 
 </div>
 
-<!-- Sticky Get Started button -->
+<!-- Sticky CTA with powered-by -->
 <div class="cta-bar">
   <a href="https://app.justzingit.com/signup" class="cta-btn">
     Get Started
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
+  <div class="powered">Housekeeping by Zing</div>
 </div>
 
 </body>
