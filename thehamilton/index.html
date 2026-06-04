@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Zing × The Hamilton — Hotel-Style Housekeeping</title>
+<meta name="description" content="Hotel-style housekeeping dedicated to The Hamilton. Book small tasks or full apartment cleans — anytime, always an elevator ride away." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="https://app.justzingit.com/favicon-32x32.png" />
+<link rel="apple-touch-icon" href="https://app.justzingit.com/apple-touch-icon.png" />
+
+<style>
+  :root {
+    --bg: #f4f2e8;
+    --text: #33525c;
+    --text-secondary: rgba(51, 82, 92, 0.58);
+    --text-muted: rgba(51, 82, 92, 0.35);
+    --accent: #badcc3;
+    --accent-hover: #a8cfb2;
+    --accent-dim: rgba(186, 220, 195, 0.55);
+    --accent-faint: rgba(186, 220, 195, 0.18);
+    --border: rgba(51, 82, 92, 0.10);
+    --border2: rgba(51, 82, 92, 0.18);
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+    margin: 0;
+    min-height: 100dvh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* single-screen, no scroll */
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ── Page container ── */
+  .page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.75rem;
+    padding-bottom: 7rem; /* room for sticky button + powered-by */
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 1.75rem;
+  }
+
+  /* ── Co-branded logos ── */
+  .logos {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .logos .bldg-logo {
+    height: 58px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0);
+  }
+
+  .logos .x {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: rgba(51, 82, 92, 0.35);
+    user-select: none;
+  }
+
+  .logos .zing-logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) saturate(1) invert(18%) sepia(15%) saturate(1200%) hue-rotate(130deg) brightness(95%);
+  }
+
+  /* ── Headline ── */
+  .headline {
+    text-align: center;
+  }
+
+  .headline h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 6vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+
+  .headline p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* ── Feature list ── */
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .feature-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-faint);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .feature-icon svg {
+    width: 18px;
+    height: 18px;
+    color: var(--text);
+    opacity: 0.55;
+  }
+
+  .feature-text {
+    flex: 1;
+  }
+
+  .feature-text strong {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1px;
+  }
+
+  .feature-text span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ── Separator ── */
+  .sep {
+    width: 40px;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  /* ── Powered by ── */
+  .powered {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Sticky CTA ── */
+  .cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 0.75rem 1.5rem calc(0.75rem + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 440px;
+    background: var(--accent);
+    color: var(--text);
+    padding: 15px 34px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+
+  .cta-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(186, 220, 195, 0.35);
+  }
+
+  .cta-btn:active {
+    transform: translateY(0);
+  }
+
+  .cta-btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .cta-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ── Responsive ── */
+  @media (max-height: 700px) {
+    .page { gap: 1.1rem; padding-top: 1rem; padding-bottom: 7rem; }
+    .features { gap: 0.5rem; }
+    .headline h1 { font-size: 1.35rem; margin-bottom: 0.3rem; }
+    .headline p { font-size: 0.82rem; }
+    .feature-icon { width: 30px; height: 30px; border-radius: 8px; }
+    .feature-icon svg { width: 15px; height: 15px; }
+    .feature-text strong { font-size: 0.82rem; }
+    .feature-text span { font-size: 0.75rem; }
+    .logos .bldg-logo { height: 48px; }
+    .logos .zing-logo { height: 24px; }
+    .sep { display: none; }
+  }
+
+  @media (max-height: 600px) {
+    .page { gap: 0.85rem; padding-top: 0.75rem; }
+    .features { gap: 0.35rem; }
+    .headline h1 { font-size: 1.25rem; }
+    .logos .bldg-logo { height: 40px; }
+    .logos .zing-logo { height: 20px; }
+    .logos .x { font-size: 18px; }
+  }
+
+  @media (min-height: 800px) {
+    .page { gap: 2.25rem; }
+  }
+
+  /* ── Desktop / wider screens ── */
+  @media (min-width: 640px) {
+    .page {
+      max-width: 680px;
+      padding: 3rem 3rem 7rem;
+      gap: 2.25rem;
+    }
+
+    .logos .bldg-logo { height: 72px; }
+    .logos .zing-logo { height: 38px; }
+    .logos .x { font-size: 26px; }
+    .logos { gap: 1.5rem; }
+
+    .headline h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .headline p {
+      font-size: 1.05rem;
+      max-width: 480px;
+    }
+
+    .features {
+      max-width: 480px;
+      gap: 1.1rem;
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+    }
+
+    .feature-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .feature-text strong { font-size: 0.95rem; }
+    .feature-text span { font-size: 0.875rem; }
+
+    .cta-btn {
+      max-width: 400px;
+      padding: 16px 40px;
+      font-size: 16px;
+    }
+
+    .powered { font-size: 0.75rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .page {
+      max-width: 760px;
+      gap: 2.5rem;
+    }
+
+    .logos .bldg-logo { height: 80px; }
+    .logos .zing-logo { height: 42px; }
+    .logos .x { font-size: 28px; }
+
+    .headline h1 { font-size: 2.75rem; }
+    .headline p { font-size: 1.1rem; max-width: 520px; }
+
+    .features { max-width: 520px; gap: 1.25rem; }
+    .feature-icon { width: 46px; height: 46px; }
+    .feature-icon svg { width: 22px; height: 22px; }
+    .feature-text strong { font-size: 1rem; }
+    .feature-text span { font-size: 0.9rem; line-height: 1.5; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- Co-branded logos -->
+  <div class="logos">
+    <img src="building-logo.svg" alt="The Hamilton" class="bldg-logo" />
+    <span class="x">×</span>
+    <img src="zing-logo.svg" alt="Zing" class="zing-logo" />
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <h1>We're happy to be serving<br/>The Hamilton</h1>
+    <p>Hotel-style housekeeping dedicated to your building. Your cleaner. Your building. Anytime.</p>
+  </div>
+
+  <!-- Features -->
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">
+        <!-- Building icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21V9"/><path d="M15 21V9"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+      </div>
+      <div class="feature-text">
+        <strong>Your building's own team</strong>
+        <span>Your Zing housekeeper is dedicated to The Hamilton — they know your hallways, your floor, your home.</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <!-- Sparkle icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"/></svg>
+      </div>
+      <div class="feature-text">
+        <strong>Small tasks to full cleans</strong>
+        <span>Laundry folding, trash runs, plant care, or a full apartment clean — whatever you need.</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <!-- Dollar icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="feature-text">
+        <strong>Starting at just $1</strong>
+        <span>Always an elevator ride away. No strangers dispatched from across town.</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">
+        <!-- Calendar/clock icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M12 14l2 2-2 2"/></svg>
+      </div>
+      <div class="feature-text">
+        <strong>Book on your schedule</strong>
+        <span>On-demand housekeeping whenever it works for you. Book a task or a full clean in seconds.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+</div>
+
+<!-- Sticky CTA with powered-by -->
+<div class="cta-bar">
+  <a href="https://app.justzingit.com/signup" class="cta-btn">
+    Get Started
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+  <div class="powered">Housekeeping by Zing</div>
+</div>
+
+</body>
+</html>
