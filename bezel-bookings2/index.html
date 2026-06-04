@@ -288,12 +288,6 @@ const bookingSlots = [
   { time: '5:00pm',  status: 'available' },
 ];
 
-const weeklyStats = [
-  { label: 'residents booked', value: String(RESIDENTS_BOOKED), accent: '#6B8068' },
-  { label: 'most requested', value: 'Bathroom Refresh', accent: '#C8A876' },
-  { label: 'avg clean time', value: '45 min', accent: '#A8B5A0' },
-];
-
 // ── SLOT DATA (update via prompt) ──────────────────────────────────
 // Icon is auto-derived: spots >= 3 → 'check', spots === 2 → 'half', spots <= 1 → 'empty'
 const SLOT_COUNTS = [6, 2, 4, 2, 3]; // [Mon, Tue, Wed, Thu, Fri]
@@ -304,6 +298,12 @@ const weeklySchedule = SLOT_COUNTS.map(spots => ({
   spots,
   icon: spots >= 3 ? 'check' : spots === 2 ? 'half' : 'empty',
 }));
+
+const weeklyStats = [
+  { label: 'residents booked', value: String(RESIDENTS_BOOKED), accent: '#6B8068' },
+  { label: 'most requested', value: 'Bathroom Refresh', accent: '#C8A876' },
+  { label: 'avg clean time', value: '45 min', accent: '#A8B5A0' },
+];
 
 const activityFeed = [
   'a resident on floor 14 just booked',
