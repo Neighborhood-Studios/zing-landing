@@ -245,6 +245,19 @@ function getMode() {
   return 'recharging';                          // 7:00 PM – 6:59 AM
 }
 
+// Returns true when we're in a weekend window (Fri 6pm+ / Sat / Sun)
+function isWeekendWindow() {
+  const day = getEDTDay();
+  if (day === 'Sat' || day === 'Sun') return true;
+  if (day === 'Fri' && getEDTHour() >= 18) return true;
+  return false;
+}
+
+// "tomorrow" vs "Monday" depending on when we are
+function getReturnLabel() {
+  return isWeekendWindow() ? 'Monday' : 'tomorrow';
+}
+
 function ordinal(n) {
   const s = ['th','st','nd','rd'];
   const v = n % 100;
@@ -258,6 +271,12 @@ function getWeekDays() {
   const day = edtDate.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
   const monday = new Date(edtDate);
   monday.setDate(edtDate.getDate() - (day === 0 ? 6 : day - 1));
+
+  // If we're in the weekend window (Fri 6pm+ / Sat / Sun), show NEXT week
+  if (isWeekendWindow()) {
+    monday.setDate(monday.getDate() + 7);
+  }
+
   const days = [];
   const names = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   for (let i = 0; i < 5; i++) {
@@ -591,7 +610,7 @@ const AwayScreen = () => (
       </div>
       <h1 className="font-serif font-medium text-teal tracking-tight"
           style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">tomorrow.</span>
+        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">{getReturnLabel()}.</span>
       </h1>
       <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>
         book your spot ahead of time
@@ -725,7 +744,7 @@ const RechargingScreen = () => (
       </div>
       <h1 className="font-serif font-medium text-teal tracking-tight"
           style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">tomorrow.</span>
+        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">{getReturnLabel()}.</span>
       </h1>
       <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>
         book your spot ahead of time
