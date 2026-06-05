@@ -62,15 +62,13 @@
     padding: 0;
     overflow: hidden;
     background: var(--cream);
+    width: 100vw;
+    height: 100vh;
   }
 
   body {
     font-family: 'DM Sans', sans-serif;
     color: var(--teal);
-    width: 100%;
-    max-width: 800px;
-    height: 1280px;
-    margin: 0 auto;
     position: relative;
   }
 
@@ -86,13 +84,15 @@
     font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
   }
 
-  /* kiosk frame — fixed 800x1280 */
+  /* kiosk frame — scales to fill viewport */
   .kiosk-frame {
     width: 800px;
     height: 1280px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     overflow: hidden;
-    margin: 0 auto;
+    transform-origin: top left;
   }
 
   /* grain texture */
@@ -755,8 +755,25 @@ const RechargingScreen = () => (
 // APP — auto-switch on time
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────────
+// KIOSK SCALE — fills full viewport
+// ─────────────────────────────────────────────────────────────────────────────
+function fitKiosk() {
+  const frame = document.querySelector('.kiosk-frame');
+  if (!frame) return;
+  const scaleX = window.innerWidth / 800;
+  const scaleY = window.innerHeight / 1280;
+  frame.style.transform = `scale(${scaleX}, ${scaleY})`;
+}
+
 const App = () => {
   const [mode, setMode] = useState(getMode);
+
+  useEffect(() => {
+    fitKiosk();
+    window.addEventListener('resize', fitKiosk);
+    return () => window.removeEventListener('resize', fitKiosk);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => setMode(getMode()), 60000);
