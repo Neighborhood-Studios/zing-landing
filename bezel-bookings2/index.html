@@ -309,8 +309,8 @@ const bookingSlots = [
 
 // ── SLOT DATA (update via prompt) ──────────────────────────────────
 // Icon is auto-derived: spots >= 3 → 'check', spots === 2 → 'half', spots <= 1 → 'empty'
-const SLOT_COUNTS = [1, 2, 4, 2, 3]; // [Mon, Tue, Wed, Thu, Fri]
-const RESIDENTS_BOOKED = 12;
+const SLOT_COUNTS = [0, 3, 2, 2, 0]; // [Mon, Tue, Wed, Thu, Fri] — Mon & Fri fully booked
+const RESIDENTS_BOOKED = 18;
 // ── END SLOT DATA ──────────────────────────────────────────────────
 
 const weeklySchedule = SLOT_COUNTS.map(spots => ({
