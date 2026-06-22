@@ -20,18 +20,18 @@
     theme: {
       extend: {
         colors: {
-          // WYND 27/28 palette
-          'wynd-grey':     '#58595B',
-          'wynd-grey-2':   '#7A7B7E',
-          'wynd-grey-3':   '#9FA0A3',
-          'wynd-red':      '#ED1C24',
-          'wynd-red-soft': '#F26368',
-          'wynd-blue':     '#27AAE1',
-          'wynd-blue-soft':'#5DBFE9',
-          'wynd-bg':       '#F7F5F0',
-          'wynd-bg-2':     '#FBFAF6',
-          'wynd-card':     '#FFFFFF',
-          'wynd-ink':      '#2B2C2E',
+          cream:      '#F4EFE4',
+          'cream-2':  '#FAF6EE',
+          'cream-3':  '#EFE9DB',
+          sage:       '#A8B5A0',
+          'sage-2':   '#C4CEBC',
+          'sage-3':   '#D8DFD0',
+          'sage-deep':'#6B8068',
+          teal:       '#1F3A38',
+          'teal-2':   '#2D4F4C',
+          'teal-3':   '#3E6863',
+          gold:       '#C8A876',
+          ink:        '#1A2826',
         },
         fontFamily: {
           serif: ['Fraunces', 'serif'],
@@ -44,38 +44,38 @@
 
 <style>
   :root {
-    --wynd-grey:     #58595B;
-    --wynd-grey-2:   #7A7B7E;
-    --wynd-grey-3:   #9FA0A3;
-    --wynd-red:      #ED1C24;
-    --wynd-red-soft: #F26368;
-    --wynd-blue:     #27AAE1;
-    --wynd-blue-soft:#5DBFE9;
-    --wynd-bg:       #F7F5F0;
-    --wynd-bg-2:     #FBFAF6;
-    --wynd-card:     #FFFFFF;
-    --wynd-ink:      #2B2C2E;
+    --cream:      #F4EFE4;
+    --cream-2:    #FAF6EE;
+    --cream-3:    #EFE9DB;
+    --sage:       #A8B5A0;
+    --sage-2:     #C4CEBC;
+    --sage-3:     #D8DFD0;
+    --sage-deep:  #6B8068;
+    --teal:       #1F3A38;
+    --teal-2:     #2D4F4C;
+    --gold:       #C8A876;
+    --ink:        #1A2826;
   }
 
   html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: var(--wynd-bg);
+    background: var(--cream);
     width: 100vw;
     height: 100vh;
   }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    color: var(--wynd-grey);
+    color: var(--teal);
     position: relative;
     /* outer wash so the centered card sits in some breathing room */
     background:
-      radial-gradient(ellipse 60% 50% at 20% 0%,   rgba(39, 170, 225, 0.06), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 100% 30%, rgba(237, 28, 36, 0.04),  transparent 60%),
-      radial-gradient(ellipse 70% 60% at 50% 110%, rgba(88, 89, 91, 0.04),  transparent 60%),
-      linear-gradient(180deg, #FBFAF6 0%, #F7F5F0 50%, #F2EFE7 100%);
+      radial-gradient(ellipse 70% 50% at 20% 0%,   rgba(168, 181, 160, 0.28), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 30%, rgba(200, 168, 118, 0.14), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(168, 181, 160, 0.22), transparent 60%),
+      linear-gradient(180deg, #FAF6EE 0%, #F4EFE4 50%, #EFE9DB 100%);
   }
 
   .font-serif {
@@ -103,13 +103,22 @@
     transform-origin: center center;
     position: relative;
     border-radius: 32px;
-    background: var(--wynd-card);
+    background: var(--cream-2);
     box-shadow:
-      0 32px 80px -16px rgba(88, 89, 91, 0.18),
-      0 8px 24px -8px rgba(88, 89, 91, 0.10),
-      0 0 0 1px rgba(88, 89, 91, 0.06),
+      0 32px 80px -16px rgba(31, 58, 56, 0.18),
+      0 8px 24px -8px rgba(31, 58, 56, 0.10),
+      0 0 0 1px rgba(31, 58, 56, 0.06),
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
     overflow: hidden;
+  }
+
+  /* inner ambient gradient (same as muze ambient-bg, just within the frame) */
+  .ambient-inner {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 0%,   rgba(168, 181, 160, 0.22), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 100% 30%, rgba(200, 168, 118, 0.10), transparent 60%),
+      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(168, 181, 160, 0.18), transparent 60%),
+      linear-gradient(180deg, #FAF6EE 0%, #F4EFE4 50%, #EFE9DB 100%);
   }
 
   /* subtle grain for the card */
@@ -117,32 +126,26 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.35 0 0 0 0 0.36 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.55;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.45;
     mix-blend-mode: multiply;
     pointer-events: none;
     z-index: 1;
   }
 
-  /* pulsing live dot */
+  /* pulsing live dot — sage-deep */
   @keyframes live-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(39, 170, 225, 0.7), 0 0 0 0 rgba(39, 170, 225, 0.4); }
-    50%      { box-shadow: 0 0 0 8px rgba(39, 170, 225, 0), 0 0 0 16px rgba(39, 170, 225, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(107, 128, 104, 0.7), 0 0 0 0 rgba(107, 128, 104, 0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(107, 128, 104, 0), 0 0 0 16px rgba(107, 128, 104, 0); }
   }
   .live-dot { animation: live-pulse 2.4s ease-in-out infinite; }
-
-  @keyframes live-pulse-red {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(237, 28, 36, 0.7), 0 0 0 0 rgba(237, 28, 36, 0.4); }
-    50%      { box-shadow: 0 0 0 8px rgba(237, 28, 36, 0), 0 0 0 16px rgba(237, 28, 36, 0); }
-  }
-  .live-dot-red { animation: live-pulse-red 2.4s ease-in-out infinite; }
 
   @keyframes shimmer-x {
     0%   { background-position: -200% 0; }
     100% { background-position: 200% 0; }
   }
   .shimmer-overlay {
-    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%);
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: shimmer-x 4.5s ease-in-out infinite;
   }
@@ -154,11 +157,11 @@
 
   .hairline {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(88, 89, 91, 0.18), transparent);
+    background: linear-gradient(90deg, transparent, rgba(31,58,56,0.20), transparent);
   }
 
   .week-row-low {
-    background: linear-gradient(180deg, rgba(88,89,91,0.04) 0%, rgba(88,89,91,0.02) 100%);
+    background: linear-gradient(180deg, rgba(216,223,208,0.22) 0%, rgba(196,206,188,0.10) 100%);
   }
 
   ::-webkit-scrollbar { display: none; }
@@ -176,7 +179,7 @@ const { useState, useEffect } = React;
 const { motion, AnimatePresence } = window.Motion;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TIME HELPERS — EDT (America/New_York). Note: in Miami, EDT is the same TZ.
+// TIME HELPERS — EDT (America/New_York). Miami runs EDT same as NY.
 // ─────────────────────────────────────────────────────────────────────────────
 
 function getEDTHour() {
@@ -262,9 +265,9 @@ const weeklySchedule = SLOT_COUNTS.map(spots => ({
 }));
 
 const weeklyStats = [
-  { label: 'residents booked', value: String(RESIDENTS_BOOKED), accent: '#27AAE1' },
-  { label: 'most requested',   value: 'Bathroom Refresh',       accent: '#ED1C24' },
-  { label: 'avg clean time',   value: '45 min',                  accent: '#58595B' },
+  { label: 'residents booked', value: String(RESIDENTS_BOOKED), accent: '#6B8068' },
+  { label: 'most requested',   value: 'Bathroom Refresh',       accent: '#C8A876' },
+  { label: 'avg clean time',   value: '45 min',                  accent: '#A8B5A0' },
 ];
 
 const activityFeed = [
@@ -276,7 +279,7 @@ const activityFeed = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SHARED: Brand Lockup
+// SHARED: Brand Lockup — WYND 27/28 logo × Zing
 // ─────────────────────────────────────────────────────────────────────────────
 
 const BrandLockup = () => (
@@ -284,20 +287,29 @@ const BrandLockup = () => (
     initial={{ opacity: 0, y: -6 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.2 }}
-    className="flex items-center gap-8"
+    className="flex items-center gap-7"
   >
     <img src="building-logo.jpg" alt="WYND 27/28" style={{ height: 78, width: 'auto', objectFit: 'contain' }} />
-    <div className="flex items-center gap-3">
-      <div className="w-px h-9" style={{ background: 'rgba(88,89,91,0.20)' }}></div>
-      <span className="serif-italic text-[20px]" style={{ color: 'rgba(88,89,91,0.45)' }}>×</span>
-      <div className="w-px h-9" style={{ background: 'rgba(88,89,91,0.20)' }}></div>
+    <div className="flex items-center gap-3 text-teal/35">
+      <div className="w-px h-9 bg-teal/20"></div>
+      <span className="serif-italic text-[20px] text-teal/45">×</span>
+      <div className="w-px h-9 bg-teal/20"></div>
     </div>
-    <img src="zing-logo.svg" alt="Zing" style={{ height: 56, width: 'auto', objectFit: 'contain', filter: 'brightness(0) saturate(1) invert(35%) sepia(2%) saturate(0%) hue-rotate(0deg) brightness(95%)' }} />
+    <img
+      src="zing-logo.svg"
+      alt="Zing"
+      style={{
+        height: 56,
+        width: 'auto',
+        objectFit: 'contain',
+        filter: 'brightness(0) saturate(1) invert(18%) sepia(15%) saturate(1200%) hue-rotate(130deg) brightness(95%)'
+      }}
+    />
   </motion.div>
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// LIVE ACTIVITY TICKER
+// LIVE ACTIVITY TICKER — sage cream gradient, matches muze
 // ─────────────────────────────────────────────────────────────────────────────
 
 const LiveActivityTicker = () => {
@@ -317,15 +329,15 @@ const LiveActivityTicker = () => {
       transition={{ duration: 0.8, delay: 0.8 }}
       className="rounded-[22px] px-7 py-6 flex items-center gap-5 relative overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #F9FBFD 60%, #EFF7FC 100%)',
-        boxShadow: '0 8px 24px -8px rgba(39,170,225,0.18), 0 0 0 1px rgba(39,170,225,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
+        background: 'linear-gradient(to bottom right, #D8DFD0 0%, rgba(196,206,188,0.8) 45%, rgba(168,181,160,0.4) 100%)',
+        boxShadow: '0 12px 32px -10px rgba(107,128,104,0.40), 0 0 0 1px rgba(107,128,104,0.15), inset 0 1px 0 rgba(255,255,255,0.5)'
       }}
     >
-      <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.6 }}></div>
+      <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.85 }}></div>
       <div className="relative shrink-0 flex items-center gap-2.5 px-4 py-2 rounded-full"
-           style={{ background: 'rgba(39,170,225,0.10)', border: '1px solid rgba(39,170,225,0.22)' }}>
-        <div className="w-3 h-3 rounded-full live-dot" style={{ background: '#27AAE1' }}></div>
-        <span className="font-sans text-[13px] font-bold uppercase tracking-[0.18em]" style={{ color: '#1C8AB8' }}>live</span>
+           style={{ background: 'rgba(107,128,104,0.18)', border: '1px solid rgba(107,128,104,0.22)' }}>
+        <div className="w-3 h-3 rounded-full live-dot" style={{ background: '#6B8068' }}></div>
+        <span className="font-sans text-[13px] font-bold uppercase tracking-[0.18em]" style={{ color: '#6B8068' }}>live</span>
       </div>
       <div className="relative flex-1 overflow-hidden" style={{ height: 36 }}>
         <AnimatePresence mode="wait">
@@ -336,7 +348,7 @@ const LiveActivityTicker = () => {
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.4 }}
             className="font-sans text-[22px] font-semibold lowercase tracking-tight"
-            style={{ color: 'rgba(88,89,91,0.85)', lineHeight: '36px' }}
+            style={{ color: 'rgba(45,79,76,0.82)', lineHeight: '36px' }}
           >
             {activityFeed[currentIndex]}
           </motion.div>
@@ -347,7 +359,7 @@ const LiveActivityTicker = () => {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// WEEKLY CALENDAR — 5 horizontal cards
+// WEEKLY CALENDAR — 5 horizontal cards (sage/cream)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const WeeklyCalendar = () => (
@@ -358,34 +370,37 @@ const WeeklyCalendar = () => (
     className="flex flex-col"
   >
     <div className="flex items-center gap-4 mb-4">
-      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(237,28,36,0.40))' }}></div>
-      <span className="font-sans text-[14px] font-bold uppercase tracking-[0.32em]" style={{ color: 'rgba(88,89,91,0.65)' }}>this week</span>
-      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(39,170,225,0.40), transparent)' }}></div>
+      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(200,168,118,0.50))' }}></div>
+      <span className="font-sans text-[14px] font-bold uppercase tracking-[0.32em]" style={{ color: 'rgba(45,79,76,0.55)' }}>this week</span>
+      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(200,168,118,0.50), transparent)' }}></div>
     </div>
     <div className="grid grid-cols-5 gap-4">
       {getWeekDays().map((day, i) => {
         const sched = weeklySchedule[i];
-        const isFull = sched.spots <= 1;
+        const isLow = sched.spots <= 1;
+        const isHigh = sched.spots >= 5;
         return (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 + i * 0.07 }}
-            className={`relative overflow-hidden rounded-[18px] px-4 py-5 flex flex-col items-center ${isFull ? 'week-row-low' : ''}`}
+            className={`relative overflow-hidden rounded-[18px] px-4 py-5 flex flex-col items-center ${isLow ? 'week-row-low' : ''}`}
             style={{
-              background: isFull
-                ? 'linear-gradient(180deg, rgba(88,89,91,0.05) 0%, rgba(88,89,91,0.02) 100%)'
-                : '#FFFFFF',
-              boxShadow: isFull
-                ? '0 0 0 1px rgba(88,89,91,0.08), inset 0 1px 0 rgba(255,255,255,0.5)'
-                : '0 6px 20px -8px rgba(88,89,91,0.16), 0 0 0 1px rgba(88,89,91,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
+              background: isLow
+                ? 'linear-gradient(180deg, rgba(216,223,208,0.32) 0%, rgba(196,206,188,0.10) 100%)'
+                : 'rgba(255,255,255,0.92)',
+              boxShadow: isLow
+                ? '0 0 0 1px rgba(31,58,56,0.06), inset 0 1px 0 rgba(255,255,255,0.5)'
+                : '0 6px 20px -8px rgba(31,58,56,0.14), 0 0 0 1px rgba(31,58,56,0.06), inset 0 1px 0 rgba(255,255,255,0.9)',
             }}
           >
+            {isHigh && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.2 }}></div>}
+
             {/* Day name */}
             <div
               className="font-sans text-[15px] font-bold uppercase"
-              style={{ letterSpacing: '0.22em', color: isFull ? 'rgba(88,89,91,0.35)' : '#58595B' }}
+              style={{ letterSpacing: '0.22em', color: isLow ? 'rgba(45,79,76,0.30)' : '#1F3A38' }}
             >
               {day.short}
             </div>
@@ -397,7 +412,7 @@ const WeeklyCalendar = () => (
                   fontSize: 60,
                   lineHeight: 1,
                   letterSpacing: '-0.03em',
-                  color: isFull ? 'rgba(88,89,91,0.30)' : '#58595B',
+                  color: isLow ? 'rgba(45,79,76,0.25)' : '#1F3A38',
                 }}
               >
                 {day.ord.num}
@@ -407,7 +422,7 @@ const WeeklyCalendar = () => (
                 style={{
                   fontSize: 18,
                   marginLeft: 2,
-                  color: isFull ? 'rgba(88,89,91,0.30)' : 'rgba(88,89,91,0.55)',
+                  color: isLow ? 'rgba(45,79,76,0.25)' : 'rgba(31,58,56,0.50)',
                 }}
               >
                 {day.ord.suffix}
@@ -418,20 +433,19 @@ const WeeklyCalendar = () => (
             <div className="mt-3 mb-2">
               {sched.icon === 'check' && (
                 <svg width="44" height="44" viewBox="0 0 46 46" fill="none">
-                  <circle cx="23" cy="23" r="20" fill={isFull ? '#CFCFD2' : '#27AAE1'} />
+                  <circle cx="23" cy="23" r="20" fill={isLow ? '#C4CEBC' : '#1F3A38'} />
                   <path d="M15 23.5L20 28L31 17" stroke="white" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               )}
               {sched.icon === 'half' && (
                 <svg width="44" height="44" viewBox="0 0 46 46" fill="none">
-                  <circle cx="23" cy="23" r="19.5" stroke="#27AAE1" strokeWidth="2" fill="none" />
-                  <path d="M23 3 A20 20 0 0 0 23 43 Z" fill="#27AAE1" />
+                  <circle cx="23" cy="23" r="19.5" stroke="#1F3A38" strokeWidth="2" fill="none" />
+                  <path d="M23 3 A20 20 0 0 0 23 43 Z" fill="#1F3A38" />
                 </svg>
               )}
               {sched.icon === 'empty' && (
                 <svg width="44" height="44" viewBox="0 0 46 46" fill="none">
-                  <circle cx="23" cy="23" r="19" stroke="#ED1C24" strokeWidth="2.4" />
-                  <line x1="12" y1="34" x2="34" y2="12" stroke="#ED1C24" strokeWidth="2.4" strokeLinecap="round" />
+                  <circle cx="23" cy="23" r="19" stroke={isLow ? '#A8B5A0' : '#6B8068'} strokeWidth="2.2" />
                 </svg>
               )}
             </div>
@@ -444,7 +458,7 @@ const WeeklyCalendar = () => (
                   fontSize: 32,
                   lineHeight: 1,
                   letterSpacing: '-0.02em',
-                  color: isFull ? 'rgba(88,89,91,0.30)' : (sched.spots <= 1 ? '#ED1C24' : '#58595B'),
+                  color: isLow ? 'rgba(45,79,76,0.28)' : '#1F3A38',
                 }}
               >
                 {sched.spots}
@@ -454,7 +468,7 @@ const WeeklyCalendar = () => (
                 style={{
                   fontSize: 10,
                   letterSpacing: '0.22em',
-                  color: isFull ? 'rgba(88,89,91,0.32)' : 'rgba(88,89,91,0.55)',
+                  color: isLow ? 'rgba(45,79,76,0.25)' : 'rgba(45,79,76,0.50)',
                 }}
               >
                 spots left
@@ -468,7 +482,7 @@ const WeeklyCalendar = () => (
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SHARED: Bottom CTA + QR
+// SHARED: Bottom CTA + QR — teal gradient like muze
 // ─────────────────────────────────────────────────────────────────────────────
 
 const BottomCTA = ({ headline }) => (
@@ -478,25 +492,25 @@ const BottomCTA = ({ headline }) => (
     transition={{ duration: 0.8, delay: 1.0 }}
     className="relative overflow-hidden rounded-[24px] px-9 py-7"
     style={{
-      background: 'linear-gradient(135deg, #58595B 0%, #4A4B4D 60%, #3D3E40 100%)',
-      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 36px -10px rgba(88,89,91,0.35)'
+      background: 'linear-gradient(135deg, #1F3A38 0%, #2D4F4C 60%, #3E6863 100%)',
+      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08), 0 16px 36px -10px rgba(31,58,56,0.40)'
     }}
   >
-    {/* texture glows in brand colors */}
+    {/* texture glows — gold + sage */}
     <div className="absolute -top-20 -right-12 w-56 h-56 rounded-full"
-         style={{ background: 'radial-gradient(circle, rgba(39,170,225,0.30), transparent 70%)' }}></div>
+         style={{ background: 'radial-gradient(circle, rgba(200,168,118,0.22), transparent 70%)' }}></div>
     <div className="absolute -bottom-20 -left-12 w-56 h-56 rounded-full"
-         style={{ background: 'radial-gradient(circle, rgba(237,28,36,0.22), transparent 70%)' }}></div>
+         style={{ background: 'radial-gradient(circle, rgba(168,181,160,0.18), transparent 70%)' }}></div>
 
     <div className="relative flex items-center gap-8">
       {/* Text side */}
       <div className="flex-1">
-        <div className="font-serif font-medium text-white tracking-tight"
+        <div className="font-serif font-medium text-cream tracking-tight"
              style={{ fontSize: 60, lineHeight: 1.0, letterSpacing: '-0.03em' }}>
           {headline}
         </div>
         <div className="font-sans uppercase mt-3 font-semibold"
-             style={{ fontSize: 13, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.55)' }}>
+             style={{ fontSize: 13, letterSpacing: '0.28em', color: 'rgba(244,239,228,0.55)' }}>
           housekeeping · WYND 27/28
         </div>
       </div>
@@ -504,10 +518,10 @@ const BottomCTA = ({ headline }) => (
       {/* QR code */}
       <div className="shrink-0 flex flex-col items-center gap-2.5">
         <div className="rounded-[14px] p-3"
-             style={{ background: '#FFFFFF', boxShadow: '0 8px 24px -6px rgba(0,0,0,0.45)' }}>
+             style={{ background: '#F4EFE4', boxShadow: '0 8px 24px -6px rgba(0,0,0,0.35)' }}>
           <img src="qr-code.jpg" alt="Scan to book" className="rounded-[8px]" style={{ width: 110, height: 110, objectFit: 'cover' }} />
         </div>
-        <span className="font-sans uppercase font-bold" style={{ fontSize: 11, letterSpacing: '0.26em', color: 'rgba(255,255,255,0.70)' }}>scan to book</span>
+        <span className="font-sans uppercase font-bold" style={{ fontSize: 11, letterSpacing: '0.26em', color: 'rgba(244,239,228,0.70)' }}>scan to book</span>
       </div>
     </div>
   </motion.div>
@@ -523,7 +537,7 @@ const FloatingParticles = () => (
       const x = (i * 37 + 13) % 100;
       const y = (i * 53 + 7) % 100;
       const size = 3 + (i % 4) * 2;
-      const color = i % 3 === 0 ? '#27AAE1' : (i % 3 === 1 ? '#ED1C24' : '#58595B');
+      const color = i % 3 === 0 ? '#C8A876' : '#6B8068';
       return (
         <div
           key={i}
@@ -532,7 +546,7 @@ const FloatingParticles = () => (
             left: `${x}%`, top: `${y}%`,
             width: size, height: size,
             background: color,
-            opacity: 0.18,
+            opacity: 0.3,
             animation: `float-slow ${5 + (i % 4)}s ease-in-out infinite`,
             animationDelay: `${i * 0.3}s`
           }}
@@ -547,7 +561,7 @@ const FloatingParticles = () => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ActiveScreen = () => (
-  <div className="kiosk-frame grain">
+  <div className="kiosk-frame ambient-inner grain">
     <div className="relative z-10 h-full w-full px-12 py-8 flex flex-col">
 
       {/* TOP — Brand */}
@@ -571,30 +585,30 @@ const ActiveScreen = () => (
           <div className="relative shrink-0">
             <div className="w-[180px] h-[180px] rounded-[28px] overflow-hidden"
                  style={{
-                   boxShadow: '0 16px 40px -12px rgba(88,89,91,0.30), 0 0 0 1px rgba(88,89,91,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
+                   boxShadow: '0 16px 40px -12px rgba(31,58,56,0.28), 0 0 0 1px rgba(31,58,56,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
                  }}>
               <img src="cleaner-elizabeth.jpg" alt={cleaner.name} className="w-full h-full" style={{ objectFit: 'cover' }} />
             </div>
             {/* Live badge */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white"
-                 style={{ boxShadow: '0 4px 12px -4px rgba(88,89,91,0.25), 0 0 0 1px rgba(39,170,225,0.20)' }}>
-              <div className="w-2 h-2 rounded-full live-dot" style={{ background: '#27AAE1' }}></div>
-              <span className="font-sans font-bold uppercase" style={{ fontSize: 10, letterSpacing: '0.20em', color: '#1C8AB8' }}>live</span>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cream-2"
+                 style={{ boxShadow: '0 4px 12px -4px rgba(31,58,56,0.20), 0 0 0 1px rgba(31,58,56,0.05)' }}>
+              <div className="w-2 h-2 rounded-full live-dot" style={{ background: '#6B8068' }}></div>
+              <span className="font-sans font-bold uppercase" style={{ fontSize: 10, letterSpacing: '0.20em', color: '#6B8068' }}>live</span>
             </div>
           </div>
 
           {/* Info */}
           <div className="flex-1">
             <div className="font-serif font-medium tracking-tight"
-                 style={{ fontSize: 58, lineHeight: 1, letterSpacing: '-0.03em', color: '#58595B' }}>
+                 style={{ fontSize: 58, lineHeight: 1, letterSpacing: '-0.03em', color: '#1F3A38' }}>
               {cleaner.name}
             </div>
             <div className="font-serif font-medium mt-2.5"
-                 style={{ fontSize: 26, lineHeight: 1.2, color: '#27AAE1' }}>
+                 style={{ fontSize: 26, lineHeight: 1.2, color: '#6B8068' }}>
               {cleaner.status}
             </div>
             <div className="font-sans lowercase mt-2"
-                 style={{ fontSize: 16, color: 'rgba(88,89,91,0.55)' }}>
+                 style={{ fontSize: 16, color: 'rgba(45,79,76,0.55)' }}>
               {cleaner.role.toLowerCase()}
             </div>
           </div>
@@ -614,15 +628,15 @@ const ActiveScreen = () => (
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
                 className="rounded-[16px] px-5 py-4 relative overflow-hidden"
                 style={{
-                  background: '#FFFFFF',
-                  boxShadow: '0 4px 14px -6px rgba(88,89,91,0.10), 0 0 0 1px rgba(88,89,91,0.06), inset 0 1px 0 rgba(255,255,255,0.7)'
+                  background: 'rgba(250,246,238,0.92)',
+                  boxShadow: '0 4px 14px -6px rgba(31,58,56,0.10), 0 0 0 1px rgba(31,58,56,0.05), inset 0 1px 0 rgba(255,255,255,0.6)'
                 }}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full" style={{ background: stat.accent }}></div>
-                  <span className="font-sans uppercase font-semibold" style={{ fontSize: 10, letterSpacing: '0.20em', color: 'rgba(88,89,91,0.60)' }}>{stat.label}</span>
+                  <span className="font-sans uppercase font-semibold" style={{ fontSize: 10, letterSpacing: '0.20em', color: 'rgba(45,79,76,0.55)' }}>{stat.label}</span>
                 </div>
-                <div className="font-serif font-medium tracking-tight" style={{ fontSize: 22, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#58595B' }}>
+                <div className="font-serif font-medium tracking-tight" style={{ fontSize: 22, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#1F3A38' }}>
                   {stat.value}
                 </div>
               </motion.div>
@@ -651,7 +665,7 @@ const ActiveScreen = () => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AwayScreen = () => (
-  <div className="kiosk-frame grain">
+  <div className="kiosk-frame ambient-inner grain">
     <FloatingParticles />
     <div className="relative z-10 h-full w-full px-12 py-8 flex flex-col">
 
@@ -661,7 +675,6 @@ const AwayScreen = () => (
 
       <div className="mx-6 hairline mb-5"></div>
 
-      {/* Two-column: message (left) + ticker (right) */}
       <div className="flex gap-10 items-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -670,14 +683,14 @@ const AwayScreen = () => (
           className="flex-1"
         >
           <div className="font-sans uppercase font-bold mb-4"
-               style={{ fontSize: 12, letterSpacing: '0.30em', color: '#27AAE1' }}>
+               style={{ fontSize: 12, letterSpacing: '0.30em', color: '#6B8068' }}>
             evening · WYND 27/28
           </div>
           <h1 className="font-serif font-medium tracking-tight"
-              style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#58595B' }}>
-            The Zing cleaning team<br/>will be back <span className="serif-italic" style={{ color: '#27AAE1' }}>{getReturnLabel()}.</span>
+              style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#1F3A38' }}>
+            The Zing cleaning team<br/>will be back <span className="serif-italic" style={{ color: '#6B8068' }}>{getReturnLabel()}.</span>
           </h1>
-          <p className="font-sans mt-5 lowercase" style={{ fontSize: 18, lineHeight: 1.4, color: 'rgba(88,89,91,0.60)' }}>
+          <p className="font-sans mt-5 lowercase" style={{ fontSize: 18, lineHeight: 1.4, color: 'rgba(45,79,76,0.55)' }}>
             book your spot ahead of time
           </p>
         </motion.div>
@@ -704,7 +717,7 @@ const AwayScreen = () => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 const RechargingScreen = () => (
-  <div className="kiosk-frame grain">
+  <div className="kiosk-frame ambient-inner grain">
     <FloatingParticles />
     <div className="relative z-10 h-full w-full px-12 py-8 flex flex-col">
 
@@ -722,14 +735,14 @@ const RechargingScreen = () => (
           className="flex-1"
         >
           <div className="font-sans uppercase font-bold mb-4"
-               style={{ fontSize: 12, letterSpacing: '0.30em', color: '#ED1C24' }}>
+               style={{ fontSize: 12, letterSpacing: '0.30em', color: '#6B8068' }}>
             goodnight · WYND 27/28
           </div>
           <h1 className="font-serif font-medium tracking-tight"
-              style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#58595B' }}>
-            The Zing cleaning team<br/>will be back <span className="serif-italic" style={{ color: '#27AAE1' }}>{getReturnLabel()}.</span>
+              style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#1F3A38' }}>
+            The Zing cleaning team<br/>will be back <span className="serif-italic" style={{ color: '#6B8068' }}>{getReturnLabel()}.</span>
           </h1>
-          <p className="font-sans mt-5 lowercase" style={{ fontSize: 18, lineHeight: 1.4, color: 'rgba(88,89,91,0.60)' }}>
+          <p className="font-sans mt-5 lowercase" style={{ fontSize: 18, lineHeight: 1.4, color: 'rgba(45,79,76,0.55)' }}>
             book your spot ahead of time
           </p>
         </motion.div>
@@ -756,9 +769,8 @@ const RechargingScreen = () => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 function fitKiosk() {
-  const stage = document.querySelector('.kiosk-stage');
   const frame = document.querySelector('.kiosk-frame');
-  if (!frame || !stage) return;
+  if (!frame) return;
   // Reserve breathing room (~6% margin) so the card isn't full-bleed
   const margin = 0.94;
   const scaleX = (window.innerWidth  * margin) / 1600;
