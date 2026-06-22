@@ -1,0 +1,206 @@
+/* ============================================================
+   ZING · COLOR TOKENS
+   A calm, warm, hospitality-first palette.
+   Anchored on the brand's deep forest-teal, sage greens and
+   parchment creams observed across signage, carts and imagery.
+   ============================================================ */
+
+:root {
+  /* ---- Brand · Forest (the logo color; primary dark) ---- */
+  --forest-900: #14211F;
+  --forest-800: #1D2E32;    /* canonical logo / primary ink */
+  --forest-700: #284043;
+  --forest-600: #355457;
+  --forest-500: #466A6C;
+
+  /* ---- Brand · Sage (signage / cart / decorative) ---- */
+  --sage-700: #5F7A63;
+  --sage-600: #748E72;
+  --sage-500: #97A88D;      /* core brand sage (the menu sign) */
+  --sage-400: #B2C0A8;
+  --sage-300: #C9D8C2;      /* mint — the lobby cart */
+  --sage-200: #DCE6D4;
+  --sage-100: #E9EFE2;      /* palest sage wash */
+
+  /* ---- Warm neutrals · Paper & sand ---- */
+  --paper-0:   #FFFFFF;
+  --paper-50:  #FBF9F4;     /* ivory — cards */
+  --paper-100: #F5F1E8;     /* cream — default page surface */
+  --paper-200: #ECE4D5;     /* sand — recessed surface */
+  --paper-300: #E2D8C6;     /* warm border / divider, strong */
+  --sand-line: #E6DECF;     /* hairline divider on cream */
+
+  /* ---- Ink (text) ---- */
+  --ink-900: #1D2E32;       /* primary text = forest */
+  --ink-700: #3C4D4E;       /* secondary text */
+  --ink-600: #4F5F5E;       /* secondary-muted */
+  --ink-500: #647271;       /* tertiary / captions */
+  --ink-400: #8A9492;       /* placeholder / disabled text */
+  --ink-on-dark: #F5F1E8;   /* cream text on forest */
+
+  /* ---- Accent · Honey (sparingly — warmth from coffee/croissant) ---- */
+  --honey-600: #B98A3F;
+  --honey-500: #C8A86A;     /* gold accent */
+  --honey-300: #E6D2A8;
+  --honey-100: #F4EAD4;
+
+  /* ---- Semantic (muted, never loud) ---- */
+  --success-600: #4F7C5C;
+  --success-100: #E2EEE3;
+  --warning-600: #B27D3A;
+  --warning-100: #F5E9D4;
+  --danger-600:  #A85149;   /* muted clay, not alarm-red */
+  --danger-100:  #F2E0DC;
+  --info-600:    #527E86;
+  --info-100:    #DDEAEC;
+
+  /* ============================================================
+     SEMANTIC ALIASES — reference these in components/screens
+     ============================================================ */
+
+  /* Surfaces */
+  --surface-page:     var(--paper-100);
+  --surface-card:     var(--paper-50);
+  --surface-raised:   var(--paper-0);
+  --surface-sunken:   var(--paper-200);
+  --surface-inverse:  var(--forest-800);
+  --surface-accent:   var(--sage-100);
+  --surface-accent-strong: var(--sage-300);
+
+  /* Text */
+  --text-primary:    var(--ink-900);
+  --text-secondary:  var(--ink-700);
+  --text-muted:      var(--ink-500);
+  --text-disabled:   var(--ink-400);
+  --text-on-dark:    var(--ink-on-dark);
+  --text-on-accent:  var(--forest-800);
+
+  /* Lines & borders */
+  --border-subtle:  var(--sand-line);
+  --border-default: var(--paper-300);
+  --border-strong:  var(--sage-400);
+  --border-focus:   var(--forest-600);
+
+  /* Interactive — primary action is the deep forest (premium, Aman-like) */
+  --action-primary:        var(--forest-800);
+  --action-primary-hover:  var(--forest-700);
+  --action-primary-press:  var(--forest-900);
+  --action-on-primary:     var(--paper-50);
+
+  /* Interactive — secondary is sage */
+  --action-secondary:       var(--sage-500);
+  --action-secondary-hover: var(--sage-600);
+  --action-secondary-press: var(--sage-700);
+
+  /* Accent */
+  --accent: var(--honey-500);
+
+  /* Focus ring */
+  --ring: color-mix(in oklch, var(--forest-600) 45%, transparent);
+}
+/* ============================================================
+   ZING · SPACING, RADII, SHADOWS, MOTION
+   Soft, airy, generous. Rounded but not bubbly.
+   ============================================================ */
+
+:root {
+  /* Spacing scale (4px base, calm rhythm) */
+  --space-0:   0;
+  --space-1:   0.25rem;  /* 4 */
+  --space-2:   0.5rem;   /* 8 */
+  --space-3:   0.75rem;  /* 12 */
+  --space-4:   1rem;     /* 16 */
+  --space-5:   1.5rem;   /* 24 */
+  --space-6:   2rem;     /* 32 */
+  --space-7:   2.5rem;   /* 40 */
+  --space-8:   3rem;     /* 48 */
+  --space-9:   4rem;     /* 64 */
+  --space-10:  5rem;     /* 80 */
+  --space-11:  6.5rem;   /* 104 */
+  --space-12:  8rem;     /* 128 */
+
+  /* Radii — rounded, soft hospitality (never sharp, never pill-everything) */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-pill: 999px;
+
+  /* Shadows — low, soft, warm-tinted (light coming from above) */
+  --shadow-xs:  0 1px 2px rgba(29, 46, 50, 0.05);
+  --shadow-sm:  0 1px 3px rgba(29, 46, 50, 0.06), 0 1px 2px rgba(29, 46, 50, 0.04);
+  --shadow-md:  0 4px 12px rgba(29, 46, 50, 0.07), 0 2px 4px rgba(29, 46, 50, 0.04);
+  --shadow-lg:  0 12px 28px rgba(29, 46, 50, 0.10), 0 4px 10px rgba(29, 46, 50, 0.05);
+  --shadow-xl:  0 24px 56px rgba(29, 46, 50, 0.14), 0 8px 18px rgba(29, 46, 50, 0.06);
+  --shadow-inset: inset 0 1px 2px rgba(29, 46, 50, 0.06);
+
+  /* Layout */
+  --container-sm:  640px;
+  --container-md:  820px;
+  --container-lg:  1080px;
+  --container-xl:  1280px;
+  --gutter:        clamp(1.25rem, 4vw, 3rem); /* @kind spacing */
+
+  /* Motion — gentle, never bouncy. Calm confidence. */
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in:       cubic-bezier(0.4, 0.0, 1, 1); /* @kind other */
+  --duration-fast:   140ms; /* @kind other */
+  --duration-normal: 240ms; /* @kind other */
+  --duration-slow:   420ms; /* @kind other */
+}
+/* ============================================================
+   ZING · TYPOGRAPHY TOKENS
+   Serif display (Newsreader) + humanist sans (Hanken Grotesk).
+   Calm hierarchy, generous line-height, restrained weights.
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-sans:  'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:  var(--font-sans);
+  --font-display: var(--font-serif);
+
+  /* Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Type scale (1.200 minor-third, rooted at 16px) */
+  --text-2xs:  0.6875rem;  /* 11px — labels, legal */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px — body */
+  --text-md:   1.125rem;   /* 18px — lead body */
+  --text-lg:   1.375rem;   /* 22px */
+  --text-xl:   1.75rem;    /* 28px */
+  --text-2xl:  2.25rem;    /* 36px */
+  --text-3xl:  3rem;       /* 48px */
+  --text-4xl:  3.75rem;    /* 60px */
+  --text-5xl:  4.75rem;    /* 76px — hero display */
+
+  /* Line heights */
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.03em;  /* large serif display */
+  --tracking-tight:   -0.015em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.12em;    /* eyebrow / overline caps */
+
+  /* Semantic roles */
+  --display-family: var(--font-serif);
+  --heading-family: var(--font-serif);
+  --body-family:    var(--font-sans);
+  --ui-family:      var(--font-sans);
+  --eyebrow-family: var(--font-sans);
+}
