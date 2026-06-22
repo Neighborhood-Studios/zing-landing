@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>zing × WYND 27/28 — TV display</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/framer-motion@11.0.8/dist/framer-motion.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.17.12/babel.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..600,0..100,0..1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          // WYND 27/28 palette
+          'wynd-grey':     '#58595B',
+          'wynd-grey-2':   '#7A7B7E',
+          'wynd-grey-3':   '#9FA0A3',
+          'wynd-red':      '#ED1C24',
+          'wynd-red-soft': '#F26368',
+          'wynd-blue':     '#27AAE1',
+          'wynd-blue-soft':'#5DBFE9',
+          'wynd-bg':       '#F7F5F0',
+          'wynd-bg-2':     '#FBFAF6',
+          'wynd-card':     '#FFFFFF',
+          'wynd-ink':      '#2B2C2E',
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans:  ['DM Sans', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --wynd-grey:     #58595B;
+    --wynd-grey-2:   #7A7B7E;
+    --wynd-grey-3:   #9FA0A3;
+    --wynd-red:      #ED1C24;
+    --wynd-red-soft: #F26368;
+    --wynd-blue:     #27AAE1;
+    --wynd-blue-soft:#5DBFE9;
+    --wynd-bg:       #F7F5F0;
+    --wynd-bg-2:     #FBFAF6;
+    --wynd-card:     #FFFFFF;
+    --wynd-ink:      #2B2C2E;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--wynd-bg);
+    width: 100vw;
+    height: 100vh;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--wynd-grey);
+    position: relative;
+    /* outer wash so the centered card sits in some breathing room */
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 0%,   rgba(39, 170, 225, 0.06), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 100% 30%, rgba(237, 28, 36, 0.04),  transparent 60%),
+      radial-gradient(ellipse 70% 60% at 50% 110%, rgba(88, 89, 91, 0.04),  transparent 60%),
+      linear-gradient(180deg, #FBFAF6 0%, #F7F5F0 50%, #F2EFE7 100%);
+  }
+
+  .font-serif {
+    font-family: 'Fraunces', serif;
+    font-feature-settings: 'ss01' 1, 'ss02' 1;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  }
+  .serif-italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  }
+
+  /* 16:9 kiosk frame — 1600x900 reference, scaled to fit viewport with margin */
+  .kiosk-stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .kiosk-frame {
+    width: 1600px;
+    height: 900px;
+    transform-origin: center center;
+    position: relative;
+    border-radius: 32px;
+    background: var(--wynd-card);
+    box-shadow:
+      0 32px 80px -16px rgba(88, 89, 91, 0.18),
+      0 8px 24px -8px rgba(88, 89, 91, 0.10),
+      0 0 0 1px rgba(88, 89, 91, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+  }
+
+  /* subtle grain for the card */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.35 0 0 0 0 0.36 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.55;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* pulsing live dot */
+  @keyframes live-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(39, 170, 225, 0.7), 0 0 0 0 rgba(39, 170, 225, 0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(39, 170, 225, 0), 0 0 0 16px rgba(39, 170, 225, 0); }
+  }
+  .live-dot { animation: live-pulse 2.4s ease-in-out infinite; }
+
+  @keyframes live-pulse-red {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(237, 28, 36, 0.7), 0 0 0 0 rgba(237, 28, 36, 0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(237, 28, 36, 0), 0 0 0 16px rgba(237, 28, 36, 0); }
+  }
+  .live-dot-red { animation: live-pulse-red 2.4s ease-in-out infinite; }
+
+  @keyframes shimmer-x {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer-overlay {
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: shimmer-x 4.5s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-14px) rotate(0.5deg); }
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(88, 89, 91, 0.18), transparent);
+  }
+
+  .week-row-low {
+    background: linear-gradient(180deg, rgba(88,89,91,0.04) 0%, rgba(88,89,91,0.02) 100%);
+  }
+
+  ::-webkit-scrollbar { display: none; }
+  * { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+  /* prevent text selection on kiosk */
+  * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+const { motion, AnimatePresence } = window.Motion;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TIME HELPERS — EDT (America/New_York). Note: in Miami, EDT is the same TZ.
+// ─────────────────────────────────────────────────────────────────────────────
+
+function getEDTHour() {
+  const now = new Date();
+  const edtStr = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit' });
+  return parseInt(edtStr, 10);
+}
+
+function getEDTDay() {
+  const now = new Date();
+  const edtStr = now.toLocaleString('en-US', { timeZone: 'America/New_York', weekday: 'short' });
+  return edtStr.trim();
+}
+
+function getMode() {
+  const day = getEDTDay();
+  if (day === 'Sat' || day === 'Sun') return 'recharging';
+  const h = getEDTHour();
+  if (h >= 7 && h <= 17) return 'active';
+  if (h >= 18 && h <= 18) return 'away';
+  return 'recharging';
+}
+
+function isWeekendWindow() {
+  const day = getEDTDay();
+  if (day === 'Sat' || day === 'Sun') return true;
+  if (day === 'Fri' && getEDTHour() >= 18) return true;
+  return false;
+}
+
+function getReturnLabel() {
+  return isWeekendWindow() ? 'Monday' : 'tomorrow';
+}
+
+function ordinal(n) {
+  const s = ['th','st','nd','rd'];
+  const v = n % 100;
+  return { num: n, suffix: s[(v - 20) % 10] || s[v] || s[0] };
+}
+
+function getWeekDays() {
+  const now = new Date();
+  const edtStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+  const edtDate = new Date(edtStr);
+  const day = edtDate.getDay();
+  const monday = new Date(edtDate);
+  monday.setDate(edtDate.getDate() - (day === 0 ? 6 : day - 1));
+
+  if (isWeekendWindow()) {
+    monday.setDate(monday.getDate() + 7);
+  }
+
+  const days = [];
+  const names = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const shortNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+  for (let i = 0; i < 5; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    days.push({ name: names[i], short: shortNames[i], date: d.getDate(), ord: ordinal(d.getDate()) });
+  }
+  return days;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────────────────────────────
+
+const cleaner = {
+  name: 'Elizabeth',
+  role: 'Your Wynd cleaner',
+  status: 'Live in the building',
+};
+
+// ── SLOT DATA (update via prompt) ──────────────────────────────────
+// Icon is auto-derived: spots >= 3 → 'check', spots === 2 → 'half', spots <= 1 → 'empty'
+const SLOT_COUNTS = [0, 2, 1, 2, 0]; // [Mon, Tue, Wed, Thu, Fri]
+const RESIDENTS_BOOKED = 18;
+// ── END SLOT DATA ──────────────────────────────────────────────────
+
+const weeklySchedule = SLOT_COUNTS.map(spots => ({
+  spots,
+  icon: spots >= 3 ? 'check' : spots === 2 ? 'half' : 'empty',
+}));
+
+const weeklyStats = [
+  { label: 'residents booked', value: String(RESIDENTS_BOOKED), accent: '#27AAE1' },
+  { label: 'most requested',   value: 'Bathroom Refresh',       accent: '#ED1C24' },
+  { label: 'avg clean time',   value: '45 min',                  accent: '#58595B' },
+];
+
+const activityFeed = [
+  'a resident on floor 14 just booked',
+  'kitchen deep clean completed',
+  'now servicing one of your neighbors at WYND',
+  'bathroom refresh starting in 12 min',
+  'a resident scheduled monday at 10am',
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SHARED: Brand Lockup
+// ─────────────────────────────────────────────────────────────────────────────
+
+const BrandLockup = () => (
+  <motion.div
+    initial={{ opacity: 0, y: -6 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.2 }}
+    className="flex items-center gap-8"
+  >
+    <img src="building-logo.jpg" alt="WYND 27/28" style={{ height: 78, width: 'auto', objectFit: 'contain' }} />
+    <div className="flex items-center gap-3">
+      <div className="w-px h-9" style={{ background: 'rgba(88,89,91,0.20)' }}></div>
+      <span className="serif-italic text-[20px]" style={{ color: 'rgba(88,89,91,0.45)' }}>×</span>
+      <div className="w-px h-9" style={{ background: 'rgba(88,89,91,0.20)' }}></div>
+    </div>
+    <img src="zing-logo.svg" alt="Zing" style={{ height: 56, width: 'auto', objectFit: 'contain', filter: 'brightness(0) saturate(1) invert(35%) sepia(2%) saturate(0%) hue-rotate(0deg) brightness(95%)' }} />
+  </motion.div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LIVE ACTIVITY TICKER
+// ─────────────────────────────────────────────────────────────────────────────
+
+const LiveActivityTicker = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % activityFeed.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.8 }}
+      className="rounded-[22px] px-7 py-6 flex items-center gap-5 relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, #FFFFFF 0%, #F9FBFD 60%, #EFF7FC 100%)',
+        boxShadow: '0 8px 24px -8px rgba(39,170,225,0.18), 0 0 0 1px rgba(39,170,225,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
+      }}
+    >
+      <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.6 }}></div>
+      <div className="relative shrink-0 flex items-center gap-2.5 px-4 py-2 rounded-full"
+           style={{ background: 'rgba(39,170,225,0.10)', border: '1px solid rgba(39,170,225,0.22)' }}>
+        <div className="w-3 h-3 rounded-full live-dot" style={{ background: '#27AAE1' }}></div>
+        <span className="font-sans text-[13px] font-bold uppercase tracking-[0.18em]" style={{ color: '#1C8AB8' }}>live</span>
+      </div>
+      <div className="relative flex-1 overflow-hidden" style={{ height: 36 }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.4 }}
+            className="font-sans text-[22px] font-semibold lowercase tracking-tight"
+            style={{ color: 'rgba(88,89,91,0.85)', lineHeight: '36px' }}
+          >
+            {activityFeed[currentIndex]}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// WEEKLY CALENDAR — 5 horizontal cards
+// ─────────────────────────────────────────────────────────────────────────────
+
+const WeeklyCalendar = () => (
+  <motion.div
+    initial={{ opacity: 0, y: 8 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.45 }}
+    className="flex flex-col"
+  >
+    <div className="flex items-center gap-4 mb-4">
+      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(237,28,36,0.40))' }}></div>
+      <span className="font-sans text-[14px] font-bold uppercase tracking-[0.32em]" style={{ color: 'rgba(88,89,91,0.65)' }}>this week</span>
+      <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(39,170,225,0.40), transparent)' }}></div>
+    </div>
+    <div className="grid grid-cols-5 gap-4">
+      {getWeekDays().map((day, i) => {
+        const sched = weeklySchedule[i];
+        const isFull = sched.spots <= 1;
+        return (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 + i * 0.07 }}
+            className={`relative overflow-hidden rounded-[18px] px-4 py-5 flex flex-col items-center ${isFull ? 'week-row-low' : ''}`}
+            style={{
+              background: isFull
+                ? 'linear-gradient(180deg, rgba(88,89,91,0.05) 0%, rgba(88,89,91,0.02) 100%)'
+                : '#FFFFFF',
+              boxShadow: isFull
+                ? '0 0 0 1px rgba(88,89,91,0.08), inset 0 1px 0 rgba(255,255,255,0.5)'
+                : '0 6px 20px -8px rgba(88,89,91,0.16), 0 0 0 1px rgba(88,89,91,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
+            }}
+          >
+            {/* Day name */}
+            <div
+              className="font-sans text-[15px] font-bold uppercase"
+              style={{ letterSpacing: '0.22em', color: isFull ? 'rgba(88,89,91,0.35)' : '#58595B' }}
+            >
+              {day.short}
+            </div>
+            {/* Date number with ordinal */}
+            <div className="flex items-baseline justify-center mt-2">
+              <span
+                className="font-serif font-medium"
+                style={{
+                  fontSize: 60,
+                  lineHeight: 1,
+                  letterSpacing: '-0.03em',
+                  color: isFull ? 'rgba(88,89,91,0.30)' : '#58595B',
+                }}
+              >
+                {day.ord.num}
+              </span>
+              <span
+                className="font-sans font-bold"
+                style={{
+                  fontSize: 18,
+                  marginLeft: 2,
+                  color: isFull ? 'rgba(88,89,91,0.30)' : 'rgba(88,89,91,0.55)',
+                }}
+              >
+                {day.ord.suffix}
+              </span>
+            </div>
+
+            {/* Icon */}
+            <div className="mt-3 mb-2">
+              {sched.icon === 'check' && (
+                <svg width="44" height="44" viewBox="0 0 46 46" fill="none">
+                  <circle cx="23" cy="23" r="20" fill={isFull ? '#CFCFD2' : '#27AAE1'} />
+                  <path d="M15 23.5L20 28L31 17" stroke="white" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+              {sched.icon === 'half' && (
+                <svg width="44" height="44" viewBox="0 0 46 46" fill="none">
+                  <circle cx="23" cy="23" r="19.5" stroke="#27AAE1" strokeWidth="2" fill="none" />
+                  <path d="M23 3 A20 20 0 0 0 23 43 Z" fill="#27AAE1" />
+                </svg>
+              )}
+              {sched.icon === 'empty' && (
+                <svg width="44" height="44" viewBox="0 0 46 46" fill="none">
+                  <circle cx="23" cy="23" r="19" stroke="#ED1C24" strokeWidth="2.4" />
+                  <line x1="12" y1="34" x2="34" y2="12" stroke="#ED1C24" strokeWidth="2.4" strokeLinecap="round" />
+                </svg>
+              )}
+            </div>
+
+            {/* Spots */}
+            <div className="flex flex-col items-center mt-1">
+              <div
+                className="font-serif font-medium"
+                style={{
+                  fontSize: 32,
+                  lineHeight: 1,
+                  letterSpacing: '-0.02em',
+                  color: isFull ? 'rgba(88,89,91,0.30)' : (sched.spots <= 1 ? '#ED1C24' : '#58595B'),
+                }}
+              >
+                {sched.spots}
+              </div>
+              <span
+                className="font-sans uppercase mt-1.5 font-semibold"
+                style={{
+                  fontSize: 10,
+                  letterSpacing: '0.22em',
+                  color: isFull ? 'rgba(88,89,91,0.32)' : 'rgba(88,89,91,0.55)',
+                }}
+              >
+                spots left
+              </span>
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  </motion.div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SHARED: Bottom CTA + QR
+// ─────────────────────────────────────────────────────────────────────────────
+
+const BottomCTA = ({ headline }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 1.0 }}
+    className="relative overflow-hidden rounded-[24px] px-9 py-7"
+    style={{
+      background: 'linear-gradient(135deg, #58595B 0%, #4A4B4D 60%, #3D3E40 100%)',
+      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 36px -10px rgba(88,89,91,0.35)'
+    }}
+  >
+    {/* texture glows in brand colors */}
+    <div className="absolute -top-20 -right-12 w-56 h-56 rounded-full"
+         style={{ background: 'radial-gradient(circle, rgba(39,170,225,0.30), transparent 70%)' }}></div>
+    <div className="absolute -bottom-20 -left-12 w-56 h-56 rounded-full"
+         style={{ background: 'radial-gradient(circle, rgba(237,28,36,0.22), transparent 70%)' }}></div>
+
+    <div className="relative flex items-center gap-8">
+      {/* Text side */}
+      <div className="flex-1">
+        <div className="font-serif font-medium text-white tracking-tight"
+             style={{ fontSize: 60, lineHeight: 1.0, letterSpacing: '-0.03em' }}>
+          {headline}
+        </div>
+        <div className="font-sans uppercase mt-3 font-semibold"
+             style={{ fontSize: 13, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.55)' }}>
+          housekeeping · WYND 27/28
+        </div>
+      </div>
+
+      {/* QR code */}
+      <div className="shrink-0 flex flex-col items-center gap-2.5">
+        <div className="rounded-[14px] p-3"
+             style={{ background: '#FFFFFF', boxShadow: '0 8px 24px -6px rgba(0,0,0,0.45)' }}>
+          <img src="qr-code.jpg" alt="Scan to book" className="rounded-[8px]" style={{ width: 110, height: 110, objectFit: 'cover' }} />
+        </div>
+        <span className="font-sans uppercase font-bold" style={{ fontSize: 11, letterSpacing: '0.26em', color: 'rgba(255,255,255,0.70)' }}>scan to book</span>
+      </div>
+    </div>
+  </motion.div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FLOATING PARTICLES (for away/recharging)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const FloatingParticles = () => (
+  <>
+    {[...Array(16)].map((_, i) => {
+      const x = (i * 37 + 13) % 100;
+      const y = (i * 53 + 7) % 100;
+      const size = 3 + (i % 4) * 2;
+      const color = i % 3 === 0 ? '#27AAE1' : (i % 3 === 1 ? '#ED1C24' : '#58595B');
+      return (
+        <div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            left: `${x}%`, top: `${y}%`,
+            width: size, height: size,
+            background: color,
+            opacity: 0.18,
+            animation: `float-slow ${5 + (i % 4)}s ease-in-out infinite`,
+            animationDelay: `${i * 0.3}s`
+          }}
+        />
+      );
+    })}
+  </>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ACTIVE SCREEN — 7am–6pm EDT, Mon–Fri
+// ─────────────────────────────────────────────────────────────────────────────
+
+const ActiveScreen = () => (
+  <div className="kiosk-frame grain">
+    <div className="relative z-10 h-full w-full px-12 py-8 flex flex-col">
+
+      {/* TOP — Brand */}
+      <div className="flex justify-center pb-4">
+        <BrandLockup />
+      </div>
+
+      <div className="mx-6 hairline mb-5"></div>
+
+      {/* MIDDLE ROW: cleaner (left) + stats+ticker (right) */}
+      <div className="flex gap-8 items-stretch">
+        {/* LEFT — Cleaner card */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="flex items-center gap-6 shrink-0"
+          style={{ width: 580 }}
+        >
+          {/* Photo */}
+          <div className="relative shrink-0">
+            <div className="w-[180px] h-[180px] rounded-[28px] overflow-hidden"
+                 style={{
+                   boxShadow: '0 16px 40px -12px rgba(88,89,91,0.30), 0 0 0 1px rgba(88,89,91,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
+                 }}>
+              <img src="cleaner-elizabeth.jpg" alt={cleaner.name} className="w-full h-full" style={{ objectFit: 'cover' }} />
+            </div>
+            {/* Live badge */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white"
+                 style={{ boxShadow: '0 4px 12px -4px rgba(88,89,91,0.25), 0 0 0 1px rgba(39,170,225,0.20)' }}>
+              <div className="w-2 h-2 rounded-full live-dot" style={{ background: '#27AAE1' }}></div>
+              <span className="font-sans font-bold uppercase" style={{ fontSize: 10, letterSpacing: '0.20em', color: '#1C8AB8' }}>live</span>
+            </div>
+          </div>
+
+          {/* Info */}
+          <div className="flex-1">
+            <div className="font-serif font-medium tracking-tight"
+                 style={{ fontSize: 58, lineHeight: 1, letterSpacing: '-0.03em', color: '#58595B' }}>
+              {cleaner.name}
+            </div>
+            <div className="font-serif font-medium mt-2.5"
+                 style={{ fontSize: 26, lineHeight: 1.2, color: '#27AAE1' }}>
+              {cleaner.status}
+            </div>
+            <div className="font-sans lowercase mt-2"
+                 style={{ fontSize: 16, color: 'rgba(88,89,91,0.55)' }}>
+              {cleaner.role.toLowerCase()}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* RIGHT — Live activity ticker + stats */}
+        <div className="flex-1 flex flex-col gap-4">
+          <LiveActivityTicker />
+
+          {/* Stats row */}
+          <div className="grid grid-cols-3 gap-3">
+            {weeklyStats.map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
+                className="rounded-[16px] px-5 py-4 relative overflow-hidden"
+                style={{
+                  background: '#FFFFFF',
+                  boxShadow: '0 4px 14px -6px rgba(88,89,91,0.10), 0 0 0 1px rgba(88,89,91,0.06), inset 0 1px 0 rgba(255,255,255,0.7)'
+                }}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 rounded-full" style={{ background: stat.accent }}></div>
+                  <span className="font-sans uppercase font-semibold" style={{ fontSize: 10, letterSpacing: '0.20em', color: 'rgba(88,89,91,0.60)' }}>{stat.label}</span>
+                </div>
+                <div className="font-serif font-medium tracking-tight" style={{ fontSize: 22, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#58595B' }}>
+                  {stat.value}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-6 hairline mt-5 mb-4"></div>
+
+      {/* WEEKLY CALENDAR */}
+      <div className="flex-1 flex flex-col">
+        <WeeklyCalendar />
+      </div>
+
+      {/* BOTTOM CTA */}
+      <div className="mt-4">
+        <BottomCTA headline="Book your clean today" />
+      </div>
+    </div>
+  </div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AWAY SCREEN — 6pm–7pm EDT, weekdays
+// ─────────────────────────────────────────────────────────────────────────────
+
+const AwayScreen = () => (
+  <div className="kiosk-frame grain">
+    <FloatingParticles />
+    <div className="relative z-10 h-full w-full px-12 py-8 flex flex-col">
+
+      <div className="flex justify-center pb-4">
+        <BrandLockup />
+      </div>
+
+      <div className="mx-6 hairline mb-5"></div>
+
+      {/* Two-column: message (left) + ticker (right) */}
+      <div className="flex gap-10 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="flex-1"
+        >
+          <div className="font-sans uppercase font-bold mb-4"
+               style={{ fontSize: 12, letterSpacing: '0.30em', color: '#27AAE1' }}>
+            evening · WYND 27/28
+          </div>
+          <h1 className="font-serif font-medium tracking-tight"
+              style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#58595B' }}>
+            The Zing cleaning team<br/>will be back <span className="serif-italic" style={{ color: '#27AAE1' }}>{getReturnLabel()}.</span>
+          </h1>
+          <p className="font-sans mt-5 lowercase" style={{ fontSize: 18, lineHeight: 1.4, color: 'rgba(88,89,91,0.60)' }}>
+            book your spot ahead of time
+          </p>
+        </motion.div>
+        <div style={{ width: 580 }}>
+          <LiveActivityTicker />
+        </div>
+      </div>
+
+      <div className="mx-6 hairline mt-5 mb-4"></div>
+
+      <div className="flex-1 flex flex-col">
+        <WeeklyCalendar />
+      </div>
+
+      <div className="mt-4">
+        <BottomCTA headline="Book your clean today" />
+      </div>
+    </div>
+  </div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RECHARGING SCREEN — overnight + weekends
+// ─────────────────────────────────────────────────────────────────────────────
+
+const RechargingScreen = () => (
+  <div className="kiosk-frame grain">
+    <FloatingParticles />
+    <div className="relative z-10 h-full w-full px-12 py-8 flex flex-col">
+
+      <div className="flex justify-center pb-4">
+        <BrandLockup />
+      </div>
+
+      <div className="mx-6 hairline mb-5"></div>
+
+      <div className="flex gap-10 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="flex-1"
+        >
+          <div className="font-sans uppercase font-bold mb-4"
+               style={{ fontSize: 12, letterSpacing: '0.30em', color: '#ED1C24' }}>
+            goodnight · WYND 27/28
+          </div>
+          <h1 className="font-serif font-medium tracking-tight"
+              style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#58595B' }}>
+            The Zing cleaning team<br/>will be back <span className="serif-italic" style={{ color: '#27AAE1' }}>{getReturnLabel()}.</span>
+          </h1>
+          <p className="font-sans mt-5 lowercase" style={{ fontSize: 18, lineHeight: 1.4, color: 'rgba(88,89,91,0.60)' }}>
+            book your spot ahead of time
+          </p>
+        </motion.div>
+        <div style={{ width: 580 }}>
+          <LiveActivityTicker />
+        </div>
+      </div>
+
+      <div className="mx-6 hairline mt-5 mb-4"></div>
+
+      <div className="flex-1 flex flex-col">
+        <WeeklyCalendar />
+      </div>
+
+      <div className="mt-4">
+        <BottomCTA headline="Book your clean today" />
+      </div>
+    </div>
+  </div>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// APP — auto-switch on time + scale to viewport with breathing room
+// ─────────────────────────────────────────────────────────────────────────────
+
+function fitKiosk() {
+  const stage = document.querySelector('.kiosk-stage');
+  const frame = document.querySelector('.kiosk-frame');
+  if (!frame || !stage) return;
+  // Reserve breathing room (~6% margin) so the card isn't full-bleed
+  const margin = 0.94;
+  const scaleX = (window.innerWidth  * margin) / 1600;
+  const scaleY = (window.innerHeight * margin) / 900;
+  const s = Math.min(scaleX, scaleY);
+  frame.style.transform = `scale(${s})`;
+}
+
+const App = () => {
+  const [mode, setMode] = useState(getMode);
+
+  useEffect(() => {
+    fitKiosk();
+    window.addEventListener('resize', fitKiosk);
+    return () => window.removeEventListener('resize', fitKiosk);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => setMode(getMode()), 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-refresh at the top of every hour
+  useEffect(() => {
+    const now = new Date();
+    const msUntilNextHour = (60 - now.getMinutes()) * 60000 - now.getSeconds() * 1000 - now.getMilliseconds();
+    const firstTimeout = setTimeout(() => {
+      location.reload();
+    }, msUntilNextHour);
+    return () => clearTimeout(firstTimeout);
+  }, []);
+
+  return (
+    <div className="kiosk-stage">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={mode}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {mode === 'active' && <ActiveScreen />}
+          {mode === 'away' && <AwayScreen />}
+          {mode === 'recharging' && <RechargingScreen />}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
