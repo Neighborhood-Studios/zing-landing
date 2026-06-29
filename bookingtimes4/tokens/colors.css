@@ -1,0 +1,100 @@
+/* ============================================================
+   ZING · COLOR TOKENS
+   A calm, warm, hospitality-first palette.
+   Anchored on the brand's deep forest-teal, sage greens and
+   parchment creams observed across signage, carts and imagery.
+   ============================================================ */
+
+:root {
+  /* ---- Brand · Forest (the logo color; primary dark) ---- */
+  --forest-900: #14211F;
+  --forest-800: #1D2E32;    /* canonical logo / primary ink */
+  --forest-700: #284043;
+  --forest-600: #355457;
+  --forest-500: #466A6C;
+
+  /* ---- Brand · Sage (signage / cart / decorative) ---- */
+  --sage-700: #5F7A63;
+  --sage-600: #748E72;
+  --sage-500: #97A88D;      /* core brand sage (the menu sign) */
+  --sage-400: #B2C0A8;
+  --sage-300: #C9D8C2;      /* mint — the lobby cart */
+  --sage-200: #DCE6D4;
+  --sage-100: #E9EFE2;      /* palest sage wash */
+
+  /* ---- Warm neutrals · Paper & sand ---- */
+  --paper-0:   #FFFFFF;
+  --paper-50:  #FBF9F4;     /* ivory — cards */
+  --paper-100: #F5F1E8;     /* cream — default page surface */
+  --paper-200: #ECE4D5;     /* sand — recessed surface */
+  --paper-300: #E2D8C6;     /* warm border / divider, strong */
+  --sand-line: #E6DECF;     /* hairline divider on cream */
+
+  /* ---- Ink (text) ---- */
+  --ink-900: #1D2E32;       /* primary text = forest */
+  --ink-700: #3C4D4E;       /* secondary text */
+  --ink-600: #4F5F5E;       /* secondary-muted */
+  --ink-500: #647271;       /* tertiary / captions */
+  --ink-400: #8A9492;       /* placeholder / disabled text */
+  --ink-on-dark: #F5F1E8;   /* cream text on forest */
+
+  /* ---- Accent · Honey (sparingly — warmth from coffee/croissant) ---- */
+  --honey-600: #B98A3F;
+  --honey-500: #C8A86A;     /* gold accent */
+  --honey-300: #E6D2A8;
+  --honey-100: #F4EAD4;
+
+  /* ---- Semantic (muted, never loud) ---- */
+  --success-600: #4F7C5C;
+  --success-100: #E2EEE3;
+  --warning-600: #B27D3A;
+  --warning-100: #F5E9D4;
+  --danger-600:  #A85149;   /* muted clay, not alarm-red */
+  --danger-100:  #F2E0DC;
+  --info-600:    #527E86;
+  --info-100:    #DDEAEC;
+
+  /* ============================================================
+     SEMANTIC ALIASES — reference these in components/screens
+     ============================================================ */
+
+  /* Surfaces */
+  --surface-page:     var(--paper-100);
+  --surface-card:     var(--paper-50);
+  --surface-raised:   var(--paper-0);
+  --surface-sunken:   var(--paper-200);
+  --surface-inverse:  var(--forest-800);
+  --surface-accent:   var(--sage-100);
+  --surface-accent-strong: var(--sage-300);
+
+  /* Text */
+  --text-primary:    var(--ink-900);
+  --text-secondary:  var(--ink-700);
+  --text-muted:      var(--ink-500);
+  --text-disabled:   var(--ink-400);
+  --text-on-dark:    var(--ink-on-dark);
+  --text-on-accent:  var(--forest-800);
+
+  /* Lines & borders */
+  --border-subtle:  var(--sand-line);
+  --border-default: var(--paper-300);
+  --border-strong:  var(--sage-400);
+  --border-focus:   var(--forest-600);
+
+  /* Interactive — primary action is the deep forest (premium, Aman-like) */
+  --action-primary:        var(--forest-800);
+  --action-primary-hover:  var(--forest-700);
+  --action-primary-press:  var(--forest-900);
+  --action-on-primary:     var(--paper-50);
+
+  /* Interactive — secondary is sage */
+  --action-secondary:       var(--sage-500);
+  --action-secondary-hover: var(--sage-600);
+  --action-secondary-press: var(--sage-700);
+
+  /* Accent */
+  --accent: var(--honey-500);
+
+  /* Focus ring */
+  --ring: color-mix(in oklch, var(--forest-600) 45%, transparent);
+}

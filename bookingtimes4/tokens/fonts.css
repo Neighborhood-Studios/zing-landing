@@ -1,0 +1,14 @@
+/* ============================================================
+   ZING · WEBFONTS
+   --------------------------------------------------------------
+   SUBSTITUTION NOTE: Zing's true webfonts were not provided.
+   These Google Fonts approximate the brand voice:
+     · Newsreader  → warm, editorial high-contrast serif that
+                     echoes the elegant "zing" wordmark, used for
+                     display / headlines (hospitality calm).
+     · Hanken Grotesk → clean, friendly humanist sans for UI &
+                     body — premium without being corporate.
+   Replace these with the licensed brand fonts when available.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
