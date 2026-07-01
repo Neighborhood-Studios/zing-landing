@@ -61,7 +61,20 @@ function PackageModal({ pkg, added, onClose, onAdd }) {
 /* ============================ Floating availability bar ============================ */
 function FloatingBar({ cart, dayIdx, setDayIdx, onOpen }) {
   const dur = cart.reduce((s, c) => s + c.dur, 0);
-  const date = FIVE[dayIdx];
+
+  // Auto-track availability: always land on the earliest day that fits the current
+  // visit. Adding tasks pushes forward past full days; removing tasks pulls back to
+  // a sooner opening.
+  useEffect(() => {
+    if (dur === 0) return;
+    const firstAvail = BUSINESS_DAYS.findIndex(d => firstFit(busyFor(d), dur) != null);
+    if (firstAvail >= 0 && firstAvail !== dayIdx) setDayIdx(firstAvail);
+  }, [dur]);
+
+  // 5-day preview window that always keeps the selected day in view.
+  const winStart = dayIdx < WEEK ? 0 : Math.min(dayIdx, BUSINESS_DAYS.length - WEEK);
+  const days = BUSINESS_DAYS.slice(winStart, winStart + WEEK);
+  const date = BUSINESS_DAYS[dayIdx];
   const active = dur > 0;
   return (
     <div className="fbar" onClick={onOpen}>
@@ -70,12 +83,12 @@ function FloatingBar({ cart, dayIdx, setDayIdx, onOpen }) {
           <div className="fbar__ic"><LineIcon d={P.clock} w={17} /></div>
           <div style={{ minWidth: 0 }}>
             <div className="fbar__big">{active ? `~${fmtDur(dur)}` : "No tasks yet"}</div>
-            <div className="fbar__sub">{active ? `${cart.length} ${cart.length === 1 ? "task" : "tasks"} · tap to pick a time` : "Add tasks to build a visit"}</div>
+            <div className="fbar__sub">{active ? `${cart.length} ${cart.length === 1 ? "task" : "tasks"} · Tap to pick a time` : "Add tasks to build a visit"}</div>
           </div>
         </div>
         <div className="fbar__day"><b>{fmtDayLabel(date)}</b><span>{fmtDateLabel(date)}</span></div>
       </div>
-      <DayChips days={FIVE} idx={dayIdx} onPick={(i) => { setDayIdx(i); onOpen(); }} dur={dur} />
+      <DayChips days={days} idx={dayIdx - winStart} onPick={(i) => { setDayIdx(winStart + i); onOpen(); }} dur={dur} />
     </div>
   );
 }
@@ -107,36 +120,41 @@ function BookingPage({ cart, dayIdx, setDayIdx, onBack, onReserve }) {
   const nudge = (d) => { if (selStart == null) return; const n = selStart + d; if (fits(busy, n, dur)) setSelStart(n); };
 
   return (
-    <div className="scroll bookpage page-anim"><div className="pad" style={{ paddingBottom: 120 }}>
-      <div className="subhead">
-        <button className="back" onClick={onBack}><LineIcon d={P.left} w={20} /></button>
-        <h2>Pick your time</h2>
-      </div>
-
-      <div className="visitbar" style={{ marginTop: 0 }}>
-        <div className="visitbar__ring"><LineIcon d={P.clock} w={30} sw={1.4} /></div>
-        <div className="visitbar__t">
-          <div className="visitbar__big">{active ? `~${fmtDur(dur)}` : "No tasks yet"}</div>
-          <div className="visitbar__sub">{active ? `${cart.length} ${cart.length === 1 ? "task" : "tasks"} · one visit` : "Add tasks on the home screen"}</div>
+    <div className="bookpage page-anim">
+      <div className="bookhead">
+        <div className="subhead">
+          <button className="back" onClick={onBack}><LineIcon d={P.left} w={20} /></button>
+          <h2>Pick your time</h2>
         </div>
-      </div>
 
-      <div style={{ marginTop: 16 }}>
-        <div className="weeknav">
-          <button className="weeknav__arrow" onClick={() => goWeek(-1)} disabled={weekStart === 0} aria-label="Previous week"><LineIcon d={P.left} w={18} /></button>
-          <div className="weeknav__label">
-            <b>{monthLabel(weekDays[0], weekDays[weekDays.length - 1])}</b>
-            <span>{weekStart === 0 ? "This week" : `${MONTHS[weekDays[0].getMonth()]} ${weekDays[0].getDate()} – ${MONTHS[weekDays[weekDays.length-1].getMonth()]} ${weekDays[weekDays.length-1].getDate()}`}</span>
+        <div className="visitbar" style={{ marginTop: 0 }}>
+          <div className="visitbar__ring"><LineIcon d={P.clock} w={30} sw={1.4} /></div>
+          <div className="visitbar__t">
+            <div className="visitbar__big">{active ? `~${fmtDur(dur)}` : "No tasks yet"}</div>
+            <div className="visitbar__sub">{active ? `${cart.length} ${cart.length === 1 ? "task" : "tasks"} · one visit` : "Add tasks on the home screen"}</div>
           </div>
-          <button className="weeknav__arrow" onClick={() => goWeek(1)} disabled={weekStart + WEEK >= BUSINESS_DAYS.length} aria-label="Next week"><LineIcon d={P.right} w={18} /></button>
         </div>
-        <DayChips days={weekDays} idx={localSel} onPick={(i) => setDayIdx(weekStart + i)} dur={dur} variant="page" />
+
+        <div style={{ marginTop: 16 }}>
+          <div className="weeknav">
+            <button className="weeknav__arrow" onClick={() => goWeek(-1)} disabled={weekStart === 0} aria-label="Previous week"><LineIcon d={P.left} w={18} /></button>
+            <div className="weeknav__label">
+              <b>{monthLabel(weekDays[0], weekDays[weekDays.length - 1])}</b>
+              <span>{weekStart === 0 ? "This week" : `${MONTHS[weekDays[0].getMonth()]} ${weekDays[0].getDate()} – ${MONTHS[weekDays[weekDays.length-1].getMonth()]} ${weekDays[weekDays.length-1].getDate()}`}</span>
+            </div>
+            <button className="weeknav__arrow" onClick={() => goWeek(1)} disabled={weekStart + WEEK >= BUSINESS_DAYS.length} aria-label="Next week"><LineIcon d={P.right} w={18} /></button>
+          </div>
+          <DayChips days={weekDays} idx={localSel} onPick={(i) => setDayIdx(weekStart + i)} dur={dur} variant="page" />
+        </div>
+
+        <div style={{ marginTop: 16 }}>
+          <TimelineLegend booking={active} />
+          {active && <div className="pickcue"><LineIcon d={P.clock} w={15} /> Tap an open slot or drag your visit to set a time</div>}
+          {!active && <div className="bookhint">Add a task on the home screen to reserve — you can still preview open slots below.</div>}
+        </div>
       </div>
 
-      <div style={{ marginTop: 16 }}>
-        <TimelineLegend booking={active} />
-        {active && <div className="pickcue"><LineIcon d={P.clock} w={15} /> Tap an open slot or drag your visit to set a time</div>}
-        {!active && <div className="bookhint">Add a task on the home screen to reserve — you can still preview open slots below.</div>}
+      <div className="bookcal">
         <div key={dayIdx} className="slide-anim">
           <Timeline busy={busy} dur={active ? dur : null} selStart={active ? selStart : null} onPick={active ? pick : null} onDragStart={active ? pick : null} showOpen />
         </div>
@@ -144,15 +162,14 @@ function BookingPage({ cart, dayIdx, setDayIdx, onBack, onReserve }) {
           <div className="stepper"><div className="stepper__lbl">No open block fits this visit — try another day (red = full).</div></div>
         )}
       </div>
-    </div>
 
-    <div className="stickyfoot stickyfoot--page">
-      <button className="btn btn--primary btn--block" disabled={active && selStart == null}
-        onClick={() => active ? onReserve({ date, start: selStart, dur }) : onBack()}>
-        {active
-          ? (selStart != null ? `Continue – ${fmtTime(selStart)} to ${fmtTime(selStart + dur)}` : "Pick a time on the calendar")
-          : "Add a task to reserve"}
-      </button>
+      <div className="stickyfoot stickyfoot--page">
+        <button className="btn btn--primary btn--block" disabled={active && selStart == null}
+          onClick={() => active ? onReserve({ date, start: selStart, dur }) : onBack()}>
+          {active
+            ? (selStart != null ? `Continue – ${fmtTime(selStart)} to ${fmtTime(selStart + dur)}` : "Pick a time on the calendar")
+            : "Add a task to reserve"}
+        </button>
     </div>
     </div>
   );
@@ -224,20 +241,23 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
   const place = () => onPlaceOrder({ tip: tipAmt, discount, total, freq, entry, notes, pay: pay === "apple" ? "Apple Pay" : "Visa ····4242" });
 
   return (
-    <div className="scroll bookpage page-anim"><div className="pad" style={{ paddingTop: 4, paddingBottom: 40 }}>
-      <div className="subhead">
-        <button className="back" onClick={onBack}><LineIcon d={P.left} w={20} /></button>
-        <h2>Last step</h2>
-      </div>
+    <div className="bookpage page-anim">
+      <div className="cohead">
+        <div className="subhead">
+          <button className="back" onClick={onBack}><LineIcon d={P.left} w={20} /></button>
+          <h2>Last step</h2>
+        </div>
 
-      <div className="recap">
-        <div className="recap__ic"><LineIcon d={P.cal} w={18} /></div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div className="recap__t">{fmtDayLabel(booking.date)}, {fmtDateLabel(booking.date)} · {fmtTime(booking.start)}–{fmtTime(booking.start + booking.dur)}</div>
-          <div className="recap__s">{cart.length} {cart.length === 1 ? "task" : "tasks"} · ~{fmtDur(booking.dur)} · Bezel Miami 1925</div>
+        <div className="recap">
+          <div className="recap__ic"><LineIcon d={P.cal} w={18} /></div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div className="recap__t">{fmtDayLabel(booking.date)}, {fmtDateLabel(booking.date)} · {fmtTime(booking.start)}–{fmtTime(booking.start + booking.dur)}</div>
+            <div className="recap__s">{cart.length} {cart.length === 1 ? "task" : "tasks"} · ~{fmtDur(booking.dur)} · Bezel Miami 1925</div>
+          </div>
         </div>
       </div>
 
+      <div className="cobody">
       {/* Frequency */}
       <div className="card card--active">
         <div className="secttl"><LineIcon d={P.refresh} w={17} /> How often?</div>
@@ -247,6 +267,24 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
               {f}{FREQ_SUB[f] ? <span className="freqgrid__sub">{FREQ_SUB[f]}</span> : null}
             </button>
           ))}
+        </div>
+      </div>
+
+      {/* Tip */}
+      {/* Entry details */}
+      <div className={"card" + (entry ? " card--active" : "")}>
+        <div className="secttl"><LineIcon d={P.home} w={17} /> How will we get in?</div>
+        <div className="field" style={{ marginBottom: 12 }}>
+          <div className="selectwrap">
+            <select value={entry} onChange={(e) => setEntry(e.target.value)}>
+              <option value="">Select an option…</option>
+              {ENTRY_OPTS.map(o => <option key={o} value={o}>{o}</option>)}
+            </select>
+          </div>
+        </div>
+        <div className="field" style={{ marginBottom: 0 }}>
+          <label>Any entry or special instructions?</label>
+          <input type="text" placeholder="Knock before entering, friendly dog inside…" value={notes} onChange={(e) => setNotes(e.target.value)} />
         </div>
       </div>
 
@@ -269,33 +307,6 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
           </div>
         </div>
         <button className={"notip" + (tip.mode === "none" ? " notip--on" : "")} onClick={() => setTip({ mode: "none" })}>No tip</button>
-      </div>
-
-      {/* Entry details */}
-      <div className={"card" + (entry ? " card--active" : "")}>
-        <div className="secttl"><LineIcon d={P.home} w={17} /> How will we get in?</div>
-        <div className="field" style={{ marginBottom: 12 }}>
-          <div className="selectwrap">
-            <select value={entry} onChange={(e) => setEntry(e.target.value)}>
-              <option value="">Select an option…</option>
-              {ENTRY_OPTS.map(o => <option key={o} value={o}>{o}</option>)}
-            </select>
-          </div>
-        </div>
-        <div className="field" style={{ marginBottom: 0 }}>
-          <label>Any entry or special instructions?</label>
-          <input type="text" placeholder="Knock before entering, friendly dog inside…" value={notes} onChange={(e) => setNotes(e.target.value)} />
-        </div>
-      </div>
-
-      {/* Coupon */}
-      <div className={"card" + (applied ? " card--active" : "")}>
-        <div className="secttl"><LineIcon d={P.bag} w={17} /> Have a coupon code?</div>
-        <div className="coupon">
-          <input type="text" placeholder="Enter coupon code" value={coupon} onChange={(e) => setCoupon(e.target.value.toUpperCase())} />
-          <button disabled={!coupon.trim()} onClick={() => setApplied(coupon.trim())}>Apply</button>
-        </div>
-        {applied && <div className="coupon__ok"><LineIcon d={P.check} w={15} sw={2} /> “{applied}” applied · 10% off</div>}
       </div>
 
       {/* Payment */}
@@ -325,6 +336,16 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
         )}
       </div>
 
+      {/* Coupon */}
+      <div className={"card" + (applied ? " card--active" : "")}>
+        <div className="secttl"><LineIcon d={P.bag} w={17} /> Have a coupon code?</div>
+        <div className="coupon">
+          <input type="text" placeholder="Enter coupon code" value={coupon} onChange={(e) => setCoupon(e.target.value.toUpperCase())} />
+          <button disabled={!coupon.trim()} onClick={() => setApplied(coupon.trim())}>Apply</button>
+        </div>
+        {applied && <div className="coupon__ok"><LineIcon d={P.check} w={15} sw={2} /> “{applied}” applied · 10% off</div>}
+      </div>
+
       {/* Summary */}
       <div className="card">
         <div className="totalrow"><span>Subtotal</span><b>${subtotal.toFixed(2)}</b></div>
@@ -345,15 +366,66 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
       <div style={{ textAlign: "center", fontSize: 11.5, color: "var(--ink-500)", marginTop: 12, lineHeight: 1.5 }}>
         You won't be charged until your visit is complete. We'll text you to confirm timing.
       </div>
-    </div>
+      </div>
 
     {apOpen && <ApplePaySheet amount={total} onCancel={() => setApOpen(false)} onDone={() => { setApOpen(false); place(); }} />}
     </div>
   );
 }
 
+/* ============================ Info sheet (task / package description) ============================ */
+function InfoSheet({ item, onClose }) {
+  const isPkg = !!item.tasks;
+  const tasks = isPkg ? item.tasks.map(id => TASK_BY_ID[id]).filter(Boolean) : [];
+  const dur = isPkg ? tasks.reduce((s, t) => s + t.dur, 0) : item.dur;
+  return (
+    <div className="scrim" onClick={onClose}>
+      <div className="sheet" onClick={(e) => e.stopPropagation()}>
+        <button className="sheet__close" onClick={onClose}><LineIcon d={P.close} w={16} /></button>
+        <div className="sheet__icon"><img src={ICONS + item.icon} alt="" /></div>
+        <h3 className="sheet__title">{item.name}</h3>
+        <div className="sheet__meta">
+          <span><LineIcon d={P.clock} w={14} /> About {fmtDur(dur)}{isPkg ? " / visit" : ""}</span>
+          <span className="sheet__dot">·</span>
+          <span>{isPkg ? `$${item.price} / visit` : `From $${item.price}`}</span>
+        </div>
+        <p className="sheet__desc">{item.desc}</p>
+
+        {isPkg && (
+          <div className="infolist">
+            <div className="infolist__ttl">What's included</div>
+            {tasks.map(t => (
+              <div key={t.id} className="infolist__row">
+                <span className="infolist__dot"><LineIcon d={P.check} w={12} sw={2.2} /></span>
+                <span className="infolist__name">{t.name}</span>
+                <span className="infolist__dur">~{fmtDur(t.dur)}</span>
+              </div>
+            ))}
+            {item.off && <div className="infolist__save">Save up to 15% on recurring orders</div>}
+          </div>
+        )}
+
+        {!isPkg && item.steps && (
+          <div className="infolist">
+            <div className="infolist__ttl">Options</div>
+            {item.steps.map((s, i) => (
+              <div key={i} className="infolist__row">
+                <span className="infolist__name">{s.label}</span>
+                <span className="infolist__dur">~{fmtDur(s.dur)}</span>
+                <span className="infolist__price">${s.price}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <button className="btn btn--ghost btn--block" onClick={onClose} style={{ marginTop: 4 }}>Got it</button>
+      </div>
+    </div>
+  );
+}
+
 /* ============================ Home (hero grid + floating bar) ============================ */
-function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onOpenPkg, onOpenBooking }) {
+function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onInfo, onTogglePkg, onOpenBooking }) {
   const [mode, setMode] = useState("tasks");
   const itemBy = Object.fromEntries(cart.map(c => [c.taskId, c]));
 
@@ -369,7 +441,7 @@ function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onOpenPkg, onOpenB
 
         {mode === "tasks" ? (
           <div className="grid">
-            {TASKS.map(t => <TaskCard key={t.id} task={t} item={itemBy[t.id]} onToggle={onTaskClick} onStep={onStep} />)}
+            {TASKS.map(t => <TaskCard key={t.id} task={t} item={itemBy[t.id]} onToggle={onTaskClick} onStep={onStep} onInfo={onInfo} />)}
             <GhostCard icon={<LineIcon d={P.plus} w={26} />} title="Create Custom Task" sub="Tell us what you need" onClick={() => {}} />
             <GhostCard icon={<LineIcon d={P.phone} w={24} />} title="Request a Call" sub="Get a custom quote" onClick={() => {}} />
           </div>
@@ -377,7 +449,7 @@ function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onOpenPkg, onOpenB
           <>
             <p className="blurb">Save time, skip the guesswork. Choose a pre-built bundle that fits your routine and let Zing handle the rest.</p>
             <div className="pgrid">
-              {PACKAGES.map(p => <PackageCard key={p.id} pkg={p} onOpen={onOpenPkg} />)}
+              {PACKAGES.map(p => <PackageCard key={p.id} pkg={p} inCart={p.tasks.every(id => itemBy[id])} onToggle={onTogglePkg} onInfo={onInfo} />)}
               <GhostCard icon={<LineIcon d={P.plus} w={26} />} title="Build Custom Package" sub="Choose your own tasks" onClick={() => setMode("tasks")} />
               <GhostCard icon={<LineIcon d={P.phone} w={24} />} title="Request a Call" sub="Get a custom quote" onClick={() => {}} />
             </div>
@@ -523,7 +595,7 @@ function App() {
   const [pending, setPending] = useState(null);
   const [confirmed, setConfirmed] = useState(null);
   const [bookings, setBookings] = useState([]);
-  const [modalPkg, setModalPkg] = useState(null);
+  const [infoItem, setInfoItem] = useState(null);
 
   const cartIds = new Set(cart.map(c => c.taskId));
   const mkItem = (t, stepIdx = 0) => {
@@ -546,7 +618,6 @@ function App() {
     const allIn = pkg.tasks.every(id => cartIds.has(id));
     if (allIn) setCart(c => c.filter(x => !pkg.tasks.includes(x.taskId)));
     else setCart(c => [...c, ...pkg.tasks.filter(id => !cartIds.has(id)).map(id => mkItem(TASK_BY_ID[id]))]);
-    setModalPkg(null);
   };
 
   const reserve = (b) => { setPending(b); setView("checkout"); };
@@ -568,7 +639,7 @@ function App() {
   else if (view === "booking") body = <BookingPage cart={cart} dayIdx={dayIdx} setDayIdx={setDayIdx} onBack={() => setView("app")} onReserve={reserve} />;
   else if (tab === "bookings") body = <Bookings bookings={bookings} onBrowse={() => goTab("home")} />;
   else if (tab === "profile") body = <Profile />;
-  else body = <Home cart={cart} dayIdx={dayIdx} setDayIdx={setDayIdx} onTaskClick={onTaskClick} onStep={stepItem} onOpenPkg={setModalPkg} onOpenBooking={() => setView("booking")} />;
+  else body = <Home cart={cart} dayIdx={dayIdx} setDayIdx={setDayIdx} onTaskClick={onTaskClick} onStep={stepItem} onInfo={setInfoItem} onTogglePkg={togglePkg} onOpenBooking={() => setView("booking")} />;
 
   return (
     <div className="phone">
@@ -578,7 +649,7 @@ function App() {
           {body}
           {!chromeless && <BottomNav tab={confirmed ? "bookings" : tab} setTab={goTab} />}
         </div>
-        {modalPkg && <PackageModal pkg={modalPkg} added={modalPkg.tasks.every(id => cartIds.has(id))} onClose={() => setModalPkg(null)} onAdd={togglePkg} />}
+        {infoItem && <InfoSheet item={infoItem} onClose={() => setInfoItem(null)} />}
       </div>
       <div className="phone-notch"></div>
     </div>

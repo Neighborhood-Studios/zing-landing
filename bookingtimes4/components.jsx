@@ -1,7 +1,7 @@
 /* Zing Resident App · shared components (chrome, cards, timeline) */
 const { useState, useRef } = React;
 const {
-  ICONS, TASKS, PACKAGES, DAY_START, DAY_END, HOUR_PX, px, totalHeight,
+  ICONS, TASKS, TASK_BY_ID, PACKAGES, DAY_START, DAY_END, HOUR_PX, px, totalHeight,
   fmtDayLabel, fmtDateLabel, fmtTime, fmtTimeShort, fmtDur,
   openWindows, busyFor, firstFit, startToday, P, LineIcon,
 } = window;
@@ -83,7 +83,7 @@ function Segmented({ mode, setMode }) {
 }
 
 /* ---------------- Task card (with on-card stepper for count-based tasks) ---------------- */
-function TaskCard({ task, item, onToggle, onStep }) {
+function TaskCard({ task, item, onToggle, onStep, onInfo }) {
   const inCart = !!item;
   const stepped = inCart && task.steps;
   const price = stepped ? task.steps[item.stepIdx].price : task.price;
@@ -91,6 +91,7 @@ function TaskCard({ task, item, onToggle, onStep }) {
   return (
     <div className={"tcard" + (inCart ? " in-cart" : "")}
       onClick={() => { if (inCart && task.steps) return; onToggle(task); }}>
+      <button className="tcard__info" onClick={(e) => { e.stopPropagation(); onInfo(task); }} aria-label="What's included"><LineIcon d={P.info} w={16} /></button>
       {inCart && <span className="tcard__check" onClick={(e) => { e.stopPropagation(); onToggle(task); }}><LineIcon d={inCart && task.steps ? P.close : P.check} w={14} sw={2} /></span>}
       <div className={"tcard__icon" + (/\.png$/.test(task.icon) ? " tcard__icon--photo" : "")}><img src={ICONS + task.icon} alt="" /></div>
       <div className="tcard__name">{task.name}</div>
@@ -118,11 +119,15 @@ function GhostCard({ icon, title, sub, onClick }) {
 }
 
 /* ---------------- Package card ---------------- */
-function PackageCard({ pkg, onOpen }) {
+function PackageCard({ pkg, inCart, onToggle, onInfo }) {
+  const dur = pkg.tasks.reduce((s, id) => s + (TASK_BY_ID[id] ? TASK_BY_ID[id].dur : 0), 0);
   return (
-    <div className="pcard" onClick={() => onOpen(pkg)}>
+    <div className={"pcard" + (inCart ? " in-cart" : "")} onClick={() => onToggle(pkg)}>
+      <button className="tcard__info" onClick={(e) => { e.stopPropagation(); onInfo(pkg); }} aria-label="What's included"><LineIcon d={P.info} w={16} /></button>
+      {inCart && <span className="tcard__check" onClick={(e) => { e.stopPropagation(); onToggle(pkg); }}><LineIcon d={P.check} w={14} sw={2} /></span>}
       <div className="pcard__icon"><img src={ICONS + pkg.icon} alt="" /></div>
       <div className="pcard__name">{pkg.name}</div>
+      <div className="pcard__dur"><LineIcon d={P.clock} w={12} /> ~{fmtDur(dur)}</div>
       <div className="pcard__starting">Starting at</div>
       <div className="pcard__price">${pkg.price} <small>/ visit</small></div>
       {pkg.off && <div className="pcard__off">Up to 15% off for Weekly,<br/>Bi-Weekly, Monthly orders</div>}

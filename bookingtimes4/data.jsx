@@ -52,10 +52,14 @@ const TASK_BY_ID = Object.fromEntries(TASKS.map(t => [t.id, t]));
 
 /* ---- Packages ---- */
 const PACKAGES = [
-  { id: "full", name: "Full Apartment Clean", price: 116, off: true, tasks: ["bathroom","floor","dusting","trash","bed"], icon: "couch.webp" },
-  { id: "kitchen", name: "Kitchen Commander", price: 89, off: true, tasks: ["dishes","oven","fridge","countertop"], icon: "oven.webp" },
-  { id: "weekly", name: "Smart Weekly Care", price: 67, off: false, tasks: ["dusting","floor","trash"], icon: "bathroom.webp" },
-  { id: "biweekly", name: "Smart Bi-Weekly Care", price: 69, off: false, tasks: ["bathroom","floor","dusting"], icon: "window.webp" },
+  { id: "full", name: "Full Apartment Clean", price: 116, off: true, tasks: ["bathroom","floor","dusting","trash","bed"], icon: "couch.webp",
+    desc: "Our signature top-to-bottom reset. We clean the bathroom, vacuum and mop every floor, dust all surfaces, take out the trash and refresh the bed linens — your whole apartment handled in one visit." },
+  { id: "kitchen", name: "Kitchen Commander", price: 89, off: true, tasks: ["dishes","oven","fridge","dusting"], icon: "oven.webp",
+    desc: "A complete kitchen reset in one visit. We wash, dry and put away the dishes, deep-degrease the oven inside and out, wipe down and declutter the fridge, and dust and sanitize every counter and surface — the whole kitchen left spotless." },
+  { id: "weekly", name: "Smart Weekly Care", price: 67, off: false, tasks: ["dusting","floor","trash"], icon: "bathroom.webp",
+    desc: "A light, regular upkeep visit to keep things effortlessly tidy — surfaces dusted, floors vacuumed and mopped, and trash taken out. Best on a weekly rhythm." },
+  { id: "biweekly", name: "Smart Bi-Weekly Care", price: 69, off: false, tasks: ["bathroom","floor","dusting"], icon: "window.webp",
+    desc: "A slightly deeper every-other-week refresh — a full bathroom clean plus floors vacuumed and mopped and all surfaces dusted. The easy middle-ground routine." },
 ];
 
 /* ---- Operating hours ---- */
@@ -219,6 +223,7 @@ const P = {
   spark: "M12 3l1.6 5L19 9.6 13.6 11 12 16l-1.6-5L5 9.6 10.4 8z",
   edit: "M4 20h4l10-10-4-4L4 16zM14 6l4 4",
   bag: "M6 8h12l-1 12H7zM9 8V6a3 3 0 0 1 6 0v2",
+  info: "M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18M12 11v5M12 7.5h.01",
 };
 function LineIcon({ d, w = 22, sw = 1.6, style }) {
   return React.createElement("svg", { width: w, height: w, viewBox: "0 0 24 24", fill: "none",
