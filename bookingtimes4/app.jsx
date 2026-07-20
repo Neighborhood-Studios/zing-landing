@@ -14,6 +14,7 @@ const {
   AppBar, BottomNav, Segmented, TaskCard, GhostCard, PackageCard,
   DayChips, TimelineLegend, Timeline,
 } = window;
+const { Onboarding } = window;
 
 const FREQS = ["One-time", "Weekly", "Bi-weekly", "Monthly"];
 const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
@@ -177,7 +178,7 @@ function BookingPage({ cart, dayIdx, setDayIdx, onBack, onReserve }) {
 
 /* ============================ Faux Apple Pay sheet ============================ */
 const FACE_ID = "M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2";
-function ApplePaySheet({ amount, onCancel, onDone }) {
+function ApplePaySheet({ amount, onCancel, onDone, building = "Bezel Miami", apt = "1925" }) {
   const [stage, setStage] = useState("auth");
   useEffect(() => { const t = setTimeout(() => setStage("ok"), 1700); return () => clearTimeout(t); }, []);
   useEffect(() => { if (stage === "ok") { const t = setTimeout(onDone, 950); return () => clearTimeout(t); } }, [stage]);
@@ -189,7 +190,7 @@ function ApplePaySheet({ amount, onCancel, onDone }) {
         <div className="ap-head"><b>Apple Pay</b><button className="ap-x" onClick={onCancel}>✕</button></div>
         <div className="ap-row">
           <div className="ap-row__ic">ZING</div>
-          <div className="ap-row__main"><div className="ap-row__t">Zing · Bezel Miami</div><div className="ap-row__s">Apartment 1925</div></div>
+          <div className="ap-row__main"><div className="ap-row__t">Zing · {building}</div><div className="ap-row__s">Apartment {apt}</div></div>
         </div>
         <div className="ap-row">
           <div className="ap-row__ic" style={{ background: "linear-gradient(135deg,#1a1a2e,#39507a)" }}>VISA</div>
@@ -218,7 +219,7 @@ const ENTRY_OPTS = ["I'll be home", "The door's unlocked — come on in", "Use t
 const FREQ_SUB = { "One-time": "", "Weekly": "Save 15%", "Bi-weekly": "Save 10%", "Monthly": "Save 5%" };
 const FREQ_OFF = { "One-time": 0, "Weekly": 0.15, "Bi-weekly": 0.10, "Monthly": 0.05 };
 
-function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
+function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder, profile = { building: "Bezel Miami", apt: "1925" } }) {
   const subtotal = cart.reduce((s, c) => s + c.price, 0);
   const [tip, setTip] = useState({ mode: "pct", pct: 18 });
   const [coupon, setCoupon] = useState("");
@@ -252,7 +253,7 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
           <div className="recap__ic"><LineIcon d={P.cal} w={18} /></div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div className="recap__t">{fmtDayLabel(booking.date)}, {fmtDateLabel(booking.date)} · {fmtTime(booking.start)}–{fmtTime(booking.start + booking.dur)}</div>
-            <div className="recap__s">{cart.length} {cart.length === 1 ? "task" : "tasks"} · ~{fmtDur(booking.dur)} · Bezel Miami 1925</div>
+            <div className="recap__s">{cart.length} {cart.length === 1 ? "task" : "tasks"} · ~{fmtDur(booking.dur)} · {profile.building} {profile.apt}</div>
           </div>
         </div>
       </div>
@@ -368,7 +369,7 @@ function Checkout({ cart, booking, freq, setFreq, onBack, onPlaceOrder }) {
       </div>
       </div>
 
-    {apOpen && <ApplePaySheet amount={total} onCancel={() => setApOpen(false)} onDone={() => { setApOpen(false); place(); }} />}
+    {apOpen && <ApplePaySheet amount={total} building={profile.building} apt={profile.apt} onCancel={() => setApOpen(false)} onDone={() => { setApOpen(false); place(); }} />}
     </div>
   );
 }
@@ -425,7 +426,7 @@ function InfoSheet({ item, onClose }) {
 }
 
 /* ============================ Home (hero grid + floating bar) ============================ */
-function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onInfo, onTogglePkg, onOpenBooking }) {
+function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onInfo, onTogglePkg, onOpenBooking, name = "there" }) {
   const [mode, setMode] = useState("tasks");
   const itemBy = Object.fromEntries(cart.map(c => [c.taskId, c]));
 
@@ -433,7 +434,7 @@ function Home({ cart, dayIdx, setDayIdx, onTaskClick, onStep, onInfo, onTogglePk
     <>
       <div className="scroll"><div className="pad page-anim" style={{ paddingBottom: 222 }}>
         <div className="hero">
-          <div className="hi">Hello, Whit <span className="wave">👋</span></div>
+          <div className="hi">Hello, {name} <span className="wave">👋</span></div>
           <h1>Book your clean.</h1>
         </div>
 
@@ -524,7 +525,7 @@ function Bookings({ bookings, onBrowse }) {
 }
 
 /* ============================ Confirmation ============================ */
-function Confirm({ booking, onDone }) {
+function Confirm({ booking, onDone, profile = { building: "Bezel Miami", apt: "1925" } }) {
   const subtotal = booking.items.reduce((s, c) => s + c.price, 0);
   return (
     <div className="scroll"><div className="pad">
@@ -550,7 +551,7 @@ function Confirm({ booking, onDone }) {
         <div className="totalrow"><span>When</span><b>{fmtDayLabel(booking.date)} {fmtDateLabel(booking.date)}</b></div>
         <div className="totalrow"><span>Time</span><b>{fmtTime(booking.start)} – {fmtTime(booking.start + booking.dur)}</b></div>
         <div className="totalrow"><span>Frequency</span><b>{booking.freq}</b></div>
-        <div className="totalrow"><span>Apartment</span><b>Bezel Miami · 1925</b></div>
+        <div className="totalrow"><span>Apartment</span><b>{profile.building} · {profile.apt}</b></div>
         <div className="totalrow totalrow--grand"><span>Total</span><span className="amt">${subtotal}</span></div>
       </div>
       <button className="btn btn--primary btn--block" onClick={onDone}>Book another clean</button>
@@ -559,20 +560,20 @@ function Confirm({ booking, onDone }) {
 }
 
 /* ============================ Profile ============================ */
-function Profile() {
+function Profile({ profile = { name: "Whit", building: "Bezel Miami", apt: "1925", phone: "770 656 0139", pets: "" }, onReplay }) {
   return (
     <div className="scroll"><div className="pad page-anim">
       <h2 className="page-title">Your profile</h2>
       <div className="card">
         <div className="card__head"><LineIcon d={P.user} w={18} /> Personal information</div>
         <label className="plabel">Full name</label>
-        <input className="pinput" defaultValue="Whit" />
+        <input className="pinput" defaultValue={profile.name} />
         <label className="plabel">Phone number</label>
-        <input className="pinput" defaultValue="770 656 0139" />
+        <input className="pinput" defaultValue={profile.phone} />
         <label className="plabel">Apartment</label>
-        <input className="pinput" defaultValue="Bezel Miami · 1925" />
+        <input className="pinput" defaultValue={`${profile.building} · ${profile.apt}`} />
         <label className="plabel">Pets info</label>
-        <input className="pinput" placeholder="e.g. friendly dog, please keep the bedroom door closed" />
+        <input className="pinput" defaultValue={profile.pets} placeholder="e.g. friendly dog, please keep the bedroom door closed" />
         <button className="btn btn--primary btn--block" style={{ marginTop: 4 }}>Save changes</button>
       </div>
       <div className="card">
@@ -580,6 +581,7 @@ function Profile() {
         <p style={{ fontSize: 14, color: "var(--ink-600)", margin: "0 0 14px" }}>You have no saved cards.</p>
         <button className="btn btn--ghost btn--block">Add new card</button>
       </div>
+      <button className="btn btn--ghost btn--block" style={{ marginBottom: 12 }} onClick={onReplay}>Replay welcome tour</button>
       <button className="btn btn--danger btn--block">Log out</button>
     </div></div>
   );
@@ -587,15 +589,43 @@ function Profile() {
 
 /* ============================ App ============================ */
 function App() {
+  // Demo boot via URL: ?preset=booking → three chores in cart, opens on Pick-a-Time
+  const presetCart = useMemo(() => {
+    let p; try { p = new URLSearchParams(location.search).get("preset"); } catch (e) { p = null; }
+    if (p !== "booking") return null;
+    return ["dusting", "trash", "dishes"].map(id => TASK_BY_ID[id]).filter(Boolean).map(t => {
+      const s = t.steps ? t.steps[0] : null;
+      return { uid: t.id, taskId: t.id, name: t.name, price: s ? s.price : t.price, dur: s ? s.dur : t.dur, icon: t.icon, stepIdx: 0, opt: s ? s.label : null, note: "" };
+    });
+  }, []);
   const [tab, setTab] = useState("home");
-  const [view, setView] = useState("app");        // "app" | "booking" | "checkout"
-  const [dayIdx, setDayIdx] = useState(0);
-  const [cart, setCart] = useState([]);
+  const [view, setView] = useState(presetCart ? "booking" : "app");        // "app" | "booking" | "checkout"
+  const [dayIdx, setDayIdx] = useState(() => {
+    if (!presetCart) return 0;
+    const dur = presetCart.reduce((s, c) => s + c.dur, 0);
+    const i = BUSINESS_DAYS.findIndex(d => firstFit(busyFor(d), dur) != null);
+    return i >= 0 ? i : 0;
+  });
+  const [cart, setCart] = useState(presetCart || []);
   const [freq, setFreq] = useState("One-time");
   const [pending, setPending] = useState(null);
   const [confirmed, setConfirmed] = useState(null);
   const [bookings, setBookings] = useState([]);
   const [infoItem, setInfoItem] = useState(null);
+  const [onboarded, setOnboarded] = useState(() => {
+    if (presetCart) return true;
+    try { if (new URLSearchParams(location.search).has("onboarding")) return false; } catch (e) {}
+    try { return localStorage.getItem("zing.onboarded") === "1"; } catch (e) { return false; }
+  });
+  const [profile, setProfile] = useState({ name: "Whit", building: "Bezel Miami", apt: "1925", phone: "770 656 0139", pets: "" });
+  const finishOnboarding = (d) => {
+    const first = (d.name || "").trim().split(/\s+/)[0] || "there";
+    const BLD = { bezel: "Bezel Miami", muze: "Muze at Met", worldtower: "Miami World Tower", wynd27: "Wynd 27", wynd28: "Wynd 28", paraiso: "Paraíso Bayviews", forma: "Forma", hamilton: "The Hamilton" };
+    setProfile({ name: first, building: BLD[d.building] || "Bezel Miami", apt: (d.apt || "").trim() || "—", hometype: d.hometype || "", baths: d.baths || "", phone: d.phone || "", pets: (d.pets || "").trim() });
+    try { localStorage.setItem("zing.onboarded", "1"); } catch (e) {}
+    setTab("home"); setView("app"); setOnboarded(true);
+  };
+  const replayTour = () => { setConfirmed(null); setView("app"); setTab("home"); setOnboarded(false); };
 
   const cartIds = new Set(cart.map(c => c.taskId));
   const mkItem = (t, stepIdx = 0) => {
@@ -634,21 +664,25 @@ function App() {
   const chromeless = (view === "booking" || view === "checkout") && !confirmed;
 
   let body;
-  if (confirmed) body = <Confirm booking={confirmed} onDone={done} />;
-  else if (view === "checkout") body = <Checkout cart={cart} booking={pending} freq={freq} setFreq={setFreq} onBack={() => setView("booking")} onPlaceOrder={placeOrder} />;
+  if (confirmed) body = <Confirm booking={confirmed} onDone={done} profile={profile} />;
+  else if (view === "checkout") body = <Checkout cart={cart} booking={pending} freq={freq} setFreq={setFreq} onBack={() => setView("booking")} onPlaceOrder={placeOrder} profile={profile} />;
   else if (view === "booking") body = <BookingPage cart={cart} dayIdx={dayIdx} setDayIdx={setDayIdx} onBack={() => setView("app")} onReserve={reserve} />;
   else if (tab === "bookings") body = <Bookings bookings={bookings} onBrowse={() => goTab("home")} />;
-  else if (tab === "profile") body = <Profile />;
-  else body = <Home cart={cart} dayIdx={dayIdx} setDayIdx={setDayIdx} onTaskClick={onTaskClick} onStep={stepItem} onInfo={setInfoItem} onTogglePkg={togglePkg} onOpenBooking={() => setView("booking")} />;
+  else if (tab === "profile") body = <Profile profile={profile} onReplay={replayTour} />;
+  else body = <Home cart={cart} dayIdx={dayIdx} setDayIdx={setDayIdx} onTaskClick={onTaskClick} onStep={stepItem} onInfo={setInfoItem} onTogglePkg={togglePkg} onOpenBooking={() => setView("booking")} name={profile.name} />;
 
   return (
     <div className="phone">
       <div className="phone-screen">
-        <div className="app">
-          {!chromeless && <AppBar />}
-          {body}
-          {!chromeless && <BottomNav tab={confirmed ? "bookings" : tab} setTab={goTab} />}
-        </div>
+        {onboarded ? (
+          <div className="app">
+            {!chromeless && <AppBar />}
+            {body}
+            {!chromeless && <BottomNav tab={confirmed ? "bookings" : tab} setTab={goTab} />}
+          </div>
+        ) : (
+          <Onboarding onDone={finishOnboarding} />
+        )}
         {infoItem && <InfoSheet item={infoItem} onClose={() => setInfoItem(null)} />}
       </div>
       <div className="phone-notch"></div>
