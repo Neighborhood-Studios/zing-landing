@@ -70,12 +70,13 @@ td .nm{font-weight:700;color:var(--forest)}
     <thead><tr><th>Cleaner</th><th>Date</th><th>Lesson</th><th>Answer given</th><th>Result</th><th>Streak</th></tr></thead>
     <tbody id="rows"></tbody>
   </table></div>
-  <div class="note">Data source: this demo reads completions stored on each device (localStorage). In production this page reads from the shared database — see the README for the API contract ClaudeBot should wire up.</div>
+  <div class="note">Data source: live from the Zing Training Results Google Sheet (plus this device’s localStorage).</div>
 </div>
 <script src="/training/lessons.js"></script>
 <script>
 (function(){
   var PW="justzingit", gate=document.getElementById("gate"), main=document.getElementById("main");
+  var SHEET_URL="https://script.google.com/macros/s/AKfycbxUsNmwsQC2Zn1r5_exbF1Ey7hOvIuFFOphKO9sjfhwoykyf0sPwbAbesXUCs8EOUnn/exec";
   function unlock(){gate.style.display="none";main.style.display="block";render();}
   if(sessionStorage.getItem("zing.td.auth")==="1")unlock();
   function tryPw(){var v=document.getElementById("pw").value.trim().toLowerCase();
@@ -91,8 +92,31 @@ td .nm{font-weight:700;color:var(--forest)}
     while(comp[d]){s++;d=add(d,-1);}
     return s;
   }
-  function render(){
-    var db={}; try{db=JSON.parse(localStorage.getItem("zing.training.v1"))||{};}catch(e){}
+  // Convert Google Sheet 2D array (row 0 = headers) into the DB shape used by draw().
+  // Expected columns per Apps Script doPost: [timestamp, name, date, lessonId, lessonTitle, answer, answerText, correct]
+  function sheetToDb(rows){
+    var db={}; if(!rows || rows.length<2) return db;
+    for(var i=1;i<rows.length;i++){
+      var r=rows[i]; if(!r || !r[1] || !r[2]) continue;
+      var name=String(r[1]).trim(), date=String(r[2]).trim();
+      if(date.length>10 && /\dT\d/.test(date)) date=date.slice(0,10); // ISO datetime -> YYYY-MM-DD
+      if(!db[name]) db[name]={completions:{}};
+      var correct=r[7]; if(typeof correct==="string") correct=correct.toLowerCase()==="true";
+      db[name].completions[date]={lessonId:r[3], lessonTitle:r[4], answer:Number(r[5]), answerText:r[6], correct:!!correct, ts:r[0]};
+    }
+    return db;
+  }
+  function mergeDb(a,b){
+    var out={}, k, d;
+    for(k in a){ out[k]={completions:Object.assign({}, (a[k]||{}).completions||{})}; }
+    for(k in b){
+      if(!out[k]) out[k]={completions:{}};
+      var bc=(b[k]||{}).completions||{};
+      for(d in bc){ out[k].completions[d]=bc[d]; }
+    }
+    return out;
+  }
+  function draw(db){
     var names=window.TRAINING_NAMES||[], rows=[], totals={done:0,correct:0,active:0};
     names.forEach(function(n){
       var comp=(db[n]||{}).completions||{}, dates=Object.keys(comp).sort().reverse();
@@ -116,6 +140,17 @@ td .nm{font-weight:700;color:var(--forest)}
         '<td><span class="pill '+(r.c.correct?'pill--ok">✓ Correct':'pill--no">✗ Incorrect')+'</span></td>'+
         '<td><span class="pill pill--st">🔥 '+r.streak+'</span></td></tr>';
     }).join("");
+  }
+  function render(){
+    var local={}; try{local=JSON.parse(localStorage.getItem("zing.training.v1"))||{};}catch(e){}
+    draw(local); // show this-device results instantly
+    fetch(SHEET_URL, {method:"GET"})
+      .then(function(r){ return r.json(); })
+      .then(function(rows){ draw(mergeDb(local, sheetToDb(rows))); })
+      .catch(function(err){
+        var note=document.querySelector(".note");
+        if(note) note.innerHTML='<span style="color:var(--red)">Couldn’t reach the Google Sheet — showing this device only.</span>' + (err && err.message ? ' ('+err.message+')' : '');
+      });
   }
 })();
 </script>

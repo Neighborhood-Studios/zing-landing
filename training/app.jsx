@@ -12,14 +12,22 @@ const lessonIdxFor = (dateStr) => { const d = dayDiff(dateStr, LAUNCH); return d
 
 /* ---- storage (swap for real API — see README) ---- */
 const DB_KEY = "zing.training.v1";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxUsNmwsQC2Zn1r5_exbF1Ey7hOvIuFFOphKO9sjfhwoykyf0sPwbAbesXUCs8EOUnn/exec";
 const loadDB = () => { try { return JSON.parse(localStorage.getItem(DB_KEY)) || {}; } catch (e) { return {}; } };
 const saveDB = (db) => { try { localStorage.setItem(DB_KEY, JSON.stringify(db)); } catch (e) {} };
+const postCompletion = (payload) => {
+  // fire-and-forget POST to Apps Script webhook. mode:'no-cors' avoids preflight;
+  // Apps Script reads e.postData.contents regardless of content-type.
+  try { fetch(SHEET_URL, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) }).catch(function(){}); } catch (e) {}
+};
 const recordCompletion = (name, dateStr, lesson, answerIdx, correct) => {
   const db = loadDB();
   db[name] = db[name] || { completions: {} };
   if (!db[name].completions[dateStr]) {
-    db[name].completions[dateStr] = { lessonId: lesson.id, lessonTitle: lesson.t.es, answer: answerIdx, answerText: lesson.q.opts[answerIdx].es, correct, ts: new Date().toISOString() };
+    const entry = { lessonId: lesson.id, lessonTitle: lesson.t.es, answer: answerIdx, answerText: lesson.q.opts[answerIdx].es, correct, ts: new Date().toISOString() };
+    db[name].completions[dateStr] = entry;
     saveDB(db);
+    postCompletion({ name: name, date: dateStr, lessonId: entry.lessonId, lessonTitle: entry.lessonTitle, answer: entry.answer, answerText: entry.answerText, correct: entry.correct, ts: entry.ts });
   }
   return db;
 };
