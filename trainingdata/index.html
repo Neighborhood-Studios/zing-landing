@@ -1,0 +1,123 @@
+<!-- @dsCard group="Resident App" viewport="900x700" name="Cleaner Training — Data" subtitle="Password-gated dashboard of daily lesson completions & answers" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zing · Training Data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F3EA;--card:#FFFDF8;--line:#E3DCCB;--forest:#1F3A34;--sage:#5F7A63;--sage-soft:#DFE8DC;--ink:#242B28;--ink-soft:#5C665F;--ink-mute:#8C948D;--green:#3E7A4E;--red:#B2542F;--red-soft:#F4E1D7;--sans:'Hanken Grotesk',sans-serif;--serif:'Newsreader',serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);font-family:var(--sans);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--sage)}a:hover{color:var(--forest)}
+.gate{position:fixed;inset:0;background:var(--forest);display:flex;align-items:center;justify-content:center;z-index:50;padding:24px}
+.gate__card{width:100%;max-width:360px;background:var(--card);border-radius:22px;padding:34px 30px;text-align:center;animation:pop .5s cubic-bezier(.34,1.5,.5,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.gate__card img{height:26px;margin-bottom:18px}
+.gate__card h1{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--forest);letter-spacing:-.01em}
+.gate__card p{font-size:13.5px;color:var(--ink-soft);margin-top:8px}
+.gate__card input{width:100%;margin-top:18px;padding:14px;border:1.5px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:16px;text-align:center;background:var(--paper)}
+.gate__card input:focus{outline:none;border-color:var(--sage)}
+.gate__card button{width:100%;margin-top:12px;padding:14px;border:none;border-radius:999px;background:var(--forest);color:#F7F3EA;font-family:var(--sans);font-size:15px;font-weight:700;cursor:pointer}
+.gate__err{color:var(--red);font-size:12.5px;font-weight:600;margin-top:10px;display:none}
+.wrap{max-width:1080px;margin:0 auto;padding:34px 22px 60px}
+header.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.hd img{height:26px}
+.hd h1{font-family:var(--serif);font-weight:500;font-size:27px;color:var(--forest);letter-spacing:-.01em}
+.hd .sub{font-size:13px;color:var(--ink-mute);margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:26px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.stat b{display:block;font-family:var(--serif);font-weight:500;font-size:28px;color:var(--forest)}
+.stat span{font-size:12px;font-weight:600;color:var(--ink-mute)}
+.tblwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-mute);text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:13px 16px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td .nm{font-weight:700;color:var(--forest)}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700}
+.pill--ok{background:#E4EFE4;color:var(--green)}
+.pill--no{background:var(--red-soft);color:var(--red)}
+.pill--st{background:var(--sage-soft);color:var(--forest)}
+.ans{color:var(--ink-soft);max-width:340px}
+.empty{padding:48px 20px;text-align:center;color:var(--ink-mute);font-size:14px}
+.note{margin-top:18px;font-size:12.5px;color:var(--ink-mute);line-height:1.5}
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="gate__card">
+    <img src="/training/icons/zing-logo.svg" alt="Zing">
+    <h1>Training Data</h1>
+    <p>Enter the password to view cleaner training results.</p>
+    <input id="pw" type="password" placeholder="Password" autocomplete="off">
+    <button id="go">Enter</button>
+    <div class="gate__err" id="err">Incorrect password</div>
+  </div>
+</div>
+<div class="wrap" id="main" style="display:none">
+  <header class="hd">
+    <div>
+      <h1>Cleaner Training — Daily Results</h1>
+      <div class="sub" id="sub"></div>
+    </div>
+    <img src="/training/icons/zing-logo.svg" alt="Zing">
+  </header>
+  <div class="stats" id="stats"></div>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Cleaner</th><th>Date</th><th>Lesson</th><th>Answer given</th><th>Result</th><th>Streak</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+  <div class="note">Data source: this demo reads completions stored on each device (localStorage). In production this page reads from the shared database — see the README for the API contract ClaudeBot should wire up.</div>
+</div>
+<script src="/training/lessons.js"></script>
+<script>
+(function(){
+  var PW="justzingit", gate=document.getElementById("gate"), main=document.getElementById("main");
+  function unlock(){gate.style.display="none";main.style.display="block";render();}
+  if(sessionStorage.getItem("zing.td.auth")==="1")unlock();
+  function tryPw(){var v=document.getElementById("pw").value.trim().toLowerCase();
+    if(v===PW){try{sessionStorage.setItem("zing.td.auth","1");}catch(e){}unlock();}
+    else{document.getElementById("err").style.display="block";}}
+  document.getElementById("go").addEventListener("click",tryPw);
+  document.getElementById("pw").addEventListener("keydown",function(e){if(e.key==="Enter")tryPw();});
+
+  function streakFor(comp){
+    function add(s,n){var p=s.split("-").map(Number),d=new Date(Date.UTC(p[0],p[1]-1,p[2]));d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10);}
+    var today=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date());
+    var s=0,d=today; if(!comp[d])d=add(d,-1);
+    while(comp[d]){s++;d=add(d,-1);}
+    return s;
+  }
+  function render(){
+    var db={}; try{db=JSON.parse(localStorage.getItem("zing.training.v1"))||{};}catch(e){}
+    var names=window.TRAINING_NAMES||[], rows=[], totals={done:0,correct:0,active:0};
+    names.forEach(function(n){
+      var comp=(db[n]||{}).completions||{}, dates=Object.keys(comp).sort().reverse();
+      if(dates.length)totals.active++;
+      dates.forEach(function(d){
+        var c=comp[d]; totals.done++; if(c.correct)totals.correct++;
+        rows.push({name:n,date:d,c:c,streak:streakFor(comp)});
+      });
+    });
+    document.getElementById("sub").textContent=new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})+" · "+names.length+" cleaners enrolled";
+    var pct=totals.done?Math.round(100*totals.correct/totals.done):0;
+    document.getElementById("stats").innerHTML=
+      '<div class="stat"><b>'+totals.done+'</b><span>Lessons completed</span></div>'+
+      '<div class="stat"><b>'+pct+'%</b><span>Correct answers</span></div>'+
+      '<div class="stat"><b>'+totals.active+'/'+names.length+'</b><span>Cleaners active</span></div>'+
+      '<div class="stat"><b>'+(window.LESSONS||[]).length+'</b><span>Lessons in rotation</span></div>';
+    var tb=document.getElementById("rows");
+    if(!rows.length){tb.innerHTML='<tr><td colspan="6"><div class="empty">No completions yet — results appear here as cleaners finish their daily lessons.</div></td></tr>';return;}
+    tb.innerHTML=rows.map(function(r){
+      return '<tr><td class="nm">'+r.name+'</td><td>'+r.date+'</td><td>'+r.c.lessonTitle+'</td><td class="ans">'+r.c.answerText+'</td>'+
+        '<td><span class="pill '+(r.c.correct?'pill--ok">✓ Correct':'pill--no">✗ Incorrect')+'</span></td>'+
+        '<td><span class="pill pill--st">🔥 '+r.streak+'</span></td></tr>';
+    }).join("");
+  }
+})();
+</script>
+</body>
+</html>
