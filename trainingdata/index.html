@@ -144,11 +144,15 @@ td .nm{font-weight:700;color:var(--forest)}
   function render(){
     var local={}; try{local=JSON.parse(localStorage.getItem("zing.training.v1"))||{};}catch(e){}
     draw(local); // show this-device results instantly
-    fetch(SHEET_URL, {method:"GET"})
-      .then(function(r){ return r.json(); })
-      .then(function(rows){ draw(mergeDb(local, sheetToDb(rows))); })
+    var note=document.querySelector(".note");
+    if(note) note.textContent='Loading from Google Sheet…';
+    fetch(SHEET_URL + '?t=' + Date.now(), {method:"GET", cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(rows){
+        draw(mergeDb(local, sheetToDb(rows)));
+        if(note) note.textContent='Live from your Google Sheet · '+(rows.length-1)+' completions across all devices.';
+      })
       .catch(function(err){
-        var note=document.querySelector(".note");
         if(note) note.innerHTML='<span style="color:var(--red)">Couldn’t reach the Google Sheet — showing this device only.</span>' + (err && err.message ? ' ('+err.message+')' : '');
       });
   }
