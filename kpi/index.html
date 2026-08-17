@@ -32,6 +32,34 @@ button:hover{border-color:var(--sage-500)}
 button.primary{background:var(--forest);color:var(--paper-50);border-color:var(--forest)}
 button.primary:hover{background:var(--forest-600);border-color:var(--forest-600)}
 main{padding:18px 22px 60px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.shell{display:flex;align-items:flex-start}
+.shell > main{flex:1;min-width:0;margin:0}
+aside.nav{position:sticky;top:56px;flex:0 0 208px;width:208px;height:calc(100vh - 56px);border-right:1px solid var(--line);background:var(--paper-50);padding:14px 10px;display:flex;flex-direction:column;gap:4px;transition:width .16s ease,flex-basis .16s ease}
+body.navmin aside.nav{flex-basis:56px;width:56px}
+aside.nav .navtoggle{align-self:flex-end;border:none;background:none;padding:6px;color:var(--ink-4);border-radius:8px}
+aside.nav .navtoggle:hover{background:var(--sage-100);color:var(--ink)}
+aside.nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink-2);text-decoration:none;white-space:nowrap;overflow:hidden}
+aside.nav a:hover{background:var(--sage-100);color:var(--ink)}
+aside.nav a.on{background:var(--forest);color:var(--paper-50)}
+aside.nav a svg{flex:0 0 18px}
+body.navmin aside.nav a span{display:none}
+.view{display:none}
+.view.on{display:flex;flex-direction:column;gap:16px}
+.bset td,.bset th{text-align:left}
+.bset td input,.bset td select{width:100%;min-width:120px}
+.bset td.n input{max-width:110px;text-align:right;font-variant-numeric:tabular-nums}
+.bset td.hint{font-size:11px;color:var(--ink-4)}
+#hover{position:fixed;z-index:60;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s ease,transform .12s ease;width:250px;background:var(--paper-50);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(29,46,50,.16);padding:12px 13px}
+#hover.on{opacity:1;transform:none}
+#hover h4{margin:0;font-family:var(--font-display,Newsreader),serif;font-size:16px;font-weight:500}
+#hover .sub{font-size:11px;color:var(--ink-4);margin-top:2px}
+#hover dl{display:grid;grid-template-columns:auto auto;gap:3px 10px;margin:10px 0 0;font-size:11.5px}
+#hover dt{color:var(--ink-4)}
+#hover dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink-2)}
+#hover .spark{display:flex;gap:5px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line)}
+#hover .spark div{flex:1;text-align:center}
+#hover .spark b{display:block;font-size:12px;font-variant-numeric:tabular-nums}
+#hover .spark span{font-size:9.5px;color:var(--ink-4);letter-spacing:.02em}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .stat .v{font:400 26px/1.1 "Newsreader",serif;margin-top:6px}
@@ -100,8 +128,17 @@ tspan.mlabel{font-weight:700}
 <div class="src"><span class="dot" id="srcDot"></span><span id="srcMsg">Sample data</span><input type="text" id="csvUrl" placeholder="Google Sheet URL"><button id="load">Load</button><button id="pick">Upload file</button><input type="file" id="file" accept=".csv,.xlsx,.xls" hidden><button id="tpl">Template</button></div>
 <label class="fld">Cleaner salary<span class="pre">$</span><input type="number" id="salary" min="0" step="10"><span class="post">/wk</span></label>
 <label class="fld">Week<select id="week"></select></label>
+<label class="fld">Range<select id="range"><option value="1">Selected week</option><option value="4">Past 4 weeks</option><option value="0">All time</option></select></label>
 </header>
+<div class="shell">
+<aside class="nav">
+<button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
+<a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Density Dashboard</span></a>
+<a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
+<a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
+</aside>
 <main>
+<section class="view on" id="viewDash">
 <section class="stats" id="stats"></section>
 <section class="panel">
 <div class="phead"><h2>Cluster map</h2><p>Pin colour and number = margin per single cleaner. Halo = cluster, labelled with cluster margin.</p></div>
@@ -115,7 +152,7 @@ tspan.mlabel{font-weight:700}
 </div>
 <div class="panel">
 <div class="phead"><h2>Clusters</h2><p>Cluster margin — type the cleaners assigned to each cluster</p></div>
-<table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Cleaners</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusters"></tbody></table>
+<table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusters"></tbody></table>
 </div>
 </section>
 <section class="panel">
@@ -124,7 +161,23 @@ tspan.mlabel{font-weight:700}
 <div class="scrollx"><table class="matrix"><thead id="hdClusters"></thead><tbody id="mxClusters"></tbody></table></div>
 </section>
 <footer class="note" id="note"></footer>
+</section>
+<section class="view" id="viewBuildings">
+<section class="panel">
+<div class="phead"><h2>Building settings</h2><p>Kept on this device — the sheet only carries revenue</p></div>
+<div class="scrollx"><table class="bset"><thead><tr><th>Building</th><th>Cluster</th><th># Units</th><th>Access method</th><th>Went live</th><th>First revenue in sheet</th></tr></thead><tbody id="tbSettings"></tbody></table></div>
+</section>
+</section>
+<section class="view" id="viewClusters">
+<section class="panel">
+<div class="phead"><h2>Cluster analysis</h2><p>Same clusters, expanded — units per cleaner alongside the margin</p></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Revenue / wk</th><th>Revenue / unit</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusterAnalysis"></tbody></table></div>
+<div class="legend" id="legendClusters"></div>
+</section>
+</section>
 </main>
+</div>
+<div id="hover" role="tooltip" aria-hidden="true"></div>
 <script>
 /* ---------- formulas (single place to change) ---------- */
 // Building KPI: margin per single cleaner = (weekly revenue − one cleaner's weekly salary) / that salary
@@ -132,8 +185,8 @@ const salaryOf = r => r.cleanerSalary || SALARY;   // sheet column wins, else th
 const buildingMargin = r => salaryOf(r) > 0 && r.revenue ? (r.revenue - salaryOf(r)) / salaryOf(r) : null;
 // Cluster KPI: (Σ revenue − payroll of every cleaner in the cluster) / that payroll,
 // where the head count per cluster is set by hand in the clusters table
-let CLEANERS = {};
-try { CLEANERS = JSON.parse(localStorage.getItem("zingKpiCleaners")) || {}; } catch (e) {}
+let CLEANERS = { Downtown: 2, Edgewater: 3 };   // defaults, overridden by whatever is typed in
+try { CLEANERS = Object.assign(CLEANERS, JSON.parse(localStorage.getItem("zingKpiCleaners")) || {}); } catch (e) {}
 const cleanersIn = c => CLEANERS[c] ?? null;
 // Portfolio KPI: Σ revenue of every building ÷ payroll of every cleaner in every cluster
 const portfolioMargin = rows => {
@@ -321,6 +374,30 @@ const money = v => "$" + Math.round(v).toLocaleString();
 function rowsFor(w){ return ROWS.filter(r => r.week === w); }
 function prevWeek(w){ const i = weeks.indexOf(w); return i > 0 ? weeks[i - 1] : null; }
 
+/* A period is a run of weeks ending at `w`. RANGE 1 = that week, 4 = it plus the three
+   before, 0 = everything up to and including it. Buildings are collapsed to one row whose
+   revenue is their AVERAGE weekly revenue across the weeks they actually reported, so the
+   margin formula (and the cleaner headcount it divides by) stays a weekly figure. */
+let RANGE = 1;
+function periodWeeks(w, back){
+  const i = weeks.indexOf(w); if (i < 0) return [];
+  const n = RANGE === 0 ? weeks.length : RANGE;
+  const end = back ? i - n : i;
+  return end < 0 ? [] : weeks.slice(Math.max(0, end - n + 1), end + 1);
+}
+function periodRows(w, back){
+  const ws = periodWeeks(w, back);
+  if (!ws.length) return [];
+  if (ws.length === 1) return rowsFor(ws[0]);
+  const set = new Set(ws), agg = new Map();
+  ROWS.forEach(r => { if (!set.has(r.week)) return;
+    const a = agg.get(r.building);
+    if (!a) agg.set(r.building, Object.assign({}, r, { revenue: r.revenue, _n: r.revenue > 0 ? 1 : 0 }));
+    else { a.revenue += r.revenue; if (r.revenue > 0) a._n++; } });
+  return [...agg.values()].map(a => Object.assign(a, { revenue: a._n ? a.revenue / a._n : 0 }));
+}
+const rangeLabel = () => RANGE === 1 ? "week of " + week : RANGE === 0 ? "all " + weeks.length + " weeks, weekly average" : "past " + RANGE + " weeks, weekly average";
+
 /* ---------- week-over-week matrices ---------- */
 function drawMatrices(){
   const head = n => `<tr><th>${n}</th>${weeks.map(w => `<th>${w}</th>`).join("")}</tr>`;
@@ -346,7 +423,7 @@ function drawMatrices(){
 }
 
 function render(){
-  const cur = rowsFor(week), prev = prevWeek(week) ? rowsFor(prevWeek(week)) : [];
+  const cur = periodRows(week), prev = periodRows(week, true);
   const prevB = new Map(prev.map(r => [r.building, r]));
   const clustered = cur.filter(r => r.cluster);
   const clusters = [...new Set(clustered.map(r => r.cluster))];
@@ -359,7 +436,7 @@ function render(){
   const negB = bm.filter(v => v <= 0).length;
   const negC = clusters.filter(c => { const m = clusterMargin(clustered.filter(r => r.cluster === c), c).pct; return m != null && m <= 0; }).length;
   document.getElementById("stats").innerHTML = [
-    ["Portfolio margin", pct(all.pct), money(all.rev) + " revenue · " + heads + " cleaners × " + money(SALARY) + " = " + money(all.sal)],
+    ["Portfolio margin", pct(all.pct), money(all.rev) + " · " + heads + " cleaners × " + money(SALARY) + " · " + rangeLabel()],
     ["Median margin / cleaner", bm.length ? pct(bm.sort((a, b) => a - b)[Math.floor(bm.length / 2)]) : "—", bm.length + " of " + cur.length + " buildings reporting"],
     ["Buildings at or below 0%", negB + " / " + bm.length, negB ? "needs attention" : "all positive"],
     ["Clusters at or below 0%", negC + " / " + clusters.length, clusters.join(" · ")]
@@ -374,17 +451,44 @@ function render(){
   }).join("");
 
   /* cluster table */
-  document.getElementById("tbClusters").innerHTML = clusters.map(c => {
+  const clusterStat = c => {
     const rs = clustered.filter(r => r.cluster === c), m = clusterMargin(rs, c).pct;
     const pr = prev.filter(r => r.cluster === c), pm = pr.length ? clusterMargin(pr, c).pct : null;
-    const d = m != null && pm != null ? m - pm : null;
-    return { c, m, d, n: rs.length };
-  }).sort((a, b) => (a.m ?? -9) - (b.m ?? -9)).map(o =>
-    `<tr data-c="${o.c}"><td class="name"><span class="cdot" style="background:${clusterColors[o.c]}"></span>${o.c}</td>
+    const units = rs.reduce((a, r) => a + (unitsOf(r.building) || 0), 0);
+    return { c, m, d: m != null && pm != null ? m - pm : null, n: rs.length, units,
+      cleaners: cleanersIn(c), rev: rs.reduce((a, r) => a + r.revenue, 0) };
+  };
+  const cstats = clusters.map(clusterStat).sort((a, b) => (a.m ?? -9) - (b.m ?? -9));
+  const wow = d => `<td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td>`;
+  const cinput = c => `<td><input type="number" class="cin" min="0" step="1" data-c="${c}" value="${cleanersIn(c) ?? ""}" placeholder="—" aria-label="Cleaners in ${c}"></td>`;
+  const cname = c => `<td class="name"><span class="cdot" style="background:${clusterColors[c]}"></span>${c}</td>`;
+
+  document.getElementById("tbClusters").innerHTML = cstats.map(o =>
+    `<tr data-c="${o.c}">${cname(o.c)}
     <td style="color:var(--ink-3)">${o.n}</td>
-    <td><input type="number" class="cin" min="0" step="1" data-c="${o.c}" value="${cleanersIn(o.c) ?? ""}" placeholder="—" aria-label="Cleaners in ${o.c}"></td>
+    <td style="color:var(--ink-3)" class="num">${o.units || "—"}</td>
+    ${cinput(o.c)}
     <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
-    <td class="wow ${o.d == null ? "" : o.d >= 0 ? "p" : "n"}">${o.d == null ? "—" : (o.d >= 0 ? "▲ " : "▼ ") + Math.abs(o.d * 100).toFixed(0) + " pts"}</td></tr>`).join("");
+    ${wow(o.d)}</tr>`).join("");
+
+  document.getElementById("tbClusterAnalysis").innerHTML = cstats.map(o => {
+    const upc = o.units && o.cleaners ? Math.round(o.units / o.cleaners) : null;
+    const rpu = o.units && o.rev ? o.rev / o.units : null;
+    return `<tr data-c="${o.c}">${cname(o.c)}
+      <td style="color:var(--ink-3)">${o.n}</td>
+      <td class="num" style="color:var(--ink-3)">${o.units || "—"}</td>
+      ${cinput(o.c)}
+      <td class="num" style="font-weight:700">${upc ?? "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.rev ? money(o.rev) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${rpu ? "$" + rpu.toFixed(2) : "—"}</td>
+      <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
+      ${wow(o.d)}</tr>`;
+  }).join("");
+  document.getElementById("legendClusters").innerHTML =
+    `<span><b>Units / cleaner</b> = total units in the cluster ÷ cleaners assigned to it — the density each cleaner covers</span>
+     <span><b>Revenue / unit</b> = cluster revenue ÷ total units — how much of the building is actually ordering</span>
+     <span>Unit counts come from <b>Building settings</b>; a blank there leaves the row dashed. Figures follow the week and range picked in the header (${rangeLabel()}).</span>`;
+
   document.querySelectorAll("input.cin").forEach(i => i.onchange = e => {
     const v = Number(e.target.value);
     if (v > 0) CLEANERS[e.target.dataset.c] = v; else delete CLEANERS[e.target.dataset.c];
@@ -394,6 +498,7 @@ function render(){
 
   drawMap(clustered.filter(r => r.lat && r.lng), clusters);
   drawMatrices();
+  renderSettings();
 
   const offMap = [...new Set(cur.filter(r => !r.cluster || !r.lat || !r.lng).map(r => r.building))];
   document.getElementById("legend").innerHTML =
@@ -403,12 +508,19 @@ function render(){
      ${offMap.length ? `<span class="warn"><b>Not on the map:</b> ${offMap.join(", ")} — the name in the sheet doesn't match a known building, so there are no coordinates for it. Fix the spelling in the sheet, or add the building to this page.</span>` : ""}`;
 
   document.querySelectorAll("#tbBuildings tr").forEach(tr => {
-    tr.onmouseenter = () => highlight(tr.dataset.b, null);
-    tr.onmouseleave = () => highlight(null, null);
+    tr.onmouseenter = e => { highlight(tr.dataset.b, null); showHover(tr.dataset.b, e); };
+    tr.onmousemove = e => moveHover(e);
+    tr.onmouseleave = () => { highlight(null, null); hideHover(); };
   });
   document.querySelectorAll("#tbClusters tr").forEach(tr => {
     tr.onmouseenter = () => highlight(null, tr.dataset.c);
     tr.onmouseleave = () => highlight(null, null);
+  });
+  document.querySelectorAll("#map [data-mb]").forEach(g => {
+    g.style.cursor = "default";
+    g.onmouseenter = e => { highlight(g.dataset.mb, null); showHover(g.dataset.mb, e); };
+    g.onmousemove = e => moveHover(e);
+    g.onmouseleave = () => { highlight(null, null); hideHover(); };
   });
 }
 
@@ -483,14 +595,14 @@ function drawMap(rows, clusters){
     const lw = Math.max(tw(g.c, 13), 70) / 2;
     let best = null;
     for (const y of [g.y - g.rad - 12, g.y + g.rad + 30, g.y - g.rad - 34, g.y + g.rad + 52]){
-      const box = { x1: g.x - lw - 6, x2: g.x + lw + 6, y1: y - 14, y2: y + 26 }, ov = overlap(box);
+      const box = { x1: g.x - lw - 6, x2: g.x + lw + 6, y1: y - 14, y2: y + 34 }, ov = overlap(box);
       if (!best || ov < best.ov) best = { ov, box, y };
       if (!ov) break;
     }
     occ.push(best.box);
     halos += `<g data-halo="${g.c}"><circle cx="${g.x}" cy="${g.y}" r="${g.rad}" fill="url(#h${i})" stroke="${mc}" stroke-opacity=".75" stroke-width="1.8" stroke-dasharray="5 5"/>
       <g transform="translate(${g.x},${best.y})"><text text-anchor="middle" font-size="13" font-weight="700" fill="${col}" letter-spacing=".02em">${g.c.toUpperCase()}</text>
-      <text text-anchor="middle" y="19" font-size="15" font-weight="700" fill="${mc}" style="font-variant-numeric:tabular-nums">${pct(m)}</text></g></g>`;
+      <text text-anchor="middle" y="27" font-size="26" font-weight="700" fill="${mc}" style="font-variant-numeric:tabular-nums">${pct(m)}</text></g></g>`;
   });
 
   const marks = rows.filter(r => r.lat).map(r => ({ b: r.building, p: P(r) }));
@@ -668,6 +780,7 @@ function setWeeks(){
   document.getElementById("week").innerHTML = weeks.map(w => `<option${w === week ? " selected" : ""}>${w}</option>`).join("");
 }
 document.getElementById("week").onchange = e => { week = e.target.value; render(); };
+document.getElementById("range").onchange = e => { RANGE = Number(e.target.value); render(); };
 const salaryInput = document.getElementById("salary");
 salaryInput.value = SALARY;
 salaryInput.oninput = e => {
@@ -806,6 +919,95 @@ const noteHTML = () =>
    <b>3. Template:</b> <code>Template</code> downloads a one-building <code>Week Start, Revenue</code> starter.
    Everything fixed week over week lives in this page, not the sheet: each building's address, coordinates, cluster and number of cleaners, plus one cleaner's weekly salary, set in the header (<code>$${SALARY.toLocaleString()}</code>/wk right now and remembered on this device) — the denominator of both KPIs. Adding a <code>cluster</code>, <code>cleaners</code> or <code>cleaner_salary</code> column to the sheet overrides the page for those rows; a brand-new building needs one line adding to the page (name, address, lat/lng, cluster, cleaners).
    Until data is connected the page shows the real buildings with invented revenue — those numbers are not real.`;
+/* ---------- building hover card ---------- */
+const unitsOf = name => (BSET[key(name)] || {}).units || null;
+const liveOf = name => (BSET[key(name)] || {}).live || null;
+const accessOf = name => (BSET[key(name)] || {}).access || null;
+function weeksSinceLive(name){
+  const d = liveOf(name); if (!d) return null;
+  const t = Date.parse(d + "T00:00:00Z"); if (isNaN(t)) return null;
+  return Math.max(0, Math.round((Date.now() - t) / 604800000));
+}
+const hoverEl = () => document.getElementById("hover");
+function showHover(name, e){
+  if (!name) return;
+  const i = weeks.indexOf(week), last = weeks.slice(Math.max(0, i - 3), i + 1);
+  const byW = new Map(ROWS.filter(r => r.building === name).map(r => [r.week, r]));
+  const reg = lookup(name) || {}, u = unitsOf(name), wk = weeksSinceLive(name), ac = accessOf(name);
+  const cells = last.map(w => { const m = buildingMargin(byW.get(w) || { revenue: 0 });
+    return `<div><b class="${m == null ? "" : m > 0 ? "pv" : "nv"}" style="color:${m == null ? "var(--ink-4)" : m > 0 ? "var(--forest)" : "var(--danger,#A85149)"}">${pct(m)}</b><span>${w}</span></div>`; }).join("");
+  const rows = [
+    ["Units", u ? u.toLocaleString() : "—"],
+    ["Launched", wk == null ? "—" : wk === 0 ? "this week" : wk + (wk === 1 ? " week ago" : " weeks ago")],
+    ["Remote access", ac === "remote" ? "Yes" : ac === "none" ? "No" : "—"],
+    ["Cluster", reg.cluster || "not matched"]
+  ].map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+  const el = hoverEl();
+  el.innerHTML = `<h4>${name}</h4><div class="sub">${reg.address || ""}</div><dl>${rows}</dl>
+    <div class="spark">${cells}</div>`;
+  el.classList.add("on"); el.setAttribute("aria-hidden", "false");
+  moveHover(e);
+}
+function moveHover(e){
+  const el = hoverEl(), r = el.getBoundingClientRect();
+  let x = e.clientX + 16, y = e.clientY + 14;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 16;
+  if (y + r.height > innerHeight - 8) y = Math.max(8, e.clientY - r.height - 14);
+  el.style.left = x + "px"; el.style.top = y + "px";
+}
+function hideHover(){ const el = hoverEl(); el.classList.remove("on"); el.setAttribute("aria-hidden", "true"); }
+
+/* ---------- left menu + building settings ---------- */
+document.getElementById("navToggle").onclick = () => document.body.classList.toggle("navmin");
+function showView(v){
+  document.querySelectorAll("aside.nav a").forEach(a => a.classList.toggle("on", a.dataset.view === v));
+  document.getElementById("viewDash").classList.toggle("on", v === "dash");
+  document.getElementById("viewBuildings").classList.toggle("on", v === "buildings");
+  document.getElementById("viewClusters").classList.toggle("on", v === "clusters");
+  hideHover();
+}
+document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
+
+// per-building facts the sheet does not carry, kept on this device
+let BSET = {
+  bezelmiami:       { units: 434, access: "remote", live: "2026-04-28" },
+  forma:            { units: 850, access: "remote", live: "2026-01-22" },
+  miamiworldtower:  { units: 520, access: "none",   live: "2026-05-14" },
+  muze:             { units: 391,                   live: "2026-06-12" },
+  paraisobayviews:  { units: 397, access: "none",   live: "2026-05-08" },
+  hamilton:         { units: 275, access: "remote", live: "2026-08-04" },
+  wynd2728:         { units: 152, access: "remote", live: "2025-05-16" }
+};
+try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
+  .forEach(([k, v]) => BSET[k] = Object.assign({}, BSET[k], v)); } catch (e) {}
+const saveBset = () => localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
+function firstRevenueWeek(name){
+  const rs = ROWS.filter(r => r.building === name && r.revenue > 0)
+    .sort((a, b) => (a.weekOrder ?? 0) - (b.weekOrder ?? 0));
+  return rs.length ? rs[0].week : "—";
+}
+function renderSettings(){
+  const names = [...new Set([...Object.values(REGISTRY).map(b => b.name), ...ROWS.map(r => r.building)])].sort();
+  document.getElementById("tbSettings").innerHTML = names.map(n => {
+    const reg = lookup(n) || {}, s = BSET[key(n)] || {};
+    return `<tr><td class="name">${n}<span class="addr">${reg.address || ""}</span></td>
+      <td style="color:var(--ink-3)">${reg.cluster || "not matched"}</td>
+      <td class="n"><input type="number" min="0" step="1" data-f="units" data-b="${key(n)}" value="${s.units ?? ""}" placeholder="—" aria-label="Units in ${n}"></td>
+      <td><select data-f="access" data-b="${key(n)}" aria-label="Access method for ${n}">
+        <option value=""${s.access ? "" : " selected"}>—</option>
+        <option value="remote"${s.access === "remote" ? " selected" : ""}>Has remote access</option>
+        <option value="none"${s.access === "none" ? " selected" : ""}>Does not have remote access</option></select></td>
+      <td><input type="date" data-f="live" data-b="${key(n)}" value="${s.live || ""}" aria-label="Day ${n} went live"></td>
+      <td class="hint">${firstRevenueWeek(n)}</td></tr>`;
+  }).join("");
+  document.querySelectorAll("#tbSettings [data-f]").forEach(el => el.onchange = e => {
+    const b = e.target.dataset.b, f = e.target.dataset.f, v = e.target.value;
+    BSET[b] = BSET[b] || {};
+    if (v === "") delete BSET[b][f]; else BSET[b][f] = f === "units" ? Number(v) : v;
+    saveBset(); render();
+  });
+}
+
 document.getElementById("note").innerHTML = noteHTML();
 setWeeks(); render();
 loadCSV(saved, true);
