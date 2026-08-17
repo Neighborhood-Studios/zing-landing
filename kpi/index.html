@@ -1,0 +1,814 @@
+<!-- @template name="KPI Dashboard" description="Weekly building + cluster margin tracker with a schematic cluster map, fed by a published Google Sheet CSV." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zing · KPI Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,300;0,400&display=swap" rel="stylesheet">
+<style>
+:root{
+--forest:#1D2E32;--forest-600:#355457;--sage-500:#97A88D;--sage-300:#C9D8C2;--sage-100:#E9EFE2;
+--paper-50:#FBF9F4;--paper-100:#F5F1E8;--paper-200:#ECE4D5;--line:#E6DECF;--line-strong:#E2D8C6;
+--ink:#1D2E32;--ink-2:#3C4D4E;--ink-3:#647271;--ink-4:#8A9492;
+--pos:#4F7C5C;--pos-bg:#E2EEE3;--neg:#A85149;--neg-bg:#F2E0DC;--honey:#C8A86A;
+--mono:"Hanken Grotesk",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper-100);color:var(--ink);font:400 14px/1.45 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);font-weight:600}
+header{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:12px 22px;background:rgba(251,249,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header h1{margin:0;font:300 20px/1 "Newsreader",serif;letter-spacing:-.01em;white-space:nowrap;flex:0 0 auto}
+header h1 span{font-family:"Hanken Grotesk";font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-left:10px;vertical-align:2px;white-space:nowrap}
+.spacer{flex:1}
+label.fld{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-3);font-weight:600}
+select,input[type=text],input[type=number],button{font:inherit;font-size:13px;color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-radius:8px;padding:6px 9px}
+select{padding-right:24px}
+button{cursor:pointer;font-weight:600;font-size:12px}
+button:hover{border-color:var(--sage-500)}
+button.primary{background:var(--forest);color:var(--paper-50);border-color:var(--forest)}
+button.primary:hover{background:var(--forest-600);border-color:var(--forest-600)}
+main{padding:18px 22px 60px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat .v{font:400 26px/1.1 "Newsreader",serif;margin-top:6px}
+.stat .s{font-size:11px;color:var(--ink-4);margin-top:4px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.phead{display:flex;align-items:baseline;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.phead h2{margin:0;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.phead p{margin:0;font-size:11px;color:var(--ink-4)}
+.grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:right;padding:7px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-4);font-weight:600;background:var(--paper-50);position:sticky;top:0}
+th:first-child,td:first-child{text-align:left}
+tbody tr:hover{background:var(--sage-100)}
+tbody tr.on{background:var(--sage-100)}
+td.name{font-weight:600}
+td .addr{display:block;font-weight:400;font-size:11px;color:var(--ink-4)}
+.pill{display:inline-block;min-width:62px;text-align:right;padding:2px 8px;border-radius:999px;font-weight:700;font-variant-numeric:tabular-nums;font-size:12.5px}
+.pill.p{background:var(--pos-bg);color:var(--pos)}
+.pill.n{background:var(--neg-bg);color:var(--neg)}.pill.o{background:var(--paper-200);color:var(--ink-4)}
+.wow{font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-3)}
+.wow.p{color:var(--pos)}.wow.n{color:var(--neg)}
+.cdot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px;vertical-align:0}
+.mapwrap{position:relative;background:var(--paper-50)}
+svg.map{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:14px;padding:10px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-3);align-items:center}
+.legend b{font-weight:600;color:var(--ink-2)}
+.legend .warn{flex:1 1 100%;color:var(--neg);background:var(--neg-bg);padding:6px 9px;border-radius:8px}
+input.cin{width:56px;padding:3px 6px;text-align:right;font-size:12.5px;font-variant-numeric:tabular-nums;border-radius:6px}
+input.cin::placeholder{color:var(--ink-4)}
+.scrollx{overflow-x:auto}
+.matrix th,.matrix td{padding:6px 10px}
+.matrix thead th:first-child{min-width:180px}
+.matrix tbody td:first-child,.matrix thead th:first-child{position:sticky;left:0;background:#fff;z-index:1}
+.matrix thead th:first-child{background:var(--paper-50)}
+.matrix td.v{font-variant-numeric:tabular-nums;font-weight:600;font-size:12.5px}
+.matrix td.v.p{color:var(--pos);background:var(--pos-bg)}
+.matrix td.v.n{color:var(--neg);background:var(--neg-bg)}
+.matrix td.v.o{color:var(--ink-4)}
+.matrix tbody tr:hover td{background:var(--sage-100)}
+.matrix tr.total td{border-top:1px solid var(--line-strong);font-weight:700}
+.matrix tr.total td:first-child{font-weight:700}
+.matrix + .scrollx,.scrollx + .scrollx{border-top:1px solid var(--line)}
+footer.note{font-size:11px;color:var(--ink-4);line-height:1.6}
+footer.note code{background:var(--paper-200);padding:1px 5px;border-radius:4px;font-size:10.5px}
+a{color:var(--forest-600)}a:hover{color:var(--forest)}
+.src{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-4);flex-wrap:nowrap}
+.src span:not(.dot){white-space:nowrap;flex:0 0 auto;max-width:340px;overflow:hidden;text-overflow:ellipsis}
+.src button{white-space:nowrap;flex:0 0 auto;height:30px;display:inline-flex;align-items:center}
+.src input[type=text]{width:230px;font-size:11px;height:30px;flex:0 1 230px;min-width:120px}
+label.fld{flex:0 0 auto;white-space:nowrap}
+label.fld input[type=number]{width:78px;height:30px;text-align:right;font-variant-numeric:tabular-nums}
+label.fld .pre,label.fld .post{color:var(--ink-4);font-weight:600}
+label.fld .pre{margin-right:-4px}
+.src input[type=text]{width:230px;font-size:11px}
+.dot{width:7px;height:7px;border-radius:99px;background:var(--honey);flex:0 0 auto}
+.dot.live{background:var(--pos)}.dot.err{background:var(--neg)}
+tspan.mlabel{font-weight:700}
+@media(max-width:1080px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<h1>Zing<span>Weekly KPI dashboard</span></h1>
+<div class="spacer"></div>
+<div class="src"><span class="dot" id="srcDot"></span><span id="srcMsg">Sample data</span><input type="text" id="csvUrl" placeholder="Google Sheet URL"><button id="load">Load</button><button id="pick">Upload file</button><input type="file" id="file" accept=".csv,.xlsx,.xls" hidden><button id="tpl">Template</button></div>
+<label class="fld">Cleaner salary<span class="pre">$</span><input type="number" id="salary" min="0" step="10"><span class="post">/wk</span></label>
+<label class="fld">Week<select id="week"></select></label>
+</header>
+<main>
+<section class="stats" id="stats"></section>
+<section class="panel">
+<div class="phead"><h2>Cluster map</h2><p>Pin colour and number = margin per single cleaner. Halo = cluster, labelled with cluster margin.</p></div>
+<div class="mapwrap"><svg class="map" id="map" viewBox="0 0 1240 620" role="img" aria-label="Schematic map of buildings and clusters"></svg></div>
+<div class="legend" id="legend"></div>
+</section>
+<section class="grid2">
+<div class="panel">
+<div class="phead"><h2>Buildings</h2><p>Margin per single cleaner</p></div>
+<table><thead><tr><th>Building</th><th>Cluster</th><th>Margin / cleaner</th><th>WoW</th></tr></thead><tbody id="tbBuildings"></tbody></table>
+</div>
+<div class="panel">
+<div class="phead"><h2>Clusters</h2><p>Cluster margin — type the cleaners assigned to each cluster</p></div>
+<table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Cleaners</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusters"></tbody></table>
+</div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Week over week</h2><p>Margin per single cleaner by building, then cluster margin — every week in the sheet</p></div>
+<div class="scrollx"><table class="matrix"><thead id="hdBuildings"></thead><tbody id="mxBuildings"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdClusters"></thead><tbody id="mxClusters"></tbody></table></div>
+</section>
+<footer class="note" id="note"></footer>
+</main>
+<script>
+/* ---------- formulas (single place to change) ---------- */
+// Building KPI: margin per single cleaner = (weekly revenue − one cleaner's weekly salary) / that salary
+const salaryOf = r => r.cleanerSalary || SALARY;   // sheet column wins, else the salary set in the header
+const buildingMargin = r => salaryOf(r) > 0 && r.revenue ? (r.revenue - salaryOf(r)) / salaryOf(r) : null;
+// Cluster KPI: (Σ revenue − payroll of every cleaner in the cluster) / that payroll,
+// where the head count per cluster is set by hand in the clusters table
+let CLEANERS = {};
+try { CLEANERS = JSON.parse(localStorage.getItem("zingKpiCleaners")) || {}; } catch (e) {}
+const cleanersIn = c => CLEANERS[c] ?? null;
+// Portfolio KPI: Σ revenue of every building ÷ payroll of every cleaner in every cluster
+const portfolioMargin = rows => {
+  const rev = rows.reduce((a, r) => a + r.revenue, 0);
+  const heads = [...new Set(rows.filter(r => r.cluster).map(r => r.cluster))].reduce((a, c) => a + (cleanersIn(c) || 0), 0);
+  const sal = heads * SALARY;
+  return { pct: sal > 0 && rev ? (rev - sal) / sal : null, rev, sal, heads };
+};
+const clusterMargin = (rows, c) => {
+  const rev = rows.reduce((a, r) => a + r.revenue, 0);
+  const n = cleanersIn(c);
+  const sal = n ? n * SALARY : 0;
+  return sal > 0 && rev ? { pct: (rev - sal) / sal, rev, sal, n } : { pct: null, rev, sal, n };
+};
+
+/* ---------- sample data (replace via CSV) ---------- */
+const SAMPLE = [
+["Wynd 27&28","127 NW 27th St, Miami, FL 33127-4523",25.7998,-80.1970,"Edgewater",2,1420,1180],
+["The Hamilton","555 NE 34th St, Miami, FL 33137-4022",25.8073,-80.1875,"Edgewater",2,1660,1180],
+["Forma","2900 Biscayne Blvd, Miami, FL 33137-4596",25.8025,-80.1900,"Edgewater",1,1320,1180],
+["Paraiso Bayviews","501 NE 31st St, Miami, FL 33137-4476",25.8046,-80.1868,"Edgewater",2,980,1180],
+["Bezel Miami","650 NE 2nd Ave, Miami, FL 33132-2516",25.7797,-80.1913,"Downtown",2,1010,1180],
+["Miami World Tower","710 NE 1st Ave, Miami, FL 33132-2398",25.7808,-80.1920,"Downtown",1,1490,1180],
+["Muze","340 SE 3rd St, Miami, FL 33131-1728",25.7713,-80.1893,"Downtown",2,1740,1180]
+];
+const WEEKS = ["2026-W31","2026-W32","2026-W33"];
+const jitter = (v, i, w) => Math.round(v * (1 + ((i * 7 + w * 13) % 11 - 5) / 40));
+function sampleRows(){
+  const out = [];
+  WEEKS.forEach((wk, w) => SAMPLE.forEach((b, i) => out.push({
+    week: wk, building: b[0], address: b[1], lat: b[2], lng: b[3], cluster: b[4],
+    cleaners: b[5], revenue: jitter(b[6], i, w), cleanerSalary: null, weekOrder: w
+  })));
+  return out;
+}
+
+/* ---------- CSV ----------
+   The sheet only needs week, building and revenue. Everything fixed week over week
+   (address, coordinates, cluster, cleaners assigned) comes from the registry above,
+   and one cleaner's weekly salary is set in the header (default $720/wk). Any of those columns present
+   in the sheet still wins, so a one-off override is possible without a code change. */
+let SALARY = Number(localStorage.getItem("zingKpiSalary")) || 720;   // one cleaner, per week
+const REGISTRY = {};
+// match on letters and digits only, so "Wynd 27&28", "wynd27-28" and "WYND 27 & 28" are the same building
+const key = s => String(s).toLowerCase().replace(/^the\s+/, "").replace(/[^a-z0-9]/g, "");
+SAMPLE.forEach(b => REGISTRY[key(b[0])] = { name: b[0], address: b[1], lat: b[2], lng: b[3], cluster: b[4], cleaners: b[5] });
+// initialisms the sheet may use ("MWT" → Miami World Tower); generated from each name's words
+const INITIALS = {};
+SAMPLE.forEach(b => { const i = b[0].split(/[^A-Za-z0-9]+/).filter(Boolean).map(w => w[0].toLowerCase()).join("");
+  if (i.length > 1) INITIALS[i] = key(b[0]); });
+const ALIASES = { mwt: "miamiworldtower", pbv: "paraisobayviews", wynd: "wynd2728", hamilton: "thehamilton" };
+function lookup(name){
+  const k = key(name);
+  if (REGISTRY[k]) return REGISTRY[k];
+  if (ALIASES[k] && REGISTRY[ALIASES[k]]) return REGISTRY[ALIASES[k]];
+  if (INITIALS[k] && REGISTRY[INITIALS[k]]) return REGISTRY[INITIALS[k]];
+  const ks = Object.keys(REGISTRY);
+  // then either direction of containment ("bezel" ~ "bezelmiami"), longest match wins
+  const hit = ks.filter(r => r.includes(k) || k.includes(r)).sort((a, b) => b.length - a.length)[0];
+  return hit ? REGISTRY[hit] : null;
+}
+
+/* Tolerant sheet reader. Handles three shapes:
+   TAB-PER-BUILDING (the live workbook — one tab per building, one row per week, a
+   "Week Start" date column and a "Revenue" column, all other columns ignored),
+   LONG (one row per building per week) and WIDE (one row per building, one column per week).
+   `lastHeaders` is surfaced in the status message when nothing could be read. */
+let lastHeaders = [], unmatched = new Set();
+const splitCSV = text => { const split = l => { const o = []; let c = "", q = false;
+    for (const ch of l){ if (ch === '"'){ q = !q; } else if (ch === "," && !q){ o.push(c); c = ""; } else c += ch; }
+    o.push(c); return o.map(s => s.trim().replace(/^"|"$/g, "")); };
+  return text.trim().split(/\r?\n/).map(split); };
+const normh = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
+const isBuildingCol = s => ["building","buildings","property","properties","name","site","location"].includes(s);
+const isRevenueCol = s => ["revenue","revenues","sales","income","totalrevenue","weeklyrevenue","amount","total"].includes(s);
+const isWeekStartCol = s => ["weekstart","weekstarting","weekof","weekbeginning","week","date"].includes(s);
+const numOf = s => Number(String(s ?? "").replace(/[^0-9.-]/g, ""));
+
+/* a week is identified by its start date; label comes later, once the whole workbook is in */
+function weekTime(s){
+  const t = String(s || "").trim();
+  let m = t.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+  if (m) return Date.UTC(+m[1], +m[2] - 1, +m[3]);
+  m = t.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{2,4})/);          // US m/d/y
+  if (m){ const y = +m[3]; return Date.UTC(y < 100 ? 2000 + y : y, +m[1] - 1, +m[2]); }
+  const p = Date.parse(t);
+  return isNaN(p) ? null : p;
+}
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function relabelWeeks(rows){
+  const ts = rows.map(r => r.weekTime).filter(t => t != null);
+  if (!ts.length) return rows;
+  const years = new Set(ts.map(t => new Date(t).getUTCFullYear()));
+  rows.forEach(r => { if (r.weekTime != null){ const d = new Date(r.weekTime);
+    r.week = MON[d.getUTCMonth()] + " " + d.getUTCDate() + (years.size > 1 ? ", " + d.getUTCFullYear() : "");
+    r.weekOrder = r.weekTime; } });
+  return rows;
+}
+
+/* one tab = one building; rows are weeks */
+function parseTab(rows, hi, sheetName){
+  const h = rows[hi].map(normh);
+  lastHeaders = rows[hi].filter(Boolean);
+  const wi = h.findIndex(isWeekStartCol);
+  let ri = h.indexOf("revenue"); if (ri < 0) ri = h.findIndex(isRevenueCol);
+  const reg = lookup(sheetName) || {};
+  if (!reg.name) unmatched.add(sheetName);
+  return rows.slice(hi + 1).map(c => {
+    const t = weekTime(c[wi]), v = numOf(c[ri]);
+    if (t == null || !String(c[wi] || "").trim()) return null;
+    return { week: String(c[wi]).trim(), weekTime: t, weekOrder: t,
+      building: reg.name || sheetName, address: reg.address || "",
+      lat: reg.lat || 0, lng: reg.lng || 0, cluster: reg.cluster || "",
+      cleaners: reg.cleaners || 1, revenue: isNaN(v) ? 0 : v, cleanerSalary: null };
+  }).filter(Boolean);
+}
+
+function parseRows(rows, sheetName){
+  const hi = rows.findIndex(r => { const h = r.map(normh);
+    return h.some(isWeekStartCol) && h.some(isRevenueCol) && !h.some(isBuildingCol); });
+  if (hi > -1 && sheetName) return parseTab(rows, hi, sheetName);
+  return parseFlat(rows);
+}
+const parseCSV = (text, sheetName) => parseRows(splitCSV(text), sheetName);
+function rowsFromWorkbook(wb){
+  return wb.SheetNames.flatMap(n => parseRows(XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, raw: false, defval: "" }), n));
+}
+
+function parseFlat(rows){
+  const norm = normh;
+  unmatched = new Set();
+  const isWeekCol = s => ["week","weekof","weekstarting","weekstart","weekending","date","period"].includes(s);
+  const weekish = s => /^(w|wk)?\d{1,2}$/i.test(s) || /^\d{4}-?w\d{1,2}$/i.test(s) || /^\d{1,4}[\/-]\d{1,2}([\/-]\d{1,4})?$/.test(s) || /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(s);
+
+  // header row = first row that names a building column
+  let hi = rows.findIndex(r => r.some(c => isBuildingCol(norm(c))));
+  if (hi < 0) hi = 0;
+  const raw = rows[hi], head = raw.map(norm);
+  lastHeaders = raw.filter(Boolean);
+  const find = test => head.findIndex(test);
+  const col = { building: find(isBuildingCol), revenue: find(isRevenueCol), week: find(isWeekCol),
+    address: head.indexOf("address"), lat: head.indexOf("lat"), lng: head.indexOf("lng"),
+    cluster: head.indexOf("cluster"), cleaners: head.indexOf("cleaners"),
+    salary: head.findIndex(s => s.startsWith("cleanersalary") || s === "salary") };
+  if (col.building < 0) col.building = 0;
+  const num = s => numOf(s) || 0;
+  const body = rows.slice(hi + 1).filter(c => c[col.building] && !/^(total|totals|sum|grand ?total)$/i.test(c[col.building]));
+
+  // chronological order for the week selector: a real date if the label is one, else file order
+  const when = s => { const t = Date.parse(s); if (!isNaN(t)) return t;
+    const t2 = Date.parse(s + " " + new Date().getFullYear()); return isNaN(t2) ? null : t2; };
+  const make = (name, week, revenue, c = [], order = null) => {
+    const reg = lookup(name) || {};
+    if (!reg.name) unmatched.add(name);
+    const at = k => col[k] > -1 ? c[col[k]] || "" : "";
+    return { week: week || "—", building: name,
+      address: at("address") || reg.address || "",
+      lat: num(at("lat")) || reg.lat || 0, lng: num(at("lng")) || reg.lng || 0,
+      cluster: at("cluster") || reg.cluster || "",   // blank = unmatched: no pin, and never its own cluster
+      cleaners: Math.max(1, num(at("cleaners")) || reg.cleaners || 1),
+      revenue: revenue, cleanerSalary: num(at("salary")) || null, weekOrder: order };
+  };
+
+  // WIDE first: two or more week-like columns means the weeks ARE the columns, and a
+  // stray "Total" column must not be mistaken for the revenue column
+  const wkCols = head.map((s, i) => ({ s: raw[i], i })).filter(o => o.i !== col.building && o.i !== col.revenue && o.s && weekish(o.s));
+  // wide sheets are already chronological left to right, so the column index IS the order
+  if (wkCols.length >= 2) return body.flatMap(c => wkCols.map((w, n) => make(c[col.building], w.s, num(c[w.i]), c, when(w.s) ?? n)));
+  if (col.revenue > -1){   // LONG: week / building / revenue
+    let n = 0;
+    return body.map(c => { const w = col.week > -1 ? c[col.week] : "—"; return make(c[col.building], w, num(c[col.revenue]), c, when(w) ?? n++); });
+  }
+  if (wkCols.length === 1) return body.map(c => make(c[col.building], wkCols[0].s, num(c[wkCols[0].i]), c, 0));
+  return [];
+}
+
+/* ---------- state ---------- */
+let ROWS = sampleRows(), weeks = [], week = "", clusterColors = {};
+const PALETTE = ["#355457","#7B6B4A","#5F7A63","#7A5A63","#4F6E86","#8A6E3F"];
+const pct = v => v == null ? "—" : (v >= 0 ? "+" : "") + (v * 100).toFixed(0) + "%";
+const cls = v => v == null ? "o" : v > 0 ? "p" : "n";            // no data reads neutral, never as a loss
+const tone = v => v == null ? "#A9B0AE" : v > 0 ? "#4F7C5C" : "#A85149";
+const money = v => "$" + Math.round(v).toLocaleString();
+
+function rowsFor(w){ return ROWS.filter(r => r.week === w); }
+function prevWeek(w){ const i = weeks.indexOf(w); return i > 0 ? weeks[i - 1] : null; }
+
+/* ---------- week-over-week matrices ---------- */
+function drawMatrices(){
+  const head = n => `<tr><th>${n}</th>${weeks.map(w => `<th>${w}</th>`).join("")}</tr>`;
+  const cell = m => `<td class="v ${cls(m)}">${pct(m)}</td>`;
+  const byWeek = new Map(weeks.map(w => [w, rowsFor(w)]));
+
+  const names = [...new Set(ROWS.map(r => r.building))];
+  document.getElementById("hdBuildings").innerHTML = head("Building");
+  document.getElementById("mxBuildings").innerHTML = names.map(n => {
+    const cells = weeks.map(w => cell(buildingMargin(byWeek.get(w).find(r => r.building === n) || { revenue: 0 })));
+    const c = (ROWS.find(r => r.building === n) || {}).cluster;
+    return `<tr data-b="${n}"><td class="name"><span class="cdot" style="background:${clusterColors[c] || "#C9C2B4"}"></span>${n}</td>${cells.join("")}</tr>`;
+  }).join("");
+
+  const cs = [...new Set(ROWS.filter(r => r.cluster).map(r => r.cluster))];
+  document.getElementById("hdClusters").innerHTML = head("Cluster");
+  const portfolio = weeks.map(w => cell(portfolioMargin(byWeek.get(w)).pct));
+  document.getElementById("mxClusters").innerHTML = cs.map(c => {
+    const cells = weeks.map(w => cell(clusterMargin(byWeek.get(w).filter(r => r.cluster === c), c).pct));
+    return `<tr data-c="${c}"><td class="name"><span class="cdot" style="background:${clusterColors[c]}"></span>${c}</td>${cells.join("")}</tr>`;
+  }).join("") +
+    `<tr class="total"><td class="name">Portfolio</td>${portfolio.join("")}</tr>`;
+}
+
+function render(){
+  const cur = rowsFor(week), prev = prevWeek(week) ? rowsFor(prevWeek(week)) : [];
+  const prevB = new Map(prev.map(r => [r.building, r]));
+  const clustered = cur.filter(r => r.cluster);
+  const clusters = [...new Set(clustered.map(r => r.cluster))];
+  clusters.forEach((c, i) => clusterColors[c] = clusterColors[c] || PALETTE[i % PALETTE.length]);
+
+  /* stats */
+  const rev = clustered.reduce((a, r) => a + r.revenue, 0);
+  const all = portfolioMargin(clustered), heads = all.heads;
+  const bm = cur.map(buildingMargin).filter(v => v != null);
+  const negB = bm.filter(v => v <= 0).length;
+  const negC = clusters.filter(c => { const m = clusterMargin(clustered.filter(r => r.cluster === c), c).pct; return m != null && m <= 0; }).length;
+  document.getElementById("stats").innerHTML = [
+    ["Portfolio margin", pct(all.pct), money(all.rev) + " revenue · " + heads + " cleaners × " + money(SALARY) + " = " + money(all.sal)],
+    ["Median margin / cleaner", bm.length ? pct(bm.sort((a, b) => a - b)[Math.floor(bm.length / 2)]) : "—", bm.length + " of " + cur.length + " buildings reporting"],
+    ["Buildings at or below 0%", negB + " / " + bm.length, negB ? "needs attention" : "all positive"],
+    ["Clusters at or below 0%", negC + " / " + clusters.length, clusters.join(" · ")]
+  ].map(s => `<div class="stat"><div class="eyebrow">${s[0]}</div><div class="v num">${s[1]}</div><div class="s">${s[2]}</div></div>`).join("");
+
+  /* building table */
+  document.getElementById("tbBuildings").innerHTML = cur.slice().sort((a, b) => (buildingMargin(a) ?? -9) - (buildingMargin(b) ?? -9)).map(r => {
+    const m = buildingMargin(r), p = prevB.get(r.building), d = p && m != null ? m - buildingMargin(p) : null;
+    return `<tr data-b="${r.building}"><td class="name"><span class="cdot" style="background:${clusterColors[r.cluster]}"></span>${r.building}<span class="addr">${r.address}</span></td>
+    <td style="color:var(--ink-3)">${r.cluster || "not matched"}</td><td><span class="pill ${cls(m)}">${pct(m)}</span></td>
+    <td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td></tr>`;
+  }).join("");
+
+  /* cluster table */
+  document.getElementById("tbClusters").innerHTML = clusters.map(c => {
+    const rs = clustered.filter(r => r.cluster === c), m = clusterMargin(rs, c).pct;
+    const pr = prev.filter(r => r.cluster === c), pm = pr.length ? clusterMargin(pr, c).pct : null;
+    const d = m != null && pm != null ? m - pm : null;
+    return { c, m, d, n: rs.length };
+  }).sort((a, b) => (a.m ?? -9) - (b.m ?? -9)).map(o =>
+    `<tr data-c="${o.c}"><td class="name"><span class="cdot" style="background:${clusterColors[o.c]}"></span>${o.c}</td>
+    <td style="color:var(--ink-3)">${o.n}</td>
+    <td><input type="number" class="cin" min="0" step="1" data-c="${o.c}" value="${cleanersIn(o.c) ?? ""}" placeholder="—" aria-label="Cleaners in ${o.c}"></td>
+    <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
+    <td class="wow ${o.d == null ? "" : o.d >= 0 ? "p" : "n"}">${o.d == null ? "—" : (o.d >= 0 ? "▲ " : "▼ ") + Math.abs(o.d * 100).toFixed(0) + " pts"}</td></tr>`).join("");
+  document.querySelectorAll("input.cin").forEach(i => i.onchange = e => {
+    const v = Number(e.target.value);
+    if (v > 0) CLEANERS[e.target.dataset.c] = v; else delete CLEANERS[e.target.dataset.c];
+    localStorage.setItem("zingKpiCleaners", JSON.stringify(CLEANERS));
+    render();
+  });
+
+  drawMap(clustered.filter(r => r.lat && r.lng), clusters);
+  drawMatrices();
+
+  const offMap = [...new Set(cur.filter(r => !r.cluster || !r.lat || !r.lng).map(r => r.building))];
+  document.getElementById("legend").innerHTML =
+    `<span><b>Margin / cleaner</b> = (weekly revenue − one cleaner's weekly salary) ÷ that salary</span>
+     <span><b>Cluster margin</b> = (Σ revenue − cleaners in cluster × ${money(SALARY)}) ÷ (cleaners in cluster × ${money(SALARY)})</span>
+     <span style="display:flex;align-items:center;gap:6px"><span class="pill p" style="min-width:0">above 0%</span><span class="pill n" style="min-width:0">0% or below</span><span class="pill o" style="min-width:0">no data yet</span></span>
+     ${offMap.length ? `<span class="warn"><b>Not on the map:</b> ${offMap.join(", ")} — the name in the sheet doesn't match a known building, so there are no coordinates for it. Fix the spelling in the sheet, or add the building to this page.</span>` : ""}`;
+
+  document.querySelectorAll("#tbBuildings tr").forEach(tr => {
+    tr.onmouseenter = () => highlight(tr.dataset.b, null);
+    tr.onmouseleave = () => highlight(null, null);
+  });
+  document.querySelectorAll("#tbClusters tr").forEach(tr => {
+    tr.onmouseenter = () => highlight(null, tr.dataset.c);
+    tr.onmouseleave = () => highlight(null, null);
+  });
+}
+
+function highlight(b, c){
+  document.querySelectorAll("#map [data-mb]").forEach(g => g.setAttribute("opacity", !b && !c ? 1 : (g.dataset.mb === b || g.dataset.mc === c ? 1 : .22)));
+  document.querySelectorAll("#map [data-halo]").forEach(g => g.setAttribute("opacity", !c ? 1 : (g.dataset.halo === c ? 1 : .25)));
+}
+
+/* ---------- schematic map ----------
+   Buildings inside a cluster are plotted at true scale. Clusters themselves are packed as
+   rigid, never-overlapping discs into a fixed canvas, keeping their rough compass arrangement.
+   ------------------------------------ */
+function drawMap(rows, clusters){
+  const svg = document.getElementById("map"), W = 1240, H = 744, MX = 150, MY = 70;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const pts = rows.filter(r => r.lat && r.lng);
+  if (!pts.length){ svg.innerHTML = `<text x="40" y="40" fill="#8A9492" font-size="13">No coordinates in data</text>`; return; }
+  const midLat = pts.reduce((a, r) => a + r.lat, 0) / pts.length;
+  const mx = r => r.lng * 111320 * Math.cos(midLat * Math.PI / 180), my = r => r.lat * 110574;
+
+  /* per-cluster geometry in metres */
+  const G = clusters.map(c => {
+    const rs = rows.filter(r => r.cluster === c && r.lat);
+    if (!rs.length) return null;
+    const gx = rs.reduce((a, r) => a + mx(r), 0) / rs.length, gy = rs.reduce((a, r) => a + my(r), 0) / rs.length;
+    return { c, rs, gx, gy, spread: Math.max(...rs.map(r => Math.hypot(mx(r) - gx, my(r) - gy))) };
+  }).filter(Boolean);
+  // scale so all buildings fit the frame; clusters then sit at true geography and rarely need packing
+  const axs = pts.map(mx), ays = pts.map(my);
+  const spanX = Math.max(...axs) - Math.min(...axs), spanY = Math.max(...ays) - Math.min(...ays);
+  // leave vertical room for halo padding + cluster labels so clusters aren't clamped off true position
+  const k = Math.min(0.4, (W - MX * 2) / Math.max(spanX, 1), (H - MY * 2 - 180) / Math.max(spanY, 1));
+  const wx = G.reduce((a, g) => a + g.gx, 0) / G.length, wy = G.reduce((a, g) => a + g.gy, 0) / G.length;
+  G.forEach(g => { g.rad = Math.max(62, g.spread * k + 36); g.tx = (g.gx - wx) * k; g.ty = -(g.gy - wy) * k; g.x = g.tx; g.y = g.ty; });
+
+  /* relaxation: hold the compass arrangement, but never let two halos touch, and stay in frame */
+  const HW = W / 2 - MX, HH = H / 2 - MY;
+  for (let it = 0; it < 500; it++){
+    G.forEach(g => { g.x += (g.tx - g.x) * 0.04; g.y += (g.ty - g.y) * 0.04; });
+    for (let i = 0; i < G.length; i++) for (let j = i + 1; j < G.length; j++){
+      const A = G[i], B = G[j], need = A.rad + B.rad + 14;
+      let d = Math.hypot(B.x - A.x, B.y - A.y);
+      if (d < need){
+        if (d < 1){ B.x += 1; d = 1; }
+        const push = (need - d) / 2, ux = (B.x - A.x) / d, uy = (B.y - A.y) / d;
+        A.x -= ux * push; A.y -= uy * push; B.x += ux * push; B.y += uy * push;
+      }
+    }
+    G.forEach(g => { const lim = Math.max(0, HW - g.rad), limY = Math.max(0, HH - g.rad);
+      g.x = Math.max(-lim, Math.min(lim, g.x)); g.y = Math.max(-limY, Math.min(limY, g.y)); });
+  }
+  const cenX = G.reduce((a, g) => a + g.x, 0) / G.length, cenY = G.reduce((a, g) => a + g.y, 0) / G.length;
+  const offX = W / 2 - cenX, offY = H / 2 - cenY;
+  G.forEach(g => { g.x += offX; g.y += offY; });
+  const byC = {}; G.forEach(g => byC[g.c] = g);
+  // true-geography projection in the same units, and how far packing pushed clusters off it
+  const geo = (lat, lng) => ({ x: (lng * 111320 * Math.cos(midLat * Math.PI / 180) - wx) * k + offX, y: -(lat * 110574 - wy) * k + offY });
+  const drift = Math.max(...G.map(g => { const t = geo(g.gy / 110574, g.gx / (111320 * Math.cos(midLat * Math.PI / 180))); return Math.hypot(g.x - t.x, g.y - t.y); }));
+  const trueGeo = drift < 30;
+  const P = r => { const g = byC[r.cluster];
+    return g ? { x: g.x + (mx(r) - g.gx) * k, y: g.y - (my(r) - g.gy) * k } : { x: W / 2, y: H / 2 }; };
+
+  const occ = [], area = (a, b) => Math.max(0, Math.min(a.x2, b.x2) - Math.max(a.x1, b.x1)) * Math.max(0, Math.min(a.y2, b.y2) - Math.max(a.y1, b.y1));
+  const overlap = r => occ.reduce((a, o) => a + area(r, o), 0);
+  const tw = (s, px) => s.length * px * 0.56;
+  rows.filter(r => r.lat).forEach(r => { const p = P(r); occ.push({ x1: p.x - 13, x2: p.x + 13, y1: p.y - 32, y2: p.y + 3 }); });
+
+  let halos = "", pins = "", defs = "";
+  G.forEach((g, i) => {
+    const col = clusterColors[g.c], m = clusterMargin(g.rs, g.c).pct, mc = tone(m);
+    defs += `<radialGradient id="h${i}"><stop offset="45%" stop-color="${mc}" stop-opacity="0.11"/><stop offset="100%" stop-color="${mc}" stop-opacity="0.02"/></radialGradient>`;
+    const lw = Math.max(tw(g.c, 13), 70) / 2;
+    let best = null;
+    for (const y of [g.y - g.rad - 12, g.y + g.rad + 30, g.y - g.rad - 34, g.y + g.rad + 52]){
+      const box = { x1: g.x - lw - 6, x2: g.x + lw + 6, y1: y - 14, y2: y + 26 }, ov = overlap(box);
+      if (!best || ov < best.ov) best = { ov, box, y };
+      if (!ov) break;
+    }
+    occ.push(best.box);
+    halos += `<g data-halo="${g.c}"><circle cx="${g.x}" cy="${g.y}" r="${g.rad}" fill="url(#h${i})" stroke="${mc}" stroke-opacity=".75" stroke-width="1.8" stroke-dasharray="5 5"/>
+      <g transform="translate(${g.x},${best.y})"><text text-anchor="middle" font-size="13" font-weight="700" fill="${col}" letter-spacing=".02em">${g.c.toUpperCase()}</text>
+      <text text-anchor="middle" y="19" font-size="15" font-weight="700" fill="${mc}" style="font-variant-numeric:tabular-nums">${pct(m)}</text></g></g>`;
+  });
+
+  const marks = rows.filter(r => r.lat).map(r => ({ b: r.building, p: P(r) }));
+  rows.filter(r => r.lat).sort((a, b) => P(a).y - P(b).y).forEach(r => {
+    const p = P(r), m = buildingMargin(r), col = tone(m);
+    const w = Math.max(tw(r.building, 12.5), tw(pct(m), 13)) + 8;
+    let best = null;
+    for (const side of [1, -1]) for (const off of [0, -20, 20, -38, 38, -56, 56]){
+      const x = side > 0 ? p.x + 13 : p.x - 13 - w, y = p.y + 4 + off;
+      const box = { x1: x - 2, x2: x + w, y1: y - 28, y2: y + 7 };
+      const mid = { x: x + w / 2, y: y - 12 }, own = Math.hypot(mid.x - p.x, mid.y - p.y);
+      const stolen = marks.some(q => q.b !== r.building && Math.hypot(mid.x - q.p.x, mid.y - q.p.y) < own);
+      const out = Math.max(0, 6 - box.x1) + Math.max(0, box.x2 - (W - 6));
+      const cost = overlap(box) * 3 + own + Math.abs(off) * 1.2 + (side < 0 ? 6 : 0) + (stolen ? 400 : 0) + out * 4;
+      if (!best || cost < best.cost) best = { cost, box, lx: x, ly: y, off, side };
+    }
+    const { box, lx, ly } = best;
+    occ.push(box);
+    const leader = best.off === 0 ? "" :
+      `<line x1="${p.x}" y1="${p.y - 10}" x2="${best.side > 0 ? lx - 2 : lx + w + 2}" y2="${ly - 12}" stroke="${col}" stroke-opacity=".5" stroke-width="1"/>`;
+    pins += `<g data-mb="${r.building}" data-mc="${r.cluster}">${leader}
+      <path d="M${p.x} ${p.y} c-7.2 -9 -11 -13.6 -11 -18.4 a11 11 0 0 1 22 0 c0 4.8 -3.8 9.4 -11 18.4z" fill="${col}"/>
+      <circle cx="${p.x}" cy="${p.y - 19}" r="3.6" fill="#FBF9F4"/>
+      <text x="${lx}" y="${ly - 15}" font-size="12.5" font-weight="600" fill="#1D2E32">${r.building}</text>
+      <text x="${lx}" y="${ly + 1}" font-size="13" font-weight="700" fill="${col}" style="font-variant-numeric:tabular-nums">${pct(m)}</text>
+      <title>${r.building} — ${r.cluster} · ${money(r.revenue)} revenue · one cleaner salary ${money(salaryOf(r))}</title></g>`;
+  });
+
+  const barPx = Math.min(500 * k, 200);
+  svg.innerHTML = `<defs>${defs}<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1D2E32" opacity=".07"/></pattern>
+  <clipPath id="frame"><rect width="${W}" height="${H}"/></clipPath></defs>
+  <rect width="${W}" height="${H}" fill="#FBF9F4"/><rect width="${W}" height="${H}" fill="url(#dots)"/>
+  ${trueGeo ? basemap(geo, W, H) : ""}
+  ${halos}${pins}
+  <g transform="translate(${W - 30 - barPx},${H - 22})" fill="#8A9492" font-size="10.5"><line x1="0" y1="0" x2="${barPx}" y2="0" stroke="#8A9492" stroke-width="1.5"/>
+  <line x1="0" y1="-4" x2="0" y2="4" stroke="#8A9492"/><line x1="${barPx}" y1="-4" x2="${barPx}" y2="4" stroke="#8A9492"/><text x="${barPx / 2}" y="-8" text-anchor="middle">${(barPx / k / 1000).toFixed(1)} km within a cluster</text></g>
+  <text x="26" y="26" fill="#8A9492" font-size="10.5" letter-spacing=".12em">NORTH ↑ · ${trueGeo ? "BUILDINGS AND CLUSTERS AT TRUE POSITION · STREET MAP" : "BUILDINGS TO SCALE WITHIN EACH CLUSTER · CLUSTERS PLACED SCHEMATICALLY"}</text>`;
+}
+
+/* Schematic Miami: shoreline, bay, barrier island and the bay islands, causeways,
+   arterials, a light street grid, bayfront parks and neighbourhood labels.
+   Traced from coordinates — recognisable, not street-accurate. */
+function basemap(geo, W, H){
+  const pt = p => geo(p[0], p[1]);
+  const d = (pts, close) => pts.map((p, i) => (i ? "L" : "M") + pt(p).x.toFixed(1) + " " + pt(p).y.toFixed(1)).join(" ") + (close ? " Z" : "");
+  const LAND = "#F8F4EB", WATER = "#D3E3E7", COAST = "#B4CBD0", PARK = "#E1EBD8";
+
+  /* coastline: mainland, the barrier island, the bay islands */
+  const shore = [[25.900,-80.1800],[25.880,-80.1810],[25.860,-80.1820],[25.840,-80.1832],[25.822,-80.1845],[25.813,-80.1855],[25.804,-80.1850],[25.798,-80.1852],[25.792,-80.1858],[25.788,-80.1860],[25.783,-80.1852],[25.779,-80.1842],[25.775,-80.1838],[25.772,-80.1840],[25.7695,-80.1862],[25.766,-80.1872],[25.760,-80.1880],[25.752,-80.1898],[25.745,-80.1925],[25.740,-80.1958],[25.734,-80.1990],[25.728,-80.2020],[25.720,-80.2055],[25.712,-80.2090],[25.700,-80.2140]];
+  const mainland = shore.concat([[25.690,-80.3400],[25.910,-80.3400]]);
+  const beach = [[25.762,-80.1345],[25.770,-80.1428],[25.782,-80.1416],[25.796,-80.1400],[25.812,-80.1384],[25.828,-80.1360],[25.846,-80.1302],[25.864,-80.1252],[25.880,-80.1230],[25.900,-80.1220],[25.900,-80.1000],[25.800,-80.1100],[25.770,-80.1180],[25.758,-80.1270]];
+  const islands = [
+    [[25.7692,-80.1858],[25.7702,-80.1830],[25.7700,-80.1808],[25.7684,-80.1800],[25.7664,-80.1804],[25.7652,-80.1826],[25.7660,-80.1850]],
+    [[25.7798,-80.1758],[25.7808,-80.1700],[25.7812,-80.1626],[25.7796,-80.1586],[25.7762,-80.1580],[25.7742,-80.1606],[25.7738,-80.1690],[25.7746,-80.1752]],
+    [[25.7856,-80.1722],[25.7872,-80.1688],[25.7878,-80.1650],[25.7862,-80.1622],[25.7830,-80.1616],[25.7806,-80.1650],[25.7802,-80.1700]],
+    [[25.7760,-80.1560],[25.7776,-80.1540],[25.7774,-80.1516],[25.7752,-80.1506],[25.7732,-80.1522],[25.7730,-80.1548]],
+    [[25.7712,-80.1548],[25.7726,-80.1524],[25.7722,-80.1500],[25.7702,-80.1494],[25.7688,-80.1518],[25.7692,-80.1542]],
+    [[25.7898,-80.1720],[25.7914,-80.1690],[25.7910,-80.1664],[25.7888,-80.1656],[25.7872,-80.1682],[25.7876,-80.1712]],
+    [[25.7904,-80.1600],[25.7920,-80.1570],[25.7916,-80.1544],[25.7892,-80.1534],[25.7876,-80.1562],[25.7880,-80.1592]],
+    [[25.7940,-80.1490],[25.7958,-80.1462],[25.7952,-80.1436],[25.7928,-80.1430],[25.7912,-80.1458],[25.7918,-80.1486]]
+  ];
+  const river = [[25.7692,-80.1862],[25.7700,-80.1930],[25.7690,-80.2010],[25.7672,-80.2100],[25.7658,-80.2200],[25.7660,-80.2320]];
+
+  /* street grid: numbered streets east-west, avenues north-south, clipped to land */
+  const gridLat = [], gridLng = [];
+  for (let la = 25.7180; la <= 25.8760; la += 0.00181) gridLat.push(la);
+  for (let ln = -80.2560; ln <= -80.1220; ln += 0.00232) gridLng.push(ln);
+  const streets = gridLat.map(la => [[la, -80.2600],[la, -80.1180]])
+    .concat(gridLng.map(ln => [[25.7100, ln],[25.8800, ln]]));
+
+  const collectors = [
+    [[25.8800,-80.1936],[25.7400,-80.1936]],            // NE/NW 2nd Ave
+    [[25.8800,-80.2002],[25.7520,-80.2002]],            // N Miami Ave
+    [[25.8800,-80.2062],[25.7560,-80.2062]],            // NW 5th Ave
+    [[25.8098,-80.2260],[25.8092,-80.1852]],            // NE 29th St
+    [[25.7998,-80.2260],[25.7992,-80.1854]],            // NE 20th St
+    [[25.7926,-80.2260],[25.7920,-80.1856]],            // NE 14th St
+    [[25.7748,-80.2260],[25.7744,-80.1848]],            // Flagler St
+    [[25.7658,-80.2260],[25.7652,-80.1880]],            // SW 8th St
+    [[25.8420,-80.2260],[25.8432,-80.1836]],            // NE 62nd St
+    [[25.7940,-80.1420],[25.7700,-80.1345]],            // Collins Ave
+    [[25.7938,-80.1450],[25.7702,-80.1390]]             // Alton Rd
+  ];
+  const arterials = [
+    [[25.8800,-80.1882],[25.8200,-80.1888],[25.7860,-80.1898],[25.7720,-80.1906],[25.7580,-80.1928],[25.7440,-80.1962]],
+    [[25.8800,-80.2105],[25.8220,-80.2078],[25.7920,-80.2046],[25.7760,-80.1966],[25.7660,-80.1956],[25.7520,-80.2012]],
+    [[25.8800,-80.2210],[25.8000,-80.2196],[25.7700,-80.2180],[25.7500,-80.2172]]
+  ];
+  const highways = [
+    { pts: [[25.8800,-80.2160],[25.8300,-80.2098],[25.8000,-80.2038],[25.7860,-80.1996],[25.7780,-80.1966],[25.7660,-80.1966],[25.7520,-80.2020],[25.7380,-80.2080]], label: "I-95" },
+    { pts: [[25.7862,-80.2260],[25.7856,-80.2020],[25.7852,-80.1900],[25.7850,-80.1848]], label: "I-395" },
+    { pts: [[25.8262,-80.2260],[25.8256,-80.2000],[25.8250,-80.1870]], label: "SR 112" }
+  ];
+  const causeways = [
+    { pts: [[25.7850,-80.1848],[25.7880,-80.1600],[25.7898,-80.1430]], label: "MacArthur Cswy" },
+    { pts: [[25.7905,-80.1856],[25.7912,-80.1700],[25.7922,-80.1450]], label: "Venetian Cswy" },
+    { pts: [[25.8118,-80.1858],[25.8130,-80.1620],[25.8138,-80.1420]], label: "Julia Tuttle Cswy" },
+    { pts: [[25.8455,-80.1830],[25.8480,-80.1500],[25.8490,-80.1300]], label: "79th St Cswy" }
+  ];
+  const rail = [[25.8800,-80.1968],[25.8200,-80.1962],[25.7860,-80.1958],[25.7700,-80.1950],[25.7560,-80.1962]];
+
+  const parks = [
+    { poly: [[25.7896,-80.1892],[25.7908,-80.1858],[25.7856,-80.1848],[25.7844,-80.1884]], name: "Margaret Pace Park" },
+    { poly: [[25.7852,-80.1898],[25.7862,-80.1860],[25.7818,-80.1852],[25.7808,-80.1890]], name: "Museum Park" },
+    { poly: [[25.7772,-80.1876],[25.7786,-80.1852],[25.7742,-80.1842],[25.7732,-80.1868]], name: "Bayfront Park" },
+    { poly: [[25.7960,-80.1904],[25.7972,-80.1876],[25.7936,-80.1866],[25.7926,-80.1894]], name: "" },
+    { poly: [[25.8232,-80.1962],[25.8246,-80.1920],[25.8206,-80.1906],[25.8194,-80.1948]], name: "Legion Park" },
+    { poly: [[25.7800,-80.1330],[25.7860,-80.1338],[25.7856,-80.1372],[25.7796,-80.1364]], name: "Lummus Park" }
+  ];
+
+  const places = [
+    ["EDGEWATER",25.8020,-80.1905,10],["WYNWOOD",25.8035,-80.2035,10],["MIDTOWN",25.8105,-80.1975,9],
+    ["DESIGN DISTRICT",25.8185,-80.1930,9],["LITTLE HAITI",25.8290,-80.1970,9],["ALLAPATTAH",25.8150,-80.2220,9],
+    ["OVERTOWN",25.7885,-80.2035,9],["PARK WEST",25.7830,-80.1930,8],
+    ["DOWNTOWN",25.7745,-80.1930,10],["BRICKELL",25.7600,-80.1950,10],["LITTLE HAVANA",25.7660,-80.2130,9],
+    ["PORTMIAMI",25.7772,-80.1668,9],["WATSON ISLAND",25.7840,-80.1668,8],["STAR ISLAND",25.7752,-80.1532,8],
+    ["SOUTH BEACH",25.7760,-80.1330,10],["MIAMI BEACH",25.8180,-80.1300,10],["BELLE ISLE",25.7906,-80.1568,8]
+  ];
+  const waters = [["BISCAYNE BAY",25.7980,-80.1650,12],["GOVERNMENT CUT",25.7690,-80.1420,9],["ATLANTIC OCEAN",25.8100,-80.1080,12],["MIAMI RIVER",25.7676,-80.2140,9]];
+
+  const path = (pts, stroke, w, extra) => `<path d="${d(pts)}" fill="none" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${extra || ""}/>`;
+  /* label placed along a segment, rotated to follow it */
+  const along = (pts, i, text, col, size) => {
+    const a = pt(pts[i]), b = pt(pts[i + 1] || pts[i]);
+    let ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+    if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+    const x = (a.x + b.x) / 2, y = (a.y + b.y) / 2;
+    return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" transform="rotate(${ang.toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})" text-anchor="middle" dy="-3" fill="${col}" font-size="${size}" letter-spacing=".04em">${text}</text>`;
+  };
+
+  return `<g clip-path="url(#frame)">
+  <rect width="${W}" height="${H}" fill="${WATER}"/>
+  <clipPath id="land"><path d="${d(mainland, true)}"/></clipPath>
+  <clipPath id="beachclip"><path d="${d(beach, true)}"/></clipPath>
+  <path d="${d(mainland, true)}" fill="${LAND}"/>
+  <path d="${d(beach, true)}" fill="${LAND}"/>
+  ${islands.map(i => `<path d="${d(i, true)}" fill="${LAND}" stroke="${COAST}" stroke-width="1"/>`).join("")}
+  <g clip-path="url(#land)">${streets.map(s => path(s, "#FFFFFF", 1.6)).join("")}</g>
+  <g clip-path="url(#beachclip)">${streets.map(s => path(s, "#FFFFFF", 1.6)).join("")}</g>
+  ${parks.map(p => `<path d="${d(p.poly, true)}" fill="${PARK}" stroke="#D2DFC6" stroke-width="1"/>`).join("")}
+  ${collectors.map(c => path(c, "#EDE4D4", 3.6)).join("")}
+  ${collectors.map(c => path(c, "#FFFFFF", 2.4)).join("")}
+  ${path(rail, "#CFC6B6", 1.2, 'stroke-dasharray="6 4"')}
+  ${arterials.map(c => path(c, "#E4D9C3", 5.4)).join("")}
+  ${arterials.map(c => path(c, "#FFFFFF", 3.6)).join("")}
+  ${causeways.map(c => path(c.pts, "#D8CDB8", 4.6)).join("")}
+  ${causeways.map(c => path(c.pts, "#FFFFFF", 3)).join("")}
+  ${highways.map(hw => path(hw.pts, "#D9C08A", 6.4)).join("")}
+  ${highways.map(hw => path(hw.pts, "#F0DFB6", 4.4)).join("")}
+  <path d="${d(river)}" fill="none" stroke="${WATER}" stroke-width="4"/>
+  <path d="${d(mainland, true)}" fill="none" stroke="${COAST}" stroke-width="1.2"/>
+  <path d="${d(beach, true)}" fill="none" stroke="${COAST}" stroke-width="1.2"/>
+  ${highways.map(hw => along(hw.pts, Math.floor(hw.pts.length / 2) - 1, hw.label, "#A08A57", 9.5)).join("")}
+  ${causeways.map(c => along(c.pts, 0, c.label, "#9AA7A8", 9)).join("")}
+  ${along(arterials[0], 1, "BISCAYNE BLVD", "#B0A794", 9)}
+  ${along(collectors[0], 0, "NE 2ND AVE", "#B0A794", 8.5)}
+  ${along(collectors[1], 0, "N MIAMI AVE", "#B0A794", 8.5)}
+  ${along(collectors[6], 0, "FLAGLER ST", "#B0A794", 8.5)}
+  ${parks.filter(p => p.name).map(p => { const c = pt([p.poly[0][0] - 0.0006, (p.poly[0][1] + p.poly[2][1]) / 2]);
+    return `<text x="${c.x.toFixed(1)}" y="${c.y.toFixed(1)}" text-anchor="middle" fill="#8FA085" font-size="8.5">${p.name}</text>`; }).join("")}
+  ${places.map(p => { const q = pt([p[1], p[2]]);
+    return `<text x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" text-anchor="middle" fill="#A9A08D" font-size="${p[3]}" letter-spacing=".14em">${p[0]}</text>`; }).join("")}
+  ${waters.map(p => { const q = pt([p[1], p[2]]);
+    return `<text x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" text-anchor="middle" fill="#8FAEB4" font-size="${p[3]}" letter-spacing=".16em" font-style="italic">${p[0]}</text>`; }).join("")}
+  </g>`;
+}
+
+/* ---------- data loading ---------- */
+function setWeeks(){
+  const ord = new Map();
+  ROWS.forEach((r, i) => { const o = r.weekOrder ?? i;
+    if (!ord.has(r.week) || o < ord.get(r.week)) ord.set(r.week, o); });
+  weeks = [...ord.keys()].sort((a, b) => (ord.get(a) - ord.get(b)) || String(a).localeCompare(String(b), undefined, { numeric: true }));
+  week = weeks[weeks.length - 1];
+  document.getElementById("week").innerHTML = weeks.map(w => `<option${w === week ? " selected" : ""}>${w}</option>`).join("");
+}
+document.getElementById("week").onchange = e => { week = e.target.value; render(); };
+const salaryInput = document.getElementById("salary");
+salaryInput.value = SALARY;
+salaryInput.oninput = e => {
+  const v = Number(e.target.value);
+  if (!(v > 0)) return;
+  SALARY = v; localStorage.setItem("zingKpiSalary", v);
+  render(); document.getElementById("note").innerHTML = noteHTML();
+};
+
+/* A Google Sheet can serve CSV three different ways depending on how it is shared,
+   so try each in turn and report what actually went wrong. */
+function csvEndpoints(u){
+  if (/output=csv|tqx=out:csv|format=csv/.test(u)) return [u];
+  const id = (u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/) || [])[1];
+  if (!id) return [u];
+  const gid = (u.match(/[#&?]gid=(\d+)/) || [])[1] || "0";
+  const base = "https://docs.google.com/spreadsheets/d/" + id;
+  return [`${base}/gviz/tq?tqx=out:csv&gid=${gid}`, `${base}/export?format=csv&gid=${gid}`, `${base}/pub?output=csv&gid=${gid}`];
+}
+
+const SHEETJS = "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js";
+const sheetId = u => (u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/) || [])[1] || "";
+/* tab names the live workbook uses, plus every registry name, so a tab can be pulled by name */
+const TABS = ["Hamilton","Forma","Bezel","Miami World Tower","Muze at Met","Paraiso Bayviews","Wynd2728"];
+const dedupe = rows => { const seen = new Set();
+  return rows.filter(r => { const k = r.building + "|" + r.week; if (seen.has(k)) return false; seen.add(k); return true; }); };
+
+/* Preferred path: pull the whole workbook in one request so every building tab is read. */
+async function loadWorkbook(id){
+  if (!window.XLSX) await loadScript(SHEETJS);
+  const res = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`, { redirect: "follow" });
+  if (!res.ok) throw new Error(res.status === 401 || res.status === 403 ? "the sheet is private" : "HTTP " + res.status);
+  const wb = XLSX.read(await res.arrayBuffer(), { type: "array" });
+  return dedupe(rowsFromWorkbook(wb));
+}
+/* Fallback: fetch each known tab by name as CSV. */
+async function loadTabs(id){
+  const names = [...new Set([...TABS, ...Object.values(REGISTRY).map(b => b.name)])];
+  const got = await Promise.all(names.map(async n => {
+    try{
+      const r = await fetch(`https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(n)}`);
+      if (!r.ok) return [];
+      const t = await r.text();
+      if (/^\s*<(!doctype|html)/i.test(t)) return [];
+      return parseCSV(t, n);
+    }catch(e){ return []; }
+  }));
+  return dedupe(got.flat());
+}
+
+function useRows(rows){ ROWS = relabelWeeks(rows); setWeeks(); render(); }
+
+async function loadCSV(url, quiet){
+  const dot = document.getElementById("srcDot"), msg = document.getElementById("srcMsg");
+  let why = "";
+  const id = sheetId(url);
+  if (id && !/output=csv|tqx=out:csv|format=csv/.test(url)){
+    for (const step of [() => loadWorkbook(id), () => loadTabs(id)]){
+      try{
+        const rows = await step();
+        if (rows.length){
+          useRows(rows);
+          dot.className = "dot live";
+          msg.textContent = "Sheet · " + new Set(rows.map(r => r.building)).size + " buildings · " + new Set(rows.map(r => r.week)).size + " weeks";
+          localStorage.setItem("zingKpiCsv", url);
+          return;
+        }
+        why = why || "read the workbook but found no Week Start / Revenue columns";
+      }catch(err){ why = why || err.message; }
+    }
+  }
+  for (const ep of csvEndpoints(url)){
+    try{
+      const res = await fetch(ep, { redirect: "follow" });
+      if (!res.ok){ why = res.status === 401 || res.status === 403 ? "the sheet is private" : "HTTP " + res.status; continue; }
+      const text = await res.text();
+      if (/^\s*<(!doctype|html)/i.test(text)){ why = "Google returned a sign-in page — the sheet is private"; continue; }
+      const rows = parseCSV(text);
+      if (!rows.length){ why = "read the sheet but found no revenue — columns seen: " + (lastHeaders.join(", ") || "none"); continue; }
+      useRows(rows);
+      dot.className = "dot live"; msg.textContent = "Sheet · " + rows.length + " rows";
+      localStorage.setItem("zingKpiCsv", url);
+      return;
+    }catch(err){ why = why || "blocked by the browser (" + err.message + ")"; }
+  }
+  dot.className = "dot err";
+  msg.textContent = quiet ? "Sample data" : "Load failed — " + why;
+  msg.title = "Share the sheet as 'Anyone with the link · Viewer', or File → Share → Publish to web → CSV, then Load again.";
+}
+document.getElementById("load").onclick = () => {
+  const u = document.getElementById("csvUrl").value.trim();
+  if (u) loadCSV(u, false);
+};
+
+/* ---------- upload an .xlsx / .csv straight off the desktop ---------- */
+const loadScript = src => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+document.getElementById("pick").onclick = () => document.getElementById("file").click();
+document.getElementById("file").onchange = async e => {
+  const f = e.target.files[0], dot = document.getElementById("srcDot"), msg = document.getElementById("srcMsg");
+  if (!f) return;
+  try{
+    let rows;
+    if (/\.xlsx?$/i.test(f.name)){
+      if (!window.XLSX) await loadScript(SHEETJS);
+      const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
+      rows = dedupe(rowsFromWorkbook(wb));            // every tab, one per building
+    } else rows = parseCSV(await f.text());
+    if (!rows.length) throw new Error("no rows");
+    useRows(rows);
+    dot.className = "dot live"; msg.textContent = f.name + " · " + new Set(rows.map(r => r.building)).size + " buildings · " + new Set(rows.map(r => r.week)).size + " weeks";
+  }catch(err){ dot.className = "dot err"; msg.textContent = "Could not read that file (" + err.message + ")"; }
+};
+
+/* ---------- download a prefilled workbook to type the numbers into ---------- */
+document.getElementById("tpl").onclick = () => {
+  const now = new Date(), iso = d => { const t = new Date(d); t.setDate(t.getDate() - ((t.getDay() + 6) % 7));
+    const y = t.getFullYear(), jan = new Date(y, 0, 1);
+    return y + "-W" + String(Math.ceil(((t - jan) / 86400000 + jan.getDay() + 1) / 7)).padStart(2, "0"); };
+  const wks = [3, 2, 1, 0].map(n => { const d = new Date(now.getTime() - n * 7 * 86400000);
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    return d.toISOString().slice(0, 10); });
+  const head = "Week Start,Revenue";
+  const body = wks.map(w => w + ",");
+  const blob = new Blob([["# one tab (or file) per building — tab name = building name", head, ...body].join("\n")], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "zing-kpi-template.csv"; a.click();
+  URL.revokeObjectURL(a.href);
+};
+const SHEET = "https://docs.google.com/spreadsheets/d/1MQ_8TZRAiwgvJjancyrZz27rFVAHRXxbdEoLl5shM9Y/edit?gid=0";
+const saved = localStorage.getItem("zingKpiCsv") || SHEET;
+document.getElementById("csvUrl").value = saved;
+const noteHTML = () =>
+   `<b>Feeding it real data.</b>
+   <b>1. Live sheet:</b> paste the workbook's link above and hit <code>Load</code>. Every tab is read, and <b>the tab name is the building</b>. Inside a tab each row is one week: the <code>Week Start</code> column identifies the week and the <code>Revenue</code> column is the number used — every other column is ignored. The sheet must be shared as "anyone with the link can view" (or published to the web). The link is remembered and re-fetched every visit.
+   <b>2. Upload:</b> <code>Upload file</code> takes the same workbook as <code>.xlsx</code> — all tabs are read, same rules. A single <code>.csv</code> works too, either as one building's weeks or with a <code>building</code> column.
+   <b>3. Template:</b> <code>Template</code> downloads a one-building <code>Week Start, Revenue</code> starter.
+   Everything fixed week over week lives in this page, not the sheet: each building's address, coordinates, cluster and number of cleaners, plus one cleaner's weekly salary, set in the header (<code>$${SALARY.toLocaleString()}</code>/wk right now and remembered on this device) — the denominator of both KPIs. Adding a <code>cluster</code>, <code>cleaners</code> or <code>cleaner_salary</code> column to the sheet overrides the page for those rows; a brand-new building needs one line adding to the page (name, address, lat/lng, cluster, cleaners).
+   Until data is connected the page shows the real buildings with invented revenue — those numbers are not real.`;
+document.getElementById("note").innerHTML = noteHTML();
+setWeeks(); render();
+loadCSV(saved, true);
+</script>
+</body>
+</html>
