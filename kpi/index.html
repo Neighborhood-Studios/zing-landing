@@ -60,6 +60,18 @@ body.navmin aside.nav a span{display:none}
 #hover .spark div{flex:1;text-align:center}
 #hover .spark b{display:block;font-size:12px;font-variant-numeric:tabular-nums}
 #hover .spark span{font-size:9.5px;color:var(--ink-4);letter-spacing:.02em}
+.scnform{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:2px 0 16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.scnform .fld input,.scnform .fld select{min-width:80px}
+.scnform #scnName{min-width:170px}
+.scnform button{margin-left:auto}
+.sens{display:flex;flex-direction:column;gap:12px}
+.sens .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+.sens .row:last-child{border-bottom:none;padding-bottom:0}
+.sens .row b{font-size:19px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sens .row span{font-size:12px;color:var(--ink-3);line-height:1.5}
+.util{display:inline-flex;align-items:center;gap:7px}
+.util i{display:block;width:44px;height:6px;border-radius:99px;background:var(--paper-200,#EDE7DA);overflow:hidden;flex:0 0 44px}
+.util i b{display:block;height:100%;border-radius:99px;background:var(--sage-500,#97A88D)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .stat .v{font:400 26px/1.1 "Newsreader",serif;margin-top:6px}
@@ -135,6 +147,7 @@ tspan.mlabel{font-weight:700}
 <button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
 <a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Density Dashboard</span></a>
 <a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
+<a href="#scenario" data-view="scenario"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 15c4 0 5-8 9-8 3 0 4 4 7 4"/><path d="M4 19h16"/></svg><span>Scenario planner</span></a>
 <a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
 </aside>
 <main>
@@ -165,15 +178,44 @@ tspan.mlabel{font-weight:700}
 <section class="view" id="viewBuildings">
 <section class="panel">
 <div class="phead"><h2>Building settings</h2><p>Kept on this device — the sheet only carries revenue</p></div>
-<div class="scrollx"><table class="bset"><thead><tr><th>Building</th><th>Cluster</th><th># Units</th><th>Access method</th><th>Went live</th><th>First revenue in sheet</th></tr></thead><tbody id="tbSettings"></tbody></table></div>
+<div class="scrollx"><table class="bset"><thead><tr><th>Building</th><th>Cluster</th><th># Units</th><th>Cleaners</th><th>Access method</th><th>Went live</th><th>First revenue in sheet</th></tr></thead><tbody id="tbSettings"></tbody></table></div>
 </section>
 </section>
 <section class="view" id="viewClusters">
 <section class="panel">
 <div class="phead"><h2>Cluster analysis</h2><p>Same clusters, expanded — units per cleaner alongside the margin</p></div>
-<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Revenue / wk</th><th>Revenue / unit</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusterAnalysis"></tbody></table></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Hours / wk</th><th>Capacity</th><th>Utilization</th><th>Revenue / wk</th><th>Revenue / unit</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusterAnalysis"></tbody></table></div>
 <div class="legend" id="legendClusters"></div>
 </section>
+</section>
+<section class="view" id="viewScenario">
+<section class="panel">
+<div class="phead"><h2>Scenario planner</h2><p>Launch a hypothetical building into a cluster and see where the margin lands</p></div>
+<div class="scnform" id="scnForm">
+  <label class="fld">Building<input type="text" id="scnName" placeholder="Modera Edgewater"></label>
+  <label class="fld">Units<input type="number" id="scnUnits" min="0" step="1" value="291"></label>
+  <label class="fld">Cluster<select id="scnCluster"></select></label>
+  <label class="fld">Cleaners hired<input type="number" id="scnHire" min="0" step="0.5" value="0"></label>
+  <label class="fld">Revenue / unit<span class="pre">$</span><input type="number" id="scnRpu" min="0" step=".01"><span class="post">/wk</span></label>
+  <label class="fld">Ramp<select id="scnRamp"><option value="slow">Conservative 12-wk</option><option value="obs">Observed launches</option><option value="now">Straight to mature</option></select></label>
+  <label class="fld">Hours / cleaner-day<input type="number" id="scnHpd" min="1" step=".5"></label>
+  <label class="fld">Days / week<input type="number" id="scnDpw" min="1" max="7" step="1"></label>
+  <button id="scnReset">Reset assumptions</button>
+</div>
+<div class="stats" id="scnStats"></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Hours / wk</th><th>Utilization</th><th>Revenue / wk</th><th>Margin now</th><th>Margin after</th><th>Δ</th></tr></thead><tbody id="tbScenario"></tbody></table></div>
+</section>
+<section class="grid2">
+<div class="panel">
+<div class="phead"><h2>Ramp to maturity</h2><p id="scnRampNote"></p></div>
+<svg id="scnChart" viewBox="0 0 620 260" style="width:100%;height:auto" role="img" aria-label="Projected cluster margin over the weeks after launch"></svg>
+</div>
+<div class="panel">
+<div class="phead"><h2>Sensitivity</h2><p>Where the scenario stops working</p></div>
+<div id="scnSens" class="sens"></div>
+</div>
+</section>
+<footer class="note" id="scnNote"></footer>
 </section>
 </main>
 </div>
@@ -292,15 +334,20 @@ function parseTab(rows, hi, sheetName){
   lastHeaders = rows[hi].filter(Boolean);
   const wi = h.findIndex(isWeekStartCol);
   let ri = h.indexOf("revenue"); if (ri < 0) ri = h.findIndex(isRevenueCol);
+  // operational columns: visits, hours actually worked, average visit length (minutes)
+  const vi = h.indexOf("totalvisits"), hi2 = h.indexOf("totalhoursofoperations");
+  const di = h.indexOf("avgvisitduration"), ai = h.indexOf("aov");
   const reg = lookup(sheetName) || {};
   if (!reg.name) unmatched.add(sheetName);
   return rows.slice(hi + 1).map(c => {
     const t = weekTime(c[wi]), v = numOf(c[ri]);
     if (t == null || !String(c[wi] || "").trim()) return null;
+    const g = i => { if (i < 0) return null; const n = numOf(c[i]); return isNaN(n) ? null : n; };
     return { week: String(c[wi]).trim(), weekTime: t, weekOrder: t,
       building: reg.name || sheetName, address: reg.address || "",
       lat: reg.lat || 0, lng: reg.lng || 0, cluster: reg.cluster || "",
-      cleaners: reg.cleaners || 1, revenue: isNaN(v) ? 0 : v, cleanerSalary: null };
+      cleaners: reg.cleaners || 1, revenue: isNaN(v) ? 0 : v, cleanerSalary: null,
+      visits: g(vi), hours: g(hi2), dur: g(di), aov: g(ai) };
   }).filter(Boolean);
 }
 
@@ -392,9 +439,14 @@ function periodRows(w, back){
   const set = new Set(ws), agg = new Map();
   ROWS.forEach(r => { if (!set.has(r.week)) return;
     const a = agg.get(r.building);
-    if (!a) agg.set(r.building, Object.assign({}, r, { revenue: r.revenue, _n: r.revenue > 0 ? 1 : 0 }));
-    else { a.revenue += r.revenue; if (r.revenue > 0) a._n++; } });
-  return [...agg.values()].map(a => Object.assign(a, { revenue: a._n ? a.revenue / a._n : 0 }));
+    if (!a) agg.set(r.building, Object.assign({}, r, { revenue: r.revenue, visits: r.visits || 0, hours: r.hours || 0, _n: r.revenue > 0 ? 1 : 0 }));
+    else { a.revenue += r.revenue; a.visits += r.visits || 0; a.hours += r.hours || 0; if (r.revenue > 0) a._n++; } });
+  return [...agg.values()].map(a => Object.assign(a, {
+    revenue: a._n ? a.revenue / a._n : 0,
+    visits: a._n ? a.visits / a._n : 0,
+    hours: a._n ? a.hours / a._n : 0,
+    dur: a.visits && a.hours ? (a.hours / a.visits) * 60 : a.dur,
+    aov: a.visits ? a.revenue / (a.visits / (a._n || 1)) : a.aov }));
 }
 const rangeLabel = () => RANGE === 1 ? "week of " + week : RANGE === 0 ? "all " + weeks.length + " weeks, weekly average" : "past " + RANGE + " weeks, weekly average";
 
@@ -455,10 +507,13 @@ function render(){
     const rs = clustered.filter(r => r.cluster === c), m = clusterMargin(rs, c).pct;
     const pr = prev.filter(r => r.cluster === c), pm = pr.length ? clusterMargin(pr, c).pct : null;
     const units = rs.reduce((a, r) => a + (unitsOf(r.building) || 0), 0);
-    return { c, m, d: m != null && pm != null ? m - pm : null, n: rs.length, units,
+    const hours = rs.reduce((a, r) => a + (r.hours || 0), 0);
+    const visits = rs.reduce((a, r) => a + (r.visits || 0), 0);
+    return { c, m, d: m != null && pm != null ? m - pm : null, n: rs.length, units, hours, visits,
       cleaners: cleanersIn(c), rev: rs.reduce((a, r) => a + r.revenue, 0) };
   };
   const cstats = clusters.map(clusterStat).sort((a, b) => (a.m ?? -9) - (b.m ?? -9));
+  CSTATS = cstats;
   const wow = d => `<td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td>`;
   const cinput = c => `<td><input type="number" class="cin" min="0" step="1" data-c="${c}" value="${cleanersIn(c) ?? ""}" placeholder="—" aria-label="Cleaners in ${c}"></td>`;
   const cname = c => `<td class="name"><span class="cdot" style="background:${clusterColors[c]}"></span>${c}</td>`;
@@ -479,6 +534,9 @@ function render(){
       <td class="num" style="color:var(--ink-3)">${o.units || "—"}</td>
       ${cinput(o.c)}
       <td class="num" style="font-weight:700">${upc ?? "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.hours ? o.hours.toFixed(1) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.cleaners ? capacityFor(o.cleaners).toFixed(0) + " h" : "—"}</td>
+      <td>${utilBar(o.hours, capacityFor(o.cleaners))}</td>
       <td class="num" style="color:var(--ink-3)">${o.rev ? money(o.rev) : "—"}</td>
       <td class="num" style="color:var(--ink-3)">${rpu ? "$" + rpu.toFixed(2) : "—"}</td>
       <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
@@ -486,8 +544,9 @@ function render(){
   }).join("");
   document.getElementById("legendClusters").innerHTML =
     `<span><b>Units / cleaner</b> = total units in the cluster ÷ cleaners assigned to it — the density each cleaner covers</span>
+     <span><b>Utilization</b> = hours of operation ÷ capacity, where capacity is ${HPD} h × ${DPW} days per cleaner</span>
      <span><b>Revenue / unit</b> = cluster revenue ÷ total units — how much of the building is actually ordering</span>
-     <span>Unit counts come from <b>Building settings</b>; a blank there leaves the row dashed. Figures follow the week and range picked in the header (${rangeLabel()}).</span>`;
+     <span class="warn">Hours of operation are logged by cleaners themselves, so utilization is indicative, not exact. Unit counts come from <b>Building settings</b>. Figures follow the header (${rangeLabel()}).</span>`;
 
   document.querySelectorAll("input.cin").forEach(i => i.onchange = e => {
     const v = Number(e.target.value);
@@ -499,6 +558,7 @@ function render(){
   drawMap(clustered.filter(r => r.lat && r.lng), clusters);
   drawMatrices();
   renderSettings();
+  renderScenario();
 
   const offMap = [...new Set(cur.filter(r => !r.cluster || !r.lat || !r.lng).map(r => r.building))];
   document.getElementById("legend").innerHTML =
@@ -919,6 +979,16 @@ const noteHTML = () =>
    <b>3. Template:</b> <code>Template</code> downloads a one-building <code>Week Start, Revenue</code> starter.
    Everything fixed week over week lives in this page, not the sheet: each building's address, coordinates, cluster and number of cleaners, plus one cleaner's weekly salary, set in the header (<code>$${SALARY.toLocaleString()}</code>/wk right now and remembered on this device) — the denominator of both KPIs. Adding a <code>cluster</code>, <code>cleaners</code> or <code>cleaner_salary</code> column to the sheet overrides the page for those rows; a brand-new building needs one line adding to the page (name, address, lat/lng, cluster, cleaners).
    Until data is connected the page shows the real buildings with invented revenue — those numbers are not real.`;
+/* ---------- capacity model ----------
+   Hours come from the sheet's "Total Hours of Operations", which cleaners log themselves,
+   so treat utilization as indicative rather than exact. Capacity is a cleaner's working
+   day (6.5h by default) times days per week. */
+let HPD = Number(localStorage.getItem("zingKpiHpd")) || 6.5;
+let DPW = Number(localStorage.getItem("zingKpiDpw")) || 6;
+const capacityFor = n => (n || 0) * HPD * DPW;
+const utilBar = (h, cap) => { const u = cap > 0 ? h / cap : null;
+  return u == null ? "—" : `<span class="util"><i><b style="width:${Math.min(100, u * 100).toFixed(0)}%;background:${u > .85 ? "var(--danger,#A85149)" : "var(--sage-500,#97A88D)"}"></b></i>${(u * 100).toFixed(0)}%</span>`; };
+
 /* ---------- building hover card ---------- */
 const unitsOf = name => (BSET[key(name)] || {}).units || null;
 const liveOf = name => (BSET[key(name)] || {}).live || null;
@@ -934,13 +1004,16 @@ function showHover(name, e){
   const i = weeks.indexOf(week), last = weeks.slice(Math.max(0, i - 3), i + 1);
   const byW = new Map(ROWS.filter(r => r.building === name).map(r => [r.week, r]));
   const reg = lookup(name) || {}, u = unitsOf(name), wk = weeksSinceLive(name), ac = accessOf(name);
+  const cr = byW.get(week) || {};
   const cells = last.map(w => { const m = buildingMargin(byW.get(w) || { revenue: 0 });
     return `<div><b class="${m == null ? "" : m > 0 ? "pv" : "nv"}" style="color:${m == null ? "var(--ink-4)" : m > 0 ? "var(--forest)" : "var(--danger,#A85149)"}">${pct(m)}</b><span>${w}</span></div>`; }).join("");
   const rows = [
     ["Units", u ? u.toLocaleString() : "—"],
     ["Launched", wk == null ? "—" : wk === 0 ? "this week" : wk + (wk === 1 ? " week ago" : " weeks ago")],
     ["Remote access", ac === "remote" ? "Yes" : ac === "none" ? "No" : "—"],
-    ["Cluster", reg.cluster || "not matched"]
+    ["Cluster", reg.cluster || "not matched"],
+    ["Hours / wk", cr.hours ? cr.hours.toFixed(1) + " h" : "—"],
+    ["Visits / wk", cr.visits ? cr.visits.toFixed(1) : "—"]
   ].map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
   const el = hoverEl();
   el.innerHTML = `<h4>${name}</h4><div class="sub">${reg.address || ""}</div><dl>${rows}</dl>
@@ -964,19 +1037,20 @@ function showView(v){
   document.getElementById("viewDash").classList.toggle("on", v === "dash");
   document.getElementById("viewBuildings").classList.toggle("on", v === "buildings");
   document.getElementById("viewClusters").classList.toggle("on", v === "clusters");
+  document.getElementById("viewScenario").classList.toggle("on", v === "scenario");
   hideHover();
 }
 document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
 
 // per-building facts the sheet does not carry, kept on this device
 let BSET = {
-  bezelmiami:       { units: 434, access: "remote", live: "2026-04-28" },
-  forma:            { units: 850, access: "remote", live: "2026-01-22" },
-  miamiworldtower:  { units: 520, access: "none",   live: "2026-05-14" },
-  muze:             { units: 391,                   live: "2026-06-12" },
-  paraisobayviews:  { units: 397, access: "none",   live: "2026-05-08" },
-  hamilton:         { units: 275, access: "remote", live: "2026-08-04" },
-  wynd2728:         { units: 152, access: "remote", live: "2025-05-16" }
+  bezelmiami:       { units: 434, access: "remote", live: "2026-04-28", cleaners: 0.5 },
+  forma:            { units: 850, access: "remote", live: "2026-01-22", cleaners: 2 },
+  miamiworldtower:  { units: 520, access: "none",   live: "2026-05-14", cleaners: 0.5 },
+  muze:             { units: 391,                   live: "2026-06-12", cleaners: 1 },
+  paraisobayviews:  { units: 397, access: "none",   live: "2026-05-08", cleaners: 0 },
+  hamilton:         { units: 275, access: "remote", live: "2026-08-04", cleaners: 1 },
+  wynd2728:         { units: 152, access: "remote", live: "2025-05-16", cleaners: 0 }
 };
 try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
   .forEach(([k, v]) => BSET[k] = Object.assign({}, BSET[k], v)); } catch (e) {}
@@ -993,6 +1067,7 @@ function renderSettings(){
     return `<tr><td class="name">${n}<span class="addr">${reg.address || ""}</span></td>
       <td style="color:var(--ink-3)">${reg.cluster || "not matched"}</td>
       <td class="n"><input type="number" min="0" step="1" data-f="units" data-b="${key(n)}" value="${s.units ?? ""}" placeholder="—" aria-label="Units in ${n}"></td>
+      <td class="n"><input type="number" min="0" step="0.5" data-f="cleaners" data-b="${key(n)}" value="${s.cleaners ?? ""}" placeholder="—" aria-label="Cleaners at ${n}"></td>
       <td><select data-f="access" data-b="${key(n)}" aria-label="Access method for ${n}">
         <option value=""${s.access ? "" : " selected"}>—</option>
         <option value="remote"${s.access === "remote" ? " selected" : ""}>Has remote access</option>
@@ -1003,10 +1078,170 @@ function renderSettings(){
   document.querySelectorAll("#tbSettings [data-f]").forEach(el => el.onchange = e => {
     const b = e.target.dataset.b, f = e.target.dataset.f, v = e.target.value;
     BSET[b] = BSET[b] || {};
-    if (v === "") delete BSET[b][f]; else BSET[b][f] = f === "units" ? Number(v) : v;
+    if (v === "") delete BSET[b][f]; else BSET[b][f] = (f === "units" || f === "cleaners") ? Number(v) : v;
     saveBset(); render();
   });
 }
+
+/* ---------- scenario planner ----------
+   Calibrated on the launches already in the sheet: a new building's revenue per unit is
+   assumed to walk up the same ramp Bezel, Miami World Tower and Muze walked. */
+let CSTATS = [];
+function rampCurve(){
+  const per = [], t0 = Math.min(...ROWS.map(r => r.weekOrder ?? 0));
+  [...new Set(ROWS.map(r => r.building))].forEach(n => {
+    const rs = ROWS.filter(r => r.building === n).sort((a, b) => (a.weekOrder ?? 0) - (b.weekOrder ?? 0));
+    const first = rs.findIndex(r => r.revenue > 0); if (first < 0) return;
+    // only genuine launches: buildings whose first revenue lands well after the sheet starts.
+    // Buildings already running on week 1 have no observable ramp.
+    if ((rs[first].weekOrder ?? 0) - t0 < 3 * 604800000) return;
+    const live = rs.slice(first); if (live.length < 5) return;
+    const mature = live.slice(-4).reduce((a, r) => a + r.revenue, 0) / 4;
+    if (!(mature > 0)) return;
+    per.push(live.slice(0, 12).map(r => Math.min(1, r.revenue / mature)));
+  });
+  let curve = [];
+  for (let i = 0; i < 12; i++){
+    const v = per.map(p => p[i]).filter(x => x != null).sort((a, b) => a - b);
+    // median, so one promotional launch week doesn't set the whole curve
+    curve.push(v.length ? v[Math.floor(v.length / 2)] : null);
+  }
+  // fall back to a conventional 12-week ramp when the sheet has no clean launch to learn from
+  const fallback = [.30,.48,.60,.70,.78,.84,.88,.92,.95,.97,.99,1];
+  if (SCN.ramp === "slow") return { curve: fallback, n: 0, src: "conservative" };
+  if (SCN.ramp === "now") return { curve: fallback.map(() => 1), n: 0, src: "immediate" };
+  curve = curve.map((v, i) => v == null ? fallback[i] : v);
+  // a launch ramp shouldn't dip in the model — carry the running maximum forward, then normalise
+  let m = 0; curve = curve.map(v => (m = Math.max(m, v)));
+  const top = curve[11] || 1;
+  return { curve: curve.map(v => Math.min(1.1, v / top)), n: per.length, src: "observed" };
+}
+function clusterOps(c){
+  const rs = periodRows(week).filter(r => r.cluster === c);
+  const rev = rs.reduce((a, r) => a + r.revenue, 0), v = rs.reduce((a, r) => a + (r.visits || 0), 0);
+  const h = rs.reduce((a, r) => a + (r.hours || 0), 0);
+  return { rev, visits: v, hours: h, aov: v ? rev / v : 78, dur: v ? (h / v) * 60 : 105 };
+}
+let SCN = { name: "Modera Edgewater", units: 291, cluster: null, hire: 0, rpu: null, ramp: "slow" };
+function scnInputs(){
+  const g = id => document.getElementById(id);
+  const cs = CSTATS.map(o => o.c);
+  if (!cs.includes(SCN.cluster)) SCN.cluster = cs[0] || null;
+  g("scnCluster").innerHTML = cs.map(c => `<option${c === SCN.cluster ? " selected" : ""}>${c}</option>`).join("");
+  const keep = document.activeElement;
+  const set = (id, v) => { const el = g(id); if (el !== keep) el.value = v; };
+  set("scnName", SCN.name); set("scnUnits", SCN.units); set("scnHire", SCN.hire);
+  set("scnHpd", HPD); set("scnDpw", DPW); set("scnRamp", SCN.ramp);
+  const base = CSTATS.find(o => o.c === SCN.cluster);
+  const defRpu = base && base.units ? base.rev / base.units : 1.4;
+  set("scnRpu", (SCN.rpu ?? defRpu).toFixed(2));
+  return { base, rpu: SCN.rpu ?? defRpu };
+}
+function renderScenario(){
+  if (!CSTATS.length) return;
+  const { base, rpu } = scnInputs();
+  if (!base) return;
+  const ops = clusterOps(base.c), rc = rampCurve(), curve = rc.curve;
+  const U = SCN.units || 0, matureRev = U * rpu;
+  const visits = ops.aov > 0 ? matureRev / ops.aov : 0, hoursNeed = visits * ops.dur / 60;
+  const clNow = base.cleaners || 0, clAfter = clNow + (SCN.hire || 0);
+  const capNow = capacityFor(clNow), capAfter = capacityFor(clAfter);
+  const salNow = clNow * SALARY, salAfter = clAfter * SALARY;
+  const mNow = salNow > 0 ? (base.rev - salNow) / salNow : null;
+  const mAfter = salAfter > 0 ? (base.rev + matureRev - salAfter) / salAfter : null;
+  const slack = capNow - base.hours, slackAfter = capAfter - base.hours - hoursNeed;
+
+  document.getElementById("scnStats").innerHTML = [
+    ["Expected revenue at maturity", money(matureRev), `${U.toLocaleString()} units × $${rpu.toFixed(2)}/unit · ${visits.toFixed(1)} visits/wk`],
+    ["Hours it needs", hoursNeed.toFixed(1) + " h", `${slack.toFixed(1)} h idle in ${base.c} today${SCN.hire ? " · +" + capacityFor(SCN.hire).toFixed(0) + " h hired" : ""}`],
+    [base.c + " margin after", pct(mAfter), (mNow == null ? "" : pct(mNow) + " today · ") + (mAfter != null && mNow != null ? (mAfter >= mNow ? "▲ " : "▼ ") + Math.abs((mAfter - mNow) * 100).toFixed(0) + " pts" : "")],
+    ["Hours left over", slackAfter.toFixed(1) + " h", slackAfter < 0 ? "over capacity — needs a hire" : "still spare for other buildings"]
+  ].map(s => `<div class="stat"><div class="eyebrow">${s[0]}</div><div class="v num">${s[1]}</div><div class="s">${s[2]}</div></div>`).join("");
+
+  document.getElementById("tbScenario").innerHTML = CSTATS.map(o => {
+    const hit = o.c === base.c;
+    const cl = hit ? clAfter : o.cleaners, rev = o.rev + (hit ? matureRev : 0);
+    const units = o.units + (hit ? U : 0), hrs = o.hours + (hit ? hoursNeed : 0);
+    const sal = cl * SALARY, m2 = sal > 0 ? (rev - sal) / sal : null, m1 = o.m;
+    const d = m1 != null && m2 != null ? m2 - m1 : null;
+    return `<tr data-c="${o.c}"${hit ? ' style="background:var(--sage-100)"' : ""}>
+      <td class="name"><span class="cdot" style="background:${clusterColors[o.c]}"></span>${o.c}${hit ? ` <span class="addr">+ ${SCN.name || "new building"}</span>` : ""}</td>
+      <td class="num" style="color:var(--ink-3)">${units || "—"}</td>
+      <td class="num">${cl || "—"}</td>
+      <td class="num" style="font-weight:700">${units && cl ? Math.round(units / cl) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${hrs ? hrs.toFixed(1) : "—"}</td>
+      <td>${utilBar(hrs, capacityFor(cl))}</td>
+      <td class="num" style="color:var(--ink-3)">${rev ? money(rev) : "—"}</td>
+      <td><span class="pill ${cls(m1)}">${pct(m1)}</span></td>
+      <td><span class="pill ${cls(m2)}">${pct(m2)}</span></td>
+      <td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td></tr>`;
+  }).join("");
+
+  const marg = f => salAfter > 0 ? (base.rev + matureRev * f - salAfter) / salAfter : 0;
+  const series = curve.map(f => marg(f));
+  const lo = curve.map(f => marg(f * 0.7)), hi = curve.map(f => marg(Math.min(1.15, f * 1.3)));
+  const W = 620, H = 260, pad = { l: 46, r: 16, t: 18, b: 30 };
+  const all = series.concat(lo, hi, [mNow ?? 0, 0]);
+  const y0 = Math.min(...all), y1 = Math.max(...all), span = (y1 - y0) || 1;
+  const X = i => pad.l + i * (W - pad.l - pad.r) / 11;
+  const Y = v => pad.t + (1 - (v - y0) / span) * (H - pad.t - pad.b);
+  const line = s => s.map((v, i) => (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1)).join(" ");
+  const band = hi.map((v, i) => (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1)).join(" ") +
+    lo.slice().reverse().map((v, i) => " L" + X(11 - i).toFixed(1) + " " + Y(v).toFixed(1)).join("") + " Z";
+  const cross = series.findIndex(v => mNow == null || v >= mNow);
+  document.getElementById("scnChart").innerHTML = `
+    <line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--line-strong,#DCD3C2)"/>
+    <text x="${pad.l - 8}" y="${Y(0) + 4}" text-anchor="end" font-size="10" fill="var(--ink-4)">0%</text>
+    ${mNow == null ? "" : `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(mNow)}" y2="${Y(mNow)}" stroke="var(--ink-4)" stroke-dasharray="5 4" opacity=".6"/>
+    <text x="${W - pad.r}" y="${Y(mNow) - 7}" text-anchor="end" font-size="10" fill="var(--ink-4)">today ${pct(mNow)}</text>`}
+    <path d="${band}" fill="var(--sage-500,#97A88D)" opacity=".18"/>
+    <path d="${line(series)}" fill="none" stroke="var(--forest,#1D2E32)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    ${cross > -1 ? `<circle cx="${X(cross)}" cy="${Y(series[cross])}" r="4.5" fill="var(--forest,#1D2E32)"/>
+      <text x="${X(cross)}" y="${Y(series[cross]) - 12}" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--forest,#1D2E32)">week ${cross + 1}</text>` : ""}
+    ${series.map((v, i) => `<text x="${X(i)}" y="${H - 10}" text-anchor="middle" font-size="9.5" fill="var(--ink-4)">${i + 1}</text>`).join("")}`;
+  document.getElementById("scnRampNote").textContent = rc.src === "observed"
+    ? `${base.c} margin week by week using the curve measured from ${rc.n} launch${rc.n === 1 ? "" : "es"} in the sheet. Those launches reached near-mature revenue almost immediately, so this curve is nearly flat — it is a measurement, not a forecast.`
+    : rc.src === "immediate"
+    ? `${base.c} margin if the new building hits mature revenue immediately — the optimistic bound.`
+    : `${base.c} margin week by week on a conventional 12-week ramp (30% of mature in week 1). Band is ±30% on ramp speed.`;
+
+  const beRpu = U > 0 && mNow != null ? (salAfter * (1 + mNow) - base.rev) / U : null;
+  const zeroRpu = U > 0 ? (salAfter - base.rev) / U : null;
+  const hireRpu = SCN.hire > 0 && U > 0 ? (SCN.hire * SALARY) / U : null;
+  document.getElementById("scnSens").innerHTML = [
+    [beRpu == null ? "—" : "$" + Math.max(0, beRpu).toFixed(2), `Revenue per unit the new building needs for ${base.c} to hold today's margin. ${beRpu != null && beRpu <= 0 ? "Clear at any revenue — this launch adds no payroll." : `Cluster average today is $${(base.units ? base.rev / base.units : 0).toFixed(2)}.`}`],
+    [zeroRpu == null ? "—" : "$" + Math.max(0, zeroRpu).toFixed(2), `Revenue per unit needed to keep ${base.c} above 0% margin at ${clAfter} cleaner${clAfter === 1 ? "" : "s"}.`],
+    [hireRpu == null ? "no hire" : "$" + hireRpu.toFixed(2), hireRpu == null ? `The launch fits inside existing idle hours, so no hire is modelled. One extra cleaner costs ${money(SALARY)}/wk and would need $${(SALARY / (U || 1)).toFixed(2)}/unit from this building alone to pay for itself.` : `Revenue per unit the new building must add just to cover the ${SCN.hire} cleaner${SCN.hire === 1 ? "" : "s"} hired.`],
+    [capNow > 0 ? (base.hours / capNow * 100).toFixed(0) + "%" : "—", `${base.c} utilization today — ${slack.toFixed(0)} idle hours a week. A launch only forces a hire once utilization would pass 100%.`]
+  ].map(r => `<div class="row"><span>${r[1]}</span><b>${r[0]}</b></div>`).join("");
+
+  document.getElementById("scnNote").innerHTML =
+    `<b>How this is calculated.</b>
+     <b>Revenue:</b> units × revenue per unit per week. The default is the cluster's own current revenue per unit, so the new building is assumed to behave like its neighbours. Type over it to test a weaker or stronger building.
+     <b>Hours:</b> expected revenue ÷ the cluster's average order value gives visits; visits × the cluster's average visit duration gives hours. Capacity is ${HPD} h × ${DPW} days per cleaner.
+     <b>Ramp:</b> the default is a conventional 12-week build to mature revenue. “Observed launches” instead uses the curve measured from the launches already in the sheet — those reached near-mature revenue within a week or two, so that curve is almost flat and reads as a best case.
+     <b>Caveat:</b> hours and visit durations are logged by cleaners themselves, so utilization and the hours a launch needs are indicative. The ramp rests on very few launches — read the band, not the line.`;
+}
+["scnName","scnUnits","scnCluster","scnHire","scnRpu","scnRamp","scnHpd","scnDpw"].forEach(id => {
+  const el = document.getElementById(id);
+  const h = () => {
+    if (id === "scnName") SCN.name = el.value;
+    if (id === "scnUnits") SCN.units = Number(el.value) || 0;
+    if (id === "scnCluster") { SCN.cluster = el.value; SCN.rpu = null; }
+    if (id === "scnHire") SCN.hire = Number(el.value) || 0;
+    if (id === "scnRpu") SCN.rpu = Number(el.value) || 0;
+    if (id === "scnRamp") SCN.ramp = el.value;
+    if (id === "scnHpd" && Number(el.value) > 0) { HPD = Number(el.value); localStorage.setItem("zingKpiHpd", HPD); }
+    if (id === "scnDpw" && Number(el.value) > 0) { DPW = Number(el.value); localStorage.setItem("zingKpiDpw", DPW); }
+    if (id === "scnHpd" || id === "scnDpw") render(); else renderScenario();
+  };
+  el.oninput = h; el.onchange = h;
+});
+document.getElementById("scnReset").onclick = () => {
+  SCN.rpu = null; HPD = 6.5; DPW = 6;
+  localStorage.removeItem("zingKpiHpd"); localStorage.removeItem("zingKpiDpw");
+  render();
+};
 
 document.getElementById("note").innerHTML = noteHTML();
 setWeeks(); render();
