@@ -47,16 +47,19 @@ To move the endpoint, edit `endpoint` in the logic class of the source DC and re
 
 ## Page order
 
-Hero → Caroline Alday quote (The Hamilton) → Edgewater proof band → How we work → Prices →
-Residents actually use it (Sarah + metrics) → Who is in the building → No cost to the building
-(+ 15-day timeline) → FAQ → Request form.
+Hero → Edgewater proof band (8 buildings, 3,500+ units, 2 slots this quarter) → How we work →
+Caroline Alday quote (The Hamilton) → Prices → Why residents love Zing (Sarah + metrics) →
+Who is in the building → No cost to the building (+ 15-day timeline) → FAQ → Request form.
 
-The order is deliberate: proof and neighborhood scarcity come before the pitch, objections are
+The order is deliberate: neighborhood scarcity and proof come before the pitch, objections are
 answered before the ask, and the form is last.
+
+Every CTA reads "See if your building is a fit" — header, hero, mobile bottom bar, form submit. The
+form section headline is "Bring Zing to your building."
 
 ## Numbers on the page — confirm before publishing
 
-- **5** Edgewater buildings live, **2,000+** units serviced.
+- **8** Edgewater buildings live, **3,500+** units serviced.
 - **2** buildings Zing can take on in Edgewater this quarter. This is the page's main urgency lever.
 - **30–40%** resident adoption · **60%** single-chore visits · **75%** had no cleaning help before.
 - Prices: $1 trash, $3 plants, $35 full bathroom. $69 vs $250 in Sarah's card. $89 average visit
@@ -77,3 +80,12 @@ answered before the ask, and the form is last.
   `wynd27.svg` and `thehamilton.svg` have the same defect.
 - Mobile is handled in two tiers (grids collapse under 980px, type and gutters tighten under 700px),
   plus a fixed bottom CTA bar on phones. Desktop relies on the sticky header CTA.
+
+## Contact
+
+The "just ask a question instead" link and the fallback under the form both go to
+**alvaro@justzingit.com**.
+
+## Outbound links
+
+Header logo and footer → justzingit.com. Both coffee activation mentions → justzingit.com/breakfast.
