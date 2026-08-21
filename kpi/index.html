@@ -1,9 +1,10 @@
-<!-- @template name="KPI Dashboard" description="Weekly building + cluster margin tracker with a schematic cluster map, fed by a published Google Sheet CSV." -->
+<!-- @dsCard group="Internal Tools" viewport="1400x900" name="KPI Dashboard" subtitle="Weekly margin per building/cluster, sign-up growth, scenario planner, forecasting — reads a published Google Sheet" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Zing · KPI Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,300;0,400&display=swap" rel="stylesheet">
@@ -72,6 +73,57 @@ body.navmin aside.nav a span{display:none}
 .util{display:inline-flex;align-items:center;gap:7px}
 .util i{display:block;width:44px;height:6px;border-radius:99px;background:var(--paper-200,#EDE7DA);overflow:hidden;flex:0 0 44px}
 .util i b{display:block;height:100%;border-radius:99px;background:var(--sage-500,#97A88D)}
+.suctl{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-end;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.pickers{display:flex;flex-wrap:wrap;gap:7px}
+.pickers button{padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--paper-50);font-size:12px;font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:7px}
+.pickers button:hover{border-color:var(--sage-400,#B4C3AC)}
+.pickers button.on{background:var(--forest,#1D2E32);border-color:var(--forest,#1D2E32);color:var(--paper-50)}
+.pickers button i{display:block;width:8px;height:8px;border-radius:99px}
+.pickers button.all{font-weight:700}
+.pipe td input,.pipe td select{width:100%;min-width:74px}
+.pipe td.addr input{min-width:190px}
+.pipe td.nm input{min-width:140px;font-weight:600}
+.pipe td.geo input{min-width:78px;text-align:right;font-variant-numeric:tabular-nums}
+.pipe td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+.pipe td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+.piperow{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between;margin-top:16px}
+.piperow button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
+.piperow .legend{margin:0}
+.legend .sdot{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:6px;vertical-align:baseline}
+.addcl{display:flex;gap:10px;align-items:center}
+.addcl input{min-width:190px}
+.cal td input[type=text]{min-width:140px;flex:1}
+.cal td.urlcell{white-space:normal}
+.cal td.urlcell > div{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cal td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:normal;min-width:92px}
+.cal td .u{font-weight:700;font-variant-numeric:tabular-nums}
+.cal td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+.cal td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+.cal .pull{margin-left:6px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper-50);font-size:11px;font-weight:600;color:var(--ink-2)}
+.cal .pull:hover{border-color:var(--sage-400,#B4C3AC)}
+.addcl button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
+#tbClusterList td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbClusterList td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+.surt{display:flex;gap:12px;align-items:flex-end}
+.surt button,.evform button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
+.surt button:hover,.evform button[type=submit]:hover{background:var(--forest-700,#162528)}
+.evform{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:16px;margin-bottom:18px;border:1px solid var(--line);border-radius:20px;background:var(--sage-100,#EDF1E8)}
+.evform[hidden]{display:none}
+#suTip{max-height:min(70vh,520px);overflow:hidden}
+#suTip .more{font-size:10.5px;color:var(--ink-4);margin-top:8px}
+.evform #evName,.evform #evDesc{min-width:200px}
+.evform #evDesc{flex:1}
+.evform button[type=button]{background:none;color:var(--ink-2);border-color:var(--line)}
+.evform button[type=button]:hover{background:var(--paper-50)}
+#tbEvents td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbEvents td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+#suTip{position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .1s ease;background:var(--paper-50);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 30px rgba(29,46,50,.16);padding:10px 12px;min-width:180px}
+#suTip.on{opacity:1}
+#suTip .wk{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4)}
+#suTip .r{display:flex;justify-content:space-between;gap:14px;font-size:11.5px;margin-top:5px}
+#suTip .r b{font-variant-numeric:tabular-nums}
+#suTip .nm{display:flex;align-items:center;gap:6px;font-weight:600;margin-top:9px;font-size:12px}
+#suTip .nm i{width:8px;height:8px;border-radius:99px;display:block}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .stat .v{font:400 26px/1.1 "Newsreader",serif;margin-top:6px}
@@ -95,8 +147,15 @@ td .addr{display:block;font-weight:400;font-size:11px;color:var(--ink-4)}
 .wow{font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-3)}
 .wow.p{color:var(--pos)}.wow.n{color:var(--neg)}
 .cdot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px;vertical-align:0}
-.mapwrap{position:relative;background:var(--paper-50)}
-svg.map{display:block;width:100%;height:auto}
+.mapwrap{position:relative;background:var(--paper-50);overflow:hidden}
+.mapzoom{position:absolute;right:14px;top:14px;display:flex;flex-direction:column;gap:1px;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 14px rgba(29,46,50,.1)}
+.mapzoom button{width:34px;height:34px;border:none;background:var(--paper-50);color:var(--ink-2);font-size:16px;line-height:1;font-weight:600;display:grid;place-items:center}
+.mapzoom button:hover{background:var(--sage-100)}
+.mapzoom button.rs{font-size:11px;font-weight:700;letter-spacing:.04em}
+svg.map{display:block;width:100%;height:auto;cursor:grab;touch-action:none}
+svg.map.drag{cursor:grabbing}
+svg.map #mapZoomG{transition:transform .12s ease-out}
+svg.map.drag #mapZoomG{transition:none}
 .legend{display:flex;flex-wrap:wrap;gap:14px;padding:10px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-3);align-items:center}
 .legend b{font-weight:600;color:var(--ink-2)}
 .legend .warn{flex:1 1 100%;color:var(--neg);background:var(--neg-bg);padding:6px 9px;border-radius:8px}
@@ -147,6 +206,8 @@ tspan.mlabel{font-weight:700}
 <button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
 <a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Density Dashboard</span></a>
 <a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
+<a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Sign-up growth</span></a>
+<a href="#forecast" data-view="forecast"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 5-7"/><path d="M17 8h4v4"/><path d="M3 21h18"/></svg><span>Forecasting</span></a>
 <a href="#scenario" data-view="scenario"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 15c4 0 5-8 9-8 3 0 4 4 7 4"/><path d="M4 19h16"/></svg><span>Scenario planner</span></a>
 <a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
 </aside>
@@ -155,8 +216,10 @@ tspan.mlabel{font-weight:700}
 <section class="stats" id="stats"></section>
 <section class="panel">
 <div class="phead"><h2>Cluster map</h2><p>Pin colour and number = margin per single cleaner. Halo = cluster, labelled with cluster margin.</p></div>
-<div class="mapwrap"><svg class="map" id="map" viewBox="0 0 1240 620" role="img" aria-label="Schematic map of buildings and clusters"></svg></div>
+<div class="mapwrap"><svg class="map" id="map" viewBox="0 0 1240 620" role="img" aria-label="Schematic map of buildings and clusters"></svg>
+<div class="mapzoom"><button id="mzIn" title="Zoom in" aria-label="Zoom in">+</button><button id="mzOut" title="Zoom out" aria-label="Zoom out">−</button><button id="mzRs" class="rs" title="Reset view" aria-label="Reset view">1×</button></div></div>
 <div class="legend" id="legend"></div>
+<div class="legend" id="legendPipe"></div>
 </section>
 <section class="grid2">
 <div class="panel">
@@ -180,6 +243,13 @@ tspan.mlabel{font-weight:700}
 <div class="phead"><h2>Building settings</h2><p>Kept on this device — the sheet only carries revenue</p></div>
 <div class="scrollx"><table class="bset"><thead><tr><th>Building</th><th>Cluster</th><th># Units</th><th>Cleaners</th><th>Access method</th><th>Went live</th><th>First revenue in sheet</th></tr></thead><tbody id="tbSettings"></tbody></table></div>
 </section>
+<section class="panel">
+<div class="phead"><h2>Clusters</h2><p>Add a cluster here, then assign buildings to it in the table above</p></div>
+<div class="piperow" style="margin:0 0 16px">
+  <form class="addcl" id="clForm"><input type="text" id="clName" placeholder="Cluster name" aria-label="New cluster name" required><button type="submit">Add cluster</button></form>
+</div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Buildings</th><th>Units</th><th>Cleaners</th><th></th></tr></thead><tbody id="tbClusterList"></tbody></table></div>
+</section>
 </section>
 <section class="view" id="viewClusters">
 <section class="panel">
@@ -187,6 +257,35 @@ tspan.mlabel{font-weight:700}
 <div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Hours / wk</th><th>Capacity</th><th>Utilization</th><th>Revenue / wk</th><th>Revenue / unit</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusterAnalysis"></tbody></table></div>
 <div class="legend" id="legendClusters"></div>
 </section>
+</section>
+<section class="view" id="viewForecast">
+<section class="panel">
+<div class="phead"><h2>Forecasting</h2><p>Orders booked for a coming week, turned into an expected week — by building and by cluster</p></div>
+<div class="suctl">
+  <div class="src" style="flex:1;min-width:280px"><span class="dot" id="fcDot"></span><span id="fcMsg">No orders loaded</span><input type="text" id="fcUrl" placeholder="Orders sheet URL"><button id="fcLoad">Load</button></div>
+  <div class="surt">
+    <label class="fld">Week<select id="fcWeek"></select></label>
+    <label class="fld">New bookings uplift<input type="number" id="fcFill" min="1" step=".05" style="width:82px"><span class="post">×</span></label>
+  </div>
+</div>
+<div class="stats" id="fcStats"></div>
+<div class="scrollx"><table><thead><tr><th>Building</th><th>Cluster</th><th>Orders</th><th>Booked</th><th>AOV</th><th>Forecast</th><th>Last 4 wks avg</th><th>Δ</th><th>Margin at forecast</th></tr></thead><tbody id="tbFcBuildings"></tbody></table></div>
+<div class="legend" id="fcLegend"></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>By cluster</h2><p>What the booked week does to each cluster's margin</p></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs ordering</th><th>Orders</th><th>Forecast revenue</th><th>Cleaners</th><th>Hours booked</th><th>Utilization</th><th>Margin at forecast</th><th>vs last 4 wks</th></tr></thead><tbody id="tbFcClusters"></tbody></table></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>New bookings uplift</h2><p id="calHead">Post the Wednesday list, then the same week once it closed. The ratio between them is the uplift, and the average of those ratios feeds the forecast.</p></div>
+<div class="scrollx"><table class="bset cal"><thead><tr><th>Week</th><th>Wednesday list</th><th>Booked</th><th>Week as it closed</th><th>Final</th><th>Uplift</th><th></th></tr></thead><tbody id="tbCal"></tbody></table></div>
+<div class="piperow"><button id="calAdd">Add week</button><div class="legend" id="calLegend"></div></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Biggest opportunities</h2><p>Where the next dollar is, ranked by weekly revenue available</p></div>
+<div id="fcOpps" class="sens"></div>
+</section>
+<footer class="note" id="fcNote"></footer>
 </section>
 <section class="view" id="viewScenario">
 <section class="panel">
@@ -216,11 +315,62 @@ tspan.mlabel{font-weight:700}
 </div>
 </section>
 <footer class="note" id="scnNote"></footer>
+<section class="panel">
+<div class="phead"><h2>Pipeline</h2><p>Buildings we are talking to, closing, or about to launch. A row marked <b>launched</b> joins the portfolio and its cluster.</p></div>
+<div class="scrollx"><table class="bset pipe"><thead><tr><th>Building</th><th>Address</th><th>Units</th><th>Type</th><th>Management</th><th>Cluster</th><th>Status</th><th>Lat</th><th>Lng</th><th></th></tr></thead><tbody id="tbPipeline"></tbody></table></div>
+<div class="piperow"><button id="pipeAdd">Add building</button><div class="legend" id="pipeLegend"></div></div>
+</section>
+</section>
+<section class="view" id="viewSignups">
+<section class="panel">
+<div class="phead"><h2>Sign-up growth</h2><p id="suHead">Residents signed up, week by week</p></div>
+<div class="suctl">
+  <div class="pickers" id="suPick"></div>
+  <div class="surt">
+  <label class="fld">View by<select id="suBy"><option value="building">Building</option><option value="cluster">Cluster</option></select></label>
+  <label class="fld">Show<select id="suMode"><option value="total">Total sign-ups</option><option value="new">New sign-ups per week</option></select></label>
+  <button id="suAdd">Add event</button>
+  </div>
+</div>
+<form class="evform" id="evForm" hidden>
+  <label class="fld">Building<select id="evBuilding"></select></label>
+  <label class="fld">Week<select id="evWeek"></select></label>
+  <label class="fld">Event<input type="text" id="evName" placeholder="Lobby pop-up" required></label>
+  <label class="fld">Description<input type="text" id="evDesc" placeholder="Cart in the lobby, Saturday morning"></label>
+  <label class="fld">Impact<input type="number" id="evImpact" step="1" placeholder="new sign-ups"></label>
+  <button type="submit">Save event</button>
+  <button type="button" id="evCancel">Cancel</button>
+</form>
+<svg id="suChart" viewBox="0 0 980 380" style="width:100%;height:auto" role="img" aria-label="Sign-ups per building over time"></svg>
+</section>
+<section class="panel">
+<div class="phead"><h2>By building</h2><p>Latest total, what it added over the last four weeks, and sign-ups as a share of units</p></div>
+<div class="scrollx"><table><thead><tr><th id="thSuName">Building</th><th>Units</th><th>Total sign-ups</th><th>% Signed up</th><th>New, last 4 wks</th><th>New / wk avg</th><th>Best week</th></tr></thead><tbody id="tbSignups"></tbody></table></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Events</h2><p>What drove sign-ups, and how much each one added</p></div>
+<div class="pickers" id="evFilter" style="margin-bottom:16px"></div>
+<div class="scrollx"><table><thead><tr><th>Building</th><th>Week</th><th>Event</th><th>Description</th><th>Impact</th><th></th></tr></thead><tbody id="tbEvents"></tbody></table></div>
+</section>
 </section>
 </main>
 </div>
+<div id="suTip" role="tooltip" aria-hidden="true"></div>
 <div id="hover" role="tooltip" aria-hidden="true"></div>
 <script>
+/* ---------- shared backend (Apps Script web app on the Google Sheet) ----------
+   GET returns all tabs as {tabName: values[][]} (header row included).
+   POST {tab, action:"upsert", key, values} updates/inserts one row by key column;
+   POST {tab, action:"replaceAll", rows} rewrites a whole list tab. Plain-text content
+   type avoids a CORS preflight Apps Script doesn't answer. Falls back to the local
+   cache (localStorage) below if the fetch fails, so the page still works offline. */
+const API_URL = "https://script.google.com/macros/s/AKfycbzw1wQ5XT6ewFrVovNLP1zKL1IOeiUMRZDa09tPC7Ouh8eX8hEn0prD_kAJjujvC1ne/exec";
+function apiPost(tab, action, extra){
+  fetch(API_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(Object.assign({ tab, action }, extra)) })
+    .catch(err => console.warn("KPI backend save failed (" + tab + ")", err));
+}
+
 /* ---------- formulas (single place to change) ---------- */
 // Building KPI: margin per single cleaner = (weekly revenue − one cleaner's weekly salary) / that salary
 const salaryOf = r => r.cleanerSalary || SALARY;   // sheet column wins, else the salary set in the header
@@ -337,6 +487,9 @@ function parseTab(rows, hi, sheetName){
   // operational columns: visits, hours actually worked, average visit length (minutes)
   const vi = h.indexOf("totalvisits"), hi2 = h.indexOf("totalhoursofoperations");
   const di = h.indexOf("avgvisitduration"), ai = h.indexOf("aov");
+  // sign-ups: cumulative total and the new ones that week
+  const si = h.findIndex(x => ["totalsignups","totalsignup","signups","totalsignedup"].includes(x));
+  const ni = h.findIndex(x => ["newsignups","newsignup","newsignupsthisweek","weeklysignups"].includes(x));
   const reg = lookup(sheetName) || {};
   if (!reg.name) unmatched.add(sheetName);
   return rows.slice(hi + 1).map(c => {
@@ -347,7 +500,8 @@ function parseTab(rows, hi, sheetName){
       building: reg.name || sheetName, address: reg.address || "",
       lat: reg.lat || 0, lng: reg.lng || 0, cluster: reg.cluster || "",
       cleaners: reg.cleaners || 1, revenue: isNaN(v) ? 0 : v, cleanerSalary: null,
-      visits: g(vi), hours: g(hi2), dur: g(di), aov: g(ai) };
+      visits: g(vi), hours: g(hi2), dur: g(di), aov: g(ai),
+      signups: g(si), newSignups: g(ni) };
   }).filter(Boolean);
 }
 
@@ -475,6 +629,7 @@ function drawMatrices(){
 }
 
 function render(){
+  applyClusters();
   const cur = periodRows(week), prev = periodRows(week, true);
   const prevB = new Map(prev.map(r => [r.building, r]));
   const clustered = cur.filter(r => r.cluster);
@@ -552,13 +707,18 @@ function render(){
     const v = Number(e.target.value);
     if (v > 0) CLEANERS[e.target.dataset.c] = v; else delete CLEANERS[e.target.dataset.c];
     localStorage.setItem("zingKpiCleaners", JSON.stringify(CLEANERS));
+    apiPost("Clusters", "upsert", { key: "cluster", values: { cluster: e.target.dataset.c, cleaners: CLEANERS[e.target.dataset.c] ?? 0 } });
     render();
   });
 
   drawMap(clustered.filter(r => r.lat && r.lng), clusters);
   drawMatrices();
   renderSettings();
+  renderClusterList();
+  renderSignups();
   renderScenario();
+  renderForecast();
+  renderPipeline();
 
   const offMap = [...new Set(cur.filter(r => !r.cluster || !r.lat || !r.lng).map(r => r.building))];
   document.getElementById("legend").innerHTML =
@@ -598,6 +758,10 @@ function drawMap(rows, clusters){
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
   const pts = rows.filter(r => r.lat && r.lng);
   if (!pts.length){ svg.innerHTML = `<text x="40" y="40" fill="#8A9492" font-size="13">No coordinates in data</text>`; return; }
+  // pipeline buildings widen the frame, so a prospect outside the clusters still lands on the map
+  const extra = (typeof PIPE === "undefined" ? [] : PIPE)
+    .filter(p => Number(p.lat) && Number(p.lng) && p.name)
+    .map(p => ({ lat: Number(p.lat), lng: Number(p.lng) }));
   const midLat = pts.reduce((a, r) => a + r.lat, 0) / pts.length;
   const mx = r => r.lng * 111320 * Math.cos(midLat * Math.PI / 180), my = r => r.lat * 110574;
 
@@ -609,7 +773,7 @@ function drawMap(rows, clusters){
     return { c, rs, gx, gy, spread: Math.max(...rs.map(r => Math.hypot(mx(r) - gx, my(r) - gy))) };
   }).filter(Boolean);
   // scale so all buildings fit the frame; clusters then sit at true geography and rarely need packing
-  const axs = pts.map(mx), ays = pts.map(my);
+  const axs = pts.concat(extra).map(mx), ays = pts.concat(extra).map(my);
   const spanX = Math.max(...axs) - Math.min(...axs), spanY = Math.max(...ays) - Math.min(...ays);
   // leave vertical room for halo padding + cluster labels so clusters aren't clamped off true position
   const k = Math.min(0.4, (W - MX * 2) / Math.max(spanX, 1), (H - MY * 2 - 180) / Math.max(spanY, 1));
@@ -633,7 +797,14 @@ function drawMap(rows, clusters){
       g.x = Math.max(-lim, Math.min(lim, g.x)); g.y = Math.max(-limY, Math.min(limY, g.y)); });
   }
   const cenX = G.reduce((a, g) => a + g.x, 0) / G.length, cenY = G.reduce((a, g) => a + g.y, 0) / G.length;
-  const offX = W / 2 - cenX, offY = H / 2 - cenY;
+  // centre on everything that will be drawn, clusters and pipeline alike
+  let offX = W / 2 - cenX, offY = H / 2 - cenY;
+  if (extra.length){
+    const exs = extra.map(p => (mx(p) - wx) * k), eys = extra.map(p => -(my(p) - wy) * k);
+    const xs = G.map(g => g.x - cenX).concat(exs), ys = G.map(g => g.y - cenY).concat(eys);
+    offX = W / 2 - (Math.min(...xs) + Math.max(...xs)) / 2 - cenX;
+    offY = H / 2 - (Math.min(...ys) + Math.max(...ys)) / 2 - cenY;
+  }
   G.forEach(g => { g.x += offX; g.y += offY; });
   const byC = {}; G.forEach(g => byC[g.c] = g);
   // true-geography projection in the same units, and how far packing pushed clusters off it
@@ -691,16 +862,87 @@ function drawMap(rows, clusters){
       <title>${r.building} — ${r.cluster} · ${money(r.revenue)} revenue · one cleaner salary ${money(salaryOf(r))}</title></g>`;
   });
 
+  /* pipeline buildings: a plain status dot at true position, no margin */
+  let pipeDots = "";
+  if (trueGeo && typeof PIPE !== "undefined") PIPE.forEach(p => {
+    const la = Number(p.lat), ln = Number(p.lng);
+    if (!la || !ln || !p.name) return;
+    if (rows.some(r => key(r.building) === key(p.name))) return;   // already live in the portfolio
+    const q = geo(la, ln), col = PIPE_COLORS[p.status] || "#B4A07E";
+    const w = tw(p.name, 11.5) + 8;
+    let best = null;
+    for (const side of [1, -1]) for (const off of [0, -16, 16, -32, 32]){
+      const x = side > 0 ? q.x + 10 : q.x - 10 - w, y = q.y + 4 + off;
+      const box = { x1: x - 2, x2: x + w, y1: y - 12, y2: y + 5 };
+      const cost = overlap(box) * 3 + Math.abs(off) + (side < 0 ? 4 : 0);
+      if (!best || cost < best.cost) best = { cost, box, x, y };
+    }
+    occ.push(best.box);
+    pipeDots += `<g data-pipe="${p.name}">
+      <circle cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="6" fill="${col}" fill-opacity="${p.status === "Launched" ? 1 : .18}" stroke="${col}" stroke-width="1.8"/>
+      <text x="${best.x.toFixed(1)}" y="${(best.y - 1).toFixed(1)}" font-size="11.5" font-weight="600" fill="${col}">${p.name}</text>
+      <title>${p.name} — ${p.status}${p.units ? " · " + p.units + " units" : ""}${p.cluster ? " · " + p.cluster : ""}</title></g>`;
+  });
+
   const barPx = Math.min(500 * k, 200);
   svg.innerHTML = `<defs>${defs}<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1D2E32" opacity=".07"/></pattern>
   <clipPath id="frame"><rect width="${W}" height="${H}"/></clipPath></defs>
+  <g clip-path="url(#frame)"><g id="mapZoomG">
   <rect width="${W}" height="${H}" fill="#FBF9F4"/><rect width="${W}" height="${H}" fill="url(#dots)"/>
   ${trueGeo ? basemap(geo, W, H) : ""}
-  ${halos}${pins}
+  ${halos}${pipeDots}${pins}
   <g transform="translate(${W - 30 - barPx},${H - 22})" fill="#8A9492" font-size="10.5"><line x1="0" y1="0" x2="${barPx}" y2="0" stroke="#8A9492" stroke-width="1.5"/>
   <line x1="0" y1="-4" x2="0" y2="4" stroke="#8A9492"/><line x1="${barPx}" y1="-4" x2="${barPx}" y2="4" stroke="#8A9492"/><text x="${barPx / 2}" y="-8" text-anchor="middle">${(barPx / k / 1000).toFixed(1)} km within a cluster</text></g>
-  <text x="26" y="26" fill="#8A9492" font-size="10.5" letter-spacing=".12em">NORTH ↑ · ${trueGeo ? "BUILDINGS AND CLUSTERS AT TRUE POSITION · STREET MAP" : "BUILDINGS TO SCALE WITHIN EACH CLUSTER · CLUSTERS PLACED SCHEMATICALLY"}</text>`;
+  <text x="26" y="26" fill="#8A9492" font-size="10.5" letter-spacing=".12em">NORTH ↑ · ${trueGeo ? "BUILDINGS AND CLUSTERS AT TRUE POSITION · STREET MAP" : "BUILDINGS TO SCALE WITHIN EACH CLUSTER · CLUSTERS PLACED SCHEMATICALLY"}</text></g></g>`;
+  applyMapView(W, H);
 }
+
+/* ---------- map zoom + pan ----------
+   One transform on a wrapper group, so nothing about the layout maths changes. */
+let MV = { z: 1, x: 0, y: 0, W: 1240, H: 744 };
+function applyMapView(W, H){
+  if (W) { MV.W = W; MV.H = H; }
+  const g = document.querySelector("#map #mapZoomG");
+  if (!g) return;
+  const lim = s => Math.max(0.5, Math.abs(MV.z - 1) / 2 + 0.5);
+  MV.x = Math.max(-lim() * MV.W, Math.min(lim() * MV.W, MV.x));
+  MV.y = Math.max(-lim() * MV.H, Math.min(lim() * MV.H, MV.y));
+  g.setAttribute("transform", `translate(${MV.x.toFixed(1)} ${MV.y.toFixed(1)}) scale(${MV.z.toFixed(3)})`);
+  const rs = document.getElementById("mzRs");
+  if (rs) rs.textContent = MV.z.toFixed(MV.z < 10 ? 1 : 0).replace(/\.0$/, "") + "×";
+}
+/* zoom about a point in svg user units, so the cursor keeps its place */
+function zoomMap(f, cx, cy){
+  const z0 = MV.z, z = Math.max(0.35, Math.min(8, z0 * f));
+  if (z === z0) return;
+  const px = cx == null ? MV.W / 2 : cx, py = cy == null ? MV.H / 2 : cy;
+  MV.x = px - (px - MV.x) * (z / z0);
+  MV.y = py - (py - MV.y) * (z / z0);
+  MV.z = z;
+  applyMapView();
+}
+(function mapControls(){
+  const svg = document.getElementById("map");
+  const pt = e => { const b = svg.getBoundingClientRect();
+    return { x: (e.clientX - b.left) / b.width * MV.W, y: (e.clientY - b.top) / b.height * MV.H }; };
+  document.getElementById("mzIn").onclick = () => zoomMap(1.5);
+  document.getElementById("mzOut").onclick = () => zoomMap(1 / 1.5);
+  document.getElementById("mzRs").onclick = () => { MV.z = 1; MV.x = 0; MV.y = 0; applyMapView(); };
+  svg.addEventListener("wheel", e => { e.preventDefault(); const p = pt(e);
+    zoomMap(e.deltaY < 0 ? 1.12 : 1 / 1.12, p.x, p.y); }, { passive: false });
+  let drag = null;
+  svg.addEventListener("pointerdown", e => {
+    drag = { x: e.clientX, y: e.clientY, ox: MV.x, oy: MV.y };
+    svg.classList.add("drag"); svg.setPointerCapture(e.pointerId); });
+  svg.addEventListener("pointermove", e => { if (!drag) return;
+    const b = svg.getBoundingClientRect();
+    MV.x = drag.ox + (e.clientX - drag.x) / b.width * MV.W;
+    MV.y = drag.oy + (e.clientY - drag.y) / b.height * MV.H;
+    applyMapView(); });
+  const end = () => { drag = null; svg.classList.remove("drag"); };
+  svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
+  svg.addEventListener("dblclick", e => { const p = pt(e); zoomMap(1.6, p.x, p.y); });
+})();
 
 /* Schematic Miami: shoreline, bay, barrier island and the bay islands, causeways,
    arterials, a light street grid, bayfront parks and neighbourhood labels.
@@ -728,10 +970,10 @@ function basemap(geo, W, H){
 
   /* street grid: numbered streets east-west, avenues north-south, clipped to land */
   const gridLat = [], gridLng = [];
-  for (let la = 25.7180; la <= 25.8760; la += 0.00181) gridLat.push(la);
-  for (let ln = -80.2560; ln <= -80.1220; ln += 0.00232) gridLng.push(ln);
-  const streets = gridLat.map(la => [[la, -80.2600],[la, -80.1180]])
-    .concat(gridLng.map(ln => [[25.7100, ln],[25.8800, ln]]));
+  for (let la = 25.7000; la <= 25.8760; la += 0.00181) gridLat.push(la);
+  for (let ln = -80.2900; ln <= -80.1220; ln += 0.00232) gridLng.push(ln);
+  const streets = gridLat.map(la => [[la, -80.2940],[la, -80.1180]])
+    .concat(gridLng.map(ln => [[25.6960, ln],[25.8800, ln]]));
 
   const collectors = [
     [[25.8800,-80.1936],[25.7400,-80.1936]],            // NE/NW 2nd Ave
@@ -741,7 +983,9 @@ function basemap(geo, W, H){
     [[25.7998,-80.2260],[25.7992,-80.1854]],            // NE 20th St
     [[25.7926,-80.2260],[25.7920,-80.1856]],            // NE 14th St
     [[25.7748,-80.2260],[25.7744,-80.1848]],            // Flagler St
-    [[25.7658,-80.2260],[25.7652,-80.1880]],            // SW 8th St
+    [[25.7658,-80.2600],[25.7652,-80.1880]],            // SW 8th St
+    [[25.7482,-80.2600],[25.7488,-80.2080],[25.7520,-80.1940]],  // Coral Way
+    [[25.8800,-80.2620],[25.7300,-80.2600]],            // SW/NW 37th Ave
     [[25.8420,-80.2260],[25.8432,-80.1836]],            // NE 62nd St
     [[25.7940,-80.1420],[25.7700,-80.1345]],            // Collins Ave
     [[25.7938,-80.1450],[25.7702,-80.1390]]             // Alton Rd
@@ -847,6 +1091,7 @@ salaryInput.oninput = e => {
   const v = Number(e.target.value);
   if (!(v > 0)) return;
   SALARY = v; localStorage.setItem("zingKpiSalary", v);
+  apiPost("Settings", "upsert", { key: "key", values: { key: "salary", value: v } });
   render(); document.getElementById("note").innerHTML = noteHTML();
 };
 
@@ -936,7 +1181,10 @@ document.getElementById("load").onclick = () => {
 };
 
 /* ---------- upload an .xlsx / .csv straight off the desktop ---------- */
-const loadScript = src => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+// one promise per src, so two loaders asking for SheetJS at once don't inject it twice
+const SCRIPTS = {};
+const loadScript = src => SCRIPTS[src] || (SCRIPTS[src] = new Promise((ok, no) => {
+  const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }));
 document.getElementById("pick").onclick = () => document.getElementById("file").click();
 document.getElementById("file").onchange = async e => {
   const f = e.target.files[0], dot = document.getElementById("srcDot"), msg = document.getElementById("srcMsg");
@@ -989,6 +1237,45 @@ const capacityFor = n => (n || 0) * HPD * DPW;
 const utilBar = (h, cap) => { const u = cap > 0 ? h / cap : null;
   return u == null ? "—" : `<span class="util"><i><b style="width:${Math.min(100, u * 100).toFixed(0)}%;background:${u > .85 ? "var(--danger,#A85149)" : "var(--sage-500,#97A88D)"}"></b></i>${(u * 100).toFixed(0)}%</span>`; };
 
+/* ---------- clusters ----------
+   Clusters come from the building registry; extra ones are added here and a building's
+   cluster can be reassigned in Building settings. Both live on this device. */
+let XCLUSTERS = [];
+try { const s = JSON.parse(localStorage.getItem("zingKpiClusters")); if (Array.isArray(s)) XCLUSTERS = s; } catch (e) {}
+const saveClusters = () => { localStorage.setItem("zingKpiClusters", JSON.stringify(XCLUSTERS)); apiPost("Settings", "upsert", { key: "key", values: { key: "extraClusters", value: JSON.stringify(XCLUSTERS) } }); };
+function allClusters(){
+  const fromReg = Object.values(REGISTRY).map(b => b.cluster);
+  const fromSet = Object.values(BSET).map(b => b.cluster);
+  return [...new Set([...fromReg, ...fromSet, ...XCLUSTERS].filter(Boolean))].sort();
+}
+// a per-building override in Building settings wins over the registry
+function applyClusters(){
+  ROWS.forEach(r => { const o = (BSET[key(r.building)] || {}).cluster;
+    if (o != null) r.cluster = o; });
+}
+function renderClusterList(){
+  const cs = allClusters();
+  document.getElementById("tbClusterList").innerHTML = cs.length ? cs.map(c => {
+    const bs = [...new Set(ROWS.filter(r => r.cluster === c).map(r => r.building))];
+    const units = bs.reduce((a, b) => a + (unitsOf(b) || 0), 0);
+    return `<tr data-c="${c}"><td class="name"><span class="cdot" style="background:${clusterColors[c] || "#C9C2B4"}"></span>${c}</td>
+      <td style="color:var(--ink-3)">${bs.length ? bs.join(", ") : "none yet"}</td>
+      <td class="num" style="color:var(--ink-3)">${units || "—"}</td>
+      <td class="num">${cleanersIn(c) ?? "—"}</td>
+      <td class="del">${bs.length ? "" : `<button data-x="${c}" title="Remove empty cluster" aria-label="Remove ${c}">×</button>`}</td></tr>`;
+  }).join("") : `<tr><td colspan="5" style="color:var(--ink-4);padding:18px 0">No clusters yet.</td></tr>`;
+  document.querySelectorAll("#tbClusterList .del button").forEach(b => b.onclick = () => {
+    XCLUSTERS = XCLUSTERS.filter(c => c !== b.dataset.x); saveClusters(); render();
+  });
+}
+document.getElementById("clForm").onsubmit = e => {
+  e.preventDefault();
+  const el = document.getElementById("clName"), v = el.value.trim();
+  if (!v) return;
+  if (!allClusters().includes(v)){ XCLUSTERS.push(v); saveClusters(); }
+  el.value = ""; render();
+};
+
 /* ---------- building hover card ---------- */
 const unitsOf = name => (BSET[key(name)] || {}).units || null;
 const liveOf = name => (BSET[key(name)] || {}).live || null;
@@ -1038,6 +1325,8 @@ function showView(v){
   document.getElementById("viewBuildings").classList.toggle("on", v === "buildings");
   document.getElementById("viewClusters").classList.toggle("on", v === "clusters");
   document.getElementById("viewScenario").classList.toggle("on", v === "scenario");
+  document.getElementById("viewForecast").classList.toggle("on", v === "forecast");
+  document.getElementById("viewSignups").classList.toggle("on", v === "signups");
   hideHover();
 }
 document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
@@ -1054,7 +1343,12 @@ let BSET = {
 };
 try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
   .forEach(([k, v]) => BSET[k] = Object.assign({}, BSET[k], v)); } catch (e) {}
-const saveBset = () => localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
+const saveBset = () => {
+  localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
+  apiPost("Buildings", "replaceAll", { rows: Object.entries(BSET).map(([k, v]) => ({
+    building: (REGISTRY[k] || {}).name || k, units: v.units || 0, cleanersAssigned: v.cleaners || 0,
+    accessMethod: v.access || "none", liveDate: v.live || "" })) });
+};
 function firstRevenueWeek(name){
   const rs = ROWS.filter(r => r.building === name && r.revenue > 0)
     .sort((a, b) => (a.weekOrder ?? 0) - (b.weekOrder ?? 0));
@@ -1065,7 +1359,7 @@ function renderSettings(){
   document.getElementById("tbSettings").innerHTML = names.map(n => {
     const reg = lookup(n) || {}, s = BSET[key(n)] || {};
     return `<tr><td class="name">${n}<span class="addr">${reg.address || ""}</span></td>
-      <td style="color:var(--ink-3)">${reg.cluster || "not matched"}</td>
+      <td style="color:var(--ink-3)"><select data-f="cluster" data-b="${key(n)}" aria-label="Cluster for ${n}">${[""].concat(allClusters()).map(c => `<option value="${c}"${(s.cluster ?? reg.cluster ?? "") === c ? " selected" : ""}>${c || "— unassigned"}</option>`).join("")}</select></td>
       <td class="n"><input type="number" min="0" step="1" data-f="units" data-b="${key(n)}" value="${s.units ?? ""}" placeholder="—" aria-label="Units in ${n}"></td>
       <td class="n"><input type="number" min="0" step="0.5" data-f="cleaners" data-b="${key(n)}" value="${s.cleaners ?? ""}" placeholder="—" aria-label="Cleaners at ${n}"></td>
       <td><select data-f="access" data-b="${key(n)}" aria-label="Access method for ${n}">
@@ -1078,7 +1372,9 @@ function renderSettings(){
   document.querySelectorAll("#tbSettings [data-f]").forEach(el => el.onchange = e => {
     const b = e.target.dataset.b, f = e.target.dataset.f, v = e.target.value;
     BSET[b] = BSET[b] || {};
-    if (v === "") delete BSET[b][f]; else BSET[b][f] = (f === "units" || f === "cleaners") ? Number(v) : v;
+    // cluster stores "" explicitly, so "unassigned" sticks instead of falling back to the registry
+    if (v === "" && f !== "cluster") delete BSET[b][f];
+    else BSET[b][f] = (f === "units" || f === "cleaners") ? Number(v) : v;
     saveBset(); render();
   });
 }
@@ -1231,8 +1527,8 @@ function renderScenario(){
     if (id === "scnHire") SCN.hire = Number(el.value) || 0;
     if (id === "scnRpu") SCN.rpu = Number(el.value) || 0;
     if (id === "scnRamp") SCN.ramp = el.value;
-    if (id === "scnHpd" && Number(el.value) > 0) { HPD = Number(el.value); localStorage.setItem("zingKpiHpd", HPD); }
-    if (id === "scnDpw" && Number(el.value) > 0) { DPW = Number(el.value); localStorage.setItem("zingKpiDpw", DPW); }
+    if (id === "scnHpd" && Number(el.value) > 0) { HPD = Number(el.value); localStorage.setItem("zingKpiHpd", HPD); apiPost("Settings", "upsert", { key: "key", values: { key: "hoursPerCleanerDay", value: HPD } }); }
+    if (id === "scnDpw" && Number(el.value) > 0) { DPW = Number(el.value); localStorage.setItem("zingKpiDpw", DPW); apiPost("Settings", "upsert", { key: "key", values: { key: "daysPerWeek", value: DPW } }); }
     if (id === "scnHpd" || id === "scnDpw") render(); else renderScenario();
   };
   el.oninput = h; el.onchange = h;
@@ -1240,12 +1536,651 @@ function renderScenario(){
 document.getElementById("scnReset").onclick = () => {
   SCN.rpu = null; HPD = 6.5; DPW = 6;
   localStorage.removeItem("zingKpiHpd"); localStorage.removeItem("zingKpiDpw");
+  apiPost("Settings", "upsert", { key: "key", values: { key: "hoursPerCleanerDay", value: 6.5 } });
+  apiPost("Settings", "upsert", { key: "key", values: { key: "daysPerWeek", value: 6 } });
   render();
 };
 
+/* ---------- sign-up growth ----------
+   Column C is the cumulative total, column H the new sign-ups that week. Every building gets
+   its own line; the pickers select any combination. */
+const SU_COLORS = ["#1D2E32","#97A88D","#C8A86A","#A85149","#6E8C93","#B4A07E","#4F6B5A","#8FA68E"];
+let SU_SEL = null, SU_MODE = "total", SU_BY = "building";
+const suByCluster = () => SU_BY === "cluster";
+function suBuildings(){
+  return suByCluster()
+    ? [...new Set(ROWS.filter(r => r.cluster).map(r => r.cluster))].sort()
+    : [...new Set(ROWS.map(r => r.building))].sort();
+}
+/* rows belonging to one entity — a single building, or every building in a cluster */
+const suRows = n => ROWS.filter(r => suByCluster() ? r.cluster === n : r.building === n);
+function suColor(n){
+  if (suByCluster()) return clusterColors[n] || SU_COLORS[0];
+  return SU_COLORS[suBuildings().indexOf(n) % SU_COLORS.length];
+}
+const suUnits = n => { const names = [...new Set(suRows(n).map(r => r.building))];
+  const t = names.reduce((a, b) => a + (unitsOf(b) || 0), 0); return t || null; };
+function suAt(n, w){
+  const rs = suRows(n).filter(r => r.week === w);
+  if (!rs.length) return { tot: null, nw: null };
+  const pick = k => { const v = rs.map(r => r[k]).filter(x => x != null);
+    return v.length ? v.reduce((a, b) => a + b, 0) : null; };
+  return { tot: pick("signups"), nw: pick("newSignups") };
+}
+function suSeries(n){
+  return weeks.map(w => { const v = suAt(n, w);
+    return SU_MODE === "new" ? v.nw : v.tot; });
+}
+/* End-of-line labels, pushed apart so close values stay readable. The dot stays on the true
+   data point and a short leader connects it to the moved label. */
+function endLabels(series, X, Y){
+  const pts = series.map(s => { let last = -1; s.v.forEach((v, i) => { if (v != null) last = i; });
+    return last < 0 ? null : { s, last, x: X(last), y: Y(s.v[last]), v: s.v[last] }; })
+    .filter(Boolean).sort((a, b) => a.y - b.y);
+  let prev = -99;
+  pts.forEach(p => { p.ly = Math.max(p.y, prev + 14); prev = p.ly; });
+  return pts.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" fill="${p.s.c}"/>
+    ${Math.abs(p.ly - p.y) > 1.5 ? `<path d="M${(p.x + 4).toFixed(1)} ${p.y.toFixed(1)} L${(p.x + 12).toFixed(1)} ${p.ly.toFixed(1)}" fill="none" stroke="${p.s.c}" stroke-width="1" opacity=".5"/>` : ""}
+    <text x="${(p.x + 15).toFixed(1)}" y="${(p.ly + 4).toFixed(1)}" font-size="11" font-weight="600" fill="${p.s.c}">${p.s.n} · ${p.v}</text>`).join("");
+}
+function renderSignups(){
+  const names = suBuildings();
+  if (!SU_SEL || !SU_SEL.size) SU_SEL = new Set(names);
+  const sel = names.filter(n => SU_SEL.has(n));
+
+  document.getElementById("suPick").innerHTML =
+    `<button class="all${sel.length === names.length ? " on" : ""}" data-all="1">All ${suByCluster() ? "clusters" : "buildings"}</button>` +
+    names.map(n => `<button data-b="${n}"${SU_SEL.has(n) ? ' class="on"' : ""}><i style="background:${suColor(n)}"></i>${n}</button>`).join("");
+  document.getElementById("suMode").value = SU_MODE;
+  document.getElementById("suBy").value = SU_BY;
+  document.getElementById("thSuName").textContent = suByCluster() ? "Cluster" : "Building";
+
+  const series = sel.map(n => ({ n, c: suColor(n), v: suSeries(n) }));
+  const flat = series.flatMap(s => s.v).filter(v => v != null);
+  const W = 980, H = 380, pad = { l: 56, r: 170, t: 20, b: 34 };
+  const y1 = Math.max(1, ...flat), n = weeks.length;
+  const X = i => pad.l + (n > 1 ? i * (W - pad.l - pad.r) / (n - 1) : 0);
+  const Y = v => pad.t + (1 - v / y1) * (H - pad.t - pad.b);
+  const ticks = [0, .25, .5, .75, 1].map(f => Math.round(y1 * f));
+  const every = Math.max(1, Math.round(n / 10));
+
+  const path = v => { let d = "", open = false;
+    v.forEach((x, i) => { if (x == null){ open = false; return; }
+      d += (open ? "L" : "M") + X(i).toFixed(1) + " " + Y(x).toFixed(1) + " "; open = true; });
+    return d.trim(); };
+
+  document.getElementById("suChart").innerHTML =
+    ticks.map(t => `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--line,#E6DECF)"/>
+      <text x="${pad.l - 9}" y="${Y(t) + 4}" text-anchor="end" font-size="10.5" fill="var(--ink-4)">${t}</text>`).join("") +
+    weeks.map((w, i) => i % every === 0 || i === n - 1
+      ? `<text x="${X(i)}" y="${H - 12}" text-anchor="middle" font-size="10" fill="var(--ink-4)">${w}</text>` : "").join("") +
+    series.map(s => `<path d="${path(s.v)}" fill="none" stroke="${s.c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`).join("") +
+    endLabels(series, X, Y);
+
+  document.getElementById("suHead").textContent = SU_MODE === "new"
+    ? `New residents signing up each week · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`
+    : `Cumulative residents signed up · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`;
+
+  document.getElementById("tbSignups").innerHTML = names.map(nm => {
+    const ws = weeks.map(w => Object.assign({ week: w }, suAt(nm, w)));
+    const tot = [...ws].reverse().find(r => r.tot != null);
+    const news = ws.map(r => r.nw).filter(v => v != null);
+    const last4 = ws.slice(-4).reduce((a, r) => a + (r.nw || 0), 0);
+    const u = suUnits(nm), pen = u && tot && tot.tot != null ? tot.tot / u : null;
+    const best = news.length ? Math.max(...news) : null;
+    const bestWk = best == null ? null : (ws.find(r => r.nw === best) || {}).week;
+    return `<tr data-b="${nm}"><td class="name"><span class="cdot" style="background:${suColor(nm)}"></span>${nm}</td>
+      <td class="num" style="color:var(--ink-3)">${u ? u.toLocaleString() : "—"}</td>
+      <td class="num" style="font-weight:700">${tot && tot.tot != null ? tot.tot.toLocaleString() : "—"}</td>
+      <td class="num">${pen == null ? "—" : (pen * 100).toFixed(1) + "%"}</td>
+      <td class="num" style="color:var(--ink-3)">${last4 || "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${news.length ? (news.reduce((a, b) => a + b, 0) / news.length).toFixed(1) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${best == null ? "—" : best + " · " + bestWk}</td></tr>`;
+  }).join("");
+
+  document.getElementById("suPick").querySelectorAll("button").forEach(b => b.onclick = () => {
+    if (b.dataset.all){ SU_SEL = SU_SEL.size === names.length ? new Set([names[0]]) : new Set(names); }
+    else { const nm = b.dataset.b;
+      if (SU_SEL.has(nm)) { if (SU_SEL.size > 1) SU_SEL.delete(nm); } else SU_SEL.add(nm); }
+    renderSignups();
+  });
+  suHover(series, X, Y);
+  renderEvents();
+  evFill();
+}
+
+/* hover the plot: nearest week, then one row per selected building */
+function suHover(series, X, Y){
+  const svg = document.getElementById("suChart"), tip = document.getElementById("suTip");
+  const n = weeks.length;
+  const hide = () => { tip.classList.remove("on"); tip.setAttribute("aria-hidden", "true");
+    svg.querySelectorAll("#suGuide,#suDot").forEach(el => el.remove()); };
+  svg.onmouseleave = hide;
+  svg.onmousemove = e => {
+    if (!n) return;
+    const box = svg.getBoundingClientRect();
+    const vx = (e.clientX - box.left) / box.width * 980;
+    const vy = (e.clientY - box.top) / box.height * 380;
+    let i = 0, best = Infinity;
+    for (let k = 0; k < n; k++){ const d = Math.abs(X(k) - vx); if (d < best){ best = d; i = k; } }
+    const w = weeks[i];
+    svg.querySelectorAll("#suGuide,#suDot").forEach(el => el.remove());
+    svg.insertAdjacentHTML("afterbegin",
+      `<line id="suGuide" x1="${X(i).toFixed(1)}" x2="${X(i).toFixed(1)}" y1="14" y2="346" stroke="var(--ink-4)" stroke-width="1" stroke-dasharray="4 4" opacity=".5"/>`);
+    const rows = series.map(s => {
+      const at = suAt(s.n, w);
+      if (at.tot == null && at.nw == null) return null;
+      const prevW = weeks[i - 1];
+      const pt = prevW ? suAt(s.n, prevW).tot : null;
+      const tot = at.tot, nw = at.nw;
+      const ch = pt != null && tot != null && pt > 0 ? (tot - pt) / pt : null;
+      const val = SU_MODE === "new" ? nw : tot;
+      const dy = val == null ? Infinity : Math.abs(Y(val) - vy);
+      return { s, tot, nw, ch, dy };
+    }).filter(Boolean).sort((a, b) => a.dy - b.dy);
+    // only the line under the cursor
+    const near = rows[0];
+    if (!near || near.dy > 26){ hide(); return; }
+    const body = `<div class="nm"><i style="background:${near.s.c}"></i>${near.s.n}</div>
+        <div class="r"><span>Total signed up</span><b>${near.tot == null ? "—" : near.tot.toLocaleString()}</b></div>
+        <div class="r"><span>New this week</span><b>${near.nw == null ? "—" : "+" + near.nw}</b></div>
+        <div class="r"><span>Change WoW</span><b style="color:${near.ch == null ? "var(--ink-4)" : near.ch > 0 ? "var(--forest)" : "var(--ink-3)"}">${near.ch == null ? "—" : (near.ch >= 0 ? "+" : "") + (near.ch * 100).toFixed(1) + "%"}</b></div>`;
+    svg.insertAdjacentHTML("beforeend",
+      `<circle id="suDot" cx="${X(i).toFixed(1)}" cy="${Y(SU_MODE === "new" ? near.nw : near.tot).toFixed(1)}" r="4.5" fill="${near.s.c}"/>`);
+    tip.innerHTML = `<div class="wk">Week of ${w}</div>${body}`;
+    tip.classList.add("on"); tip.setAttribute("aria-hidden", "false");
+    const tb = tip.getBoundingClientRect();
+    let x = e.clientX + 16, y = e.clientY + 14;
+    if (x + tb.width > innerWidth - 8) x = e.clientX - tb.width - 16;
+    if (y + tb.height > innerHeight - 8) y = Math.max(8, innerHeight - tb.height - 8);
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  };
+}
+
+/* ---------- events ----------
+   Kept on this device; the sheet has no place for them. */
+let EVENTS = [];
+try { EVENTS = JSON.parse(localStorage.getItem("zingKpiEvents")) || []; } catch (e) {}
+let EV_FILTER = "all";
+const saveEvents = () => {
+  localStorage.setItem("zingKpiEvents", JSON.stringify(EVENTS));
+  apiPost("Events", "replaceAll", { rows: EVENTS.map(e => ({ building: e.building, week: e.week, name: e.name, description: e.description, impact: e.impact })) });
+};
+function renderEvents(){
+  const names = [...new Set(ROWS.map(r => r.building))].sort();
+  const evColor = n => SU_COLORS[names.indexOf(n) % SU_COLORS.length];
+  document.getElementById("evFilter").innerHTML =
+    `<button class="all${EV_FILTER === "all" ? " on" : ""}" data-f="all">All buildings</button>` +
+    names.map(n => `<button data-f="${n}"${EV_FILTER === n ? ' class="on"' : ""}><i style="background:${evColor(n)}"></i>${n}</button>`).join("");
+  document.getElementById("evFilter").querySelectorAll("button").forEach(b =>
+    b.onclick = () => { EV_FILTER = b.dataset.f; renderEvents(); });
+
+  const list = EVENTS.filter(e => EV_FILTER === "all" || e.building === EV_FILTER)
+    .sort((a, b) => weeks.indexOf(b.week) - weeks.indexOf(a.week));
+  document.getElementById("tbEvents").innerHTML = list.length ? list.map(e => {
+    const i = EVENTS.indexOf(e);
+    return `<tr><td class="name"><span class="cdot" style="background:${evColor(e.building)}"></span>${e.building}</td>
+      <td style="color:var(--ink-3)">${e.week}</td>
+      <td style="font-weight:600">${e.name}</td>
+      <td style="color:var(--ink-3)">${e.desc || "—"}</td>
+      <td class="num" style="font-weight:700">${e.impact == null || e.impact === "" ? "—" : "+" + e.impact}</td>
+      <td class="del"><button data-i="${i}" title="Remove event" aria-label="Remove event">×</button></td></tr>`;
+  }).join("") : `<tr><td colspan="6" style="color:var(--ink-4);padding:18px 0">No events yet — hit <b>Add event</b> above to record what drove a week's sign-ups.</td></tr>`;
+  document.querySelectorAll("#tbEvents .del button").forEach(b =>
+    b.onclick = () => { EVENTS.splice(Number(b.dataset.i), 1); saveEvents(); renderEvents(); });
+}
+function evFill(){
+  const names = suBuildings();
+  document.getElementById("evBuilding").innerHTML = [...new Set(ROWS.map(r => r.building))].sort().map(n => `<option>${n}</option>`).join("");
+  document.getElementById("evWeek").innerHTML = weeks.slice().reverse().map(w => `<option>${w}</option>`).join("");
+  evImpactHint();
+}
+function evImpactHint(){
+  const b = document.getElementById("evBuilding").value, w = document.getElementById("evWeek").value;
+  const r = ROWS.find(x => x.building === b && x.week === w);
+  const el = document.getElementById("evImpact");
+  el.placeholder = r && r.newSignups != null ? r.newSignups + " new that week" : "new sign-ups";
+  if (!el.dataset.touched) el.value = r && r.newSignups != null ? r.newSignups : "";
+}
+document.getElementById("suAdd").onclick = () => {
+  const f = document.getElementById("evForm");
+  f.hidden = !f.hidden;
+  if (!f.hidden){ evFill(); document.getElementById("evName").focus(); }
+};
+document.getElementById("evCancel").onclick = () => { document.getElementById("evForm").hidden = true; };
+document.getElementById("evBuilding").onchange = evImpactHint;
+document.getElementById("evWeek").onchange = evImpactHint;
+document.getElementById("evImpact").oninput = e => { e.target.dataset.touched = "1"; };
+document.getElementById("evForm").onsubmit = e => {
+  e.preventDefault();
+  const g = id => document.getElementById(id).value;
+  if (!g("evName").trim()) return;
+  EVENTS.push({ building: g("evBuilding"), week: g("evWeek"), name: g("evName").trim(),
+    desc: g("evDesc").trim(), impact: g("evImpact") === "" ? null : Number(g("evImpact")) });
+  saveEvents();
+  document.getElementById("evName").value = ""; document.getElementById("evDesc").value = "";
+  const imp = document.getElementById("evImpact"); delete imp.dataset.touched;
+  document.getElementById("evForm").hidden = true;
+  renderEvents();
+};
+document.getElementById("suMode").onchange = e => { SU_MODE = e.target.value; renderSignups(); };
+document.getElementById("suBy").onchange = e => { SU_BY = e.target.value; SU_SEL = null; renderSignups(); };
+
+/* ---------- pipeline ----------
+   Buildings we may launch. Kept on this device. A row marked "launched" is registered as a
+   real building (cluster + coordinates), so as soon as its tab appears in the sheet it lands
+   in the portfolio like any other. */
+const PIPE_STATUS = ["Contacted", "Closed", "Launching soon", "Launched"];
+const PIPE_COLORS = { "Contacted": "#B4A07E", "Closed": "#C8A86A", "Launching soon": "#97A88D", "Launched": "#1D2E32" };
+let PIPE = [{ name: "Modera Edgewater", address: "3000 Biscayne Blvd, Miami, FL 33137", units: 291,
+  tag: "Multifamily", mgmt: "Mill Creek Residential", cluster: "Edgewater", status: "Contacted",
+  lat: 25.8038, lng: -80.1893 }];
+try { const s = JSON.parse(localStorage.getItem("zingKpiPipeline")); if (Array.isArray(s)) PIPE = s; } catch (e) {}
+const savePipe = () => {
+  localStorage.setItem("zingKpiPipeline", JSON.stringify(PIPE));
+  apiPost("Pipeline", "replaceAll", { rows: PIPE.map(p => ({ name: p.name, address: p.address, units: p.units, tag: p.tag, management: p.mgmt, cluster: p.cluster, status: p.status, lat: p.lat, lng: p.lng })) });
+};
+const pipeLaunched = () => PIPE.filter(p => p.status === "Launched" && p.name);
+function applyPipeline(){
+  pipeLaunched().forEach(p => {
+    const k = key(p.name);
+    if (!REGISTRY[k]) REGISTRY[k] = { name: p.name, address: p.address || "", lat: Number(p.lat) || 0,
+      lng: Number(p.lng) || 0, cluster: p.cluster || "", cleaners: 1 };
+    if (p.units && !(BSET[k] || {}).units) BSET[k] = Object.assign({ units: Number(p.units) }, BSET[k]);
+  });
+}
+function renderPipeline(){
+  const clusters = allClusters();
+  const sel = (v, opts, f, i) => `<select data-i="${i}" data-f="${f}">` +
+    opts.map(o => `<option${o === v ? " selected" : ""}>${o}</option>`).join("") + `</select>`;
+  const inp = (v, f, i, type) => `<input type="${type || "text"}" data-i="${i}" data-f="${f}" value="${v ?? ""}">`;
+  document.getElementById("tbPipeline").innerHTML = PIPE.length ? PIPE.map((p, i) =>
+    `<tr><td class="nm">${inp(p.name, "name", i)}</td>
+     <td class="addr">${inp(p.address, "address", i)}</td>
+     <td class="n">${inp(p.units, "units", i, "number")}</td>
+     <td>${sel(p.tag, ["Multifamily", "HOA"], "tag", i)}</td>
+     <td>${inp(p.mgmt, "mgmt", i)}</td>
+     <td>${sel(p.cluster, [""].concat(clusters), "cluster", i)}</td>
+     <td>${sel(p.status, PIPE_STATUS, "status", i)}</td>
+     <td class="geo">${inp(p.lat, "lat", i, "number")}</td>
+     <td class="geo">${inp(p.lng, "lng", i, "number")}</td>
+     <td class="del"><button class="loc" data-l="${i}" title="Place from address" aria-label="Place from address">⌖</button><button data-d="${i}" title="Remove" aria-label="Remove building">×</button></td></tr>`).join("")
+    : `<tr><td colspan="10" style="color:var(--ink-4);padding:18px 0">Nothing in the pipeline — hit <b>Add building</b>.</td></tr>`;
+
+  document.querySelectorAll("#tbPipeline [data-f]").forEach(el => {
+    const commit = () => { const i = Number(el.dataset.i), f = el.dataset.f;
+      PIPE[i][f] = ["units", "lat", "lng"].includes(f) ? (el.value === "" ? "" : Number(el.value)) : el.value;
+      savePipe();
+    };
+    el.oninput = commit;
+    el.onchange = () => { commit(); applyPipeline(); render(); };
+  });
+  /* the map follows lat/lng, so ⌖ looks the address up and fills them in */
+  document.querySelectorAll("#tbPipeline .loc").forEach(b => b.onclick = async () => {
+    const i = Number(b.dataset.l), p = PIPE[i];
+    if (!p.address){ b.title = "Add an address first"; return; }
+    b.textContent = "…";
+    try {
+      const r = await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(p.address));
+      const j = await r.json();
+      if (j && j[0]){ p.lat = Number(Number(j[0].lat).toFixed(4)); p.lng = Number(Number(j[0].lon).toFixed(4));
+        savePipe(); applyPipeline(); render(); return; }
+      b.textContent = "⌖"; b.title = "Address not found — type coordinates instead";
+    } catch (e){ b.textContent = "⌖"; b.title = "Lookup unavailable — type coordinates instead"; }
+  });
+  document.querySelectorAll("#tbPipeline .del button[data-d]").forEach(b =>
+    b.onclick = () => { PIPE.splice(Number(b.dataset.d), 1); savePipe(); render(); });
+
+  document.getElementById("pipeLegend").innerHTML =
+    PIPE_STATUS.map(s => `<span><span class="sdot" style="background:${PIPE_COLORS[s]}"></span>${s} · ${PIPE.filter(p => p.status === s).length}</span>`).join("") +
+    `<span>The map plots <b>Lat / Lng</b>, not the address — hit <b>⌖</b> on a row to look the address up and fill them in. Blank coordinates still track, just off-map.</span>`;
+  const onMap = PIPE.filter(p => Number(p.lat) && Number(p.lng)).length;
+  document.getElementById("legendPipe").innerHTML = PIPE.length
+    ? PIPE_STATUS.filter(s => PIPE.some(p => p.status === s))
+        .map(s => `<span><span class="sdot" style="background:${PIPE_COLORS[s]}"></span>${s}</span>`).join("") +
+      `<span>Pipeline buildings from <b>Scenario planner</b> — ${onMap} of ${PIPE.length} placed on the map.</span>`
+    : "";
+}
+document.getElementById("pipeAdd").onclick = () => {
+  PIPE.push({ name: "", address: "", units: "", tag: "Multifamily", mgmt: "", cluster: "", status: "Contacted", lat: "", lng: "" });
+  savePipe(); renderPipeline();
+  const rows = document.querySelectorAll("#tbPipeline tr");
+  const last = rows[rows.length - 1]; if (last) last.querySelector("input").focus();
+};
+
+/* ---------- forecasting ----------
+   A second workbook holds the orders posted for a coming week (one tab per posting, one row
+   per order: Date, Building, Amount, Tip, Status, Type). Booked orders give a floor; the
+   late-booking uplift turns that floor into an expected week, and recalibrates itself once a
+   booked week's real revenue lands in the weekly sheet. */
+const ORDERS_SHEET = "https://docs.google.com/spreadsheets/d/1x0qjQdmdO3pTNVC3QtH1tL4p_InBV7H5U1Lgg6wAu0s/edit";
+let ORD = [], FC_WEEK = null, FC_FILL = null;
+const mondayOf = t => { const d = new Date(t);
+  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - ((d.getUTCDay() + 6) % 7)); };
+const wkLabel = t => { const d = new Date(t); return MON[d.getUTCMonth()] + " " + d.getUTCDate(); };
+function orderDate(v){
+  if (v === "" || v == null) return null;
+  const n = Number(v);
+  if (!isNaN(n) && n > 20000 && n < 80000) return (n - 25569) * 86400000;   // Excel serial
+  return weekTime(String(v));
+}
+function parseOrders(wb){
+  const out = [];
+  wb.SheetNames.forEach(tab => {
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[tab], { header: 1, raw: false, defval: "" });
+    const hi = rows.findIndex(r => { const h = r.map(normh); return h.includes("building") && h.includes("date"); });
+    if (hi < 0) return;
+    const h = rows[hi].map(normh), ix = k => h.indexOf(k);
+    const c = { date: ix("date"), b: ix("building"), amt: ix("amount"), tip: ix("tip"), st: ix("status"), ty: ix("type"),
+      res: h.findIndex(x => /resident|username|customer/.test(x)) };
+    rows.slice(hi + 1).forEach(r => {
+      const t = orderDate(r[c.date]), name = String(r[c.b] || "").trim();
+      if (t == null || !name) return;
+      const status = String(r[c.st] || "").trim();
+      const cancelled = /cancel|refund|void/i.test(status);
+      const reg = lookup(name) || {};
+      out.push({ snapshot: tab, date: t, week: mondayOf(t),
+        building: reg.name || name, cluster: reg.cluster || "",
+        amount: numOf(r[c.amt]) || 0, tip: c.tip < 0 ? 0 : (numOf(r[c.tip]) || 0),
+        status: status, type: String(r[c.ty] || "").trim(), cancelled: cancelled,
+        resident: c.res < 0 ? "" : String(r[c.res] || "").trim() });
+    });
+  });
+  return out;
+}
+async function loadOrders(url, quiet){
+  const dot = document.getElementById("fcDot"), msg = document.getElementById("fcMsg");
+  const id = sheetId(url);
+  if (!id){ if (!quiet) msg.textContent = "That does not look like a Google Sheet link"; return; }
+  try {
+    if (!window.XLSX) await loadScript(SHEETJS);
+    const res = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`, { redirect: "follow" });
+    if (!res.ok) throw new Error(res.status === 401 || res.status === 403 ? "the sheet is private" : "HTTP " + res.status);
+    const rows = parseOrders(XLSX.read(await res.arrayBuffer(), { type: "array" })).filter(o => !o.cancelled);
+    if (!rows.length) throw new Error("no orders found — needs Date, Building and Amount columns");
+    ORD = rows;
+    localStorage.setItem("zingKpiOrdersUrl", url);
+    apiPost("OrdersSource", "upsert", { key: "key", values: { key: "ordersUrl", value: url } });
+    dot.className = "dot live";
+    msg.textContent = "Orders · " + rows.length + " · " + new Set(rows.map(r => r.week)).size + " week(s)";
+    FC_WEEK = null; renderForecast();
+  } catch (err){
+    dot.className = "dot"; msg.textContent = "Could not read the orders sheet — " + err.message;
+  }
+}
+const actualFor = (b, wkTime) => { const r = ROWS.find(x => x.building === b && x.weekTime === wkTime);
+  return r ? r.revenue : null; };
+/* Uplift is learned from the calibration table below: for each week we hold the Wednesday
+   list and the same week as it closed, and the ratio between the two is that week's uplift. */
+function fillFactor(){
+  const rs = CAL.filter(c => c.pre > 0 && c.post > 0).map(c => c.post / c.pre);
+  if (!rs.length) return { f: 1.15, n: 0, spread: null };
+  const mean = rs.reduce((a, b) => a + b, 0) / rs.length;
+  return { f: mean, n: rs.length, spread: [Math.min(...rs), Math.max(...rs)] };
+}
+const last4avg = b => { const rs = ROWS.filter(r => r.building === b && r.revenue > 0)
+    .sort((a, c) => (a.weekOrder ?? 0) - (c.weekOrder ?? 0)).slice(-4);
+  return rs.length ? rs.reduce((a, r) => a + r.revenue, 0) / rs.length : null; };
+
+function renderForecast(){
+  const g = id => document.getElementById(id);
+  const wks = [...new Set(ORD.map(o => o.week))].sort();
+  if (!wks.includes(FC_WEEK)) FC_WEEK = wks.length ? wks[wks.length - 1] : null;
+  g("fcWeek").innerHTML = wks.map(w => `<option value="${w}"${w === FC_WEEK ? " selected" : ""}>${wkLabel(w)}</option>`).join("");
+  const cal = fillFactor(), fill = FC_FILL ?? cal.f;
+  if (document.activeElement !== g("fcFill")) g("fcFill").value = fill.toFixed(2);
+  g("fcNote").innerHTML = fcNote(fill, cal);
+  renderCal();
+
+  if (!ORD.length){
+    g("fcStats").innerHTML = `<div class="stat"><div class="eyebrow">No orders loaded</div><div class="v num">&mdash;</div><div class="s">Paste the orders sheet link above and hit Load. One tab per Wednesday posting, columns Date, Building, Amount, Tip, Status, Type.</div></div>`;
+    g("tbFcBuildings").innerHTML = ""; g("tbFcClusters").innerHTML = "";
+    g("fcOpps").innerHTML = ""; g("fcLegend").innerHTML = "";
+    return;
+  }
+
+  const wkOrders = ORD.filter(o => o.week === FC_WEEK);
+  const names = [...new Set(ROWS.map(r => r.building).concat(wkOrders.map(o => o.building)))];
+  const per = names.map(b => {
+    const os = wkOrders.filter(o => o.building === b);
+    const booked = os.reduce((a, o) => a + o.amount, 0);
+    const fc = booked * fill, base = last4avg(b);
+    return { b, cluster: (ROWS.find(r => r.building === b) || {}).cluster || (lookup(b) || {}).cluster || "",
+      n: os.length, tips: os.reduce((a, o) => a + o.tip, 0), booked,
+      aov: os.length ? booked / os.length : null, fc, base,
+      d: base != null && base > 0 ? (fc - base) / base : null, units: unitsOf(b) };
+  }).sort((a, b) => b.fc - a.fc);
+
+  const totalFc = per.reduce((a, o) => a + o.fc, 0), totalBase = per.reduce((a, o) => a + (o.base || 0), 0);
+  const heads = allClusters().reduce((a, c) => a + (cleanersIn(c) || 0), 0), sal = heads * SALARY;
+  const mFc = sal > 0 ? (totalFc - sal) / sal : null, mBase = sal > 0 ? (totalBase - sal) / sal : null;
+
+  g("fcStats").innerHTML = [
+    ["Forecast revenue", money(totalFc), `${wkOrders.length} orders booked · ${money(wkOrders.reduce((a, o) => a + o.amount, 0))} × ${fill.toFixed(2)}`],
+    ["Portfolio margin", pct(mFc), (mBase == null ? "" : pct(mBase) + " on the last 4 weeks · ") + heads + " cleaners"],
+    ["Buildings ordering", per.filter(o => o.n).length + " / " + per.length,
+      per.filter(o => !o.n).length ? "nothing booked: " + per.filter(o => !o.n).map(o => o.b).join(", ") : "every building has orders"],
+    ["Week of", wkLabel(FC_WEEK), cal.n ? `uplift averaged over ${cal.n} calibrated week${cal.n === 1 ? "" : "s"}` : "uplift is a placeholder — calibrate a week below"]
+  ].map(s => `<div class="stat"><div class="eyebrow">${s[0]}</div><div class="v num">${s[1]}</div><div class="s">${s[2]}</div></div>`).join("");
+
+  const dcell = d => `<td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + "%"}</td>`;
+  g("tbFcBuildings").innerHTML = per.map(o => {
+    const m = SALARY > 0 ? (o.fc - SALARY) / SALARY : null;
+    return `<tr data-b="${o.b}"><td class="name"><span class="cdot" style="background:${clusterColors[o.cluster] || "#C9C2B4"}"></span>${o.b}</td>
+      <td style="color:var(--ink-3)">${o.cluster || "—"}</td>
+      <td class="num">${o.n || "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.booked ? money(o.booked) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.aov == null ? "—" : money(o.aov)}</td>
+      <td class="num" style="font-weight:700">${o.fc ? money(o.fc) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.base == null ? "—" : money(o.base)}</td>
+      ${dcell(o.d)}
+      <td><span class="pill ${cls(m)}">${pct(m)}</span></td></tr>`;
+  }).join("");
+
+  const cl = allClusters().map(c => {
+    const bs = per.filter(o => o.cluster === c);
+    const fc = bs.reduce((a, o) => a + o.fc, 0), base = bs.reduce((a, o) => a + (o.base || 0), 0);
+    const cleaners = cleanersIn(c) || 0, s = cleaners * SALARY, ops = clusterOps(c);
+    return { c, bs, fc, base, n: bs.reduce((a, o) => a + o.n, 0), cleaners,
+      m: s > 0 ? (fc - s) / s : null, mb: s > 0 && base ? (base - s) / s : null,
+      hours: ops.aov > 0 ? (fc / ops.aov) * ops.dur / 60 : null };
+  }).filter(o => o.bs.length).sort((a, b) => (a.m ?? -9) - (b.m ?? -9));
+
+  g("tbFcClusters").innerHTML = cl.map(o => {
+    const d = o.m != null && o.mb != null ? o.m - o.mb : null;
+    return `<tr data-c="${o.c}"><td class="name"><span class="cdot" style="background:${clusterColors[o.c] || "#C9C2B4"}"></span>${o.c}</td>
+      <td style="color:var(--ink-3)">${o.bs.filter(b => b.n).length} of ${o.bs.length}</td>
+      <td class="num">${o.n || "—"}</td>
+      <td class="num" style="font-weight:700">${o.fc ? money(o.fc) : "—"}</td>
+      <td class="num">${o.cleaners || "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.hours == null ? "—" : o.hours.toFixed(1)}</td>
+      <td>${utilBar(o.hours || 0, capacityFor(o.cleaners))}</td>
+      <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
+      <td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td></tr>`;
+  }).join("");
+
+  /* opportunities, ranked by dollars a week available. The benchmark is the best rate among
+     buildings with enough orders to be a fair comparison, so one small strong week can't set it. */
+  const withRpu = per.filter(o => o.units && o.fc > 0).map(o => Object.assign({ rpu: o.fc / o.units }, o));
+  const eligible = withRpu.filter(o => o.n >= 3);
+  const pool = eligible.length ? eligible : withRpu;
+  const bench = pool.length ? Math.max(...pool.map(o => o.rpu)) : 0;
+  const leader = pool.find(o => o.rpu === bench);
+  const opps = [];
+  withRpu.filter(o => o !== leader && o.rpu < bench).forEach(o => {
+    const gap = (bench - o.rpu) * o.units;
+    if (gap > 40) opps.push({ s: gap, v: money(gap),
+      t: `<b>${o.b}</b> is booked at $${o.rpu.toFixed(2)} per unit against ${leader.b}'s $${bench.toFixed(2)}. Closing half that gap is ${money(gap / 2)} a week; matching it outright is ${money(gap)}.` });
+  });
+  per.filter(o => !o.n).forEach(o => opps.push({ s: (o.base || 0) + 1e6, v: "0 orders",
+    t: `<b>${o.b}</b> has nothing booked for this week. ${o.base ? "It has been averaging " + money(o.base) + " a week, so this is a booking gap rather than a demand gap." : "It has no revenue history either — worth checking access and launch."}` }));
+  cl.filter(o => o.m != null && o.m <= 0).forEach(o => {
+    const need = Math.max(0, o.cleaners * SALARY - o.fc);
+    opps.push({ s: need + 5e5, v: money(need),
+      t: `<b>${o.c}</b> is forecast at ${pct(o.m)}. It needs ${money(need)} more in the week to clear 0% at ${o.cleaners} cleaner${o.cleaners === 1 ? "" : "s"}.` });
+  });
+  per.filter(o => o.n >= 3).forEach(o => {
+    const days = new Set(wkOrders.filter(x => x.building === o.b).map(x => x.date)).size;
+    if (days <= 2) opps.push({ s: o.fc / 2, v: days + " day" + (days === 1 ? "" : "s"),
+      t: `<b>${o.b}</b>'s ${o.n} orders sit on ${days} day${days === 1 ? "" : "s"}. Spreading them frees the cleaner's other days for the rest of the cluster.` });
+  });
+  g("fcOpps").innerHTML = opps.length
+    ? opps.sort((a, b) => b.s - a.s).slice(0, 7).map(o => `<div class="row"><span>${o.t}</span><b>${o.v}</b></div>`).join("")
+    : `<div class="row"><span>Nothing stands out this week — every building with units is close to the best booked rate in the portfolio.</span><b>—</b></div>`;
+
+  const oneOff = wkOrders.filter(o => /one/i.test(o.type)).length;
+  g("fcLegend").innerHTML =
+    `<span><b>Booked</b> = orders already in for the week · <b>Forecast</b> = booked × ${fill.toFixed(2)}</span>
+     <span>${wkOrders.filter(o => /submit/i.test(o.status)).length} submitted, ${wkOrders.filter(o => /sched/i.test(o.status)).length} scheduled · ${oneOff} one-off, ${wkOrders.length - oneOff} recurring</span>
+     <span>Tips of ${money(wkOrders.reduce((a, o) => a + o.tip, 0))} excluded — revenue only. Cancelled orders are dropped from this table (see the reconciliation under each row in the New bookings uplift table below).</span>`;
+}
+function fcNote(fill, cal){
+  return `<b>How the forecast works.</b>
+   <b>Booked:</b> every order in the orders sheet dated inside the week, summed by building. Amounts only — tips are excluded so the numbers line up with the weekly revenue sheet. Cancelled orders are dropped.
+   <b>New bookings uplift:</b> a Wednesday list is a floor, because bookings keep arriving through the week. ${cal.n ? `Measured at ${fill.toFixed(2)}× — the average of ${cal.n} calibrated week${cal.n === 1 ? "" : "s"}${cal.spread ? `, which ranged ${cal.spread[0].toFixed(2)}× to ${cal.spread[1].toFixed(2)}×` : ""}.` : `No week is calibrated yet, so ${fill.toFixed(2)}× is a placeholder. Add a week below — the Wednesday list and the same week as it closed — and the forecast starts using your own measured average.`} Type over it to test another fill.
+   <b>Horizon:</b> one to two weeks. It reads what has actually been ordered, so it says nothing about weeks with no bookings yet.
+   <b>Opportunities</b> compare revenue per unit against the best booked rate among buildings with at least three orders that week, and flag clusters whose forecast does not cover payroll. A gap is an upper bound, not a promise — building mix, price point and access all differ.`;
+}
+
+/* ---------- uplift calibration ----------
+   Two sources per week: the list posted the Wednesday before, and the same week once it
+   closed. Their ratio is that week's uplift; the running average feeds the forecast. */
+let CAL = [];
+try { const s = JSON.parse(localStorage.getItem("zingKpiCal")); if (Array.isArray(s)) CAL = s; } catch (e) {}
+const saveCal = () => {
+  localStorage.setItem("zingKpiCal", JSON.stringify(CAL));
+  apiPost("PromoCalendar", "replaceAll", { rows: CAL.map(c => ({ week: c.week, preUrl: c.preUrl, postUrl: c.postUrl, preTotal: c.pre ?? "", postTotal: c.post ?? "" })) });
+};
+const nextMondays = n => { const t = mondayOf(Date.now()), out = [];
+  for (let i = -8; i < n; i++) out.push(t + i * 604800000); return out; };
+async function pullOrders(url, weekTimeMs){
+  const id = sheetId(url);
+  if (!id) throw new Error("not a Google Sheet link");
+  if (!window.XLSX) await loadScript(SHEETJS);
+  const res = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`, { redirect: "follow" });
+  if (!res.ok) throw new Error(res.status === 403 ? "sheet is private" : "HTTP " + res.status);
+  const rows = parseOrders(XLSX.read(await res.arrayBuffer(), { type: "array" }));
+  const inWeek = rows.filter(o => o.week === weekTimeMs);
+  if (!rows.length) throw new Error("no orders in that sheet");
+  const active = inWeek.filter(o => !o.cancelled);
+  return { total: active.reduce((a, o) => a + o.amount, 0), orders: active.length,
+    byBuilding: active.reduce((m, o) => (m[o.building] = (m[o.building] || 0) + o.amount, m), {}), rows: inWeek };
+}
+/* Matches orders between the Wednesday snapshot and the closed-week snapshot by
+   building + resident (there is no order id in the sheet, and residents rarely
+   place two orders in the same week), falling back to date + amount + type if a
+   sheet has no resident/username column. Anything booked in the closed snapshot
+   that wasn't in the Wednesday one is a new order placed during the week; anything
+   from the Wednesday snapshot that shows up cancelled/refunded/void in the closed
+   one is a cancellation. */
+function diffOrderWeek(preRows, postRows){
+  // resident/username is a far more reliable key than amount+type (survives price
+  // or service changes to the same booking); falls back to amount+type if a sheet has no such column
+  const okey = o => o.resident ? ("res|" + o.building + "|" + o.resident) : (o.date + "|" + o.building + "|" + o.amount.toFixed(2) + "|" + o.type);
+  const bump = (m, k, n) => m.set(k, (m.get(k) || 0) + n);
+  const preAll = new Map(); (preRows || []).forEach(o => bump(preAll, okey(o), 1));
+  const preActive = new Map(); (preRows || []).filter(o => !o.cancelled).forEach(o => bump(preActive, okey(o), 1));
+  const postActive = (postRows || []).filter(o => !o.cancelled);
+  const postCancelled = (postRows || []).filter(o => o.cancelled);
+  const newOrders = [];
+  postActive.forEach(o => { const k = okey(o), n = preAll.get(k) || 0;
+    if (n > 0) preAll.set(k, n - 1); else newOrders.push(o); });
+  const cancelledOrders = [];
+  postCancelled.forEach(o => { const k = okey(o), n = preActive.get(k) || 0;
+    if (n > 0){ preActive.set(k, n - 1); cancelledOrders.push(o); } });
+  return { newOrders, newValue: newOrders.reduce((a, o) => a + o.amount, 0),
+    cancelledOrders, cancelledValue: cancelledOrders.reduce((a, o) => a + o.amount, 0) };
+}
+function renderCal(){
+  const wkOpts = [...new Set(nextMondays(4).concat(CAL.map(c => c.week)))].sort((a, b) => b - a);
+  document.getElementById("tbCal").innerHTML = CAL.length ? CAL.slice()
+    .sort((a, b) => b.week - a.week).map(c => {
+      const i = CAL.indexOf(c), up = c.pre > 0 && c.post > 0 ? c.post / c.pre : null;
+      const row = `<tr><td><select data-i="${i}" data-f="week">${wkOpts.map(w => `<option value="${w}"${w === c.week ? " selected" : ""}>${wkLabel(w)}</option>`).join("")}</select></td>
+        <td class="urlcell"><div><input type="text" data-i="${i}" data-f="preUrl" value="${c.preUrl || ""}" placeholder="Wednesday list link"><button class="pull" data-p="pre" data-i="${i}">Read</button></div></td>
+        <td class="n" style="color:var(--ink-3)">${c.pre ? money(c.pre) + (c.preN ? ` <span class="addr">${c.preN} orders</span>` : "") : "—"}</td>
+        <td class="urlcell"><div><input type="text" data-i="${i}" data-f="postUrl" value="${c.postUrl || ""}" placeholder="Closed-week link"><button class="pull" data-p="post" data-i="${i}">Read</button></div></td>
+        <td class="n" style="color:var(--ink-3)">${c.post ? money(c.post) + (c.postN ? ` <span class="addr">${c.postN} orders</span>` : "") : "—"}</td>
+        <td class="n"><span class="u" style="color:${up == null ? "var(--ink-4)" : up >= 1 ? "var(--forest)" : "var(--danger,#A85149)"}">${up == null ? "—" : up.toFixed(2) + "×"}</span>${up == null ? "" : `<span class="addr">${up >= 1 ? "+" : ""}${money(c.post - c.pre)}</span>`}</td>
+        <td class="del"><button data-d="${i}" title="Remove week" aria-label="Remove week">×</button></td></tr>`;
+      if (!c.preRows || !c.postRows) return row;
+      const d = diffOrderWeek(c.preRows, c.postRows);
+      return row + `<tr class="reconrow"><td></td><td colspan="6" style="padding:2px 0 12px;font-size:12px;color:var(--ink-3)">
+        <b style="color:var(--forest)">+${d.newOrders.length} new order${d.newOrders.length === 1 ? "" : "s"}</b> placed after the Wednesday list · ${money(d.newValue)}
+        &nbsp;·&nbsp; <b style="color:var(--danger,#A85149)">−${d.cancelledOrders.length} cancelled</b> · ${money(d.cancelledValue)} lost
+        &nbsp;·&nbsp; net ${money(d.newValue - d.cancelledValue)}</td></tr>`;
+    }).join("")
+    : `<tr><td colspan="7" style="color:var(--ink-4);padding:18px 0">No weeks calibrated yet — hit <b>Add week</b>, paste the Wednesday list, then paste the same week again once it has closed.</td></tr>`;
+
+  document.querySelectorAll("#tbCal [data-f]").forEach(el => el.onchange = () => {
+    const i = Number(el.dataset.i), f = el.dataset.f;
+    CAL[i][f] = f === "week" ? Number(el.value) : el.value;
+    if (f === "week"){ CAL[i].pre = CAL[i].post = null; CAL[i].preN = CAL[i].postN = null; }
+    saveCal(); renderForecast();
+  });
+  document.querySelectorAll("#tbCal .pull").forEach(b => b.onclick = async () => {
+    const i = Number(b.dataset.i), side = b.dataset.p, c = CAL[i];
+    const url = side === "pre" ? c.preUrl : c.postUrl;
+    if (!url){ b.textContent = "link?"; setTimeout(() => b.textContent = "Read", 1400); return; }
+    b.textContent = "…";
+    try {
+      const r = await pullOrders(url, c.week);
+      if (side === "pre"){ c.pre = r.total; c.preN = r.orders; c.preBy = r.byBuilding; c.preRows = r.rows; }
+      else { c.post = r.total; c.postN = r.orders; c.postBy = r.byBuilding; c.postRows = r.rows; }
+      saveCal(); renderForecast();
+    } catch (err){ b.textContent = err.message.slice(0, 18); setTimeout(() => b.textContent = "Read", 2200); }
+  });
+  document.querySelectorAll("#tbCal .del button[data-d]").forEach(b => b.onclick = () => {
+    CAL.splice(Number(b.dataset.d), 1); saveCal(); renderForecast(); });
+
+  const f = fillFactor();
+  const done = CAL.filter(c => c.pre > 0 && c.post > 0).length;
+  document.getElementById("calLegend").innerHTML = f.n
+    ? `<span><b>${f.f.toFixed(2)}×</b> average across ${f.n} calibrated week${f.n === 1 ? "" : "s"}${f.spread ? ` · range ${f.spread[0].toFixed(2)}–${f.spread[1].toFixed(2)}×` : ""}</span>
+       <span>That average is what the forecast above uses, unless you type over it.</span>`
+    : `<span>${CAL.length ? "Waiting on both halves of a week — " + done + " complete so far." : "Nothing calibrated yet."} Until one week has both, the forecast runs on a 1.15× placeholder.</span>`;
+}
+document.getElementById("calAdd").onclick = () => {
+  const used = new Set(CAL.map(c => c.week));
+  const w = nextMondays(1).reverse().find(t => !used.has(t)) ?? mondayOf(Date.now());
+  CAL.push({ week: w, preUrl: localStorage.getItem("zingKpiOrdersUrl") || ORDERS_SHEET, postUrl: "", pre: null, post: null });
+  saveCal(); renderCal();
+};
+document.getElementById("fcLoad").onclick = () => loadOrders(document.getElementById("fcUrl").value.trim());
+document.getElementById("fcWeek").onchange = e => { FC_WEEK = Number(e.target.value); renderForecast(); };
+document.getElementById("fcFill").oninput = e => { const v = Number(e.target.value); FC_FILL = v > 0 ? v : null; renderForecast(); };
+const savedOrders = localStorage.getItem("zingKpiOrdersUrl") || ORDERS_SHEET;
+document.getElementById("fcUrl").value = savedOrders;
+
+applyPipeline();
 document.getElementById("note").innerHTML = noteHTML();
 setWeeks(); render();
+setTimeout(() => loadOrders(savedOrders, true), 1200);
 loadCSV(saved, true);
+
+/* pull the shared backend last so it overrides the local/device cache above with
+   whatever everyone else has saved, then re-render everything that reads it */
+(async function fetchBackend(){
+  try{
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    const kv = rows => Object.fromEntries((rows || []).slice(1).filter(r => r[0] !== "").map(r => [r[0], r[1]]));
+    const settings = kv(data.Settings), orders = kv(data.OrdersSource);
+    if (settings.salary) { SALARY = Number(settings.salary) || SALARY; document.getElementById("salary").value = SALARY; }
+    if (settings.hoursPerCleanerDay) HPD = Number(settings.hoursPerCleanerDay) || HPD;
+    if (settings.daysPerWeek) DPW = Number(settings.daysPerWeek) || DPW;
+    if (settings.extraClusters) try{ const a = JSON.parse(settings.extraClusters); if (Array.isArray(a)) XCLUSTERS = a; }catch(e){}
+    (data.Clusters || []).slice(1).forEach(r => { if (r[0]) CLEANERS[r[0]] = Number(r[1]) || 0; });
+    (data.Buildings || []).slice(1).forEach(r => { if (!r[0]) return;
+      BSET[key(r[0])] = Object.assign({}, BSET[key(r[0])], { units: Number(r[1]) || 0, cleaners: Number(r[2]) || 0, access: r[3] || "none", live: r[4] || "" }); });
+    EVENTS = (data.Events || []).slice(1).filter(r => r[0]).map(r => ({ building: r[0], week: r[1], name: r[2], description: r[3], impact: Number(r[4]) || 0 }));
+    PIPE = (data.Pipeline || []).slice(1).filter(r => r[0]).map(r => ({ name: r[0], address: r[1], units: r[2], tag: r[3], mgmt: r[4], cluster: r[5], status: r[6], lat: r[7], lng: r[8] }));
+    CAL = (data.PromoCalendar || []).slice(1).filter(r => r[0] !== "").map(r => ({ week: Number(r[0]), preUrl: r[1], postUrl: r[2], pre: r[3] === "" ? null : Number(r[3]), post: r[4] === "" ? null : Number(r[4]) }));
+    applyPipeline(); render(); renderEvents(); renderPipeline(); renderCal();
+    if (orders.ordersUrl && orders.ordersUrl !== savedOrders) loadOrders(orders.ordersUrl, true);
+  }catch(err){ console.warn("KPI backend load failed, staying on local cache", err); }
+})();
 </script>
 </body>
 </html>
