@@ -308,14 +308,15 @@ const bookingSlots = [
 ];
 
 // ── SLOT DATA (update via prompt) ──────────────────────────────────
-// Icon is auto-derived: spots >= 3 → 'check', spots === 2 → 'half', spots <= 1 → 'empty'
-const SLOT_COUNTS = [0, 1, 1, 3, 3]; // [Mon, Tue, Wed, Thu, Fri] — later-week always shows availability
-const RESIDENTS_BOOKED = 25;
+// Icon is auto-derived: spots >= 3 → 'check', spots 1-2 → 'half', spots === 0 → 'empty'
+// Only a fully-booked day (0) gets the hollow 'empty' circle.
+const SLOT_COUNTS = [1, 0, 3, 3, 3]; // [Mon, Tue, Wed, Thu, Fri] — later-week always shows availability
+const RESIDENTS_BOOKED = 18;
 // ── END SLOT DATA ──────────────────────────────────────────────────
 
 const weeklySchedule = SLOT_COUNTS.map(spots => ({
   spots,
-  icon: spots >= 3 ? 'check' : spots === 2 ? 'half' : 'empty',
+  icon: spots >= 3 ? 'check' : spots >= 1 ? 'half' : 'empty',
 }));
 
 const weeklyStats = [
@@ -661,7 +662,9 @@ const WeeklyCalendarCard = () => (
       {getWeekDays().map((day, i) => {
         const sched = weeklySchedule[i];
         const isHigh = sched.spots >= 5;
-        const isLow = sched.spots <= 2;
+        // Grayed-out treatment applies ONLY to fully-booked days (0 spots).
+        // Any day with availability renders in Zing dark green so it reads as bookable.
+        const isLow = sched.spots === 0;
         const isLast = i === 4;
         return (
           <React.Fragment key={i}>
