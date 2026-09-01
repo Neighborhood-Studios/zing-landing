@@ -235,6 +235,20 @@
     transition: transform 0.2s;
   }
 
+  /* ── Store CTA variants (device-aware) ── */
+  .cta-btn[data-cta="ios"], .cta-btn[data-cta="android"] { display: none; }
+  body.is-ios .cta-btn[data-cta="ios"],
+  body.is-android .cta-btn[data-cta="android"] { display: inline-flex; }
+  body.is-ios .cta-btn[data-cta="desktop"],
+  body.is-android .cta-btn[data-cta="desktop"] { display: none; }
+
+  .cta-btn.store { gap: 11px; padding: 13px 34px; }
+  .cta-btn.store .glyph { width: 22px; height: 22px; flex-shrink: 0; }
+  .cta-btn.store:hover .glyph { transform: none; }
+  .cta-btn.store .store-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+  .cta-btn.store .store-label small { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.62; }
+  .cta-btn.store .store-label span { font-size: 16px; font-weight: 600; }
+
   .cta-btn:hover svg {
     transform: translateX(3px);
   }
@@ -410,12 +424,29 @@
 
 <!-- Sticky CTA with powered-by -->
 <div class="cta-bar">
-  <a href="https://app.justzingit.com/signup" class="cta-btn">
+  <a href="https://app.justzingit.com/signup" class="cta-btn" data-cta="desktop">
     Get Started
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
+  <a href="https://apps.apple.com/us/app/zing-cleaning/id6755075803" class="cta-btn store" data-cta="ios">
+    <svg class="glyph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.42 2.2-1.12 3-.79.9-2.08 1.6-3.13 1.52a3.2 3.2 0 0 1-.03-.4c0-1.1.5-2.24 1.19-2.98.78-.86 2.1-1.5 3.06-1.54.02.14.03.27.03.4zM20.9 17.13c-.5 1.15-.74 1.66-1.38 2.68-.9 1.42-2.16 3.18-3.72 3.2-1.39.01-1.75-.9-3.63-.89-1.88.01-2.27.91-3.66.9-1.56-.02-2.76-1.61-3.66-3.02C2.34 16.05 2.07 11.4 3.62 8.93c1.1-1.76 2.83-2.79 4.46-2.79 1.66 0 2.7.92 4.08.92 1.33 0 2.14-.92 4.06-.92 1.45 0 2.99.79 4.09 2.16-3.6 1.97-3.01 7.1.59 8.83z"/></svg>
+    <span class="store-label"><small>Download on the</small><span>App Store</span></span>
+  </a>
+  <a href="https://play.google.com/store/apps/details?id=com.justzingit.android" class="cta-btn store" data-cta="android">
+    <svg class="glyph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.27 1.9A1.5 1.5 0 0 0 3 2.75v18.5c0 .33.1.62.28.85l10.1-10.1L3.27 1.9zM17.4 8.32 5.13 1.39l-.2-.11c-.4-.22-.79-.28-1.11-.2l9.98 9.98 3.6-2.74zM20.6 10.53l-2.36-1.34-3.86 2.94 3.86 2.94 2.36-1.34c.9-.51.9-1.7 0-2.2zM3.82 22.92c.32.08.71.02 1.11-.2l.2-.11 12.27-6.93-3.6-2.74-9.98 9.98z"/></svg>
+    <span class="store-label"><small>Get it on</small><span>Google Play</span></span>
+  </a>
   <div class="powered">Housekeeping by Zing</div>
 </div>
+
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  document.body.classList.add(isIOS ? 'is-ios' : isAndroid ? 'is-android' : 'is-desktop');
+})();
+</script>
 
 </body>
 </html>
