@@ -4,7 +4,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>Zing · KPI Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,300;0,400&display=swap" rel="stylesheet">
@@ -174,8 +173,8 @@ input.cin::placeholder{color:var(--ink-4)}
 .matrix tr.total td{border-top:1px solid var(--line-strong);font-weight:700}
 .matrix tr.total td:first-child{font-weight:700}
 .matrix + .scrollx,.scrollx + .scrollx{border-top:1px solid var(--line)}
-footer.note{font-size:11px;color:var(--ink-4);line-height:1.6}
-footer.note code{background:var(--paper-200);padding:1px 5px;border-radius:4px;font-size:10.5px}
+footer.note{font-size:13px;color:var(--ink-3);line-height:1.65}
+footer.note code{background:var(--paper-200);padding:1px 5px;border-radius:4px;font-size:12px}
 a{color:var(--forest-600)}a:hover{color:var(--forest)}
 .src{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-4);flex-wrap:nowrap}
 .src span:not(.dot){white-space:nowrap;flex:0 0 auto;max-width:340px;overflow:hidden;text-overflow:ellipsis}
@@ -189,6 +188,72 @@ label.fld .pre{margin-right:-4px}
 .dot{width:7px;height:7px;border-radius:99px;background:var(--honey);flex:0 0 auto}
 .dot.live{background:var(--pos)}.dot.err{background:var(--neg)}
 tspan.mlabel{font-weight:700}
+.elevwrap{display:grid;grid-template-columns:1fr 300px;gap:0;align-items:stretch}
+.elev{padding:14px;display:flex;flex-direction:column;gap:2px;max-height:660px;overflow-y:auto}
+.elevhd{position:sticky;top:-14px;z-index:2;background:#fff;padding:2px 4px 7px;margin-bottom:2px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:32px 1fr 52px 116px;align-items:end;gap:12px;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-4);font-weight:600}
+.elevhd span:first-child{text-align:right}
+.elevhd span:nth-child(3),.elevhd span:nth-child(4){text-align:left}
+.flr{display:grid;grid-template-columns:32px 1fr 52px 116px;align-items:center;gap:12px;height:17px;border-radius:4px;padding:0 4px}
+.flr:hover{background:var(--sage-100)}
+.flr>b{text-align:right;font-size:10px;font-weight:600;color:var(--ink-4);font-variant-numeric:tabular-nums}
+.flr.vis>b{color:var(--ink)}
+.flr.gap{opacity:.55}
+.flr>em{font-style:normal;font-size:10.5px;font-variant-numeric:tabular-nums;color:var(--ink-2);font-weight:600}
+.flr>em.z{color:var(--ink-4);opacity:.45;font-weight:400}
+.cells{display:flex;gap:2px}
+.cells i{width:13px;height:11px;border-radius:2px;background:var(--paper-200)}
+.cells i.c{background:var(--forest)}
+.cells i.s{background:var(--sage-500)}
+.cells i.x{background:var(--honey)}
+.vbar{display:flex;align-items:center;gap:7px}
+.vbar i{display:block;height:7px;border-radius:99px;background:var(--forest-600);min-width:0}
+.vbar span{font-size:10px;color:var(--ink-4);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cohort{border-left:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:14px}
+.cohort .ch{display:flex;flex-direction:column;gap:5px}
+.cohort .ch .lb{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);font-weight:600}
+.cohort .ch .bar{display:flex;align-items:center;gap:8px}
+.cohort .ch .bar i{display:block;height:14px;border-radius:3px}
+.cohort .ch .bar i.a{background:var(--forest)}
+.cohort .ch .bar i.b{background:var(--sage-300)}
+.cohort .ch .bar b{font-size:13px;font-variant-numeric:tabular-nums}
+.cohort .ch small{font-size:10.5px;color:var(--ink-4)}
+.cohort .verdict{margin-top:auto;font-size:12px;line-height:1.55;color:var(--ink-2);background:var(--sage-100);border-radius:10px;padding:11px 12px}
+.cohort .verdict b{font-weight:700}
+.mathgrid{display:grid;grid-template-columns:1fr 1fr}
+.mathcol{padding:14px 16px}
+.mathcol+.mathcol{border-left:1px solid var(--line)}
+.mathcol h4{margin:0;font-size:12px;font-weight:700}
+.mathcol h4 span{font-weight:400;color:var(--ink-4)}
+.fchips{display:flex;flex-wrap:wrap;gap:4px;margin:9px 0 12px}
+.fchip{font-size:10.5px;font-weight:600;padding:2px 6px;border-radius:5px;background:var(--paper-200);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.fchip.v{background:var(--forest);color:var(--paper-50)}
+.mathcol dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:0;font-size:12px}
+.mathcol dt{color:var(--ink-3)}
+.mathcol dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.mathsteps{border-top:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.mstep{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:12.5px}
+.mstep .k{font-weight:600;flex:0 0 230px}
+.mstep code{background:var(--paper-100);padding:2px 7px;border-radius:5px;font-size:12px;font-variant-numeric:tabular-nums}
+.mstep .out{font-weight:700;font-variant-numeric:tabular-nums}
+.mstep.big code{font-size:13px}
+.mnote{font-size:12.5px;line-height:1.6;color:var(--ink-2);background:var(--sage-100);border-radius:10px;padding:12px 13px;margin:0 16px 16px}
+.mnote+.mnote{margin-top:-6px}
+.bcol{display:none}
+body.ciall .bcol{display:table-cell}
+body.ciall .conly{display:none}
+.bonly{display:none}
+body.ciall .bonly{display:block}
+@media(max-width:1080px){.mathgrid{grid-template-columns:1fr}.mathcol+.mathcol{border-left:none;border-top:1px solid var(--line)}.mstep .k{flex:1 1 100%}}
+.ciform{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--paper-50)}
+.ciform textarea{font:inherit;font-size:11px;line-height:1.4;border:1px solid var(--line-strong);border-radius:8px;padding:7px 9px;background:#fff;min-height:70px;resize:vertical;width:100%;font-variant-numeric:tabular-nums}
+.cipaste{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 14px}
+.cipaste label{display:flex;flex-direction:column;gap:5px;font-size:11px;font-weight:600;color:var(--ink-3)}
+.cidrop{display:flex;align-items:center;gap:6px;font-weight:400;font-size:11.5px;color:var(--ink-4);border:1px dashed var(--line-strong);border-radius:8px;padding:8px 10px;background:#fff}
+.cidrop.over{border-color:var(--sage-500);background:var(--sage-100);color:var(--ink-2)}
+.cidrop button{border:none;background:none;padding:0;font-size:11.5px;font-weight:600;color:var(--forest-600);text-decoration:underline;text-underline-offset:2px}
+.cidrop.ok{border-style:solid;border-color:var(--sage-500);color:var(--ink-2)}
+.cidrop.bad{border-style:solid;border-color:var(--neg);background:var(--neg-bg);color:var(--neg)}
+@media(max-width:1080px){.elevwrap{grid-template-columns:1fr}.cohort{border-left:none;border-top:1px solid var(--line)}.cipaste{grid-template-columns:1fr}}
 @media(max-width:1080px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -207,6 +272,7 @@ tspan.mlabel{font-weight:700}
 <a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Density Dashboard</span></a>
 <a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
 <a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Sign-up growth</span></a>
+<a href="#cards" data-view="cards"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19"/><path d="M6 14h4"/></svg><span>Cart impact</span></a>
 <a href="#forecast" data-view="forecast"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 5-7"/><path d="M17 8h4v4"/><path d="M3 21h18"/></svg><span>Forecasting</span></a>
 <a href="#scenario" data-view="scenario"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 15c4 0 5-8 9-8 3 0 4 4 7 4"/><path d="M4 19h16"/></svg><span>Scenario planner</span></a>
 <a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
@@ -351,6 +417,95 @@ tspan.mlabel{font-weight:700}
 <div class="phead"><h2>Events</h2><p>What drove sign-ups, and how much each one added</p></div>
 <div class="pickers" id="evFilter" style="margin-bottom:16px"></div>
 <div class="scrollx"><table><thead><tr><th>Building</th><th>Week</th><th>Event</th><th>Description</th><th>Impact</th><th></th></tr></thead><tbody id="tbEvents"></tbody></table></div>
+</section>
+</section>
+<section class="view" id="viewCards">
+<section class="panel" style="padding:12px 14px">
+<div class="suctl" style="padding:0;margin:0;border:none">
+<label class="fld">Building<select id="ciSelBuilding"></select></label>
+<div class="surt"><span style="font-size:11px;color:var(--ink-4)" id="ciCfgNote"></span></div>
+</div>
+</section>
+<section class="stats" id="ciStats"></section>
+<section class="panel bonly">
+<div class="phead"><h2>By building</h2><p>The same cohort split run separately on every building, then pooled across all of them.</p></div>
+<div class="scrollx"><table><thead><tr><th>Building</th><th>Floors</th><th>Served</th><th>Cleans</th><th>Sign-ups</th><th>Units that ordered</th><th>Sign-ups / served floor</th><th>/ untouched floor</th><th>Ratio</th><th>Non-customer / served</th><th>/ untouched</th><th>Ratio</th><th>Followers</th><th>After a clean</th></tr></thead><tbody id="tbCiBy"></tbody><tfoot id="tbCiByFoot"></tfoot></table></div>
+<footer class="note" style="padding:12px 14px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:6px 24px">
+<div><b>Served</b> — floors with at least one clean run on them. A floor becomes served only because a unit on it booked, so the customers are inside this group by construction.</div>
+<div><b>Sign-ups / served floor</b> and <b>/ untouched floor</b> — every account on the floor, divided by the number of floors in that group.</div>
+<div><b>Ratio</b> (first one) — sign-ups per served floor divided by sign-ups per untouched floor. Above 1.00× means served floors hold more accounts. It cannot be evidence for the cart on its own, because the booking is what brought the cart to the floor.</div>
+<div><b>Non-customer / served</b> and <b>/ untouched</b> — the same two averages after removing every unit that has ever ordered. What is left is residents who signed up and never booked: the neighbours who only ever saw the cart in the hallway.</div>
+<div><b>Ratio</b> (second one) — non-customers per served floor divided by non-customers per untouched floor. This is the one that would point at the cart, and it saturates on fully converted floors, so read the Response window panel alongside it.</div>
+<div><b>Followers</b> — units that ordered but were not the first on their floor to do so. The first unit on a floor is never a follower, since its own booking is what brought the cart there.</div>
+<div><b>After a clean</b> — how many of those followers placed their first order once the cart had already worked their floor, out of all followers.</div>
+<div><b>Pooled row</b> — every building with at least one clean, added together. Buildings with none are pre-launch rather than untouched, so they are left out.</div>
+</div>
+</footer>
+</section>
+<section class="panel conly" id="ciElevPanel">
+<div class="phead"><h2>Where the cart has stood, floor by floor</h2><p>One square per unit on the floor. A dark square is a unit that has ordered, a green one a unit that signed up and never ordered. The bar is how many cleans the cart has run on that floor. Drag the slider to replay the building week by week.</p></div>
+<div class="suctl" id="ciWkWrap" style="padding:10px 14px;margin:0;gap:10px;align-items:center;border-top:1px solid var(--paper-200);border-bottom:1px solid var(--paper-200)">
+<button type="button" id="ciWkPlay">Play</button>
+<input type="range" id="ciWk" min="0" max="1" step="1" value="1" style="flex:1;min-width:160px">
+<button type="button" id="ciWkAll">Today</button>
+<span id="ciWkLbl" style="font-size:11px;color:var(--ink-4);white-space:nowrap"></span>
+</div>
+<div class="elevwrap">
+<div class="elev" id="ciElev"></div>
+<div class="cohort" id="ciCohort"></div>
+</div>
+<div class="legend" id="ciLegend"></div>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Floor ledger — what happened, in order</h2><p>One lane per floor, time left to right. Every cart visit, every sign-up and every order on that floor, in sequence, so a visit followed by a neighbour signing up is something you can see rather than infer.</p></div>
+<div style="padding:14px"><div id="ciLedger"></div></div>
+<div class="legend" id="ciLedgerLegend"></div>
+<footer class="note" id="ciLedgerNote" style="padding:0 14px 12px"></footer>
+</section>
+<section class="panel">
+<div class="phead"><h2>Response window</h2><p>The index that survives a full floor: the pool is only the units that could still sign up, day by day, and a day counts as exposed if the cart worked that floor within the last 7 days.</p></div>
+<div style="padding:14px 14px 0"><div class="stats" id="ciRiskStats"></div></div>
+<div class="scrollx" style="margin-top:14px"><table><thead><tr><th>When the sign-up landed</th><th>Sign-ups</th><th>Share</th><th>Units in the pool, unit-days</th><th>Per 100 unit-weeks</th><th>vs unexposed</th></tr></thead><tbody id="tbCiResp"></tbody></table></div>
+<footer class="note" id="ciRespNote" style="padding:12px 14px"></footer>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>The math, line by line</h2><p>Every floor in its cohort, then the arithmetic behind each headline number.</p></div>
+<div id="ciMath"></div>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Neighbour conversion</h2><p>Once the cart has worked a hallway, does the next unit on that floor start ordering? Uses order creation dates, so it needs nothing new.</p></div>
+<div style="padding:14px 14px 0"><div class="stats" id="ciSeqStats"></div></div>
+<div class="scrollx" style="margin-top:14px"><table><thead><tr><th class="bcol">Building</th><th>Floor</th><th>Units that ordered</th><th>First clean on the floor</th><th>Next unit's first order</th><th>Days after</th><th>Followers</th><th>Followers after the clean</th></tr></thead><tbody id="tbCiSeq"></tbody></table></div>
+<footer class="note" id="ciSeqNote" style="padding:12px 14px"></footer>
+</section>
+<section class="panel">
+<div class="phead"><h2>Dose response</h2><p>Floors grouped by how many times the cart has been parked there. Two indexes, both against the never-visited row: one on all sign-ups, one on neighbours only — residents who signed up and have never booked.</p></div>
+<div class="scrollx"><table><thead><tr><th>Visits to the floor</th><th>Floors</th><th>Sign-ups</th><th>Sign-ups / floor</th><th>Index, all sign-ups</th><th>Of those, neighbours</th><th>Neighbours / floor</th><th>Index, neighbours only</th><th>% of units signed up</th></tr></thead><tbody id="tbCiDose"></tbody></table></div>
+<footer class="note" id="ciDoseNote" style="padding:12px 14px"></footer>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Floor detail</h2><p>Top floor down to the first residential floor. Neighbour sign-ups are residents on the floor who have never ordered — the people who only ever saw the cart.</p></div>
+<div class="scrollx"><table><thead><tr><th class="bcol">Building</th><th>Floor</th><th>Visits</th><th>First visit</th><th>Last visit</th><th>Customers</th><th>Neighbour sign-ups</th><th>Total sign-ups</th><th>% of units</th></tr></thead><tbody id="tbCiFloors"></tbody></table></div>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Data</h2><p>Paste the two exports here — users and orders. They are joined on email. Everything above recalculates.</p></div>
+<div class="ciform">
+<label class="fld">First residential floor<input type="number" id="ciBot" min="1" max="120" step="1" value="9" style="width:70px"></label>
+<label class="fld">Top floor<input type="number" id="ciTop" min="1" max="120" step="1" value="43" style="width:70px"></label>
+<label class="fld">Floors that do not exist<input type="text" id="ciSkip" value="13" style="width:90px"></label>
+<label class="fld">Units per floor<input type="number" id="ciUpf" min="1" max="60" step="1" value="12" style="width:70px"></label>
+<label class="fld">A visit counts when<select id="ciStatus"><option value="done">Paid, completed, or incomplete payment</option></select></label>
+<div class="spacer"></div>
+<button class="primary" id="ciRun">Recalculate</button><button id="ciReset">Reset to snapshot</button>
+</div>
+<div class="cipaste">
+<label>Users CSV <span class="cidrop" id="ciUsersDrop">Drop a .csv here, paste a Google Sheet link below, or <button type="button" id="ciUsersPick">choose a file</button><input type="file" id="ciUsersFile" accept=".csv,text/csv" hidden></span><textarea id="ciUsersCsv" spellcheck="false" autocomplete="off" placeholder="Name,Email,Phone,Building,Apt,Orders,…"></textarea></label>
+<label>Orders CSV <span class="cidrop" id="ciOrdersDrop">Drop a .csv here, paste a Google Sheet link below, or <button type="button" id="ciOrdersPick">choose a file</button><input type="file" id="ciOrdersFile" accept=".csv,text/csv" hidden></span><textarea id="ciOrdersCsv" spellcheck="false" autocomplete="off" placeholder="Date,Date created,Building,Email,Status,…"></textarea></label>
+</div>
+<div id="ciApi" style="padding:10px 14px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink-3)">Checking the shared backend…</div>
+<div class="scrollx"><table><thead><tr><th class="bcol">Building</th><th>Excluded row</th><th>Apt as written</th><th>Why</th></tr></thead><tbody id="tbCiDropped"></tbody></table></div>
+<footer class="note" id="ciNote" style="padding:12px 14px"></footer>
 </section>
 </section>
 </main>
@@ -1327,6 +1482,7 @@ function showView(v){
   document.getElementById("viewScenario").classList.toggle("on", v === "scenario");
   document.getElementById("viewForecast").classList.toggle("on", v === "forecast");
   document.getElementById("viewSignups").classList.toggle("on", v === "signups");
+  document.getElementById("viewCards").classList.toggle("on", v === "cards");
   hideHover();
 }
 document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
@@ -2182,5 +2338,7 @@ loadCSV(saved, true);
   }catch(err){ console.warn("KPI backend load failed, staying on local cache", err); }
 })();
 </script>
+<script src="cart-data.js"></script>
+<script src="cart-impact.js"></script>
 </body>
 </html>
