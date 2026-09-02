@@ -102,8 +102,29 @@ function resolve(which, snap){
   return (got === "pending" || got === "ERR") ? snap : got;
 }
 
+/* Exports served next to the page (/kpi/data/users.csv, /kpi/data/orders.csv). Dropping a fresh
+   export over those two files is the whole refresh procedure \u2014 no code, no redeploy of the page.
+   If they are missing (or the page is opened from disk) it falls back to the baked-in cart-data.js. */
+const LOCAL = { users: null, orders: null };
+function pullLocalCsv(){
+  [["users", "Users"], ["orders", "Orders"]].forEach(([k, W]) => {
+    fetch("data/" + k + ".csv", { cache: "no-store" })
+      .then(r => r.ok ? r.text() : Promise.reject(new Error("HTTP " + r.status)))
+      .then(t => {
+        if (/^\s*</.test(t) || t.indexOf(",") < 0) throw new Error("not a csv");
+        LOCAL[k] = t;
+        zoneMsg(W, "Loaded data/" + k + ".csv from the server \u00b7 " + (t.trim().split("\n").length - 1) + " rows \u2014 ", "ok");
+        render();
+      })
+      .catch(() => {
+        if (PULLED) zoneMsg(W, "No data/" + k + ".csv on the server \u00b7 using the " + PULLED + " export built into the page \u2014 ");
+      });
+  });
+}
+
 function sources(){
-  return { users: objects(resolve("Users", SNAP_USERS)), orders: objects(resolve("Orders", SNAP_ORDERS)) };
+  return { users: objects(resolve("Users", LOCAL.users || SNAP_USERS)),
+           orders: objects(resolve("Orders", LOCAL.orders || SNAP_ORDERS)) };
 }
 
 // the window the analysis can actually see: exposure is only visible from the first order in the
@@ -779,4 +800,5 @@ try { const c = JSON.parse(localStorage.getItem(CSV_KEY) || "null");
 if (PULLED){ zoneMsg("Users", "Using the " + PULLED + " export \u00b7 drop a .csv here or paste a link below to replace it \u2014 "); zoneMsg("Orders", "Using the " + PULLED + " export \u00b7 drop a .csv here or paste a link below to replace it \u2014 "); }
 render();
 pullBackend();
+pullLocalCsv();
 })();

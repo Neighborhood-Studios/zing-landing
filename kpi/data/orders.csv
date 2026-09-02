@@ -1,0 +1,1001 @@
+Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Access,Cleaner,Type,Source
+2026-09-09,2026-09-02,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,8.00,1.20,submitted,front desk access,,Recurring,Web
+2026-09-14,2026-09-01,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,48.00,0.00,scheduled,front desk access,,One-Off,Web
+2026-09-11,2026-09-01,No,Mike Sladek,mike.sladek@gmail.com,2034704569,The Hamilton,51.00,9.18,scheduled,be home,,One-Off,Mobile App
+2026-09-30,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-29,2026-09-01,Yes,Portia Seeley,portialynn95@gmail.com,7189169483,Forma,120.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-25,2026-09-01,Yes,Mateo Pulido Usuga,mateo.usuga@hubinternational.com,+13055903060,Bezel Miami,109.00,16.35,scheduled,be home,,Recurring,Web
+2026-09-25,2026-09-01,Yes,Alberto Bendjouia,abendjouia@gmail.com,3052064840,Forma,110.00,9.00,scheduled,front desk access,,Recurring,Web
+2026-09-23,2026-09-01,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,8.00,1.20,scheduled,front desk access,,Recurring,Web
+2026-09-23,2026-09-01,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,submitted,be home,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Yitong Liu,skyeliu@outlook.com,6613438210,Forma,123.00,18.45,scheduled,front desk access,,Recurring,Web
+2026-09-18,2026-09-01,Yes,Stu Gower,stu.gower@redbull.com,9292264501,Miami World Tower,78.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,104.00,15.60,scheduled,be home,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Erika Peitersen,eapeitersen@gmail.com,8135797586,Forma,110.00,16.50,scheduled,front desk,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.45,scheduled,be home,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Etty Friesel ,etty1011@gmail.com,8454615540,Forma,47.00,0.00,scheduled,front desk access,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,scheduled,be home,,Recurring,Web
+2026-09-25,2026-09-01,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,scheduled,be home,,Recurring,Web
+2026-09-25,2026-09-01,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-16,2026-09-01,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-25,2026-09-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-24,2026-09-01,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-24,2026-09-01,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-24,2026-09-01,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-24,2026-09-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-24,2026-09-01,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,scheduled,door unlocked,,Recurring,Web
+2026-09-16,2026-09-01,Yes,Kuda Mushaike,kmushaike@gmail.com,9099299303,Forma,75.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-16,2026-09-01,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,8.00,1.20,scheduled,front desk access,,Recurring,Web
+2026-09-23,2026-09-01,Yes,Ariane Lima,ariane.lima@icloud.com,3057937119,Miami World Tower,155.00,23.25,scheduled,be home,,Recurring,Web
+2026-09-23,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-22,2026-09-01,Yes,Joel Audley Simpson,simpson.joel.audley@gmail.com,9176783864,Wynd 27,110.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-22,2026-09-01,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,10.00,scheduled,be home,,Recurring,Web
+2026-09-22,2026-09-01,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,scheduled,door unlocked,,Recurring,Web
+2026-09-22,2026-09-01,Yes,Mackenzie Kellard,mackenziek13@gmail.com,9088921207,Forma,100.00,20.00,scheduled,front desk,,Recurring,Web
+2026-09-22,2026-09-01,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,scheduled,front desk,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,scheduled,front desk,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.45,scheduled,be home,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Melissa Konstantas,melissa.konstantas@gmail.com,4168902195,Forma,100.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,scheduled,be home,,Recurring,Web
+2026-09-18,2026-09-01,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,scheduled,front desk,,Recurring,Web
+2026-09-18,2026-09-01,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-18,2026-09-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-18,2026-09-01,Yes,Roberto Martinez Caballero,claims_brush_18@icloud.com,3056198411,Forma,107.00,16.05,scheduled,be home,,Recurring,Web
+2026-09-17,2026-09-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-17,2026-09-01,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-17,2026-09-01,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-17,2026-09-01,Yes,Shawn Harris,shawn.harris0@me.com,+17176020041,Bezel Miami,151.00,30.20,scheduled,be home,,Recurring,Web
+2026-09-16,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-15,2026-09-01,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,10.00,scheduled,be home,,Recurring,Web
+2026-09-15,2026-09-01,Yes,Edward Leinss,eleinss@gmail.com,+14044449593,Miami World Tower,89.00,13.35,scheduled,be home,,Recurring,Web
+2026-09-11,2026-09-01,Yes,Mateo Pulido Usuga,mateo.usuga@hubinternational.com,+13055903060,Bezel Miami,109.00,16.35,scheduled,be home,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,104.00,15.60,scheduled,be home,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.45,scheduled,be home,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Etty Friesel ,etty1011@gmail.com,8454615540,Forma,47.00,0.00,scheduled,front desk access,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,scheduled,be home,,Recurring,Web
+2026-09-11,2026-09-01,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,scheduled,be home,,Recurring,Web
+2026-09-11,2026-09-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-11,2026-09-01,Yes,Richard Holton,richardholton@me.com,5617976181,Wynd 27,46.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-11,2026-09-01,Yes,Sanal K,sanalkaram0@gmail.com,+13238421519,Muze at Met,151.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-29,2026-09-01,Yes,Carla Auricchio,carla.auricchio@gmail.com,+13055193316,Muze at Met,110.00,5.00,scheduled,be home,,Recurring,Web
+2026-09-28,2026-09-01,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,scheduled,front desk,,Recurring,Web
+2026-09-16,2026-09-01,Yes,Ariel Rebecca Weil,arielweil12@gmail.com,+12245009369,Muze at Met,110.00,19.80,scheduled,front desk,,Recurring,Web
+2026-09-23,2026-09-01,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,scheduled,be home,,Recurring,Admin
+2026-09-21,2026-09-01,Yes,Meghan Belfi,megbelfi@gmail.com,+15162411296,Muze at Met,143.00,25.00,scheduled,door unlocked,,Recurring,Web
+2026-09-21,2026-09-01,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,scheduled,front desk,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Lacy Bonjean,lacybonjean@yahoo.com,+18509745429,Muze at Met,68.00,12.24,scheduled,be home,,Recurring,Web
+2026-09-14,2026-09-01,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,scheduled,front desk,,Recurring,Web
+2026-09-10,2026-09-01,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-10,2026-09-01,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,scheduled,door unlocked,,Recurring,Web
+2026-09-09,2026-09-01,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,scheduled,be home,,Recurring,Admin
+2026-09-09,2026-09-01,Yes,Ariane Lima,ariane.lima@icloud.com,3057937119,Miami World Tower,155.00,23.25,scheduled,be home,,Recurring,Web
+2026-09-08,2026-09-01,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,scheduled,front desk,,Recurring,Web
+2026-09-08,2026-09-01,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,scheduled,door unlocked,,Recurring,Web
+2026-09-08,2026-09-01,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,10.00,scheduled,be home,,Recurring,Web
+2026-09-11,2026-09-01,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-10,2026-09-01,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-10,2026-09-01,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-10,2026-09-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-09,2026-09-01,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-09,2026-09-01,No,Vanessa Perez,perez.vanessa08@gmail.com,3052407253,The Hamilton,169.00,33.80,scheduled,be home,,One-Off,Web
+2026-09-15,2026-09-01,Yes,Rafaella Maia,rafamaiapsouza@gmail.com,+17865312828,Alexan Roxy,168.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-09,2026-08-31,No,MICHAEL SEMPLE,michael.semple93@gmail.com,3059654949,Wynd 27,146.00,26.28,scheduled,use door code,,One-Off,Web
+2026-09-02,2026-08-31,No,Sarah Behrman,sarahbehrman@hotmail.clm,+16129309097,Bezel Miami,134.40,0.00,in progress,be home,,One-Off,Admin
+2026-09-04,2026-08-31,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-09-29,2026-08-31,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,10.00,scheduled,be home,,Recurring,Web
+2026-09-29,2026-08-31,Yes,Edward Leinss,eleinss@gmail.com,+14044449593,Miami World Tower,89.00,13.35,scheduled,be home,,Recurring,Web
+2026-09-29,2026-08-31,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-02,2026-08-31,No,Ben Landes,benjamin.landes37@gmail.com,+13213178228,Muze at Met,168.00,33.60,scheduled,door unlocked,,One-Off,Web
+2026-09-02,2026-08-29,No,Harrison Fiore,xharrisonfiore@gmail.com,6095789227,Forma,116.00,0.00,in progress,front desk access,,One-Off,Web
+2026-09-03,2026-08-29,No,Hamish Edridge,hamish.edridge@gmail.com,+13238916869,Forma,171.00,34.20,scheduled,be home,,One-Off,Web
+2026-09-08,2026-08-28,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,scheduled,front desk,,Recurring,Web
+2026-09-08,2026-08-28,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-09,2026-08-28,Yes,Yitong Liu,skyeliu@outlook.com,6613438210,Forma,123.00,18.45,scheduled,front desk access,,Recurring,Web
+2026-09-07,2026-08-28,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.45,scheduled,be home,,Recurring,Web
+2026-09-07,2026-08-28,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-07,2026-08-28,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,scheduled,front desk,,Recurring,Web
+2026-09-07,2026-08-28,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,scheduled,front desk,,Recurring,Web
+2026-09-02,2026-08-28,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,104.00,15.60,scheduled,be home,,Recurring,Web
+2026-10-30,2026-08-28,No,Sebastián Figueroa,safigueroacastillo@gmail.com,04120907470,The Hamilton,120.00,0.00,scheduled,door unlocked,,One-Off,Admin
+2026-09-03,2026-08-28,No,Audrey McClintock,audrey.mcclintock@gmail.com,8166861545,The Hamilton,3.00,0.00,scheduled,use door code,,One-Off,Admin
+2026-09-08,2026-08-28,No,Mussi,mussi@peles.us,3477937751,Forma,128.00,23.04,scheduled,front desk access,,One-Off,Web
+2026-10-01,2026-08-27,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,68.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-10-02,2026-08-27,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
+2026-10-02,2026-08-27,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,scheduled,be home,,Recurring,Web
+2026-10-02,2026-08-27,Yes,Alvaro De La Fuente,alvaroadelafuente@gmail.com,9173703860,The Hamilton,75.00,0.00,scheduled,be home,,Recurring,Web
+2026-10-01,2026-08-27,Yes,Joseph Bovino,joebovino@gmail.com,3104259933,The Hamilton,110.00,16.50,scheduled,be home,,Recurring,Web
+2026-09-30,2026-08-27,Yes,Christy Johnson,christyjohnson820@gmail.com,+19084618720,The Hamilton,168.10,10.00,scheduled,use door code,,Recurring,Web
+2026-09-29,2026-08-27,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-28,2026-08-27,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,scheduled,use door code,,Recurring,Web
+2026-09-28,2026-08-27,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-24,2026-08-27,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-25,2026-08-27,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-25,2026-08-27,Yes,Giles castle ,gilescastle@outlook.com,9175179232,The Hamilton,136.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-24,2026-08-27,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,scheduled,door unlocked,,Recurring,Web
+2026-09-24,2026-08-27,Yes,Dana Rollison,danarollison@yahoo.com,8138439161,The Hamilton,115.00,23.00,scheduled,be home,,Recurring,Web
+2026-10-05,2026-08-27,Yes,Valeria De Vivo,vaguirrermz@gmail.com,+19548150346,The Hamilton,111.00,16.65,scheduled,be home,,Recurring,Web
+2026-09-22,2026-08-27,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,scheduled,be home,,Recurring,Web
+2026-09-21,2026-08-27,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,scheduled,use door code,,Recurring,Web
+2026-09-21,2026-08-27,Yes,Josh Dolhin,joshua.dolchin@gmail.com,9543043146,The Hamilton,120.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-08,2026-08-27,Yes,Lilia Bush,liliabushdvm@gmail.com,2244899348,The Hamilton,136.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-18,2026-08-27,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-18,2026-08-27,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-18,2026-08-27,Yes,Alvaro De La Fuente,alvaroadelafuente@gmail.com,9173703860,The Hamilton,75.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-17,2026-08-27,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-17,2026-08-27,Yes,Noah Wolfson,noahwolfson@gmail.com,2482020101,The Hamilton,65.00,13.00,scheduled,be home,,Recurring,Web
+2026-09-16,2026-08-27,Yes,Christy Johnson,christyjohnson820@gmail.com,+19084618720,The Hamilton,168.10,10.00,scheduled,use door code,,Recurring,Web
+2026-09-15,2026-08-27,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-14,2026-08-27,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,scheduled,use door code,,Recurring,Web
+2026-09-14,2026-08-27,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-11,2026-08-27,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-10,2026-08-27,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-10,2026-08-27,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,scheduled,door unlocked,,Recurring,Web
+2026-09-10,2026-08-27,Yes,Dana Rollison,danarollison@yahoo.com,8138439161,The Hamilton,115.00,23.00,scheduled,be home,,Recurring,Web
+2026-09-22,2026-08-27,Yes,Michelle Pratt,mekol19@gmail.com,8473022854,The Hamilton,136.00,0.00,reschedule request,be home,,Recurring,Web
+2026-09-28,2026-08-27,Yes,Anabelle A.,liquidspace.andrea@gmail.com,+16145650735,Wynd 27,120.00,18.00,scheduled,be home,,Recurring,Web
+2026-09-08,2026-08-27,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,scheduled,be home,,Recurring,Web
+2026-09-07,2026-08-27,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,scheduled,use door code,,Recurring,Web
+2026-09-03,2026-08-27,No,Fernan,fernantoro@gmail.com,7707579567,Miami World Tower,35.00,5.25,scheduled,be home,,One-Off,Web
+2026-09-23,2026-08-27,Yes,Christopher Brody,cbrody@aol.com,+16463394591,Forma,220.00,33.00,scheduled,be home,,Recurring,Web
+2026-09-09,2026-08-26,No,tapan panel,tpatel89@live.com,7323479490,The Hamilton,1.00,0.18,cancelled,be home,,One-Off,Mobile App
+2026-09-07,2026-08-26,No,tapan panel,tpatel89@live.com,7323479490,The Hamilton,1.00,0.18,cancelled,be home,,One-Off,Mobile App
+2026-09-04,2026-08-26,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,skipped,front desk,,Recurring,Web
+2026-09-04,2026-08-26,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
+2026-09-04,2026-08-26,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,scheduled,front desk,,Recurring,Web
+2026-09-09,2026-08-26,Yes,Kuda Mushaike,kmushaike@gmail.com,9099299303,Forma,75.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-02,2026-08-26,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,8.00,1.20,scheduled,front desk access,,Recurring,Web
+2026-09-02,2026-08-26,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,payment waived,front desk,,Recurring,Web
+2026-09-02,2026-08-26,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,cancelled,be home,,Recurring,Web
+2026-09-01,2026-08-26,Yes,Carla Auricchio,carla.auricchio@gmail.com,+13055193316,Muze at Met,110.00,5.00,paid,be home,,Recurring,Web
+2026-09-09,2026-08-26,No,tapan panel,tpatel89@live.com,7323479490,The Hamilton,1.00,0.00,cancelled,be home,,One-Off,Mobile App
+2026-09-03,2026-08-26,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-09-03,2026-08-26,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-08-31,2026-08-26,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-09-03,2026-08-26,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-04,2026-08-26,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-04,2026-08-26,Yes,Alvaro De La Fuente,alvaroadelafuente@gmail.com,9173703860,The Hamilton,75.00,0.00,scheduled,be home,,Recurring,Web
+2026-09-02,2026-08-26,No,Kelly Wyman,kellyrae164@aim.com,9546490246,The Hamilton,169.00,33.80,paid,be home,,One-Off,Web
+2026-09-04,2026-08-26,No,Whit,whitanderson.iv+apphamilton@gmail.com,+17706560139,The Hamilton,1.00,0.18,cancelled,be home,,One-Off,Web
+2026-09-04,2026-08-26,No,Whit,whitanderson.iv+apphamilton@gmail.com,+17706560139,The Hamilton,1.00,0.18,cancelled,be home,,One-Off,Web
+2026-09-04,2026-08-26,No,Jessica Fusco,jfusco440@gmail.com,5617797826,The Hamilton,138.00,24.84,cancelled,use door code,,One-Off,Web
+2026-08-28,2026-08-25,Yes,Mateo Pulido Usuga,mateo.usuga@hubinternational.com,+13055903060,Bezel Miami,109.00,16.35,paid,be home,,Recurring,Web
+2026-09-15,2026-08-25,Yes,Logan King,lking59991@gmail.com,+17038876839,Alexan Roxy,120.00,18.00,scheduled,door unlocked,,Recurring,Web
+2026-09-02,2026-08-25,Yes,Crystal Singh,crystal0712@icloud.com,9542256339,Bezel Miami,114.00,20.00,paid,door unlocked,,Recurring,Web
+2026-08-28,2026-08-25,Yes,khalia lewis ,khalia605@icloud.com,+18328473852,Bezel Miami,155.00,0.00,payment waived,be home,,Recurring,Web
+2026-08-25,2026-08-25,No,Nicholas Mina,nicholasmina@yahoo.com,4072847245,Forma,35.00,0.00,paid,be home,,One-Off,Web
+2026-08-28,2026-08-25,Yes,Joseph Bovino,joebovino@gmail.com,3104259933,The Hamilton,110.00,16.50,paid,be home,,Recurring,Web
+2026-09-28,2026-08-25,No,Alvaro De Jesus,alvaro+hamilton@justzingit.com,8626215884,The Hamilton,1.00,0.18,submitted,be home,,One-Off,Web
+2026-09-03,2026-08-24,No,Ralph Frueh,rfrueh@gmail.com,7866744726,Wynd 27,65.00,11.70,scheduled,use door code,,One-Off,Web
+2026-09-01,2026-08-24,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,8.00,1.20,paid,be home,,One-Off,Web
+2026-09-03,2026-08-24,No,Isabella Amoroso,iamoroso0922@gmail.com,2392074763,The Hamilton,52.00,0.00,cancelled,use door code,,One-Off,Web
+2026-09-01,2026-08-23,Yes,Portia Seeley,portialynn95@gmail.com,7189169483,Forma,120.00,0.00,paid,be home,,Recurring,Web
+2026-09-10,2026-08-23,Yes,Brianna Black,briannatb00@gmail.com,+19543470097,Muze at Met,120.00,0.00,scheduled,be home,,Recurring,Web
+2026-08-24,2026-08-23,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
+2026-08-24,2026-08-23,No,Maxime,maxime.amram94@gmail.com,+16464097526,Forma,89.00,0.00,paid,be home,,One-Off,Web
+2026-08-24,2026-08-23,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.45,scheduled,be home,,Recurring,Web
+2026-08-25,2026-08-22,No,Colton Teitelbaum,coltonteitelbaum@aol.com,5163845837,Forma,128.00,0.00,paid,front desk access,,One-Off,Web
+2026-08-25,2026-08-22,No,Cristian,ccts@hotmail.com,7865382427,Forma,55.00,0.00,paid,front desk access,,One-Off,Web
+2026-08-26,2026-08-21,No,Barry Parris ,br_parrid@yahoo.com,+17863517007,Forma,108.00,19.44,paid,be home,,One-Off,Web
+2026-08-25,2026-08-21,No,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,52.00,0.00,completed,be home,,One-Off,Web
+2026-09-01,2026-08-21,Yes,Sara Christoforides ,sara.christoforides@gmail.com,+19173530080,Forma,60.00,21.60,paid,be home,,Recurring,Web
+2026-08-27,2026-08-20,Yes,Meghan Belfi,megbelfi@gmail.com,+15162411296,Muze at Met,71.50,25.00,paid,door unlocked,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Erika Peitersen,eapeitersen@gmail.com,8135797586,Forma,110.00,16.50,paid,front desk,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,paid,be home,,Recurring,Web
+2026-09-01,2026-08-20,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,124.00,0.00,paid,be home,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Kudrat Bajwa,bajwakudrat@yahoo.ca,4079996446,Forma,120.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.45,paid,be home,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,skipped,be home,,Recurring,Web
+2026-08-31,2026-08-20,Yes,Etty Friesel ,etty1011@gmail.com,8454615540,Forma,47.00,0.00,paid,front desk access,,Recurring,Web
+2026-08-31,2026-08-20,No,Glenn miller,gmiller@mdaudit.com,+14047252648,Miami World Tower,85.00,0.00,paid,door unlocked,,One-Off,Web
+2026-08-31,2026-08-20,No,Jessica Aday,info@thehamilton.com,7868063308,The Hamilton,120.00,0.00,completed,front desk access,,One-Off,Web
+2026-09-03,2026-08-20,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,68.00,0.00,scheduled,door unlocked,,Recurring,Web
+2026-08-22,2026-08-20,No,Barry Parris ,br_parrid@yahoo.com,+17863517007,Forma,138.00,24.84,cancelled,be home,,One-Off,Web
+2026-09-11,2026-08-20,No,Alvaro De Jesus,alvaro+hamilton@justzingit.com,8626215884,The Hamilton,1.00,0.00,scheduled,be home,,One-Off,Web
+2026-10-02,2026-08-20,No,Alvaro De Jesus,alvaro+hamilton@justzingit.com,8626215884,The Hamilton,1.00,0.00,submitted,be home,,One-Off,Web
+2026-09-01,2026-08-20,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,10.00,paid,be home,,Recurring,Web
+2026-08-21,2026-08-19,No,Hung ly,hungly96@gmail.com,+16187466569,Muze at Met,120.00,18.00,paid,be home,,One-Off,Web
+2026-08-25,2026-08-19,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,38.00,5.70,paid,front desk access,,Recurring,Web
+2026-08-27,2026-08-19,Yes,Dana Rollison,danarollison@yahoo.com,8138439161,The Hamilton,115.00,23.00,paid,be home,,Recurring,Web
+2026-09-01,2026-08-19,Yes,Valeria De Vivo,vaguirrermz@gmail.com,+19548150346,The Hamilton,111.00,16.65,paid,be home,,Recurring,Web
+2026-08-20,2026-08-19,No,Mina,mina.fattah99@gmail.com,+12245651743,Forma,120.00,18.00,paid,front desk access,,One-Off,Web
+2026-08-28,2026-08-18,Yes,Alberto Bendjouia,abendjouia@gmail.com,3052064840,Forma,110.00,9.00,paid,front desk access,,Recurring,Web
+2026-08-28,2026-08-18,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-08-28,2026-08-18,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-08-28,2026-08-18,Yes,Giles castle ,gilescastle@outlook.com,9175179232,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-08-27,2026-08-18,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,paid,door unlocked,,Recurring,Web
+2026-08-27,2026-08-18,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-27,2026-08-18,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,200.00,0.00,paid,be home,,Recurring,Web
+2026-08-27,2026-08-18,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-27,2026-08-18,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,paid,be home,,Recurring,Web
+2026-08-25,2026-08-18,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,paid,front desk,,Recurring,Web
+2026-08-25,2026-08-18,Yes,Mackenzie Kellard,mackenziek13@gmail.com,9088921207,Forma,100.00,20.00,cancelled,front desk,,Recurring,Web
+2026-09-17,2026-08-18,Yes,Dylan Denenberg ,abbie_dee@icloud.com,+16104164700,Alexan Roxy,120.00,15.00,submitted,be home,,Recurring,Web
+2026-09-04,2026-08-18,Yes,Karthik Paramasivam,karparam@gmail.com,2147170181,Bezel Miami,159.00,20.00,scheduled,be home,,Recurring,Web
+2026-09-04,2026-08-18,No,Maya Faraj,mayafaraj5@gmail.com,+13138049753,Forma,132.00,0.00,scheduled,be home,,One-Off,Web
+2026-09-01,2026-08-17,Yes,Edward Leinss,eleinss@gmail.com,+14044449593,Miami World Tower,77.60,14.55,paid,be home,,Recurring,Web
+2026-08-24,2026-08-17,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,paid,use door code,,Recurring,Web
+2026-08-28,2026-08-17,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-08-27,2026-08-17,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-09-02,2026-08-17,Yes,Christy Johnson,christyjohnson820@gmail.com,+19084618720,The Hamilton,133.10,10.00,scheduled,use door code,,Recurring,Web
+2026-08-19,2026-08-17,No,Adam Ibrahim,adamibrahim93@gmail.com,+18058075808,The Hamilton,153.00,0.00,paid,door unlocked,,One-Off,Web
+2026-08-19,2026-08-17,No,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,120.00,0.00,paid,door unlocked,,One-Off,Web
+2026-08-18,2026-08-17,No,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,120.00,8.25,paid,front desk access,,One-Off,Web
+2026-08-17,2026-08-17,No,Katerina Litvinova,k_litvinova@hotmail.com,+18154824116,Forma,83.00,15.20,paid,be home,,One-Off,Web
+2026-08-18,2026-08-17,No,Miranda Perschbacher,miranda.mae@live.com,+14806860663,Muze at Met,159.00,20.00,paid,be home,,One-Off,Web
+2026-08-17,2026-08-17,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,28.00,0.00,paid,be home,,Recurring,Web
+2026-08-18,2026-08-16,No,Jackson,jacksncarter@gmail.com,+17708253316,The Hamilton,133.00,15.00,paid,door unlocked,,One-Off,Web
+2026-08-20,2026-08-16,No,Caroline Vie Lacad,caroviee@gmail.com,2134541151,The Hamilton,52.00,0.00,paid,be home,,One-Off,Web
+2026-08-25,2026-08-16,Yes,Joel Audley Simpson,simpson.joel.audley@gmail.com,9176783864,Wynd 27,110.00,0.00,scheduled,be home,,Recurring,Web
+2026-08-25,2026-08-16,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,completed,be home,,Recurring,Web
+2026-08-26,2026-08-16,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-19,2026-08-16,No,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,26.00,0.00,paid,use door code,,One-Off,Web
+2026-08-17,2026-08-16,No,Sophie bollert ,sbollert123@gmail.com,8586921221,Forma,145.00,0.00,paid,be home,,One-Off,Web
+2026-08-17,2026-08-16,Yes,Etty Friesel ,etty1011@gmail.com,8454615540,Forma,47.00,0.00,refunded,front desk access,,Recurring,Web
+2026-08-21,2026-08-16,Yes,Stu Gower,stu.gower@redbull.com,9292264501,Miami World Tower,75.00,0.00,paid,be home,,Recurring,Web
+2026-08-25,2026-08-14,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,20.00,paid,be home,,Recurring,Web
+2026-08-25,2026-08-14,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,incomplete payment,door unlocked,,Recurring,Web
+2026-08-19,2026-08-14,No,Rowena,rowena.whitson@gmail.com,+13096780509,Miami World Tower,169.00,0.00,paid,be home,,One-Off,Web
+2026-08-21,2026-08-13,Yes,Ariane Lima,ariane.lima@icloud.com,3057937119,Miami World Tower,155.00,23.25,paid,be home,,Recurring,Web
+2026-08-14,2026-08-13,No,Stavrini Mouktari,smouktari@gmail.com,+447958568598,Paraiso Bayviews,41.50,0.00,incomplete payment,front desk access,,One-Off,Web
+2026-08-14,2026-08-13,No,Samantha Kapoor,samantha.kpr@gmail.com,7038532113,Forma,43.00,0.00,cancelled,front desk access,,One-Off,Web
+2026-08-25,2026-08-13,No,Alvaro De Jesus,alvaro+hamilton3@justzingit.com,+18626215884,The Hamilton,51.00,0.00,submitted,be home,,One-Off,Web
+2026-08-25,2026-08-13,No,Alvaro De Jesus,alvaro+paraisobayviews@justzingit.com,8626215884,Paraiso Bayviews,105.00,0.00,submitted,be home,,One-Off,Web
+2026-08-14,2026-08-13,No,CHRIS GRAHAM,grahamchris829@gmail.com,5613854477,The Hamilton,90.00,0.00,paid,front desk,,One-Off,Web
+2026-08-14,2026-08-12,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,paid,be home,,Recurring,Web
+2026-08-27,2026-08-12,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-08-27,2026-08-12,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,paid,door unlocked,,Recurring,Web
+2026-08-13,2026-08-12,No,zohal sadiq,zohalsadiq260@gmail.com,+15716090092,Muze at Met,124.00,0.00,paid,front desk,,One-Off,Web
+2026-08-14,2026-08-12,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,1.00,paid,use door code,,Recurring,Web
+2026-08-26,2026-08-12,No,Hansel Taveras ,htaveras7@gmail.com,+17869607339,Bezel Miami,183.00,0.00,cancelled,be home,,One-Off,Web
+2026-08-12,2026-08-11,No,Matthew ,elliston72@gmail.com,+18653000080,Bezel Miami,120.00,0.00,paid,locker,,One-Off,Web
+2026-09-09,2026-08-11,Yes,Jian Martinez,jian.arceo@gmail.com,+17869993355,Bezel Miami,0.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-12,2026-08-11,No,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,35.00,0.00,paid,door unlocked,,One-Off,Web
+2026-08-21,2026-08-11,Yes,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,110.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-28,2026-08-11,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,paid,be home,,Recurring,Web
+2026-09-04,2026-08-11,No,Alvaro,alvaro+forma@justzingit.com,8626215884,Forma,1.00,0.00,submitted,be home,,One-Off,Web
+2026-08-18,2026-08-11,Yes,Lacy Bonjean,lacybonjean@yahoo.com,+18509745429,Muze at Met,68.00,12.24,paid,be home,,Recurring,Web
+2026-08-18,2026-08-11,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,81.60,10.00,paid,be home,,Recurring,Web
+2026-08-17,2026-08-11,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,paid,use door code,,Recurring,Web
+2026-08-26,2026-08-11,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,8.00,5.70,paid,front desk access,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Yitong Liu,skyeliu@outlook.com,6613438210,Forma,123.00,18.45,paid,front desk access,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Lilia Bush,liliabushdvm@gmail.com,2244899348,The Hamilton,136.00,0.00,completed,be home,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Josh Dolhin,joshua.dolchin@gmail.com,9543043146,The Hamilton,120.00,0.00,completed,use door code,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Melissa Konstantas,melissa.konstantas@gmail.com,4168902195,Forma,100.00,0.00,paid,front desk,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,cancelled,be home,,Recurring,Web
+2026-08-19,2026-08-11,Yes,Jason Fowler,jfowler515@gmail.com,+16314138141,Muze at Met,69.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-08-19,2026-08-11,Yes,Kuda Mushaike,kmushaike@gmail.com,9099299303,Forma,75.00,0.00,paid,be home,,Recurring,Web
+2026-08-19,2026-08-11,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,38.00,5.70,refunded,front desk access,,Recurring,Web
+2026-08-19,2026-08-11,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-08-21,2026-08-11,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,60.00,0.00,completed,be home,,Recurring,Web
+2026-08-20,2026-08-11,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-20,2026-08-11,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-20,2026-08-11,Yes,Noah Wolfson,noahwolfson@gmail.com,2482020101,The Hamilton,65.00,13.00,paid,be home,,Recurring,Web
+2026-08-20,2026-08-11,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-08-28,2026-08-11,Yes,Alvaro De La Fuente,alvaroadelafuente@gmail.com,9173703860,The Hamilton,75.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-20,2026-08-11,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-08-24,2026-08-11,Yes,Shawn Harris,shawn.harris0@me.com,+17176020041,Bezel Miami,120.80,30.20,paid,be home,,Recurring,Web
+2026-08-20,2026-08-11,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,cancelled,door unlocked,,Recurring,Web
+2026-08-19,2026-08-11,Yes,khalia lewis ,khalia605@icloud.com,+18328473852,Bezel Miami,155.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-08-18,2026-08-11,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-08-17,2026-08-11,Yes,Ian fland,ianfland@yahoo.com,9173462789,Miami World Tower,104.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-17,2026-08-11,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-08-26,2026-08-11,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,paid,be home,,Recurring,Web
+2026-08-17,2026-08-11,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,cancelled,be home,,Recurring,Web
+2026-08-12,2026-08-11,No,Kelsey,kelsmarie1123@gmail.com,4122189994,Forma,55.00,0.00,paid,front desk access,,One-Off,Web
+2026-08-12,2026-08-10,No,Jeremy Gladstone,jeremy@gladstonemedia.ca,+14164208167,Forma,128.00,0.00,paid,front desk access,,One-Off,Web
+2026-08-25,2026-08-10,Yes,Ariel Rebecca Weil,arielweil12@gmail.com,+12245009369,Muze at Met,88.00,19.80,paid,front desk,,Recurring,Web
+2026-08-19,2026-08-10,No,Kaley French,kaleygfrench@gmail.com,+12242214281,Muze at Met,35.00,5.00,paid,door unlocked,,One-Off,Web
+2026-08-11,2026-08-10,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-08-19,2026-08-10,No,Kaley French,kaleygfrench@gmail.com,+12242214281,Muze at Met,120.00,5.00,cancelled,door unlocked,,One-Off,Web
+2026-08-13,2026-08-10,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,8.00,1.20,paid,be home,,One-Off,Web
+2026-08-12,2026-08-10,No,Clara,cruz.claris@gmail.com,3057900264,The Hamilton,138.00,20.70,paid,door unlocked,,One-Off,Web
+2026-08-20,2026-08-09,No,Zhaomeng Chen,zhaomeng.chen1998@gmail.com,+16507883605,Muze at Met,120.00,18.00,paid,door unlocked,,One-Off,Web
+2026-08-14,2026-08-09,No,Kevin Pierre Louis ,kevin.pierrelouis@gmail.com,6469120231,Forma,64.00,0.00,paid,front desk access,,One-Off,Web
+2026-09-03,2026-08-09,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,scheduled,use door code,,Recurring,Web
+2026-08-31,2026-08-09,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-14,2026-08-09,Yes,Richard Holton,richardholton@me.com,5617976181,Wynd 27,46.00,0.00,cancelled,use door code,,Recurring,Web
+2026-08-14,2026-08-09,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-08-13,2026-08-09,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,54.00,22.60,paid,door unlocked,,Recurring,Web
+2026-08-13,2026-08-09,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-26,2026-08-09,Yes,Michelle Pratt,mekol19@gmail.com,8473022854,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-08-12,2026-08-09,Yes,Ileana Howe,ileanahowe.pa@gmail.com,6124026224,Paraiso Bayviews,109.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-08-11,2026-08-08,No,Brianna Black,briannatb00@gmail.com,+19543470097,Muze at Met,152.00,0.00,paid,be home,,One-Off,Web
+2026-08-14,2026-08-08,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,cancelled,be home,,Recurring,Web
+2026-08-13,2026-08-08,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-08-13,2026-08-08,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,paid,door unlocked,,Recurring,Web
+2026-08-11,2026-08-07,Yes,Anabelle A.,liquidspace.andrea@gmail.com,+16145650735,Wynd 27,120.00,18.00,paid,be home,,Recurring,Web
+2026-08-06,2026-08-07,No,Nora Fanfalone,norafanfalone@gmail.com,+18506025930,Muze at Met,182.00,0.00,paid,door unlocked,,One-Off,Web
+2026-08-13,2026-08-07,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-13,2026-08-07,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-08-13,2026-08-07,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-10,2026-08-07,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-08-10,2026-08-07,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-08-07,2026-08-07,No,Sophia ,sophiasarkis@me.com,3109093496,Forma,0.00,0.00,completed,front desk access,,One-Off,Web
+2026-08-10,2026-08-07,Yes,Yitong Liu,skyeliu@outlook.com,6613438210,Forma,171.00,20.25,paid,front desk access,,Recurring,Web
+2026-08-10,2026-08-06,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-08-10,2026-08-06,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,104.00,15.60,paid,be home,,Recurring,Web
+2026-08-12,2026-08-06,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,8.00,5.70,paid,front desk access,,Recurring,Web
+2026-08-17,2026-08-06,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-08-17,2026-08-06,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-17,2026-08-06,No,Barry Parris ,br_parrid@yahoo.com,+17863517007,Forma,104.00,20.80,cancelled,be home,,One-Off,Web
+2026-09-05,2026-08-06,No,Sebastián Figueroa,sa.castillo1810@gmail.com,04120907470,Forma,124.00,0.00,payment waived,door unlocked,,One-Off,Web
+2026-08-06,2026-08-06,No,Mariana,marianacaixeta101@gmail.com,9547735242,Forma,138.00,0.00,cancelled,be home,,One-Off,Web
+2026-08-06,2026-08-06,No,Nora Fanfalone,norafanfalone@gmail.com,+18506025930,Muze at Met,0.00,0.00,scheduled,door unlocked,,One-Off,Web
+2026-08-10,2026-08-05,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-05,2026-08-05,Yes,Kuda Mushaike,kmushaike@gmail.com,9099299303,Forma,75.00,0.00,paid,be home,,Recurring,Web
+2026-08-10,2026-08-05,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,paid,use door code,,Recurring,Web
+2026-08-14,2026-08-05,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-08-14,2026-08-05,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,67.20,10.72,paid,front desk,,Recurring,Web
+2026-08-07,2026-08-05,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,163.00,0.00,paid,be home,,Recurring,Web
+2026-08-06,2026-08-05,Yes,Sara Christoforides ,sara.christoforides@gmail.com,+19173530080,Forma,120.00,18.00,paid,be home,,Recurring,Web
+2026-08-07,2026-08-04,Yes,Alvaro De La Fuente,alvaroadelafuente@gmail.com,9173703860,The Hamilton,75.00,0.00,paid,be home,,Recurring,Web
+2026-08-05,2026-08-04,No,Hung ly,hungly96@gmail.com,+16187466569,Muze at Met,99.00,14.85,paid,door unlocked,,One-Off,Web
+2026-08-07,2026-08-04,Yes,Carla Auricchio,carla.auricchio@gmail.com,+13055193316,Muze at Met,110.00,5.00,paid,be home,,Recurring,Web
+2026-08-04,2026-08-04,No,Aleksandra Divitkina,alexdivitkina@gmail.com,+18572105850,Forma,0.00,0.00,completed,be home,,One-Off,Web
+2026-08-07,2026-08-03,No,Pablo Conde,pconde29@gmail.com,3109902378,Forma,148.00,20.00,paid,be home,,One-Off,Web
+2026-08-11,2026-08-03,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,paid,front desk,,Recurring,Web
+2026-08-11,2026-08-03,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,paid,be home,,Recurring,Web
+2026-08-11,2026-08-03,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,cancelled,door unlocked,,Recurring,Web
+2026-08-07,2026-08-03,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,67.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-07,2026-08-03,Yes,Crystal Singh,crystal0712@icloud.com,9542256339,Bezel Miami,104.00,20.00,paid,door unlocked,,Recurring,Web
+2026-08-13,2026-08-03,No,Hunter,lampleyhunter@gmail.com,5139101711,Forma,120.00,0.00,paid,front desk access,,One-Off,Web
+2026-08-04,2026-08-03,No,Natalia Nigh ,nnigh@zrsmanagement.com,+19182847976,Muze at Met,63.75,15.00,paid,be home,,One-Off,Web
+2026-08-07,2026-08-03,No,Hunter,lampleyhunter@gmail.com,5139101711,Forma,120.00,0.00,cancelled,front desk access,,One-Off,Web
+2026-08-03,2026-08-03,Yes,Kudrat Bajwa,bajwakudrat@yahoo.ca,4079996446,Forma,120.00,0.00,paid,be home,,Recurring,Web
+2026-08-12,2026-08-02,Yes,Ioana Vintila,vintila.ioana10@gmail.com,7089378022,Bezel Miami,102.00,10.00,paid,be home,,Recurring,Web
+2026-08-03,2026-08-02,No,Kelly Wyman,kellyrae164@aim.com,9546490246,The Hamilton,168.00,33.60,paid,be home,,One-Off,Web
+2026-08-12,2026-08-02,Yes,khalia lewis ,khalia605@icloud.com,+18328473852,Bezel Miami,155.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-08-03,2026-08-01,No,Gary Filipp,gary.filipp@gmail.com,3123168133,Forma,35.00,0.00,paid,front desk access,,One-Off,Web
+2026-08-14,2026-08-01,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-08-07,2026-08-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,40.00,10.72,paid,front desk,,Recurring,Web
+2026-08-06,2026-08-01,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-08-06,2026-08-01,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,paid,door unlocked,,Recurring,Web
+2026-08-06,2026-08-01,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-05,2026-08-01,Yes,Jason Fowler,jfowler515@gmail.com,+16314138141,Muze at Met,69.00,0.00,incomplete payment,be home,,Recurring,Web
+2026-08-03,2026-08-01,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,67.20,10.72,paid,front desk,,Recurring,Web
+2026-08-03,2026-08-01,Yes,Erika Peitersen,eapeitersen@gmail.com,8135797586,Forma,110.00,16.50,paid,front desk,,Recurring,Web
+2026-08-03,2026-08-01,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-03,2026-08-01,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-08-03,2026-07-31,No,Ben Landes,benjamin.landes37@gmail.com,+13213178228,Muze at Met,159.00,31.80,paid,be home,,One-Off,Web
+2026-08-05,2026-07-30,No,Muhammad Raza,duderaz@gmail.com,7153834571,Miami World Tower,43.00,6.45,paid,door unlocked,,One-Off,Web
+2026-07-30,2026-07-30,No,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,26.00,0.00,paid,door unlocked,,One-Off,Web
+2026-07-31,2026-07-30,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-08-18,2026-07-29,No,Jack McLaughlin,jackmclaughlin948@gmail.com,(901) 219-4282,Miami World Tower,120.00,0.00,cancelled,be home,,One-Off,Web
+2026-08-10,2026-07-29,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,cancelled,be home,,Recurring,Web
+2026-07-29,2026-07-29,No,Meg Donnelly,megdonns@gmail.com,+17177995944,Muze at Met,152.00,22.80,paid,be home,,One-Off,Web
+2026-08-03,2026-07-28,Yes,Ian fland,ianfland@yahoo.com,9173462789,Miami World Tower,104.00,0.00,cancelled,be home,,Recurring,Web
+2026-08-03,2026-07-28,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,cancelled,be home,,Recurring,Web
+2026-07-28,2026-07-28,No,tapan panel,tpatel89@live.com,7323479490,The Hamilton,35.00,6.30,cancelled,door unlocked,,One-Off,Web
+2027-01-28,2026-07-28,Yes,Sebastián Figueroa,sa.castillo1810@gmail.com,04120907470,Forma,36.00,0.00,cancelled,use door code,,Recurring,Web
+2026-09-25,2026-07-28,No,Sebastián Figueroa,sa.castillo1810@gmail.com,04120907470,Forma,16.00,0.00,cancelled,use door code,,One-Off,Web
+2026-07-28,2026-07-28,No,Chandni Malik,chandni.malik1@gmail.com,7033713467,Bezel Miami,5.00,5.25,paid,be home,,One-Off,Web
+2026-07-30,2026-07-28,No,Gene Solovyev,gsolovyev@gmail.com,+18189616669,Forma,120.00,0.00,paid,be home,,One-Off,Web
+2026-08-03,2026-07-28,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,paid,be home,,Recurring,Web
+2026-08-05,2026-07-28,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,cancelled,use door code,,Recurring,Web
+2026-08-07,2026-07-28,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,2.00,cancelled,use door code,,Recurring,Web
+2026-08-05,2026-07-28,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-06,2026-07-28,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-28,2026-07-28,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,8.00,0.00,paid,be home,,One-Off,Web
+2026-07-29,2026-07-28,No,Dror,dror.attias@gnail.com,+18132154143,Forma,88.00,0.00,paid,be home,,One-Off,Web
+2026-07-29,2026-07-27,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,55.00,12.60,paid,be home,,One-Off,Web
+2026-07-31,2026-07-27,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,3.00,10.72,cancelled,front desk,,Recurring,Web
+2026-08-28,2026-07-27,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-08-21,2026-07-27,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-08-21,2026-07-27,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-08-21,2026-07-27,Yes,Roberto Martinez Caballero,claims_brush_18@icloud.com,3056198411,Forma,107.00,16.05,paid,be home,,Recurring,Web
+2026-08-10,2026-07-27,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
+2026-08-24,2026-07-27,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,104.00,15.60,paid,be home,,Recurring,Web
+2026-08-24,2026-07-27,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-08-24,2026-07-27,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-26,2026-07-27,Yes,Christopher Brody,cbrody@aol.com,+16463394591,Forma,220.00,33.00,paid,be home,,Recurring,Web
+2026-07-27,2026-07-27,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,3.00,10.72,completed,front desk,,Recurring,Web
+2026-07-31,2026-07-27,No,David Leiter,dgleiter@gmail.com,9172974894,Forma,99.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-29,2026-07-26,No,Nicholas Mina,nicholasmina@yahoo.com,4072847245,Forma,35.00,10.00,paid,front desk access,,One-Off,Web
+2026-07-27,2026-07-26,Yes,Meghan Belfi,megbelfi@gmail.com,+15162411296,Muze at Met,143.00,25.00,paid,door unlocked,,Recurring,Web
+2026-07-31,2026-07-25,Yes,Alberto Bendjouia,abendjouia@gmail.com,3052064840,Forma,110.00,9.00,paid,front desk access,,Recurring,Web
+2026-07-30,2026-07-25,No,Emma Morgan,emmaleigh.morgan01@gmail.com,+16786030396,The Hamilton,138.00,0.00,paid,use door code,,One-Off,Web
+2026-08-07,2026-07-24,Yes,Maudel Ramos,maudel@ypo305.com,+19175145970,The Hamilton,104.00,20.00,cancelled,be home,,Recurring,Web
+2026-07-24,2026-07-24,No,Wilma Ramony De Souza,wramony.souza@gmail.com,+19178917505,The Hamilton,81.00,14.58,cancelled,be home,,One-Off,Web
+2026-07-29,2026-07-24,No,Arynne Wexler,arynnewexler@gmail.com,(914) 714-5140,The Hamilton,92.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-27,2026-07-24,No,Hamish Edridge,hamish.edridge@gmail.com,+13238916869,Forma,136.80,34.20,paid,be home,,One-Off,Web
+2026-07-30,2026-07-23,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-06,2026-07-23,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-07-31,2026-07-23,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,144.00,10.00,cancelled,door unlocked,,Recurring,Web
+2026-07-30,2026-07-23,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,payment waived,be home,,Recurring,Web
+2026-07-29,2026-07-23,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,cancelled,be home,,Recurring,Web
+2026-07-28,2026-07-23,Yes,Calais ,cg@calaisgoord.com,+14243629951,Forma,110.00,16.50,paid,be home,,Recurring,Web
+2026-07-28,2026-07-23,Yes,Mackenzie Kellard,mackenziek13@gmail.com,9088921207,Forma,100.00,20.00,cancelled,front desk,,Recurring,Web
+2026-07-29,2026-07-23,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,paid,front desk,,Recurring,Web
+2026-07-28,2026-07-23,Yes,Maria Ermakova,mermakov@law.cardozo.yu.edu,+13479676807,Muze at Met,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-09-01,2026-07-23,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,skipped,be home,,Recurring,Web
+2026-07-28,2026-07-23,No,Jonathan Yee,yeewaikin@gmail.com,+17865109815,Bezel Miami,48.00,5.00,paid,be home,,One-Off,Web
+2026-07-30,2026-07-23,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-08-11,2026-07-23,Yes,Jian Martinez,jian.arceo@gmail.com,+17869993355,Bezel Miami,151.00,0.00,paid,be home,,Recurring,Web
+2026-07-28,2026-07-23,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,cancelled,door unlocked,,Recurring,Web
+2026-07-28,2026-07-23,No,Muhammad Raza,duderaz@gmail.com,7153834571,Miami World Tower,116.00,17.40,paid,door unlocked,,One-Off,Web
+2026-07-22,2026-07-22,No,Teresa Martinez,teresamtz4@gmail.com,2108675929,Forma,65.00,0.00,paid,be home,,One-Off,Web
+2026-07-23,2026-07-22,No,Manuela Stotter Waldman,newhearthliving@gmail.com,2123006136,The Hamilton,3.00,0.00,paid,use door code,,One-Off,Web
+2026-08-19,2026-07-22,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,cancelled,front desk,,Recurring,Web
+2026-08-04,2026-07-22,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,paid,front desk,,Recurring,Web
+2026-08-04,2026-07-22,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-08-07,2026-07-22,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,cancelled,use door code,,Recurring,Web
+2026-07-24,2026-07-22,Yes,Omar Tawfik,o.tawfik@omartawfikdesigns.com,+17862806367,Bezel Miami,99.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-07-23,2026-07-21,No,Cristian,ccts@hotmail.com,7865382427,Forma,55.00,0.00,paid,be home,,One-Off,Web
+2026-08-10,2026-07-21,Yes,Joseph Bovino,joebovino@gmail.com,3104259933,The Hamilton,110.00,16.50,paid,be home,,Recurring,Web
+2026-07-23,2026-07-21,No,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,52.00,5.00,cancelled,use door code,,One-Off,Web
+2026-07-23,2026-07-21,No,Vanessa,urbschatvanessa@gmail.com,6608153373,Forma,35.00,5.25,paid,front desk access,,One-Off,Web
+2026-07-28,2026-07-21,No,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,0.45,paid,use door code,,One-Off,Web
+2026-08-04,2026-07-21,Yes,Brittany,brittanylfinnegan@gmail.com,8562961519,The Hamilton,3.00,0.45,paid,use door code,,Recurring,Web
+2026-07-22,2026-07-21,No,Umayr,umayr.amir@gmail.com,3058775622,Forma,35.00,0.00,paid,be home,,One-Off,Web
+2026-07-23,2026-07-21,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,144.00,10.00,paid,door unlocked,,Recurring,Web
+2026-07-24,2026-07-21,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-07-24,2026-07-21,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-07-27,2026-07-20,No,Manuela Stotter Waldman,newhearthliving@gmail.com,2123006136,The Hamilton,3.00,0.00,paid,use door code,,One-Off,Web
+2026-08-04,2026-07-20,No,Manuela Stotter Waldman,newhearthliving@gmail.com,2123006136,The Hamilton,168.00,0.00,paid,use door code,,One-Off,Web
+2026-07-20,2026-07-20,Yes,Lacy Bonjean,lacybonjean@yahoo.com,+18509745429,Muze at Met,68.00,12.24,paid,be home,,Recurring,Web
+2026-07-20,2026-07-20,No,Hung ly,hungly96@gmail.com,+16187466569,Muze at Met,64.00,9.60,paid,be home,,One-Off,Web
+2026-07-24,2026-07-20,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-07-24,2026-07-20,Yes,Roberto Martinez Caballero,claims_brush_18@icloud.com,3056198411,Forma,107.00,16.05,paid,be home,,Recurring,Web
+2026-07-27,2026-07-20,No,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,35.00,0.00,cancelled,be home,,One-Off,Web
+2026-08-04,2026-07-20,Yes,Ingelin Lima,ingelinelisabeth@icloud.com,+17542369658,Bezel Miami,69.00,0.00,paid,be home,,Recurring,Web
+2026-07-21,2026-07-20,No,Choni Boymelgreen ,choni.nomi@gmail.com,3057338150,Forma,35.00,0.00,paid,be home,,One-Off,Web
+2026-07-21,2026-07-19,No,Colton Teitelbaum,coltonteitelbaum@aol.com,5163845837,Forma,131.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-22,2026-07-19,No,Isabella Amoroso,iamoroso0922@gmail.com,2392074763,The Hamilton,52.00,0.00,paid,use door code,,One-Off,Web
+2026-07-22,2026-07-19,No,Isabella Amoroso,iamoroso0922@gmail.com,2392074763,The Hamilton,35.00,25.00,paid,use door code,,One-Off,Web
+2026-07-27,2026-07-18,No,tapan panel,tpatel89@live.com,7323479490,The Hamilton,1.00,0.00,cancelled,be home,,One-Off,Web
+2026-07-27,2026-07-18,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-07-27,2026-07-18,Yes,Ingelin Lima,ingelinelisabeth@icloud.com,+17542369658,Bezel Miami,69.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-23,2026-07-18,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-10,2026-07-18,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,paid,be home,,Recurring,Web
+2026-07-31,2026-07-18,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,32.00,0.00,paid,be home,,Recurring,Web
+2026-07-29,2026-07-18,Yes,Ariane Lima,ariane.lima@icloud.com,3057937119,Miami World Tower,143.00,23.25,paid,be home,,Recurring,Web
+2026-07-20,2026-07-18,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-20,2026-07-18,No,Hunter,lampleyhunter@gmail.com,5139101711,Forma,113.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-21,2026-07-18,No,Mina,mina.fattah99@gmail.com,+12245651743,Forma,116.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-22,2026-07-17,Yes,Jason Fowler,jfowler515@gmail.com,+16314138141,Muze at Met,69.00,0.00,incomplete payment,be home,,Recurring,Web
+2026-07-22,2026-07-17,Yes,Ariel Rebecca Weil,arielweil12@gmail.com,+12245009369,Muze at Met,110.00,19.80,paid,front desk,,Recurring,Web
+2026-07-17,2026-07-17,No,Safa Rarhibou,rghmiro@gmail.com,+13059548555,Muze at Met,116.00,17.40,paid,be home,,One-Off,Web
+2026-07-30,2026-07-16,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,paid,door unlocked,,Recurring,Web
+2026-07-31,2026-07-16,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-08-05,2026-07-16,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-07-31,2026-07-16,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,payment waived,be home,,Recurring,Web
+2026-07-31,2026-07-16,Yes,Giles castle ,gilescastle@outlook.com,9175179232,The Hamilton,136.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-28,2026-07-16,Yes,Joel Audley Simpson,simpson.joel.audley@gmail.com,9176783864,Wynd 27,110.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-28,2026-07-16,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,paid,be home,,Recurring,Web
+2026-07-24,2026-07-16,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-07-24,2026-07-16,No,Mike Sladek,mike.sladek@gmail.com,2034704569,The Hamilton,35.00,5.25,paid,be home,,One-Off,Web
+2026-07-27,2026-07-16,Yes,Ileana Howe,ileanahowe.pa@gmail.com,6124026224,Paraiso Bayviews,109.00,0.00,payment waived,door unlocked,,Recurring,Web
+2026-07-17,2026-07-16,No,Vanesa Cruz,jv.dorseycruz@gmail.com,4079148986,The Hamilton,96.00,0.00,cancelled,be home,,One-Off,Web
+2026-07-16,2026-07-16,No,Alvaro De La Fuente,alvaroadelafuente@gmail.com,9173703860,The Hamilton,25.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-17,2026-07-16,No,Naz Mitrani,nazdipcin@gmail.com,7868934539,Paraiso Bayviews,116.00,0.00,payment waived,be home,,One-Off,Web
+2026-07-16,2026-07-15,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-08-20,2026-07-15,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,paid,be home,,Recurring,Web
+2026-08-13,2026-07-15,Yes,Sanal K,sanalkaram0@gmail.com,+13238421519,Muze at Met,116.00,0.00,paid,be home,,Recurring,Web
+2026-07-29,2026-07-15,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,0.00,50.00,cancelled,be home,,Recurring,Web
+2026-07-16,2026-07-14,No,Lea Serrano,leaserrano95@gmail.com,7862020681,The Hamilton,62.00,9.30,cancelled,be home,,One-Off,Web
+2026-07-27,2026-07-14,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,cancelled,be home,,Recurring,Web
+2026-07-20,2026-07-14,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,paid,be home,,Recurring,Web
+2026-07-16,2026-07-14,Yes,Esaias Israel ,esaiasisrael1@gmail.com,+17257778481,Miami World Tower,102.00,18.36,paid,be home,,Recurring,Web
+2026-07-20,2026-07-14,No,Joslin Letourneau,joslin.letourneau1@gmail.com,+13058764003,Bezel Miami,83.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-20,2026-07-14,No,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,116.00,0.00,paid,door unlocked,,One-Off,Web
+2026-07-20,2026-07-14,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-07-15,2026-07-14,No,Dror,dror.attias@gnail.com,+18132154143,Forma,146.00,0.00,paid,be home,,One-Off,Web
+2026-07-16,2026-07-13,No,Harrison Epstein,hepstein1@gmail.com,6096388979,The Hamilton,52.00,0.00,cancelled,be home,,One-Off,Web
+2026-08-11,2026-07-13,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,paid,be home,,Recurring,Web
+2026-07-27,2026-07-13,Yes,Josh Dolhin,joshua.dolchin@gmail.com,9543043146,The Hamilton,142.00,0.00,paid,use door code,,Recurring,Web
+2026-07-29,2026-07-13,Yes,Lilia Bush,liliabushdvm@gmail.com,2244899348,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-07-20,2026-07-13,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-28,2026-07-13,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,157.00,0.00,paid,be home,,Recurring,Web
+2026-07-23,2026-07-13,Yes,Christopher Schmitt,csschmitt40@gmail.com,5614417155,Forma,100.00,0.00,cancelled,front desk,,Recurring,Web
+2026-07-23,2026-07-13,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,40.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-23,2026-07-13,Yes,Noah Wolfson,noahwolfson@gmail.com,2482020101,The Hamilton,65.00,13.00,paid,be home,,Recurring,Web
+2026-07-23,2026-07-13,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-23,2026-07-13,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-07-21,2026-07-13,Yes,Maria Ermakova,mermakov@law.cardozo.yu.edu,+13479676807,Muze at Met,151.00,0.00,paid,be home,,Recurring,Web
+2026-07-21,2026-07-13,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-07-21,2026-07-13,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,cancelled,front desk,,Recurring,Web
+2026-07-21,2026-07-13,Yes,Malin Enger ,mm-enger@hotmail.com,7867209475,Forma,71.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-20,2026-07-13,Yes,Ian fland,ianfland@yahoo.com,9173462789,Miami World Tower,104.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-15,2026-07-12,No,Vanessa Perez,perez.vanessa08@gmail.com,3052407253,The Hamilton,168.00,33.60,paid,be home,,One-Off,Web
+2026-07-22,2026-07-12,No,Alexander,acxix92@gmail.com,7036069396,Bezel Miami,116.00,0.00,incomplete payment,be home,,One-Off,Web
+2026-07-20,2026-07-12,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,completed,front desk,,Recurring,Web
+2026-07-20,2026-07-12,Yes,Ileana Howe,ileanahowe.pa@gmail.com,6124026224,Paraiso Bayviews,109.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-07-16,2026-07-12,No,Adrianne Shaw,adrianneshaw88@gmail.com,2059133705,Forma,121.00,18.15,paid,be home,,One-Off,Web
+2026-07-13,2026-07-12,No,Maya Faraj,mayafaraj5@gmail.com,+13138049753,Forma,116.00,0.00,paid,be home,,One-Off,Web
+2026-07-14,2026-07-12,Yes,Maria Ermakova,mermakov@law.cardozo.yu.edu,+13479676807,Muze at Met,151.00,0.00,paid,be home,,Recurring,Web
+2026-07-14,2026-07-12,Yes,Maria Ermakova,mermakov@law.cardozo.yu.edu,+13479676807,Muze at Met,135.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-13,2026-07-12,No,Jose Maria Ajkay,ajkay209@gmail.com,3059042150,The Hamilton,168.00,20.00,paid,use door code,,One-Off,Web
+2026-07-17,2026-07-11,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,paid,be home,,Recurring,Web
+2026-07-17,2026-07-11,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-07-17,2026-07-11,Yes,Richard Holton,richardholton@me.com,5617976181,Wynd 27,46.00,0.00,cancelled,use door code,,Recurring,Web
+2026-07-13,2026-07-11,Yes,Sacha hirel,hirel.sacha@gmail.com,+13053939988,Paraiso Bayviews,104.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-07-13,2026-07-11,No,Christian Maravalle,chri.maravalle@gmail.com,+13053401994,Muze at Met,29.00,4.35,paid,be home,,One-Off,Web
+2026-07-13,2026-07-10,No,Hans Henrik,sundvall_1@hotmail.com,4243828973,Forma,167.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-16,2026-07-10,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-16,2026-07-10,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,cancelled,door unlocked,,Recurring,Web
+2026-07-15,2026-07-10,Yes,Sanal K,sanalkaram0@gmail.com,+13238421519,Muze at Met,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-13,2026-07-10,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-07-14,2026-07-10,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,188.04,0.00,paid,be home,,Recurring,Web
+2026-07-14,2026-07-10,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,incomplete payment,door unlocked,,Recurring,Web
+2026-07-15,2026-07-10,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,paid,be home,,Recurring,Web
+2026-07-22,2026-07-10,No,Kelly Wyman,kellyrae164@aim.com,9546490246,The Hamilton,206.00,41.20,paid,use door code,,One-Off,Web
+2026-07-22,2026-07-09,Yes,Lauren Bramley,drlaurenbramley@thebetterwithageclub.com,+13054990007,Bezel Miami,151.00,30.20,cancelled,locker,,Recurring,Web
+2026-07-24,2026-07-09,Yes,Lauren Bramley,drlaurenbramley@thebetterwithageclub.com,+13054990007,Bezel Miami,151.00,30.20,submitted,locker,,Recurring,Web
+2026-07-13,2026-07-09,No,Matthew ,elliston72@gmail.com,+18653000080,Bezel Miami,116.00,0.00,paid,locker,,One-Off,Web
+2026-07-17,2026-07-09,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,completed,front desk,,Recurring,Web
+2026-07-17,2026-07-09,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-16,2026-07-09,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-07-14,2026-07-09,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,paid,front desk,,Recurring,Web
+2026-07-13,2026-07-09,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
+2026-07-13,2026-07-09,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-07-13,2026-07-09,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-14,2026-07-09,No,Vanessa,urbschatvanessa@gmail.com,6608153373,Forma,24.00,0.00,paid,be home,,One-Off,Web
+2026-07-10,2026-07-08,No,Katy Crosby,crosbykatydesign@gmail.com,9855908767,Wynd 27,60.00,9.00,cancelled,be home,,One-Off,Web
+2026-07-10,2026-07-08,No,CHRIS GRAHAM,grahamchris829@gmail.com,5613854477,The Hamilton,90.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-15,2026-07-08,Yes,Michelle Pratt,mekol19@gmail.com,8473022854,The Hamilton,136.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-16,2026-07-08,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,42.00,0.00,paid,be home,,Recurring,Web
+2026-07-09,2026-07-08,No,Fernan,fernantoro@gmail.com,7707579567,Miami World Tower,35.00,5.25,paid,be home,,One-Off,Web
+2026-07-15,2026-07-07,Yes,Maria Girguis,miromizo@gmail.com,3466239063,Wynd 28,104.00,0.00,paid,be home,,Recurring,Web
+2026-07-09,2026-07-07,No,MICHAEL SEMPLE,michael.semple93@gmail.com,3059654949,Wynd 27,100.00,15.00,paid,use door code,,One-Off,Web
+2026-07-15,2026-07-07,Yes,Ariane Lima,ariane.lima@icloud.com,3057937119,Miami World Tower,143.00,21.45,paid,be home,,Recurring,Web
+2026-07-09,2026-07-07,No,Muhammad Raza,duderaz@gmail.com,7153834571,Miami World Tower,196.00,29.40,paid,door unlocked,,One-Off,Web
+2026-07-08,2026-07-07,No,Gene Solovyev,gsolovyev@gmail.com,+18189616669,Forma,116.00,0.00,paid,be home,,One-Off,Web
+2026-07-08,2026-07-07,No,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,116.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-23,2026-07-06,Yes,Shawn Harris,shawn.harris0@me.com,+17176020041,Bezel Miami,151.00,30.20,paid,be home,,Recurring,Web
+2026-07-10,2026-07-06,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
+2026-07-10,2026-07-06,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-07-07,2026-07-06,No,Hung ly,hungly96@gmail.com,+16187466569,Muze at Met,29.00,4.35,paid,be home,,One-Off,Web
+2026-07-06,2026-07-06,No,Oliver Hackl,oh.olihackl@gmail.com,7869397461,Forma,8.00,0.00,paid,front desk access,,One-Off,Web
+2026-07-16,2026-07-06,No,Nigar Abbaszada,nabbaszada@gmail.com,+13126231622,Muze at Met,0.00,0.00,completed,be home,,One-Off,Web
+2026-07-06,2026-07-05,Yes,Meghan Belfi,megbelfi@gmail.com,+15162411296,Muze at Met,143.00,25.00,paid,door unlocked,,Recurring,Web
+2026-07-08,2026-07-05,No,Nicholas Mina,nicholasmina@yahoo.com,4072847245,Forma,35.00,10.00,paid,front desk access,,One-Off,Web
+2026-07-15,2026-07-05,Yes,Ingelin Lima,ingelinelisabeth@icloud.com,+17542369658,Bezel Miami,69.00,0.00,paid,be home,,Recurring,Web
+2026-07-27,2026-07-05,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-07-27,2026-07-05,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-07-27,2026-07-05,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-27,2026-07-05,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-07,2026-07-05,No,Stu Gower,stu.gower@redbull.com,9292264501,Miami World Tower,96.00,0.00,refunded,be home,,One-Off,Web
+2026-07-08,2026-07-05,No,Alona,alyona.zubenko0802@gmail.com,7867029440,Bezel Miami,29.00,0.00,paid,be home,,One-Off,Web
+2026-07-21,2026-07-03,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,136.00,6.00,paid,be home,,Recurring,Web
+2026-07-17,2026-07-03,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,67.00,0.00,paid,be home,,Recurring,Web
+2026-07-22,2026-07-03,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,102.00,0.00,paid,be home,,Recurring,Web
+2026-07-08,2026-07-03,Yes,Alex Soriano,alexander16408@gmail.com,9548129197,The Hamilton,124.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-27,2026-07-03,Yes,Sarah Gottlieb ,sarahbtesh00@gmail.com,+17867024533,Forma,104.00,15.60,paid,be home,,Recurring,Web
+2026-07-10,2026-07-03,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,99.00,0.00,paid,be home,,Recurring,Web
+2026-07-10,2026-07-03,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-07-10,2026-07-03,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,40.00,10.72,completed,front desk,,Recurring,Web
+2026-07-10,2026-07-03,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,front desk,,Recurring,Web
+2026-07-10,2026-07-03,Yes,Crystal Singh,crystal0712@icloud.com,9542256339,Bezel Miami,104.00,20.00,paid,door unlocked,,Recurring,Web
+2026-07-09,2026-07-03,Yes,Joseph Bovino,joebovino@gmail.com,3104259933,The Hamilton,110.00,16.50,paid,be home,,Recurring,Web
+2026-07-09,2026-07-03,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-09,2026-07-03,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-09,2026-07-03,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-08,2026-07-03,Yes,Jason Fowler,jfowler515@gmail.com,+16314138141,Muze at Met,69.00,0.00,incomplete payment,be home,,Recurring,Web
+2026-07-07,2026-07-03,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-07-22,2026-07-03,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,paid,front desk,,Recurring,Web
+2026-07-06,2026-07-03,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,completed,front desk,,Recurring,Web
+2026-07-06,2026-07-03,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-06,2026-07-03,Yes,Erika Peitersen,eapeitersen@gmail.com,8135797586,Forma,110.00,16.50,paid,front desk,,Recurring,Web
+2026-07-06,2026-07-03,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-06,2026-07-03,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-08-24,2026-07-03,Yes,Melissa Konstantas,melissa.konstantas@gmail.com,4168902195,Forma,100.00,0.00,cancelled,front desk,,Recurring,Web
+2026-07-03,2026-07-03,No,Nicolas Garcia,nicodg610@gmail.com,7864515601,Wynd 27,147.00,0.00,paid,be home,,One-Off,Web
+2026-07-08,2026-07-02,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-08,2026-07-02,No,Annah Jamison,annahejamison@gmail.com,2026742003,Wynd 27,61.20,23.22,paid,be home,,One-Off,Web
+2026-07-07,2026-07-02,No,Omar Tawfik,o.tawfik@omartawfikdesigns.com,+17862806367,Bezel Miami,207.00,35.60,paid,door unlocked,,One-Off,Web
+2026-07-09,2026-07-02,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,13.00,0.00,paid,be home,,Recurring,Web
+2026-07-03,2026-07-01,No,Ben Landes,benjamin.landes37@gmail.com,+13213178228,Muze at Met,8.00,1.44,cancelled,be home,,One-Off,Web
+2026-07-03,2026-07-01,No,Ben Landes,benjamin.landes37@gmail.com,+13213178228,Muze at Met,119.00,19.98,paid,be home,,One-Off,Web
+2026-07-01,2026-07-01,No,Kelly Wyman,kellyrae164@aim.com,9546490246,The Hamilton,124.00,24.80,paid,use door code,,One-Off,Web
+2026-07-03,2026-06-30,No,Julio Coronado ,julio767400@gmail.com,+16613105812,Forma,116.00,20.00,cancelled,front desk access,,One-Off,Web
+2026-07-01,2026-06-30,No,Patrick O'Neil,patrickoneil95@gmail.com,+19788465833,Muze at Met,35.00,7.00,paid,be home,,One-Off,Web
+2026-07-06,2026-06-30,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-06,2026-06-30,No,Manuela Ester Stotter,manuela.e.stotter@gmail.com,2123006136,The Hamilton,168.00,0.00,paid,use door code,,One-Off,Web
+2026-07-02,2026-06-30,No,Hayley Elizabeth Gianoli,hayleygianoli@gmail.com,9172142606,The Hamilton,184.00,20.00,paid,be home,,One-Off,Web
+2026-07-03,2026-06-30,No,Andrews Rodriguez,noplansjustpunches@gmail.com,3058499049,Forma,116.00,23.20,paid,be home,,One-Off,Web
+2026-07-01,2026-06-30,No,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,81.00,0.00,completed,be home,,One-Off,Web
+2026-06-30,2026-06-30,No,tapan panel,tpatel89@live.com,7323479490,Bezel Miami,29.00,0.00,completed,front desk,,One-Off,Web
+2026-07-06,2026-06-30,Yes,Ileana Howe,ileanahowe.pa@gmail.com,6124026224,Paraiso Bayviews,32.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-30,2026-06-30,No,Michael blanco,blancomichael31@icloud.com,7864510990,Miami World Tower,12.00,0.00,paid,door unlocked,,One-Off,Web
+2026-08-07,2026-06-28,No,Maha Dallali,mahadallali88@gmail.com,2676007923,Bezel Miami,0.00,0.00,cancelled,be home,,One-Off,Web
+2026-06-30,2026-06-28,No,Chelsey Ribeiro,chelseyribeiro@hotmail.com,5615426653,Wynd 27,35.00,5.25,cancelled,be home,,One-Off,Web
+2026-06-29,2026-06-28,No,Denise,denisetorres981@hotmail.com,7862666322,Wynd 27,116.00,17.40,paid,use door code,,One-Off,Web
+2026-06-30,2026-06-28,No,Allison Ong,allison.ong07@gmail.com,7148145559,Wynd 27,150.00,22.50,cancelled,use door code,,One-Off,Web
+2026-07-02,2026-06-28,Yes,Calais ,cg@calaisgoord.com,+14243629951,Forma,88.00,16.50,paid,be home,,Recurring,Web
+2026-06-30,2026-06-27,No,Alejandra Planells,aleplanellsd@gmail.com,+13057752797,Forma,116.00,17.40,paid,be home,,One-Off,Web
+2026-07-01,2026-06-26,Yes,Francesca C,francescajen25@gmail.com,+16099604432,Muze at Met,143.00,50.00,paid,be home,,Recurring,Web
+2026-07-03,2026-06-26,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,40.00,10.72,completed,front desk,,Recurring,Web
+2026-07-02,2026-06-26,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-07-03,2026-06-26,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,front desk,,Recurring,Web
+2026-07-03,2026-06-26,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,incomplete payment,be home,,Recurring,Web
+2026-07-03,2026-06-26,Yes,Giles castle ,gilescastle@outlook.com,9175179232,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-07-07,2026-06-26,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,paid,door unlocked,,Recurring,Web
+2026-07-02,2026-06-26,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,29.00,0.00,paid,be home,,Recurring,Web
+2026-07-02,2026-06-26,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-01,2026-06-26,Yes,Karthik Paramasivam,karparam@gmail.com,2147170181,Bezel Miami,159.00,20.00,paid,be home,,Recurring,Web
+2026-06-30,2026-06-26,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,104.00,18.72,paid,front desk,,Recurring,Web
+2026-06-30,2026-06-26,Yes,Mackenzie Kellard,mackenziek13@gmail.com,9088921207,Forma,100.00,20.00,paid,front desk,,Recurring,Web
+2026-06-29,2026-06-26,Yes,Meghan Belfi,megbelfi@gmail.com,+15162411296,Muze at Met,215.00,25.00,paid,door unlocked,,Recurring,Web
+2026-06-29,2026-06-26,Yes,Lilia Bush,liliabushdvm@gmail.com,2244899348,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-06-29,2026-06-26,Yes,Josh Dolhin,joshua.dolchin@gmail.com,9543043146,The Hamilton,120.00,0.00,paid,use door code,,Recurring,Web
+2026-06-30,2026-06-26,Yes,Joel Audley Simpson,simpson.joel.audley@gmail.com,9176783864,Wynd 27,110.00,0.00,cancelled,be home,,Recurring,Web
+2026-07-01,2026-06-26,Yes,Joel Audley Simpson,simpson.joel.audley@gmail.com,9176783864,Wynd 27,126.00,0.00,paid,be home,,Recurring,Web
+2026-06-28,2026-06-26,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,incomplete payment,door unlocked,,Recurring,Web
+2026-07-02,2026-06-26,Yes,Valeria De Vivo,vaguirrermz@gmail.com,+19548150346,The Hamilton,81.00,0.00,paid,be home,,Recurring,Web
+2026-07-01,2026-06-26,Yes,Valeria De Vivo,vaguirrermz@gmail.com,+19548150346,The Hamilton,131.00,0.00,paid,be home,,Recurring,Web
+2026-06-26,2026-06-26,No,Colton Teitelbaum,coltonteitelbaum@aol.com,5163845837,Forma,116.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-26,2026-06-26,No,maia muniz moreno,maia_muniz@hotmail.com,6463849550,The Hamilton,190.00,28.50,refunded,be home,,One-Off,Web
+2026-06-30,2026-06-25,No,Frederick Speller,fred.speller@icloud.com,+16292352657,Muze at Met,12.00,2.40,cancelled,door unlocked,,One-Off,Web
+2026-07-01,2026-06-25,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,40.00,0.00,paid,door unlocked,,Recurring,Web
+2026-07-02,2026-06-25,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-07-02,2026-06-25,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-30,2026-06-25,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,171.04,0.00,paid,be home,,Recurring,Web
+2026-07-01,2026-06-25,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-07-02,2026-06-25,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,115.00,17.25,paid,be home,,One-Off,Web
+2026-06-29,2026-06-25,No,Teresa Martinez,teresamtz4@gmail.com,2108675929,Forma,116.00,15.00,paid,front desk access,,One-Off,Web
+2026-06-28,2026-06-25,No,Matthew ,elliston72@gmail.com,+18653000080,Bezel Miami,92.80,0.00,paid,locker,,One-Off,Web
+2026-07-03,2026-06-25,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,paid,be home,,Recurring,Web
+2026-06-25,2026-06-25,No,Frederick Speller,fred.speller@icloud.com,+16292352657,Muze at Met,116.00,23.20,incomplete payment,door unlocked,,One-Off,Web
+2026-07-02,2026-06-25,No,Alberto Bendjouia,abendjouia@gmail.com,3052064840,Forma,73.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-26,2026-06-24,Yes,Gabriel Hernandez,gabelilyrose@gmail.com,6262095532,Miami World Tower,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-30,2026-06-24,No,Heather Riley,funkyak13@hotmail.com,+14136950941,Bezel Miami,0.00,15.00,paid,be home,,One-Off,Web
+2026-06-29,2026-06-24,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
+2026-06-29,2026-06-24,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-06-29,2026-06-24,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-29,2026-06-24,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-25,2026-06-24,No,LUCIA KITTLEIN,mluciakittlein@gmail.com,7869314466,Forma,116.00,0.00,paid,be home,,One-Off,Web
+2026-06-24,2026-06-24,No,Kudrat Bajwa,bajwakudrat@yahoo.ca,4079996446,Forma,89.00,0.00,paid,be home,,One-Off,Web
+2026-06-30,2026-06-24,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,cancelled,door unlocked,,Recurring,Web
+2026-06-25,2026-06-24,No,Girish Prasad,girishvprasad@gmail.com,+13014661554,Muze at Met,27.00,0.00,in progress,door unlocked,,One-Off,Web
+2026-06-24,2026-06-24,No,Dayana Diaz,dayapacheco09@gmail.com,+17868868873,Wynd 27,35.00,5.25,payment waived,use door code,,One-Off,Web
+2026-06-24,2026-06-24,No,Raphael Colmanette,colmanette@hotmail.com,6154976415,Wynd 27,68.00,5.00,paid,door unlocked,,One-Off,Web
+2026-07-23,2026-06-23,No,Jeremy Gladstone,jeremy@gladstonemedia.ca,+14164208167,Forma,131.00,0.00,cancelled,front desk access,,One-Off,Web
+2026-07-14,2026-06-23,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,paid,be home,,Recurring,Web
+2026-07-23,2026-06-23,Yes,Jeremy Gladstone,jeremy@gladstonemedia.ca,+14164208167,Forma,119.00,15.60,paid,front desk access,,Recurring,Web
+2026-07-03,2026-06-23,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,53.60,0.00,paid,be home,,Recurring,Web
+2026-07-06,2026-06-23,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,payment waived,door unlocked,,Recurring,Web
+2026-06-26,2026-06-23,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-06-24,2026-06-23,Yes,Jason Fowler,jfowler515@gmail.com,+16314138141,Muze at Met,69.00,0.00,paid,be home,,Recurring,Web
+2026-06-25,2026-06-23,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,48.00,1.80,paid,be home,,One-Off,Web
+2026-06-23,2026-06-23,No,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,159.00,23.85,cancelled,door unlocked,,One-Off,Web
+2026-06-23,2026-06-23,No,Kendra Zonca,kendraestellez@gmail.com,6303019271,Forma,41.60,0.00,paid,front desk access,,One-Off,Web
+2026-06-25,2026-06-23,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,67.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-26,2026-06-23,Yes,Roberto Martinez Caballero,claims_brush_18@icloud.com,3056198411,Forma,107.00,16.05,paid,be home,,Recurring,Web
+2026-06-19,2026-06-22,No,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,52.00,0.00,paid,door unlocked,,One-Off,Web
+2026-07-23,2026-06-22,Yes,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,104.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-07-01,2026-06-22,Yes,Jian Martinez,jian.arceo@gmail.com,+17869993355,Bezel Miami,0.00,0.00,completed,be home,,Recurring,Web
+2026-06-22,2026-06-22,No,Tapan MWT,xman329+mwt@gmail.com,7323479490,Miami World Tower,1.00,0.00,cancelled,locker,,One-Off,Web
+2026-07-01,2026-06-22,No,Hamish Edridge,hamish.edridge@gmail.com,+13238916869,Forma,171.00,34.20,paid,be home,,One-Off,Web
+2026-06-22,2026-06-22,No,Chelsey Ribeiro,chelseyribeiro@hotmail.com,5615426653,Wynd 27,35.00,5.25,cancelled,be home,,One-Off,Web
+2026-06-25,2026-06-22,No,Cristian,ccts@hotmail.com,7865382427,Forma,55.00,0.00,paid,be home,,One-Off,Web
+2026-06-23,2026-06-22,No,Caleb Brenes,cbrenes2798@gmail.com,+16319659544,Forma,52.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-23,2026-06-22,No,Hanna,hanna.martetschlaeger@gmail.com,+17866126818,Forma,168.00,25.20,submitted,front desk access,,One-Off,Web
+2026-06-23,2026-06-22,No,juancarlos pena,pena0329@gmail.com,+17863563787,Muze at Met,135.15,0.00,paid,door unlocked,,One-Off,Web
+2026-06-30,2026-06-21,No,Maddy Drummond ,madelinedrummond7@gmail.com,+17322450815,Muze at Met,159.00,28.62,paid,be home,,One-Off,Web
+2026-06-22,2026-06-21,No,Alvaro,alvaro+wynwood25@justzingit.com,8626215884,Wynwood25,1.00,0.00,cancelled,locker,,One-Off,Web
+2026-06-22,2026-06-21,No,Mason Rippel,masonrippel@gmail.com,+16304705115,The Hamilton,246.00,0.00,cancelled,front desk,,One-Off,Web
+2026-06-29,2026-06-21,Yes,Maria Susana Lopez Gonzalez,mariasusanalopezg@gmail.com,+15618566438,Muze at Met,67.00,8.00,paid,front desk,,Recurring,Web
+2026-06-23,2026-06-21,Yes,Sebastian Andersen,sebastianjandersen1@gmail.com,3477294236,Forma,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-23,2026-06-21,No,Carolina Noviello,caronoviello@gmail.com,+13053072721,Muze at Met,0.00,0.00,completed,be home,,One-Off,Web
+2026-06-22,2026-06-21,No,Alvaro,alvaro+wynwood25@justzingit.com,8626215884,Wynwood25,1.00,0.00,cancelled,locker,,One-Off,Web
+2026-06-22,2026-06-20,No,Kuda Mushaike,kmushaike@gmail.com,9099299303,Forma,116.00,0.00,cancelled,be home,,One-Off,Web
+2026-06-25,2026-06-20,No,Rena Farquhar,rena.farquhar@gmail.com,+19176485497,Muze at Met,68.00,13.60,paid,be home,,One-Off,Web
+2026-06-23,2026-06-19,No,Daura Dutour,daura.dutour@gmail.com,+17868252603,Muze at Met,25.60,0.00,paid,be home,,One-Off,Web
+2026-06-24,2026-06-19,No,Alona,alyona.zubenko0802@gmail.com,7867029440,Bezel Miami,48.00,0.00,paid,be home,,One-Off,Web
+2026-06-19,2026-06-19,No,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,104.00,0.00,payment waived,door unlocked,,One-Off,Web
+2026-06-19,2026-06-19,Yes,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,99.00,10.00,paid,door unlocked,,Recurring,Web
+2026-06-22,2026-06-19,No,CHRIS GRAHAM,grahamchris829@gmail.com,5613854477,The Hamilton,55.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-22,2026-06-19,No,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,116.00,0.00,paid,door unlocked,,One-Off,Web
+2026-06-22,2026-06-18,No,tapan testing,xman329+test@gmail.com,1231231234,Bezel Miami,138.00,0.00,cancelled,front desk,,One-Off,Web
+2026-06-23,2026-06-18,No,Girish Prasad,girishvprasad@gmail.com,+13014661554,Muze at Met,104.00,0.00,submitted,be home,,One-Off,Web
+2026-06-22,2026-06-18,No,Frederick Speller,fred.speller@icloud.com,+16292352657,Muze at Met,0.00,0.00,completed,door unlocked,,One-Off,Web
+2026-06-19,2026-06-18,No,Girish Prasad,girishvprasad@gmail.com,+13014661554,Muze at Met,16.00,0.00,paid,be home,,One-Off,Web
+2026-06-18,2026-06-18,No,Girish Prasad,girishvprasad@gmail.com,+13014661554,Muze at Met,208.00,0.00,paid,be home,,One-Off,Web
+2026-06-24,2026-06-18,Yes,Hansel Taveras ,htaveras7@gmail.com,+17869607339,Bezel Miami,143.00,0.00,paid,be home,,Recurring,Web
+2026-06-19,2026-06-18,No,Yuehan Zhao,eazy0818023@gmail.com,3054849054,Wynd 27,35.00,0.00,incomplete payment,door unlocked,,One-Off,Web
+2026-06-19,2026-06-17,No,MICHAEL SEMPLE,michael.semple93@gmail.com,3059654949,Wynd 27,109.00,19.62,paid,use door code,,One-Off,Web
+2026-06-29,2026-06-17,No,Hanna Mykhalko ,hanna.mykhalko@gmail.com,6318827954,Miami World Tower,0.00,24.40,paid,be home,,One-Off,Web
+2026-07-20,2026-06-17,Yes,Christopher Brody,cbrody@aol.com,+16463394591,Forma,292.00,33.00,paid,be home,,Recurring,Web
+2026-06-19,2026-06-17,No,Mussi,mussi@peles.us,3477937751,Forma,81.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-12,2026-06-17,Yes,Daura Dutour,daura.dutour@gmail.com,+17868252603,Muze at Met,135.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-07-01,2026-06-17,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,83.20,15.60,paid,front desk,,Recurring,Web
+2026-06-26,2026-06-17,Yes,Maria Girguis,miromizo@gmail.com,3466239063,Wynd 28,104.00,0.00,incomplete payment,be home,,Recurring,Web
+2026-06-26,2026-06-17,Yes,Claudia Gonzalez ,claudia@endlesslylush.com,4072479878,The Hamilton,139.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
+2026-06-22,2026-06-17,No,juancarlos pena,pena0329@gmail.com,+17863563787,Muze at Met,124.00,5.00,cancelled,door unlocked,,One-Off,Web
+2026-06-26,2026-06-17,Yes,Daura Dutour,daura.dutour@gmail.com,+17868252603,Muze at Met,135.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Crystal Singh,crystal0712@icloud.com,9542256339,Bezel Miami,83.20,20.00,paid,door unlocked,,Recurring,Web
+2026-06-26,2026-06-17,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,40.00,10.72,paid,front desk,,Recurring,Web
+2026-06-26,2026-06-17,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,front desk,,Recurring,Web
+2026-07-06,2026-06-17,Yes,Ian fland,ianfland@yahoo.com,9173462789,Miami World Tower,104.00,0.00,paid,be home,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Christopher Schmitt,csschmitt40@gmail.com,5614417155,Forma,100.00,0.00,paid,front desk,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Noah Wolfson,noahwolfson@gmail.com,2482020101,The Hamilton,65.00,13.00,paid,be home,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,29.00,0.00,paid,be home,,Recurring,Web
+2026-06-24,2026-06-17,Yes,Alex Soriano,alexander16408@gmail.com,9548129197,The Hamilton,124.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-25,2026-06-17,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-24,2026-06-17,Yes,Maria Ermakova,mermakov@law.cardozo.yu.edu,+13479676807,Muze at Met,151.00,5.00,paid,be home,,Recurring,Web
+2026-06-24,2026-06-17,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-23,2026-06-17,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-07-01,2026-06-17,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,paid,front desk,,Recurring,Web
+2026-06-23,2026-06-17,Yes,Malin Enger ,mm-enger@hotmail.com,7867209475,Forma,71.00,0.00,paid,be home,,Recurring,Web
+2026-06-22,2026-06-17,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,paid,be home,,Recurring,Web
+2026-06-22,2026-06-17,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,incomplete payment,front desk,,Recurring,Web
+2026-06-22,2026-06-17,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-06-22,2026-06-17,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,scheduled,be home,,Recurring,Web
+2026-06-18,2026-06-17,No,Mussi,mussi@peles.us,3477937751,Forma,70.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-17,2026-06-16,No,Rena Farquhar,rena.farquhar@gmail.com,+19176485497,Muze at Met,68.00,13.60,cancelled,be home,,One-Off,Web
+2026-06-17,2026-06-16,No,Vanesa Cruz,jv.dorseycruz@gmail.com,4079148986,The Hamilton,28.00,5.60,paid,be home,,One-Off,Web
+2026-06-17,2026-06-16,No,Elie Oren,elie@adome.net,3054844858,The Hamilton,52.00,9.36,paid,be home,,One-Off,Web
+2026-06-18,2026-06-16,No,Nicholas Mina,nicholasmina@yahoo.com,4072847245,Forma,35.00,10.00,paid,front desk access,,One-Off,Web
+2026-06-17,2026-06-15,No,Nora Fanfalone,norafanfalone@gmail.com,+18506025930,Muze at Met,95.20,0.00,paid,be home,,One-Off,Web
+2026-06-18,2026-06-15,No,Kanika Grewal,kanikasethi@hotmail.com,+19253218811,Muze at Met,0.00,0.00,completed,be home,,One-Off,Web
+2026-06-16,2026-06-15,No,Ben Landes,benjamin.landes37@gmail.com,+13213178228,Muze at Met,0.00,0.00,completed,door unlocked,,One-Off,Web
+2026-06-19,2026-06-15,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,64.00,0.00,paid,be home,,Recurring,Web
+2026-06-16,2026-06-15,No,Kaley French,kaleygfrench@gmail.com,+12242214281,Muze at Met,0.00,2.00,paid,be home,,One-Off,Web
+2026-06-18,2026-06-15,No,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,64.00,0.00,cancelled,be home,,One-Off,Web
+2026-07-08,2026-06-15,Yes,Michelle Pratt,mekol19@gmail.com,8473022854,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-06-27,2026-06-15,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,99.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-16,2026-06-14,No,Erik Hallerstrom,eriknilshallerstrom@gmail.com,9197713327,Bezel Miami,116.00,0.00,paid,be home,,One-Off,Web
+2026-06-16,2026-06-14,No,Max Harlow,harlow2008@gmail.com,4124037876,Miami World Tower,0.00,0.00,incomplete payment,front desk access,,One-Off,Web
+2026-06-17,2026-06-14,Yes,Maria Ermakova,mermakov@law.cardozo.yu.edu,+13479676807,Muze at Met,151.00,5.00,paid,be home,,Recurring,Web
+2026-06-26,2026-06-13,No,Dani Silverman,daniellesilverman0@gmail.com,+12155121173,Muze at Met,159.00,0.00,paid,be home,,One-Off,Web
+2026-06-19,2026-06-13,Yes,Daura Dutour,daura.dutour@gmail.com,+17868252603,Muze at Met,159.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-06-19,2026-06-13,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,30.00,0.00,incomplete payment,front desk,,Recurring,Web
+2026-06-22,2026-06-13,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,paid,be home,,Recurring,Web
+2026-06-19,2026-06-13,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,cancelled,use door code,,Recurring,Web
+2026-06-19,2026-06-13,Yes,Richard Holton,richardholton@me.com,5617976181,Wynd 27,46.00,0.00,cancelled,use door code,,Recurring,Web
+2026-06-19,2026-06-13,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-06-18,2026-06-13,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,paid,door unlocked,,Recurring,Web
+2026-06-18,2026-06-13,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-18,2026-06-13,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-18,2026-06-13,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-06-18,2026-06-13,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-16,2026-06-13,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,paid,door unlocked,,Recurring,Web
+2026-06-19,2026-06-13,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,paid,be home,,Recurring,Web
+2026-06-16,2026-06-13,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,paid,be home,,Recurring,Web
+2026-06-18,2026-06-13,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,83.20,15.60,paid,front desk,,Recurring,Web
+2026-06-15,2026-06-13,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-06-15,2026-06-13,Yes,Sherry Wilson,sherry.sherii@gmail.com,2104266304,Forma,146.00,0.00,cancelled,front desk,,Recurring,Web
+2026-06-15,2026-06-13,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-15,2026-06-13,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-16,2026-06-13,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,104.00,0.00,incomplete payment,front desk,,Recurring,Web
+2026-06-15,2026-06-13,No,Hamish Edridge,hamish.edridge@gmail.com,+13238916869,Forma,205.20,34.20,refunded,be home,,One-Off,Web
+2026-06-22,2026-06-12,No,Laura Buck,lbuck1@tulane.edu,+12257737663,Muze at Met,40.00,8.00,paid,be home,,One-Off,Web
+2026-06-17,2026-06-12,Yes,Sanal K,sanalkaram0@gmail.com,+13238421519,Muze at Met,116.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-15,2026-06-12,No,Alexander,acxix92@gmail.com,7036069396,Bezel Miami,116.00,0.00,paid,be home,,One-Off,Web
+2026-06-16,2026-06-12,No,Dawn Price,dlprice2200@gmail.com,+13216890599,Muze at Met,0.00,10.00,paid,front desk,,One-Off,Web
+2026-06-15,2026-06-12,Yes,Andres Henao,andreshenaoo1997@gmail.com,7042532929,Miami World Tower,69.00,0.00,paid,be home,,Recurring,Web
+2026-06-18,2026-06-12,No,Raquel Garcia,raquelgar15@icloud.com,+19547025219,Muze at Met,116.00,23.20,paid,be home,,One-Off,Web
+2026-06-19,2026-06-12,Yes,Maritza Malnati,malnati22@gmail.com,+19549930784,Muze at Met,110.00,0.00,payment waived,door unlocked,,Recurring,Web
+2026-06-15,2026-06-12,Yes,Meghan Belfi,megbelfi@gmail.com,+15162411296,Muze at Met,200.00,25.00,paid,door unlocked,,Recurring,Web
+2026-06-18,2026-06-11,No,Naz Mitrani,nazdipcin@gmail.com,7868934539,Paraiso Bayviews,152.80,0.00,paid,front desk access,,One-Off,Web
+2026-06-12,2026-06-11,No,Clara,cruz.claris@gmail.com,3057900264,The Hamilton,158.70,20.70,refunded,be home,,One-Off,Web
+2026-06-18,2026-06-11,No,Alexis ,apuhlick@gmail.com,3059161298,Forma,0.00,0.00,completed,be home,,One-Off,Web
+2026-06-29,2026-06-11,Yes,Ariane Lima,ariane.lima@icloud.com,3057937119,Miami World Tower,155.00,0.00,paid,be home,,Recurring,Web
+2026-06-11,2026-06-11,No,Max Harlow,harlow2008@gmail.com,4124037876,Miami World Tower,133.40,17.40,cancelled,be home,,One-Off,Web
+2026-06-17,2026-06-11,Yes,Christopher Brody,cbrody@aol.com,+16463394591,Forma,253.00,33.00,paid,be home,,Recurring,Web
+2026-06-11,2026-06-11,No,Colton Teitelbaum,coltonteitelbaum@aol.com,5163845837,Forma,8.00,1.60,cancelled,front desk access,,One-Off,Web
+2026-06-12,2026-06-11,No,Ashley,bathijaashley@gmail.com,5164676379,Miami World Tower,73.00,20.00,paid,be home,,One-Off,Web
+2026-06-11,2026-06-10,No,Caleb Brenes,cbrenes2798@gmail.com,+16319659544,Forma,116.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-26,2026-06-10,No,Skylar Deahl ,skylardeahl@gmail.com,3038598049,Miami World Tower,116.00,0.00,submitted,front desk access,,One-Off,Web
+2026-06-22,2026-06-10,No,Caleb Brenes,cbrenes2798@gmail.com,+16319659544,Forma,116.00,0.00,paid,be home,,One-Off,Web
+2026-06-11,2026-06-10,No,Lindsay Rober,lindsay.j.rober@gmail.com,+17815343863,Miami World Tower,182.85,23.85,paid,door unlocked,,One-Off,Web
+2026-06-15,2026-06-10,No,Kuda Mushaike,kmushaike@gmail.com,9099299303,Forma,48.00,0.00,refunded,be home,,One-Off,Web
+2026-06-16,2026-06-10,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,50.40,11.70,paid,be home,,One-Off,Web
+2026-06-19,2026-06-10,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,front desk,,Recurring,Web
+2026-06-17,2026-06-10,Yes,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-10,2026-06-10,No,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,133.40,17.40,paid,door unlocked,,One-Off,Web
+2026-06-10,2026-06-10,No,Colton Teitelbaum,coltonteitelbaum@aol.com,5163845837,Forma,131.00,0.00,paid,front desk access,,One-Off,Web
+2026-06-09,2026-06-09,No,Alvaro,alvaro+muze@justzingit.com,+18626215884,Muze at Met,8.00,0.00,completed,front desk,,One-Off,Web
+2026-06-09,2026-06-09,No,Alvaro De Jesus,alvaro+bezel@justzingit.com,8626215884,Bezel Miami,1.00,0.00,submitted,front desk,,One-Off,Web
+2026-06-10,2026-06-09,No,Alexandria Bilder,alexandria.bilder@gmail.com,+17174711677,Forma,39.00,4.00,paid,be home,,One-Off,Web
+2026-06-10,2026-06-09,No,Vanessa Perez,perez.vanessa08@gmail.com,3052407253,The Hamilton,201.60,33.60,paid,be home,,One-Off,Web
+2026-06-11,2026-06-09,No,Courtney Albini ,courtneyelizabethruns@gmail.com,6505215055,Miami World Tower,29.90,3.90,paid,door unlocked,,One-Off,Web
+2026-07-02,2026-06-09,Yes,Sacha hirel,hirel.sacha@gmail.com,+13053939988,Paraiso Bayviews,104.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-06-11,2026-06-09,No,Hunter,lampleyhunter@gmail.com,5139101711,Forma,124.00,0.00,paid,be home,,One-Off,Web
+2026-06-09,2026-06-09,Yes,Sebastian Andersen,sebastianjandersen1@gmail.com,3477294236,Forma,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-09,2026-06-09,No,Natalia Nigh ,nnigh@zrsmanagement.com,+19182847976,Muze at Met,0.00,0.00,completed,be home,,One-Off,Web
+2026-06-11,2026-06-09,No,Vamshi .,vamshi0343@gmail.com,2482196468,Miami World Tower,0.00,0.00,paid,be home,,One-Off,Web
+2026-06-10,2026-06-09,No,Diego Proano,diegoproano89@gmail.com,7752230950,Forma,20.00,5.00,paid,front desk,,One-Off,Web
+2026-07-07,2026-06-08,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-11,2026-06-08,No,Fernan,fernantoro@gmail.com,7707579567,Miami World Tower,103.40,17.40,paid,be home,,One-Off,Web
+2026-06-24,2026-06-08,No,David Pretty,davidpretty10@gmail.com,3057670865,Forma,137.00,0.00,incomplete payment,front desk,,One-Off,Web
+2026-06-10,2026-06-08,No,Hanne Yoon,ahyoon31@gmail.com,9496169462,Forma,0.00,0.00,completed,front desk,,One-Off,Web
+2026-06-12,2026-06-08,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-06-12,2026-06-08,Yes,Landon,chalden23@gmail.com,4707607347,Wynd 27,99.00,0.00,cancelled,use door code,,Recurring,Web
+2026-06-09,2026-06-08,Yes,Michael blanco,blancomichael31@icloud.com,7864510990,Miami World Tower,135.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-06-09,2026-06-08,Yes,Michael blanco,blancomichael31@icloud.com,7864510990,Miami World Tower,135.00,0.00,cancelled,door unlocked,,Recurring,Web
+2026-06-23,2026-06-08,No,Kendra Zonca,kendraestellez@gmail.com,6303019271,Forma,35.00,0.00,paid,be home,,One-Off,Web
+2026-06-10,2026-06-08,No,Cristian,ccts@hotmail.com,7865382427,Forma,52.00,0.00,cancelled,be home,,One-Off,Web
+2026-06-08,2026-06-08,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,67.20,10.72,incomplete payment,front desk,,Recurring,Web
+2026-06-12,2026-06-08,No,Ana Besu,abesu@verizon.net,2022705723,The Hamilton,52.00,8.00,refunded,be home,,One-Off,Web
+2026-06-08,2026-06-07,No,Qiu ping ni,qiupingni@gmail.com,9178187003,Wynd 27,116.00,0.00,cancelled,door unlocked,,One-Off,Web
+2026-06-11,2026-06-07,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-08,2026-06-07,Yes,Lewis Rogerson,rogersonlewis@gmail.com,7866588337,Forma,3.00,0.00,paid,be home,,Recurring,Web
+2026-06-08,2026-06-07,No,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,55.00,0.00,paid,be home,,One-Off,Web
+2026-06-08,2026-06-06,No,Joel Audley Simpson,simpson.joel.audley@gmail.com,9176783864,Wynd 27,62.00,0.00,paid,door unlocked,,One-Off,Web
+2026-06-08,2026-06-06,No,Craig Kaplan ,kaplan_craig@hotmail.com,7818881810,Paraiso Bayviews,148.00,0.00,paid,be home,,One-Off,Web
+2026-06-08,2026-06-06,No,Neal Huey ,neal.huey@gmail.com,8435325163,Bezel Miami,138.00,0.00,paid,be home,,One-Off,Web
+2026-06-09,2026-06-06,No,Alexandra Pronin,alexandrapronin@gmail.com,2677463569,Forma,82.80,10.80,paid,be home,,One-Off,Web
+2026-06-12,2026-06-06,Yes,Maria Girguis,miromizo@gmail.com,3466239063,Wynd 28,104.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-12,2026-06-06,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,171.00,0.00,incomplete payment,front desk,,Recurring,Web
+2026-06-12,2026-06-06,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-06-18,2026-06-06,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,16.00,0.00,paid,use door code,,Recurring,Web
+2026-06-17,2026-06-06,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,121.60,0.00,paid,front desk,,Recurring,Web
+2026-06-12,2026-06-06,Yes,Crystal Singh,crystal0712@icloud.com,9542256339,Bezel Miami,104.00,20.00,paid,door unlocked,,Recurring,Web
+2026-06-11,2026-06-06,Yes,Joseph Bovino,joebovino@gmail.com,3104259933,The Hamilton,110.00,16.50,cancelled,be home,,Recurring,Web
+2026-06-11,2026-06-06,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-11,2026-06-06,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,29.00,0.00,paid,be home,,Recurring,Web
+2026-06-11,2026-06-06,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-10,2026-06-06,Yes,Alex Soriano,alexander16408@gmail.com,9548129197,The Hamilton,124.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-10,2026-06-06,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-06-08,2026-06-06,Yes,Sherry Wilson,sherry.sherii@gmail.com,2104266304,Forma,146.00,0.00,paid,front desk,,Recurring,Web
+2026-06-11,2026-06-06,Yes,Melissa Konstantas,melissa.konstantas@gmail.com,4168902195,Forma,100.00,0.00,paid,front desk,,Recurring,Web
+2026-06-08,2026-06-06,Yes,Erika Peitersen,eapeitersen@gmail.com,8135797586,Forma,110.00,16.50,paid,front desk,,Recurring,Web
+2026-06-15,2026-06-05,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,paid,be home,,Recurring,Web
+2026-06-10,2026-06-05,No,Cristian,ccts@hotmail.com,7865382427,Forma,107.00,0.00,paid,be home,,One-Off,Web
+2026-06-09,2026-06-04,Yes,Manuela Stotter,newhearthliving@gmail.com,2123006136,The Hamilton,176.00,0.00,paid,use door code,,Recurring,Web
+2026-06-04,2026-06-03,No,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,139.00,10.00,paid,door unlocked,,One-Off,Web
+2026-06-04,2026-06-03,Yes,Gene Solovyev,gsolovyev@gmail.com,+18189616669,Forma,126.50,16.50,paid,be home,,Recurring,Web
+2026-06-04,2026-06-02,Yes,Sacha hirel,hirel.sacha@gmail.com,+13053939988,Paraiso Bayviews,74.00,15.00,paid,be home,,Recurring,Web
+2026-06-05,2026-06-02,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,38.00,0.00,completed,front desk,,Recurring,Web
+2026-06-03,2026-06-02,No,Audrey Santamaria-Lindo,audrey.santamaria@gmail.com,3477381757,Forma,164.00,0.00,completed,be home,,One-Off,Web
+2026-06-02,2026-06-02,No,Max Harlow,harlow2008@gmail.com,4124037876,Miami World Tower,17.40,17.40,refunded,be home,,One-Off,Web
+2026-06-29,2026-06-02,Yes,Isaac Tripp,gardner.tripp@gmail.com,,Forma,151.00,0.00,paid,be home,,Recurring,Web
+2026-06-02,2026-06-02,Yes,Michael blanco,blancomichael31@icloud.com,7864510990,Miami World Tower,135.00,0.00,submitted,door unlocked,,Recurring,Web
+2026-06-02,2026-06-02,No,Gabriela Milla,gabriela.milla13@gmail.com,3053389181,Wynd 27,7.00,4.00,paid,use door code,,One-Off,Web
+2026-06-05,2026-06-02,No,Álvaro QA P,alvaro+qaforma@justzingit.com,(862) 621-5884,Forma,1.00,0.00,cancelled,front desk,,One-Off,Web
+2026-06-03,2026-06-02,No,Oliver Hackl,oh.olihackl@gmail.com,7869397461,Forma,148.00,0.00,paid,front desk,,One-Off,Web
+2026-06-12,2026-06-02,No,Álvaro QA P,alvaro+qaforma@justzingit.com,(862) 621-5884,Forma,1.00,0.00,cancelled,use door code,,One-Off,Web
+2026-06-08,2026-06-02,No,Kelly Wyman,kellyrae164@aim.com,9546490246,The Hamilton,183.00,36.60,paid,be home,,One-Off,Web
+2026-06-05,2026-06-02,No,Mateo  Pulido,mpulido12@gmail.com,+13055903060,Bezel Miami,186.45,27.45,paid,be home,,One-Off,Web
+2026-07-31,2026-06-01,No,Alvaro,alvaro+forma@justzingit.com,8626215884,Forma,1.00,0.00,cancelled,be home,,One-Off,Web
+2026-06-08,2026-06-01,Yes,Tapan MWT,xman329+mwt@gmail.com,7323479490,Miami World Tower,125.00,0.00,cancelled,front desk,,Recurring,Web
+2026-08-15,2026-06-01,Yes,Alvaro,alvaro+forma@justzingit.com,8626215884,Forma,113.00,0.00,scheduled,use door code,,Recurring,Web
+2026-08-01,2026-06-01,Yes,Alvaro,alvaro+forma@justzingit.com,8626215884,Forma,153.00,0.00,payment waived,use door code,,Recurring,Web
+2026-06-02,2026-06-01,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,171.00,0.00,completed,front desk,,Recurring,Web
+2026-06-02,2026-06-01,No,Vanesa Cruz,jv.dorseycruz@gmail.com,4079148986,The Hamilton,20.00,0.00,paid,be home,,One-Off,Web
+2026-06-03,2026-06-01,No,Jose Maria Ajkay,ajkay209@gmail.com,3059042150,The Hamilton,276.00,20.00,paid,door unlocked,,One-Off,Web
+2026-06-04,2026-06-01,Yes,Omar Reynoso,o.reynoso777@gmail.com,+12017790079,Miami World Tower,58.00,0.00,paid,be home,,Recurring,Web
+2026-06-01,2026-05-31,Yes,tapan panel,tpatel89@live.com,7323479490,Bezel Miami,1.00,0.00,completed,front desk,,Recurring,Web
+2026-06-02,2026-05-31,No,Dayana Diaz,dayapacheco09@gmail.com,+17868868873,Wynd 27,40.00,5.00,paid,front desk,,One-Off,Web
+2026-06-01,2026-05-31,Yes,tapan patel,tpatel89@live.com,7323479490,Bezel Miami,9.00,0.00,completed,use door code,,Recurring,Web
+2026-06-04,2026-05-31,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,paid,door unlocked,,Recurring,Web
+2026-06-02,2026-05-31,No,Jay Babu,abchess1@yahoo.com,7752290723,Wynd 27,0.00,0.00,completed,use door code,,One-Off,Web
+2026-06-16,2026-05-29,Yes,Noah Krupnick,krupnicknmk@gmail.com,9735908664,Forma,122.72,18.72,paid,front desk,,Recurring,Web
+2026-07-24,2026-05-29,No,Harrison Epstein,hepstein1@gmail.com,6096388979,The Hamilton,52.00,10.40,paid,be home,,One-Off,Web
+2026-06-03,2026-05-29,Yes,Karthik Paramasivam,karparam@gmail.com,2147170181,Bezel Miami,20.00,20.00,paid,be home,,Recurring,Web
+2026-06-03,2026-05-29,No,Griffin King,kcongriff@aol.com,2039457646,Forma,146.32,22.32,paid,front desk,,One-Off,Web
+2026-05-29,2026-05-29,No,Elvira Zamora,elvirazamorax@gmail.com,7866063933,Wynd 28,26.00,0.00,paid,use door code,,One-Off,Web
+2026-06-05,2026-05-28,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,cancelled,be home,,Recurring,Web
+2026-06-05,2026-05-28,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-06-05,2026-05-28,Yes,Samantha Jerring,teamsamanthajerring@gmail.com,7206330868,The Hamilton,113.00,20.00,cancelled,door unlocked,,Recurring,Web
+2026-06-15,2026-05-28,Yes,Yitong Liu,skyeliu@outlook.com,6613438210,Forma,110.00,16.50,paid,front desk,,Recurring,Web
+2026-06-05,2026-05-28,Yes,selen,selenbenhabib9@gmail.com,3054133500,Bezel Miami,110.00,18.00,cancelled,door unlocked,,Recurring,Web
+2026-06-05,2026-05-28,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-06-05,2026-05-28,Yes,Giles castle ,gilescastle@outlook.com,9175179232,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-06-04,2026-05-28,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-02,2026-05-28,Yes,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,104.00,15.60,paid,door unlocked,,Recurring,Web
+2026-06-03,2026-05-28,Yes,Sherry Wilson,sherry.sherii@gmail.com,2104266304,Forma,146.00,0.00,cancelled,front desk,,Recurring,Web
+2026-06-01,2026-05-28,Yes,Julia Perfetto,contact@juliaperfetto.com,4168039494,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-06-03,2026-05-28,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,136.04,0.00,paid,be home,,Recurring,Web
+2026-06-02,2026-05-28,Yes,Ian & Mercedes Greenberg,ian@newlifefurniture.com,7863488650,The Hamilton,93.00,0.00,paid,be home,,Recurring,Web
+2026-05-29,2026-05-28,Yes,Josh Dolhin,joshua.dolchin@gmail.com,9543043146,The Hamilton,120.00,0.00,paid,use door code,,Recurring,Web
+2026-06-01,2026-05-28,Yes,Lilia Bush,liliabushdvm@gmail.com,2244899348,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-06-12,2026-05-28,Yes,Ian fland,ianfland@yahoo.com,9173462789,Miami World Tower,115.00,0.00,paid,be home,,Recurring,Web
+2026-06-03,2026-05-28,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-05-29,2026-05-28,Yes,Gabriel Hernandez,gabelilyrose@gmail.com,6262095532,Miami World Tower,151.00,0.00,submitted,be home,,Recurring,Web
+2026-05-29,2026-05-27,No,Ryan Mikols,ryantmikols@gmail.com,3058907869,Forma,232.00,0.00,cancelled,front desk,,One-Off,Web
+2026-05-29,2026-05-27,No,Eric Martinez,ericmm2121@gmail.com,7867025880,Wynd 27,116.00,23.20,cancelled,front desk,,One-Off,Web
+2026-05-27,2026-05-27,No,Dorota Firek,firekdorota@gmail.com,3127143670,Forma,105.00,0.00,paid,be home,,One-Off,Web
+2026-05-28,2026-05-27,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-05-27,2026-05-27,No,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,front desk,,One-Off,Web
+2026-06-01,2026-05-26,Yes,Briana Castillo,brianafurgon02@gmail.com,9739107101,Wynwood25,54.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-05,2026-05-26,No,Jack McLaughlin,jackmclaughlin948@gmail.com,(901) 219-4282,Miami World Tower,5.00,5.00,paid,be home,,One-Off,Web
+2026-06-04,2026-05-26,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-06-04,2026-05-26,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-06-04,2026-05-26,No,Chrisanda Grandell ,cdgrandell@gmail.com,6025411319,Forma,201.60,33.60,paid,be home,,One-Off,Web
+2026-05-29,2026-05-26,Yes,Landon,chalden23@gmail.com,4707607347,Wynd 27,99.00,0.00,cancelled,use door code,,Recurring,Web
+2026-05-26,2026-05-26,No,Alexis ,apuhlick@gmail.com,3059161298,Forma,139.20,23.20,paid,be home,,One-Off,Web
+2026-05-26,2026-05-26,No,claudia gold,claud334@gmail.com,5615048461,Wynwood25,116.00,20.88,cancelled,be home,,One-Off,Web
+2026-05-29,2026-05-26,No,Isabella Amoroso,iamoroso0922@gmail.com,2392074763,The Hamilton,94.00,17.40,paid,use door code,,One-Off,Web
+2026-05-26,2026-05-25,No,Naz Mitrani,nazdipcin@gmail.com,7868934539,Paraiso Bayviews,129.00,0.00,paid,be home,,One-Off,Web
+2026-05-27,2026-05-25,No,Nicholas Mina,nicholasmina@yahoo.com,4072847245,Forma,45.00,10.00,paid,front desk,,One-Off,Web
+2026-05-27,2026-05-25,Yes,Sebastian Andersen,sebastianjandersen1@gmail.com,3477294236,Forma,151.00,0.00,submitted,be home,,Recurring,Web
+2026-06-04,2026-05-25,No,Courtney Albini ,courtneyelizabethruns@gmail.com,6505215055,Miami World Tower,29.00,0.00,paid,front desk,,One-Off,Web
+2026-05-28,2026-05-24,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,141.00,0.00,completed,front desk,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Karina Brunoro,brunoro.karina@gmail.com,7542764880,Bezel Miami,104.00,6.00,paid,be home,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Crystal Singh,crystal0712@icloud.com,9542256339,Bezel Miami,104.00,20.00,paid,door unlocked,,Recurring,Web
+2026-05-28,2026-05-24,Yes,Michael Thoennes,michaelt205@gmail.com,3058015961,The Hamilton,33.00,0.00,paid,door unlocked,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Tyler Nieves ,trn2691@msn.com,7192162059,Forma,104.00,15.60,paid,front desk,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Roberto Martinez Caballero,claims_brush_18@icloud.com,3056198411,Forma,107.00,16.05,cancelled,be home,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Roque Garcia,roque345@gmail.com,5616990650,Forma,54.00,0.00,cancelled,be home,,Recurring,Web
+2026-05-29,2026-05-24,Yes,Virginia,virginia@interex-group.com,3058898837,Forma,104.00,0.00,paid,front desk,,Recurring,Web
+2026-05-25,2026-05-24,Yes,Erick Alvarez,erickalvarez1950@gmail.com,9199850122,Forma,37.00,0.00,paid,door unlocked,,Recurring,Web
+2026-05-28,2026-05-24,Yes,Christopher Schmitt,csschmitt40@gmail.com,5614417155,Forma,100.00,0.00,paid,front desk,,Recurring,Web
+2026-05-28,2026-05-24,Yes,Noah Wolfson,noahwolfson@gmail.com,2482020101,The Hamilton,125.00,23.40,paid,be home,,Recurring,Web
+2026-05-27,2026-05-24,Yes,Kudrat Bajwa,bajwakudrat@yahoo.ca,4079996446,Forma,26.00,0.00,paid,be home,,Recurring,Web
+2026-05-25,2026-05-24,Yes,Sherry Wilson,sherry.sherii@gmail.com,2104266304,Forma,146.00,0.00,cancelled,front desk,,Recurring,Web
+2026-05-25,2026-05-24,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
+2026-05-26,2026-05-24,Yes,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
+2026-05-26,2026-05-24,Yes,Etty Friesel ,etty1011@gmail.com,8454615540,Forma,47.00,0.00,paid,be home,,Recurring,Web
+2026-05-26,2026-05-24,Yes,Roque Garcia,roque345@gmail.com,5616990650,Forma,54.00,8.10,cancelled,be home,,Recurring,Web
+2026-05-26,2026-05-24,Yes,Malin Enger ,mm-enger@hotmail.com,7867209475,Forma,71.00,0.00,cancelled,be home,,Recurring,Web
+2026-05-26,2026-05-24,No,Ashley,bathijaashley@gmail.com,5164676379,Wynd 27,65.00,0.00,paid,be home,,One-Off,Web
+2026-05-26,2026-05-23,Yes,Michael blanco,blancomichael31@icloud.com,7864510990,Miami World Tower,0.00,0.00,paid,door unlocked,,Recurring,Web
+2026-05-26,2026-05-23,No,Enrique Gollas,egollas@gmail.com,3054966086,Paraiso Bayviews,0.00,15.00,submitted,be home,,One-Off,Web
+2026-05-22,2026-05-22,No,Charles McStocker,cmcstocker@gmail.com,9174453779,The Hamilton,72.00,0.00,paid,be home,,One-Off,Web
+2026-05-22,2026-05-21,No,Camila Zitelli,camizitelli@gmail.com,3477030650,The Hamilton,122.00,0.00,paid,front desk,,One-Off,Web
+2026-05-28,2026-05-21,No,Julia Niki,nikitenkojulia2@gmail.com,9729461538,Paraiso Bayviews,164.00,0.00,paid,be home,,One-Off,Web
+2026-05-27,2026-05-21,Yes,Alex Soriano,alexander16408@gmail.com,9548129197,The Hamilton,124.00,0.00,paid,be home,,Recurring,Web
+2026-05-27,2026-05-21,No,CHRIS GRAHAM,grahamchris829@gmail.com,5613854477,The Hamilton,91.00,0.00,paid,front desk,,One-Off,Web
+2026-05-21,2026-05-21,No,Marc Anthony Peters,marcanthonyjr2@gmail.com,4129831024,Bezel Miami,134.00,10.00,paid,be home,,One-Off,Web
+2026-05-22,2026-05-21,No,Kelly Wyman,kellyrae164@aim.com,9546490246,The Hamilton,175.20,29.20,paid,be home,,One-Off,Web
+2026-05-26,2026-05-20,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,cancelled,be home,,Recurring,Web
+2026-05-26,2026-05-20,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,135.00,0.00,paid,be home,,Recurring,Web
+2026-05-22,2026-05-20,No,Lauren Rachel Masuzzo,maslauren320@gmail.com,9545368481,Forma,29.90,3.90,paid,be home,,One-Off,Web
+2026-05-20,2026-05-20,No,Shannon,shannonmarycasey@gmail.com,3054968139,The Hamilton,55.00,8.25,submitted,be home,,One-Off,Web
+2026-05-20,2026-05-20,No,Lourdes,lourdesruhstaller@gmail.com,3057474258,The Hamilton,52.00,0.00,submitted,be home,,One-Off,Web
+2026-05-21,2026-05-20,No,Renata  Sullivan,renata.sullivan19@gmail.com,9844441667,Forma,144.00,21.60,paid,front desk,,One-Off,Web
+2026-05-20,2026-05-20,No,Colton Teitelbaum,coltonteitelbaum@aol.com,5163845837,Forma,66.00,11.00,paid,front desk,,One-Off,Web
+2026-05-22,2026-05-19,No,Melina Amaro,amaromelina@gmail.com,9546042696,Miami World Tower,6.80,4.80,paid,be home,,One-Off,Web
+2026-05-22,2026-05-19,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,38.00,0.00,incomplete payment,front desk,,Recurring,Web
+2026-05-25,2026-05-19,No,Brandon Benitah,benitah.b@live.fr,6173860941,Bezel Miami,0.00,0.00,paid,be home,,One-Off,Web
+2026-05-21,2026-05-19,No,Karla Beltran,karlabeltran971@gmail.com,7863186840,Miami World Tower,0.00,0.00,paid,be home,,One-Off,Web
+2026-05-23,2026-05-19,No,Sophia ,sophiasarkis@me.com,3109093496,Forma,116.00,0.00,cancelled,front desk,,One-Off,Web
+2026-05-20,2026-05-19,No,Calvin,personalchefcalvin@gmail.com,4043766772,Miami World Tower,0.00,0.00,paid,door unlocked,,One-Off,Web
+2026-05-20,2026-05-19,No,Omar Reynoso,omar@reynassets.com,2017790079,Miami World Tower,0.00,0.00,paid,door unlocked,,One-Off,Web
+2026-05-20,2026-05-19,No,Jonathan Shapiro,askjonfree@gmail.com,3055051046,Miami World Tower,0.00,0.00,cancelled,be home,,One-Off,Web
+2026-05-21,2026-05-19,Yes,Daniela Mounts,kdanielamounts@gmail.com,3367457201,The Hamilton,113.00,22.60,paid,door unlocked,,Recurring,Web
+2026-05-19,2026-05-19,Yes,Anthony Ross,anthonyrossblunt@gmail.com,6466179224,Forma,156.00,0.00,paid,front desk,,Recurring,Web
+2026-05-20,2026-05-19,No,Jilleane Lopez,jilleanemonique@gmail.com,+1 (305) 951-8069,Bezel Miami,116.00,17.40,cancelled,door unlocked,,One-Off,Web
+2026-05-27,2026-05-19,Yes,Maria Girguis,miromizo@gmail.com,3466239063,Wynd 28,104.00,0.00,paid,be home,,Recurring,Web
+2026-05-20,2026-05-18,No,Vanesa Cruz,jv.dorseycruz@gmail.com,4079148986,The Hamilton,79.00,0.00,paid,be home,,One-Off,Web
+2026-05-18,2026-05-18,No,Alex Soriano,alexander16408@gmail.com,9548129197,The Hamilton,113.00,0.00,paid,be home,,One-Off,Web
+2026-05-26,2026-05-17,Yes,Sherry Wilson,sherry.sherii@gmail.com,2104266304,Forma,146.00,0.00,paid,front desk,,Recurring,Web
+2026-05-25,2026-05-17,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,paid,front desk,,Recurring,Web
+2026-05-22,2026-05-17,Yes,Roberto Martinez Caballero,claims_brush_18@icloud.com,3056198411,Forma,107.00,16.05,paid,be home,,Recurring,Web
+2026-05-28,2026-05-17,Yes,Daniella Espinoza,daniella.j.espinoza@gmail.com,5108827492,The Hamilton,191.00,0.00,paid,be home,,Recurring,Web
+2026-05-21,2026-05-17,Yes,Landon,chalden23@gmail.com,4707607347,Wynd 27,99.00,0.00,incomplete payment,use door code,,Recurring,Web
+2026-05-21,2026-05-17,No,Shany Marianowsky,shanymarianowsky@gmail.com,3057940584,The Hamilton,114.00,0.00,paid,front desk,,One-Off,Web
+2026-05-22,2026-05-17,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-05-22,2026-05-17,Yes,Richard Holton,richardholton@me.com,5617976181,Wynd 27,46.00,0.00,paid,use door code,,Recurring,Web
+2026-05-22,2026-05-17,Yes,Rodolfo Sanchez,roddarsan@gmail.com,6465997299,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
+2026-05-22,2026-05-17,Yes,Nicolas Garcia,nicodg610@gmail.com,7864515601,Wynd 28,100.00,15.00,cancelled,use door code,,Recurring,Web
+2026-06-01,2026-05-17,Yes,Samantha Jerring,teamsamanthajerring@gmail.com,7206330868,The Hamilton,113.00,20.00,completed,door unlocked,,Recurring,Web
+2026-05-22,2026-05-17,Yes,Roque Garcia,roque345@gmail.com,5616990650,Forma,54.00,0.00,submitted,be home,,Recurring,Web
+2026-05-22,2026-05-17,Yes,Andrews Rodriguez,noplansjustpunches@gmail.com,3058499049,Forma,104.00,20.80,incomplete payment,front desk,,Recurring,Web
+2026-05-18,2026-05-16,No,Carlos Gabriel Hernandez,cghm.abaddon@gmail.com,7866028593,Bezel Miami,122.00,0.00,paid,be home,,One-Off,Web
+2026-05-29,2026-05-16,Yes,Eric Martinez,ericmm2121@gmail.com,7867025880,Wynd 27,116.00,10.00,paid,front desk,,Recurring,Web
+2026-05-15,2026-05-15,No,David Leiter,dgleiter@gmail.com,9172974894,Forma,52.00,0.00,paid,front desk,,One-Off,Web
+2026-05-18,2026-05-14,Yes,Thais Pulliam,thaispulliam@gmail.com,7868770116,Miami World Tower,105.00,0.00,paid,be home,,Recurring,Web
+2026-05-26,2026-05-14,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,cancelled,front desk,,Recurring,Web
+2026-05-28,2026-05-14,Yes,Natalie B,nataliebu@mac.com,9548307936,Forma,54.00,0.00,paid,front desk,,Recurring,Web
+2026-07-23,2026-05-14,Yes,,gardner.tripp@gmail.com,,Forma,151.00,0.00,cancelled,be home,,Recurring,Web
+2026-06-16,2026-05-14,Yes,,gardner.tripp@gmail.com,,Forma,151.00,0.00,paid,be home,,Recurring,Web
+2026-05-18,2026-05-14,Yes,Maria Girguis,miromizo@gmail.com,3466239063,Wynd 28,104.00,0.00,paid,be home,,Recurring,Web
+2026-05-30,2026-05-14,No,Jordan Caraballo,jnicky0314@gmail.com,2158289572,The Hamilton,272.00,30.00,cancelled,use door code,,One-Off,Web
+2026-05-20,2026-05-14,Yes,Michelle Pratt,mekol19@gmail.com,8473022854,The Hamilton,136.00,0.00,paid,be home,,Recurring,Web
+2026-05-15,2026-05-14,No,Gary Filipp,gary.filipp@gmail.com,3123168133,Forma,35.00,0.00,paid,front desk,,One-Off,Web
+2026-05-18,2026-05-14,Yes,Stu Gower,stu.gower@redbull.com,9292264501,Miami World Tower,85.00,10.00,paid,be home,,Recurring,Web
+2026-05-20,2026-05-14,No,Lea Serrano,leaserrano95@gmail.com,7862020681,The Hamilton,181.00,19.00,cancelled,be home,,One-Off,Web
+2026-05-29,2026-05-13,Yes,Claudia Gonzalez ,claudia@endlesslylush.com,4072479878,The Hamilton,139.00,0.00,cancelled,be home,,Recurring,Web
+2026-05-29,2026-05-13,Yes,Lea dooms ,leadooms@yahoo.com,9256422233,The Hamilton,20.00,0.00,paid,use door code,,Recurring,Web
+2026-05-30,2026-05-13,Yes,Manuela Stotter,newhearthliving@gmail.com,2123006136,The Hamilton,136.00,0.00,cancelled,use door code,,Recurring,Web
+2026-05-14,2026-05-13,No,Jose castellanos,josecastellanosofficial@gmail.com,7862955981,Bezel Miami,88.55,11.55,paid,be home,,One-Off,Web
+2026-06-02,2026-05-13,Yes,Roque Garcia,roque345@gmail.com,5616990650,Forma,54.00,8.10,cancelled,be home,,Recurring,Web
+2026-06-02,2026-05-13,Yes,Mackenzie Kellard,mackenziek13@gmail.com,9088921207,Forma,100.00,20.00,paid,front desk,,Recurring,Web
+2026-05-14,2026-05-13,No,Megan Davies,daviesmegan@rocketmail.com,7734109487,Forma,3.00,0.00,paid,front desk,,One-Off,Web
+2026-05-21,2026-05-12,Yes,Dylan Alhanati,dylanalhanati@gmail.com,9512401223,Forma,104.00,0.00,paid,be home,,Recurring,Web
+2026-05-21,2026-05-12,No,Hunter,lampleyhunter@gmail.com,5139101711,Forma,126.00,10.00,paid,front desk,,One-Off,Web
