@@ -8,6 +8,8 @@
       de esta misma carpeta y ejecuta la función setup() una vez.
    2. Implementar → Nueva implementación → App web → Acceso: cualquier persona.
    3. Pega la URL /exec en SHEET_ENDPOINT abajo. Nada más cambia en la app.
+   Tras certificarse, cada lección diaria se guarda en rec.lessons[fecha] y se
+   envía como evento "lesson_complete" (pestaña Lessons de la hoja).
    Escritura con mode:'no-cors' (fire-and-forget): si falla, el progreso local
    nunca se pierde. Lectura con GET ?phone= para recuperar el progreso cuando
    la persona entra desde otro dispositivo.                                    */
@@ -103,6 +105,10 @@ window.SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxd9Y6R3lrr5vrt
           Object.keys(srv.done || {}).forEach(function (id) {
             if (!rec.done[id]) rec.done[id] = srv.done[id];
           });
+          rec.lessons = rec.lessons || {};
+          Object.keys(srv.lessons || {}).forEach(function (d) {
+            if (!rec.lessons[d]) rec.lessons[d] = srv.lessons[d];
+          });
           write(db);
           return rec;
         })
@@ -128,6 +134,23 @@ window.SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxd9Y6R3lrr5vrt
         wrong: info.wrong || 0, questions: info.questions || 0,
         totalDone: Object.keys(rec.done).length, ts: now
       });
+      return rec;
+    },
+
+    /* Lección diaria completada (solo tras la certificación). Una por fecha (Miami). */
+    lesson: function (phone, dateStr, lesson, answerIdx, correct) {
+      var db = read(), p = normPhone(phone), rec = db.cleaners[p];
+      if (!rec) return null;
+      rec.lessons = rec.lessons || {};
+      if (rec.lessons[dateStr]) return rec;
+      var now = new Date().toISOString();
+      rec.lessons[dateStr] = { lessonId: lesson.id, title: lesson.t.es, answer: answerIdx,
+                               answerText: lesson.q.opts[answerIdx].es, correct: !!correct, ts: now };
+      rec.lastAt = now;
+      write(db);
+      push({ event: "lesson_complete", phone: p, name: rec.name, date: dateStr, lessonId: lesson.id,
+             title: lesson.t.es, answer: answerIdx, answerText: lesson.q.opts[answerIdx].es,
+             correct: !!correct, ts: now });
       return rec;
     },
 
