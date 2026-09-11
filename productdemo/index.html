@@ -391,15 +391,56 @@ document.addEventListener('DOMContentLoaded', async function() {
         btn.__wired = true;
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
-          // Find and hide the intro overlay
-          var el = btn.parentNode;
-          while (el && el !== document.body) {
-            var cs = window.getComputedStyle(el);
-            if (cs.position === 'fixed' || cs.position === 'absolute') {
-              el.style.display = 'none';
-              return;
+          // Mirror what closeIntro() does in the x-dc script:
+          // this.setState({intro:false, tab:'home'})
+          // window.__zingTourPending = true
+          // window.dispatchEvent(new Event('zing-start-tour'))
+          
+          // Step 1: Find the React component instance and call setState
+          // React stores internals on DOM nodes as __reactFiber$ or _reactInternal
+          var rootEl = document.querySelector('[data-reactroot]') || document.getElementById('root') || document.body.firstElementChild;
+          var fiber = null;
+          if (rootEl) {
+            var keys = Object.keys(rootEl);
+            for (var i = 0; i < keys.length; i++) {
+              if (keys[i].startsWith('__reactFiber') || keys[i].startsWith('__reactInternalInstance')) {
+                fiber = rootEl[keys[i]];
+                break;
+              }
             }
-            el = el.parentNode;
+          }
+          
+          // Step 2: Try to find and call the component setState
+          // Walk fiber tree to find component with intro state
+          function findAndSetState(f, depth) {
+            if (!f || depth > 50) return false;
+            if (f.stateNode && f.stateNode.setState) {
+              var st = f.stateNode.state;
+              if (st && 'intro' in st) {
+                f.stateNode.setState({intro: false, tab: 'home'});
+                return true;
+              }
+            }
+            return findAndSetState(f.child, depth+1) || findAndSetState(f.sibling, depth+1);
+          }
+          
+          var found = fiber ? findAndSetState(fiber, 0) : false;
+          
+          // Step 3: Always dispatch the tour event regardless
+          window.__zingTourPending = true;
+          try { window.dispatchEvent(new Event('zing-start-tour')); } catch(e) {}
+          
+          // Step 4: If React setState didn't work, hide the overlay as fallback
+          if (!found) {
+            var el = btn.parentNode;
+            while (el && el !== document.body) {
+              var cs = window.getComputedStyle(el);
+              if (cs.position === 'fixed' || cs.position === 'absolute') {
+                el.style.display = 'none';
+                break;
+              }
+              el = el.parentNode;
+            }
           }
         }, true);
       }
