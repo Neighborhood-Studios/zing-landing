@@ -1,6 +1,6 @@
 /* Zing Onboarding v2 · app
    Vía 1 "Cómo Operamos" (ops.js) + Vía 2 "Manual de Limpieza" (sops.js + quiz.js).
-   Al completar los 26 módulos se desbloquean, en la misma URL:
+   Incluye "Productos esenciales" (5 módulos core de products.js). Al completar todos los módulos se desbloquean, en la misma URL:
    · Hoy — lección diaria (lessons.js)   · Tareas — buscador de SOPs (sops.jsx)
    · Preguntar — Pregúntale al manual (ask.jsx + qa.js)
    Identidad y progreso vía store.js (localStorage + Google Sheets). */
@@ -37,6 +37,11 @@ const MODULES = [].concat(
     kind: "ops", track: "ops", id: c.id, n: i + 1, t: c.t, icon: c.icon,
     mins: c.mins, lead: c.lead, blocks: c.blocks, quiz: c.quiz
   })),
+  /* Productos esenciales (products.js, core:true): los 5 productos que más daño hacen mal usados. Cuentan para el certificado. */
+  ((window.PRODUCTS_TRACK || {}).modules || []).filter(c => c.core).map((c, i) => ({
+    kind: "ops", track: "essentials", id: c.id, n: i + 1, t: c.t, icon: c.icon, img: c.img,
+    mins: c.mins || 4, lead: c.lead, blocks: c.blocks || [], quiz: c.quiz || []
+  })),
   window.SOPS.map((s, i) => ({
     kind: "task", track: "tasks", id: s.id, n: i + 1, t: s.t.es, icon: s.icon,
     mins: 4, sop: s, quiz: window.TASK_QUIZ[s.id] || []
@@ -44,18 +49,20 @@ const MODULES = [].concat(
 );
 const OPS_N = window.OPS.length;
 const TASKS_N = window.SOPS.length;
+const ESS_N = MODULES.filter(m => m.track === "essentials").length;
+const CORE_TRACKS = ["ops", "essentials", "tasks"];
 const TOTAL = MODULES.length; /* módulos del onboarding inicial → certificado */
 
 /* Vías adicionales (tracks.js): educación continua, no cuentan para el certificado. */
 const EXTRA = window.EXTRA_TRACKS || [];
-const EXTRA_MODULES = [].concat.apply([], EXTRA.map(tr => (tr.modules || []).map((c, i) => ({
-  kind: "ops", track: tr.key, id: c.id, n: i + 1, t: c.t, icon: c.icon,
+const EXTRA_MODULES = [].concat.apply([], EXTRA.map(tr => (tr.modules || []).filter(c => !c.core).map((c, i) => ({
+  kind: "ops", track: tr.key, id: c.id, n: i + 1, t: c.t, icon: c.icon, img: c.img,
   mins: c.mins || 4, lead: c.lead, blocks: c.blocks || [], quiz: c.quiz || []
 }))));
 const ALL_MODULES = MODULES.concat(EXTRA_MODULES);
 
 /* ---- Programa diario: una lección por día, en este orden ----
-   Parte 3 Seguridad e Higiene → Parte 4 Profesionalismo → Parte 5 → las 10 lecciones del Manual → Parte 1 → Parte 2.
+   Parte 3 Seguridad e Higiene → Parte 4 Profesionalismo → Parte 5 Productos → Parte 6 → las 10 lecciones del Manual → Parte 1 → Parte 2.
    Cada módulo se convierte en una lección de un día con UNA pregunta de su quiz. Al terminar, vuelve a empezar. */
 const modToDaily = (m, part) => ({
   kind: "module", id: "m:" + m.id, mod: m, part: part, emoji: m.kind === "ops" ? m.icon : null, icon: m.kind === "ops" ? null : m.icon,
@@ -64,12 +71,13 @@ const modToDaily = (m, part) => ({
 });
 const TRACKS = [
   { key: "ops", icon: "🔑", label: "Parte 1 · Cómo Operamos", blurb: "Qué pasa antes, durante y después de cada visita." },
+  { key: "essentials", icon: "🧴", label: "Productos esenciales", blurb: "Los 5 productos que más daño hacen si se usan mal." },
   { key: "tasks", icon: "🧼", label: "Parte 2 · Manual de Limpieza", blurb: "Cómo se ejecuta cada tarea, paso a paso." }
 ];
 const DAILY = [].concat(
   EXTRA_MODULES.map(m => modToDaily(m, (EXTRA.find(tr => tr.key === m.track) || {}).label || "")),
   LESSONS.map(l => ({ kind: "lesson", id: "l:" + l.id, lesson: l, part: "Manual de Limpieza", icon: l.icon, t: l.t, qs: [l.q] })),
-  MODULES.map(m => modToDaily(m, m.track === "ops" ? TRACKS[0].label : TRACKS[1].label))
+  MODULES.map(m => modToDaily(m, (TRACKS.find(tr => tr.key === m.track) || {}).label || ""))
 ).filter(it => it.qs.length);
 const dailyFor = (rec, dateStr) => {
   const d = dayDiff(dateStr, startDateFor(rec));
@@ -79,7 +87,7 @@ const dailyFor = (rec, dateStr) => {
 };
 
 const doneCount = (rec, track) =>
-  ALL_MODULES.filter(m => (!track ? m.track === "ops" || m.track === "tasks" : m.track === track) && rec.done[m.id]).length;
+  ALL_MODULES.filter(m => (!track ? CORE_TRACKS.indexOf(m.track) >= 0 : m.track === track) && rec.done[m.id]).length;
 
 const firstName = n => String(n || "").trim().split(/\s+/)[0] || "";
 
@@ -233,7 +241,7 @@ function TrackList({ tr, rec, nextMod, onOpen, collapsible }) {
             return (
               <button key={m.id} className={"mrow" + (isDone ? " mrow--done" : "") + (isNext ? " mrow--next" : "")} onClick={() => onOpen(m.id)}>
                 <span className="mrow__ic">
-                  {m.kind === "ops" ? <em style={{ fontStyle: "normal" }}>{m.icon}</em> : <img src={m.icon} alt="" />}
+                  {m.img ? <img className="mrow__photo" src={m.img} alt="" /> : m.kind === "ops" ? <em style={{ fontStyle: "normal" }}>{m.icon}</em> : <img src={m.icon} alt="" />}
                 </span>
                 <span className="mrow__txt">
                   <b>{m.t}</b>
@@ -321,7 +329,7 @@ function Home({ rec, onOpen, onOut, onCert, onToday, graduated }) {
             <div className="segs">
               {MODULES.map((m, i) => (
                 <React.Fragment key={m.id}>
-                  {i === OPS_N ? <i className="sep"></i> : null}
+                  {i === OPS_N || i === OPS_N + ESS_N ? <i className="sep"></i> : null}
                   <i className={rec.done[m.id] ? "on" : ""}></i>
                 </React.Fragment>
               ))}
@@ -457,6 +465,28 @@ function TaskBody({ sop }) {
   );
 }
 
+/* Foto de producto ampliable: toca para ver la etiqueta a tamaño completo. */
+function ProductFigure({ mod }) {
+  const [zoom, setZoom] = useState(false);
+  useEffect(() => { if (!zoom) return; const k = e => { if (e.key === "Escape") setZoom(false); }; window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k); }, [zoom]);
+  if (!mod.img) return <div className="figure"><em>{mod.icon}</em></div>;
+  return (
+    <div>
+      <button type="button" className="figure figure--photo" onClick={() => setZoom(true)} aria-label="Ver la etiqueta en grande">
+        <img src={mod.img} alt="" />
+        <span className="figure__hint">Toca para ver la etiqueta</span>
+      </button>
+      {zoom && (
+        <div className="zoom" onClick={() => setZoom(false)} role="dialog" aria-label={mod.t}>
+          <button type="button" className="zoom__close" aria-label="Cerrar">✕</button>
+          <div className="zoom__scroll"><img src={mod.img.replace(/\.webp$/, "") + ".webp"} alt={mod.t} onClick={e => e.stopPropagation()} /></div>
+          <div className="zoom__cap">{mod.t}<small>Pellizca para acercar · toca afuera para cerrar</small></div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Module({ mod, onExit, onPass }) {
   const [phase, setPhase] = useState("read");
   const [checks, setChecks] = useState({});
@@ -492,8 +522,8 @@ function Module({ mod, onExit, onPass }) {
           {phase === "read" ? (
             mod.kind === "ops" ? (
               <div>
-                <div className="figure"><em>{mod.icon}</em></div>
-                <div className="eyebrow">{"Parte 1 · Módulo " + mod.n + " de " + OPS_N}</div>
+                <ProductFigure mod={mod} />
+                <div className="eyebrow">{((TRACKS.concat(EXTRA).find(tr => tr.key === mod.track) || {}).label || "Parte 1 · Cómo Operamos") + " · Módulo " + mod.n + " de " + ALL_MODULES.filter(m => m.track === mod.track).length}</div>
                 <h2>{mod.t}</h2>
                 <p className="lead">{mod.lead}</p>
                 <Blocks blocks={mod.blocks} checks={checks} toggle={k => setChecks(c => Object.assign({}, c, { [k]: !c[k] }))} />
@@ -566,8 +596,8 @@ function Confetti() {
 function Done({ rec, mod, onNext, onHome }) {
   const done = doneCount(rec);
   const nextMod = MODULES.find(m => !rec.done[m.id]);
-  const core = mod.track === "ops" || mod.track === "tasks";
-  const trackDone = core && doneCount(rec, mod.track) === (mod.track === "ops" ? OPS_N : TASKS_N);
+  const core = CORE_TRACKS.indexOf(mod.track) >= 0;
+  const trackDone = core && doneCount(rec, mod.track) === MODULES.filter(m => m.track === mod.track).length;
   return (
     <div className="screen">
       <Confetti />
@@ -575,7 +605,7 @@ function Done({ rec, mod, onNext, onHome }) {
         <div className="fin__badge">{trackDone ? "🏅" : "✓"}</div>
         <h2>{trackDone ? (mod.track === "ops" ? "Terminaste Cómo Operamos" : "Terminaste el Manual de Limpieza") : "Módulo completado"}</h2>
         <p>{trackDone
-          ? (mod.track === "ops" ? "Ya sabes cómo se ve una visita Zing completa. Ahora vamos tarea por tarea." : "Conoces cada tarea del servicio, paso a paso.")
+          ? (mod.track === "ops" ? "Ya sabes cómo se ve una visita Zing completa. Ahora, los productos que más cuidado piden." : mod.track === "essentials" ? "Conoces los productos que más daño hacen mal usados. Ahora vamos tarea por tarea." : "Conoces cada tarea del servicio, paso a paso.")
           : mod.t}</p>
         <div className="fin__stat">{"📈 " + done + " de " + TOTAL + " módulos completados"}</div>
         {nextMod ? (
@@ -602,7 +632,7 @@ function Certificate({ rec, onHome }) {
         <h2>Entrenamiento completado</h2>
         <div className="cert__name">{rec.name}</div>
         <div className="cert__rule"></div>
-        <p>Completó los {TOTAL} módulos del onboarding Zing: cómo operamos en cada visita y el Manual de Limpieza completo.</p>
+        <p>Completó los {TOTAL} módulos del onboarding Zing: cómo operamos en cada visita, los productos esenciales y el Manual de Limpieza completo.</p>
         <p style={{ color: "#8FA391", fontSize: 12.5 }}>{fecha}</p>
         <button className="btn" onClick={onHome}>Volver a mi progreso</button>
       </div>
@@ -724,7 +754,7 @@ function Lesson({ rec, lang, viewDate, onExit, onDone }) {
               </div>
             ) : lesson.mod.kind === "ops" ? (
               <div>
-                <div className="figure"><em>{lesson.mod.icon}</em></div>
+                <ProductFigure mod={lesson.mod} />
                 <div className="eyebrow">{t.lesson + " · " + t.day + " " + lesson.dayN + " · " + lesson.part}</div>
                 <h2>{lesson.mod.t}</h2>
                 <p className="lead">{lesson.mod.lead}</p>

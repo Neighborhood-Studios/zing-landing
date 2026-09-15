@@ -2,7 +2,7 @@
    Se muestran en "Mi entrenamiento" debajo de Parte 1 y Parte 2. Mismo formato que ops.js:
    { id, t, icon, mins, lead, blocks:[…], quiz:[…] }. Bloques: p · h · check · rule(do|dont) · say · note.
    Mientras un track no tenga módulos, la app muestra "Contenido en preparación".
-   Parte 3 sigue las recomendaciones del CDC (limpieza ambiental, higiene de manos) y OSHA (químicos). */
+   Parte 5 (Productos) vive en products.js y debe cargarse ANTES de este archivo. Parte 3 sigue las recomendaciones del CDC (limpieza ambiental, higiene de manos) y OSHA (químicos). */
 window.EXTRA_TRACKS = [
 { key: "safety", icon: "🛡️", label: "Parte 3 · Seguridad e Higiene", blurb: "Protocolos para cuidarte a ti, al hogar y al cliente.",
   modules: [
@@ -448,7 +448,8 @@ window.EXTRA_TRACKS = [
      why:"Limpiar es lo que hacemos. La confianza es lo que hace que nos inviten de vuelta."}
   ]}
   ]},
-{ key: "grow", icon: "🌱", label: "Parte 5 · Hacer Crecer tu Edificio", blurb: "Cómo promover Zing dentro de tu edificio. Crecerlo es tu responsabilidad.",
+window.PRODUCTS_TRACK || { key: "products", label: "Parte 5 · Productos", icon: "🧴", blurb: "Contenido en preparación.", modules: [] },
+{ key: "grow", icon: "🌱", label: "Parte 6 · Hacer Crecer tu Edificio", blurb: "Cómo promover Zing dentro de tu edificio. Crecerlo es tu responsabilidad.",
   modules: [
 { id:"gr-staff", icon:"🤝", mins:4,
   t:"Gánate al equipo del edificio",
@@ -568,7 +569,7 @@ window.EXTRA_TRACKS = [
       "Mantente cerca: si alguien pregunta, respondes con la frase central"
     ]},
     {k:"rule", tone:"dont", title:"Nunca", items:[
-      "Dejar el carrito donde el edificio lo prohíbe: sigue las reglas de la Parte 5, lección 2",
+      "Dejar el carrito donde el edificio lo prohíbe: sigue las reglas de la Parte 6, lección 2",
       "Dejarlo desordenado o con basura a la vista",
       "Dejarlo sin supervisión por mucho tiempo si el edificio lo pide"
     ]},
