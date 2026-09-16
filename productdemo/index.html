@@ -419,5 +419,35 @@ document.addEventListener('DOMContentLoaded', async function() {
 })();
 </script>
 
+
+<script>
+(function() {
+  var LOOM_URL = 'https://www.loom.com/share/08c1b72da3eb4651b31d480f66c7d774';
+  function interceptLoomBtn() {
+    document.querySelectorAll('button, a').forEach(function(el) {
+      if (el.__loomWired) return;
+      var txt = (el.textContent || el.innerText || '').trim().toLowerCase();
+      if (txt.includes('investor') || txt.includes('loom') || 
+          (txt.includes('watch') && (txt.includes('video') || txt.includes('demo') || txt.includes('investor')))) {
+        el.__loomWired = true;
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.open(LOOM_URL, '_blank');
+        });
+      }
+    });
+  }
+  var iv = setInterval(interceptLoomBtn, 200);
+  setTimeout(function() { clearInterval(iv); }, 60000);
+  if (typeof MutationObserver !== 'undefined') {
+    var ob = new MutationObserver(interceptLoomBtn);
+    document.addEventListener('DOMContentLoaded', function() {
+      ob.observe(document.body || document.documentElement, {childList:true,subtree:true});
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
