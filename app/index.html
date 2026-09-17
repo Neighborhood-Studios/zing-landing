@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Open Zing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f4f2e8;--text:#33525c;--t2:rgba(51,82,92,0.58);--accent:#badcc3}
+body{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:32px 24px;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.card{max-width:420px;text-align:center}
+h1{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:400;letter-spacing:-.03em;margin-bottom:12px}
+p{font-size:15px;line-height:1.6;color:var(--t2);margin-bottom:28px}
+.btns{display:flex;flex-direction:column;align-items:center;gap:12px}
+a{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--text);padding:14px 28px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;min-width:220px}
+a.ghost{background:transparent;border:1px solid rgba(51,82,92,0.18)}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Open Zing</h1>
+  <p>If the app is installed it should open automatically. Otherwise grab it from the store.</p>
+  <div class="btns">
+    <a href="justzingit://app">Open the app</a>
+    <a class="ghost" href="https://apps.apple.com/app/id6755075803">App Store</a>
+    <a class="ghost" href="https://play.google.com/store/apps/details?id=com.justzingit.android">Google Play</a>
+  </div>
+</div>
+<script>
+  window.setTimeout(function () {
+    window.location.href = "justzingit://app";
+  }, 400);
+</script>
+</body>
+</html>
