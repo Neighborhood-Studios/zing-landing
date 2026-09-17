@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.justzingit.android",
+      "sha256_cert_fingerprints": [
+        "BB:E4:FE:55:57:21:DA:81:1B:82:A1:24:7F:69:8C:C9:33:D7:27:57:13:E8:A9:C2:DD:5A:98:79:A7:53:D5:C4"
+      ]
+    }
+  }
+]
