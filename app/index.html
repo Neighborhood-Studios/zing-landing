@@ -23,15 +23,21 @@ a.ghost{background:transparent;border:1px solid rgba(51,82,92,0.18)}
   <h1>Open Zing</h1>
   <p>If the app is installed it should open automatically. Otherwise grab it from the store.</p>
   <div class="btns">
-    <a href="justzingit://app">Open the app</a>
+    <a href="justzingit:///app">Open the app</a>
     <a class="ghost" href="https://apps.apple.com/app/id6755075803">App Store</a>
     <a class="ghost" href="https://play.google.com/store/apps/details?id=com.justzingit.android">Google Play</a>
   </div>
 </div>
 <script>
-  window.setTimeout(function () {
-    window.location.href = "justzingit://app";
-  }, 400);
+  (function () {
+    var ua = navigator.userAgent || "";
+    // Telegram / in-app browsers ignore Universal Links; wait for the button
+    // so we don't bounce into a broken justzingit://app host.
+    if (/Telegram|FBAN|FBAV|Instagram/i.test(ua)) return;
+    window.setTimeout(function () {
+      window.location.href = "justzingit:///app";
+    }, 400);
+  })();
 </script>
 </body>
 </html>
