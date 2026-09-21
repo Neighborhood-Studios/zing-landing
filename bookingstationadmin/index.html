@@ -1,0 +1,161 @@
+<!-- @dsCard group="Internal Tools" viewport="1280x860" name="Booking stations · Admin" subtitle="Edits every kiosk's schedule, stats, popular tasks and screen rotation via the Stations sheet" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zing · Booking stations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="../kiosk-shared/kiosk-config.js"></script>
+<style>
+:root{--ink:#1D2E32;--ink2:#3C4D4E;--mute:#647271;--faint:#8A9492;--cream:#F5F1E8;--paper:#FBF9F4;--line:#E6DECF;--line2:#ECE4D5;--sage:#C9D8C2;--sage2:#DCE6D4;--green:#4F7C5C;--green2:#5F7A63;--amber:#B27D3A;--amber2:#F4EAD4;--red:#A85149}
+*{box-sizing:border-box}html,body{margin:0;background:var(--cream);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-size:14px;line-height:1.45}
+a{color:var(--green2)}a:hover{color:var(--ink)}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+.top{display:flex;align-items:center;gap:16px;padding:16px 28px;border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:5}
+.top h1{margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:24px;letter-spacing:-.02em}
+.top .sub{color:var(--mute);font-size:13px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.04em}
+.badge.live{background:#E2EEE3;color:var(--green)}.badge.off{background:var(--amber2);color:var(--amber)}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.who{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--mute);font-size:13px}
+.who input{width:150px;background:var(--line2);border:none;border-radius:10px;padding:8px 12px}
+.wrap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;padding:24px 28px 120px;max-width:1240px;margin:0 auto}
+@media (max-width:820px){.wrap{grid-template-columns:1fr}}
+.list{display:flex;flex-direction:column;gap:8px;align-content:start}
+.st{display:flex;flex-direction:column;gap:6px;text-align:left;width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer}
+.st:hover{border-color:#C9C2B4}.st.on{background:var(--sage2);border-color:var(--sage)}
+.st b{font-family:'Newsreader',serif;font-weight:400;font-size:19px}
+.st .m{color:var(--mute);font-size:12.5px}
+.st .pills{display:flex;gap:4px;flex-wrap:wrap}
+.pill{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:999px;background:var(--line2);color:var(--faint)}
+.pill.on{background:#E2EEE3;color:var(--green)}
+.form{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.card h2{margin:0 0 4px;font-family:'Newsreader',serif;font-weight:400;font-size:20px}
+.card .hint{color:var(--mute);font-size:12.5px;margin-bottom:14px}
+.row{display:grid;grid-template-columns:52px minmax(0,1fr) 110px 90px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line2)}
+.row:first-of-type{border-top:none}
+.row .lbl b{display:block;font-weight:600}.row .lbl span{color:var(--mute);font-size:12.5px}
+.row .prev{font-size:12.5px;font-weight:600;text-decoration:none;text-align:right}
+.tog{width:46px;height:27px;border-radius:999px;border:none;background:#DDD6C7;position:relative;cursor:pointer;padding:0}
+.tog span{position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:var(--paper);transition:left .15s}
+.tog.on{background:var(--green)}.tog.on span{left:22px}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:640px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g5{grid-template-columns:repeat(3,minmax(0,1fr))}.row{grid-template-columns:52px minmax(0,1fr) 90px}.row .prev{display:none}}
+.f label{display:block;font-size:12.5px;color:var(--ink2);margin-bottom:5px}
+.f input,.f select{width:100%;background:var(--line2);border:1px solid transparent;border-radius:12px;padding:10px 12px;outline:none}
+.f input:focus,.f select:focus{border-color:var(--sage);background:var(--paper)}
+.f input.num,.row input{text-align:center;font-variant-numeric:tabular-nums}
+.row input{width:100%;background:var(--line2);border:none;border-radius:10px;padding:8px 10px}
+.day{text-align:center}.day .n{font-family:'Newsreader',serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.day input{font-size:22px;padding:12px 0;font-family:'Newsreader',serif}
+.foot{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);padding:14px 28px;display:flex;align-items:center;gap:14px;z-index:5}
+.foot .msg{color:var(--mute);font-size:13px;flex:1}
+.foot .msg.ok{color:var(--green)}.foot .msg.err{color:var(--red)}
+.btn{background:var(--ink);color:var(--cream);border:none;border-radius:999px;padding:12px 22px;font-weight:600;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.warn{background:var(--amber2);border:1px solid #E6D2A8;border-radius:16px;padding:12px 16px;font-size:13px;color:var(--ink2)}
+.warn code{background:rgba(0,0,0,.05);padding:1px 5px;border-radius:5px}
+.stamp{color:var(--faint);font-size:12px;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="top">
+<div><h1>Booking stations</h1><div class="sub">What each lobby kiosk shows. Saves go to the Stations sheet; kiosks pick them up at the top of the hour.</div></div>
+<span id="live" class="badge off"><span class="dot"></span>connecting…</span>
+<label class="who">Your name <input id="who" placeholder="e.g. Maria"></label>
+</div>
+<div class="wrap">
+<div class="list" id="list"></div>
+<div class="form" id="form"></div>
+</div>
+<div class="foot"><div class="msg" id="msg">Pick a station.</div><button class="btn ghost" id="reload">Reload from sheet</button><button class="btn" id="save" disabled>Save changes</button></div>
+<script>
+const K = window.ZingKiosk, $ = s => document.querySelector(s);
+const DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri']];
+let rows = {}, live = false, cur = null, draft = null, dirty = false;
+const who = $('#who'); who.value = localStorage.getItem('zing.kiosk.admin.who') || ''; who.oninput = () => localStorage.setItem('zing.kiosk.admin.who', who.value);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const when = v => { if (!v) return ''; const d = new Date(v); return isNaN(d) ? String(v) : d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }); };
+const kioskUrl = (slug, screen) => '../' + slug + '/' + (screen ? '?screen=' + screen : '');
+
+function setMsg(t, cls) { const m = $('#msg'); m.textContent = t; m.className = 'msg' + (cls ? ' ' + cls : ''); }
+function setDirty(v) { dirty = v; $('#save').disabled = !v || !cur; if (v) setMsg('Unsaved changes.'); }
+
+async function load() {
+  $('#live').className = 'badge off'; $('#live').innerHTML = '<span class="dot"></span>connecting…';
+  const r = await K.fetchAll(); rows = r.rows; live = r.live;
+  $('#live').className = 'badge ' + (live ? 'live' : 'off');
+  $('#live').innerHTML = '<span class="dot"></span>' + (live ? 'sheet connected' : (K.ENDPOINT ? 'sheet unreachable · showing defaults' : 'no sheet yet · showing defaults'));
+  if (!cur) cur = K.STATIONS[0].slug;
+  draft = JSON.parse(JSON.stringify(rows[cur])); setDirty(false);
+  renderList(); renderForm();
+}
+
+function renderList() {
+  $('#list').innerHTML = K.STATIONS.map(s => {
+    const r = rows[s.slug];
+    const pills = K.SCREENS.map(sc => `<span class="pill ${r['show_' + sc.id] ? 'on' : ''}">${esc(sc.label)}</span>`).join('');
+    return `<button class="st ${s.slug === cur ? 'on' : ''}" data-slug="${s.slug}"><b>${esc(r.building)}</b><div class="m">${esc(r.cleaner_name)} · ${[r.mon,r.tue,r.wed,r.thu,r.fri].join(' ')} spots · ★ ${esc(r.rating)}</div><div class="pills">${pills}</div>${r.updated_at ? `<div class="stamp">updated ${esc(when(r.updated_at))}${r.updated_by ? ' by ' + esc(r.updated_by) : ''}</div>` : ''}</button>`;
+  }).join('');
+  document.querySelectorAll('.st').forEach(b => b.onclick = () => {
+    if (dirty && !confirm('Discard unsaved changes?')) return;
+    cur = b.dataset.slug; draft = JSON.parse(JSON.stringify(rows[cur])); setDirty(false); setMsg('Editing ' + rows[cur].building + '.'); renderList(); renderForm();
+  });
+}
+
+const opt = (list, v, label) => list.map(x => `<option value="${x.id}" ${x.id === v ? 'selected' : ''}>${esc(label(x))}</option>`).join('');
+function renderForm() {
+  const d = draft;
+  const taskNames = K.TASKS.map(t => t.name);
+  $('#form').innerHTML = `
+${K.ENDPOINT ? '' : `<div class="warn">No sheet connected yet — saving is off. Follow <code>kiosk-shared/README.md</code>, then paste the <code>/exec</code> URL into <code>ENDPOINT</code> in <code>kiosk-config.js</code>.</div>`}
+<div class="card"><h2>Screens</h2><div class="hint">Which screens ${esc(d.building)} rotates through, and for how many seconds each. The Live schedule still switches to its evening / weekend versions by itself.</div>
+${K.SCREENS.map(s => `<div class="row"><button class="tog ${d['show_' + s.id] ? 'on' : ''}" data-k="show_${s.id}" aria-label="Show ${esc(s.label)}"><span></span></button><div class="lbl"><b>${esc(s.label)}</b><span>${esc(s.hint)}</span></div><input type="number" min="5" max="600" data-k="dur_${s.id}" value="${d['dur_' + s.id]}"><a class="prev" href="${kioskUrl(cur, s.id)}" target="_blank" rel="noopener">Preview →</a></div>`).join('')}
+</div>
+<div class="card"><h2>Live schedule</h2><div class="hint">The main screen: who's in the building and how many spots are left each day this week.</div>
+<div class="grid g2 f" style="margin-bottom:14px"><div><label>Cleaner</label><input data-k="cleaner_name" value="${esc(d.cleaner_name)}"></div><div><label>Status line</label><input data-k="cleaner_status" value="${esc(d.cleaner_status)}"></div></div>
+<div class="grid g5 f" style="margin-bottom:14px">${DAYS.map(([k, l]) => `<div class="day"><div class="n">${l}</div><input class="num" type="number" min="0" max="9" data-k="${k}" value="${d[k]}"></div>`).join('')}</div>
+<div class="grid g3 f"><div><label>Residents booked</label><input class="num" type="number" min="0" data-k="residents_booked" value="${d.residents_booked}"></div><div><label>Most requested</label><input data-k="most_requested" list="tasknames" value="${esc(d.most_requested)}"><datalist id="tasknames">${taskNames.map(n => `<option value="${esc(n)}">`).join('')}</datalist></div><div><label>Avg clean time</label><input data-k="avg_clean_time" value="${esc(d.avg_clean_time)}"></div></div>
+</div>
+<div class="card"><h2>Popular in your building</h2><div class="hint">Six most-booked tasks and three favorite packages.</div>
+<div class="grid g3 f" style="margin-bottom:14px">${[0,1,2,3,4,5].map(i => `<div><label>Task ${i + 1}</label><select data-k="popular_tasks" data-i="${i}">${opt(K.TASKS, d.popular_tasks[i], t => t.name)}</select></div>`).join('')}</div>
+<div class="grid g3 f">${[0,1,2].map(i => `<div><label>Package ${i + 1}</label><select data-k="popular_packages" data-i="${i}">${opt(K.PACKAGES, d.popular_packages[i], p => p.name)}</select></div>`).join('')}</div>
+</div>
+<div class="card"><h2>By the numbers</h2><div class="hint">Shown as typed — include commas.</div>
+<div class="grid g4 f"><div><label>Visits to ${esc(d.building)} homes</label><input data-k="stat_visits" value="${esc(d.stat_visits)}"></div><div><label>Residents who trust Zing</label><input data-k="stat_residents" value="${esc(d.stat_residents)}"></div><div><label>Hours saved</label><input data-k="stat_hours" value="${esc(d.stat_hours)}"></div><div><label>${esc(d.cleaner_name)}'s rating</label><input data-k="rating" value="${esc(d.rating)}"></div></div>
+</div>`;
+  $('#form').querySelectorAll('.tog').forEach(b => b.onclick = () => { d[b.dataset.k] = !d[b.dataset.k]; b.classList.toggle('on', d[b.dataset.k]); setDirty(true); });
+  $('#form').querySelectorAll('input,select').forEach(el => el.oninput = () => {
+    const k = el.dataset.k; if (!k) return;
+    if (el.dataset.i != null) d[k][+el.dataset.i] = el.value;
+    else if (el.type === 'number') d[k] = parseInt(el.value, 10) || 0;
+    else d[k] = el.value;
+    setDirty(true);
+  });
+}
+
+$('#save').onclick = async () => {
+  if (!cur || !dirty) return;
+  const btn = $('#save'); btn.disabled = true; setMsg('Saving…');
+  try {
+    await K.save(draft, who.value.trim());
+    setMsg('Saved. Confirming with the sheet…');
+    await new Promise(r => setTimeout(r, 1500));
+    const r = await K.fetchAll(); rows = r.rows;
+    const fresh = rows[cur];
+    if (r.live && JSON.stringify(K.serialize({ ...fresh, updated_at: '', updated_by: '' })) === JSON.stringify(K.serialize({ ...draft, updated_at: '', updated_by: '' }))) {
+      draft = JSON.parse(JSON.stringify(fresh)); setDirty(false); setMsg(`Saved ${fresh.building}. Kiosks refresh at the top of the hour.`, 'ok');
+    } else { setMsg('Saved, but the sheet returned something different — reload to check.', 'err'); btn.disabled = false; }
+    renderList(); renderForm();
+  } catch (e) { setMsg('Could not save: ' + e.message, 'err'); btn.disabled = false; }
+};
+$('#reload').onclick = () => { if (dirty && !confirm('Discard unsaved changes?')) return; load().then(() => setMsg('Reloaded from the sheet.')); };
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+load();
+</script>
+</body>
+</html>

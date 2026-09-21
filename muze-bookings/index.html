@@ -1,3 +1,4 @@
+<!-- @dsCard group="Live Pages" viewport="500x800" name="Booking kiosk · Muze at Met" subtitle="React UMD lobby kiosk, 800×1280 frame — 7 live variants" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/framer-motion@11.0.8/dist/framer-motion.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.17.12/babel.min.js"></script>
+<script src="../kiosk-shared/kiosk-config.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,6 +95,7 @@
     left: 0;
     overflow: hidden;
     transform-origin: top left;
+    transform: var(--kiosk-scale, none);
   }
 
   /* grain texture */
@@ -288,42 +291,44 @@ function getWeekDays() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CONFIG
+// CONFIG — everything below is read from the Stations sheet via ../kiosk-shared/kiosk-config.js
+// (cleaner, weekly spots, stats, popular tasks/packages, which screens show and for how long).
+// Edit it from /kiosk-admin/, not here. Only the building-specific bits stay in this file.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const cleaner = {
-  name: 'Daisy',
-  role: 'Your Muze cleaner',
-  status: 'Live in the building',
+const KIOSK_SLUG = 'muze-bookings';
+const CLEANER_ROLE = 'Your Muze cleaner';
+// Self-running booking demo: /kioskappdemo on justzingit.com, the template while previewing in the design project.
+const APP_DEMO_BASE = /justzingit\.com$/.test(location.hostname) ? '/kioskappdemo' : '../../../templates/resident-app-autoplay/ResidentAppAutoplay.dc.html';
+
+const CfgCtx = React.createContext(ZingKiosk.defaults(KIOSK_SLUG));
+const useCfg = () => React.useContext(CfgCtx);
+
+// Sheet row → the shapes the screens render
+const derive = (cfg) => {
+  const spots = [cfg.mon, cfg.tue, cfg.wed, cfg.thu, cfg.fri];
+  const phases = ZingKiosk.SCREENS.filter(s => cfg['show_' + s.id]).map(s => ({ id: s.id, ms: Math.max(5, cfg['dur_' + s.id]) * 1000 }));
+  const lc = cfg.building.toLowerCase();
+  return {
+    building: cfg.building,
+    cleaner: { name: cfg.cleaner_name, role: CLEANER_ROLE, status: cfg.cleaner_status },
+    weeklySchedule: spots.map(n => ({ spots: n, icon: n >= 3 ? 'check' : n === 2 ? 'half' : 'empty' })),
+    weeklyStats: [
+      { label: 'residents booked', value: String(cfg.residents_booked), accent: '#6B8068' },
+      { label: 'most requested', value: cfg.most_requested, accent: '#C8A876' },
+      { label: 'avg clean time', value: cfg.avg_clean_time, accent: '#A8B5A0' },
+    ],
+    popularTasks: cfg.popular_tasks.map(ZingKiosk.task).filter(Boolean).map(t => ({ ...t, icon: '../kiosk-shared/icons/' + t.icon })),
+    popularPackages: cfg.popular_packages.map(ZingKiosk.pkg).filter(Boolean),
+    buildingStats: [
+      { value: cfg.stat_visits, label: `visits to ${cfg.building} homes`, note: `since we started at ${lc}` },
+      { value: cfg.stat_residents, label: 'residents who trust Zing', note: 'and counting' },
+      { value: cfg.stat_hours, label: 'hours saved by residents', note: 'time back for the good stuff' },
+      { value: cfg.rating, label: `${cfg.cleaner_name}'s resident rating`, note: `out of 5 · from ${lc} residents`, stars: true },
+    ],
+    phases: phases.length ? phases : [{ id: 'main', ms: 60000 }],
+  };
 };
-
-const bookingSlots = [
-  { time: '9:00am',  status: 'available' },
-  { time: '10:30am', status: 'available' },
-  { time: '11:30am', status: 'almost-full' },
-  { time: '1:00pm',  status: 'available' },
-  { time: '2:15pm',  status: 'available' },
-  { time: '3:45pm',  status: 'almost-full' },
-  { time: '5:00pm',  status: 'available' },
-];
-
-// ── SLOT DATA (update via prompt) ──────────────────────────────────
-// Icon is auto-derived: spots >= 3 → 'check', spots 1-2 → 'half', spots === 0 → 'empty'
-// Only a fully-booked day (0) gets the hollow 'empty' circle.
-const SLOT_COUNTS = [1, 3, 2, 1, 0]; // [Mon, Tue, Wed, Thu, Fri] — later-week always shows availability
-const RESIDENTS_BOOKED = 18;
-// ── END SLOT DATA ──────────────────────────────────────────────────
-
-const weeklySchedule = SLOT_COUNTS.map(spots => ({
-  spots,
-  icon: spots >= 3 ? 'check' : spots >= 1 ? 'half' : 'empty',
-}));
-
-const weeklyStats = [
-  { label: 'residents booked', value: String(RESIDENTS_BOOKED), accent: '#6B8068' },
-  { label: 'most requested', value: 'Bathroom Refresh', accent: '#C8A876' },
-  { label: 'avg clean time', value: '45 min', accent: '#A8B5A0' },
-];
 
 const activityFeed = [
   'a resident on floor 14 just booked',
@@ -456,7 +461,7 @@ const LiveActivityTicker = () => {
   );
 };
 
-const ActiveScreen = () => (
+const ActiveScreen = () => { const { cleaner, weeklyStats } = derive(useCfg()); return (
   <div className="kiosk-frame ambient-bg grain flex flex-col">
 
     {/* TOP — Brand */}
@@ -556,7 +561,7 @@ const ActiveScreen = () => (
       />
     </div>
   </div>
-);
+); };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FLOATING PARTICLES (for away/recharging)
@@ -641,7 +646,7 @@ const AwayScreen = () => (
 // RECHARGING SCREEN — 7pm–7am
 // ─────────────────────────────────────────────────────────────────────────────
 
-const WeeklyCalendarCard = () => (
+const WeeklyCalendarCard = () => { const { weeklySchedule } = derive(useCfg()); return (
   <motion.div
     initial={{ opacity: 0, y: 8 }}
     animate={{ opacity: 1, y: 0 }}
@@ -662,9 +667,7 @@ const WeeklyCalendarCard = () => (
       {getWeekDays().map((day, i) => {
         const sched = weeklySchedule[i];
         const isHigh = sched.spots >= 5;
-        // Grayed-out treatment applies ONLY to fully-booked days (0 spots).
-        // Any day with availability renders in Zing dark green so it reads as bookable.
-        const isLow = sched.spots === 0;
+        const isLow = sched.spots <= 2;
         const isLast = i === 4;
         return (
           <React.Fragment key={i}>
@@ -724,7 +727,7 @@ const WeeklyCalendarCard = () => (
       })}
     </div>
   </motion.div>
-);
+); };
 
 const RechargingScreen = () => (
   <div className="kiosk-frame ambient-bg grain flex flex-col">
@@ -774,22 +777,205 @@ const RechargingScreen = () => (
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// APP — auto-switch on time
+// PROMO SCREENS — Popular in your building · Building stats
+// ─────────────────────────────────────────────────────────────────────────────
+
+const PromoHeader = ({ kicker, children, sub }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.3 }}
+    className="relative z-10 text-center px-10 pt-8 pb-6"
+  >
+    <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-4">{kicker}</div>
+    <h1 className="font-serif font-medium text-teal tracking-tight" style={{ fontSize: 46, lineHeight: 1.05, letterSpacing: '-0.03em' }}>{children}</h1>
+    {sub && <p className="font-sans text-[16px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>{sub}</p>}
+  </motion.div>
+);
+
+const PopularScreen = () => { const { building, popularTasks, popularPackages } = derive(useCfg()); return (
+  <div className="kiosk-frame ambient-bg grain flex flex-col">
+    <FloatingParticles />
+    <div className="relative z-10 pt-8 pb-4 flex justify-center"><BrandLockup /></div>
+    <div className="relative z-10 mx-10 hairline"></div>
+
+    <PromoHeader kicker={`popular at ${building.toLowerCase()}`} sub={`here's how ${building} residents use zing to make life a little easier`}>
+      The little things,<br/><span className="serif-italic text-sage-deep">taken care of.</span>
+    </PromoHeader>
+
+    {/* Tasks grid */}
+    <div className="relative z-10 px-8">
+      <div className="flex items-center gap-2.5 mb-3">
+        <div className="font-sans text-[9px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">most booked tasks</div>
+        <div className="flex-1 h-px bg-teal/10"></div>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        {popularTasks.map((t, i) => (
+          <motion.div
+            key={t.name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 + i * 0.07 }}
+            className="flex items-center gap-4 rounded-[18px] px-4 py-3.5"
+            style={{ background: 'rgba(250,246,238,0.92)', boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)' }}
+          >
+            <div className="shrink-0 rounded-[14px] flex items-center justify-center" style={{ width: 72, height: 72, background: 'rgba(216,223,208,0.55)' }}>
+              <img src={t.icon} alt="" style={{ width: 58, height: 58, objectFit: 'contain' }} />
+            </div>
+            <div className="min-w-0">
+              <div className="font-serif text-[23px] font-medium text-teal" style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}>{t.name}</div>
+              <div className="font-sans text-[13px] text-teal-2/50 mt-1 lowercase">{t.note}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+
+    {/* Packages */}
+    <div className="relative z-10 px-8 pt-6 flex-1">
+      <div className="flex items-center gap-2.5 mb-3">
+        <div className="font-sans text-[9px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">favorite packages</div>
+        <div className="flex-1 h-px bg-teal/10"></div>
+      </div>
+      <div className="flex gap-3">
+        {popularPackages.map((p, i) => (
+          <motion.div
+            key={p.name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.95 + i * 0.08 }}
+            className="flex-1 min-w-0 rounded-[20px] px-5 py-5 relative overflow-hidden glossy-card"
+            style={{ background: 'linear-gradient(to bottom right, #D8DFD0 0%, rgba(196,206,188,0.8) 45%, rgba(168,181,160,0.4) 100%)', boxShadow: '0 16px 48px -12px rgba(107,128,104,0.35), 0 0 0 1px rgba(107,128,104,0.15), inset 0 1px 0 rgba(255,255,255,0.5)' }}
+          >
+            <div className="relative font-serif text-[22px] font-medium text-teal" style={{ lineHeight: 1.05, letterSpacing: '-0.02em', overflowWrap: 'anywhere' }}>{p.name}</div>
+            <div className="relative font-sans text-[12px] mt-2.5 lowercase" style={{ color: 'rgba(45,79,76,0.7)', lineHeight: 1.45, overflowWrap: 'anywhere' }}>{p.items}</div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+
+    <div className="relative z-10"><BottomCTA headline="Book your clean today" /></div>
+  </div>
+); };
+
+const StatsScreen = () => { const { building, buildingStats } = derive(useCfg()); return (
+  <div className="kiosk-frame ambient-bg grain flex flex-col">
+    <FloatingParticles />
+    <div className="relative z-10 pt-8 pb-4 flex justify-center"><BrandLockup /></div>
+    <div className="relative z-10 mx-10 hairline"></div>
+
+    <PromoHeader kicker={`${building.toLowerCase()} · by the numbers`} sub="a building that gets its time back">
+      {building} runs on<br/><span className="serif-italic text-sage-deep">a little help.</span>
+    </PromoHeader>
+
+    <div className="relative z-10 flex-1 flex flex-col justify-center gap-4 px-8 pb-4">
+      {buildingStats.map((s, i) => (
+        <motion.div
+          key={s.label}
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 + i * 0.15 }}
+          className="flex items-center gap-7 rounded-[24px] px-8 py-6 relative overflow-hidden"
+          style={{ background: 'rgba(250,246,238,0.92)', boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)' }}
+        >
+          {i === 0 && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.25 }}></div>}
+          <div className="font-serif font-medium text-teal shrink-0 flex items-baseline gap-3" style={{ fontSize: 84, lineHeight: 1, letterSpacing: '-0.04em', minWidth: 300 }}>
+            {s.value}
+            {s.stars && <span style={{ fontSize: 30, letterSpacing: '0.04em', color: '#C8A876' }}>★★★★★</span>}
+          </div>
+          <div style={{ width: 1, height: 64, flexShrink: 0, background: 'rgba(31,58,56,0.12)' }}></div>
+          <div className="min-w-0">
+            <div className="font-serif text-[26px] font-medium" style={{ color: '#6B8068', lineHeight: 1.15 }}>{s.label}</div>
+            <div className="font-sans text-[13px] text-teal-2/45 mt-1.5 lowercase">{s.note}</div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    <div className="relative z-10"><BottomCTA headline="Book your clean today" /></div>
+  </div>
+); };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// APP SCREEN — announces the native app; the phone slot is filled by the
+// persistent <AppDemoFrame> iframe rendered in App (kept loaded across phases)
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Phone geometry inside the 800×1280 frame (shared by AppScreen and AppDemoFrame)
+const PHONE = { w: 402, h: 824, scale: 0.9, top: 330 };
+const PHONE_LEFT = (800 - PHONE.w * PHONE.scale) / 2;
+
+const AppScreen = () => { const { building } = derive(useCfg()); return (
+  <div className="kiosk-frame ambient-bg grain flex flex-col">
+    <FloatingParticles />
+    <div className="relative z-10 pt-8 pb-4 flex justify-center"><BrandLockup /></div>
+    <div className="relative z-10 mx-10 hairline"></div>
+
+    <PromoHeader kicker="new · the zing app" sub="watch a booking happen — this is how easy it is">
+      Your building’s schedule,<br/><span className="serif-italic text-sage-deep">live in your pocket.</span>
+    </PromoHeader>
+
+    {/* phone slot — empty here; AppDemoFrame overlays it */}
+    <div style={{ height: PHONE.h * PHONE.scale + 12 }}></div>
+
+    <div className="relative z-10 flex-1"></div>
+    <div className="relative z-10"><BottomCTA headline="Download the Zing app" /></div>
+  </div>
+); };
+
+const AppDemoFrame = ({ visible }) => {
+  const { building } = derive(useCfg());
+  const url = APP_DEMO_BASE + '?building=' + encodeURIComponent(building);
+  const ref = React.useRef(null);
+  useEffect(() => {
+    if (visible && ref.current && ref.current.contentWindow) {
+      try { ref.current.contentWindow.postMessage('zing-autoplay-restart', '*'); } catch (e) {}
+    }
+  }, [visible]);
+  return (
+    <div className="kiosk-frame" style={{ pointerEvents: 'none', zIndex: 20, opacity: visible ? 1 : 0, transition: 'opacity 0.8s ease' }}>
+      <div style={{
+        position: 'absolute', top: PHONE.top, left: PHONE_LEFT,
+        width: PHONE.w, height: PHONE.h, transform: `scale(${PHONE.scale})`, transformOrigin: 'top left',
+        borderRadius: 54, overflow: 'hidden',
+        boxShadow: '0 40px 80px -30px rgba(31,58,56,0.45), 0 0 0 1px rgba(31,58,56,0.08)'
+      }}>
+        <iframe ref={ref} src={url} title="Zing app demo" scrolling="no"
+          style={{ width: PHONE.w, height: PHONE.h, border: 'none', display: 'block', background: '#F5F1E8' }} />
+      </div>
+    </div>
+  );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// APP — auto-switch on time + promo rotation
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─────────────────────────────────────────────────────────────────────────────
 // KIOSK SCALE — fills full viewport
 // ─────────────────────────────────────────────────────────────────────────────
 function fitKiosk() {
-  const frame = document.querySelector('.kiosk-frame');
-  if (!frame) return;
   const scaleX = window.innerWidth / 800;
   const scaleY = window.innerHeight / 1280;
-  frame.style.transform = `scale(${scaleX}, ${scaleY})`;
+  document.documentElement.style.setProperty('--kiosk-scale', `scale(${scaleX}, ${scaleY})`);
 }
 
 const App = () => {
   const [mode, setMode] = useState(getMode);
+  const [cfg, setCfg] = useState(() => ZingKiosk.defaults(KIOSK_SLUG));
+  const { phases } = derive(cfg);
+  // Preview a screen with ?screen=main|popular|stats|app (pins it, no rotation)
+  const pinned = new URLSearchParams(location.search).get('screen');
+  const [phase, setPhase] = useState(0);
+  const screen = pinned || phases[phase % phases.length].id;
+
+  useEffect(() => { ZingKiosk.fetchStation(KIOSK_SLUG).then(c => { setCfg(c); setPhase(0); }); }, []);
+
+  useEffect(() => {
+    if (pinned) return;
+    const t = setTimeout(() => setPhase(p => (p + 1) % phases.length), phases[phase % phases.length].ms);
+    return () => clearTimeout(t);
+  }, [phase, phases.length]);
 
   useEffect(() => {
     fitKiosk();
@@ -813,19 +999,25 @@ const App = () => {
   }, []);
 
   return (
+    <CfgCtx.Provider value={cfg}>
     <AnimatePresence mode="wait">
       <motion.div
-        key={mode}
+        key={`${mode}-${screen}-${cfg.updated_at}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {mode === 'active' && <ActiveScreen />}
-        {mode === 'away' && <AwayScreen />}
-        {mode === 'recharging' && <RechargingScreen />}
+        {screen === 'popular' && <PopularScreen />}
+        {screen === 'stats' && <StatsScreen />}
+        {screen === 'app' && <AppScreen />}
+        {screen === 'main' && mode === 'active' && <ActiveScreen />}
+        {screen === 'main' && mode === 'away' && <AwayScreen />}
+        {screen === 'main' && mode === 'recharging' && <RechargingScreen />}
       </motion.div>
     </AnimatePresence>
+    {cfg.show_app && <AppDemoFrame visible={screen === 'app'} />}
+    </CfgCtx.Provider>
   );
 };
 
