@@ -305,6 +305,9 @@ const CfgCtx = React.createContext(ZingKiosk.defaults(KIOSK_SLUG));
 const useCfg = () => React.useContext(CfgCtx);
 
 // Sheet row → the shapes the screens render
+// Sheets turns '1,240' into the number 1240 — put the thousands separator back for display
+const fmt = (v) => /^\d{4,}$/.test(String(v).trim()) ? Number(v).toLocaleString('en-US') : String(v);
+
 const derive = (cfg) => {
   const spots = [cfg.mon, cfg.tue, cfg.wed, cfg.thu, cfg.fri];
   const phases = ZingKiosk.SCREENS.filter(s => cfg['show_' + s.id]).map(s => ({ id: s.id, ms: Math.max(5, cfg['dur_' + s.id]) * 1000 }));
@@ -321,9 +324,9 @@ const derive = (cfg) => {
     popularTasks: cfg.popular_tasks.map(ZingKiosk.task).filter(Boolean).map(t => ({ ...t, icon: '../kiosk-shared/icons/' + t.icon })),
     popularPackages: cfg.popular_packages.map(ZingKiosk.pkg).filter(Boolean),
     buildingStats: [
-      { value: cfg.stat_visits, label: `visits to ${cfg.building} homes`, note: `since we started at ${lc}` },
-      { value: cfg.stat_residents, label: 'residents who trust Zing', note: 'and counting' },
-      { value: cfg.stat_hours, label: 'hours saved by residents', note: 'time back for the good stuff' },
+      { value: fmt(cfg.stat_visits), label: `visits to ${cfg.building} homes`, note: `since we started at ${lc}` },
+      { value: fmt(cfg.stat_residents), label: 'residents who trust Zing', note: 'and counting' },
+      { value: fmt(cfg.stat_hours), label: 'hours saved by residents', note: 'time back for the good stuff' },
       { value: cfg.rating, label: `${cfg.cleaner_name}'s resident rating`, note: `out of 5 · from ${lc} residents`, stars: true },
     ],
     phases: phases.length ? phases : [{ id: 'main', ms: 60000 }],

@@ -88,8 +88,8 @@
 
   /* kiosk frame — scales to fill viewport */
   .kiosk-frame {
-    width: 800px;
-    height: 1280px;
+    width: 1920px;
+    height: 1080px;
     position: fixed;
     top: 0;
     left: 0;
@@ -305,6 +305,9 @@ const CfgCtx = React.createContext(ZingKiosk.defaults(KIOSK_SLUG));
 const useCfg = () => React.useContext(CfgCtx);
 
 // Sheet row → the shapes the screens render
+// Sheets turns '1,240' into the number 1240 — put the thousands separator back for display
+const fmt = (v) => /^\d{4,}$/.test(String(v).trim()) ? Number(v).toLocaleString('en-US') : String(v);
+
 const derive = (cfg) => {
   const spots = [cfg.mon, cfg.tue, cfg.wed, cfg.thu, cfg.fri];
   const phases = ZingKiosk.SCREENS.filter(s => cfg['show_' + s.id]).map(s => ({ id: s.id, ms: Math.max(5, cfg['dur_' + s.id]) * 1000 }));
@@ -321,9 +324,9 @@ const derive = (cfg) => {
     popularTasks: cfg.popular_tasks.map(ZingKiosk.task).filter(Boolean).map(t => ({ ...t, icon: '../kiosk-shared/icons/' + t.icon })),
     popularPackages: cfg.popular_packages.map(ZingKiosk.pkg).filter(Boolean),
     buildingStats: [
-      { value: cfg.stat_visits, label: `visits to ${cfg.building} homes`, note: `since we started at ${lc}` },
-      { value: cfg.stat_residents, label: 'residents who trust Zing', note: 'and counting' },
-      { value: cfg.stat_hours, label: 'hours saved by residents', note: 'time back for the good stuff' },
+      { value: fmt(cfg.stat_visits), label: `visits to ${cfg.building} homes`, note: `since we started at ${lc}` },
+      { value: fmt(cfg.stat_residents), label: 'residents who trust Zing', note: 'and counting' },
+      { value: fmt(cfg.stat_hours), label: 'hours saved by residents', note: 'time back for the good stuff' },
       { value: cfg.rating, label: `${cfg.cleaner_name}'s resident rating`, note: `out of 5 · from ${lc} residents`, stars: true },
     ],
     phases: phases.length ? phases : [{ id: 'main', ms: 60000 }],
@@ -461,107 +464,7 @@ const LiveActivityTicker = () => {
   );
 };
 
-const ActiveScreen = () => { const { cleaner, weeklyStats } = derive(useCfg()); return (
-  <div className="kiosk-frame ambient-bg grain flex flex-col">
-
-    {/* TOP — Brand */}
-    <div className="relative z-10 pt-8 pb-4 flex justify-center">
-      <BrandLockup />
-    </div>
-
-    <div className="relative z-10 mx-10 hairline"></div>
-
-    {/* CLEANER — large portrait section */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, delay: 0.3 }}
-      className="relative z-10 flex items-center gap-6 px-10 pt-7 pb-5"
-    >
-      {/* Photo */}
-      <div className="relative shrink-0">
-        <div className="w-[140px] h-[140px] rounded-[28px] overflow-hidden"
-             style={{
-               boxShadow: '0 16px 40px -12px rgba(31,58,56,0.28), 0 0 0 1px rgba(31,58,56,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)',
-             }}>
-          <img src="cleaner-elizabeth.jpg" alt="Elizabeth" className="w-full h-full" style={{ objectFit: 'cover' }} />
-        </div>
-        {/* Live badge */}
-        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream-2/95 backdrop-blur-md"
-             style={{ boxShadow: '0 4px 12px -4px rgba(31,58,56,0.18), 0 0 0 1px rgba(31,58,56,0.05)' }}>
-          <div className="w-2 h-2 rounded-full bg-sage-deep live-dot"></div>
-          <span className="font-sans text-[9px] font-medium text-sage-deep uppercase tracking-[0.18em]">live</span>
-        </div>
-      </div>
-
-      {/* Info */}
-      <div className="flex-1">
-        <div className="font-serif text-[44px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.03em' }}>
-          {cleaner.name}
-        </div>
-        <div className="font-serif text-[22px] font-medium mt-2" style={{ color: '#6B8068', lineHeight: 1.2 }}>
-          {cleaner.status}
-        </div>
-        <div className="font-sans text-[14px] text-teal-2/45 mt-1.5 lowercase">
-          {cleaner.role.toLowerCase()}
-        </div>
-      </div>
-    </motion.div>
-
-    {/* WEEKLY STATS + LIVE ACTIVITY */}
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.45 }}
-      className="relative z-10 mx-8 mb-1"
-    >
-      {/* Stats row */}
-      <div className="flex items-center gap-2.5 mb-3">
-        <div className="font-sans text-[9px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">this week</div>
-        <div className="flex-1 h-px bg-teal/10"></div>
-      </div>
-      <div className="flex gap-2.5">
-        {weeklyStats.map((stat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: 6 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
-            className="flex-1 rounded-[14px] px-3.5 py-3 bg-cream-2/80 relative overflow-hidden"
-            style={{
-              boxShadow: '0 2px 8px -4px rgba(31,58,56,0.08), 0 0 0 1px rgba(31,58,56,0.03), inset 0 1px 0 rgba(255,255,255,0.4)'
-            }}
-          >
-            <div className="flex items-center gap-1.5 mb-1.5">
-              <div className="w-1.5 h-1.5 rounded-full" style={{ background: stat.accent }}></div>
-              <span className="font-sans text-[9px] text-teal-2/50 uppercase tracking-[0.14em]">{stat.label}</span>
-            </div>
-            <div className="font-serif text-[18px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.02em' }}>
-              {stat.value}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Live activity ticker */}
-      <LiveActivityTicker />
-    </motion.div>
-
-    <div className="relative z-10 mx-10 hairline"></div>
-
-    {/* THIS WEEK — WEEKLY CALENDAR CARD */}
-    <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
-      <WeeklyCalendarCard />
-    </div>
-
-    {/* BOTTOM CTA */}
-    <div className="relative z-10">
-      <BottomCTA
-        headline="Book your clean today"
-      />
-    </div>
-  </div>
-); };
+/* ActiveScreen: see TV SHELL below */
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FLOATING PARTICLES (for away/recharging)
@@ -595,52 +498,7 @@ const FloatingParticles = () => (
 // AWAY SCREEN — 6pm–7pm
 // ─────────────────────────────────────────────────────────────────────────────
 
-const AwayScreen = () => (
-  <div className="kiosk-frame ambient-bg grain flex flex-col">
-    <FloatingParticles />
-
-    <div className="relative z-10 pt-8 pb-4 flex justify-center">
-      <BrandLockup />
-    </div>
-    <div className="relative z-10 mx-10 hairline"></div>
-
-    {/* Header message */}
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.3 }}
-      className="relative z-10 text-center px-10 pt-7 pb-5"
-    >
-      <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-4">
-        evening · wynd 27|28 residences
-      </div>
-      <h1 className="font-serif font-medium text-teal tracking-tight"
-          style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">{getReturnLabel()}.</span>
-      </h1>
-      <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>
-        book your spot ahead of time
-      </p>
-    </motion.div>
-
-    {/* Live activity ticker */}
-    <div className="relative z-10 mx-8">
-      <LiveActivityTicker />
-    </div>
-
-    <div className="relative z-10 mx-10 mt-4 hairline"></div>
-
-    {/* Weekly calendar */}
-    <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
-      <WeeklyCalendarCard />
-    </div>
-
-    {/* BOTTOM CTA */}
-    <div className="relative z-10">
-      <BottomCTA headline="Book your clean today" />
-    </div>
-  </div>
-);
+/* AwayScreen: see TV SHELL below */
 
 // ─────────────────────────────────────────────────────────────────────────────
 // RECHARGING SCREEN — 7pm–7am
@@ -729,51 +587,89 @@ const WeeklyCalendarCard = () => { const { weeklySchedule } = derive(useCfg()); 
   </motion.div>
 ); };
 
-const RechargingScreen = () => (
-  <div className="kiosk-frame ambient-bg grain flex flex-col">
+const CleanerPhoto = () => (<img src="cleaner-elizabeth.jpg" alt="Elizabeth" className="w-full h-full" style={{ objectFit: 'cover' }} />);
+const LOCKUP_CAPTION = 'wynd 27|28 residences';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TV SHELL — 1920×1080 landscape. Left rail: brand, per-screen intro, QR CTA.
+// Right stage: the screen's main content, scaled up to read from across a lobby.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const RAIL_W = 680;
+const TvShell = ({ intro, cta = 'Book your clean today', scale = 1, children }) => (
+  <div className="kiosk-frame ambient-bg grain flex">
     <FloatingParticles />
-
-    <div className="relative z-10 pt-8 pb-4 flex justify-center">
+    <div className="relative z-10 flex flex-col shrink-0" style={{ width: RAIL_W, padding: '52px 24px 24px 40px' }}>
       <BrandLockup />
+      <div className="hairline mx-6 mt-8"></div>
+      <div className="flex-1 flex flex-col justify-center min-h-0">{intro}</div>
+      <BottomCTA headline={cta} />
     </div>
-    <div className="relative z-10 mx-10 hairline"></div>
-
-    {/* Header message */}
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.3 }}
-      className="relative z-10 text-center px-10 pt-7 pb-5"
-    >
-      <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-4">
-        goodnight · wynd 27|28 residences
-      </div>
-      <h1 className="font-serif font-medium text-teal tracking-tight"
-          style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">{getReturnLabel()}.</span>
-      </h1>
-      <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>
-        book your spot ahead of time
-      </p>
-    </motion.div>
-
-    {/* Live activity ticker */}
-    <div className="relative z-10 mx-8">
-      <LiveActivityTicker />
-    </div>
-
-    <div className="relative z-10 mx-10 mt-4 hairline"></div>
-
-    {/* Weekly calendar */}
-    <div className="relative z-10 flex-1 flex flex-col px-8 pt-4 pb-3">
-      <WeeklyCalendarCard />
-    </div>
-
-    {/* BOTTOM CTA */}
-    <div className="relative z-10">
-      <BottomCTA headline="Book your clean today" />
+    <div className="relative z-10 w-px my-16" style={{ background: 'linear-gradient(180deg, transparent, rgba(31,58,56,0.14), transparent)' }}></div>
+    <div className="relative z-10 flex-1 flex items-center justify-center min-w-0" style={{ padding: '40px 64px 40px 40px' }}>
+      <div style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}>{children}</div>
     </div>
   </div>
+);
+
+const CleanerIntro = ({ cleaner, weeklyStats }) => (
+  <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.3 }} className="px-6">
+    <div className="flex items-center gap-6">
+      <div className="relative shrink-0">
+        <div className="w-[150px] h-[150px] rounded-[30px] overflow-hidden" style={{ boxShadow: '0 16px 40px -12px rgba(31,58,56,0.28), 0 0 0 1px rgba(31,58,56,0.06), inset 0 0 0 1px rgba(255,255,255,0.3)' }}>
+          <CleanerPhoto />
+        </div>
+        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream-2/95 backdrop-blur-md" style={{ boxShadow: '0 4px 12px -4px rgba(31,58,56,0.18), 0 0 0 1px rgba(31,58,56,0.05)' }}>
+          <div className="w-2 h-2 rounded-full bg-sage-deep live-dot"></div>
+          <span className="font-sans text-[9px] font-medium text-sage-deep uppercase tracking-[0.18em]">live</span>
+        </div>
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="font-serif text-[52px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.03em' }}>{cleaner.name}</div>
+        <div className="font-serif text-[24px] font-medium mt-2" style={{ color: '#6B8068', lineHeight: 1.2 }}>{cleaner.status}</div>
+        <div className="font-sans text-[15px] text-teal-2/45 mt-1.5 lowercase">{cleaner.role.toLowerCase()}</div>
+      </div>
+    </div>
+    <div className="flex items-center gap-2.5 mt-8 mb-3">
+      <div className="font-sans text-[10px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">this week</div>
+      <div className="flex-1 h-px bg-teal/10"></div>
+    </div>
+    <div className="flex gap-2.5">
+      {weeklyStats.map((stat, i) => (
+        <motion.div key={i} initial={{ opacity: 0, x: 6 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }} className="flex-1 min-w-0 rounded-[14px] px-3.5 py-3 bg-cream-2/80 relative overflow-hidden" style={{ boxShadow: '0 2px 8px -4px rgba(31,58,56,0.08), 0 0 0 1px rgba(31,58,56,0.03), inset 0 1px 0 rgba(255,255,255,0.4)' }}>
+          <div className="flex items-center gap-1.5 mb-1.5">
+            <div className="w-1.5 h-1.5 rounded-full" style={{ background: stat.accent }}></div>
+            <span className="font-sans text-[9px] text-teal-2/50 uppercase tracking-[0.14em]">{stat.label}</span>
+          </div>
+          <div className="font-serif text-[19px] font-medium text-teal tracking-tight" style={{ lineHeight: 1, letterSpacing: '-0.02em', overflowWrap: 'anywhere' }}>{stat.value}</div>
+        </motion.div>
+      ))}
+    </div>
+    <LiveActivityTicker />
+  </motion.div>
+);
+
+const OffHoursIntro = ({ kicker }) => (
+  <div className="px-6">
+    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-center">
+      <div className="font-sans text-[10px] text-sage-deep uppercase tracking-[0.3em] mb-4">{kicker}</div>
+      <h1 className="font-serif font-medium text-teal tracking-tight" style={{ fontSize: 46, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+        The Zing cleaning team<br/>will be back <span className="serif-italic text-sage-deep">{getReturnLabel()}.</span>
+      </h1>
+      <p className="font-sans text-[15px] text-teal-2/55 mt-4 lowercase" style={{ lineHeight: 1.4 }}>book your spot ahead of time</p>
+    </motion.div>
+    <LiveActivityTicker />
+  </div>
+);
+
+const ActiveScreen = () => { const { cleaner, weeklyStats } = derive(useCfg()); return (
+  <TvShell intro={<CleanerIntro cleaner={cleaner} weeklyStats={weeklyStats} />} scale={1.5}><WeeklyCalendarCard /></TvShell>
+); };
+const AwayScreen = () => (
+  <TvShell intro={<OffHoursIntro kicker={`evening · ${LOCKUP_CAPTION}`} />} scale={1.5}><WeeklyCalendarCard /></TvShell>
+);
+const RechargingScreen = () => (
+  <TvShell intro={<OffHoursIntro kicker={`goodnight · ${LOCKUP_CAPTION}`} />} scale={1.5}><WeeklyCalendarCard /></TvShell>
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -793,32 +689,20 @@ const PromoHeader = ({ kicker, children, sub }) => (
   </motion.div>
 );
 
-const PopularScreen = () => { const { building, popularTasks, popularPackages } = derive(useCfg()); return (
-  <div className="kiosk-frame ambient-bg grain flex flex-col">
-    <FloatingParticles />
-    <div className="relative z-10 pt-8 pb-4 flex justify-center"><BrandLockup /></div>
-    <div className="relative z-10 mx-10 hairline"></div>
 
+const PopularScreen = () => { const { building, popularTasks, popularPackages } = derive(useCfg()); return (
+  <TvShell scale={1.22} intro={
     <PromoHeader kicker={`popular at ${building.toLowerCase()}`} sub={`here's how ${building} residents use zing to make life a little easier`}>
       The little things,<br/><span className="serif-italic text-sage-deep">taken care of.</span>
-    </PromoHeader>
-
-    {/* Tasks grid */}
-    <div className="relative z-10 px-8">
+    </PromoHeader>}>
+    <div style={{ width: 860 }}>
       <div className="flex items-center gap-2.5 mb-3">
         <div className="font-sans text-[9px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">most booked tasks</div>
         <div className="flex-1 h-px bg-teal/10"></div>
       </div>
       <div className="grid grid-cols-2 gap-3">
         {popularTasks.map((t, i) => (
-          <motion.div
-            key={t.name}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 + i * 0.07 }}
-            className="flex items-center gap-4 rounded-[18px] px-4 py-3.5"
-            style={{ background: 'rgba(250,246,238,0.92)', boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)' }}
-          >
+          <motion.div key={t.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 + i * 0.07 }} className="flex items-center gap-4 rounded-[18px] px-4 py-3.5" style={{ background: 'rgba(250,246,238,0.92)', boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)' }}>
             <div className="shrink-0 rounded-[14px] flex items-center justify-center" style={{ width: 72, height: 72, background: 'rgba(216,223,208,0.55)' }}>
               <img src={t.icon} alt="" style={{ width: 58, height: 58, objectFit: 'contain' }} />
             </div>
@@ -829,71 +713,41 @@ const PopularScreen = () => { const { building, popularTasks, popularPackages } 
           </motion.div>
         ))}
       </div>
-    </div>
-
-    {/* Packages */}
-    <div className="relative z-10 px-8 pt-6 flex-1">
-      <div className="flex items-center gap-2.5 mb-3">
+      <div className="flex items-center gap-2.5 mt-6 mb-3">
         <div className="font-sans text-[9px] text-teal-2/40 uppercase tracking-[0.24em] shrink-0">favorite packages</div>
         <div className="flex-1 h-px bg-teal/10"></div>
       </div>
       <div className="flex gap-3">
         {popularPackages.map((p, i) => (
-          <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.95 + i * 0.08 }}
-            className="flex-1 min-w-0 rounded-[20px] px-5 py-5 relative overflow-hidden glossy-card"
-            style={{ background: 'linear-gradient(to bottom right, #D8DFD0 0%, rgba(196,206,188,0.8) 45%, rgba(168,181,160,0.4) 100%)', boxShadow: '0 16px 48px -12px rgba(107,128,104,0.35), 0 0 0 1px rgba(107,128,104,0.15), inset 0 1px 0 rgba(255,255,255,0.5)' }}
-          >
+          <motion.div key={p.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.95 + i * 0.08 }} className="flex-1 min-w-0 rounded-[20px] px-5 py-5 relative overflow-hidden glossy-card" style={{ background: 'linear-gradient(to bottom right, #D8DFD0 0%, rgba(196,206,188,0.8) 45%, rgba(168,181,160,0.4) 100%)', boxShadow: '0 16px 48px -12px rgba(107,128,104,0.35), 0 0 0 1px rgba(107,128,104,0.15), inset 0 1px 0 rgba(255,255,255,0.5)' }}>
             <div className="relative font-serif text-[22px] font-medium text-teal" style={{ lineHeight: 1.05, letterSpacing: '-0.02em', overflowWrap: 'anywhere' }}>{p.name}</div>
             <div className="relative font-sans text-[12px] mt-2.5 lowercase" style={{ color: 'rgba(45,79,76,0.7)', lineHeight: 1.45, overflowWrap: 'anywhere' }}>{p.items}</div>
           </motion.div>
         ))}
       </div>
     </div>
-
-    <div className="relative z-10"><BottomCTA headline="Book your clean today" /></div>
-  </div>
+  </TvShell>
 ); };
 
 const StatsScreen = () => { const { building, buildingStats } = derive(useCfg()); return (
-  <div className="kiosk-frame ambient-bg grain flex flex-col">
-    <FloatingParticles />
-    <div className="relative z-10 pt-8 pb-4 flex justify-center"><BrandLockup /></div>
-    <div className="relative z-10 mx-10 hairline"></div>
-
+  <TvShell scale={1.1} intro={
     <PromoHeader kicker={`${building.toLowerCase()} · by the numbers`} sub="a building that gets its time back">
       {building} runs on<br/><span className="serif-italic text-sage-deep">a little help.</span>
-    </PromoHeader>
-
-    <div className="relative z-10 flex-1 flex flex-col justify-center gap-4 px-8 pb-4">
+    </PromoHeader>}>
+    <div className="grid grid-cols-2 gap-5" style={{ width: 1000 }}>
       {buildingStats.map((s, i) => (
-        <motion.div
-          key={s.label}
-          initial={{ opacity: 0, x: 10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 + i * 0.15 }}
-          className="flex items-center gap-7 rounded-[24px] px-8 py-6 relative overflow-hidden"
-          style={{ background: 'rgba(250,246,238,0.92)', boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)' }}
-        >
+        <motion.div key={s.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 + i * 0.15 }} className="rounded-[26px] px-9 py-8 relative overflow-hidden min-w-0" style={{ background: 'rgba(250,246,238,0.92)', boxShadow: '0 6px 24px -8px rgba(31,58,56,0.12), 0 0 0 1px rgba(31,58,56,0.04), inset 0 1px 0 rgba(255,255,255,0.5)' }}>
           {i === 0 && <div className="absolute inset-0 shimmer-overlay pointer-events-none" style={{ opacity: 0.25 }}></div>}
-          <div className="font-serif font-medium text-teal shrink-0 flex items-baseline gap-3" style={{ fontSize: 84, lineHeight: 1, letterSpacing: '-0.04em', minWidth: 300 }}>
+          <div className="font-serif font-medium text-teal flex items-baseline gap-3 flex-wrap" style={{ fontSize: 96, lineHeight: 1, letterSpacing: '-0.04em' }}>
             {s.value}
             {s.stars && <span style={{ fontSize: 30, letterSpacing: '0.04em', color: '#C8A876' }}>★★★★★</span>}
           </div>
-          <div style={{ width: 1, height: 64, flexShrink: 0, background: 'rgba(31,58,56,0.12)' }}></div>
-          <div className="min-w-0">
-            <div className="font-serif text-[26px] font-medium" style={{ color: '#6B8068', lineHeight: 1.15 }}>{s.label}</div>
-            <div className="font-sans text-[13px] text-teal-2/45 mt-1.5 lowercase">{s.note}</div>
-          </div>
+          <div className="font-serif text-[27px] font-medium mt-5" style={{ color: '#6B8068', lineHeight: 1.15 }}>{s.label}</div>
+          <div className="font-sans text-[14px] text-teal-2/45 mt-1.5 lowercase">{s.note}</div>
         </motion.div>
       ))}
     </div>
-
-    <div className="relative z-10"><BottomCTA headline="Book your clean today" /></div>
-  </div>
+  </TvShell>
 ); };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -901,27 +755,19 @@ const StatsScreen = () => { const { building, buildingStats } = derive(useCfg())
 // persistent <AppDemoFrame> iframe rendered in App (kept loaded across phases)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Phone geometry inside the 800×1280 frame (shared by AppScreen and AppDemoFrame)
-const PHONE = { w: 402, h: 824, scale: 0.9, top: 330 };
-const PHONE_LEFT = (800 - PHONE.w * PHONE.scale) / 2;
+// Phone geometry inside the 1920×1080 frame — centred in the right stage (shared by AppScreen and AppDemoFrame)
+const PHONE = { w: 402, h: 824, scale: 1.12 };
+PHONE.top = (1080 - PHONE.h * PHONE.scale) / 2;
+const PHONE_LEFT = RAIL_W + 40 + (1920 - RAIL_W - 104 - PHONE.w * PHONE.scale) / 2;
 
-const AppScreen = () => { const { building } = derive(useCfg()); return (
-  <div className="kiosk-frame ambient-bg grain flex flex-col">
-    <FloatingParticles />
-    <div className="relative z-10 pt-8 pb-4 flex justify-center"><BrandLockup /></div>
-    <div className="relative z-10 mx-10 hairline"></div>
-
+const AppScreen = () => (
+  <TvShell cta="Download the Zing app" intro={
     <PromoHeader kicker="new · the zing app" sub="watch a booking happen — this is how easy it is">
       Your building’s schedule,<br/><span className="serif-italic text-sage-deep">live in your pocket.</span>
-    </PromoHeader>
-
-    {/* phone slot — empty here; AppDemoFrame overlays it */}
-    <div style={{ height: PHONE.h * PHONE.scale + 12 }}></div>
-
-    <div className="relative z-10 flex-1"></div>
-    <div className="relative z-10"><BottomCTA headline="Download the Zing app" /></div>
-  </div>
-); };
+    </PromoHeader>}>
+    <div style={{ width: PHONE.w * PHONE.scale, height: PHONE.h * PHONE.scale }}></div>
+  </TvShell>
+);
 
 const AppDemoFrame = ({ visible }) => {
   const { building } = derive(useCfg());
@@ -955,8 +801,8 @@ const AppDemoFrame = ({ visible }) => {
 // KIOSK SCALE — fills full viewport
 // ─────────────────────────────────────────────────────────────────────────────
 function fitKiosk() {
-  const scaleX = window.innerWidth / 800;
-  const scaleY = window.innerHeight / 1280;
+  const scaleX = window.innerWidth / 1920;
+  const scaleY = window.innerHeight / 1080;
   document.documentElement.style.setProperty('--kiosk-scale', `scale(${scaleX}, ${scaleY})`);
 }
 
