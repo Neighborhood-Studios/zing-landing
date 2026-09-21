@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zing × Wynd 27/28 — Your building's schedule, live in your pocket</title>
+<meta name="description" content="Booking at Wynd 27/28 now happens in the Zing app. See live availability, book with confidence and manage every visit from anywhere.">
+<meta name="theme-color" content="#F5F1E8">
+<link rel="icon" href="https://app.justzingit.com/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#F5F1E8}
+body{font-family:'Hanken Grotesk',sans-serif;color:#1D2E32;-webkit-font-smoothing:antialiased}
+a{color:#1D2E32}a:hover{color:#5F7A63}
+.serif{font-family:'Newsreader',serif;font-weight:400}
+.wrap{min-height:100vh;display:flex;justify-content:center}
+.col{width:100%;max-width:480px;padding:0 0 140px;position:relative}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.rise{animation:rise .6s ease both}
+.logos{display:flex;align-items:center;gap:14px;padding:26px 24px 0}
+.logos .zing{height:26px;display:block}
+.logos .sep{width:1px;height:26px;background:#D9D0BE}
+.logos .bldg{height:34px;max-width:170px;display:block;object-fit:contain}
+.hero{padding:52px 24px 0}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5F7A63}
+h1{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,8.6vw,38px);line-height:1.08;letter-spacing:-.02em;margin:14px 0 0;text-wrap:balance}
+.lede{font-size:17px;line-height:1.55;color:#3F4F52;margin:20px 0 0;text-wrap:pretty}
+.features{padding:40px 24px 0;display:flex;flex-direction:column;gap:26px}
+.feat{display:flex;gap:16px;align-items:flex-start}
+.feat svg{flex-shrink:0;margin-top:2px}
+.feat strong{display:block;font-size:17px;font-weight:600;line-height:1.3}
+.feat span{display:block;font-size:15px;line-height:1.5;color:#5C6B6E;margin-top:4px}
+.card{margin:40px 24px 0;border-radius:32px;background:#C9D8C2;padding:26px 22px 0;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(29,46,50,.06)}
+.card-head{display:flex;justify-content:space-between;align-items:baseline}
+.card-head .t{font-family:'Newsreader',serif;font-style:italic;font-size:21px}
+.card-head .now{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.card-head .now i{width:7px;height:7px;border-radius:50%;background:#1D2E32}
+.screen{margin:22px -2px 0;background:#F5F1E8;border-radius:26px 26px 0 0;padding:20px 18px 0;box-shadow:0 -12px 40px -16px rgba(29,46,50,.35)}
+.screen .date{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#5C6B6E}
+.screen .date b{font-family:'Newsreader',serif;font-weight:400;font-size:17px;color:#1D2E32}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}
+.day{border-radius:12px;padding:9px 0 8px;text-align:center;border:1px solid}
+.day small{display:block;font-size:9px;font-weight:600;letter-spacing:.08em}
+.day b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:19px;margin-top:2px}
+.day.busy{background:#F3DDDA;border-color:#E7C9C4}.day.busy small{color:#8A4B45}
+.day.open{background:#DDE7D7;border-color:#C3D3BB}.day.open small{color:#4E6B52}
+.day.today{background:#DDE7D7;border:2px solid #1D2E32;padding:8px 0 7px}.day.today small{color:#1D2E32}
+.legend{display:flex;gap:14px;margin-top:12px;font-size:11px;color:#5C6B6E}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:3px;border:1px solid transparent}
+.slots{display:grid;grid-template-columns:28px 1fr;column-gap:8px;row-gap:6px;margin-top:16px;font-size:10px;color:#8A9492}
+.slots .h{padding-top:2px}
+.slot{height:40px;border-radius:10px;padding:8px 12px;font-size:12px;color:#1D2E32;display:flex;align-items:flex-start;justify-content:space-between}
+.slot.open{background:#E6EEE1;border:1px dashed #A9BFA0;font-weight:500}
+.slot.booked{background:#E9DDC8;border:1px solid #D9CAB0;font-weight:600}
+.slot.mine{background:#1D2E32;color:#F5F1E8;font-weight:600}
+.slot.mine em{font-style:normal;font-weight:400;opacity:.7}
+.slot.cut{height:26px;border-radius:10px 10px 0 0;border-bottom:none;padding:7px 12px}
+.note{margin:44px 24px 0;padding:24px;border-radius:24px;background:#1D2E32;color:#F5F1E8}
+.note .eyebrow{color:#C9D8C2}
+.note .big{font-family:'Newsreader',serif;font-size:23px;line-height:1.3;margin:8px 0 0;text-wrap:pretty}
+.note p{font-size:15px;line-height:1.5;color:#C9D8C2;margin:14px 0 0;text-wrap:pretty}
+.help{padding:28px 24px 0;text-align:center;font-size:14px;color:#5C6B6E}
+.help a{font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#97A88D}
+.cta-bar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;z-index:10;pointer-events:none}
+.cta-in{width:100%;max-width:480px;padding:14px 20px calc(18px + env(safe-area-inset-bottom));background:rgba(245,241,232,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid #E6DECF;pointer-events:auto}
+.cta-row{display:flex;gap:10px}
+.store{flex:1;min-width:0;display:none;align-items:center;justify-content:center;gap:12px;height:60px;border-radius:12px;background:#000;color:#fff;text-decoration:none;border:1px solid #4A4A4A;box-shadow:0 12px 28px -12px rgba(29,46,50,.5);transition:transform .14s ease,background .18s ease}
+.store:hover{background:#111;color:#fff}.store:active{transform:scale(.99) translateY(.5px)}
+.store svg{flex-shrink:0}
+.store .lbl{display:flex;flex-direction:column;line-height:1.05;text-align:left}
+.store .lbl small{font-size:11px;font-weight:500;letter-spacing:.02em}
+.store .lbl b{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.store-note{text-align:center;font-size:12.5px;color:#8A9492;margin-top:10px}
+/* device-aware: desktop shows both, phones show their own store */
+body.is-desktop .store,body.is-ios .store[data-cta="ios"],body.is-android .store[data-cta="android"]{display:flex}
+.store-note span{display:none}
+body.is-desktop .store-note .d,body.is-ios .store-note .i,body.is-android .store-note .a{display:inline}
+@media (min-width:760px){.col{max-width:520px}.card{margin-top:48px}}
+</style>
+</head>
+<body class="is-desktop">
+<div class="wrap"><div class="col">
+
+<div class="logos rise">
+<img class="zing" src="zing-logo.svg" alt="Zing">
+<div class="sep"></div>
+<img class="bldg" src="wynd2728-logo.png" alt="Wynd 27/28">
+</div>
+
+<div class="hero rise" style="animation-delay:.05s">
+<div class="eyebrow">For Wynd 27/28 residents</div>
+<h1>Your building's schedule, live in your pocket.</h1>
+<p class="lede">Booking at Wynd 27/28 now happens in the Zing app. See exactly which times are open, reserve one knowing it's yours, and manage every visit from anywhere.</p>
+</div>
+
+<div class="features rise" style="animation-delay:.1s">
+<div class="feat"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5F7A63" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"></rect><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"></path></svg><div><strong>See the building's live schedule</strong><span>Open times at Wynd 27/28 update as neighbors reserve. What you see is what you get.</span></div></div>
+<div class="feat"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5F7A63" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><div><strong>Book with confidence</strong><span>No conflicts, no back-and-forth. The time you pick is yours.</span></div></div>
+<div class="feat"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5F7A63" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M2 14h4M10 8h4M18 16h4"></path></svg><div><strong>Manage everything in one place</strong><span>Reschedule, add a task or cancel in a tap.</span></div></div>
+</div>
+
+<div class="card rise" style="animation-delay:.15s">
+<div class="card-head"><span class="t">Live availability</span><span class="now"><i></i>Now</span></div>
+<div class="screen">
+<div class="date"><b>Thursday, Sep 24</b><span>Wynd 27/28</span></div>
+<div class="days">
+<div class="day busy"><small>MON</small><b>21</b></div>
+<div class="day open"><small>TUE</small><b>22</b></div>
+<div class="day busy"><small>WED</small><b>23</b></div>
+<div class="day today"><small>THU</small><b>24</b></div>
+<div class="day open"><small>FRI</small><b>25</b></div>
+</div>
+<div class="legend"><span><i style="background:#DDE7D7;border-color:#C3D3BB"></i>Open</span><span><i style="background:#E9DDC8;border-color:#D9CAB0"></i>Booked</span><span><i style="background:#1D2E32"></i>Your visit</span></div>
+<div class="slots">
+<div class="h">9a</div><div class="slot open">Open · 1 hr</div>
+<div class="h">10a</div><div class="slot booked">Booked · 9th floor</div>
+<div class="h">11a</div><div class="slot open">Open · 1 hr 30 min</div>
+<div class="h">12p</div><div class="slot mine"><span>Your visit · Bathroom clean</span><em>~45 min</em></div>
+<div class="h">1p</div><div class="slot booked cut">Booked · 14th floor</div>
+</div>
+</div>
+</div>
+
+<div class="note rise" style="animation-delay:.2s">
+<div class="eyebrow">Please note</div>
+<p class="big">Bookings can no longer be placed on the web. Everything now lives in the app.</p>
+<p>Sign in with the same email and password you use here. Your upcoming visits and history are already there.</p>
+</div>
+
+<div class="help rise" style="animation-delay:.25s">Questions or trouble signing in? <a href="sms:?body=Hi%20Zing%2C%20I%20need%20help%20with%20the%20app%20(Wynd%2027%2F28).">Text us</a></div>
+
+</div></div>
+
+<div class="cta-bar"><div class="cta-in">
+<div class="cta-row">
+<a class="store" data-cta="ios" href="https://apps.apple.com/us/app/zing-cleaning/id6755075803"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M16.37 12.63c.03 2.83 2.48 3.77 2.51 3.78-.02.07-.39 1.35-1.3 2.67-.78 1.14-1.6 2.28-2.88 2.3-1.26.02-1.66-.75-3.1-.75-1.44 0-1.89.73-3.08.77-1.24.05-2.18-1.23-2.97-2.37-1.61-2.33-2.85-6.6-1.19-9.47.82-1.43 2.3-2.33 3.9-2.36 1.21-.02 2.36.82 3.1.82.74 0 2.13-1.01 3.6-.86.61.03 2.33.25 3.44 1.87-.09.05-2.05 1.2-2.03 3.6M13.98 5.4c.66-.8 1.1-1.9.98-3-.95.04-2.1.63-2.78 1.43-.61.7-1.14 1.83-1 2.91 1.06.08 2.14-.54 2.8-1.34"></path></svg><span class="lbl"><small>Download on the</small><b>App Store</b></span></a>
+<a class="store" data-cta="android" href="https://play.google.com/store/apps/details?id=com.justzingit.android"><svg width="28" height="30" viewBox="0 0 24 26"><path fill="#00D7FE" d="M1.2 1.1 13.9 13 1.2 24.9c-.45-.25-.7-.75-.7-1.35V2.45c0-.6.25-1.1.7-1.35"></path><path fill="#00F076" d="M17.2 9.7 13.9 13 1.2 1.1c.25-.15.55-.25.9-.25.3 0 .65.1 1 .3l14.1 8.55"></path><path fill="#FF3A44" d="M17.2 16.3 3.1 24.85c-.35.2-.7.3-1 .3-.35 0-.65-.1-.9-.25L13.9 13l3.3 3.3"></path><path fill="#FFD500" d="M22.6 11.55c.9.5.9 2.4 0 2.9l-5.4 1.85L13.9 13l3.3-3.3 5.4 1.85"></path></svg><span class="lbl"><small>GET IT ON</small><b>Google Play</b></span></a>
+</div>
+<div class="store-note"><span class="i">Free on the App Store</span><span class="a">Free on Google Play</span><span class="d">Open this page on your phone to install in one tap.</span></div>
+</div></div>
+
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var ios = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(ua);
+  document.body.className = ios ? 'is-ios' : android ? 'is-android' : 'is-desktop';
+})();
+</script>
+</body>
+</html>
