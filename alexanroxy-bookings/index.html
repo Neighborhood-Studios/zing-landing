@@ -667,7 +667,7 @@ const WeeklyCalendarCard = () => { const { weeklySchedule } = derive(useCfg()); 
       {getWeekDays().map((day, i) => {
         const sched = weeklySchedule[i];
         const isHigh = sched.spots >= 5;
-        const isLow = sched.spots <= 2;
+        const isLow = sched.spots === 0; // gray only when fully booked; any availability = dark green
         const isLast = i === 4;
         return (
           <React.Fragment key={i}>
