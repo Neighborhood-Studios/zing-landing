@@ -270,6 +270,7 @@ body.ciall .bonly{display:block}
 <aside class="nav">
 <button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
 <a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Density Dashboard</span></a>
+<a href="#unit" data-view="unit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M19 4v5M16.5 6.5h5"/></svg><span>Unit Economics &amp; KPIs</span></a>
 <a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
 <a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Sign-up growth</span></a>
 <a href="#cards" data-view="cards"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19"/><path d="M6 14h4"/></svg><span>Cart impact</span></a>
@@ -278,6 +279,7 @@ body.ciall .bonly{display:block}
 <a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
 </aside>
 <main>
+<section class="view" id="viewUnit"></section>
 <section class="view on" id="viewDash">
 <section class="stats" id="stats"></section>
 <section class="panel">
@@ -449,6 +451,7 @@ body.ciall .bonly{display:block}
 <button type="button" id="ciWkPlay">Play</button>
 <input type="range" id="ciWk" min="0" max="1" step="1" value="1" style="flex:1;min-width:160px">
 <button type="button" id="ciWkAll">Today</button>
+<button type="button" id="ciGif" title="Replays every week and downloads this panel as an animated GIF">Save GIF</button>
 <span id="ciWkLbl" style="font-size:11px;color:var(--ink-4);white-space:nowrap"></span>
 </div>
 <div class="elevwrap">
@@ -534,7 +537,18 @@ const buildingMargin = r => salaryOf(r) > 0 && r.revenue ? (r.revenue - salaryOf
 // where the head count per cluster is set by hand in the clusters table
 let CLEANERS = { Downtown: 2, Edgewater: 3 };   // defaults, overridden by whatever is typed in
 try { CLEANERS = Object.assign(CLEANERS, JSON.parse(localStorage.getItem("zingKpiCleaners")) || {}); } catch (e) {}
-const cleanersIn = c => CLEANERS[c] ?? null;
+// a cluster with no headcount of its own falls back to the cleaners assigned to its buildings
+// (Building settings, else the registry), so a new cluster reports a margin as soon as it has revenue
+const cleanersIn = c => {
+  if (CLEANERS[c] != null) return CLEANERS[c];
+  if (typeof REGISTRY === "undefined" || typeof BSET === "undefined") return null;
+  let n = 0, hit = false;
+  Object.entries(REGISTRY).forEach(([k, b]) => {
+    const s = BSET[k] || {}; const cl = s.cluster ?? b.cluster;
+    if (cl !== c) return; hit = true; n += Number(s.cleaners ?? b.cleaners) || 0;
+  });
+  return hit && n > 0 ? n : null;
+};
 // Portfolio KPI: Σ revenue of every building ÷ payroll of every cleaner in every cluster
 const portfolioMargin = rows => {
   const rev = rows.reduce((a, r) => a + r.revenue, 0);
@@ -557,7 +571,8 @@ const SAMPLE = [
 ["Paraiso Bayviews","501 NE 31st St, Miami, FL 33137-4476",25.8046,-80.1868,"Edgewater",2,980,1180],
 ["Bezel Miami","650 NE 2nd Ave, Miami, FL 33132-2516",25.7797,-80.1913,"Downtown",2,1010,1180],
 ["Miami World Tower","710 NE 1st Ave, Miami, FL 33132-2398",25.7808,-80.1920,"Downtown",1,1490,1180],
-["Muze","340 SE 3rd St, Miami, FL 33131-1728",25.7713,-80.1893,"Downtown",2,1740,1180]
+["Muze","340 SE 3rd St, Miami, FL 33131-1728",25.7713,-80.1893,"Downtown",2,1740,1180],
+["Alexan Roxy","2370 SW 37th Ave, Miami, FL 33145",25.7484,-80.2596,"Coral Gables",1,0,1180]
 ];
 const WEEKS = ["2026-W31","2026-W32","2026-W33"];
 const jitter = (v, i, w) => Math.round(v * (1 + ((i * 7 + w * 13) % 11 - 5) / 40));
@@ -584,7 +599,7 @@ SAMPLE.forEach(b => REGISTRY[key(b[0])] = { name: b[0], address: b[1], lat: b[2]
 const INITIALS = {};
 SAMPLE.forEach(b => { const i = b[0].split(/[^A-Za-z0-9]+/).filter(Boolean).map(w => w[0].toLowerCase()).join("");
   if (i.length > 1) INITIALS[i] = key(b[0]); });
-const ALIASES = { mwt: "miamiworldtower", pbv: "paraisobayviews", wynd: "wynd2728", hamilton: "thehamilton" };
+const ALIASES = { mwt: "miamiworldtower", pbv: "paraisobayviews", wynd: "wynd2728", hamilton: "thehamilton", roxy: "alexanroxy", ar: "alexanroxy" };
 function lookup(name){
   const k = key(name);
   if (REGISTRY[k]) return REGISTRY[k];
@@ -1264,7 +1279,7 @@ function csvEndpoints(u){
 const SHEETJS = "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js";
 const sheetId = u => (u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/) || [])[1] || "";
 /* tab names the live workbook uses, plus every registry name, so a tab can be pulled by name */
-const TABS = ["Hamilton","Forma","Bezel","Miami World Tower","Muze at Met","Paraiso Bayviews","Wynd2728"];
+const TABS = ["Hamilton","Forma","Bezel","Miami World Tower","Muze at Met","Paraiso Bayviews","Wynd2728","Alexan Roxy"];
 const dedupe = rows => { const seen = new Set();
   return rows.filter(r => { const k = r.building + "|" + r.week; if (seen.has(k)) return false; seen.add(k); return true; }); };
 
@@ -1483,6 +1498,8 @@ function showView(v){
   document.getElementById("viewForecast").classList.toggle("on", v === "forecast");
   document.getElementById("viewSignups").classList.toggle("on", v === "signups");
   document.getElementById("viewCards").classList.toggle("on", v === "cards");
+  document.getElementById("viewUnit").classList.toggle("on", v === "unit");
+  if (v === "unit" && window.zingUnitEconomics) window.zingUnitEconomics.render();
   hideHover();
 }
 document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
@@ -1490,12 +1507,13 @@ document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preve
 // per-building facts the sheet does not carry, kept on this device
 let BSET = {
   bezelmiami:       { units: 434, access: "remote", live: "2026-04-28", cleaners: 0.5 },
-  forma:            { units: 850, access: "remote", live: "2026-01-22", cleaners: 2 },
+  forma:            { units: 850, access: "remote", live: "2026-01-22", cleaners: 1.6 },
   miamiworldtower:  { units: 520, access: "none",   live: "2026-05-14", cleaners: 0.5 },
   muze:             { units: 391,                   live: "2026-06-12", cleaners: 1 },
   paraisobayviews:  { units: 397, access: "none",   live: "2026-05-08", cleaners: 0 },
   hamilton:         { units: 275, access: "remote", live: "2026-08-04", cleaners: 1 },
-  wynd2728:         { units: 152, access: "remote", live: "2025-05-16", cleaners: 0 }
+  wynd2728:         { units: 152, access: "remote", live: "2025-05-16", cleaners: 0 },
+  alexanroxy:       { units: 0,   access: "none",   live: "",           cleaners: 1, cluster: "Coral Gables" }
 };
 try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
   .forEach(([k, v]) => BSET[k] = Object.assign({}, BSET[k], v)); } catch (e) {}
@@ -1503,7 +1521,7 @@ const saveBset = () => {
   localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
   apiPost("Buildings", "replaceAll", { rows: Object.entries(BSET).map(([k, v]) => ({
     building: (REGISTRY[k] || {}).name || k, units: v.units || 0, cleanersAssigned: v.cleaners || 0,
-    accessMethod: v.access || "none", liveDate: v.live || "" })) });
+    accessMethod: v.access || "none", liveDate: v.live || "", cluster: v.cluster ?? "" })) });
 };
 function firstRevenueWeek(name){
   const rs = ROWS.filter(r => r.building === name && r.revenue > 0)
@@ -1517,7 +1535,7 @@ function renderSettings(){
     return `<tr><td class="name">${n}<span class="addr">${reg.address || ""}</span></td>
       <td style="color:var(--ink-3)"><select data-f="cluster" data-b="${key(n)}" aria-label="Cluster for ${n}">${[""].concat(allClusters()).map(c => `<option value="${c}"${(s.cluster ?? reg.cluster ?? "") === c ? " selected" : ""}>${c || "— unassigned"}</option>`).join("")}</select></td>
       <td class="n"><input type="number" min="0" step="1" data-f="units" data-b="${key(n)}" value="${s.units ?? ""}" placeholder="—" aria-label="Units in ${n}"></td>
-      <td class="n"><input type="number" min="0" step="0.5" data-f="cleaners" data-b="${key(n)}" value="${s.cleaners ?? ""}" placeholder="—" aria-label="Cleaners at ${n}"></td>
+      <td class="n"><input type="number" min="0" step="0.1" data-f="cleaners" data-b="${key(n)}" value="${s.cleaners ?? ""}" placeholder="—" aria-label="Cleaners at ${n}"></td>
       <td><select data-f="access" data-b="${key(n)}" aria-label="Access method for ${n}">
         <option value=""${s.access ? "" : " selected"}>—</option>
         <option value="remote"${s.access === "remote" ? " selected" : ""}>Has remote access</option>
@@ -2329,7 +2347,11 @@ loadCSV(saved, true);
     if (settings.extraClusters) try{ const a = JSON.parse(settings.extraClusters); if (Array.isArray(a)) XCLUSTERS = a; }catch(e){}
     (data.Clusters || []).slice(1).forEach(r => { if (r[0]) CLEANERS[r[0]] = Number(r[1]) || 0; });
     (data.Buildings || []).slice(1).forEach(r => { if (!r[0]) return;
-      BSET[key(r[0])] = Object.assign({}, BSET[key(r[0])], { units: Number(r[1]) || 0, cleaners: Number(r[2]) || 0, access: r[3] || "none", live: r[4] || "" }); });
+      // column 6 (cluster) is optional in the sheet; when present it is the cluster assignment, and an
+      // absent column keeps whatever the registry / local override says instead of wiping it
+      const o = { units: Number(r[1]) || 0, cleaners: Number(r[2]) || 0, access: r[3] || "none", live: r[4] || "" };
+      if (r.length > 5 && r[5] !== undefined && r[5] !== null && String(r[5]) !== "") o.cluster = String(r[5]);
+      BSET[key(r[0])] = Object.assign({}, BSET[key(r[0])], o); });
     EVENTS = (data.Events || []).slice(1).filter(r => r[0]).map(r => ({ building: r[0], week: r[1], name: r[2], description: r[3], impact: Number(r[4]) || 0 }));
     PIPE = (data.Pipeline || []).slice(1).filter(r => r[0]).map(r => ({ name: r[0], address: r[1], units: r[2], tag: r[3], mgmt: r[4], cluster: r[5], status: r[6], lat: r[7], lng: r[8] }));
     CAL = (data.PromoCalendar || []).slice(1).filter(r => r[0] !== "").map(r => ({ week: Number(r[0]), preUrl: r[1], postUrl: r[2], pre: r[3] === "" ? null : Number(r[3]), post: r[4] === "" ? null : Number(r[4]) }));
@@ -2340,5 +2362,7 @@ loadCSV(saved, true);
 </script>
 <script src="cart-data.js"></script>
 <script src="cart-impact.js"></script>
+<script src="cart-gif.js"></script>
+<script src="unit-economics.js"></script>
 </body>
 </html>

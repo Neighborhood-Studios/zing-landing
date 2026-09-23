@@ -562,6 +562,10 @@ function renderElevation(p, h){
     '<div class="ch"><span class="lb">Neighbour sign-ups per floor</span>' +
       '<div class="bar"><i class="a" style="width:' + bw(h.nV) + 'px"></i><b>' + f1(h.nV) + '</b></div><small>Cart has worked here</small>' +
       '<div class="bar" style="margin-top:6px"><i class="b" style="width:' + bw(h.nN) + 'px"></i><b>' + f1(h.nN) + '</b></div><small>Cart never seen</small></div>' +
+    '<div class="ch" style="background:#FFD9EC;border:2px solid #FF3D9A;border-radius:12px;padding:10px 12px"><span class="lb" style="color:#B0005F">Cart appearances per neighbour sign-up</span>' +
+      '<div class="bar"><b style="font-size:22px;font-family:\'Newsreader\',serif;font-weight:500">' + (h.A.nb ? f1(h.A.v / h.A.nb) + "\u00d7" : "\u2014") + '</b></div>' +
+      '<small>' + (h.A.nb ? h.A.v + " cleans on served floors \u00f7 " + h.A.nb + " neighbours who signed up and never ordered. A ratio, not proof the visits caused the sign-ups." :
+        h.A.v ? h.A.v + " cleans on served floors and no neighbour has signed up yet." : "No cart visits in this selection yet.") + '</small></div>' +
     '<div class="verdict">' + (live ? "Sign-ups on <b>" + cut + "</b>: " +
       list.reduce((t, f) => t + view[f.key].signups, 0) + " units signed up, " +
       list.reduce((t, f) => t + view[f.key].customers, 0) + " of them ordering, " +
@@ -709,6 +713,12 @@ $("ciWkPlay").onclick = () => {
     TL++; render();
   }, 550);
   render();
+};
+// read by cart-gif.js: step the elevation through its weekly stops without touching the rest of the page
+window.zingCartTimeline = {
+  frames: () => $("ciWkWrap").style.display === "none" ? 0 : +$("ciWk").max + 1,
+  show: i => { stopPlay(); TL = i; render(); },
+  reset: () => { stopPlay(); TL = null; render(); }
 };
 
 /* ---- shared storage: the same Apps Script backend the rest of the dashboard uses ---- */
