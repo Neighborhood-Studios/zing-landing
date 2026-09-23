@@ -89,8 +89,8 @@ function prepLaunch(){
   Object.keys(OB).forEach(b => LAUNCH[b] = OB[b][0].t);
   Object.keys(SB).forEach(b => { const f = SB[b].rows.find(r => r.revenue > 0); if (f && !(LAUNCH[b] <= f.weekTime)) LAUNCH[b] = f.weekTime; });
   Object.entries(BSET).forEach(([b, s]) => { const t = dayT(s.live); if (t == null) return;
-    if (LAUNCH[b] == null || t < LAUNCH[b]) LAUNCH[b] = t;
-    else if (t - LAUNCH[b] > 30 * DAY) LIVE_NOTE.push(`${NAME[b] || b}: Building settings says live ${dstr(t)}, first realized visit ${dstr(LAUNCH[b])}`); });
+    if (LAUNCH[b] != null && t - LAUNCH[b] > 30 * DAY) LIVE_NOTE.push(`${NAME[b] || b}: launch set to Building settings' live date ${dstr(t)}; earlier visits from ${dstr(LAUNCH[b])} are ignored for building age`);
+    LAUNCH[b] = t; });
 }
 const buildings = () => [...new Set([...Object.keys(OB), ...Object.keys(SB)])].filter(Boolean);
 
@@ -388,7 +388,7 @@ ${group("Labor economics", ["rpp", "rph", "util", "lcph", "cph", "cm"])}${group(
 <li><b>Active customer</b>: a realized visit in the 90 days before the window end. <b>Sign-ups</b> come from the sheet's total sign-ups, else the users export.</li>
 <li><b>Paid hours</b> = cleaners assigned × ${HPD} h × ${DPW} days. <b>Productive hours</b> = the sheet's hours of operations, logged by cleaners. <b>Utilization</b> = productive ÷ paid.</li>
 <li><b>Contribution</b> = revenue − wages × (1 + burden) − other variable cost × visits, at ${$0(SALARY)} per cleaner-week (${$2(wageHr())}/h). This is contribution, not gross margin: no rent, software or overhead.</li>
-<li><b>Mature</b> = 12+ months since launch. Launch = the earlier of Building settings' live date and the first realized visit.</li></ul></div>
+<li><b>Mature</b> = 12+ months since launch. Launch = Building settings' live date; the first realized visit only where no live date is set.</li></ul></div>
 <div><h3 class="eyebrow">Not in the data yet</h3><ul>
 <li>Payroll burden and other variable costs (supplies, card fees). Set above; currently ${A.burden}% and ${$2(A.other)}/visit.</li>
 <li>Launch / acquisition and activation / marketing cost per building, so payback is blank until entered.</li>

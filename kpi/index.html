@@ -1507,16 +1507,26 @@ document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preve
 // per-building facts the sheet does not carry, kept on this device
 let BSET = {
   bezelmiami:       { units: 434, access: "remote", live: "2026-04-28", cleaners: 0.5 },
-  forma:            { units: 850, access: "remote", live: "2026-01-22", cleaners: 1.6 },
+  forma:            { units: 850, access: "remote", live: "2026-01-26", cleaners: 1.6 },
   miamiworldtower:  { units: 520, access: "none",   live: "2026-05-14", cleaners: 0.5 },
   muze:             { units: 391,                   live: "2026-06-12", cleaners: 1 },
   paraisobayviews:  { units: 397, access: "none",   live: "2026-05-08", cleaners: 0 },
-  hamilton:         { units: 275, access: "remote", live: "2026-08-04", cleaners: 1 },
+  hamilton:         { units: 275, access: "remote", live: "2025-08-04", cleaners: 1 },
   wynd2728:         { units: 152, access: "remote", live: "2025-05-16", cleaners: 0 },
   alexanroxy:       { units: 0,   access: "none",   live: "",           cleaners: 1, cluster: "Coral Gables" }
 };
 try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
   .forEach(([k, v]) => BSET[k] = Object.assign({}, BSET[k], v)); } catch (e) {}
+// Sept 23, 2026 corrections: win over older local or sheet values once, then write back so every device agrees
+const BSET_FIXES = { forma: { live: "2026-01-26", cleaners: 1.6 }, hamilton: { live: "2025-08-04" } };
+const applyBsetFixes = () => { let changed = false;
+  Object.entries(BSET_FIXES).forEach(([k, f]) => Object.entries(f).forEach(([p, v]) => {
+    const cur = BSET[k] && BSET[k][p]; const same = p === "live" ? String(cur || "").slice(0, 10) === v : Number(cur) === v;
+    if (!same){ BSET[k] = Object.assign({}, BSET[k], { [p]: v }); changed = true; } }));
+  return changed; };
+const BSET_FIX_KEY = "zingBsetFix20260923";
+if (!localStorage.getItem(BSET_FIX_KEY)){ applyBsetFixes(); localStorage.setItem(BSET_FIX_KEY, "1"); }
+
 const saveBset = () => {
   localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
   apiPost("Buildings", "replaceAll", { rows: Object.entries(BSET).map(([k, v]) => ({
@@ -2352,6 +2362,8 @@ loadCSV(saved, true);
       const o = { units: Number(r[1]) || 0, cleaners: Number(r[2]) || 0, access: r[3] || "none", live: r[4] || "" };
       if (r.length > 5 && r[5] !== undefined && r[5] !== null && String(r[5]) !== "") o.cluster = String(r[5]);
       BSET[key(r[0])] = Object.assign({}, BSET[key(r[0])], o); });
+    if (!settings.bsetFix20260923){ applyBsetFixes(); saveBset();
+      apiPost("Settings", "upsert", { key: "key", values: { key: "bsetFix20260923", value: "done" } }); }
     EVENTS = (data.Events || []).slice(1).filter(r => r[0]).map(r => ({ building: r[0], week: r[1], name: r[2], description: r[3], impact: Number(r[4]) || 0 }));
     PIPE = (data.Pipeline || []).slice(1).filter(r => r[0]).map(r => ({ name: r[0], address: r[1], units: r[2], tag: r[3], mgmt: r[4], cluster: r[5], status: r[6], lat: r[7], lng: r[8] }));
     CAL = (data.PromoCalendar || []).slice(1).filter(r => r[0] !== "").map(r => ({ week: Number(r[0]), preUrl: r[1], postUrl: r[2], pre: r[3] === "" ? null : Number(r[3]), post: r[4] === "" ? null : Number(r[4]) }));
