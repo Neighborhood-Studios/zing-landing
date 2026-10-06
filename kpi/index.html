@@ -102,6 +102,8 @@ body.navmin aside.nav a span{display:none}
 .cal .pull:hover{border-color:var(--sage-400,#B4C3AC)}
 .addcl button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
 #tbClusterList td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbHires td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbHires td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
 #tbClusterList td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
 .surt{display:flex;gap:12px;align-items:flex-end}
 .surt button,.evform button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
@@ -317,6 +319,12 @@ body.ciall .bonly{display:block}
   <form class="addcl" id="clForm"><input type="text" id="clName" placeholder="Cluster name" aria-label="New cluster name" required><button type="submit">Add cluster</button></form>
 </div>
 <div class="scrollx"><table><thead><tr><th>Cluster</th><th>Buildings</th><th>Units</th><th>Cleaners</th><th></th></tr></thead><tbody id="tbClusterList"></tbody></table></div>
+<section class="panel">
+<div class="phead"><h2>Hires and departures</h2><p>The Cleaners number above is today's headcount. Log the date each cleaner started or left, and the weeks before that date keep the headcount the cluster actually had.</p></div>
+<div class="piperow" style="margin:0 0 16px">
+  <form class="addcl" id="hireForm" style="flex-wrap:wrap"><select id="hireCluster" aria-label="Cluster"></select><input type="date" id="hireDate" aria-label="Date" required style="min-width:150px"><select id="hireChange" aria-label="Change"><option value="1">Hired</option><option value="-1">Left</option></select><input type="text" id="hireNote" placeholder="Note, e.g. Modera Edgewater" aria-label="Note"><button type="submit">Log change</button></form>
+</div>
+<div class="scrollx"><table><thead><tr><th>Date</th><th>Cluster</th><th>Change</th><th>Cleaners</th><th>Note</th><th></th></tr></thead><tbody id="tbHires"></tbody></table></div>
 </section>
 </section>
 <section class="view" id="viewClusters">
@@ -549,16 +557,48 @@ const cleanersIn = c => {
   });
   return hit && n > 0 ? n : null;
 };
+// Headcount changes. The clusters table holds today's headcount; each logged hire (+1) or departure (−1)
+// means the weeks that ended before its date had one fewer (or one more) cleaner in that cluster.
+let HIRES = [];
+try { const s = JSON.parse(localStorage.getItem("zingKpiHires")); if (Array.isArray(s)) HIRES = s; } catch (e) {}
+const saveHires = () => { localStorage.setItem("zingKpiHires", JSON.stringify(HIRES));
+  apiPost("Settings", "upsert", { key: "key", values: { key: "headcountChanges", value: JSON.stringify(HIRES) } }); };
+const dayT = d => Date.parse(String(d).slice(0, 10) + "T00:00:00Z");
+const _wt = { rows: null, m: new Map() };
+const weekT = w => {
+  if (_wt.rows !== ROWS){ _wt.rows = ROWS; _wt.m = new Map(); }
+  if (_wt.m.has(w)) return _wt.m.get(w);
+  let t = null; const r = ROWS.find(x => x.week === w && x.weekTime != null);
+  if (r) t = r.weekTime;
+  else { const m = /^(\d{4})-W(\d{1,2})$/.exec(String(w));
+    if (m){ const j4 = Date.UTC(+m[1], 0, 4); t = j4 - ((new Date(j4).getUTCDay() + 6) % 7) * 864e5 + (m[2] - 1) * 6048e5; }
+    else { const p = Date.parse(w); t = isNaN(p) ? null : p; } }
+  _wt.m.set(w, t); return t;
+};
+// changes dated after the week ended are undone for that week
+const cleanersAt = (c, w) => {
+  const now = cleanersIn(c); if (now == null) return null;
+  const t = weekT(w); if (t == null || !HIRES.length) return now;
+  const later = HIRES.filter(h => h.cluster === c && dayT(h.date) >= t + 6048e5).reduce((a, h) => a + (Number(h.change) || 0), 0);
+  return Math.max(0, now - later);
+};
+// a multi-week range averages the headcount across its weeks
+const headsFor = (c, rows) => {
+  const ws = [...new Set((rows || []).flatMap(r => r._ws || [r.week]))];
+  if (!ws.length) return cleanersIn(c);
+  const v = ws.map(w => cleanersAt(c, w)).filter(n => n != null);
+  return v.length ? v.reduce((a, n) => a + n, 0) / v.length : null;
+};
 // Portfolio KPI: Σ revenue of every building ÷ payroll of every cleaner in every cluster
 const portfolioMargin = rows => {
   const rev = rows.reduce((a, r) => a + r.revenue, 0);
-  const heads = [...new Set(rows.filter(r => r.cluster).map(r => r.cluster))].reduce((a, c) => a + (cleanersIn(c) || 0), 0);
+  const heads = [...new Set(rows.filter(r => r.cluster).map(r => r.cluster))].reduce((a, c) => a + (headsFor(c, rows.filter(r => r.cluster === c)) || 0), 0);
   const sal = heads * SALARY;
   return { pct: sal > 0 && rev ? (rev - sal) / sal : null, rev, sal, heads };
 };
 const clusterMargin = (rows, c) => {
   const rev = rows.reduce((a, r) => a + r.revenue, 0);
-  const n = cleanersIn(c);
+  const n = headsFor(c, rows);
   const sal = n ? n * SALARY : 0;
   return sal > 0 && rev ? { pct: (rev - sal) / sal, rev, sal, n } : { pct: null, rev, sal, n };
 };
@@ -763,8 +803,8 @@ function periodRows(w, back){
   const set = new Set(ws), agg = new Map();
   ROWS.forEach(r => { if (!set.has(r.week)) return;
     const a = agg.get(r.building);
-    if (!a) agg.set(r.building, Object.assign({}, r, { revenue: r.revenue, visits: r.visits || 0, hours: r.hours || 0, _n: r.revenue > 0 ? 1 : 0 }));
-    else { a.revenue += r.revenue; a.visits += r.visits || 0; a.hours += r.hours || 0; if (r.revenue > 0) a._n++; } });
+    if (!a) agg.set(r.building, Object.assign({}, r, { revenue: r.revenue, visits: r.visits || 0, hours: r.hours || 0, _n: r.revenue > 0 ? 1 : 0, _ws: [r.week] }));
+    else { a._ws.push(r.week); a.revenue += r.revenue; a.visits += r.visits || 0; a.hours += r.hours || 0; if (r.revenue > 0) a._n++; } });
   return [...agg.values()].map(a => Object.assign(a, {
     revenue: a._n ? a.revenue / a._n : 0,
     visits: a._n ? a.visits / a._n : 0,
@@ -813,7 +853,7 @@ function render(){
   const negB = bm.filter(v => v <= 0).length;
   const negC = clusters.filter(c => { const m = clusterMargin(clustered.filter(r => r.cluster === c), c).pct; return m != null && m <= 0; }).length;
   document.getElementById("stats").innerHTML = [
-    ["Portfolio margin", pct(all.pct), money(all.rev) + " · " + heads + " cleaners × " + money(SALARY) + " · " + rangeLabel()],
+    ["Portfolio margin", pct(all.pct), money(all.rev) + " · " + (+heads.toFixed(1)) + " cleaners × " + money(SALARY) + " · " + rangeLabel()],
     ["Median margin / cleaner", bm.length ? pct(bm.sort((a, b) => a - b)[Math.floor(bm.length / 2)]) : "—", bm.length + " of " + cur.length + " buildings reporting"],
     ["Buildings at or below 0%", negB + " / " + bm.length, negB ? "needs attention" : "all positive"],
     ["Clusters at or below 0%", negC + " / " + clusters.length, clusters.join(" · ")]
@@ -885,6 +925,7 @@ function render(){
   drawMatrices();
   renderSettings();
   renderClusterList();
+  renderHires();
   renderSignups();
   renderScenario();
   renderForecast();
@@ -1446,6 +1487,29 @@ document.getElementById("clForm").onsubmit = e => {
   el.value = ""; render();
 };
 
+function renderHires(){
+  const sel = document.getElementById("hireCluster"); if (!sel) return;
+  const v = sel.value; sel.innerHTML = allClusters().map(c => `<option${c === v ? " selected" : ""}>${c}</option>`).join("");
+  const list = HIRES.map((h, i) => Object.assign({ i }, h)).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  document.getElementById("tbHires").innerHTML = list.length ? list.map(h => {
+    const t = dayT(h.date);
+    const after = Math.max(0, (cleanersIn(h.cluster) || 0) - HIRES.filter(x => x.cluster === h.cluster && dayT(x.date) > t).reduce((a, x) => a + (Number(x.change) || 0), 0));
+    const before = Math.max(0, after - (Number(h.change) || 0));
+    const d = isNaN(t) ? h.date : new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    return `<tr><td class="num">${d}</td><td class="name"><span class="cdot" style="background:${clusterColors[h.cluster] || "#C9C2B4"}"></span>${h.cluster}</td>
+      <td>${Number(h.change) > 0 ? "Hired" : "Left"}</td><td class="num">${before} → ${after}</td><td style="color:var(--ink-3)">${h.note || ""}</td>
+      <td class="del"><button data-i="${h.i}" title="Remove" aria-label="Remove change">×</button></td></tr>`;
+  }).join("") : `<tr><td colspan="6" style="color:var(--ink-4);padding:18px 0">No changes logged, so every week uses today's headcount.</td></tr>`;
+  document.querySelectorAll("#tbHires .del button").forEach(b => b.onclick = () => { HIRES.splice(Number(b.dataset.i), 1); saveHires(); render(); });
+}
+document.getElementById("hireForm").onsubmit = e => {
+  e.preventDefault();
+  const g = id => document.getElementById(id).value;
+  if (!g("hireCluster") || !g("hireDate")) return;
+  HIRES.push({ cluster: g("hireCluster"), date: g("hireDate"), change: Number(g("hireChange")), note: g("hireNote").trim() });
+  document.getElementById("hireNote").value = ""; saveHires(); render();
+};
+
 /* ---------- building hover card ---------- */
 const unitsOf = name => (BSET[key(name)] || {}).units || null;
 const liveOf = name => (BSET[key(name)] || {}).live || null;
@@ -1513,7 +1577,8 @@ let BSET = {
   paraisobayviews:  { units: 397, access: "none",   live: "2026-05-08", cleaners: 0 },
   hamilton:         { units: 275, access: "remote", live: "2025-08-04", cleaners: 1 },
   wynd2728:         { units: 152, access: "remote", live: "2025-05-16", cleaners: 0 },
-  alexanroxy:       { units: 0,   access: "none",   live: "",           cleaners: 1, cluster: "Coral Gables" }
+  alexanroxy:       { units: 0,   access: "none",   live: "",           cleaners: 1, cluster: "Coral Gables" },
+  moderaedgewater:  { units: 291,                   live: "2026-09-28" }
 };
 try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
   .forEach(([k, v]) => BSET[k] = Object.assign({}, BSET[k], v)); } catch (e) {}
@@ -1526,6 +1591,8 @@ const applyBsetFixes = () => { let changed = false;
   return changed; };
 const BSET_FIX_KEY = "zingBsetFix20260923";
 if (!localStorage.getItem(BSET_FIX_KEY)){ applyBsetFixes(); localStorage.setItem(BSET_FIX_KEY, "1"); }
+// Oct 5, 2026: Modera Edgewater live date (first week of operations began Sept 28)
+if (!localStorage.getItem("zingBsetFix20261005")){ BSET.moderaedgewater = Object.assign({ units: 291 }, BSET.moderaedgewater, { live: "2026-09-28" }); localStorage.setItem("zingBsetFix20261005", "1"); }
 
 const saveBset = () => {
   localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
@@ -1956,10 +2023,13 @@ document.getElementById("suBy").onchange = e => { SU_BY = e.target.value; SU_SEL
    in the portfolio like any other. */
 const PIPE_STATUS = ["Contacted", "Closed", "Launching soon", "Launched"];
 const PIPE_COLORS = { "Contacted": "#B4A07E", "Closed": "#C8A86A", "Launching soon": "#97A88D", "Launched": "#1D2E32" };
-let PIPE = [{ name: "Modera Edgewater", address: "3000 Biscayne Blvd, Miami, FL 33137", units: 291,
-  tag: "Multifamily", mgmt: "Mill Creek Residential", cluster: "Edgewater", status: "Contacted",
-  lat: 25.8038, lng: -80.1893 }];
+let PIPE = [{ name: "Modera Edgewater", address: "455 NE 24th St, Miami, FL 33137", units: 291,
+  tag: "Multifamily", mgmt: "Mill Creek Residential", cluster: "Edgewater", status: "Launched",
+  lat: 25.7998, lng: -80.1879 }];
 try { const s = JSON.parse(localStorage.getItem("zingKpiPipeline")); if (Array.isArray(s)) PIPE = s; } catch (e) {}
+// Oct 5, 2026: Modera Edgewater went live the week of Sept 28 — mark it launched once on every device
+if (!localStorage.getItem("zingPipeFix20261005")){ PIPE.forEach(p => { if (key(p.name) === "moderaedgewater"){ p.status = "Launched"; p.address = "455 NE 24th St, Miami, FL 33137"; p.lat = 25.7998; p.lng = -80.1879; } });
+  localStorage.setItem("zingKpiPipeline", JSON.stringify(PIPE)); localStorage.setItem("zingPipeFix20261005", "1"); }
 const savePipe = () => {
   localStorage.setItem("zingKpiPipeline", JSON.stringify(PIPE));
   apiPost("Pipeline", "replaceAll", { rows: PIPE.map(p => ({ name: p.name, address: p.address, units: p.units, tag: p.tag, management: p.mgmt, cluster: p.cluster, status: p.status, lat: p.lat, lng: p.lng })) });
@@ -2354,6 +2424,7 @@ loadCSV(saved, true);
     if (settings.salary) { SALARY = Number(settings.salary) || SALARY; document.getElementById("salary").value = SALARY; }
     if (settings.hoursPerCleanerDay) HPD = Number(settings.hoursPerCleanerDay) || HPD;
     if (settings.daysPerWeek) DPW = Number(settings.daysPerWeek) || DPW;
+    if (settings.headcountChanges) try{ const a = JSON.parse(settings.headcountChanges); if (Array.isArray(a)){ HIRES = a; localStorage.setItem("zingKpiHires", settings.headcountChanges); } }catch(e){}
     if (settings.extraClusters) try{ const a = JSON.parse(settings.extraClusters); if (Array.isArray(a)) XCLUSTERS = a; }catch(e){}
     (data.Clusters || []).slice(1).forEach(r => { if (r[0]) CLEANERS[r[0]] = Number(r[1]) || 0; });
     (data.Buildings || []).slice(1).forEach(r => { if (!r[0]) return;
@@ -2366,6 +2437,14 @@ loadCSV(saved, true);
       apiPost("Settings", "upsert", { key: "key", values: { key: "bsetFix20260923", value: "done" } }); }
     EVENTS = (data.Events || []).slice(1).filter(r => r[0]).map(r => ({ building: r[0], week: r[1], name: r[2], description: r[3], impact: Number(r[4]) || 0 }));
     PIPE = (data.Pipeline || []).slice(1).filter(r => r[0]).map(r => ({ name: r[0], address: r[1], units: r[2], tag: r[3], mgmt: r[4], cluster: r[5], status: r[6], lat: r[7], lng: r[8] }));
+    // Oct 5, 2026: Modera Edgewater went live the week of Sept 28 — correct the sheet once, then write back
+    if (!settings.moderaLive20261005){
+      let p = PIPE.find(x => key(x.name) === "moderaedgewater");
+      if (!p){ p = { name: "Modera Edgewater", units: 291, tag: "Multifamily", mgmt: "Mill Creek Residential", cluster: "Edgewater" }; PIPE.push(p); }
+      Object.assign(p, { status: "Launched", address: "455 NE 24th St, Miami, FL 33137", lat: 25.7998, lng: -80.1879 });
+      BSET.moderaedgewater = Object.assign({ units: 291 }, BSET.moderaedgewater, { live: "2026-09-28" });
+      savePipe(); saveBset();
+      apiPost("Settings", "upsert", { key: "key", values: { key: "moderaLive20261005", value: "done" } }); }
     CAL = (data.PromoCalendar || []).slice(1).filter(r => r[0] !== "").map(r => ({ week: Number(r[0]), preUrl: r[1], postUrl: r[2], pre: r[3] === "" ? null : Number(r[3]), post: r[4] === "" ? null : Number(r[4]) }));
     applyPipeline(); render(); renderEvents(); renderPipeline(); renderCal();
     if (orders.ordersUrl && orders.ordersUrl !== savedOrders) loadOrders(orders.ordersUrl, true);

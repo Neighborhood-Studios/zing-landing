@@ -42,10 +42,10 @@ const COSTS = load("zingUeCosts", {});
 const UE = { sort: "arr", dir: -1, metric: "actPen", hidden: new Set(), seg: "all", model: null, ready: false };
 
 /* ---------- building identity: sheet tabs, orders and users all resolve to the registry key ---------- */
-const NAME = {};
+const NAME = { hamilton: "Hamilton" };
 const bk = name => {
   const raw = String(name || "").trim(); if (!raw) return "";
-  const k = key(raw); if (/^wynd2[78]/.test(k)){ NAME.wynd2728 ||= (REGISTRY.wynd2728 || {}).name || "Wynd 27&28"; return "wynd2728"; }
+  const k = key(raw); if (/^wynd2[78]/.test(k)) return "hamilton";   // Wynd 27&28 reports as part of Hamilton here
   const r = lookup(raw); const out = r ? key(r.name) : k;
   if (!NAME[out]) NAME[out] = r ? r.name : raw;
   return out;
@@ -80,7 +80,7 @@ let SB = {};
 function prepSheet(){
   SB = {};
   (typeof ROWS !== "undefined" ? ROWS : []).forEach(r => { if (r.weekTime == null) return;
-    const b = bk(r.building); if (b) (SB[b] ||= { rows: [] }).rows.push(r); });
+    const b = bk(r.building); if (b){ r._src = key(r.building); (SB[b] ||= { rows: [] }).rows.push(r); } });
   Object.values(SB).forEach(s => { s.rows.sort((a, b) => a.weekTime - b.weekTime);
     s.min = s.rows[0].weekTime; s.max = s.rows[s.rows.length - 1].weekTime + WK; });
 }
@@ -92,7 +92,10 @@ function prepLaunch(){
     if (LAUNCH[b] != null && t - LAUNCH[b] > 30 * DAY) LIVE_NOTE.push(`${NAME[b] || b}: launch set to Building settings' live date ${dstr(t)}; earlier visits from ${dstr(LAUNCH[b])} are ignored for building age`);
     LAUNCH[b] = t; });
 }
-const buildings = () => [...new Set([...Object.keys(OB), ...Object.keys(SB)])].filter(Boolean);
+// Unit Economics covers these six only; Hamilton includes Wynd 27&28 (see bk and MERGE)
+const UE_ONLY = /^(forma|hamilton|alexanroxy|bezel|miamiworldtower|mwt|muze)/;
+const MERGE = { hamilton: ["hamilton", "wynd2728"] };
+const buildings = () => [...new Set([...Object.keys(OB), ...Object.keys(SB)])].filter(b => b && UE_ONLY.test(b));
 
 /* ---------- metrics ---------- */
 function agg(b, t0, t1){
@@ -110,14 +113,17 @@ function agg(b, t0, t1){
 }
 function signups(b, t){
   const s = SB[b]; let v = null;
-  if (s) s.rows.forEach(r => { if (r.weekTime < t && r.signups != null) v = r.signups; });
+  if (s){ const last = {}; s.rows.forEach(r => { if (r.weekTime < t && r.signups != null) last[r._src || b] = r.signups; });
+    const vals = Object.values(last); if (vals.length) v = vals.reduce((a, x) => a + x, 0); }
   return v != null ? v : (UB[b] || []).filter(x => x < t).length;
 }
 function active(b, t){ const e = new Set(); (OB[b] || []).forEach(o => { if (o.t < t && o.t >= t - 90 * DAY) e.add(o.e || o.t); }); return e.size; }
 const wageHr = () => SALARY / (HPD * DPW);
 function bm(b, t1, days = 30){
   const t0 = t1 - days * DAY, a = agg(b, t0, t1), set = BSET[b] || {}, reg = REGISTRY[b] || {};
-  const units = +set.units || 0, cl = +(set.cleaners ?? reg.cleaners ?? 0) || 0;
+  const parts = MERGE[b] || [b];
+  const units = parts.reduce((n, k) => n + (+(BSET[k] || {}).units || 0), 0);
+  const cl = parts.reduce((n, k) => n + (+((BSET[k] || {}).cleaners ?? (REGISTRY[k] || {}).cleaners ?? 0) || 0), 0);
   const su = signups(b, t1), act = active(b, t1);
   const paidH = cl ? cl * HPD * DPW * days / 7 : null;
   const labor = cl ? cl * SALARY * days / 7 * (1 + A.burden / 100) : null;
@@ -152,7 +158,7 @@ function portfolio(t1){
     vpa: div(vis, cust), rpp: div(sum(L, r => r.rev), sum(L, r => r.paidH)), rph: div(sum(H, r => r.rev), sum(H, r => r.hours)),
     util: div(sum(LH, r => r.hours), sum(LH, r => r.paidH)), lcph: div(sum(LH, r => r.labor), sum(LH, r => r.hours)),
     cph: div(sum(LH, r => r.contrib), sum(LH, r => r.hours)), cm: div(sum(L, r => r.contrib), sum(L, r => r.rev)),
-    contrib: sum(L, r => r.contrib), recur: div(recN, rw), ret: retention(t1), nL: L.length };
+    contrib: sum(L, r => r.contrib), recur: div(recN, rw), ret: retention(t1), nL: L.length, t1 };
 }
 function months(b, t1){
   const out = []; if (!fin(LAUNCH[b])) return out;
@@ -212,14 +218,16 @@ const line = k => `<dt>${k[0]}</dt><dd>${k[3](k[1])}<small>${delta(k[1], k[2], k
 const COLS = [
   ["name", "Building", r => r.name], ["units", "Units", r => r.units, n0], ["su", "Sign-ups", r => r.su, n0],
   ["resPen", "Resident pen.", r => r.resPen, p0], ["act", "Active cust.", r => r.act, n0], ["actPen", "Active pen.", r => r.actPen, p0],
-  ["visits", "Visits 30d", r => r.visits, n0], ["rev", "Revenue 30d", r => r.rev, $0], ["arr", "ARR", r => r.arr, $k],
-  ["revPerAct", "Rev / active cust.", r => r.revPerAct, $0], ["paidH", "Paid hrs", r => r.paidH, n0], ["hours", "Productive hrs", r => r.hours, n0],
+  ["visits", "Visits 5d", r => r.visits, n0], ["rev", "Revenue 5d", r => r.rev, $0], ["arr", "ARR", r => r.arr, $k],
+  ["revPerAct", "Rev / active cust. / mo", r => r.revPerAct, $0], ["paidH", "Paid hrs", r => r.paidH, n0], ["hours", "Productive hrs", r => r.hours, n0],
   ["util", "Utilization", r => r.util, p0], ["rpp", "Rev / paid hr", r => r.rpp, $2], ["rph", "Rev / productive hr", r => r.rph, $2],
   ["labor", "Direct labor", r => r.labor, $0], ["other", "Other variable", r => r.other, $0],
   ["contrib", "Contribution", r => r.contrib, $0], ["cm", "Contrib. margin", r => r.cm, p0]
 ];
+const TABLE_DAYS = 5;   // building table window; KPI cards stay on 30 days (Total ARR on 5)
 function buildingTable(P){
-  const rows = P.all.filter(r => (r.rev > 0 || r.act > 0) && !CURVE_EXCLUDE.includes(r.b)).slice();
+  const rows = buildings().map(b => bm(b, P.t1, TABLE_DAYS)).filter(r => r.rev > 0 || r.act > 0);
+  rows.forEach(r => r.revPerAct = div(r.rev * 30.4 / TABLE_DAYS, r.act));
   const col = COLS.find(c => c[0] === UE.sort) || COLS[8];
   rows.sort((a, b) => { const x = col[2](a), y = col[2](b);
     if (typeof x === "string") return String(x).localeCompare(y) * UE.dir;
@@ -234,12 +242,13 @@ function buildingTable(P){
     if ((c[0] === "contrib" || c[0] === "cm") && fin(v)) return `<td class="num ${v < 0 ? "ue-neg" : ""}">${c[3](v)}</td>`;
     return `<td class="num">${c[3](v)}</td>`;
   };
-  const T = { name: "Portfolio", units: sum(rows, r => r.units), su: sum(rows, r => r.su), act: P.cust, visits: P.vis, rev: P.rev, arr: P.arr,
+  const T = { name: "Portfolio", units: sum(rows, r => r.units), su: sum(rows, r => r.su), act: sum(rows, r => r.act), visits: sum(rows, r => r.visits), rev: sum(rows, r => r.rev), arr: sum(rows, r => r.arr),
     paidH: sum(rows, r => r.paidH), hours: sum(rows, r => r.hours), labor: sum(rows, r => r.labor), other: sum(rows, r => r.other) };
-  const L = rows.filter(r => r.paidH);
+  const L = rows.filter(r => r.paidH), H = rows.filter(r => fin(r.hours)), LH = L.filter(r => fin(r.hours));
   Object.assign(T, { resPen: div(sum(rows.filter(r => r.units), r => r.su), sum(rows.filter(r => r.units), r => r.units)),
     actPen: div(sum(rows.filter(r => r.units), r => r.act), sum(rows.filter(r => r.units), r => r.units)),
-    revPerAct: P.revPerCust, util: P.util, rpp: P.rpp, rph: P.rph, contrib: sum(L, r => r.contrib), cm: P.cm });
+    revPerAct: div(T.rev * 30.4 / TABLE_DAYS, T.act), util: div(sum(LH, r => r.hours), sum(LH, r => r.paidH)), rpp: div(sum(L, r => r.rev), sum(L, r => r.paidH)),
+    rph: div(sum(H, r => r.rev), sum(H, r => r.hours)), contrib: sum(L, r => r.contrib), cm: div(sum(L, r => r.contrib), sum(L, r => r.rev)) });
   const total = `<tr class="ue-total">${COLS.map(c => c[0] === "name" ? `<td class="name">Portfolio<span class="addr">Labor and contribution: buildings with cleaners</span></td>` : `<td class="num">${c[3](c[2](T))}</td>`).join("")}</tr>`;
   return `<table class="ue-bt"><thead><tr>${head}</tr></thead><tbody>${rows.map(r => `<tr${r.b === "hamilton" ? ' class="on"' : ""}>${COLS.map(c => td(r, c)).join("")}</tr>`).join("")}${total}</tbody></table>`;
 }
@@ -371,7 +380,7 @@ ${sheetOn ? "" : '<span class="ue-warn">Weekly View Data is not loaded, so reven
 <section class="panel"><div class="phead"><h2>All KPIs</h2><p>Portfolio → building → labor → retention</p></div><div class="ue-groups">
 ${group("Portfolio", ["arr", "mrr", "nb", "cust", "vis", "rpc"])}${group("Building economics", ["arrb", "revb", "rpen", "best", "apen", "vpa"])}
 ${group("Labor economics", ["rpp", "rph", "util", "lcph", "cph", "cm"])}${group("Retention", ["v2", "v3", "r30", "r60", "r90", "rec"])}</div></section>
-<section class="panel"><div class="phead"><h2>Building unit economics</h2><p>Last 30 days, one row per building · click a column to sort · The Hamilton highlighted as the mature benchmark</p></div>
+<section class="panel"><div class="phead"><h2>Building unit economics</h2><p>Last 5 days, one row per building · click a column to sort · The Hamilton highlighted as the mature benchmark</p></div>
 <div class="scrollx">${buildingTable(P)}</div></section>
 <section class="panel"><div class="phead"><h2>Building maturity curve</h2><p>Complete calendar months only · month 0 is the launch month</p>
 <label class="fld" style="margin-left:auto">Metric<select id="ueMetric">${Object.entries(METRICS).map(([k, v]) => `<option value="${k}"${k === UE.metric ? " selected" : ""}>${v[0]}</option>`).join("")}</select></label></div>

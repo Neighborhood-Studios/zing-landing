@@ -236,6 +236,20 @@
     transition: transform 0.2s;
   }
 
+  /* ── Store CTA variants (device-aware) ── */
+  .cta-btn[data-cta="ios"], .cta-btn[data-cta="android"] { display: none; }
+  body.is-ios .cta-btn[data-cta="ios"],
+  body.is-android .cta-btn[data-cta="android"] { display: inline-flex; }
+  body.is-ios .cta-btn[data-cta="desktop"],
+  body.is-android .cta-btn[data-cta="desktop"] { display: none; }
+
+  .cta-btn.store { gap: 11px; padding: 13px 34px; }
+  .cta-btn.store .glyph { width: 22px; height: 22px; flex-shrink: 0; }
+  .cta-btn.store:hover .glyph { transform: none; }
+  .cta-btn.store .store-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+  .cta-btn.store .store-label small { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.62; }
+  .cta-btn.store .store-label span { font-size: 16px; font-weight: 600; }
+
   .cta-btn:hover svg {
     transform: translateX(3px);
   }
@@ -411,12 +425,20 @@
 
 <!-- Sticky CTA with powered-by -->
 <div class="cta-bar">
-  <a href="https://app.justzingit.com/signup" class="cta-btn">
+  <a href="https://app.justzingit.com/signup" class="cta-btn" data-cta="desktop">
     Get Started
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
   <div class="powered">Housekeeping by Zing</div>
 </div>
 
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  document.body.classList.add(isIOS ? 'is-ios' : isAndroid ? 'is-android' : 'is-desktop');
+})();
+</script>
 </body>
 </html>
