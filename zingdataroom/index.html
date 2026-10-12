@@ -1,0 +1,2607 @@
+<!-- @dsCard group="Internal Tools" viewport="1400x900" name="Zing's Data Room" subtitle="Investor copy of KPI Dashboard Current — read-only, fed by the live sheet; Wynd 27&amp;28 and Paraiso Bayviews hidden" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zing · Data Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,300;0,400&display=swap" rel="stylesheet">
+<style>
+:root{
+--forest:#1D2E32;--forest-600:#355457;--sage-500:#97A88D;--sage-300:#C9D8C2;--sage-100:#E9EFE2;
+--paper-50:#FBF9F4;--paper-100:#F5F1E8;--paper-200:#ECE4D5;--line:#E6DECF;--line-strong:#E2D8C6;
+--ink:#1D2E32;--ink-2:#3C4D4E;--ink-3:#647271;--ink-4:#8A9492;
+--pos:#4F7C5C;--pos-bg:#E2EEE3;--neg:#A85149;--neg-bg:#F2E0DC;--honey:#C8A86A;
+--mono:"Hanken Grotesk",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper-100);color:var(--ink);font:400 14px/1.45 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);font-weight:600}
+header{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:12px 22px;background:rgba(251,249,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header h1{margin:0;font:300 20px/1 "Newsreader",serif;letter-spacing:-.01em;white-space:nowrap;flex:0 0 auto}
+header h1 span{font-family:"Hanken Grotesk";font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-left:10px;vertical-align:2px;white-space:nowrap}
+.spacer{flex:1}
+label.fld{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-3);font-weight:600}
+select,input[type=text],input[type=number],button{font:inherit;font-size:13px;color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-radius:8px;padding:6px 9px}
+select{padding-right:24px}
+button{cursor:pointer;font-weight:600;font-size:12px}
+button:hover{border-color:var(--sage-500)}
+button.primary{background:var(--forest);color:var(--paper-50);border-color:var(--forest)}
+button.primary:hover{background:var(--forest-600);border-color:var(--forest-600)}
+main{padding:18px 22px 60px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.shell{display:flex;align-items:flex-start}
+.shell > main{flex:1;min-width:0;margin:0}
+aside.nav{position:sticky;top:56px;flex:0 0 208px;width:208px;height:calc(100vh - 56px);border-right:1px solid var(--line);background:var(--paper-50);padding:14px 10px;display:flex;flex-direction:column;gap:4px;transition:width .16s ease,flex-basis .16s ease}
+body.navmin aside.nav{flex-basis:56px;width:56px}
+aside.nav .navtoggle{align-self:flex-end;border:none;background:none;padding:6px;color:var(--ink-4);border-radius:8px}
+aside.nav .navtoggle:hover{background:var(--sage-100);color:var(--ink)}
+aside.nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink-2);text-decoration:none;white-space:nowrap;overflow:hidden}
+aside.nav a:hover{background:var(--sage-100);color:var(--ink)}
+aside.nav a.on{background:var(--forest);color:var(--paper-50)}
+aside.nav a svg{flex:0 0 18px}
+body.navmin aside.nav a span{display:none}
+.view{display:none}
+.view.on{display:flex;flex-direction:column;gap:16px}
+.bset td,.bset th{text-align:left}
+.bset td input,.bset td select{width:100%;min-width:120px}
+.bset td.n input{max-width:110px;text-align:right;font-variant-numeric:tabular-nums}
+.bset td.hint{font-size:11px;color:var(--ink-4)}
+#hover{position:fixed;z-index:60;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s ease,transform .12s ease;width:250px;background:var(--paper-50);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(29,46,50,.16);padding:12px 13px}
+#hover.on{opacity:1;transform:none}
+#hover h4{margin:0;font-family:var(--font-display,Newsreader),serif;font-size:16px;font-weight:500}
+#hover .sub{font-size:11px;color:var(--ink-4);margin-top:2px}
+#hover dl{display:grid;grid-template-columns:auto auto;gap:3px 10px;margin:10px 0 0;font-size:11.5px}
+#hover dt{color:var(--ink-4)}
+#hover dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink-2)}
+#hover .spark{display:flex;gap:5px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line)}
+#hover .spark div{flex:1;text-align:center}
+#hover .spark b{display:block;font-size:12px;font-variant-numeric:tabular-nums}
+#hover .spark span{font-size:9.5px;color:var(--ink-4);letter-spacing:.02em}
+.scnform{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:2px 0 16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.scnform .fld input,.scnform .fld select{min-width:80px}
+.scnform #scnName{min-width:170px}
+.scnform button{margin-left:auto}
+.sens{display:flex;flex-direction:column;gap:12px}
+.sens .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+.sens .row:last-child{border-bottom:none;padding-bottom:0}
+.sens .row b{font-size:19px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sens .row span{font-size:12px;color:var(--ink-3);line-height:1.5}
+.util{display:inline-flex;align-items:center;gap:7px}
+.util i{display:block;width:44px;height:6px;border-radius:99px;background:var(--paper-200,#EDE7DA);overflow:hidden;flex:0 0 44px}
+.util i b{display:block;height:100%;border-radius:99px;background:var(--sage-500,#97A88D)}
+.suctl{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-end;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.pickers{display:flex;flex-wrap:wrap;gap:7px}
+.pickers button{padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--paper-50);font-size:12px;font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:7px}
+.pickers button:hover{border-color:var(--sage-400,#B4C3AC)}
+.pickers button.on{background:var(--forest,#1D2E32);border-color:var(--forest,#1D2E32);color:var(--paper-50)}
+.pickers button i{display:block;width:8px;height:8px;border-radius:99px}
+.pickers button.all{font-weight:700}
+.pipe td input,.pipe td select{width:100%;min-width:74px}
+.pipe td.addr input{min-width:190px}
+.pipe td.nm input{min-width:140px;font-weight:600}
+.pipe td.geo input{min-width:78px;text-align:right;font-variant-numeric:tabular-nums}
+.pipe td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+.pipe td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+.piperow{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between;margin-top:16px}
+.piperow button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
+.piperow .legend{margin:0}
+.legend .sdot{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:6px;vertical-align:baseline}
+.addcl{display:flex;gap:10px;align-items:center}
+.addcl input{min-width:190px}
+.cal td input[type=text]{min-width:140px;flex:1}
+.cal td.urlcell{white-space:normal}
+.cal td.urlcell > div{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cal td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:normal;min-width:92px}
+.cal td .u{font-weight:700;font-variant-numeric:tabular-nums}
+.cal td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+.cal td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+.cal .pull{margin-left:6px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper-50);font-size:11px;font-weight:600;color:var(--ink-2)}
+.cal .pull:hover{border-color:var(--sage-400,#B4C3AC)}
+.addcl button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
+#tbClusterList td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbHires td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbHires td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+#tbClusterList td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+.surt{display:flex;gap:12px;align-items:flex-end}
+.surt button,.evform button{padding:9px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4);font-size:12.5px;font-weight:600}
+.surt button:hover,.evform button[type=submit]:hover{background:var(--forest-700,#162528)}
+.evform{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:16px;margin-bottom:18px;border:1px solid var(--line);border-radius:20px;background:var(--sage-100,#EDF1E8)}
+.evform[hidden]{display:none}
+#suTip{max-height:min(70vh,520px);overflow:hidden}
+#suTip .more{font-size:10.5px;color:var(--ink-4);margin-top:8px}
+.evform #evName,.evform #evDesc{min-width:200px}
+.evform #evDesc{flex:1}
+.evform button[type=button]{background:none;color:var(--ink-2);border-color:var(--line)}
+.evform button[type=button]:hover{background:var(--paper-50)}
+#tbEvents td.del button{border:none;background:none;color:var(--ink-4);padding:4px 6px;border-radius:8px;font-size:14px;line-height:1}
+#tbEvents td.del button:hover{background:var(--paper-200,#EDE7DA);color:var(--danger,#A85149)}
+#suTip{position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .1s ease;background:var(--paper-50);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 30px rgba(29,46,50,.16);padding:10px 12px;min-width:180px}
+#suTip.on{opacity:1}
+#suTip .wk{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4)}
+#suTip .r{display:flex;justify-content:space-between;gap:14px;font-size:11.5px;margin-top:5px}
+#suTip .r b{font-variant-numeric:tabular-nums}
+#suTip .nm{display:flex;align-items:center;gap:6px;font-weight:600;margin-top:9px;font-size:12px}
+#suTip .nm i{width:8px;height:8px;border-radius:99px;display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat .v{font:400 26px/1.1 "Newsreader",serif;margin-top:6px}
+.stat .s{font-size:11px;color:var(--ink-4);margin-top:4px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.phead{display:flex;align-items:baseline;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.phead h2{margin:0;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.phead p{margin:0;font-size:11px;color:var(--ink-4)}
+.grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:right;padding:7px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-4);font-weight:600;background:var(--paper-50);position:sticky;top:0}
+th:first-child,td:first-child{text-align:left}
+tbody tr:hover{background:var(--sage-100)}
+tbody tr.on{background:var(--sage-100)}
+td.name{font-weight:600}
+td .addr{display:block;font-weight:400;font-size:11px;color:var(--ink-4)}
+.pill{display:inline-block;min-width:62px;text-align:right;padding:2px 8px;border-radius:999px;font-weight:700;font-variant-numeric:tabular-nums;font-size:12.5px}
+.pill.p{background:var(--pos-bg);color:var(--pos)}
+.pill.n{background:var(--neg-bg);color:var(--neg)}.pill.o{background:var(--paper-200);color:var(--ink-4)}
+.wow{font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-3)}
+.wow.p{color:var(--pos)}.wow.n{color:var(--neg)}
+.cdot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px;vertical-align:0}
+.mapwrap{position:relative;background:var(--paper-50);overflow:hidden}
+.mapzoom{position:absolute;right:14px;top:14px;display:flex;flex-direction:column;gap:1px;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 14px rgba(29,46,50,.1)}
+.mapzoom button{width:34px;height:34px;border:none;background:var(--paper-50);color:var(--ink-2);font-size:16px;line-height:1;font-weight:600;display:grid;place-items:center}
+.mapzoom button:hover{background:var(--sage-100)}
+.mapdate{position:absolute;left:18px;top:14px;pointer-events:none;display:none;flex-direction:column;gap:2px}.mapdate.on{display:flex}.mapdate b{font-family:Newsreader,serif;font-weight:400;font-size:30px;line-height:1.1;color:var(--forest,#1D2E32)}.mapdate span{font-size:12px;font-weight:600;color:var(--ink-3)}
+.mapzoom button.rs{font-size:11px;font-weight:700;letter-spacing:.04em}
+svg.map{display:block;width:100%;height:auto;cursor:grab;touch-action:none}
+svg.map.drag{cursor:grabbing}
+svg.map #mapZoomG{transition:transform .12s ease-out}
+svg.map.drag #mapZoomG{transition:none}
+.legend{display:flex;flex-wrap:wrap;gap:14px;padding:10px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-3);align-items:center}
+.legend b{font-weight:600;color:var(--ink-2)}
+.legend .warn{flex:1 1 100%;color:var(--neg);background:var(--neg-bg);padding:6px 9px;border-radius:8px}
+input.cin{width:56px;padding:3px 6px;text-align:right;font-size:12.5px;font-variant-numeric:tabular-nums;border-radius:6px}
+input.cin::placeholder{color:var(--ink-4)}
+.scrollx{overflow-x:auto}
+.matrix th,.matrix td{padding:6px 10px}
+.matrix thead th:first-child{min-width:180px}
+.matrix tbody td:first-child,.matrix thead th:first-child{position:sticky;left:0;background:#fff;z-index:1}
+.matrix thead th:first-child{background:var(--paper-50)}
+.matrix td.v{font-variant-numeric:tabular-nums;font-weight:600;font-size:12.5px}
+.matrix td.v.p{color:var(--pos);background:var(--pos-bg)}
+.matrix td.v.n{color:var(--neg);background:var(--neg-bg)}
+.matrix td.v.o{color:var(--ink-4)}
+.matrix tbody tr:hover td{background:var(--sage-100)}
+.matrix tr.total td{border-top:1px solid var(--line-strong);font-weight:700}
+.matrix tr.total td:first-child{font-weight:700}
+.matrix + .scrollx,.scrollx + .scrollx{border-top:1px solid var(--line)}
+footer.note{font-size:13px;color:var(--ink-3);line-height:1.65}
+footer.note code{background:var(--paper-200);padding:1px 5px;border-radius:4px;font-size:12px}
+a{color:var(--forest-600)}a:hover{color:var(--forest)}
+.src{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-4);flex-wrap:nowrap}
+.src span:not(.dot){white-space:nowrap;flex:0 0 auto;max-width:340px;overflow:hidden;text-overflow:ellipsis}
+.src button{white-space:nowrap;flex:0 0 auto;height:30px;display:inline-flex;align-items:center}
+.src input[type=text]{width:230px;font-size:11px;height:30px;flex:0 1 230px;min-width:120px}
+label.fld{flex:0 0 auto;white-space:nowrap}
+label.fld input[type=number]{width:78px;height:30px;text-align:right;font-variant-numeric:tabular-nums}
+label.fld .pre,label.fld .post{color:var(--ink-4);font-weight:600}
+label.fld .pre{margin-right:-4px}
+.src input[type=text]{width:230px;font-size:11px}
+.dot{width:7px;height:7px;border-radius:99px;background:var(--honey);flex:0 0 auto}
+.dot.live{background:var(--pos)}.dot.err{background:var(--neg)}
+tspan.mlabel{font-weight:700}
+.elevwrap{display:grid;grid-template-columns:1fr 300px;gap:0;align-items:stretch}
+.elev{padding:14px;display:flex;flex-direction:column;gap:2px;max-height:660px;overflow-y:auto}
+.elevhd{position:sticky;top:-14px;z-index:2;background:#fff;padding:2px 4px 7px;margin-bottom:2px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:32px 1fr 52px 116px;align-items:end;gap:12px;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-4);font-weight:600}
+.elevhd span:first-child{text-align:right}
+.elevhd span:nth-child(3),.elevhd span:nth-child(4){text-align:left}
+.flr{display:grid;grid-template-columns:32px 1fr 52px 116px;align-items:center;gap:12px;height:17px;border-radius:4px;padding:0 4px}
+.flr:hover{background:var(--sage-100)}
+.flr>b{text-align:right;font-size:10px;font-weight:600;color:var(--ink-4);font-variant-numeric:tabular-nums}
+.flr.vis>b{color:var(--ink)}
+.flr.gap{opacity:.55}
+.flr>em{font-style:normal;font-size:10.5px;font-variant-numeric:tabular-nums;color:var(--ink-2);font-weight:600}
+.flr>em.z{color:var(--ink-4);opacity:.45;font-weight:400}
+.cells{display:flex;gap:2px}
+.cells i{width:13px;height:11px;border-radius:2px;background:var(--paper-200)}
+.cells i.c{background:var(--forest)}
+.cells i.s{background:var(--sage-500)}
+.cells i.x{background:var(--honey)}
+.vbar{display:flex;align-items:center;gap:7px}
+.vbar i{display:block;height:7px;border-radius:99px;background:var(--forest-600);min-width:0}
+.vbar span{font-size:10px;color:var(--ink-4);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cohort{border-left:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:14px}
+.cohort .ch{display:flex;flex-direction:column;gap:5px}
+.cohort .ch .lb{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);font-weight:600}
+.cohort .ch .bar{display:flex;align-items:center;gap:8px}
+.cohort .ch .bar i{display:block;height:14px;border-radius:3px}
+.cohort .ch .bar i.a{background:var(--forest)}
+.cohort .ch .bar i.b{background:var(--sage-300)}
+.cohort .ch .bar b{font-size:13px;font-variant-numeric:tabular-nums}
+.cohort .ch small{font-size:10.5px;color:var(--ink-4)}
+.cohort .verdict{margin-top:auto;font-size:12px;line-height:1.55;color:var(--ink-2);background:var(--sage-100);border-radius:10px;padding:11px 12px}
+.cohort .verdict b{font-weight:700}
+.mathgrid{display:grid;grid-template-columns:1fr 1fr}
+.mathcol{padding:14px 16px}
+.mathcol+.mathcol{border-left:1px solid var(--line)}
+.mathcol h4{margin:0;font-size:12px;font-weight:700}
+.mathcol h4 span{font-weight:400;color:var(--ink-4)}
+.fchips{display:flex;flex-wrap:wrap;gap:4px;margin:9px 0 12px}
+.fchip{font-size:10.5px;font-weight:600;padding:2px 6px;border-radius:5px;background:var(--paper-200);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.fchip.v{background:var(--forest);color:var(--paper-50)}
+.mathcol dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:0;font-size:12px}
+.mathcol dt{color:var(--ink-3)}
+.mathcol dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.mathsteps{border-top:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.mstep{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:12.5px}
+.mstep .k{font-weight:600;flex:0 0 230px}
+.mstep code{background:var(--paper-100);padding:2px 7px;border-radius:5px;font-size:12px;font-variant-numeric:tabular-nums}
+.mstep .out{font-weight:700;font-variant-numeric:tabular-nums}
+.mstep.big code{font-size:13px}
+.mnote{font-size:12.5px;line-height:1.6;color:var(--ink-2);background:var(--sage-100);border-radius:10px;padding:12px 13px;margin:0 16px 16px}
+.mnote+.mnote{margin-top:-6px}
+.bcol{display:none}
+body.ciall .bcol{display:table-cell}
+body.ciall .conly{display:none}
+.bonly{display:none}
+body.ciall .bonly{display:block}
+@media(max-width:1080px){.mathgrid{grid-template-columns:1fr}.mathcol+.mathcol{border-left:none;border-top:1px solid var(--line)}.mstep .k{flex:1 1 100%}}
+.ciform{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--paper-50)}
+.ciform textarea{font:inherit;font-size:11px;line-height:1.4;border:1px solid var(--line-strong);border-radius:8px;padding:7px 9px;background:#fff;min-height:70px;resize:vertical;width:100%;font-variant-numeric:tabular-nums}
+.cipaste{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 14px}
+.cipaste label{display:flex;flex-direction:column;gap:5px;font-size:11px;font-weight:600;color:var(--ink-3)}
+.cidrop{display:flex;align-items:center;gap:6px;font-weight:400;font-size:11.5px;color:var(--ink-4);border:1px dashed var(--line-strong);border-radius:8px;padding:8px 10px;background:#fff}
+.cidrop.over{border-color:var(--sage-500);background:var(--sage-100);color:var(--ink-2)}
+.cidrop button{border:none;background:none;padding:0;font-size:11.5px;font-weight:600;color:var(--forest-600);text-decoration:underline;text-underline-offset:2px}
+.cidrop.ok{border-style:solid;border-color:var(--sage-500);color:var(--ink-2)}
+.cidrop.bad{border-style:solid;border-color:var(--neg);background:var(--neg-bg);color:var(--neg)}
+@media(max-width:1080px){.elevwrap{grid-template-columns:1fr}.cohort{border-left:none;border-top:1px solid var(--line)}.cipaste{grid-template-columns:1fr}}
+@media(max-width:1080px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+<style>header>.src,header>label.fld:has(#salary),#note,.cipaste,#ciApi,#ciReset,aside.nav a[data-view="forecast"],aside.nav a[data-view="scenario"],#viewForecast,#viewScenario,aside.nav a[data-view="buildings"],#viewBuildings,.ue-assume .fld,.ue-assume .ue-note{display:none!important}</style>
+<script src="image-slot.js"></script>
+</head>
+<body>
+<div id="drGate" style="position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--paper-100,#F4F0E8);padding:24px">
+<form id="drGateForm" style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:340px;background:var(--paper-50,#FBF9F4);border:1px solid var(--line,#E2DCCF);border-radius:16px;padding:28px">
+<span class="eyebrow">Zing · Data room</span>
+<h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0">Enter the password</h2>
+<input id="drGatePw" type="password" autocomplete="current-password" aria-label="Password" placeholder="Password" required style="font:inherit;font-size:15px;padding:11px 14px;border:1px solid var(--line-strong,#CFC6B4);border-radius:10px;background:#fff">
+<span id="drGateErr" style="display:none;font-size:13px;color:var(--danger,#A85149)">That password isn't right.</span>
+<button type="submit" style="font:inherit;font-size:14px;font-weight:600;padding:11px 16px;border-radius:999px;border:1px solid var(--forest,#1D2E32);background:var(--forest,#1D2E32);color:var(--paper-50,#FBF9F4)">Open data room</button>
+</form></div>
+<script>
+(function(){
+  const g = document.getElementById("drGate");
+  if (sessionStorage.getItem("zingDataRoomOk") === "1"){ g.remove(); return; }
+  document.documentElement.style.overflow = "hidden";
+  setTimeout(() => document.getElementById("drGatePw").focus(), 0);
+  document.getElementById("drGateForm").onsubmit = e => { e.preventDefault();
+    if (document.getElementById("drGatePw").value.trim() === "justzingit"){ sessionStorage.setItem("zingDataRoomOk", "1"); g.remove(); document.documentElement.style.overflow = ""; }
+    else document.getElementById("drGateErr").style.display = "block"; };
+})();
+</script>
+<header>
+<h1>Zing<span>Data room</span></h1>
+<div class="spacer"></div>
+<div class="src"><span class="dot" id="srcDot"></span><span id="srcMsg">Sample data</span><input type="text" id="csvUrl" placeholder="Google Sheet URL"><button id="load">Load</button><button id="pick">Upload file</button><input type="file" id="file" accept=".csv,.xlsx,.xls" hidden><button id="tpl">Template</button></div>
+<label class="fld">Cleaner salary<span class="pre">$</span><input type="number" id="salary" min="0" step="10"><span class="post">/wk</span></label>
+<label class="fld">Week<select id="week"></select></label>
+<label class="fld">Range<select id="range"><option value="1">Selected week</option><option value="4">Past 4 weeks</option><option value="0">All time</option></select></label>
+</header>
+<div class="shell">
+<aside class="nav">
+<button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
+<a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Dashboard</span></a>
+<a href="#ourbuildings" data-view="ourbuildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Our buildings</span></a>
+<a href="#unit" data-view="unit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M19 4v5M16.5 6.5h5"/></svg><span>Unit Economics &amp; KPIs</span></a>
+<a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
+<a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Sign-up growth</span></a>
+<a href="#cards" data-view="cards"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19"/><path d="M6 14h4"/></svg><span>Cart impact</span></a>
+<a href="#forecast" data-view="forecast"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 5-7"/><path d="M17 8h4v4"/><path d="M3 21h18"/></svg><span>Forecasting</span></a>
+<a href="#scenario" data-view="scenario"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 15c4 0 5-8 9-8 3 0 4 4 7 4"/><path d="M4 19h16"/></svg><span>Scenario planner</span></a>
+<a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
+</aside>
+<main>
+<section class="view" id="viewUnit"></section>
+<section class="view on" id="viewDash">
+<section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">Cluster density</span>
+<h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">Every building we launch makes the cluster around it stronger.</h2>
+<p style="margin:0;font-size:14px;line-height:1.55;color:var(--ink-2);max-width:72ch;text-wrap:pretty">We grow in dense clusters, launching buildings next to each other. Density compounds: it raises cleaner utilization and availability, shortens response times and makes the operation more resilient, which lets us deliver chores on time and at a price residents can afford. The map and tables below track margin by building and by cluster, week over week.</p></section>
+<section class="stats" id="stats"></section>
+<section class="panel">
+<div class="phead"><h2>Cluster map</h2><p>Pin colour and number = margin on the cleaners assigned in Building settings. Halo = cluster, labelled with cluster margin.</p></div>
+<div class="suctl" id="mapTl" style="padding:10px 14px;margin:0;gap:10px;align-items:center;border-bottom:1px solid var(--paper-200)"><button type="button" id="mapPlay">Play</button><input type="range" id="mapWk" min="0" max="1" step="1" value="1" style="flex:1;min-width:160px"><span id="mapWkLbl" style="font-size:12.5px;color:var(--ink-3);min-width:150px"></span><button type="button" id="mapNow">Today</button></div>
+<div class="mapwrap"><svg class="map" id="map" viewBox="0 0 1240 620" role="img" aria-label="Schematic map of buildings and clusters"></svg>
+<div class="mapzoom"><button id="mzIn" title="Zoom in" aria-label="Zoom in">+</button><button id="mzOut" title="Zoom out" aria-label="Zoom out">−</button><button id="mzRs" class="rs" title="Reset view" aria-label="Reset view">1×</button></div><div class="mapdate" id="mapDate"><b id="mapDateWk"></b><span id="mapDateN"></span></div></div>
+<div class="legend" id="legend"></div>
+<div class="legend" id="legendPipe"></div>
+</section>
+<section class="grid2">
+<div class="panel">
+<div class="phead"><h2>Buildings</h2><p>Margin per single cleaner</p></div>
+<table><thead><tr><th>Building</th><th>Cluster</th><th>Margin / cleaner</th><th>WoW</th></tr></thead><tbody id="tbBuildings"></tbody></table>
+</div>
+<div class="panel">
+<div class="phead"><h2>Clusters</h2><p>Cluster margin — type the cleaners assigned to each cluster</p></div>
+<table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusters"></tbody></table>
+</div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Week over week</h2><p>Margin on assigned cleaners by building, then margin per single cleaner, then cluster margin — every week in the sheet</p></div>
+<div class="scrollx"><table class="matrix"><thead id="hdActual"></thead><tbody id="mxActual"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdBuildings"></thead><tbody id="mxBuildings"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdClusters"></thead><tbody id="mxClusters"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdClusterRev"></thead><tbody id="mxClusterRev"></tbody></table></div>
+</section>
+<footer class="note" id="note"></footer>
+</section>
+<section class="view" id="viewBuildings">
+<section class="panel">
+<div class="phead"><h2>Building settings</h2><p>Kept on this device — the sheet only carries revenue</p></div>
+<div class="scrollx"><table class="bset"><thead><tr><th>Building</th><th>Cluster</th><th># Units</th><th>Cleaners</th><th>Access method</th><th>Went live</th><th>First revenue in sheet</th></tr></thead><tbody id="tbSettings"></tbody></table></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Clusters</h2><p>Add a cluster here, then assign buildings to it in the table above</p></div>
+<div class="piperow" style="margin:0 0 16px">
+  <form class="addcl" id="clForm"><input type="text" id="clName" placeholder="Cluster name" aria-label="New cluster name" required><button type="submit">Add cluster</button></form>
+</div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Buildings</th><th>Units</th><th>Cleaners</th><th></th></tr></thead><tbody id="tbClusterList"></tbody></table></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Hires and departures</h2><p>The Cleaners number above is today's headcount. Log the date each cleaner started or left, and the weeks before that date keep the headcount the cluster actually had.</p></div>
+<div class="piperow" style="margin:0 0 16px">
+  <form class="addcl" id="hireForm" style="flex-wrap:wrap"><select id="hireCluster" aria-label="Cluster"></select><input type="date" id="hireDate" aria-label="Date" required style="min-width:150px"><select id="hireChange" aria-label="Change"><option value="1">Hired</option><option value="-1">Left</option></select><input type="text" id="hireNote" placeholder="Note, e.g. Modera Edgewater" aria-label="Note"><button type="submit">Log change</button></form>
+</div>
+<div class="scrollx"><table><thead><tr><th>Date</th><th>Cluster</th><th>Change</th><th>Cleaners</th><th>Note</th><th></th></tr></thead><tbody id="tbHires"></tbody></table></div>
+</section>
+</section>
+<section class="view" id="viewClusters">
+<section class="panel">
+<div class="phead"><h2>Cluster analysis</h2><p>Same clusters, expanded — units per cleaner alongside the margin</p></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Visits</th><th>Revenue / wk</th><th>Revenue / unit</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusterAnalysis"></tbody></table></div>
+<div class="legend" id="legendClusters"></div>
+</section>
+</section>
+<section class="view" id="viewForecast">
+<section class="panel">
+<div class="phead"><h2>Forecasting</h2><p>Orders booked for a coming week, turned into an expected week — by building and by cluster</p></div>
+<div class="suctl">
+  <div class="src" style="flex:1;min-width:280px"><span class="dot" id="fcDot"></span><span id="fcMsg">No orders loaded</span><input type="text" id="fcUrl" placeholder="Orders sheet URL"><button id="fcLoad">Load</button></div>
+  <div class="surt">
+    <label class="fld">Week<select id="fcWeek"></select></label>
+    <label class="fld">New bookings uplift<input type="number" id="fcFill" min="1" step=".05" style="width:82px"><span class="post">×</span></label>
+  </div>
+</div>
+<div class="stats" id="fcStats"></div>
+<div class="scrollx"><table><thead><tr><th>Building</th><th>Cluster</th><th>Orders</th><th>Booked</th><th>AOV</th><th>Forecast</th><th>Last 4 wks avg</th><th>Δ</th><th>Margin at forecast</th></tr></thead><tbody id="tbFcBuildings"></tbody></table></div>
+<div class="legend" id="fcLegend"></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>By cluster</h2><p>What the booked week does to each cluster's margin</p></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Bldgs ordering</th><th>Orders</th><th>Forecast revenue</th><th>Cleaners</th><th>Hours booked</th><th>Utilization</th><th>Margin at forecast</th><th>vs last 4 wks</th></tr></thead><tbody id="tbFcClusters"></tbody></table></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>New bookings uplift</h2><p id="calHead">Post the Wednesday list, then the same week once it closed. The ratio between them is the uplift, and the average of those ratios feeds the forecast.</p></div>
+<div class="scrollx"><table class="bset cal"><thead><tr><th>Week</th><th>Wednesday list</th><th>Booked</th><th>Week as it closed</th><th>Final</th><th>Uplift</th><th></th></tr></thead><tbody id="tbCal"></tbody></table></div>
+<div class="piperow"><button id="calAdd">Add week</button><div class="legend" id="calLegend"></div></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Biggest opportunities</h2><p>Where the next dollar is, ranked by weekly revenue available</p></div>
+<div id="fcOpps" class="sens"></div>
+</section>
+<footer class="note" id="fcNote"></footer>
+</section>
+<section class="view" id="viewScenario">
+<section class="panel">
+<div class="phead"><h2>Scenario planner</h2><p>Launch a hypothetical building into a cluster and see where the margin lands</p></div>
+<div class="scnform" id="scnForm">
+  <label class="fld">Building<input type="text" id="scnName" placeholder="Modera Edgewater"></label>
+  <label class="fld">Units<input type="number" id="scnUnits" min="0" step="1" value="291"></label>
+  <label class="fld">Cluster<select id="scnCluster"></select></label>
+  <label class="fld">Cleaners hired<input type="number" id="scnHire" min="0" step="0.5" value="0"></label>
+  <label class="fld">Revenue / unit<span class="pre">$</span><input type="number" id="scnRpu" min="0" step=".01"><span class="post">/wk</span></label>
+  <label class="fld">Ramp<select id="scnRamp"><option value="slow">Conservative 12-wk</option><option value="obs">Observed launches</option><option value="now">Straight to mature</option></select></label>
+  <label class="fld">Hours / cleaner-day<input type="number" id="scnHpd" min="1" step=".5"></label>
+  <label class="fld">Days / week<input type="number" id="scnDpw" min="1" max="7" step="1"></label>
+  <button id="scnReset">Reset assumptions</button>
+</div>
+<div class="stats" id="scnStats"></div>
+<div class="scrollx"><table><thead><tr><th>Cluster</th><th>Units</th><th>Cleaners</th><th>Units / cleaner</th><th>Hours / wk</th><th>Utilization</th><th>Revenue / wk</th><th>Margin now</th><th>Margin after</th><th>Δ</th></tr></thead><tbody id="tbScenario"></tbody></table></div>
+</section>
+<section class="grid2">
+<div class="panel">
+<div class="phead"><h2>Ramp to maturity</h2><p id="scnRampNote"></p></div>
+<svg id="scnChart" viewBox="0 0 620 260" style="width:100%;height:auto" role="img" aria-label="Projected cluster margin over the weeks after launch"></svg>
+</div>
+<div class="panel">
+<div class="phead"><h2>Sensitivity</h2><p>Where the scenario stops working</p></div>
+<div id="scnSens" class="sens"></div>
+</div>
+</section>
+<footer class="note" id="scnNote"></footer>
+<section class="panel">
+<div class="phead"><h2>Pipeline</h2><p>Buildings we are talking to, closing, or about to launch. A row marked <b>launched</b> joins the portfolio and its cluster.</p></div>
+<div class="scrollx"><table class="bset pipe"><thead><tr><th>Building</th><th>Address</th><th>Units</th><th>Type</th><th>Management</th><th>Cluster</th><th>Status</th><th>Lat</th><th>Lng</th><th></th></tr></thead><tbody id="tbPipeline"></tbody></table></div>
+<div class="piperow"><button id="pipeAdd">Add building</button><div class="legend" id="pipeLegend"></div></div>
+</section>
+</section>
+<section class="view" id="viewOurBuildings">
+<section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">Our buildings</span>
+<h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">Seven residential buildings across Edgewater, Downtown Miami and Coral Gables.</h2></section>
+<section style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px"><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-hamilton" shape="rect" src="buildings/hamilton-photo.jpg" placeholder="Drop a photo of The Hamilton"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">The Hamilton</h3><span style="font-size:13px;color:var(--ink-3)">555 NE 34th St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">275 units</span><a href="https://www.thehamilton.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">thehamilton.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-forma" shape="rect" src="buildings/forma-photo.jpg" placeholder="Drop a photo of Forma"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Forma</h3><span style="font-size:13px;color:var(--ink-3)">2900 Biscayne Blvd</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">850 units</span><a href="https://rentformamiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">rentformamiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-modera" shape="rect" src="buildings/modera.jpeg" placeholder="Drop a photo of Modera Edgewater"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Modera Edgewater</h3><span style="font-size:13px;color:var(--ink-3)">455 NE 24th St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">291 units</span><a href="https://www.moderaedgewatermiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">moderaedgewatermiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-bezel" shape="rect" src="buildings/bezel-photo.jpg" placeholder="Drop a photo of Bezel Miami"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Bezel Miami</h3><span style="font-size:13px;color:var(--ink-3)">650 NE 2nd Ave · Miami Worldcenter</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">434 units</span><a href="https://www.bezelmiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">bezelmiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-worldtower" shape="rect" src="buildings/worldtower-photo.jpg" placeholder="Drop a photo of Miami World Tower"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Miami World Tower</h3><span style="font-size:13px;color:var(--ink-3)">710 NE 1st Ave</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">520 units</span><a href="https://www.apartments.com/miami-world-tower-miami-fl/dbn4tyj/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">Listing on apartments.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-muze" shape="rect" src="buildings/muze-photo.webp" placeholder="Drop a photo of Muze at Met"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Muze at Met</h3><span style="font-size:13px;color:var(--ink-3)">340 SE 3rd St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">391 units</span><a href="https://www.muzemetmiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">muzemetmiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-alexanroxy" shape="rect" src="buildings/alexanroxy.jpg" placeholder="Drop a photo of Alexan Roxy"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Coral Gables</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Alexan Roxy</h3><span style="font-size:13px;color:var(--ink-3)">330 Catalonia Ave</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">263 units</span><a href="https://alexanroxyapartments.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">alexanroxyapartments.com ↗</a></div></article></section>
+</section>
+<section class="view" id="viewSignups">
+<section class="panel">
+<div class="phead"><h2>Sign-up growth</h2><p id="suHead">Residents signed up, week by week</p></div>
+<div class="suctl">
+  <div class="pickers" id="suPick"></div>
+  <div class="surt">
+  <label class="fld">View by<select id="suBy"><option value="building">Building</option><option value="cluster">Cluster</option></select></label>
+  <label class="fld">Show<select id="suMode"><option value="total">Total sign-ups</option><option value="new">New sign-ups per week</option></select></label>
+  <button id="suAdd">Add event</button>
+  </div>
+</div>
+<form class="evform" id="evForm" hidden>
+  <label class="fld">Building<select id="evBuilding"></select></label>
+  <label class="fld">Week<select id="evWeek"></select></label>
+  <label class="fld">Event<input type="text" id="evName" placeholder="Lobby pop-up" required></label>
+  <label class="fld">Description<input type="text" id="evDesc" placeholder="Cart in the lobby, Saturday morning"></label>
+  <label class="fld">Impact<input type="number" id="evImpact" step="1" placeholder="new sign-ups"></label>
+  <button type="submit">Save event</button>
+  <button type="button" id="evCancel">Cancel</button>
+</form>
+<svg id="suChart" viewBox="0 0 980 380" style="width:100%;height:auto" role="img" aria-label="Sign-ups per building over time"></svg>
+</section>
+<section class="panel">
+<div class="phead"><h2>By building</h2><p>Latest total, what it added over the last four weeks, and sign-ups as a share of units</p></div>
+<div class="scrollx"><table><thead><tr><th id="thSuName">Building</th><th>Units</th><th>Total sign-ups</th><th>% Signed up</th><th>New, last 4 wks</th><th>New / wk avg</th><th>Best week</th></tr></thead><tbody id="tbSignups"></tbody></table></div>
+</section>
+<section class="panel">
+<div class="phead"><h2>Events</h2><p>What drove sign-ups, and how much each one added</p></div>
+<div class="pickers" id="evFilter" style="margin-bottom:16px"></div>
+<div class="scrollx"><table><thead><tr><th>Building</th><th>Week</th><th>Event</th><th>Description</th><th>Impact</th><th></th></tr></thead><tbody id="tbEvents"></tbody></table></div>
+</section>
+</section>
+<section class="view" id="viewCards">
+<section class="panel" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:24px;align-items:center;padding:20px 22px">
+<div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Floor-by-floor penetration</span>
+<h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">We measure penetration floor by floor, not just building by building.</h2>
+<p style="margin:0;font-size:14px;line-height:1.55;color:var(--ink-2);max-width:62ch;text-wrap:pretty">We track where our carts and visits go and how they spread floor by floor. That shows us which floors to focus on, so we can reach out to each one with a specific plan and keep cleaners busy on every floor.</p></div>
+<img src="hallway-cart-cleaner.png" alt="Zing cleaner with the cart in a residential hallway" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block">
+</section>
+<section class="panel" style="padding:12px 14px">
+<div class="suctl" style="padding:0;margin:0;border:none">
+<label class="fld">Building<select id="ciSelBuilding"></select></label>
+<div class="surt"><span style="font-size:11px;color:var(--ink-4)" id="ciCfgNote"></span></div>
+</div>
+</section>
+<section class="stats" id="ciStats"></section>
+<section class="panel bonly">
+<div class="phead"><h2>By building</h2><p>The same cohort split run separately on every building, then pooled across all of them.</p></div>
+<div class="scrollx"><table><thead><tr><th>Building</th><th>Floors</th><th>Served</th><th>Cleans</th><th>Sign-ups</th><th>Units that ordered</th><th>Sign-ups / served floor</th><th>/ untouched floor</th><th>Ratio</th><th>Non-customer / served</th><th>/ untouched</th><th>Ratio</th><th>Followers</th><th>After a clean</th></tr></thead><tbody id="tbCiBy"></tbody><tfoot id="tbCiByFoot"></tfoot></table></div>
+<footer class="note" style="padding:12px 14px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:6px 24px">
+<div><b>Served</b> — floors with at least one clean run on them. A floor becomes served only because a unit on it booked, so the customers are inside this group by construction.</div>
+<div><b>Sign-ups / served floor</b> and <b>/ untouched floor</b> — every account on the floor, divided by the number of floors in that group.</div>
+<div><b>Ratio</b> (first one) — sign-ups per served floor divided by sign-ups per untouched floor. Above 1.00× means served floors hold more accounts. It cannot be evidence for the cart on its own, because the booking is what brought the cart to the floor.</div>
+<div><b>Non-customer / served</b> and <b>/ untouched</b> — the same two averages after removing every unit that has ever ordered. What is left is residents who signed up and never booked: the neighbours who only ever saw the cart in the hallway.</div>
+<div><b>Ratio</b> (second one) — non-customers per served floor divided by non-customers per untouched floor. This is the one that would point at the cart, and it saturates on fully converted floors, so read the Response window panel alongside it.</div>
+<div><b>Followers</b> — units that ordered but were not the first on their floor to do so. The first unit on a floor is never a follower, since its own booking is what brought the cart there.</div>
+<div><b>After a clean</b> — how many of those followers placed their first order once the cart had already worked their floor, out of all followers.</div>
+<div><b>Pooled row</b> — every building with at least one clean, added together. Buildings with none are pre-launch rather than untouched, so they are left out.</div>
+</div>
+</footer>
+</section>
+<section class="panel conly" id="ciElevPanel">
+<div class="phead"><h2>Where the cart has stood, floor by floor</h2><p>One square per unit on the floor. A dark square is a unit that has ordered, a green one a unit that signed up and never ordered. The bar is how many cleans the cart has run on that floor. Drag the slider to replay the building week by week.</p></div>
+<div class="suctl" id="ciWkWrap" style="padding:10px 14px;margin:0;gap:10px;align-items:center;border-top:1px solid var(--paper-200);border-bottom:1px solid var(--paper-200)">
+<button type="button" id="ciWkPlay">Play</button>
+<input type="range" id="ciWk" min="0" max="1" step="1" value="1" style="flex:1;min-width:160px">
+<button type="button" id="ciWkAll">Today</button>
+<button type="button" id="ciGif" title="Replays every week and downloads this panel as an animated GIF">Save GIF</button>
+<span id="ciWkLbl" style="font-size:11px;color:var(--ink-4);white-space:nowrap"></span>
+</div>
+<div class="elevwrap">
+<div class="elev" id="ciElev"></div>
+<div class="cohort" id="ciCohort"></div>
+</div>
+<div class="legend" id="ciLegend"></div>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Floor ledger — what happened, in order</h2><p>One lane per floor, time left to right. Every cart visit, every sign-up and every order on that floor, in sequence, so a visit followed by a neighbour signing up is something you can see rather than infer.</p></div>
+<div style="padding:14px"><div id="ciLedger"></div></div>
+<div class="legend" id="ciLedgerLegend"></div>
+<footer class="note" id="ciLedgerNote" style="padding:0 14px 12px"></footer>
+</section>
+<section class="panel">
+<div class="phead"><h2>Response window</h2><p>The index that survives a full floor: the pool is only the units that could still sign up, day by day, and a day counts as exposed if the cart worked that floor within the last 7 days.</p></div>
+<div style="padding:14px 14px 0"><div class="stats" id="ciRiskStats"></div></div>
+<div class="scrollx" style="margin-top:14px"><table><thead><tr><th>When the sign-up landed</th><th>Sign-ups</th><th>Share</th><th>Units in the pool, unit-days</th><th>Per 100 unit-weeks</th><th>vs unexposed</th></tr></thead><tbody id="tbCiResp"></tbody></table></div>
+<footer class="note" id="ciRespNote" style="padding:12px 14px"></footer>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>The math, line by line</h2><p>Every floor in its cohort, then the arithmetic behind each headline number.</p></div>
+<div id="ciMath"></div>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Neighbour conversion</h2><p>Once the cart has worked a hallway, does the next unit on that floor start ordering? Uses order creation dates, so it needs nothing new.</p></div>
+<div style="padding:14px 14px 0"><div class="stats" id="ciSeqStats"></div></div>
+<div class="scrollx" style="margin-top:14px"><table><thead><tr><th class="bcol">Building</th><th>Floor</th><th>Units that ordered</th><th>First clean on the floor</th><th>Next unit's first order</th><th>Days after</th><th>Followers</th><th>Followers after the clean</th></tr></thead><tbody id="tbCiSeq"></tbody></table></div>
+<footer class="note" id="ciSeqNote" style="padding:12px 14px"></footer>
+</section>
+<section class="panel">
+<div class="phead"><h2>Dose response</h2><p>Floors grouped by how many times the cart has been parked there. Two indexes, both against the never-visited row: one on all sign-ups, one on neighbours only — residents who signed up and have never booked.</p></div>
+<div class="scrollx"><table><thead><tr><th>Visits to the floor</th><th>Floors</th><th>Sign-ups</th><th>Sign-ups / floor</th><th>Index, all sign-ups</th><th>Of those, neighbours</th><th>Neighbours / floor</th><th>Index, neighbours only</th><th>% of units signed up</th></tr></thead><tbody id="tbCiDose"></tbody></table></div>
+<footer class="note" id="ciDoseNote" style="padding:12px 14px"></footer>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Floor detail</h2><p>Top floor down to the first residential floor. Neighbour sign-ups are residents on the floor who have never ordered — the people who only ever saw the cart.</p></div>
+<div class="scrollx"><table><thead><tr><th class="bcol">Building</th><th>Floor</th><th>Visits</th><th>First visit</th><th>Last visit</th><th>Customers</th><th>Neighbour sign-ups</th><th>Total sign-ups</th><th>% of units</th></tr></thead><tbody id="tbCiFloors"></tbody></table></div>
+</section>
+<section class="panel conly">
+<div class="phead"><h2>Data</h2><p>Paste the two exports here — users and orders. They are joined on email. Everything above recalculates.</p></div>
+<div class="ciform">
+<label class="fld">First residential floor<input type="number" id="ciBot" min="1" max="120" step="1" value="9" style="width:70px"></label>
+<label class="fld">Top floor<input type="number" id="ciTop" min="1" max="120" step="1" value="43" style="width:70px"></label>
+<label class="fld">Floors that do not exist<input type="text" id="ciSkip" value="13" style="width:90px"></label>
+<label class="fld">Units per floor<input type="number" id="ciUpf" min="1" max="60" step="1" value="12" style="width:70px"></label>
+<label class="fld">A visit counts when<select id="ciStatus"><option value="done">Paid, completed, or incomplete payment</option></select></label>
+<div class="spacer"></div>
+<button class="primary" id="ciRun">Recalculate</button><button id="ciReset">Reset to snapshot</button>
+</div>
+<div class="cipaste">
+<label>Users CSV <span class="cidrop" id="ciUsersDrop">Drop a .csv here, paste a Google Sheet link below, or <button type="button" id="ciUsersPick">choose a file</button><input type="file" id="ciUsersFile" accept=".csv,text/csv" hidden></span><textarea id="ciUsersCsv" spellcheck="false" autocomplete="off" placeholder="Name,Email,Phone,Building,Apt,Orders,…"></textarea></label>
+<label>Orders CSV <span class="cidrop" id="ciOrdersDrop">Drop a .csv here, paste a Google Sheet link below, or <button type="button" id="ciOrdersPick">choose a file</button><input type="file" id="ciOrdersFile" accept=".csv,text/csv" hidden></span><textarea id="ciOrdersCsv" spellcheck="false" autocomplete="off" placeholder="Date,Date created,Building,Email,Status,…"></textarea></label>
+</div>
+<div id="ciApi" style="padding:10px 14px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink-3)">Checking the shared backend…</div>
+<div class="scrollx"><table><thead><tr><th class="bcol">Building</th><th>Excluded row</th><th>Apt as written</th><th>Why</th></tr></thead><tbody id="tbCiDropped"></tbody></table></div>
+<footer class="note" id="ciNote" style="padding:12px 14px"></footer>
+</section>
+</section>
+</main>
+</div>
+<div id="suTip" role="tooltip" aria-hidden="true"></div>
+<div id="hover" role="tooltip" aria-hidden="true"></div>
+<script>
+/* ---------- shared backend (Apps Script web app on the Google Sheet) ----------
+   GET returns all tabs as {tabName: values[][]} (header row included).
+   POST {tab, action:"upsert", key, values} updates/inserts one row by key column;
+   POST {tab, action:"replaceAll", rows} rewrites a whole list tab. Plain-text content
+   type avoids a CORS preflight Apps Script doesn't answer. Falls back to the local
+   cache (localStorage) below if the fetch fails, so the page still works offline. */
+const API_URL = "https://script.google.com/macros/s/AKfycbzw1wQ5XT6ewFrVovNLP1zKL1IOeiUMRZDa09tPC7Ouh8eX8hEn0prD_kAJjujvC1ne/exec";
+function apiPost(tab, action, extra){
+  return;   // data room is read-only: never writes to the sheet
+  fetch(API_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(Object.assign({ tab, action }, extra)) })
+    .catch(err => console.warn("KPI backend save failed (" + tab + ")", err));
+}
+
+/* ---------- formulas (single place to change) ---------- */
+// Building KPI: margin per single cleaner = (weekly revenue − one cleaner's weekly salary) / that salary
+const salaryOf = r => r.cleanerSalary || SALARY;   // sheet column wins, else the salary set in the header
+const buildingMargin = r => salaryOf(r) > 0 && r.revenue ? (r.revenue - salaryOf(r)) / salaryOf(r) : null;
+// Data room: margin on the cleaners actually assigned in Building settings (e.g. 0.5, 1.6)
+const assignedOf = name => { const k = key(name), bk = Object.keys(BSET).find(b => k === b || k.startsWith(b) || b.startsWith(k));
+  const c = bk ? Number(BSET[bk].cleaners) : NaN; return c > 0 ? c : null; };
+const actualMargin = r => { const c = assignedOf(r.building), s = salaryOf(r) * (c || 0);
+  return s > 0 && r.revenue ? (r.revenue - s) / s : null; };
+// Cluster KPI: (Σ revenue − payroll of every cleaner in the cluster) / that payroll,
+// where the head count per cluster is set by hand in the clusters table
+let CLEANERS = { Downtown: 2, Edgewater: 3 };   // defaults, overridden by whatever is typed in
+// data room: cleaner headcount comes from the sheet only, never from this browser
+// a cluster with no headcount of its own falls back to the cleaners assigned to its buildings
+// (Building settings, else the registry), so a new cluster reports a margin as soon as it has revenue
+const cleanersIn = c => {
+  if (CLEANERS[c] != null) return CLEANERS[c];
+  if (typeof REGISTRY === "undefined" || typeof BSET === "undefined") return null;
+  let n = 0, hit = false;
+  Object.entries(REGISTRY).forEach(([k, b]) => {
+    const s = BSET[k] || {}; const cl = s.cluster ?? b.cluster;
+    if (cl !== c) return; hit = true; n += Number(s.cleaners ?? b.cleaners) || 0;
+  });
+  return hit && n > 0 ? n : null;
+};
+// Headcount changes. The clusters table holds today's headcount; each logged hire (+1) or departure (−1)
+// means the weeks that ended before its date had one fewer (or one more) cleaner in that cluster.
+let HIRES = [];
+try { const s = JSON.parse(localStorage.getItem("zingKpiHires")); if (Array.isArray(s)) HIRES = s; } catch (e) {}
+const saveHires = () => { localStorage.setItem("zingKpiHires", JSON.stringify(HIRES));
+  apiPost("Settings", "upsert", { key: "key", values: { key: "headcountChanges", value: JSON.stringify(HIRES) } }); };
+const dayT = d => Date.parse(String(d).slice(0, 10) + "T00:00:00Z");
+const _wt = { rows: null, m: new Map() };
+const weekT = w => {
+  if (_wt.rows !== ROWS){ _wt.rows = ROWS; _wt.m = new Map(); }
+  if (_wt.m.has(w)) return _wt.m.get(w);
+  let t = null; const r = ROWS.find(x => x.week === w && x.weekTime != null);
+  if (r) t = r.weekTime;
+  else { const m = /^(\d{4})-W(\d{1,2})$/.exec(String(w));
+    if (m){ const j4 = Date.UTC(+m[1], 0, 4); t = j4 - ((new Date(j4).getUTCDay() + 6) % 7) * 864e5 + (m[2] - 1) * 6048e5; }
+    else { const p = Date.parse(w); t = isNaN(p) ? null : p; } }
+  _wt.m.set(w, t); return t;
+};
+// changes dated after the week ended are undone for that week
+const cleanersAt = (c, w) => {
+  const now = cleanersIn(c); if (now == null) return null;
+  const t = weekT(w); if (t == null || !HIRES.length) return now;
+  const later = HIRES.filter(h => h.cluster === c && dayT(h.date) >= t + 6048e5).reduce((a, h) => a + (Number(h.change) || 0), 0);
+  return Math.max(0, now - later);
+};
+// a multi-week range averages the headcount across its weeks
+const headsFor = (c, rows) => {
+  const ws = [...new Set((rows || []).flatMap(r => r._ws || [r.week]))];
+  if (!ws.length) return cleanersIn(c);
+  const v = ws.map(w => cleanersAt(c, w)).filter(n => n != null);
+  return v.length ? v.reduce((a, n) => a + n, 0) / v.length : null;
+};
+// Portfolio KPI: Σ revenue of every building ÷ payroll of every cleaner in every cluster
+const portfolioMargin = rows => {
+  const rev = rows.reduce((a, r) => a + r.revenue, 0);
+  const heads = [...new Set(rows.filter(r => r.cluster).map(r => r.cluster))].reduce((a, c) => a + (headsFor(c, rows.filter(r => r.cluster === c)) || 0), 0);
+  const sal = heads * SALARY;
+  return { pct: sal > 0 && rev ? (rev - sal) / sal : null, rev, sal, heads };
+};
+const clusterMargin = (rows, c) => {
+  const rev = rows.reduce((a, r) => a + r.revenue, 0);
+  const n = headsFor(c, rows);
+  const sal = n ? n * SALARY : 0;
+  return sal > 0 && rev ? { pct: (rev - sal) / sal, rev, sal, n } : { pct: null, rev, sal, n };
+};
+
+/* ---------- sample data (replace via CSV) ---------- */
+const SAMPLE = [
+["The Hamilton","555 NE 34th St, Miami, FL 33137-4022",25.8073,-80.1875,"Edgewater",2,1660,1180],
+["Forma","2900 Biscayne Blvd, Miami, FL 33137-4596",25.8025,-80.1900,"Edgewater",1,1320,1180],
+["Bezel Miami","650 NE 2nd Ave, Miami, FL 33132-2516",25.7797,-80.1913,"Downtown",2,1010,1180],
+["Miami World Tower","710 NE 1st Ave, Miami, FL 33132-2398",25.7808,-80.1920,"Downtown",1,1490,1180],
+["Muze","340 SE 3rd St, Miami, FL 33131-1728",25.7713,-80.1893,"Downtown",2,1740,1180],
+["Alexan Roxy","2370 SW 37th Ave, Miami, FL 33145",25.7484,-80.2596,"Coral Gables",1,0,1180]
+];
+const WEEKS = ["2026-W31","2026-W32","2026-W33"];
+const jitter = (v, i, w) => Math.round(v * (1 + ((i * 7 + w * 13) % 11 - 5) / 40));
+function sampleRows(){
+  const out = [];
+  WEEKS.forEach((wk, w) => SAMPLE.forEach((b, i) => out.push({
+    week: wk, building: b[0], address: b[1], lat: b[2], lng: b[3], cluster: b[4],
+    cleaners: b[5], revenue: jitter(b[6], i, w), cleanerSalary: null, weekOrder: w
+  })));
+  return out;
+}
+
+/* ---------- CSV ----------
+   The sheet only needs week, building and revenue. Everything fixed week over week
+   (address, coordinates, cluster, cleaners assigned) comes from the registry above,
+   and one cleaner's weekly salary is set in the header (default $720/wk). Any of those columns present
+   in the sheet still wins, so a one-off override is possible without a code change. */
+let SALARY = 720;   // data room: replaced by the sheet's Settings › salary on load   // one cleaner, per week
+const REGISTRY = {};
+// match on letters and digits only, so "Wynd 27&28", "wynd27-28" and "WYND 27 & 28" are the same building
+const key = s => String(s).toLowerCase().replace(/^the\s+/, "").replace(/[^a-z0-9]/g, "");
+SAMPLE.forEach(b => REGISTRY[key(b[0])] = { name: b[0], address: b[1], lat: b[2], lng: b[3], cluster: b[4], cleaners: b[5] });
+// live buildings with no sample revenue row
+REGISTRY.moderaedgewater = { name: "Modera Edgewater", address: "455 NE 24th St, Miami, FL 33137", lat: 25.7998, lng: -80.1879, cluster: "Edgewater", cleaners: 0 };
+// initialisms the sheet may use ("MWT" → Miami World Tower); generated from each name's words
+const INITIALS = {};
+SAMPLE.forEach(b => { const i = b[0].split(/[^A-Za-z0-9]+/).filter(Boolean).map(w => w[0].toLowerCase()).join("");
+  if (i.length > 1) INITIALS[i] = key(b[0]); });
+const ALIASES = { modera: "moderaedgewater", mwt: "miamiworldtower", hamilton: "thehamilton", roxy: "alexanroxy", ar: "alexanroxy" };
+function lookup(name){
+  const k = key(name);
+  if (REGISTRY[k]) return REGISTRY[k];
+  if (ALIASES[k] && REGISTRY[ALIASES[k]]) return REGISTRY[ALIASES[k]];
+  if (INITIALS[k] && REGISTRY[INITIALS[k]]) return REGISTRY[INITIALS[k]];
+  const ks = Object.keys(REGISTRY);
+  // then either direction of containment ("bezel" ~ "bezelmiami"), longest match wins
+  const hit = ks.filter(r => r.includes(k) || k.includes(r)).sort((a, b) => b.length - a.length)[0];
+  return hit ? REGISTRY[hit] : null;
+}
+
+/* Tolerant sheet reader. Handles three shapes:
+   TAB-PER-BUILDING (the live workbook — one tab per building, one row per week, a
+   "Week Start" date column and a "Revenue" column, all other columns ignored),
+   LONG (one row per building per week) and WIDE (one row per building, one column per week).
+   `lastHeaders` is surfaced in the status message when nothing could be read. */
+let lastHeaders = [], unmatched = new Set();
+const splitCSV = text => { const split = l => { const o = []; let c = "", q = false;
+    for (const ch of l){ if (ch === '"'){ q = !q; } else if (ch === "," && !q){ o.push(c); c = ""; } else c += ch; }
+    o.push(c); return o.map(s => s.trim().replace(/^"|"$/g, "")); };
+  return text.trim().split(/\r?\n/).map(split); };
+const normh = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
+const isBuildingCol = s => ["building","buildings","property","properties","name","site","location"].includes(s);
+const isRevenueCol = s => ["revenue","revenues","sales","income","totalrevenue","weeklyrevenue","amount","total"].includes(s);
+const isWeekStartCol = s => ["weekstart","weekstarting","weekof","weekbeginning","week","date"].includes(s);
+const numOf = s => Number(String(s ?? "").replace(/[^0-9.-]/g, ""));
+
+/* a week is identified by its start date; label comes later, once the whole workbook is in */
+function weekTime(s){
+  const t = String(s || "").trim();
+  let m = t.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+  if (m) return Date.UTC(+m[1], +m[2] - 1, +m[3]);
+  m = t.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{2,4})/);          // US m/d/y
+  if (m){ const y = +m[3]; return Date.UTC(y < 100 ? 2000 + y : y, +m[1] - 1, +m[2]); }
+  const p = Date.parse(t);
+  return isNaN(p) ? null : p;
+}
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function relabelWeeks(rows){
+  const ts = rows.map(r => r.weekTime).filter(t => t != null);
+  if (!ts.length) return rows;
+  const years = new Set(ts.map(t => new Date(t).getUTCFullYear()));
+  rows.forEach(r => { if (r.weekTime != null){ const d = new Date(r.weekTime);
+    r.week = MON[d.getUTCMonth()] + " " + d.getUTCDate() + (years.size > 1 ? ", " + d.getUTCFullYear() : "");
+    r.weekOrder = r.weekTime; } });
+  return rows;
+}
+
+/* one tab = one building; rows are weeks */
+function parseTab(rows, hi, sheetName){
+  const h = rows[hi].map(normh);
+  lastHeaders = rows[hi].filter(Boolean);
+  const wi = h.findIndex(isWeekStartCol);
+  let ri = h.indexOf("revenue"); if (ri < 0) ri = h.findIndex(isRevenueCol);
+  // operational columns: visits, hours actually worked, average visit length (minutes)
+  const vi = h.indexOf("totalvisits"), hi2 = h.indexOf("totalhoursofoperations");
+  const di = h.indexOf("avgvisitduration"), ai = h.indexOf("aov");
+  // sign-ups: cumulative total and the new ones that week
+  const si = h.findIndex(x => ["totalsignups","totalsignup","signups","totalsignedup"].includes(x));
+  const ni = h.findIndex(x => ["newsignups","newsignup","newsignupsthisweek","weeklysignups"].includes(x));
+  const reg = lookup(sheetName) || {};
+  if (!reg.name) unmatched.add(sheetName);
+  return rows.slice(hi + 1).map(c => {
+    const t = weekTime(c[wi]), v = numOf(c[ri]);
+    if (t == null || !String(c[wi] || "").trim()) return null;
+    const g = i => { if (i < 0) return null; const n = numOf(c[i]); return isNaN(n) ? null : n; };
+    return { week: String(c[wi]).trim(), weekTime: t, weekOrder: t,
+      building: reg.name || sheetName, address: reg.address || "",
+      lat: reg.lat || 0, lng: reg.lng || 0, cluster: reg.cluster || "",
+      cleaners: reg.cleaners || 1, revenue: isNaN(v) ? 0 : v, cleanerSalary: null,
+      visits: g(vi), hours: g(hi2), dur: g(di), aov: g(ai),
+      signups: g(si), newSignups: g(ni) };
+  }).filter(Boolean);
+}
+
+function parseRows(rows, sheetName){
+  const hi = rows.findIndex(r => { const h = r.map(normh);
+    return h.some(isWeekStartCol) && h.some(isRevenueCol) && !h.some(isBuildingCol); });
+  if (hi > -1 && sheetName) return parseTab(rows, hi, sheetName);
+  return parseFlat(rows);
+}
+const parseCSV = (text, sheetName) => parseRows(splitCSV(text), sheetName);
+function rowsFromWorkbook(wb){
+  return wb.SheetNames.flatMap(n => parseRows(XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, raw: false, defval: "" }), n));
+}
+
+function parseFlat(rows){
+  const norm = normh;
+  unmatched = new Set();
+  const isWeekCol = s => ["week","weekof","weekstarting","weekstart","weekending","date","period"].includes(s);
+  const weekish = s => /^(w|wk)?\d{1,2}$/i.test(s) || /^\d{4}-?w\d{1,2}$/i.test(s) || /^\d{1,4}[\/-]\d{1,2}([\/-]\d{1,4})?$/.test(s) || /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(s);
+
+  // header row = first row that names a building column
+  let hi = rows.findIndex(r => r.some(c => isBuildingCol(norm(c))));
+  if (hi < 0) hi = 0;
+  const raw = rows[hi], head = raw.map(norm);
+  lastHeaders = raw.filter(Boolean);
+  const find = test => head.findIndex(test);
+  const col = { building: find(isBuildingCol), revenue: find(isRevenueCol), week: find(isWeekCol),
+    address: head.indexOf("address"), lat: head.indexOf("lat"), lng: head.indexOf("lng"),
+    cluster: head.indexOf("cluster"), cleaners: head.indexOf("cleaners"),
+    salary: head.findIndex(s => s.startsWith("cleanersalary") || s === "salary") };
+  if (col.building < 0) col.building = 0;
+  const num = s => numOf(s) || 0;
+  const body = rows.slice(hi + 1).filter(c => c[col.building] && !/^(total|totals|sum|grand ?total)$/i.test(c[col.building]));
+
+  // chronological order for the week selector: a real date if the label is one, else file order
+  const when = s => { const t = Date.parse(s); if (!isNaN(t)) return t;
+    const t2 = Date.parse(s + " " + new Date().getFullYear()); return isNaN(t2) ? null : t2; };
+  const make = (name, week, revenue, c = [], order = null) => {
+    const reg = lookup(name) || {};
+    if (!reg.name) unmatched.add(name);
+    const at = k => col[k] > -1 ? c[col[k]] || "" : "";
+    return { week: week || "—", building: name,
+      address: at("address") || reg.address || "",
+      lat: num(at("lat")) || reg.lat || 0, lng: num(at("lng")) || reg.lng || 0,
+      cluster: at("cluster") || reg.cluster || "",   // blank = unmatched: no pin, and never its own cluster
+      cleaners: Math.max(1, num(at("cleaners")) || reg.cleaners || 1),
+      revenue: revenue, cleanerSalary: num(at("salary")) || null, weekOrder: order };
+  };
+
+  // WIDE first: two or more week-like columns means the weeks ARE the columns, and a
+  // stray "Total" column must not be mistaken for the revenue column
+  const wkCols = head.map((s, i) => ({ s: raw[i], i })).filter(o => o.i !== col.building && o.i !== col.revenue && o.s && weekish(o.s));
+  // wide sheets are already chronological left to right, so the column index IS the order
+  if (wkCols.length >= 2) return body.flatMap(c => wkCols.map((w, n) => make(c[col.building], w.s, num(c[w.i]), c, when(w.s) ?? n)));
+  if (col.revenue > -1){   // LONG: week / building / revenue
+    let n = 0;
+    return body.map(c => { const w = col.week > -1 ? c[col.week] : "—"; return make(c[col.building], w, num(c[col.revenue]), c, when(w) ?? n++); });
+  }
+  if (wkCols.length === 1) return body.map(c => make(c[col.building], wkCols[0].s, num(c[wkCols[0].i]), c, 0));
+  return [];
+}
+
+/* ---------- state ---------- */
+let ROWS = sampleRows(), weeks = [], week = "", clusterColors = {};
+const PALETTE = ["#355457","#7B6B4A","#5F7A63","#7A5A63","#4F6E86","#8A6E3F"];
+const pct = v => v == null ? "—" : (v >= 0 ? "+" : "") + (v * 100).toFixed(0) + "%";
+const cls = v => v == null ? "o" : v > 0 ? "p" : "n";            // no data reads neutral, never as a loss
+const tone = v => v == null ? "#A9B0AE" : v > 0 ? "#4F7C5C" : "#A85149";
+const zeroOk = v => v != null && Math.round(v * 100) >= 0;      // 0% margin reads green on the map and week-over-week grid
+const clsZ = v => v == null ? "o" : zeroOk(v) ? "p" : "n";
+const toneZ = v => v == null ? "#A9B0AE" : zeroOk(v) ? "#4F7C5C" : "#A85149";
+const money = v => "$" + Math.round(v).toLocaleString();
+
+function rowsFor(w){ return ROWS.filter(r => r.week === w); }
+function prevWeek(w){ const i = weeks.indexOf(w); return i > 0 ? weeks[i - 1] : null; }
+
+/* A period is a run of weeks ending at `w`. RANGE 1 = that week, 4 = it plus the three
+   before, 0 = everything up to and including it. Buildings are collapsed to one row whose
+   revenue is their AVERAGE weekly revenue across the weeks they actually reported, so the
+   margin formula (and the cleaner headcount it divides by) stays a weekly figure. */
+let RANGE = 1;
+function periodWeeks(w, back){
+  const i = weeks.indexOf(w); if (i < 0) return [];
+  const n = RANGE === 0 ? weeks.length : RANGE;
+  const end = back ? i - n : i;
+  return end < 0 ? [] : weeks.slice(Math.max(0, end - n + 1), end + 1);
+}
+function periodRows(w, back){
+  const ws = periodWeeks(w, back);
+  if (!ws.length) return [];
+  if (ws.length === 1) return rowsFor(ws[0]);
+  const set = new Set(ws), agg = new Map();
+  ROWS.forEach(r => { if (!set.has(r.week)) return;
+    const a = agg.get(r.building);
+    if (!a) agg.set(r.building, Object.assign({}, r, { revenue: r.revenue, visits: r.visits || 0, hours: r.hours || 0, _n: r.revenue > 0 ? 1 : 0, _ws: [r.week] }));
+    else { a._ws.push(r.week); a.revenue += r.revenue; a.visits += r.visits || 0; a.hours += r.hours || 0; if (r.revenue > 0) a._n++; } });
+  return [...agg.values()].map(a => Object.assign(a, {
+    revenue: a._n ? a.revenue / a._n : 0,
+    visits: a._n ? a.visits / a._n : 0,
+    hours: a._n ? a.hours / a._n : 0,
+    dur: a.visits && a.hours ? (a.hours / a.visits) * 60 : a.dur,
+    aov: a.visits ? a.revenue / (a.visits / (a._n || 1)) : a.aov }));
+}
+const rangeLabel = () => RANGE === 1 ? "week of " + week : RANGE === 0 ? "all " + weeks.length + " weeks, weekly average" : "past " + RANGE + " weeks, weekly average";
+
+/* ---------- week-over-week matrices ---------- */
+function scrollMatricesToLatest(){ requestAnimationFrame(() => document.querySelectorAll("#viewDash .scrollx").forEach(s => { if (s.querySelector("table.matrix")) s.scrollLeft = s.scrollWidth; })); }
+function drawMatrices(){
+  scrollMatricesToLatest();
+  const head = n => `<tr><th>${n}</th>${weeks.map(w => `<th>${w}</th>`).join("")}</tr>`;
+  const cell = m => `<td class="v ${clsZ(m)}">${pct(m)}</td>`;
+  const byWeek = new Map(weeks.map(w => [w, rowsFor(w)]));
+
+  const names = [...new Set(ROWS.map(r => r.building))];
+  document.getElementById("hdActual").innerHTML = head("Margin on assigned cleaners");
+  document.getElementById("mxActual").innerHTML = names.map(n => {
+    const cells = weeks.map(w => cell(actualMargin(byWeek.get(w).find(r => r.building === n) || { building: n, revenue: 0 })));
+    const c = (ROWS.find(r => r.building === n) || {}).cluster, a = assignedOf(n);
+    return `<tr data-b="${n}"><td class="name"><span class="cdot" style="background:${clusterColors[c] || "#C9C2B4"}"></span>${n}<span class="addr">${a == null ? "no cleaners set" : (+a.toFixed(2)) + (a === 1 ? " cleaner" : " cleaners")}</span></td>${cells.join("")}</tr>`;
+  }).join("");
+  document.getElementById("hdBuildings").innerHTML = head("Margin per single cleaner");
+  document.getElementById("mxBuildings").innerHTML = names.map(n => {
+    const cells = weeks.map(w => cell(buildingMargin(byWeek.get(w).find(r => r.building === n) || { revenue: 0 })));
+    const c = (ROWS.find(r => r.building === n) || {}).cluster;
+    return `<tr data-b="${n}"><td class="name"><span class="cdot" style="background:${clusterColors[c] || "#C9C2B4"}"></span>${n}</td>${cells.join("")}</tr>`;
+  }).join("");
+
+  const cs = [...new Set(ROWS.filter(r => r.cluster).map(r => r.cluster))];
+  document.getElementById("hdClusters").innerHTML = head("Cluster");
+  const portfolio = weeks.map(w => cell(portfolioMargin(byWeek.get(w)).pct));
+  document.getElementById("mxClusters").innerHTML = cs.map(c => {
+    const cells = weeks.map(w => cell(clusterMargin(byWeek.get(w).filter(r => r.cluster === c), c).pct));
+    return `<tr data-c="${c}"><td class="name"><span class="cdot" style="background:${clusterColors[c]}"></span>${c}</td>${cells.join("")}</tr>`;
+  }).join("") +
+    `<tr class="total"><td class="name">Portfolio</td>${portfolio.join("")}</tr>`;
+
+  // Total cluster revenue per week, coloured against the week before it
+  const revRow = sums => sums.map((v, i) => { const p = i > 0 ? sums[i - 1] : null;
+    const k = p == null ? "o" : v > p ? "p" : v < p ? "n" : "o";
+    return `<td class="v ${k}">${money(v)}</td>`; }).join("");
+  const revOf = rs => rs.reduce((a, r) => a + (Number(r.revenue) || 0), 0);
+  document.getElementById("hdClusterRev").innerHTML = head("Cluster revenue");
+  document.getElementById("mxClusterRev").innerHTML = cs.map(c =>
+    `<tr data-c="${c}"><td class="name"><span class="cdot" style="background:${clusterColors[c]}"></span>${c}</td>${revRow(weeks.map(w => revOf(byWeek.get(w).filter(r => r.cluster === c))))}</tr>`).join("") +
+    `<tr class="total"><td class="name">Portfolio</td>${revRow(weeks.map(w => revOf(byWeek.get(w))))}</tr>`;
+}
+
+/* A building in the registry with a cluster but no rows in the sheet yet (e.g. just launched)
+   still counts: give it a $0 row for every week from its live date, so it shows on the map and
+   in its cluster's tables. Real rows from the sheet replace these as soon as they exist. */
+function padLaunched(){
+  const have = new Set(ROWS.filter(r => !r._pad).map(r => key(r.building)));
+  for (let i = ROWS.length - 1; i >= 0; i--) if (ROWS[i]._pad && have.has(key(ROWS[i].building))) ROWS.splice(i, 1);
+  const reps = new Map(); ROWS.forEach(r => { if (!r._pad && !reps.has(r.week)) reps.set(r.week, r); });
+  Object.entries(REGISTRY).forEach(([k, b]) => {
+    if (have.has(k)) return;
+    const s = (typeof BSET !== "undefined" && BSET[k]) || {}, cl = s.cluster ?? b.cluster;
+    if (!cl) return;
+    const live = s.live ? Date.parse(s.live) : null;
+    reps.forEach((rep, w) => {
+      if (ROWS.some(r => r._pad && r.week === w && key(r.building) === k)) return;
+      if (live != null && rep.weekTime != null && rep.weekTime + 6 * 864e5 < live) return;
+      ROWS.push({ week: w, weekOrder: rep.weekOrder, weekTime: rep.weekTime, building: b.name, address: b.address || "",
+        lat: b.lat || 0, lng: b.lng || 0, cluster: cl, cleaners: Math.max(1, b.cleaners || 1), revenue: 0, cleanerSalary: null, _pad: true });
+    });
+  });
+}
+function render(){
+  padLaunched();
+  applyClusters();
+  const cur = periodRows(week), prev = periodRows(week, true);
+  const prevB = new Map(prev.map(r => [r.building, r]));
+  const clustered = cur.filter(r => r.cluster);
+  const clusters = [...new Set(clustered.map(r => r.cluster))];
+  clusters.forEach((c, i) => clusterColors[c] = clusterColors[c] || PALETTE[i % PALETTE.length]);
+
+  /* stats */
+  const rev = clustered.reduce((a, r) => a + r.revenue, 0);
+  const all = portfolioMargin(clustered), heads = all.heads;
+  const bm = cur.map(buildingMargin).filter(v => v != null);
+  const negB = bm.filter(v => v <= 0).length;
+  const negC = clusters.filter(c => { const m = clusterMargin(clustered.filter(r => r.cluster === c), c).pct; return m != null && m <= 0; }).length;
+  document.getElementById("stats").innerHTML = [
+    ["Portfolio margin", pct(all.pct), money(all.rev) + " · " + (+heads.toFixed(1)) + " cleaners × " + money(SALARY) + " · " + rangeLabel()],
+    ["Median margin / cleaner", bm.length ? pct(bm.sort((a, b) => a - b)[Math.floor(bm.length / 2)]) : "—", bm.length + " of " + cur.length + " buildings reporting"],
+    ["Buildings at or below 0%", negB + " / " + bm.length, negB ? "needs attention" : "all positive"],
+    ["Clusters at or below 0%", negC + " / " + clusters.length, clusters.join(" · ")]
+  ].map(s => `<div class="stat"><div class="eyebrow">${s[0]}</div><div class="v num">${s[1]}</div><div class="s">${s[2]}</div></div>`).join("");
+
+  /* building table */
+  document.getElementById("tbBuildings").innerHTML = cur.slice().sort((a, b) => (buildingMargin(a) ?? -9) - (buildingMargin(b) ?? -9)).map(r => {
+    const m = buildingMargin(r), p = prevB.get(r.building), d = p && m != null ? m - buildingMargin(p) : null;
+    return `<tr data-b="${r.building}"><td class="name"><span class="cdot" style="background:${clusterColors[r.cluster]}"></span>${r.building}<span class="addr">${r.address}</span></td>
+    <td style="color:var(--ink-3)">${r.cluster || "not matched"}</td><td><span class="pill ${cls(m)}">${pct(m)}</span></td>
+    <td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td></tr>`;
+  }).join("");
+
+  /* cluster table */
+  const clusterStat = c => {
+    const rs = clustered.filter(r => r.cluster === c), m = clusterMargin(rs, c).pct;
+    const pr = prev.filter(r => r.cluster === c), pm = pr.length ? clusterMargin(pr, c).pct : null;
+    const units = rs.reduce((a, r) => a + (unitsOf(r.building) || 0), 0);
+    const hours = rs.reduce((a, r) => a + (r.hours || 0), 0);
+    const visits = rs.reduce((a, r) => a + (r.visits || 0), 0);
+    return { c, m, d: m != null && pm != null ? m - pm : null, n: rs.length, units, hours, visits,
+      cleaners: cleanersIn(c), rev: rs.reduce((a, r) => a + r.revenue, 0) };
+  };
+  const cstats = clusters.map(clusterStat).sort((a, b) => (a.m ?? -9) - (b.m ?? -9));
+  CSTATS = cstats;
+  const wow = d => `<td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td>`;
+  const cinput = c => `<td><input type="number" class="cin" min="0" step="1" data-c="${c}" value="${cleanersIn(c) ?? ""}" placeholder="—" aria-label="Cleaners in ${c}"></td>`;
+  const cname = c => `<td class="name"><span class="cdot" style="background:${clusterColors[c]}"></span>${c}</td>`;
+
+  document.getElementById("tbClusters").innerHTML = cstats.map(o =>
+    `<tr data-c="${o.c}">${cname(o.c)}
+    <td style="color:var(--ink-3)">${o.n}</td>
+    <td style="color:var(--ink-3)" class="num">${o.units || "—"}</td>
+    ${cinput(o.c)}
+    <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
+    ${wow(o.d)}</tr>`).join("");
+
+  document.getElementById("tbClusterAnalysis").innerHTML = cstats.map(o => {
+    const upc = o.units && o.cleaners ? Math.round(o.units / o.cleaners) : null;
+    const rpu = o.units && o.rev ? o.rev / o.units : null;
+    return `<tr data-c="${o.c}">${cname(o.c)}
+      <td style="color:var(--ink-3)">${o.n}</td>
+      <td class="num" style="color:var(--ink-3)">${o.units || "—"}</td>
+      <td class="num">${o.cleaners != null ? +(+o.cleaners).toFixed(2) : "—"}</td>
+      <td class="num" style="font-weight:700">${upc ?? "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.visits ? Math.round(o.visits).toLocaleString() : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.rev ? money(o.rev) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${rpu ? "$" + rpu.toFixed(2) : "—"}</td>
+      <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
+      ${wow(o.d)}</tr>`;
+  }).join("");
+  document.getElementById("legendClusters").innerHTML =
+    `<span><b>Units / cleaner</b> = total units in the cluster ÷ cleaners assigned to it — the density each cleaner covers</span>
+     <span><b>Visits</b> = cleans completed across the cluster's buildings</span>
+     <span><b>Revenue / unit</b> = cluster revenue ÷ total units — how much of the building is actually ordering</span>
+     <span class="warn">Unit counts come from <b>Building settings</b>. Figures follow the header (${rangeLabel()}).</span>`;
+
+  document.querySelectorAll("input.cin").forEach(i => i.onchange = e => {
+    const v = Number(e.target.value);
+    if (v > 0) CLEANERS[e.target.dataset.c] = v; else delete CLEANERS[e.target.dataset.c];
+    localStorage.setItem("zingKpiCleaners", JSON.stringify(CLEANERS));
+    apiPost("Clusters", "upsert", { key: "cluster", values: { cluster: e.target.dataset.c, cleaners: CLEANERS[e.target.dataset.c] ?? 0 } });
+    render();
+  });
+
+  const mapRows = clustered.filter(r => r.lat && r.lng && tlLive(r));
+  drawMap(mapRows, clusters.filter(c => mapRows.some(r => r.cluster === c)));
+  syncMapTl(mapRows);
+  drawMatrices();
+  renderSettings();
+  renderClusterList();
+  renderHires();
+  renderSignups();
+  renderScenario();
+  renderForecast();
+  renderPipeline();
+
+  const offMap = [...new Set(cur.filter(r => !r.cluster || !r.lat || !r.lng).map(r => r.building))];
+  document.getElementById("legend").innerHTML =
+    `<span><b>Margin / cleaner</b> = (weekly revenue − one cleaner's weekly salary) ÷ that salary</span>
+     <span><b>Cluster margin</b> = (Σ revenue − cleaners in cluster × ${money(SALARY)}) ÷ (cleaners in cluster × ${money(SALARY)})</span>
+     <span style="display:flex;align-items:center;gap:6px"><span class="pill p" style="min-width:0">above 0%</span><span class="pill n" style="min-width:0">0% or below</span><span class="pill o" style="min-width:0">no data yet</span></span>
+     ${offMap.length ? `<span class="warn"><b>Not on the map:</b> ${offMap.join(", ")} — the name in the sheet doesn't match a known building, so there are no coordinates for it. Fix the spelling in the sheet, or add the building to this page.</span>` : ""}`;
+
+  document.querySelectorAll("#tbBuildings tr").forEach(tr => {
+    tr.onmouseenter = e => { highlight(tr.dataset.b, null); showHover(tr.dataset.b, e); };
+    tr.onmousemove = e => moveHover(e);
+    tr.onmouseleave = () => { highlight(null, null); hideHover(); };
+  });
+  document.querySelectorAll("#tbClusters tr").forEach(tr => {
+    tr.onmouseenter = () => highlight(null, tr.dataset.c);
+    tr.onmouseleave = () => highlight(null, null);
+  });
+  document.querySelectorAll("#map [data-mb]").forEach(g => {
+    g.style.cursor = "default";
+    g.onmouseenter = e => { highlight(g.dataset.mb, null); showHover(g.dataset.mb, e); };
+    g.onmousemove = e => moveHover(e);
+    g.onmouseleave = () => { highlight(null, null); hideHover(); };
+  });
+}
+
+function highlight(b, c){
+  document.querySelectorAll("#map [data-mb]").forEach(g => g.setAttribute("opacity", !b && !c ? 1 : (g.dataset.mb === b || g.dataset.mc === c ? 1 : .22)));
+  document.querySelectorAll("#map [data-halo]").forEach(g => g.setAttribute("opacity", !c ? 1 : (g.dataset.halo === c ? 1 : .25)));
+}
+
+/* ---------- schematic map ----------
+   Buildings inside a cluster are plotted at true scale. Clusters themselves are packed as
+   rigid, never-overlapping discs into a fixed canvas, keeping their rough compass arrangement.
+   ------------------------------------ */
+function drawMap(rows, clusters){
+  const svg = document.getElementById("map"), W = 1240, H = 744, MX = 150, MY = 70;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const pts = rows.filter(r => r.lat && r.lng);
+  if (!pts.length){ svg.innerHTML = `<text x="40" y="40" fill="#8A9492" font-size="13">No coordinates in data</text>`; return; }
+  // pipeline buildings widen the frame, so a prospect outside the clusters still lands on the map
+  const extra = (typeof PIPE === "undefined" ? [] : PIPE)
+    .filter(p => Number(p.lat) && Number(p.lng) && p.name)
+    .map(p => ({ lat: Number(p.lat), lng: Number(p.lng) }));
+  const midLat = pts.reduce((a, r) => a + r.lat, 0) / pts.length;
+  const mx = r => r.lng * 111320 * Math.cos(midLat * Math.PI / 180), my = r => r.lat * 110574;
+
+  /* per-cluster geometry in metres */
+  const G = clusters.map(c => {
+    const rs = rows.filter(r => r.cluster === c && r.lat);
+    if (!rs.length) return null;
+    const gx = rs.reduce((a, r) => a + mx(r), 0) / rs.length, gy = rs.reduce((a, r) => a + my(r), 0) / rs.length;
+    return { c, rs, gx, gy, spread: Math.max(...rs.map(r => Math.hypot(mx(r) - gx, my(r) - gy))) };
+  }).filter(Boolean);
+  // scale so all buildings fit the frame; clusters then sit at true geography and rarely need packing
+  const axs = pts.concat(extra).map(mx), ays = pts.concat(extra).map(my);
+  const spanX = Math.max(...axs) - Math.min(...axs), spanY = Math.max(...ays) - Math.min(...ays);
+  // leave vertical room for halo padding + cluster labels so clusters aren't clamped off true position
+  const k = Math.min(0.4, (W - MX * 2) / Math.max(spanX, 1), (H - MY * 2 - 180) / Math.max(spanY, 1));
+  const wx = G.reduce((a, g) => a + g.gx, 0) / G.length, wy = G.reduce((a, g) => a + g.gy, 0) / G.length;
+  G.forEach(g => { g.rad = Math.max(62, g.spread * k + 36); g.tx = (g.gx - wx) * k; g.ty = -(g.gy - wy) * k; g.x = g.tx; g.y = g.ty; });
+
+  /* relaxation: hold the compass arrangement, but never let two halos touch, and stay in frame */
+  const HW = W / 2 - MX, HH = H / 2 - MY;
+  for (let it = 0; it < 500; it++){
+    G.forEach(g => { g.x += (g.tx - g.x) * 0.04; g.y += (g.ty - g.y) * 0.04; });
+    for (let i = 0; i < G.length; i++) for (let j = i + 1; j < G.length; j++){
+      const A = G[i], B = G[j], need = A.rad + B.rad + 14;
+      let d = Math.hypot(B.x - A.x, B.y - A.y);
+      if (d < need){
+        if (d < 1){ B.x += 1; d = 1; }
+        const push = (need - d) / 2, ux = (B.x - A.x) / d, uy = (B.y - A.y) / d;
+        A.x -= ux * push; A.y -= uy * push; B.x += ux * push; B.y += uy * push;
+      }
+    }
+    G.forEach(g => { const lim = Math.max(0, HW - g.rad), limY = Math.max(0, HH - g.rad);
+      g.x = Math.max(-lim, Math.min(lim, g.x)); g.y = Math.max(-limY, Math.min(limY, g.y)); });
+  }
+  const cenX = G.reduce((a, g) => a + g.x, 0) / G.length, cenY = G.reduce((a, g) => a + g.y, 0) / G.length;
+  // centre on everything that will be drawn, clusters and pipeline alike
+  let offX = W / 2 - cenX, offY = H / 2 - cenY;
+  if (extra.length){
+    const exs = extra.map(p => (mx(p) - wx) * k), eys = extra.map(p => -(my(p) - wy) * k);
+    const xs = G.map(g => g.x - cenX).concat(exs), ys = G.map(g => g.y - cenY).concat(eys);
+    offX = W / 2 - (Math.min(...xs) + Math.max(...xs)) / 2 - cenX;
+    offY = H / 2 - (Math.min(...ys) + Math.max(...ys)) / 2 - cenY;
+  }
+  G.forEach(g => { g.x += offX; g.y += offY; });
+  const byC = {}; G.forEach(g => byC[g.c] = g);
+  // true-geography projection in the same units, and how far packing pushed clusters off it
+  const geo = (lat, lng) => ({ x: (lng * 111320 * Math.cos(midLat * Math.PI / 180) - wx) * k + offX, y: -(lat * 110574 - wy) * k + offY });
+  const drift = Math.max(...G.map(g => { const t = geo(g.gy / 110574, g.gx / (111320 * Math.cos(midLat * Math.PI / 180))); return Math.hypot(g.x - t.x, g.y - t.y); }));
+  const trueGeo = drift < 30;
+  const P = r => { const g = byC[r.cluster];
+    return g ? { x: g.x + (mx(r) - g.gx) * k, y: g.y - (my(r) - g.gy) * k } : { x: W / 2, y: H / 2 }; };
+
+  const occ = [], area = (a, b) => Math.max(0, Math.min(a.x2, b.x2) - Math.max(a.x1, b.x1)) * Math.max(0, Math.min(a.y2, b.y2) - Math.max(a.y1, b.y1));
+  const overlap = r => occ.reduce((a, o) => a + area(r, o), 0);
+  const tw = (s, px) => s.length * px * 0.56;
+  rows.filter(r => r.lat).forEach(r => { const p = P(r); occ.push({ x1: p.x - 13, x2: p.x + 13, y1: p.y - 32, y2: p.y + 3 }); });
+
+  let halos = "", pins = "", defs = "";
+  G.forEach((g, i) => {
+    const col = clusterColors[g.c], m = clusterMargin(g.rs, g.c).pct, mc = toneZ(m);
+    defs += `<radialGradient id="h${i}"><stop offset="45%" stop-color="${mc}" stop-opacity="0.11"/><stop offset="100%" stop-color="${mc}" stop-opacity="0.02"/></radialGradient>`;
+    const lw = Math.max(tw(g.c, 13), 70) / 2;
+    let best = null;
+    for (const y of [g.y - g.rad - 12, g.y + g.rad + 30, g.y - g.rad - 34, g.y + g.rad + 52]){
+      const box = { x1: g.x - lw - 6, x2: g.x + lw + 6, y1: y - 14, y2: y + 34 }, ov = overlap(box);
+      if (!best || ov < best.ov) best = { ov, box, y };
+      if (!ov) break;
+    }
+    occ.push(best.box);
+    halos += `<g data-halo="${g.c}"><circle cx="${g.x}" cy="${g.y}" r="${g.rad}" fill="url(#h${i})" stroke="${mc}" stroke-opacity=".75" stroke-width="1.8" stroke-dasharray="5 5"/>
+      <g transform="translate(${g.x},${best.y})"><text text-anchor="middle" font-size="13" font-weight="700" fill="${col}" letter-spacing=".02em">${g.c.toUpperCase()}</text>
+      <text text-anchor="middle" y="27" font-size="26" font-weight="700" fill="${mc}" style="font-variant-numeric:tabular-nums">${pct(m)}</text></g></g>`;
+  });
+
+  const marks = rows.filter(r => r.lat).map(r => ({ b: r.building, p: P(r) }));
+  rows.filter(r => r.lat).sort((a, b) => P(a).y - P(b).y).forEach(r => {
+    const p = P(r), m = actualMargin(r), col = toneZ(m);
+    const w = Math.max(tw(r.building, 12.5), tw(pct(m), 13)) + 8;
+    let best = null;
+    for (const side of [1, -1]) for (const off of [0, -20, 20, -38, 38, -56, 56]){
+      const x = side > 0 ? p.x + 13 : p.x - 13 - w, y = p.y + 4 + off;
+      const box = { x1: x - 2, x2: x + w, y1: y - 28, y2: y + 7 };
+      const mid = { x: x + w / 2, y: y - 12 }, own = Math.hypot(mid.x - p.x, mid.y - p.y);
+      const stolen = marks.some(q => q.b !== r.building && Math.hypot(mid.x - q.p.x, mid.y - q.p.y) < own);
+      const out = Math.max(0, 6 - box.x1) + Math.max(0, box.x2 - (W - 6));
+      const cost = overlap(box) * 3 + own + Math.abs(off) * 1.2 + (side < 0 ? 6 : 0) + (stolen ? 400 : 0) + out * 4;
+      if (!best || cost < best.cost) best = { cost, box, lx: x, ly: y, off, side };
+    }
+    const { box, lx, ly } = best;
+    occ.push(box);
+    const leader = best.off === 0 ? "" :
+      `<line x1="${p.x}" y1="${p.y - 10}" x2="${best.side > 0 ? lx - 2 : lx + w + 2}" y2="${ly - 12}" stroke="${col}" stroke-opacity=".5" stroke-width="1"/>`;
+    pins += `<g data-mb="${r.building}" data-mc="${r.cluster}">${leader}
+      <path d="M${p.x} ${p.y} c-7.2 -9 -11 -13.6 -11 -18.4 a11 11 0 0 1 22 0 c0 4.8 -3.8 9.4 -11 18.4z" fill="${col}"/>
+      <circle cx="${p.x}" cy="${p.y - 19}" r="3.6" fill="#FBF9F4"/>
+      <text x="${lx}" y="${ly - 15}" font-size="12.5" font-weight="600" fill="#1D2E32">${r.building}</text>
+      <text x="${lx}" y="${ly + 1}" font-size="13" font-weight="700" fill="${col}" style="font-variant-numeric:tabular-nums">${pct(m)}</text>
+      <title>${r.building} — ${r.cluster} · ${money(r.revenue)} revenue · ${+(assignedOf(r.building) || 0).toFixed(2)} cleaners × ${money(salaryOf(r))}</title></g>`;
+  });
+
+  /* pipeline buildings: a plain status dot at true position, no margin */
+  let pipeDots = "";
+  if (trueGeo && typeof PIPE !== "undefined") PIPE.forEach(p => {
+    const la = Number(p.lat), ln = Number(p.lng);
+    if (!la || !ln || !p.name) return;
+    if (rows.some(r => key(r.building) === key(p.name))) return;   // already live in the portfolio
+    const q = geo(la, ln), col = PIPE_COLORS[p.status] || "#B4A07E";
+    const w = tw(p.name, 11.5) + 8;
+    let best = null;
+    for (const side of [1, -1]) for (const off of [0, -16, 16, -32, 32]){
+      const x = side > 0 ? q.x + 10 : q.x - 10 - w, y = q.y + 4 + off;
+      const box = { x1: x - 2, x2: x + w, y1: y - 12, y2: y + 5 };
+      const cost = overlap(box) * 3 + Math.abs(off) + (side < 0 ? 4 : 0);
+      if (!best || cost < best.cost) best = { cost, box, x, y };
+    }
+    occ.push(best.box);
+    pipeDots += `<g data-pipe="${p.name}">
+      <circle cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="6" fill="${col}" fill-opacity="${p.status === "Launched" ? 1 : .18}" stroke="${col}" stroke-width="1.8"/>
+      <text x="${best.x.toFixed(1)}" y="${(best.y - 1).toFixed(1)}" font-size="11.5" font-weight="600" fill="${col}">${p.name}</text>
+      <title>${p.name} — ${p.status}${p.units ? " · " + p.units + " units" : ""}${p.cluster ? " · " + p.cluster : ""}</title></g>`;
+  });
+
+  const barPx = Math.min(500 * k, 200);
+  svg.innerHTML = `<defs>${defs}<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1D2E32" opacity=".07"/></pattern>
+  <clipPath id="frame"><rect width="${W}" height="${H}"/></clipPath></defs>
+  <g clip-path="url(#frame)"><g id="mapZoomG">
+  <rect width="${W}" height="${H}" fill="#FBF9F4"/><rect width="${W}" height="${H}" fill="url(#dots)"/>
+  ${trueGeo ? basemap(geo, W, H) : ""}
+  ${halos}${pipeDots}${pins}
+  <g transform="translate(${W - 30 - barPx},${H - 22})" fill="#8A9492" font-size="10.5"><line x1="0" y1="0" x2="${barPx}" y2="0" stroke="#8A9492" stroke-width="1.5"/>
+  <line x1="0" y1="-4" x2="0" y2="4" stroke="#8A9492"/><line x1="${barPx}" y1="-4" x2="${barPx}" y2="4" stroke="#8A9492"/><text x="${barPx / 2}" y="-8" text-anchor="middle">${(barPx / k / 1000).toFixed(1)} km within a cluster</text></g>
+  <text x="26" y="26" fill="#8A9492" font-size="10.5" letter-spacing=".12em">NORTH ↑ · ${trueGeo ? "BUILDINGS AND CLUSTERS AT TRUE POSITION · STREET MAP" : "BUILDINGS TO SCALE WITHIN EACH CLUSTER · CLUSTERS PLACED SCHEMATICALLY"}</text></g></g>`;
+  applyMapView(W, H);
+}
+
+/* ---------- map zoom + pan ----------
+   One transform on a wrapper group, so nothing about the layout maths changes. */
+let MV = { z: 1, x: 0, y: 0, W: 1240, H: 744 };
+function applyMapView(W, H){
+  if (W) { MV.W = W; MV.H = H; }
+  const g = document.querySelector("#map #mapZoomG");
+  if (!g) return;
+  const lim = s => Math.max(0.5, Math.abs(MV.z - 1) / 2 + 0.5);
+  MV.x = Math.max(-lim() * MV.W, Math.min(lim() * MV.W, MV.x));
+  MV.y = Math.max(-lim() * MV.H, Math.min(lim() * MV.H, MV.y));
+  g.setAttribute("transform", `translate(${MV.x.toFixed(1)} ${MV.y.toFixed(1)}) scale(${MV.z.toFixed(3)})`);
+  const rs = document.getElementById("mzRs");
+  if (rs) rs.textContent = MV.z.toFixed(MV.z < 10 ? 1 : 0).replace(/\.0$/, "") + "×";
+}
+/* zoom about a point in svg user units, so the cursor keeps its place */
+function zoomMap(f, cx, cy){
+  const z0 = MV.z, z = Math.max(0.35, Math.min(8, z0 * f));
+  if (z === z0) return;
+  const px = cx == null ? MV.W / 2 : cx, py = cy == null ? MV.H / 2 : cy;
+  MV.x = px - (px - MV.x) * (z / z0);
+  MV.y = py - (py - MV.y) * (z / z0);
+  MV.z = z;
+  applyMapView();
+}
+(function mapControls(){
+  const svg = document.getElementById("map");
+  const pt = e => { const b = svg.getBoundingClientRect();
+    return { x: (e.clientX - b.left) / b.width * MV.W, y: (e.clientY - b.top) / b.height * MV.H }; };
+  document.getElementById("mzIn").onclick = () => zoomMap(1.5);
+  document.getElementById("mzOut").onclick = () => zoomMap(1 / 1.5);
+  document.getElementById("mzRs").onclick = () => { MV.z = 1; MV.x = 0; MV.y = 0; applyMapView(); };
+  svg.addEventListener("wheel", e => { e.preventDefault(); const p = pt(e);
+    zoomMap(e.deltaY < 0 ? 1.12 : 1 / 1.12, p.x, p.y); }, { passive: false });
+  let drag = null;
+  svg.addEventListener("pointerdown", e => {
+    drag = { x: e.clientX, y: e.clientY, ox: MV.x, oy: MV.y };
+    svg.classList.add("drag"); svg.setPointerCapture(e.pointerId); });
+  svg.addEventListener("pointermove", e => { if (!drag) return;
+    const b = svg.getBoundingClientRect();
+    MV.x = drag.ox + (e.clientX - drag.x) / b.width * MV.W;
+    MV.y = drag.oy + (e.clientY - drag.y) / b.height * MV.H;
+    applyMapView(); });
+  const end = () => { drag = null; svg.classList.remove("drag"); };
+  svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
+  svg.addEventListener("dblclick", e => { const p = pt(e); zoomMap(1.6, p.x, p.y); });
+})();
+
+/* Schematic Miami: shoreline, bay, barrier island and the bay islands, causeways,
+   arterials, a light street grid, bayfront parks and neighbourhood labels.
+   Traced from coordinates — recognisable, not street-accurate. */
+function basemap(geo, W, H){
+  const pt = p => geo(p[0], p[1]);
+  const d = (pts, close) => pts.map((p, i) => (i ? "L" : "M") + pt(p).x.toFixed(1) + " " + pt(p).y.toFixed(1)).join(" ") + (close ? " Z" : "");
+  const LAND = "#F8F4EB", WATER = "#D3E3E7", COAST = "#B4CBD0", PARK = "#E1EBD8";
+
+  /* coastline: mainland, the barrier island, the bay islands */
+  const shore = [[25.900,-80.1800],[25.880,-80.1810],[25.860,-80.1820],[25.840,-80.1832],[25.822,-80.1845],[25.813,-80.1855],[25.804,-80.1850],[25.798,-80.1852],[25.792,-80.1858],[25.788,-80.1860],[25.783,-80.1852],[25.779,-80.1842],[25.775,-80.1838],[25.772,-80.1840],[25.7695,-80.1862],[25.766,-80.1872],[25.760,-80.1880],[25.752,-80.1898],[25.745,-80.1925],[25.740,-80.1958],[25.734,-80.1990],[25.728,-80.2020],[25.720,-80.2055],[25.712,-80.2090],[25.700,-80.2140]];
+  const mainland = shore.concat([[25.690,-80.3400],[25.910,-80.3400]]);
+  const beach = [[25.762,-80.1345],[25.770,-80.1428],[25.782,-80.1416],[25.796,-80.1400],[25.812,-80.1384],[25.828,-80.1360],[25.846,-80.1302],[25.864,-80.1252],[25.880,-80.1230],[25.900,-80.1220],[25.900,-80.1000],[25.800,-80.1100],[25.770,-80.1180],[25.758,-80.1270]];
+  const islands = [
+    [[25.7692,-80.1858],[25.7702,-80.1830],[25.7700,-80.1808],[25.7684,-80.1800],[25.7664,-80.1804],[25.7652,-80.1826],[25.7660,-80.1850]],
+    [[25.7798,-80.1758],[25.7808,-80.1700],[25.7812,-80.1626],[25.7796,-80.1586],[25.7762,-80.1580],[25.7742,-80.1606],[25.7738,-80.1690],[25.7746,-80.1752]],
+    [[25.7856,-80.1722],[25.7872,-80.1688],[25.7878,-80.1650],[25.7862,-80.1622],[25.7830,-80.1616],[25.7806,-80.1650],[25.7802,-80.1700]],
+    [[25.7760,-80.1560],[25.7776,-80.1540],[25.7774,-80.1516],[25.7752,-80.1506],[25.7732,-80.1522],[25.7730,-80.1548]],
+    [[25.7712,-80.1548],[25.7726,-80.1524],[25.7722,-80.1500],[25.7702,-80.1494],[25.7688,-80.1518],[25.7692,-80.1542]],
+    [[25.7898,-80.1720],[25.7914,-80.1690],[25.7910,-80.1664],[25.7888,-80.1656],[25.7872,-80.1682],[25.7876,-80.1712]],
+    [[25.7904,-80.1600],[25.7920,-80.1570],[25.7916,-80.1544],[25.7892,-80.1534],[25.7876,-80.1562],[25.7880,-80.1592]],
+    [[25.7940,-80.1490],[25.7958,-80.1462],[25.7952,-80.1436],[25.7928,-80.1430],[25.7912,-80.1458],[25.7918,-80.1486]]
+  ];
+  const river = [[25.7692,-80.1862],[25.7700,-80.1930],[25.7690,-80.2010],[25.7672,-80.2100],[25.7658,-80.2200],[25.7660,-80.2320]];
+
+  /* street grid: numbered streets east-west, avenues north-south, clipped to land */
+  const gridLat = [], gridLng = [];
+  for (let la = 25.7000; la <= 25.8760; la += 0.00181) gridLat.push(la);
+  for (let ln = -80.2900; ln <= -80.1220; ln += 0.00232) gridLng.push(ln);
+  const streets = gridLat.map(la => [[la, -80.2940],[la, -80.1180]])
+    .concat(gridLng.map(ln => [[25.6960, ln],[25.8800, ln]]));
+
+  const collectors = [
+    [[25.8800,-80.1936],[25.7400,-80.1936]],            // NE/NW 2nd Ave
+    [[25.8800,-80.2002],[25.7520,-80.2002]],            // N Miami Ave
+    [[25.8800,-80.2062],[25.7560,-80.2062]],            // NW 5th Ave
+    [[25.8098,-80.2260],[25.8092,-80.1852]],            // NE 29th St
+    [[25.7998,-80.2260],[25.7992,-80.1854]],            // NE 20th St
+    [[25.7926,-80.2260],[25.7920,-80.1856]],            // NE 14th St
+    [[25.7748,-80.2260],[25.7744,-80.1848]],            // Flagler St
+    [[25.7658,-80.2600],[25.7652,-80.1880]],            // SW 8th St
+    [[25.7482,-80.2600],[25.7488,-80.2080],[25.7520,-80.1940]],  // Coral Way
+    [[25.8800,-80.2620],[25.7300,-80.2600]],            // SW/NW 37th Ave
+    [[25.8420,-80.2260],[25.8432,-80.1836]],            // NE 62nd St
+    [[25.7940,-80.1420],[25.7700,-80.1345]],            // Collins Ave
+    [[25.7938,-80.1450],[25.7702,-80.1390]]             // Alton Rd
+  ];
+  const arterials = [
+    [[25.8800,-80.1882],[25.8200,-80.1888],[25.7860,-80.1898],[25.7720,-80.1906],[25.7580,-80.1928],[25.7440,-80.1962]],
+    [[25.8800,-80.2105],[25.8220,-80.2078],[25.7920,-80.2046],[25.7760,-80.1966],[25.7660,-80.1956],[25.7520,-80.2012]],
+    [[25.8800,-80.2210],[25.8000,-80.2196],[25.7700,-80.2180],[25.7500,-80.2172]]
+  ];
+  const highways = [
+    { pts: [[25.8800,-80.2160],[25.8300,-80.2098],[25.8000,-80.2038],[25.7860,-80.1996],[25.7780,-80.1966],[25.7660,-80.1966],[25.7520,-80.2020],[25.7380,-80.2080]], label: "I-95" },
+    { pts: [[25.7862,-80.2260],[25.7856,-80.2020],[25.7852,-80.1900],[25.7850,-80.1848]], label: "I-395" },
+    { pts: [[25.8262,-80.2260],[25.8256,-80.2000],[25.8250,-80.1870]], label: "SR 112" }
+  ];
+  const causeways = [
+    { pts: [[25.7850,-80.1848],[25.7880,-80.1600],[25.7898,-80.1430]], label: "MacArthur Cswy" },
+    { pts: [[25.7905,-80.1856],[25.7912,-80.1700],[25.7922,-80.1450]], label: "Venetian Cswy" },
+    { pts: [[25.8118,-80.1858],[25.8130,-80.1620],[25.8138,-80.1420]], label: "Julia Tuttle Cswy" },
+    { pts: [[25.8455,-80.1830],[25.8480,-80.1500],[25.8490,-80.1300]], label: "79th St Cswy" }
+  ];
+  const rail = [[25.8800,-80.1968],[25.8200,-80.1962],[25.7860,-80.1958],[25.7700,-80.1950],[25.7560,-80.1962]];
+
+  const parks = [
+    { poly: [[25.7896,-80.1892],[25.7908,-80.1858],[25.7856,-80.1848],[25.7844,-80.1884]], name: "Margaret Pace Park" },
+    { poly: [[25.7852,-80.1898],[25.7862,-80.1860],[25.7818,-80.1852],[25.7808,-80.1890]], name: "Museum Park" },
+    { poly: [[25.7772,-80.1876],[25.7786,-80.1852],[25.7742,-80.1842],[25.7732,-80.1868]], name: "Bayfront Park" },
+    { poly: [[25.7960,-80.1904],[25.7972,-80.1876],[25.7936,-80.1866],[25.7926,-80.1894]], name: "" },
+    { poly: [[25.8232,-80.1962],[25.8246,-80.1920],[25.8206,-80.1906],[25.8194,-80.1948]], name: "Legion Park" },
+    { poly: [[25.7800,-80.1330],[25.7860,-80.1338],[25.7856,-80.1372],[25.7796,-80.1364]], name: "Lummus Park" }
+  ];
+
+  const places = [
+    ["EDGEWATER",25.8020,-80.1905,10],["WYNWOOD",25.8035,-80.2035,10],["MIDTOWN",25.8105,-80.1975,9],
+    ["DESIGN DISTRICT",25.8185,-80.1930,9],["LITTLE HAITI",25.8290,-80.1970,9],["ALLAPATTAH",25.8150,-80.2220,9],
+    ["OVERTOWN",25.7885,-80.2035,9],["PARK WEST",25.7830,-80.1930,8],
+    ["DOWNTOWN",25.7745,-80.1930,10],["BRICKELL",25.7600,-80.1950,10],["LITTLE HAVANA",25.7660,-80.2130,9],
+    ["PORTMIAMI",25.7772,-80.1668,9],["WATSON ISLAND",25.7840,-80.1668,8],["STAR ISLAND",25.7752,-80.1532,8],
+    ["SOUTH BEACH",25.7760,-80.1330,10],["MIAMI BEACH",25.8180,-80.1300,10],["BELLE ISLE",25.7906,-80.1568,8]
+  ];
+  const waters = [["BISCAYNE BAY",25.7980,-80.1650,12],["GOVERNMENT CUT",25.7690,-80.1420,9],["ATLANTIC OCEAN",25.8100,-80.1080,12],["MIAMI RIVER",25.7676,-80.2140,9]];
+
+  const path = (pts, stroke, w, extra) => `<path d="${d(pts)}" fill="none" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${extra || ""}/>`;
+  /* label placed along a segment, rotated to follow it */
+  const along = (pts, i, text, col, size) => {
+    const a = pt(pts[i]), b = pt(pts[i + 1] || pts[i]);
+    let ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+    if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+    const x = (a.x + b.x) / 2, y = (a.y + b.y) / 2;
+    return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" transform="rotate(${ang.toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})" text-anchor="middle" dy="-3" fill="${col}" font-size="${size}" letter-spacing=".04em">${text}</text>`;
+  };
+
+  return `<g clip-path="url(#frame)">
+  <rect width="${W}" height="${H}" fill="${WATER}"/>
+  <clipPath id="land"><path d="${d(mainland, true)}"/></clipPath>
+  <clipPath id="beachclip"><path d="${d(beach, true)}"/></clipPath>
+  <path d="${d(mainland, true)}" fill="${LAND}"/>
+  <path d="${d(beach, true)}" fill="${LAND}"/>
+  ${islands.map(i => `<path d="${d(i, true)}" fill="${LAND}" stroke="${COAST}" stroke-width="1"/>`).join("")}
+  <g clip-path="url(#land)">${streets.map(s => path(s, "#FFFFFF", 1.6)).join("")}</g>
+  <g clip-path="url(#beachclip)">${streets.map(s => path(s, "#FFFFFF", 1.6)).join("")}</g>
+  ${parks.map(p => `<path d="${d(p.poly, true)}" fill="${PARK}" stroke="#D2DFC6" stroke-width="1"/>`).join("")}
+  ${collectors.map(c => path(c, "#EDE4D4", 3.6)).join("")}
+  ${collectors.map(c => path(c, "#FFFFFF", 2.4)).join("")}
+  ${path(rail, "#CFC6B6", 1.2, 'stroke-dasharray="6 4"')}
+  ${arterials.map(c => path(c, "#E4D9C3", 5.4)).join("")}
+  ${arterials.map(c => path(c, "#FFFFFF", 3.6)).join("")}
+  ${causeways.map(c => path(c.pts, "#D8CDB8", 4.6)).join("")}
+  ${causeways.map(c => path(c.pts, "#FFFFFF", 3)).join("")}
+  ${highways.map(hw => path(hw.pts, "#D9C08A", 6.4)).join("")}
+  ${highways.map(hw => path(hw.pts, "#F0DFB6", 4.4)).join("")}
+  <path d="${d(river)}" fill="none" stroke="${WATER}" stroke-width="4"/>
+  <path d="${d(mainland, true)}" fill="none" stroke="${COAST}" stroke-width="1.2"/>
+  <path d="${d(beach, true)}" fill="none" stroke="${COAST}" stroke-width="1.2"/>
+  ${highways.map(hw => along(hw.pts, Math.floor(hw.pts.length / 2) - 1, hw.label, "#A08A57", 9.5)).join("")}
+  ${causeways.map(c => along(c.pts, 0, c.label, "#9AA7A8", 9)).join("")}
+  ${along(arterials[0], 1, "BISCAYNE BLVD", "#B0A794", 9)}
+  ${along(collectors[0], 0, "NE 2ND AVE", "#B0A794", 8.5)}
+  ${along(collectors[1], 0, "N MIAMI AVE", "#B0A794", 8.5)}
+  ${along(collectors[6], 0, "FLAGLER ST", "#B0A794", 8.5)}
+  ${parks.filter(p => p.name).map(p => { const c = pt([p.poly[0][0] - 0.0006, (p.poly[0][1] + p.poly[2][1]) / 2]);
+    return `<text x="${c.x.toFixed(1)}" y="${c.y.toFixed(1)}" text-anchor="middle" fill="#8FA085" font-size="8.5">${p.name}</text>`; }).join("")}
+  ${places.map(p => { const q = pt([p[1], p[2]]);
+    return `<text x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" text-anchor="middle" fill="#A9A08D" font-size="${p[3]}" letter-spacing=".14em">${p[0]}</text>`; }).join("")}
+  ${waters.map(p => { const q = pt([p[1], p[2]]);
+    return `<text x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" text-anchor="middle" fill="#8FAEB4" font-size="${p[3]}" letter-spacing=".16em" font-style="italic">${p[0]}</text>`; }).join("")}
+  </g>`;
+}
+
+/* ---------- data loading ---------- */
+function setWeeks(){
+  const ord = new Map();
+  ROWS.forEach((r, i) => { const o = r.weekOrder ?? i;
+    if (!ord.has(r.week) || o < ord.get(r.week)) ord.set(r.week, o); });
+  weeks = [...ord.keys()].sort((a, b) => (ord.get(a) - ord.get(b)) || String(a).localeCompare(String(b), undefined, { numeric: true }));
+  week = weeks[weeks.length - 1];
+  document.getElementById("week").innerHTML = weeks.map(w => `<option${w === week ? " selected" : ""}>${w}</option>`).join("");
+}
+document.getElementById("week").onchange = e => { week = e.target.value; render(); };
+document.getElementById("range").onchange = e => { RANGE = Number(e.target.value); render(); };
+/* ---------- map timeline: replay the portfolio week by week from February ----------
+   While it runs, a building only appears from its live date (Building settings), or from its
+   first week with revenue when no live date is set. */
+const MAPTL = { on: false, timer: null, from: Date.parse("2026-02-01") - 6 * 864e5 };
+const tlWeeks = () => weeks.filter(w => { const t = weekT(w); return t != null && t >= MAPTL.from; });
+function tlLive(r){
+  if (!MAPTL.on) return true;
+  const t = weekT(week); if (t == null) return true;
+  const k = key(r.building), bk = Object.keys(BSET).find(b => k === b || k.startsWith(b) || b.startsWith(k));
+  const live = bk && BSET[bk].live ? Date.parse(BSET[bk].live) : null;
+  if (live != null && !isNaN(live)) return t + 6 * 864e5 >= live;
+  return ROWS.some(x => x.building === r.building && x.revenue > 0 && (weekT(x.week) ?? Infinity) <= t);
+}
+function syncMapTl(mapRows){
+  const W = tlWeeks(), sl = document.getElementById("mapWk"), i = W.indexOf(week);
+  document.getElementById("mapTl").style.display = W.length > 1 ? "" : "none";
+  sl.max = Math.max(1, W.length - 1); sl.value = i < 0 ? W.length - 1 : i;
+  document.getElementById("mapWkLbl").textContent = MAPTL.on ? "Week " + (i + 1) + " of " + W.length + " · " + week : "Today · " + week;
+  document.getElementById("mapPlay").textContent = MAPTL.timer ? "Pause" : "Play";
+  document.getElementById("mapDate").classList.toggle("on", MAPTL.on);
+  document.getElementById("mapDateWk").textContent = week;
+  const n = new Set(mapRows.map(r => r.building)).size;
+  document.getElementById("mapDateN").textContent = n + (n === 1 ? " building live" : " buildings live");
+}
+function tlGo(w){ week = w; document.getElementById("week").value = w; render(); }
+function tlStop(){ if (MAPTL.timer){ clearInterval(MAPTL.timer); MAPTL.timer = null; } }
+document.getElementById("mapPlay").onclick = () => {
+  if (MAPTL.timer){ tlStop(); render(); return; }
+  const W = tlWeeks(); if (W.length < 2) return;
+  let i = MAPTL.on ? W.indexOf(week) : -1; if (i < 0 || i >= W.length - 1) i = 0;
+  MAPTL.on = true;
+  MAPTL.timer = setInterval(() => { i++;
+    if (i >= W.length){ tlStop(); MAPTL.on = false; render(); return; }
+    tlGo(W[i]); }, 900);
+  tlGo(W[i]);
+};
+document.getElementById("mapWk").oninput = e => { tlStop(); MAPTL.on = true; tlGo(tlWeeks()[+e.target.value]); };
+document.getElementById("mapNow").onclick = () => { tlStop(); MAPTL.on = false; tlGo(weeks[weeks.length - 1]); };
+document.getElementById("week").addEventListener("change", () => { tlStop(); MAPTL.on = false; render(); });
+const salaryInput = document.getElementById("salary");
+salaryInput.value = SALARY;
+salaryInput.oninput = e => {
+  const v = Number(e.target.value);
+  if (!(v > 0)) return;
+  SALARY = v; localStorage.setItem("zingKpiSalary", v);
+  apiPost("Settings", "upsert", { key: "key", values: { key: "salary", value: v } });
+  render(); document.getElementById("note").innerHTML = noteHTML();
+};
+
+/* A Google Sheet can serve CSV three different ways depending on how it is shared,
+   so try each in turn and report what actually went wrong. */
+function csvEndpoints(u){
+  if (/output=csv|tqx=out:csv|format=csv/.test(u)) return [u];
+  const id = (u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/) || [])[1];
+  if (!id) return [u];
+  const gid = (u.match(/[#&?]gid=(\d+)/) || [])[1] || "0";
+  const base = "https://docs.google.com/spreadsheets/d/" + id;
+  return [`${base}/gviz/tq?tqx=out:csv&gid=${gid}`, `${base}/export?format=csv&gid=${gid}`, `${base}/pub?output=csv&gid=${gid}`];
+}
+
+const SHEETJS = "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js";
+const sheetId = u => (u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/) || [])[1] || "";
+/* tab names the live workbook uses, plus every registry name, so a tab can be pulled by name */
+const TABS = ["Hamilton","Forma","Bezel","Miami World Tower","Muze at Met","Alexan Roxy","Modera Edgewater"];
+const dedupe = rows => { const seen = new Set();
+  return rows.filter(r => { const k = r.building + "|" + r.week; if (seen.has(k)) return false; seen.add(k); return true; }); };
+
+/* Preferred path: pull the whole workbook in one request so every building tab is read. */
+async function loadWorkbook(id){
+  if (!window.XLSX) await loadScript(SHEETJS);
+  const res = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`, { redirect: "follow" });
+  if (!res.ok) throw new Error(res.status === 401 || res.status === 403 ? "the sheet is private" : "HTTP " + res.status);
+  const wb = XLSX.read(await res.arrayBuffer(), { type: "array" });
+  return dedupe(rowsFromWorkbook(wb));
+}
+/* Fallback: fetch each known tab by name as CSV. */
+async function loadTabs(id){
+  const names = [...new Set([...TABS, ...Object.values(REGISTRY).map(b => b.name)])];
+  const got = await Promise.all(names.map(async n => {
+    try{
+      const r = await fetch(`https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(n)}`);
+      if (!r.ok) return [];
+      const t = await r.text();
+      if (/^\s*<(!doctype|html)/i.test(t)) return [];
+      return parseCSV(t, n);
+    }catch(e){ return []; }
+  }));
+  return dedupe(got.flat());
+}
+
+const DR_HIDE = /wynd|paraiso/i;   // data room: never shown by name — their revenue is folded into The Hamilton
+function mergeHidden(rows){
+  const isH = r => /hamilton/i.test(r.building) && !DR_HIDE.test(r.building);
+  const g = lookup("The Hamilton") || {};
+  const tpl = rows.find(isH) || { building: g.name || "The Hamilton", address: g.address || "", lat: g.lat || 0, lng: g.lng || 0, cluster: g.cluster || "", cleaners: g.cleaners || 1 };
+  const byW = new Map(rows.filter(isH).map(r => [r.week, r]));
+  const out = rows.filter(r => !DR_HIDE.test(r.building));
+  rows.filter(r => DR_HIDE.test(r.building)).forEach(r => {
+    let h = byW.get(r.week);
+    if (!h){ h = Object.assign({}, tpl, { week: r.week, weekOrder: r.weekOrder, weekTime: r.weekTime, revenue: 0, visits: null, hours: null, dur: null, aov: null, signups: null, newSignups: null, cleanerSalary: null, _pad: false });
+      byW.set(r.week, h); out.push(h); }
+    h.revenue = (h.revenue || 0) + (r.revenue || 0);
+    ["visits", "hours"].forEach(f => { if (r[f] != null) h[f] = (h[f] || 0) + r[f]; });
+  });
+  return out;
+}
+function useRows(rows){ ROWS = relabelWeeks(mergeHidden(rows)); setWeeks(); render(); }
+
+async function loadCSV(url, quiet){
+  const dot = document.getElementById("srcDot"), msg = document.getElementById("srcMsg");
+  let why = "";
+  const id = sheetId(url);
+  if (id && !/output=csv|tqx=out:csv|format=csv/.test(url)){
+    for (const step of [() => loadWorkbook(id), () => loadTabs(id)]){
+      try{
+        const rows = await step();
+        if (rows.length){
+          useRows(rows);
+          dot.className = "dot live";
+          msg.textContent = "Sheet · " + new Set(rows.map(r => r.building)).size + " buildings · " + new Set(rows.map(r => r.week)).size + " weeks";
+          localStorage.setItem("zingKpiCsv", url);
+          return;
+        }
+        why = why || "read the workbook but found no Week Start / Revenue columns";
+      }catch(err){ why = why || err.message; }
+    }
+  }
+  for (const ep of csvEndpoints(url)){
+    try{
+      const res = await fetch(ep, { redirect: "follow" });
+      if (!res.ok){ why = res.status === 401 || res.status === 403 ? "the sheet is private" : "HTTP " + res.status; continue; }
+      const text = await res.text();
+      if (/^\s*<(!doctype|html)/i.test(text)){ why = "Google returned a sign-in page — the sheet is private"; continue; }
+      const rows = parseCSV(text);
+      if (!rows.length){ why = "read the sheet but found no revenue — columns seen: " + (lastHeaders.join(", ") || "none"); continue; }
+      useRows(rows);
+      dot.className = "dot live"; msg.textContent = "Sheet · " + rows.length + " rows";
+      localStorage.setItem("zingKpiCsv", url);
+      return;
+    }catch(err){ why = why || "blocked by the browser (" + err.message + ")"; }
+  }
+  dot.className = "dot err";
+  msg.textContent = quiet ? "Sample data" : "Load failed — " + why;
+  msg.title = "Share the sheet as 'Anyone with the link · Viewer', or File → Share → Publish to web → CSV, then Load again.";
+}
+document.getElementById("load").onclick = () => {
+  const u = document.getElementById("csvUrl").value.trim();
+  if (u) loadCSV(u, false);
+};
+
+/* ---------- upload an .xlsx / .csv straight off the desktop ---------- */
+// one promise per src, so two loaders asking for SheetJS at once don't inject it twice
+const SCRIPTS = {};
+const loadScript = src => SCRIPTS[src] || (SCRIPTS[src] = new Promise((ok, no) => {
+  const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }));
+document.getElementById("pick").onclick = () => document.getElementById("file").click();
+document.getElementById("file").onchange = async e => {
+  const f = e.target.files[0], dot = document.getElementById("srcDot"), msg = document.getElementById("srcMsg");
+  if (!f) return;
+  try{
+    let rows;
+    if (/\.xlsx?$/i.test(f.name)){
+      if (!window.XLSX) await loadScript(SHEETJS);
+      const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
+      rows = dedupe(rowsFromWorkbook(wb));            // every tab, one per building
+    } else rows = parseCSV(await f.text());
+    if (!rows.length) throw new Error("no rows");
+    useRows(rows);
+    dot.className = "dot live"; msg.textContent = f.name + " · " + new Set(rows.map(r => r.building)).size + " buildings · " + new Set(rows.map(r => r.week)).size + " weeks";
+  }catch(err){ dot.className = "dot err"; msg.textContent = "Could not read that file (" + err.message + ")"; }
+};
+
+/* ---------- download a prefilled workbook to type the numbers into ---------- */
+document.getElementById("tpl").onclick = () => {
+  const now = new Date(), iso = d => { const t = new Date(d); t.setDate(t.getDate() - ((t.getDay() + 6) % 7));
+    const y = t.getFullYear(), jan = new Date(y, 0, 1);
+    return y + "-W" + String(Math.ceil(((t - jan) / 86400000 + jan.getDay() + 1) / 7)).padStart(2, "0"); };
+  const wks = [3, 2, 1, 0].map(n => { const d = new Date(now.getTime() - n * 7 * 86400000);
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    return d.toISOString().slice(0, 10); });
+  const head = "Week Start,Revenue";
+  const body = wks.map(w => w + ",");
+  const blob = new Blob([["# one tab (or file) per building — tab name = building name", head, ...body].join("\n")], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "zing-kpi-template.csv"; a.click();
+  URL.revokeObjectURL(a.href);
+};
+const SHEET = "https://docs.google.com/spreadsheets/d/1MQ_8TZRAiwgvJjancyrZz27rFVAHRXxbdEoLl5shM9Y/edit?gid=0";
+const saved = SHEET;   // data room: always the live sheet
+document.getElementById("csvUrl").value = saved;
+const noteHTML = () =>
+   `<b>Feeding it real data.</b>
+   <b>1. Live sheet:</b> paste the workbook's link above and hit <code>Load</code>. Every tab is read, and <b>the tab name is the building</b>. Inside a tab each row is one week: the <code>Week Start</code> column identifies the week and the <code>Revenue</code> column is the number used — every other column is ignored. The sheet must be shared as "anyone with the link can view" (or published to the web). The link is remembered and re-fetched every visit.
+   <b>2. Upload:</b> <code>Upload file</code> takes the same workbook as <code>.xlsx</code> — all tabs are read, same rules. A single <code>.csv</code> works too, either as one building's weeks or with a <code>building</code> column.
+   <b>3. Template:</b> <code>Template</code> downloads a one-building <code>Week Start, Revenue</code> starter.
+   Everything fixed week over week lives in this page, not the sheet: each building's address, coordinates, cluster and number of cleaners, plus one cleaner's weekly salary, set in the header (<code>$${SALARY.toLocaleString()}</code>/wk right now and remembered on this device) — the denominator of both KPIs. Adding a <code>cluster</code>, <code>cleaners</code> or <code>cleaner_salary</code> column to the sheet overrides the page for those rows; a brand-new building needs one line adding to the page (name, address, lat/lng, cluster, cleaners).
+   Until data is connected the page shows the real buildings with invented revenue — those numbers are not real.`;
+/* ---------- capacity model ----------
+   Hours come from the sheet's "Total Hours of Operations", which cleaners log themselves,
+   so treat utilization as indicative rather than exact. Capacity is a cleaner's working
+   day (6.5h by default) times days per week. */
+let HPD = Number(localStorage.getItem("zingKpiHpd")) || 6.5;
+let DPW = Number(localStorage.getItem("zingKpiDpw")) || 6;
+const capacityFor = n => (n || 0) * HPD * DPW;
+const utilBar = (h, cap) => { const u = cap > 0 ? h / cap : null;
+  return u == null ? "—" : `<span class="util"><i><b style="width:${Math.min(100, u * 100).toFixed(0)}%;background:${u > .85 ? "var(--danger,#A85149)" : "var(--sage-500,#97A88D)"}"></b></i>${(u * 100).toFixed(0)}%</span>`; };
+
+/* ---------- clusters ----------
+   Clusters come from the building registry; extra ones are added here and a building's
+   cluster can be reassigned in Building settings. Both live on this device. */
+let XCLUSTERS = [];
+try { const s = JSON.parse(localStorage.getItem("zingKpiClusters")); if (Array.isArray(s)) XCLUSTERS = s; } catch (e) {}
+const saveClusters = () => { localStorage.setItem("zingKpiClusters", JSON.stringify(XCLUSTERS)); apiPost("Settings", "upsert", { key: "key", values: { key: "extraClusters", value: JSON.stringify(XCLUSTERS) } }); };
+function allClusters(){
+  const fromReg = Object.values(REGISTRY).map(b => b.cluster);
+  const fromSet = Object.values(BSET).map(b => b.cluster);
+  return [...new Set([...fromReg, ...fromSet, ...XCLUSTERS].filter(Boolean))].sort();
+}
+// a per-building override in Building settings wins over the registry
+function applyClusters(){
+  ROWS.forEach(r => { const o = (BSET[key(r.building)] || {}).cluster;
+    if (o != null) r.cluster = o; });
+}
+function renderClusterList(){
+  const cs = allClusters();
+  document.getElementById("tbClusterList").innerHTML = cs.length ? cs.map(c => {
+    const bs = [...new Set(ROWS.filter(r => r.cluster === c).map(r => r.building))];
+    const units = bs.reduce((a, b) => a + (unitsOf(b) || 0), 0);
+    return `<tr data-c="${c}"><td class="name"><span class="cdot" style="background:${clusterColors[c] || "#C9C2B4"}"></span>${c}</td>
+      <td style="color:var(--ink-3)">${bs.length ? bs.join(", ") : "none yet"}</td>
+      <td class="num" style="color:var(--ink-3)">${units || "—"}</td>
+      <td class="num">${cleanersIn(c) ?? "—"}</td>
+      <td class="del">${bs.length ? "" : `<button data-x="${c}" title="Remove empty cluster" aria-label="Remove ${c}">×</button>`}</td></tr>`;
+  }).join("") : `<tr><td colspan="5" style="color:var(--ink-4);padding:18px 0">No clusters yet.</td></tr>`;
+  document.querySelectorAll("#tbClusterList .del button").forEach(b => b.onclick = () => {
+    XCLUSTERS = XCLUSTERS.filter(c => c !== b.dataset.x); saveClusters(); render();
+  });
+}
+document.getElementById("clForm").onsubmit = e => {
+  e.preventDefault();
+  const el = document.getElementById("clName"), v = el.value.trim();
+  if (!v) return;
+  if (!allClusters().includes(v)){ XCLUSTERS.push(v); saveClusters(); }
+  el.value = ""; render();
+};
+
+function renderHires(){
+  const sel = document.getElementById("hireCluster"); if (!sel) return;
+  const v = sel.value; sel.innerHTML = allClusters().map(c => `<option${c === v ? " selected" : ""}>${c}</option>`).join("");
+  const list = HIRES.map((h, i) => Object.assign({ i }, h)).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  document.getElementById("tbHires").innerHTML = list.length ? list.map(h => {
+    const t = dayT(h.date);
+    const after = Math.max(0, (cleanersIn(h.cluster) || 0) - HIRES.filter(x => x.cluster === h.cluster && dayT(x.date) > t).reduce((a, x) => a + (Number(x.change) || 0), 0));
+    const before = Math.max(0, after - (Number(h.change) || 0));
+    const d = isNaN(t) ? h.date : new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    return `<tr><td class="num">${d}</td><td class="name"><span class="cdot" style="background:${clusterColors[h.cluster] || "#C9C2B4"}"></span>${h.cluster}</td>
+      <td>${Number(h.change) > 0 ? "Hired" : "Left"}</td><td class="num">${before} → ${after}</td><td style="color:var(--ink-3)">${h.note || ""}</td>
+      <td class="del"><button data-i="${h.i}" title="Remove" aria-label="Remove change">×</button></td></tr>`;
+  }).join("") : `<tr><td colspan="6" style="color:var(--ink-4);padding:18px 0">No changes logged, so every week uses today's headcount.</td></tr>`;
+  document.querySelectorAll("#tbHires .del button").forEach(b => b.onclick = () => { HIRES.splice(Number(b.dataset.i), 1); saveHires(); render(); });
+}
+document.getElementById("hireForm").onsubmit = e => {
+  e.preventDefault();
+  const g = id => document.getElementById(id).value;
+  if (!g("hireCluster") || !g("hireDate")) return;
+  HIRES.push({ cluster: g("hireCluster"), date: g("hireDate"), change: Number(g("hireChange")), note: g("hireNote").trim() });
+  document.getElementById("hireNote").value = ""; saveHires(); render();
+};
+
+/* ---------- building hover card ---------- */
+const unitsOf = name => (BSET[key(name)] || {}).units || null;
+const liveOf = name => (BSET[key(name)] || {}).live || null;
+const accessOf = name => (BSET[key(name)] || {}).access || null;
+function weeksSinceLive(name){
+  const d = liveOf(name); if (!d) return null;
+  const t = Date.parse(d + "T00:00:00Z"); if (isNaN(t)) return null;
+  return Math.max(0, Math.round((Date.now() - t) / 604800000));
+}
+const hoverEl = () => document.getElementById("hover");
+function showHover(name, e){
+  if (!name) return;
+  const i = weeks.indexOf(week), last = weeks.slice(Math.max(0, i - 3), i + 1);
+  const byW = new Map(ROWS.filter(r => r.building === name).map(r => [r.week, r]));
+  const reg = lookup(name) || {}, u = unitsOf(name), wk = weeksSinceLive(name), ac = accessOf(name);
+  const cr = byW.get(week) || {};
+  const cells = last.map(w => { const m = buildingMargin(byW.get(w) || { revenue: 0 });
+    return `<div><b class="${m == null ? "" : m > 0 ? "pv" : "nv"}" style="color:${m == null ? "var(--ink-4)" : m > 0 ? "var(--forest)" : "var(--danger,#A85149)"}">${pct(m)}</b><span>${w}</span></div>`; }).join("");
+  const rows = [
+    ["Units", u ? u.toLocaleString() : "—"],
+    ["Launched", wk == null ? "—" : wk === 0 ? "this week" : wk + (wk === 1 ? " week ago" : " weeks ago")],
+    ["Remote access", ac === "remote" ? "Yes" : ac === "none" ? "No" : "—"],
+    ["Cluster", reg.cluster || "not matched"],
+    ["Hours / wk", cr.hours ? cr.hours.toFixed(1) + " h" : "—"],
+    ["Visits / wk", cr.visits ? cr.visits.toFixed(1) : "—"]
+  ].map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+  const el = hoverEl();
+  el.innerHTML = `<h4>${name}</h4><div class="sub">${reg.address || ""}</div><dl>${rows}</dl>
+    <div class="spark">${cells}</div>`;
+  el.classList.add("on"); el.setAttribute("aria-hidden", "false");
+  moveHover(e);
+}
+function moveHover(e){
+  const el = hoverEl(), r = el.getBoundingClientRect();
+  let x = e.clientX + 16, y = e.clientY + 14;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 16;
+  if (y + r.height > innerHeight - 8) y = Math.max(8, e.clientY - r.height - 14);
+  el.style.left = x + "px"; el.style.top = y + "px";
+}
+function hideHover(){ const el = hoverEl(); el.classList.remove("on"); el.setAttribute("aria-hidden", "true"); }
+
+/* ---------- left menu + building settings ---------- */
+document.getElementById("navToggle").onclick = () => document.body.classList.toggle("navmin");
+function showView(v){
+  document.querySelectorAll("aside.nav a").forEach(a => a.classList.toggle("on", a.dataset.view === v));
+  document.getElementById("viewDash").classList.toggle("on", v === "dash");
+  if (v === "dash") scrollMatricesToLatest();
+  document.getElementById("viewBuildings").classList.toggle("on", v === "buildings");
+  document.getElementById("viewClusters").classList.toggle("on", v === "clusters");
+  document.getElementById("viewScenario").classList.toggle("on", v === "scenario");
+  document.getElementById("viewForecast").classList.toggle("on", v === "forecast");
+  document.getElementById("viewSignups").classList.toggle("on", v === "signups");
+  document.getElementById("viewCards").classList.toggle("on", v === "cards");
+  document.getElementById("viewUnit").classList.toggle("on", v === "unit");
+  document.getElementById("viewOurBuildings").classList.toggle("on", v === "ourbuildings");
+  if (v === "unit" && window.zingUnitEconomics) window.zingUnitEconomics.render();
+  hideHover();
+}
+document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
+
+// per-building facts the sheet does not carry, kept on this device
+let BSET = {
+  bezelmiami:       { units: 434, access: "remote", live: "2026-04-28", cleaners: 0.5 },
+  forma:            { units: 850, access: "remote", live: "2026-01-26", cleaners: 1.6 },
+  miamiworldtower:  { units: 520, access: "none",   live: "2026-05-14", cleaners: 0.5 },
+  muze:             { units: 391,                   live: "2026-06-12", cleaners: 1 },
+  hamilton:         { units: 275, access: "remote", live: "2025-08-04", cleaners: 1 },
+  alexanroxy:       { units: 0,   access: "none",   live: "",           cleaners: 1, cluster: "Coral Gables" },
+  moderaedgewater:  { units: 291,                   live: "2026-09-28", cluster: "Edgewater" }
+};
+try { Object.entries(JSON.parse(localStorage.getItem("zingKpiBuildings")) || {})
+  .forEach(([k, v]) => { if (!/wynd|paraiso/i.test(k)) BSET[k] = Object.assign({}, BSET[k], v); }); } catch (e) {}
+// Sept 23, 2026 corrections: win over older local or sheet values once, then write back so every device agrees
+const BSET_FIXES = { forma: { live: "2026-01-26", cleaners: 1.6 }, hamilton: { live: "2025-08-04" } };
+const applyBsetFixes = () => { let changed = false;
+  Object.entries(BSET_FIXES).forEach(([k, f]) => Object.entries(f).forEach(([p, v]) => {
+    const cur = BSET[k] && BSET[k][p]; const same = p === "live" ? String(cur || "").slice(0, 10) === v : Number(cur) === v;
+    if (!same){ BSET[k] = Object.assign({}, BSET[k], { [p]: v }); changed = true; } }));
+  return changed; };
+const BSET_FIX_KEY = "zingBsetFix20260923";
+if (!localStorage.getItem(BSET_FIX_KEY)){ applyBsetFixes(); localStorage.setItem(BSET_FIX_KEY, "1"); }
+// Oct 5, 2026: Modera Edgewater live date (first week of operations began Sept 28)
+if (!localStorage.getItem("zingBsetFix20261005")){ BSET.moderaedgewater = Object.assign({ units: 291 }, BSET.moderaedgewater, { live: "2026-09-28" }); localStorage.setItem("zingBsetFix20261005", "1"); }
+
+// Oct 12, 2026: Modera Edgewater belongs to the Edgewater cluster — assign it once on every device
+if (!localStorage.getItem("zingBsetFix20261012")){ BSET.moderaedgewater = Object.assign({ units: 291, live: "2026-09-28" }, BSET.moderaedgewater, { cluster: "Edgewater" }); localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET)); localStorage.setItem("zingBsetFix20261012", "1"); }
+const saveBset = () => {
+  localStorage.setItem("zingKpiBuildings", JSON.stringify(BSET));
+  apiPost("Buildings", "replaceAll", { rows: Object.entries(BSET).map(([k, v]) => ({
+    building: (REGISTRY[k] || {}).name || k, units: v.units || 0, cleanersAssigned: v.cleaners || 0,
+    accessMethod: v.access || "none", liveDate: v.live || "", cluster: v.cluster ?? "" })) });
+};
+function firstRevenueWeek(name){
+  const rs = ROWS.filter(r => r.building === name && r.revenue > 0)
+    .sort((a, b) => (a.weekOrder ?? 0) - (b.weekOrder ?? 0));
+  return rs.length ? rs[0].week : "—";
+}
+function renderSettings(){
+  const names = [...new Set([...Object.values(REGISTRY).map(b => b.name), ...ROWS.map(r => r.building)])].sort();
+  document.getElementById("tbSettings").innerHTML = names.map(n => {
+    const reg = lookup(n) || {}, s = BSET[key(n)] || {};
+    return `<tr><td class="name">${n}<span class="addr">${reg.address || ""}</span></td>
+      <td style="color:var(--ink-3)"><select data-f="cluster" data-b="${key(n)}" aria-label="Cluster for ${n}">${[""].concat(allClusters()).map(c => `<option value="${c}"${(s.cluster ?? reg.cluster ?? "") === c ? " selected" : ""}>${c || "— unassigned"}</option>`).join("")}</select></td>
+      <td class="n"><input type="number" min="0" step="1" data-f="units" data-b="${key(n)}" value="${s.units ?? ""}" placeholder="—" aria-label="Units in ${n}"></td>
+      <td class="n"><input type="number" min="0" step="0.1" data-f="cleaners" data-b="${key(n)}" value="${s.cleaners ?? ""}" placeholder="—" aria-label="Cleaners at ${n}"></td>
+      <td><select data-f="access" data-b="${key(n)}" aria-label="Access method for ${n}">
+        <option value=""${s.access ? "" : " selected"}>—</option>
+        <option value="remote"${s.access === "remote" ? " selected" : ""}>Has remote access</option>
+        <option value="none"${s.access === "none" ? " selected" : ""}>Does not have remote access</option></select></td>
+      <td><input type="date" data-f="live" data-b="${key(n)}" value="${s.live || ""}" aria-label="Day ${n} went live"></td>
+      <td class="hint">${firstRevenueWeek(n)}</td></tr>`;
+  }).join("");
+  document.querySelectorAll("#tbSettings [data-f]").forEach(el => el.onchange = e => {
+    const b = e.target.dataset.b, f = e.target.dataset.f, v = e.target.value;
+    BSET[b] = BSET[b] || {};
+    // cluster stores "" explicitly, so "unassigned" sticks instead of falling back to the registry
+    if (v === "" && f !== "cluster") delete BSET[b][f];
+    else BSET[b][f] = (f === "units" || f === "cleaners") ? Number(v) : v;
+    saveBset(); render();
+  });
+}
+
+/* ---------- scenario planner ----------
+   Calibrated on the launches already in the sheet: a new building's revenue per unit is
+   assumed to walk up the same ramp Bezel, Miami World Tower and Muze walked. */
+let CSTATS = [];
+function rampCurve(){
+  const per = [], t0 = Math.min(...ROWS.map(r => r.weekOrder ?? 0));
+  [...new Set(ROWS.map(r => r.building))].forEach(n => {
+    const rs = ROWS.filter(r => r.building === n).sort((a, b) => (a.weekOrder ?? 0) - (b.weekOrder ?? 0));
+    const first = rs.findIndex(r => r.revenue > 0); if (first < 0) return;
+    // only genuine launches: buildings whose first revenue lands well after the sheet starts.
+    // Buildings already running on week 1 have no observable ramp.
+    if ((rs[first].weekOrder ?? 0) - t0 < 3 * 604800000) return;
+    const live = rs.slice(first); if (live.length < 5) return;
+    const mature = live.slice(-4).reduce((a, r) => a + r.revenue, 0) / 4;
+    if (!(mature > 0)) return;
+    per.push(live.slice(0, 12).map(r => Math.min(1, r.revenue / mature)));
+  });
+  let curve = [];
+  for (let i = 0; i < 12; i++){
+    const v = per.map(p => p[i]).filter(x => x != null).sort((a, b) => a - b);
+    // median, so one promotional launch week doesn't set the whole curve
+    curve.push(v.length ? v[Math.floor(v.length / 2)] : null);
+  }
+  // fall back to a conventional 12-week ramp when the sheet has no clean launch to learn from
+  const fallback = [.30,.48,.60,.70,.78,.84,.88,.92,.95,.97,.99,1];
+  if (SCN.ramp === "slow") return { curve: fallback, n: 0, src: "conservative" };
+  if (SCN.ramp === "now") return { curve: fallback.map(() => 1), n: 0, src: "immediate" };
+  curve = curve.map((v, i) => v == null ? fallback[i] : v);
+  // a launch ramp shouldn't dip in the model — carry the running maximum forward, then normalise
+  let m = 0; curve = curve.map(v => (m = Math.max(m, v)));
+  const top = curve[11] || 1;
+  return { curve: curve.map(v => Math.min(1.1, v / top)), n: per.length, src: "observed" };
+}
+function clusterOps(c){
+  const rs = periodRows(week).filter(r => r.cluster === c);
+  const rev = rs.reduce((a, r) => a + r.revenue, 0), v = rs.reduce((a, r) => a + (r.visits || 0), 0);
+  const h = rs.reduce((a, r) => a + (r.hours || 0), 0);
+  return { rev, visits: v, hours: h, aov: v ? rev / v : 78, dur: v ? (h / v) * 60 : 105 };
+}
+let SCN = { name: "Modera Edgewater", units: 291, cluster: null, hire: 0, rpu: null, ramp: "slow" };
+function scnInputs(){
+  const g = id => document.getElementById(id);
+  const cs = CSTATS.map(o => o.c);
+  if (!cs.includes(SCN.cluster)) SCN.cluster = cs[0] || null;
+  g("scnCluster").innerHTML = cs.map(c => `<option${c === SCN.cluster ? " selected" : ""}>${c}</option>`).join("");
+  const keep = document.activeElement;
+  const set = (id, v) => { const el = g(id); if (el !== keep) el.value = v; };
+  set("scnName", SCN.name); set("scnUnits", SCN.units); set("scnHire", SCN.hire);
+  set("scnHpd", HPD); set("scnDpw", DPW); set("scnRamp", SCN.ramp);
+  const base = CSTATS.find(o => o.c === SCN.cluster);
+  const defRpu = base && base.units ? base.rev / base.units : 1.4;
+  set("scnRpu", (SCN.rpu ?? defRpu).toFixed(2));
+  return { base, rpu: SCN.rpu ?? defRpu };
+}
+function renderScenario(){
+  if (!CSTATS.length) return;
+  const { base, rpu } = scnInputs();
+  if (!base) return;
+  const ops = clusterOps(base.c), rc = rampCurve(), curve = rc.curve;
+  const U = SCN.units || 0, matureRev = U * rpu;
+  const visits = ops.aov > 0 ? matureRev / ops.aov : 0, hoursNeed = visits * ops.dur / 60;
+  const clNow = base.cleaners || 0, clAfter = clNow + (SCN.hire || 0);
+  const capNow = capacityFor(clNow), capAfter = capacityFor(clAfter);
+  const salNow = clNow * SALARY, salAfter = clAfter * SALARY;
+  const mNow = salNow > 0 ? (base.rev - salNow) / salNow : null;
+  const mAfter = salAfter > 0 ? (base.rev + matureRev - salAfter) / salAfter : null;
+  const slack = capNow - base.hours, slackAfter = capAfter - base.hours - hoursNeed;
+
+  document.getElementById("scnStats").innerHTML = [
+    ["Expected revenue at maturity", money(matureRev), `${U.toLocaleString()} units × $${rpu.toFixed(2)}/unit · ${visits.toFixed(1)} visits/wk`],
+    ["Hours it needs", hoursNeed.toFixed(1) + " h", `${slack.toFixed(1)} h idle in ${base.c} today${SCN.hire ? " · +" + capacityFor(SCN.hire).toFixed(0) + " h hired" : ""}`],
+    [base.c + " margin after", pct(mAfter), (mNow == null ? "" : pct(mNow) + " today · ") + (mAfter != null && mNow != null ? (mAfter >= mNow ? "▲ " : "▼ ") + Math.abs((mAfter - mNow) * 100).toFixed(0) + " pts" : "")],
+    ["Hours left over", slackAfter.toFixed(1) + " h", slackAfter < 0 ? "over capacity — needs a hire" : "still spare for other buildings"]
+  ].map(s => `<div class="stat"><div class="eyebrow">${s[0]}</div><div class="v num">${s[1]}</div><div class="s">${s[2]}</div></div>`).join("");
+
+  document.getElementById("tbScenario").innerHTML = CSTATS.map(o => {
+    const hit = o.c === base.c;
+    const cl = hit ? clAfter : o.cleaners, rev = o.rev + (hit ? matureRev : 0);
+    const units = o.units + (hit ? U : 0), hrs = o.hours + (hit ? hoursNeed : 0);
+    const sal = cl * SALARY, m2 = sal > 0 ? (rev - sal) / sal : null, m1 = o.m;
+    const d = m1 != null && m2 != null ? m2 - m1 : null;
+    return `<tr data-c="${o.c}"${hit ? ' style="background:var(--sage-100)"' : ""}>
+      <td class="name"><span class="cdot" style="background:${clusterColors[o.c]}"></span>${o.c}${hit ? ` <span class="addr">+ ${SCN.name || "new building"}</span>` : ""}</td>
+      <td class="num" style="color:var(--ink-3)">${units || "—"}</td>
+      <td class="num">${cl || "—"}</td>
+      <td class="num" style="font-weight:700">${units && cl ? Math.round(units / cl) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${hrs ? hrs.toFixed(1) : "—"}</td>
+      <td>${utilBar(hrs, capacityFor(cl))}</td>
+      <td class="num" style="color:var(--ink-3)">${rev ? money(rev) : "—"}</td>
+      <td><span class="pill ${cls(m1)}">${pct(m1)}</span></td>
+      <td><span class="pill ${cls(m2)}">${pct(m2)}</span></td>
+      <td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td></tr>`;
+  }).join("");
+
+  const marg = f => salAfter > 0 ? (base.rev + matureRev * f - salAfter) / salAfter : 0;
+  const series = curve.map(f => marg(f));
+  const lo = curve.map(f => marg(f * 0.7)), hi = curve.map(f => marg(Math.min(1.15, f * 1.3)));
+  const W = 620, H = 260, pad = { l: 46, r: 16, t: 18, b: 30 };
+  const all = series.concat(lo, hi, [mNow ?? 0, 0]);
+  const y0 = Math.min(...all), y1 = Math.max(...all), span = (y1 - y0) || 1;
+  const X = i => pad.l + i * (W - pad.l - pad.r) / 11;
+  const Y = v => pad.t + (1 - (v - y0) / span) * (H - pad.t - pad.b);
+  const line = s => s.map((v, i) => (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1)).join(" ");
+  const band = hi.map((v, i) => (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1)).join(" ") +
+    lo.slice().reverse().map((v, i) => " L" + X(11 - i).toFixed(1) + " " + Y(v).toFixed(1)).join("") + " Z";
+  const cross = series.findIndex(v => mNow == null || v >= mNow);
+  document.getElementById("scnChart").innerHTML = `
+    <line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--line-strong,#DCD3C2)"/>
+    <text x="${pad.l - 8}" y="${Y(0) + 4}" text-anchor="end" font-size="10" fill="var(--ink-4)">0%</text>
+    ${mNow == null ? "" : `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(mNow)}" y2="${Y(mNow)}" stroke="var(--ink-4)" stroke-dasharray="5 4" opacity=".6"/>
+    <text x="${W - pad.r}" y="${Y(mNow) - 7}" text-anchor="end" font-size="10" fill="var(--ink-4)">today ${pct(mNow)}</text>`}
+    <path d="${band}" fill="var(--sage-500,#97A88D)" opacity=".18"/>
+    <path d="${line(series)}" fill="none" stroke="var(--forest,#1D2E32)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    ${cross > -1 ? `<circle cx="${X(cross)}" cy="${Y(series[cross])}" r="4.5" fill="var(--forest,#1D2E32)"/>
+      <text x="${X(cross)}" y="${Y(series[cross]) - 12}" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--forest,#1D2E32)">week ${cross + 1}</text>` : ""}
+    ${series.map((v, i) => `<text x="${X(i)}" y="${H - 10}" text-anchor="middle" font-size="9.5" fill="var(--ink-4)">${i + 1}</text>`).join("")}`;
+  document.getElementById("scnRampNote").textContent = rc.src === "observed"
+    ? `${base.c} margin week by week using the curve measured from ${rc.n} launch${rc.n === 1 ? "" : "es"} in the sheet. Those launches reached near-mature revenue almost immediately, so this curve is nearly flat — it is a measurement, not a forecast.`
+    : rc.src === "immediate"
+    ? `${base.c} margin if the new building hits mature revenue immediately — the optimistic bound.`
+    : `${base.c} margin week by week on a conventional 12-week ramp (30% of mature in week 1). Band is ±30% on ramp speed.`;
+
+  const beRpu = U > 0 && mNow != null ? (salAfter * (1 + mNow) - base.rev) / U : null;
+  const zeroRpu = U > 0 ? (salAfter - base.rev) / U : null;
+  const hireRpu = SCN.hire > 0 && U > 0 ? (SCN.hire * SALARY) / U : null;
+  document.getElementById("scnSens").innerHTML = [
+    [beRpu == null ? "—" : "$" + Math.max(0, beRpu).toFixed(2), `Revenue per unit the new building needs for ${base.c} to hold today's margin. ${beRpu != null && beRpu <= 0 ? "Clear at any revenue — this launch adds no payroll." : `Cluster average today is $${(base.units ? base.rev / base.units : 0).toFixed(2)}.`}`],
+    [zeroRpu == null ? "—" : "$" + Math.max(0, zeroRpu).toFixed(2), `Revenue per unit needed to keep ${base.c} above 0% margin at ${clAfter} cleaner${clAfter === 1 ? "" : "s"}.`],
+    [hireRpu == null ? "no hire" : "$" + hireRpu.toFixed(2), hireRpu == null ? `The launch fits inside existing idle hours, so no hire is modelled. One extra cleaner costs ${money(SALARY)}/wk and would need $${(SALARY / (U || 1)).toFixed(2)}/unit from this building alone to pay for itself.` : `Revenue per unit the new building must add just to cover the ${SCN.hire} cleaner${SCN.hire === 1 ? "" : "s"} hired.`],
+    [capNow > 0 ? (base.hours / capNow * 100).toFixed(0) + "%" : "—", `${base.c} utilization today — ${slack.toFixed(0)} idle hours a week. A launch only forces a hire once utilization would pass 100%.`]
+  ].map(r => `<div class="row"><span>${r[1]}</span><b>${r[0]}</b></div>`).join("");
+
+  document.getElementById("scnNote").innerHTML =
+    `<b>How this is calculated.</b>
+     <b>Revenue:</b> units × revenue per unit per week. The default is the cluster's own current revenue per unit, so the new building is assumed to behave like its neighbours. Type over it to test a weaker or stronger building.
+     <b>Hours:</b> expected revenue ÷ the cluster's average order value gives visits; visits × the cluster's average visit duration gives hours. Capacity is ${HPD} h × ${DPW} days per cleaner.
+     <b>Ramp:</b> the default is a conventional 12-week build to mature revenue. “Observed launches” instead uses the curve measured from the launches already in the sheet — those reached near-mature revenue within a week or two, so that curve is almost flat and reads as a best case.
+     <b>Caveat:</b> hours and visit durations are logged by cleaners themselves, so utilization and the hours a launch needs are indicative. The ramp rests on very few launches — read the band, not the line.`;
+}
+["scnName","scnUnits","scnCluster","scnHire","scnRpu","scnRamp","scnHpd","scnDpw"].forEach(id => {
+  const el = document.getElementById(id);
+  const h = () => {
+    if (id === "scnName") SCN.name = el.value;
+    if (id === "scnUnits") SCN.units = Number(el.value) || 0;
+    if (id === "scnCluster") { SCN.cluster = el.value; SCN.rpu = null; }
+    if (id === "scnHire") SCN.hire = Number(el.value) || 0;
+    if (id === "scnRpu") SCN.rpu = Number(el.value) || 0;
+    if (id === "scnRamp") SCN.ramp = el.value;
+    if (id === "scnHpd" && Number(el.value) > 0) { HPD = Number(el.value); localStorage.setItem("zingKpiHpd", HPD); apiPost("Settings", "upsert", { key: "key", values: { key: "hoursPerCleanerDay", value: HPD } }); }
+    if (id === "scnDpw" && Number(el.value) > 0) { DPW = Number(el.value); localStorage.setItem("zingKpiDpw", DPW); apiPost("Settings", "upsert", { key: "key", values: { key: "daysPerWeek", value: DPW } }); }
+    if (id === "scnHpd" || id === "scnDpw") render(); else renderScenario();
+  };
+  el.oninput = h; el.onchange = h;
+});
+document.getElementById("scnReset").onclick = () => {
+  SCN.rpu = null; HPD = 6.5; DPW = 6;
+  localStorage.removeItem("zingKpiHpd"); localStorage.removeItem("zingKpiDpw");
+  apiPost("Settings", "upsert", { key: "key", values: { key: "hoursPerCleanerDay", value: 6.5 } });
+  apiPost("Settings", "upsert", { key: "key", values: { key: "daysPerWeek", value: 6 } });
+  render();
+};
+
+/* ---------- sign-up growth ----------
+   Column C is the cumulative total, column H the new sign-ups that week. Every building gets
+   its own line; the pickers select any combination. */
+const SU_COLORS = ["#1D2E32","#97A88D","#C8A86A","#A85149","#6E8C93","#B4A07E","#4F6B5A","#8FA68E"];
+let SU_SEL = null, SU_MODE = "total", SU_BY = "building";
+const suByCluster = () => SU_BY === "cluster";
+function suBuildings(){
+  return suByCluster()
+    ? [...new Set(ROWS.filter(r => r.cluster).map(r => r.cluster))].sort()
+    : [...new Set(ROWS.map(r => r.building))].sort();
+}
+/* rows belonging to one entity — a single building, or every building in a cluster */
+const suRows = n => ROWS.filter(r => suByCluster() ? r.cluster === n : r.building === n);
+function suColor(n){
+  if (suByCluster()) return clusterColors[n] || SU_COLORS[0];
+  return SU_COLORS[suBuildings().indexOf(n) % SU_COLORS.length];
+}
+const suUnits = n => { const names = [...new Set(suRows(n).map(r => r.building))];
+  const t = names.reduce((a, b) => a + (unitsOf(b) || 0), 0); return t || null; };
+function suAt(n, w){
+  const rs = suRows(n).filter(r => r.week === w);
+  if (!rs.length) return { tot: null, nw: null };
+  const pick = k => { const v = rs.map(r => r[k]).filter(x => x != null);
+    return v.length ? v.reduce((a, b) => a + b, 0) : null; };
+  return { tot: pick("signups"), nw: pick("newSignups") };
+}
+function suSeries(n){
+  return weeks.map(w => { const v = suAt(n, w);
+    return SU_MODE === "new" ? v.nw : v.tot; });
+}
+/* End-of-line labels, pushed apart so close values stay readable. The dot stays on the true
+   data point and a short leader connects it to the moved label. */
+function endLabels(series, X, Y){
+  const pts = series.map(s => { let last = -1; s.v.forEach((v, i) => { if (v != null) last = i; });
+    return last < 0 ? null : { s, last, x: X(last), y: Y(s.v[last]), v: s.v[last] }; })
+    .filter(Boolean).sort((a, b) => a.y - b.y);
+  let prev = -99;
+  pts.forEach(p => { p.ly = Math.max(p.y, prev + 14); prev = p.ly; });
+  return pts.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" fill="${p.s.c}"/>
+    ${Math.abs(p.ly - p.y) > 1.5 ? `<path d="M${(p.x + 4).toFixed(1)} ${p.y.toFixed(1)} L${(p.x + 12).toFixed(1)} ${p.ly.toFixed(1)}" fill="none" stroke="${p.s.c}" stroke-width="1" opacity=".5"/>` : ""}
+    <text x="${(p.x + 15).toFixed(1)}" y="${(p.ly + 4).toFixed(1)}" font-size="11" font-weight="600" fill="${p.s.c}">${p.s.n} · ${p.v}</text>`).join("");
+}
+function renderSignups(){
+  const names = suBuildings();
+  if (!SU_SEL || !SU_SEL.size) SU_SEL = new Set(names);
+  const sel = names.filter(n => SU_SEL.has(n));
+
+  document.getElementById("suPick").innerHTML =
+    `<button class="all${sel.length === names.length ? " on" : ""}" data-all="1">All ${suByCluster() ? "clusters" : "buildings"}</button>` +
+    names.map(n => `<button data-b="${n}"${SU_SEL.has(n) ? ' class="on"' : ""}><i style="background:${suColor(n)}"></i>${n}</button>`).join("");
+  document.getElementById("suMode").value = SU_MODE;
+  document.getElementById("suBy").value = SU_BY;
+  document.getElementById("thSuName").textContent = suByCluster() ? "Cluster" : "Building";
+
+  const series = sel.map(n => ({ n, c: suColor(n), v: suSeries(n) }));
+  const flat = series.flatMap(s => s.v).filter(v => v != null);
+  const W = 980, H = 380, pad = { l: 56, r: 170, t: 20, b: 34 };
+  const y1 = Math.max(1, ...flat), n = weeks.length;
+  const X = i => pad.l + (n > 1 ? i * (W - pad.l - pad.r) / (n - 1) : 0);
+  const Y = v => pad.t + (1 - v / y1) * (H - pad.t - pad.b);
+  const ticks = [0, .25, .5, .75, 1].map(f => Math.round(y1 * f));
+  const every = Math.max(1, Math.round(n / 10));
+
+  const path = v => { let d = "", open = false;
+    v.forEach((x, i) => { if (x == null){ open = false; return; }
+      d += (open ? "L" : "M") + X(i).toFixed(1) + " " + Y(x).toFixed(1) + " "; open = true; });
+    return d.trim(); };
+
+  document.getElementById("suChart").innerHTML =
+    ticks.map(t => `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--line,#E6DECF)"/>
+      <text x="${pad.l - 9}" y="${Y(t) + 4}" text-anchor="end" font-size="10.5" fill="var(--ink-4)">${t}</text>`).join("") +
+    weeks.map((w, i) => i % every === 0 || i === n - 1
+      ? `<text x="${X(i)}" y="${H - 12}" text-anchor="middle" font-size="10" fill="var(--ink-4)">${w}</text>` : "").join("") +
+    series.map(s => `<path d="${path(s.v)}" fill="none" stroke="${s.c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`).join("") +
+    endLabels(series, X, Y);
+
+  document.getElementById("suHead").textContent = SU_MODE === "new"
+    ? `New residents signing up each week · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`
+    : `Cumulative residents signed up · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`;
+
+  document.getElementById("tbSignups").innerHTML = names.map(nm => {
+    const ws = weeks.map(w => Object.assign({ week: w }, suAt(nm, w)));
+    const tot = [...ws].reverse().find(r => r.tot != null);
+    const news = ws.map(r => r.nw).filter(v => v != null);
+    const last4 = ws.slice(-4).reduce((a, r) => a + (r.nw || 0), 0);
+    const u = suUnits(nm), pen = u && tot && tot.tot != null ? tot.tot / u : null;
+    const best = news.length ? Math.max(...news) : null;
+    const bestWk = best == null ? null : (ws.find(r => r.nw === best) || {}).week;
+    return `<tr data-b="${nm}"><td class="name"><span class="cdot" style="background:${suColor(nm)}"></span>${nm}</td>
+      <td class="num" style="color:var(--ink-3)">${u ? u.toLocaleString() : "—"}</td>
+      <td class="num" style="font-weight:700">${tot && tot.tot != null ? tot.tot.toLocaleString() : "—"}</td>
+      <td class="num">${pen == null ? "—" : (pen * 100).toFixed(1) + "%"}</td>
+      <td class="num" style="color:var(--ink-3)">${last4 || "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${news.length ? (news.reduce((a, b) => a + b, 0) / news.length).toFixed(1) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${best == null ? "—" : best + " · " + bestWk}</td></tr>`;
+  }).join("");
+
+  document.getElementById("suPick").querySelectorAll("button").forEach(b => b.onclick = () => {
+    if (b.dataset.all){ SU_SEL = SU_SEL.size === names.length ? new Set([names[0]]) : new Set(names); }
+    else { const nm = b.dataset.b;
+      if (SU_SEL.has(nm)) { if (SU_SEL.size > 1) SU_SEL.delete(nm); } else SU_SEL.add(nm); }
+    renderSignups();
+  });
+  suHover(series, X, Y);
+  renderEvents();
+  evFill();
+}
+
+/* hover the plot: nearest week, then one row per selected building */
+function suHover(series, X, Y){
+  const svg = document.getElementById("suChart"), tip = document.getElementById("suTip");
+  const n = weeks.length;
+  const hide = () => { tip.classList.remove("on"); tip.setAttribute("aria-hidden", "true");
+    svg.querySelectorAll("#suGuide,#suDot").forEach(el => el.remove()); };
+  svg.onmouseleave = hide;
+  svg.onmousemove = e => {
+    if (!n) return;
+    const box = svg.getBoundingClientRect();
+    const vx = (e.clientX - box.left) / box.width * 980;
+    const vy = (e.clientY - box.top) / box.height * 380;
+    let i = 0, best = Infinity;
+    for (let k = 0; k < n; k++){ const d = Math.abs(X(k) - vx); if (d < best){ best = d; i = k; } }
+    const w = weeks[i];
+    svg.querySelectorAll("#suGuide,#suDot").forEach(el => el.remove());
+    svg.insertAdjacentHTML("afterbegin",
+      `<line id="suGuide" x1="${X(i).toFixed(1)}" x2="${X(i).toFixed(1)}" y1="14" y2="346" stroke="var(--ink-4)" stroke-width="1" stroke-dasharray="4 4" opacity=".5"/>`);
+    const rows = series.map(s => {
+      const at = suAt(s.n, w);
+      if (at.tot == null && at.nw == null) return null;
+      const prevW = weeks[i - 1];
+      const pt = prevW ? suAt(s.n, prevW).tot : null;
+      const tot = at.tot, nw = at.nw;
+      const ch = pt != null && tot != null && pt > 0 ? (tot - pt) / pt : null;
+      const val = SU_MODE === "new" ? nw : tot;
+      const dy = val == null ? Infinity : Math.abs(Y(val) - vy);
+      return { s, tot, nw, ch, dy };
+    }).filter(Boolean).sort((a, b) => a.dy - b.dy);
+    // only the line under the cursor
+    const near = rows[0];
+    if (!near || near.dy > 26){ hide(); return; }
+    const body = `<div class="nm"><i style="background:${near.s.c}"></i>${near.s.n}</div>
+        <div class="r"><span>Total signed up</span><b>${near.tot == null ? "—" : near.tot.toLocaleString()}</b></div>
+        <div class="r"><span>New this week</span><b>${near.nw == null ? "—" : "+" + near.nw}</b></div>
+        <div class="r"><span>Change WoW</span><b style="color:${near.ch == null ? "var(--ink-4)" : near.ch > 0 ? "var(--forest)" : "var(--ink-3)"}">${near.ch == null ? "—" : (near.ch >= 0 ? "+" : "") + (near.ch * 100).toFixed(1) + "%"}</b></div>`;
+    svg.insertAdjacentHTML("beforeend",
+      `<circle id="suDot" cx="${X(i).toFixed(1)}" cy="${Y(SU_MODE === "new" ? near.nw : near.tot).toFixed(1)}" r="4.5" fill="${near.s.c}"/>`);
+    tip.innerHTML = `<div class="wk">Week of ${w}</div>${body}`;
+    tip.classList.add("on"); tip.setAttribute("aria-hidden", "false");
+    const tb = tip.getBoundingClientRect();
+    let x = e.clientX + 16, y = e.clientY + 14;
+    if (x + tb.width > innerWidth - 8) x = e.clientX - tb.width - 16;
+    if (y + tb.height > innerHeight - 8) y = Math.max(8, innerHeight - tb.height - 8);
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  };
+}
+
+/* ---------- events ----------
+   Kept on this device; the sheet has no place for them. */
+let EVENTS = [];
+try { EVENTS = JSON.parse(localStorage.getItem("zingKpiEvents")) || []; } catch (e) {}
+let EV_FILTER = "all";
+const saveEvents = () => {
+  localStorage.setItem("zingKpiEvents", JSON.stringify(EVENTS));
+  apiPost("Events", "replaceAll", { rows: EVENTS.map(e => ({ building: e.building, week: e.week, name: e.name, description: e.description, impact: e.impact })) });
+};
+function renderEvents(){
+  const names = [...new Set(ROWS.map(r => r.building))].sort();
+  const evColor = n => SU_COLORS[names.indexOf(n) % SU_COLORS.length];
+  document.getElementById("evFilter").innerHTML =
+    `<button class="all${EV_FILTER === "all" ? " on" : ""}" data-f="all">All buildings</button>` +
+    names.map(n => `<button data-f="${n}"${EV_FILTER === n ? ' class="on"' : ""}><i style="background:${evColor(n)}"></i>${n}</button>`).join("");
+  document.getElementById("evFilter").querySelectorAll("button").forEach(b =>
+    b.onclick = () => { EV_FILTER = b.dataset.f; renderEvents(); });
+
+  const list = EVENTS.filter(e => EV_FILTER === "all" || e.building === EV_FILTER)
+    .sort((a, b) => weeks.indexOf(b.week) - weeks.indexOf(a.week));
+  document.getElementById("tbEvents").innerHTML = list.length ? list.map(e => {
+    const i = EVENTS.indexOf(e);
+    return `<tr><td class="name"><span class="cdot" style="background:${evColor(e.building)}"></span>${e.building}</td>
+      <td style="color:var(--ink-3)">${e.week}</td>
+      <td style="font-weight:600">${e.name}</td>
+      <td style="color:var(--ink-3)">${e.desc || "—"}</td>
+      <td class="num" style="font-weight:700">${e.impact == null || e.impact === "" ? "—" : "+" + e.impact}</td>
+      <td class="del"><button data-i="${i}" title="Remove event" aria-label="Remove event">×</button></td></tr>`;
+  }).join("") : `<tr><td colspan="6" style="color:var(--ink-4);padding:18px 0">No events yet — hit <b>Add event</b> above to record what drove a week's sign-ups.</td></tr>`;
+  document.querySelectorAll("#tbEvents .del button").forEach(b =>
+    b.onclick = () => { EVENTS.splice(Number(b.dataset.i), 1); saveEvents(); renderEvents(); });
+}
+function evFill(){
+  const names = suBuildings();
+  document.getElementById("evBuilding").innerHTML = [...new Set(ROWS.map(r => r.building))].sort().map(n => `<option>${n}</option>`).join("");
+  document.getElementById("evWeek").innerHTML = weeks.slice().reverse().map(w => `<option>${w}</option>`).join("");
+  evImpactHint();
+}
+function evImpactHint(){
+  const b = document.getElementById("evBuilding").value, w = document.getElementById("evWeek").value;
+  const r = ROWS.find(x => x.building === b && x.week === w);
+  const el = document.getElementById("evImpact");
+  el.placeholder = r && r.newSignups != null ? r.newSignups + " new that week" : "new sign-ups";
+  if (!el.dataset.touched) el.value = r && r.newSignups != null ? r.newSignups : "";
+}
+document.getElementById("suAdd").onclick = () => {
+  const f = document.getElementById("evForm");
+  f.hidden = !f.hidden;
+  if (!f.hidden){ evFill(); document.getElementById("evName").focus(); }
+};
+document.getElementById("evCancel").onclick = () => { document.getElementById("evForm").hidden = true; };
+document.getElementById("evBuilding").onchange = evImpactHint;
+document.getElementById("evWeek").onchange = evImpactHint;
+document.getElementById("evImpact").oninput = e => { e.target.dataset.touched = "1"; };
+document.getElementById("evForm").onsubmit = e => {
+  e.preventDefault();
+  const g = id => document.getElementById(id).value;
+  if (!g("evName").trim()) return;
+  EVENTS.push({ building: g("evBuilding"), week: g("evWeek"), name: g("evName").trim(),
+    desc: g("evDesc").trim(), impact: g("evImpact") === "" ? null : Number(g("evImpact")) });
+  saveEvents();
+  document.getElementById("evName").value = ""; document.getElementById("evDesc").value = "";
+  const imp = document.getElementById("evImpact"); delete imp.dataset.touched;
+  document.getElementById("evForm").hidden = true;
+  renderEvents();
+};
+document.getElementById("suMode").onchange = e => { SU_MODE = e.target.value; renderSignups(); };
+document.getElementById("suBy").onchange = e => { SU_BY = e.target.value; SU_SEL = null; renderSignups(); };
+
+/* ---------- pipeline ----------
+   Buildings we may launch. Kept on this device. A row marked "launched" is registered as a
+   real building (cluster + coordinates), so as soon as its tab appears in the sheet it lands
+   in the portfolio like any other. */
+const PIPE_STATUS = ["Contacted", "Closed", "Launching soon", "Launched"];
+const PIPE_COLORS = { "Contacted": "#B4A07E", "Closed": "#C8A86A", "Launching soon": "#97A88D", "Launched": "#1D2E32" };
+let PIPE = [{ name: "Modera Edgewater", address: "455 NE 24th St, Miami, FL 33137", units: 291,
+  tag: "Multifamily", mgmt: "Mill Creek Residential", cluster: "Edgewater", status: "Launched",
+  lat: 25.7998, lng: -80.1879 }];
+try { const s = JSON.parse(localStorage.getItem("zingKpiPipeline")); if (Array.isArray(s)) PIPE = s; } catch (e) {}
+// Oct 5, 2026: Modera Edgewater went live the week of Sept 28 — mark it launched once on every device
+if (!localStorage.getItem("zingPipeFix20261005")){ PIPE.forEach(p => { if (key(p.name) === "moderaedgewater"){ p.status = "Launched"; p.address = "455 NE 24th St, Miami, FL 33137"; p.lat = 25.7998; p.lng = -80.1879; } });
+  localStorage.setItem("zingKpiPipeline", JSON.stringify(PIPE)); localStorage.setItem("zingPipeFix20261005", "1"); }
+const savePipe = () => {
+  localStorage.setItem("zingKpiPipeline", JSON.stringify(PIPE));
+  apiPost("Pipeline", "replaceAll", { rows: PIPE.map(p => ({ name: p.name, address: p.address, units: p.units, tag: p.tag, management: p.mgmt, cluster: p.cluster, status: p.status, lat: p.lat, lng: p.lng })) });
+};
+const pipeLaunched = () => PIPE.filter(p => p.status === "Launched" && p.name);
+function applyPipeline(){
+  pipeLaunched().forEach(p => {
+    const k = key(p.name);
+    if (!REGISTRY[k]) REGISTRY[k] = { name: p.name, address: p.address || "", lat: Number(p.lat) || 0,
+      lng: Number(p.lng) || 0, cluster: p.cluster || "", cleaners: 1 };
+    if (p.units && !(BSET[k] || {}).units) BSET[k] = Object.assign({ units: Number(p.units) }, BSET[k]);
+  });
+}
+function renderPipeline(){
+  const clusters = allClusters();
+  const sel = (v, opts, f, i) => `<select data-i="${i}" data-f="${f}">` +
+    opts.map(o => `<option${o === v ? " selected" : ""}>${o}</option>`).join("") + `</select>`;
+  const inp = (v, f, i, type) => `<input type="${type || "text"}" data-i="${i}" data-f="${f}" value="${v ?? ""}">`;
+  document.getElementById("tbPipeline").innerHTML = PIPE.length ? PIPE.map((p, i) =>
+    `<tr><td class="nm">${inp(p.name, "name", i)}</td>
+     <td class="addr">${inp(p.address, "address", i)}</td>
+     <td class="n">${inp(p.units, "units", i, "number")}</td>
+     <td>${sel(p.tag, ["Multifamily", "HOA"], "tag", i)}</td>
+     <td>${inp(p.mgmt, "mgmt", i)}</td>
+     <td>${sel(p.cluster, [""].concat(clusters), "cluster", i)}</td>
+     <td>${sel(p.status, PIPE_STATUS, "status", i)}</td>
+     <td class="geo">${inp(p.lat, "lat", i, "number")}</td>
+     <td class="geo">${inp(p.lng, "lng", i, "number")}</td>
+     <td class="del"><button class="loc" data-l="${i}" title="Place from address" aria-label="Place from address">⌖</button><button data-d="${i}" title="Remove" aria-label="Remove building">×</button></td></tr>`).join("")
+    : `<tr><td colspan="10" style="color:var(--ink-4);padding:18px 0">Nothing in the pipeline — hit <b>Add building</b>.</td></tr>`;
+
+  document.querySelectorAll("#tbPipeline [data-f]").forEach(el => {
+    const commit = () => { const i = Number(el.dataset.i), f = el.dataset.f;
+      PIPE[i][f] = ["units", "lat", "lng"].includes(f) ? (el.value === "" ? "" : Number(el.value)) : el.value;
+      savePipe();
+    };
+    el.oninput = commit;
+    el.onchange = () => { commit(); applyPipeline(); render(); };
+  });
+  /* the map follows lat/lng, so ⌖ looks the address up and fills them in */
+  document.querySelectorAll("#tbPipeline .loc").forEach(b => b.onclick = async () => {
+    const i = Number(b.dataset.l), p = PIPE[i];
+    if (!p.address){ b.title = "Add an address first"; return; }
+    b.textContent = "…";
+    try {
+      const r = await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(p.address));
+      const j = await r.json();
+      if (j && j[0]){ p.lat = Number(Number(j[0].lat).toFixed(4)); p.lng = Number(Number(j[0].lon).toFixed(4));
+        savePipe(); applyPipeline(); render(); return; }
+      b.textContent = "⌖"; b.title = "Address not found — type coordinates instead";
+    } catch (e){ b.textContent = "⌖"; b.title = "Lookup unavailable — type coordinates instead"; }
+  });
+  document.querySelectorAll("#tbPipeline .del button[data-d]").forEach(b =>
+    b.onclick = () => { PIPE.splice(Number(b.dataset.d), 1); savePipe(); render(); });
+
+  document.getElementById("pipeLegend").innerHTML =
+    PIPE_STATUS.map(s => `<span><span class="sdot" style="background:${PIPE_COLORS[s]}"></span>${s} · ${PIPE.filter(p => p.status === s).length}</span>`).join("") +
+    `<span>The map plots <b>Lat / Lng</b>, not the address — hit <b>⌖</b> on a row to look the address up and fill them in. Blank coordinates still track, just off-map.</span>`;
+  const onMap = PIPE.filter(p => Number(p.lat) && Number(p.lng)).length;
+  document.getElementById("legendPipe").innerHTML = PIPE.length
+    ? PIPE_STATUS.filter(s => PIPE.some(p => p.status === s))
+        .map(s => `<span><span class="sdot" style="background:${PIPE_COLORS[s]}"></span>${s}</span>`).join("") +
+      `<span>Pipeline buildings from <b>Scenario planner</b> — ${onMap} of ${PIPE.length} placed on the map.</span>`
+    : "";
+}
+document.getElementById("pipeAdd").onclick = () => {
+  PIPE.push({ name: "", address: "", units: "", tag: "Multifamily", mgmt: "", cluster: "", status: "Contacted", lat: "", lng: "" });
+  savePipe(); renderPipeline();
+  const rows = document.querySelectorAll("#tbPipeline tr");
+  const last = rows[rows.length - 1]; if (last) last.querySelector("input").focus();
+};
+
+/* ---------- forecasting ----------
+   A second workbook holds the orders posted for a coming week (one tab per posting, one row
+   per order: Date, Building, Amount, Tip, Status, Type). Booked orders give a floor; the
+   late-booking uplift turns that floor into an expected week, and recalibrates itself once a
+   booked week's real revenue lands in the weekly sheet. */
+const ORDERS_SHEET = "https://docs.google.com/spreadsheets/d/1x0qjQdmdO3pTNVC3QtH1tL4p_InBV7H5U1Lgg6wAu0s/edit";
+let ORD = [], FC_WEEK = null, FC_FILL = null;
+const mondayOf = t => { const d = new Date(t);
+  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - ((d.getUTCDay() + 6) % 7)); };
+const wkLabel = t => { const d = new Date(t); return MON[d.getUTCMonth()] + " " + d.getUTCDate(); };
+function orderDate(v){
+  if (v === "" || v == null) return null;
+  const n = Number(v);
+  if (!isNaN(n) && n > 20000 && n < 80000) return (n - 25569) * 86400000;   // Excel serial
+  return weekTime(String(v));
+}
+function parseOrders(wb){
+  const out = [];
+  wb.SheetNames.forEach(tab => {
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[tab], { header: 1, raw: false, defval: "" });
+    const hi = rows.findIndex(r => { const h = r.map(normh); return h.includes("building") && h.includes("date"); });
+    if (hi < 0) return;
+    const h = rows[hi].map(normh), ix = k => h.indexOf(k);
+    const c = { date: ix("date"), b: ix("building"), amt: ix("amount"), tip: ix("tip"), st: ix("status"), ty: ix("type"),
+      res: h.findIndex(x => /resident|username|customer/.test(x)) };
+    rows.slice(hi + 1).forEach(r => {
+      const t = orderDate(r[c.date]), name = String(r[c.b] || "").trim();
+      if (t == null || !name) return;
+      const status = String(r[c.st] || "").trim();
+      const cancelled = /cancel|refund|void/i.test(status);
+      const reg = lookup(name) || {};
+      out.push({ snapshot: tab, date: t, week: mondayOf(t),
+        building: reg.name || name, cluster: reg.cluster || "",
+        amount: numOf(r[c.amt]) || 0, tip: c.tip < 0 ? 0 : (numOf(r[c.tip]) || 0),
+        status: status, type: String(r[c.ty] || "").trim(), cancelled: cancelled,
+        resident: c.res < 0 ? "" : String(r[c.res] || "").trim() });
+    });
+  });
+  return out;
+}
+async function loadOrders(url, quiet){
+  const dot = document.getElementById("fcDot"), msg = document.getElementById("fcMsg");
+  const id = sheetId(url);
+  if (!id){ if (!quiet) msg.textContent = "That does not look like a Google Sheet link"; return; }
+  try {
+    if (!window.XLSX) await loadScript(SHEETJS);
+    const res = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`, { redirect: "follow" });
+    if (!res.ok) throw new Error(res.status === 401 || res.status === 403 ? "the sheet is private" : "HTTP " + res.status);
+    const rows = parseOrders(XLSX.read(await res.arrayBuffer(), { type: "array" })).filter(o => !o.cancelled);
+    if (!rows.length) throw new Error("no orders found — needs Date, Building and Amount columns");
+    ORD = rows.filter(o => !DR_HIDE.test(o.building || ""));
+    localStorage.setItem("zingKpiOrdersUrl", url);
+    apiPost("OrdersSource", "upsert", { key: "key", values: { key: "ordersUrl", value: url } });
+    dot.className = "dot live";
+    msg.textContent = "Orders · " + rows.length + " · " + new Set(rows.map(r => r.week)).size + " week(s)";
+    FC_WEEK = null; renderForecast();
+  } catch (err){
+    dot.className = "dot"; msg.textContent = "Could not read the orders sheet — " + err.message;
+  }
+}
+const actualFor = (b, wkTime) => { const r = ROWS.find(x => x.building === b && x.weekTime === wkTime);
+  return r ? r.revenue : null; };
+/* Uplift is learned from the calibration table below: for each week we hold the Wednesday
+   list and the same week as it closed, and the ratio between the two is that week's uplift. */
+function fillFactor(){
+  const rs = CAL.filter(c => c.pre > 0 && c.post > 0).map(c => c.post / c.pre);
+  if (!rs.length) return { f: 1.15, n: 0, spread: null };
+  const mean = rs.reduce((a, b) => a + b, 0) / rs.length;
+  return { f: mean, n: rs.length, spread: [Math.min(...rs), Math.max(...rs)] };
+}
+const last4avg = b => { const rs = ROWS.filter(r => r.building === b && r.revenue > 0)
+    .sort((a, c) => (a.weekOrder ?? 0) - (c.weekOrder ?? 0)).slice(-4);
+  return rs.length ? rs.reduce((a, r) => a + r.revenue, 0) / rs.length : null; };
+
+function renderForecast(){
+  const g = id => document.getElementById(id);
+  const wks = [...new Set(ORD.map(o => o.week))].sort();
+  if (!wks.includes(FC_WEEK)) FC_WEEK = wks.length ? wks[wks.length - 1] : null;
+  g("fcWeek").innerHTML = wks.map(w => `<option value="${w}"${w === FC_WEEK ? " selected" : ""}>${wkLabel(w)}</option>`).join("");
+  const cal = fillFactor(), fill = FC_FILL ?? cal.f;
+  if (document.activeElement !== g("fcFill")) g("fcFill").value = fill.toFixed(2);
+  g("fcNote").innerHTML = fcNote(fill, cal);
+  renderCal();
+
+  if (!ORD.length){
+    g("fcStats").innerHTML = `<div class="stat"><div class="eyebrow">No orders loaded</div><div class="v num">&mdash;</div><div class="s">Paste the orders sheet link above and hit Load. One tab per Wednesday posting, columns Date, Building, Amount, Tip, Status, Type.</div></div>`;
+    g("tbFcBuildings").innerHTML = ""; g("tbFcClusters").innerHTML = "";
+    g("fcOpps").innerHTML = ""; g("fcLegend").innerHTML = "";
+    return;
+  }
+
+  const wkOrders = ORD.filter(o => o.week === FC_WEEK);
+  const names = [...new Set(ROWS.map(r => r.building).concat(wkOrders.map(o => o.building)))];
+  const per = names.map(b => {
+    const os = wkOrders.filter(o => o.building === b);
+    const booked = os.reduce((a, o) => a + o.amount, 0);
+    const fc = booked * fill, base = last4avg(b);
+    return { b, cluster: (ROWS.find(r => r.building === b) || {}).cluster || (lookup(b) || {}).cluster || "",
+      n: os.length, tips: os.reduce((a, o) => a + o.tip, 0), booked,
+      aov: os.length ? booked / os.length : null, fc, base,
+      d: base != null && base > 0 ? (fc - base) / base : null, units: unitsOf(b) };
+  }).sort((a, b) => b.fc - a.fc);
+
+  const totalFc = per.reduce((a, o) => a + o.fc, 0), totalBase = per.reduce((a, o) => a + (o.base || 0), 0);
+  const heads = allClusters().reduce((a, c) => a + (cleanersIn(c) || 0), 0), sal = heads * SALARY;
+  const mFc = sal > 0 ? (totalFc - sal) / sal : null, mBase = sal > 0 ? (totalBase - sal) / sal : null;
+
+  g("fcStats").innerHTML = [
+    ["Forecast revenue", money(totalFc), `${wkOrders.length} orders booked · ${money(wkOrders.reduce((a, o) => a + o.amount, 0))} × ${fill.toFixed(2)}`],
+    ["Portfolio margin", pct(mFc), (mBase == null ? "" : pct(mBase) + " on the last 4 weeks · ") + heads + " cleaners"],
+    ["Buildings ordering", per.filter(o => o.n).length + " / " + per.length,
+      per.filter(o => !o.n).length ? "nothing booked: " + per.filter(o => !o.n).map(o => o.b).join(", ") : "every building has orders"],
+    ["Week of", wkLabel(FC_WEEK), cal.n ? `uplift averaged over ${cal.n} calibrated week${cal.n === 1 ? "" : "s"}` : "uplift is a placeholder — calibrate a week below"]
+  ].map(s => `<div class="stat"><div class="eyebrow">${s[0]}</div><div class="v num">${s[1]}</div><div class="s">${s[2]}</div></div>`).join("");
+
+  const dcell = d => `<td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + "%"}</td>`;
+  g("tbFcBuildings").innerHTML = per.map(o => {
+    const m = SALARY > 0 ? (o.fc - SALARY) / SALARY : null;
+    return `<tr data-b="${o.b}"><td class="name"><span class="cdot" style="background:${clusterColors[o.cluster] || "#C9C2B4"}"></span>${o.b}</td>
+      <td style="color:var(--ink-3)">${o.cluster || "—"}</td>
+      <td class="num">${o.n || "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.booked ? money(o.booked) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.aov == null ? "—" : money(o.aov)}</td>
+      <td class="num" style="font-weight:700">${o.fc ? money(o.fc) : "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.base == null ? "—" : money(o.base)}</td>
+      ${dcell(o.d)}
+      <td><span class="pill ${cls(m)}">${pct(m)}</span></td></tr>`;
+  }).join("");
+
+  const cl = allClusters().map(c => {
+    const bs = per.filter(o => o.cluster === c);
+    const fc = bs.reduce((a, o) => a + o.fc, 0), base = bs.reduce((a, o) => a + (o.base || 0), 0);
+    const cleaners = cleanersIn(c) || 0, s = cleaners * SALARY, ops = clusterOps(c);
+    return { c, bs, fc, base, n: bs.reduce((a, o) => a + o.n, 0), cleaners,
+      m: s > 0 ? (fc - s) / s : null, mb: s > 0 && base ? (base - s) / s : null,
+      hours: ops.aov > 0 ? (fc / ops.aov) * ops.dur / 60 : null };
+  }).filter(o => o.bs.length).sort((a, b) => (a.m ?? -9) - (b.m ?? -9));
+
+  g("tbFcClusters").innerHTML = cl.map(o => {
+    const d = o.m != null && o.mb != null ? o.m - o.mb : null;
+    return `<tr data-c="${o.c}"><td class="name"><span class="cdot" style="background:${clusterColors[o.c] || "#C9C2B4"}"></span>${o.c}</td>
+      <td style="color:var(--ink-3)">${o.bs.filter(b => b.n).length} of ${o.bs.length}</td>
+      <td class="num">${o.n || "—"}</td>
+      <td class="num" style="font-weight:700">${o.fc ? money(o.fc) : "—"}</td>
+      <td class="num">${o.cleaners || "—"}</td>
+      <td class="num" style="color:var(--ink-3)">${o.hours == null ? "—" : o.hours.toFixed(1)}</td>
+      <td>${utilBar(o.hours || 0, capacityFor(o.cleaners))}</td>
+      <td><span class="pill ${cls(o.m)}">${pct(o.m)}</span></td>
+      <td class="wow ${d == null ? "" : d >= 0 ? "p" : "n"}">${d == null ? "—" : (d >= 0 ? "▲ " : "▼ ") + Math.abs(d * 100).toFixed(0) + " pts"}</td></tr>`;
+  }).join("");
+
+  /* opportunities, ranked by dollars a week available. The benchmark is the best rate among
+     buildings with enough orders to be a fair comparison, so one small strong week can't set it. */
+  const withRpu = per.filter(o => o.units && o.fc > 0).map(o => Object.assign({ rpu: o.fc / o.units }, o));
+  const eligible = withRpu.filter(o => o.n >= 3);
+  const pool = eligible.length ? eligible : withRpu;
+  const bench = pool.length ? Math.max(...pool.map(o => o.rpu)) : 0;
+  const leader = pool.find(o => o.rpu === bench);
+  const opps = [];
+  withRpu.filter(o => o !== leader && o.rpu < bench).forEach(o => {
+    const gap = (bench - o.rpu) * o.units;
+    if (gap > 40) opps.push({ s: gap, v: money(gap),
+      t: `<b>${o.b}</b> is booked at $${o.rpu.toFixed(2)} per unit against ${leader.b}'s $${bench.toFixed(2)}. Closing half that gap is ${money(gap / 2)} a week; matching it outright is ${money(gap)}.` });
+  });
+  per.filter(o => !o.n).forEach(o => opps.push({ s: (o.base || 0) + 1e6, v: "0 orders",
+    t: `<b>${o.b}</b> has nothing booked for this week. ${o.base ? "It has been averaging " + money(o.base) + " a week, so this is a booking gap rather than a demand gap." : "It has no revenue history either — worth checking access and launch."}` }));
+  cl.filter(o => o.m != null && o.m <= 0).forEach(o => {
+    const need = Math.max(0, o.cleaners * SALARY - o.fc);
+    opps.push({ s: need + 5e5, v: money(need),
+      t: `<b>${o.c}</b> is forecast at ${pct(o.m)}. It needs ${money(need)} more in the week to clear 0% at ${o.cleaners} cleaner${o.cleaners === 1 ? "" : "s"}.` });
+  });
+  per.filter(o => o.n >= 3).forEach(o => {
+    const days = new Set(wkOrders.filter(x => x.building === o.b).map(x => x.date)).size;
+    if (days <= 2) opps.push({ s: o.fc / 2, v: days + " day" + (days === 1 ? "" : "s"),
+      t: `<b>${o.b}</b>'s ${o.n} orders sit on ${days} day${days === 1 ? "" : "s"}. Spreading them frees the cleaner's other days for the rest of the cluster.` });
+  });
+  g("fcOpps").innerHTML = opps.length
+    ? opps.sort((a, b) => b.s - a.s).slice(0, 7).map(o => `<div class="row"><span>${o.t}</span><b>${o.v}</b></div>`).join("")
+    : `<div class="row"><span>Nothing stands out this week — every building with units is close to the best booked rate in the portfolio.</span><b>—</b></div>`;
+
+  const oneOff = wkOrders.filter(o => /one/i.test(o.type)).length;
+  g("fcLegend").innerHTML =
+    `<span><b>Booked</b> = orders already in for the week · <b>Forecast</b> = booked × ${fill.toFixed(2)}</span>
+     <span>${wkOrders.filter(o => /submit/i.test(o.status)).length} submitted, ${wkOrders.filter(o => /sched/i.test(o.status)).length} scheduled · ${oneOff} one-off, ${wkOrders.length - oneOff} recurring</span>
+     <span>Tips of ${money(wkOrders.reduce((a, o) => a + o.tip, 0))} excluded — revenue only. Cancelled orders are dropped from this table (see the reconciliation under each row in the New bookings uplift table below).</span>`;
+}
+function fcNote(fill, cal){
+  return `<b>How the forecast works.</b>
+   <b>Booked:</b> every order in the orders sheet dated inside the week, summed by building. Amounts only — tips are excluded so the numbers line up with the weekly revenue sheet. Cancelled orders are dropped.
+   <b>New bookings uplift:</b> a Wednesday list is a floor, because bookings keep arriving through the week. ${cal.n ? `Measured at ${fill.toFixed(2)}× — the average of ${cal.n} calibrated week${cal.n === 1 ? "" : "s"}${cal.spread ? `, which ranged ${cal.spread[0].toFixed(2)}× to ${cal.spread[1].toFixed(2)}×` : ""}.` : `No week is calibrated yet, so ${fill.toFixed(2)}× is a placeholder. Add a week below — the Wednesday list and the same week as it closed — and the forecast starts using your own measured average.`} Type over it to test another fill.
+   <b>Horizon:</b> one to two weeks. It reads what has actually been ordered, so it says nothing about weeks with no bookings yet.
+   <b>Opportunities</b> compare revenue per unit against the best booked rate among buildings with at least three orders that week, and flag clusters whose forecast does not cover payroll. A gap is an upper bound, not a promise — building mix, price point and access all differ.`;
+}
+
+/* ---------- uplift calibration ----------
+   Two sources per week: the list posted the Wednesday before, and the same week once it
+   closed. Their ratio is that week's uplift; the running average feeds the forecast. */
+let CAL = [];
+try { const s = JSON.parse(localStorage.getItem("zingKpiCal")); if (Array.isArray(s)) CAL = s; } catch (e) {}
+const saveCal = () => {
+  localStorage.setItem("zingKpiCal", JSON.stringify(CAL));
+  apiPost("PromoCalendar", "replaceAll", { rows: CAL.map(c => ({ week: c.week, preUrl: c.preUrl, postUrl: c.postUrl, preTotal: c.pre ?? "", postTotal: c.post ?? "" })) });
+};
+const nextMondays = n => { const t = mondayOf(Date.now()), out = [];
+  for (let i = -8; i < n; i++) out.push(t + i * 604800000); return out; };
+async function pullOrders(url, weekTimeMs){
+  const id = sheetId(url);
+  if (!id) throw new Error("not a Google Sheet link");
+  if (!window.XLSX) await loadScript(SHEETJS);
+  const res = await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`, { redirect: "follow" });
+  if (!res.ok) throw new Error(res.status === 403 ? "sheet is private" : "HTTP " + res.status);
+  const rows = parseOrders(XLSX.read(await res.arrayBuffer(), { type: "array" }));
+  const inWeek = rows.filter(o => o.week === weekTimeMs);
+  if (!rows.length) throw new Error("no orders in that sheet");
+  const active = inWeek.filter(o => !o.cancelled);
+  return { total: active.reduce((a, o) => a + o.amount, 0), orders: active.length,
+    byBuilding: active.reduce((m, o) => (m[o.building] = (m[o.building] || 0) + o.amount, m), {}), rows: inWeek };
+}
+/* Matches orders between the Wednesday snapshot and the closed-week snapshot by
+   building + resident (there is no order id in the sheet, and residents rarely
+   place two orders in the same week), falling back to date + amount + type if a
+   sheet has no resident/username column. Anything booked in the closed snapshot
+   that wasn't in the Wednesday one is a new order placed during the week; anything
+   from the Wednesday snapshot that shows up cancelled/refunded/void in the closed
+   one is a cancellation. */
+function diffOrderWeek(preRows, postRows){
+  // resident/username is a far more reliable key than amount+type (survives price
+  // or service changes to the same booking); falls back to amount+type if a sheet has no such column
+  const okey = o => o.resident ? ("res|" + o.building + "|" + o.resident) : (o.date + "|" + o.building + "|" + o.amount.toFixed(2) + "|" + o.type);
+  const bump = (m, k, n) => m.set(k, (m.get(k) || 0) + n);
+  const preAll = new Map(); (preRows || []).forEach(o => bump(preAll, okey(o), 1));
+  const preActive = new Map(); (preRows || []).filter(o => !o.cancelled).forEach(o => bump(preActive, okey(o), 1));
+  const postActive = (postRows || []).filter(o => !o.cancelled);
+  const postCancelled = (postRows || []).filter(o => o.cancelled);
+  const newOrders = [];
+  postActive.forEach(o => { const k = okey(o), n = preAll.get(k) || 0;
+    if (n > 0) preAll.set(k, n - 1); else newOrders.push(o); });
+  const cancelledOrders = [];
+  postCancelled.forEach(o => { const k = okey(o), n = preActive.get(k) || 0;
+    if (n > 0){ preActive.set(k, n - 1); cancelledOrders.push(o); } });
+  return { newOrders, newValue: newOrders.reduce((a, o) => a + o.amount, 0),
+    cancelledOrders, cancelledValue: cancelledOrders.reduce((a, o) => a + o.amount, 0) };
+}
+function renderCal(){
+  const wkOpts = [...new Set(nextMondays(4).concat(CAL.map(c => c.week)))].sort((a, b) => b - a);
+  document.getElementById("tbCal").innerHTML = CAL.length ? CAL.slice()
+    .sort((a, b) => b.week - a.week).map(c => {
+      const i = CAL.indexOf(c), up = c.pre > 0 && c.post > 0 ? c.post / c.pre : null;
+      const row = `<tr><td><select data-i="${i}" data-f="week">${wkOpts.map(w => `<option value="${w}"${w === c.week ? " selected" : ""}>${wkLabel(w)}</option>`).join("")}</select></td>
+        <td class="urlcell"><div><input type="text" data-i="${i}" data-f="preUrl" value="${c.preUrl || ""}" placeholder="Wednesday list link"><button class="pull" data-p="pre" data-i="${i}">Read</button></div></td>
+        <td class="n" style="color:var(--ink-3)">${c.pre ? money(c.pre) + (c.preN ? ` <span class="addr">${c.preN} orders</span>` : "") : "—"}</td>
+        <td class="urlcell"><div><input type="text" data-i="${i}" data-f="postUrl" value="${c.postUrl || ""}" placeholder="Closed-week link"><button class="pull" data-p="post" data-i="${i}">Read</button></div></td>
+        <td class="n" style="color:var(--ink-3)">${c.post ? money(c.post) + (c.postN ? ` <span class="addr">${c.postN} orders</span>` : "") : "—"}</td>
+        <td class="n"><span class="u" style="color:${up == null ? "var(--ink-4)" : up >= 1 ? "var(--forest)" : "var(--danger,#A85149)"}">${up == null ? "—" : up.toFixed(2) + "×"}</span>${up == null ? "" : `<span class="addr">${up >= 1 ? "+" : ""}${money(c.post - c.pre)}</span>`}</td>
+        <td class="del"><button data-d="${i}" title="Remove week" aria-label="Remove week">×</button></td></tr>`;
+      if (!c.preRows || !c.postRows) return row;
+      const d = diffOrderWeek(c.preRows, c.postRows);
+      return row + `<tr class="reconrow"><td></td><td colspan="6" style="padding:2px 0 12px;font-size:12px;color:var(--ink-3)">
+        <b style="color:var(--forest)">+${d.newOrders.length} new order${d.newOrders.length === 1 ? "" : "s"}</b> placed after the Wednesday list · ${money(d.newValue)}
+        &nbsp;·&nbsp; <b style="color:var(--danger,#A85149)">−${d.cancelledOrders.length} cancelled</b> · ${money(d.cancelledValue)} lost
+        &nbsp;·&nbsp; net ${money(d.newValue - d.cancelledValue)}</td></tr>`;
+    }).join("")
+    : `<tr><td colspan="7" style="color:var(--ink-4);padding:18px 0">No weeks calibrated yet — hit <b>Add week</b>, paste the Wednesday list, then paste the same week again once it has closed.</td></tr>`;
+
+  document.querySelectorAll("#tbCal [data-f]").forEach(el => el.onchange = () => {
+    const i = Number(el.dataset.i), f = el.dataset.f;
+    CAL[i][f] = f === "week" ? Number(el.value) : el.value;
+    if (f === "week"){ CAL[i].pre = CAL[i].post = null; CAL[i].preN = CAL[i].postN = null; }
+    saveCal(); renderForecast();
+  });
+  document.querySelectorAll("#tbCal .pull").forEach(b => b.onclick = async () => {
+    const i = Number(b.dataset.i), side = b.dataset.p, c = CAL[i];
+    const url = side === "pre" ? c.preUrl : c.postUrl;
+    if (!url){ b.textContent = "link?"; setTimeout(() => b.textContent = "Read", 1400); return; }
+    b.textContent = "…";
+    try {
+      const r = await pullOrders(url, c.week);
+      if (side === "pre"){ c.pre = r.total; c.preN = r.orders; c.preBy = r.byBuilding; c.preRows = r.rows; }
+      else { c.post = r.total; c.postN = r.orders; c.postBy = r.byBuilding; c.postRows = r.rows; }
+      saveCal(); renderForecast();
+    } catch (err){ b.textContent = err.message.slice(0, 18); setTimeout(() => b.textContent = "Read", 2200); }
+  });
+  document.querySelectorAll("#tbCal .del button[data-d]").forEach(b => b.onclick = () => {
+    CAL.splice(Number(b.dataset.d), 1); saveCal(); renderForecast(); });
+
+  const f = fillFactor();
+  const done = CAL.filter(c => c.pre > 0 && c.post > 0).length;
+  document.getElementById("calLegend").innerHTML = f.n
+    ? `<span><b>${f.f.toFixed(2)}×</b> average across ${f.n} calibrated week${f.n === 1 ? "" : "s"}${f.spread ? ` · range ${f.spread[0].toFixed(2)}–${f.spread[1].toFixed(2)}×` : ""}</span>
+       <span>That average is what the forecast above uses, unless you type over it.</span>`
+    : `<span>${CAL.length ? "Waiting on both halves of a week — " + done + " complete so far." : "Nothing calibrated yet."} Until one week has both, the forecast runs on a 1.15× placeholder.</span>`;
+}
+document.getElementById("calAdd").onclick = () => {
+  const used = new Set(CAL.map(c => c.week));
+  const w = nextMondays(1).reverse().find(t => !used.has(t)) ?? mondayOf(Date.now());
+  CAL.push({ week: w, preUrl: localStorage.getItem("zingKpiOrdersUrl") || ORDERS_SHEET, postUrl: "", pre: null, post: null });
+  saveCal(); renderCal();
+};
+document.getElementById("fcLoad").onclick = () => loadOrders(document.getElementById("fcUrl").value.trim());
+document.getElementById("fcWeek").onchange = e => { FC_WEEK = Number(e.target.value); renderForecast(); };
+document.getElementById("fcFill").oninput = e => { const v = Number(e.target.value); FC_FILL = v > 0 ? v : null; renderForecast(); };
+const savedOrders = localStorage.getItem("zingKpiOrdersUrl") || ORDERS_SHEET;
+document.getElementById("fcUrl").value = savedOrders;
+
+applyPipeline();
+document.getElementById("note").innerHTML = noteHTML();
+setWeeks(); render();
+setTimeout(() => loadOrders(savedOrders, true), 1200);
+loadCSV(saved, true);
+
+/* pull the shared backend last so it overrides the local/device cache above with
+   whatever everyone else has saved, then re-render everything that reads it */
+(async function fetchBackend(){
+  try{
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    const kv = rows => Object.fromEntries((rows || []).slice(1).filter(r => r[0] !== "").map(r => [r[0], r[1]]));
+    const settings = kv(data.Settings), orders = kv(data.OrdersSource);
+    if (settings.salary) { SALARY = Number(settings.salary) || SALARY; document.getElementById("salary").value = SALARY; }
+    if (settings.hoursPerCleanerDay) HPD = Number(settings.hoursPerCleanerDay) || HPD;
+    if (settings.daysPerWeek) DPW = Number(settings.daysPerWeek) || DPW;
+    if (settings.headcountChanges) try{ const a = JSON.parse(settings.headcountChanges); if (Array.isArray(a)){ HIRES = a; localStorage.setItem("zingKpiHires", settings.headcountChanges); } }catch(e){}
+    if (settings.extraClusters) try{ const a = JSON.parse(settings.extraClusters); if (Array.isArray(a)) XCLUSTERS = a; }catch(e){}
+    (data.Clusters || []).slice(1).forEach(r => { if (r[0]) CLEANERS[r[0]] = Number(r[1]) || 0; });
+    (data.Buildings || []).slice(1).forEach(r => { if (!r[0]) return;
+      // column 6 (cluster) is optional in the sheet; when present it is the cluster assignment, and an
+      // absent column keeps whatever the registry / local override says instead of wiping it
+      const o = { units: Number(r[1]) || 0, cleaners: Number(r[2]) || 0, access: r[3] || "none", live: r[4] || "" };
+      if (r.length > 5 && r[5] !== undefined && r[5] !== null && String(r[5]) !== "") o.cluster = String(r[5]);
+      BSET[key(r[0])] = Object.assign({}, BSET[key(r[0])], o); });
+    if (!settings.bsetFix20260923){ applyBsetFixes(); saveBset();
+      apiPost("Settings", "upsert", { key: "key", values: { key: "bsetFix20260923", value: "done" } }); }
+    EVENTS = (data.Events || []).slice(1).filter(r => r[0]).map(r => ({ building: r[0], week: r[1], name: r[2], description: r[3], impact: Number(r[4]) || 0 }));
+    PIPE = (data.Pipeline || []).slice(1).filter(r => r[0]).map(r => ({ name: r[0], address: r[1], units: r[2], tag: r[3], mgmt: r[4], cluster: r[5], status: r[6], lat: r[7], lng: r[8] }));
+    // Oct 5, 2026: Modera Edgewater went live the week of Sept 28 — correct the sheet once, then write back
+    if (!settings.moderaLive20261005){
+      let p = PIPE.find(x => key(x.name) === "moderaedgewater");
+      if (!p){ p = { name: "Modera Edgewater", units: 291, tag: "Multifamily", mgmt: "Mill Creek Residential", cluster: "Edgewater" }; PIPE.push(p); }
+      Object.assign(p, { status: "Launched", address: "455 NE 24th St, Miami, FL 33137", lat: 25.7998, lng: -80.1879 });
+      BSET.moderaedgewater = Object.assign({ units: 291 }, BSET.moderaedgewater, { live: "2026-09-28" });
+      savePipe(); saveBset();
+      apiPost("Settings", "upsert", { key: "key", values: { key: "moderaLive20261005", value: "done" } }); }
+    CAL = (data.PromoCalendar || []).slice(1).filter(r => r[0] !== "").map(r => ({ week: Number(r[0]), preUrl: r[1], postUrl: r[2], pre: r[3] === "" ? null : Number(r[3]), post: r[4] === "" ? null : Number(r[4]) }));
+    Object.keys(BSET).forEach(k => { if (DR_HIDE.test(k)) delete BSET[k]; });
+    PIPE = PIPE.filter(p => !DR_HIDE.test(p.name || "")); EVENTS = EVENTS.filter(e => !DR_HIDE.test(e.building || ""));
+    applyPipeline(); render(); renderEvents(); renderPipeline(); renderCal();
+    if (orders.ordersUrl && orders.ordersUrl !== savedOrders) loadOrders(orders.ordersUrl, true);
+  }catch(err){ console.warn("KPI backend load failed, staying on local cache", err); }
+})();
+</script>
+<script src="cart-data.js"></script>
+<script src="cart-impact.js"></script>
+<script src="cart-gif.js"></script>
+<script src="unit-economics.js"></script>
+</body>
+</html>
