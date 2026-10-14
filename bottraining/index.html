@@ -3,8 +3,27 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<script>/* En vivo (/bottraining/...) las rutas profundas necesitan <base> para que icons/, app.jsx etc. resuelvan.
-   Respaldo sin rewrite: 404.html manda a /bottraining/?r=<ruta>; aquí se restaura la URL limpia antes de que cargue la app. */(function(){var q=location.search.match(/[?&]r=([^&]*)/);if(q){var r=decodeURIComponent(q[1]);if(/^\/[^\/]/.test(r))history.replaceState(null,"",r+location.hash);}var m=location.pathname.match(/^(.*?\/bottraining)(\/|$)/i);if(m)document.write('<base href="'+m[1]+'/">');})();</script>
+<script>
+/* ── Global router bootstrap ───────────────────────────────────
+   SITE_BASE is the only string you need to change to move the app
+   to a different URL path. Everything below derives from it.
+   ─────────────────────────────────────────────────────────────── */
+var SITE_BASE = "/bottraining"; /* <- change this to repoint the whole app */
+(function () {
+  /* 1. Restore real URL if 404.html bounced us here with ?r=<path> */
+  var q = location.search.match(/[?&]r=([^&]*)/);
+  if (q) {
+    var r = decodeURIComponent(q[1]);
+    if (r.toLowerCase().indexOf(SITE_BASE.toLowerCase()) === 0)
+      history.replaceState(null, "", r + location.hash);
+  }
+  /* 2. Set <base href> so relative assets resolve correctly at any depth */
+  var base = location.pathname.toLowerCase().startsWith(SITE_BASE.toLowerCase())
+    ? location.pathname.slice(0, SITE_BASE.length) + "/"
+    : SITE_BASE + "/";
+  document.write('<base href="' + base + '">');
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Zing · Entrenamiento del Equipo de Limpieza</title>
 <meta name="description" content="Manual de entrenamiento Zing: Cómo Operamos, productos, Manual de Limpieza, seguridad, profesionalismo y lección diaria.">

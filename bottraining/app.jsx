@@ -10,12 +10,24 @@ const LOGO = "icons/zing-logo.svg";
 const LESSONS = window.LESSONS, T_UI = window.T_UI, LAUNCH = window.TRAINING_LAUNCH;
 const PUBLIC = "https://www.justzingit.com/bottraining";
 
-/* ---- rutas ---- */
-const PATH_MODE = /\/bottraining(\/|$)/i.test(location.pathname);
-const BASE = PATH_MODE ? location.pathname.match(/^(.*?\/bottraining)/i)[1] : "";
-const readRoute = () => (PATH_MODE ? location.pathname.slice(BASE.length) : location.hash.replace(/^#/, ""))
-  .split("/").map(s => decodeURIComponent(s)).filter(Boolean);
-const hrefFor = p => (PATH_MODE ? BASE + "/" + p : "#/" + p);
+/* ────────────────────────────────────────────────────────────
+   ROUTER — global single-path config.
+   To move the app to a different URL, change SITE_BASE only.
+   Everything else (readRoute, hrefFor, publicUrl, 404 fallback)
+   derives from it automatically.
+   ──────────────────────────────────────────────────────────── */
+const SITE_BASE = "/bottraining"; /* ← change this one string to repoint the whole app */
+
+const BASE      = location.pathname.toLowerCase().startsWith(SITE_BASE.toLowerCase())
+                  ? location.pathname.slice(0, SITE_BASE.length)   /* preserves case of actual path */
+                  : "";
+const PATH_MODE = BASE !== "";
+const readRoute = () => (
+  PATH_MODE
+    ? location.pathname.slice(BASE.length)
+    : location.hash.replace(/^#/, "")
+).split("/").map(s => decodeURIComponent(s)).filter(Boolean);
+const hrefFor   = p => (PATH_MODE ? BASE + "/" + p : "#/" + p);
 const publicUrl = p => PUBLIC + (p ? "/" + p : "");
 const slug = s => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
 
