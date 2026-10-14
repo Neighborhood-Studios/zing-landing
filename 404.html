@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Zing</title>
+<script>
+/* GitHub Pages root 404 handler — catches any unknown path and routes it to
+   the correct SPA. Each sub-app registers its SITE_BASE here so a direct
+   deep link (e.g. /bottraining/comooperamos/bienvenidaazing) redirects to
+   /bottraining/?r=<path> where the app's inline bootstrap restores the URL.
+
+   To add a new SPA: append its base path to SPA_BASES below. */
+
+var SPA_BASES = [
+  "/bottraining"
+  /* add more here, e.g. "/cleaneronboarding" */
+];
+
+(function () {
+  var p = location.pathname;
+  for (var i = 0; i < SPA_BASES.length; i++) {
+    var base = SPA_BASES[i];
+    if (p === base || p.indexOf(base + "/") === 0) {
+      /* Redirect to the app root with the original path as ?r= so the app
+         can restore it via history.replaceState */
+      location.replace(base + "/?r=" + encodeURIComponent(p) + location.hash);
+      return;
+    }
+  }
+  /* Not a known SPA path — show a plain not-found message */
+  document.getElementById("msg").style.display = "block";
+})();
+</script>
+</head>
+<body style="font-family:sans-serif;padding:40px;color:#1D2E32;background:#F7F3EA">
+<p id="msg" style="display:none">
+  Página no encontrada. <a href="/" style="color:#5F7A63">Ir al inicio</a>
+</p>
+</body>
+</html>
