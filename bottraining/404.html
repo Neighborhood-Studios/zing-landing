@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Zing · Entrenamiento</title>
+<script>
+/* Respaldo si el servidor no tiene rewrite: cualquier /bottraining/<ruta> que dé 404 vuelve a /bottraining/ con la ruta en ?r=, e index.html la restaura. */
+(function(){var p=location.pathname,m=p.match(/^(.*?\/bottraining)(\/|$)/i);if(m){location.replace(m[1]+"/?r="+encodeURIComponent(p)+location.hash);}})();
+</script>
+</head>
+<body style="font-family:sans-serif;padding:40px;color:#1D2E32;background:#F7F3EA">
+<p>Página no encontrada. <a href="/bottraining/" style="color:#5F7A63">Ir al entrenamiento Zing</a></p>
+</body>
+</html>
