@@ -260,6 +260,43 @@ body.ciall .bonly{display:block}
 @media(max-width:1080px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 <style>header>.src,header>label.fld:has(#salary),#note,.cipaste,#ciApi,#ciReset,aside.nav a[data-view="forecast"],aside.nav a[data-view="scenario"],#viewForecast,#viewScenario,aside.nav a[data-view="buildings"],#viewBuildings,.ue-assume .fld,.ue-assume .ue-note{display:none!important}</style>
+<style>
+#viewSummary .smp{background:var(--paper-50);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+#viewSummary h2.big{font:400 30px/1.2 "Newsreader",serif;margin:6px 0 8px;text-wrap:pretty;max-width:30ch}
+#viewSummary .lead{margin:0;font-size:15px;line-height:1.55;color:var(--ink-2);max-width:70ch;text-wrap:pretty}
+#viewSummary .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#viewSummary .kpi{background:var(--paper-50);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
+#viewSummary .kpi:hover{border-color:var(--sage-500)}
+#viewSummary .kpi .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#viewSummary .kpi b{font:400 38px/1 "Newsreader",serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+#viewSummary .kpi p{margin:0;font-size:13px;color:var(--ink-3);line-height:1.45}
+#viewSummary .kpi .go{font-size:12px;font-weight:600;color:var(--ink-2);margin-top:auto;padding-top:6px}
+#viewSummary .tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap}
+#viewSummary .tag.obs{background:var(--pos-bg);color:var(--pos)}
+#viewSummary .tag.mod{background:#F3EAD6;color:#7A6230}
+#viewSummary .row2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
+#viewSummary .sh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+#viewSummary .sh h3{margin:0;font-size:15px;font-weight:600}
+#viewSummary .sh p{margin:0;font-size:12px;color:var(--ink-4)}
+#viewSummary .bnote{margin:12px 0 0;font-size:12px;color:var(--ink-4)}
+#viewSummary .bars{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;align-items:end;height:200px}
+#viewSummary .bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
+#viewSummary .bar .trk{flex:1;width:100%;display:flex;align-items:flex-end;min-height:0}
+#viewSummary .bar i{display:block;width:100%;border-radius:6px 6px 2px 2px;background:var(--sage-500)}
+#viewSummary .bar:last-child .trk i{background:var(--forest)}
+#viewSummary .bar span{font-size:11px;color:var(--ink-4)}
+#viewSummary .bar em{font-style:normal;font-size:11px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
+#viewSummary .target dl{display:grid;grid-template-columns:1fr auto;gap:10px 16px;margin:0}
+#viewSummary .target dt{color:var(--ink-3);font-size:13px}
+#viewSummary .target dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+#viewSummary .target .note{margin:14px 0 0;font-size:12px;color:var(--ink-4);line-height:1.5}
+#viewSummary .qs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:0;padding:0;list-style:none}
+#viewSummary .qs li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+#viewSummary .qs li a{font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;color:var(--forest)}
+#viewSummary .qs li a:hover{color:var(--pos)}
+#viewSummary .slegend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-3);align-items:center}
+@media(max-width:900px){#viewSummary .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}#viewSummary .row2,#viewSummary .qs{grid-template-columns:1fr}}
+</style>
 <script src="image-slot.js"></script>
 </head>
 <body>
@@ -293,7 +330,8 @@ body.ciall .bonly{display:block}
 <div class="shell">
 <aside class="nav">
 <button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
-<a href="#dash" class="on" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Dashboard</span></a>
+<a href="#summary" class="on" data-view="summary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span>Summary</span></a>
+<a href="#dash" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Dashboard</span></a>
 <a href="#ourbuildings" data-view="ourbuildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Our buildings</span></a>
 <a href="#unit" data-view="unit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M19 4v5M16.5 6.5h5"/></svg><span>Unit Economics &amp; KPIs</span></a>
 <a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
@@ -305,7 +343,15 @@ body.ciall .bonly{display:block}
 </aside>
 <main>
 <section class="view" id="viewUnit"></section>
-<section class="view on" id="viewDash">
+<section class="view on" id="viewSummary">
+<section class="smp"><span class="eyebrow" id="smAsOf">Summary · as of October 19, 2026</span><h2 class="big">Home services built into the building, growing one cluster at a time.</h2><p class="lead">Seven residential buildings live across Edgewater, Downtown Miami and Coral Gables. Every figure on this page comes from completed, paid orders, and each one links to the section with the full breakdown.</p></section>
+<section class="kpis"><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">Revenue run-rate</span><span class="tag obs">Observed</span></div><b id="smRun">$242k</b><p id="smRunP">$20.2k paid in the last 30 days, annualised.</p><span class="go">Unit economics →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow" id="smGrowL">Growth since February</span><span class="tag obs">Observed</span></div><b id="smGrow">2.7×</b><p id="smGrowP">Monthly revenue from $7.4k in February to $20.2k in the last 30 days.</p><span class="go">Unit economics →</span></a><a class="kpi" href="#ourbuildings" data-go="ourbuildings"><div class="top"><span class="eyebrow">Buildings live</span><span class="tag obs">Observed</span></div><b>7</b><p>Three clusters. Each launch costs $1,500.</p><span class="go">Our buildings →</span></a><a class="kpi" href="#signups" data-go="signups"><div class="top"><span class="eyebrow">Residents signed up</span><span class="tag obs">Observed</span></div><b id="smSign">742</b><p>Across the seven buildings, with no paid acquisition.</p><span class="go">Sign-ups →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">Customers served</span><span class="tag obs">Observed</span></div><b id="smCust">364</b><p id="smCustP">60% have booked two or more visits.</p><span class="go">Cohorts →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">60-day repeat</span><span class="tag obs">Observed</span></div><b id="smRep">49%</b><p>Customers who booked again within 60 days of their first visit.</p><span class="go">Cohorts →</span></a></section>
+<section class="row2"><div class="smp"><div class="sh"><h3>Monthly revenue</h3><p>From the weekly revenue sheet</p></div><div class="bars" id="smBars"><div class="bar"><em>7.4k</em><div class="trk"><i style="height:37%"></i></div><span>Feb</span></div><div class="bar"><em>11.1k</em><div class="trk"><i style="height:55%"></i></div><span>Mar</span></div><div class="bar"><em>13.4k</em><div class="trk"><i style="height:66%"></i></div><span>Apr</span></div><div class="bar"><em>12.5k</em><div class="trk"><i style="height:62%"></i></div><span>May</span></div><div class="bar"><em>13.9k</em><div class="trk"><i style="height:69%"></i></div><span>Jun</span></div><div class="bar"><em>13.9k</em><div class="trk"><i style="height:69%"></i></div><span>Jul</span></div><div class="bar"><em>13.7k</em><div class="trk"><i style="height:68%"></i></div><span>Aug</span></div><div class="bar"><em>16.1k</em><div class="trk"><i style="height:80%"></i></div><span>Sep</span></div><div class="bar"><em>20.2k</em><div class="trk"><i style="height:100%"></i></div><span>Last 30d</span></div></div><p class="bnote" id="smNote">Last 30 days to October 19, from the live app.</p></div>
+<div class="smp target"><div class="sh"><h3>A mature building</h3><span class="tag mod">Modelled</span></div><dl><dt>Units</dt><dd>250</dd><dt>Resident penetration</dt><dd>50%</dd><dt>Active customers, last 90 days</dt><dd>13%</dd><dt>Annual revenue</dt><dd>$80k</dd><dt>Contribution margin</dt><dd>44%</dd></dl><p class="note">This is the target a building grows into. Forma, live since February, is the closest building to it today.</p></div></section>
+<section class="smp"><div class="sh"><h3>Questions this room answers</h3><p>Each one links to the evidence</p></div><ul class="qs"><li>Do residents want this?<a href="#signups" data-go="signups">Sign-ups →</a></li><li>Do customers come back?<a href="#unit" data-go="unit">Cohorts →</a></li><li>Does a building improve as it ages?<a href="#unit" data-go="unit">Maturity curve →</a></li><li>What does a launch cost, and when does it pay back?<a href="#unit" data-go="unit">Payback →</a></li><li>Does density make the economics better?<a href="#dash" data-go="dash">Dashboard →</a></li><li>How does word of mouth spread inside a building?<a href="#cards" data-go="cards">Cart impact →</a></li></ul></section>
+<div class="slegend"><span class="tag obs">Observed</span> taken from paid orders and sign-ups <span class="tag mod">Modelled</span> a target built on our assumptions</div>
+</section>
+<section class="view" id="viewDash">
 <section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">Cluster density</span>
 <h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">Every building we launch makes the cluster around it stronger.</h2>
 <p style="margin:0;font-size:14px;line-height:1.55;color:var(--ink-2);max-width:72ch;text-wrap:pretty">We grow in dense clusters, launching buildings next to each other. Density compounds: it raises cleaner utilization and availability, shortens response times and makes the operation more resilient, which lets us deliver chores on time and at a price residents can afford. The map and tables below track margin by building and by cluster, week over week.</p></section>
@@ -864,6 +910,41 @@ function periodRows(w, back){
 }
 const rangeLabel = () => RANGE === 1 ? "week of " + week : RANGE === 0 ? "all " + weeks.length + " weeks, weekly average" : "past " + RANGE + " weeks, weekly average";
 
+
+/* ---------- summary: revenue figures from the same weekly sheet ---------- */
+function renderSummary(){
+  const byW = new Map();
+  ROWS.forEach(r => { if (r.weekTime == null || !(r.revenue > 0)) return; byW.set(r.weekTime, (byW.get(r.weekTime) || 0) + r.revenue); });
+  const ts = [...byW.keys()].sort((a, b) => a - b);
+  if (ts.length < 4) return;
+  const k = v => "$" + (v / 1000).toFixed(1) + "k";
+  const last4 = ts.slice(-4), l4 = last4.reduce((a, t) => a + byW.get(t), 0);
+  const last30 = l4 / 28 * 30, run = last30 * 12;
+  const end = new Date(last4[3] + 6 * 864e5), endLbl = MON[end.getUTCMonth()] + " " + end.getUTCDate();
+  const cur = new Date(last4[3]), curKey = cur.getUTCFullYear() * 12 + cur.getUTCMonth();
+  const months = new Map();
+  ts.forEach(t => { const d = new Date(t), mk = d.getUTCFullYear() * 12 + d.getUTCMonth();
+    if (d.getUTCFullYear() < 2026 || (d.getUTCFullYear() === 2026 && d.getUTCMonth() < 1) || mk >= curKey) return;
+    const m = months.get(mk) || { v: 0, n: 0 }; m.v += byW.get(t); m.n++; months.set(mk, m); });
+  const ms = [...months.entries()].sort((a, b) => a[0] - b[0]).map(([mk, m]) => [mk, m.v / m.n / 7 * 30]);
+  const FEB = 2026 * 12 + 1;   // first month of operations; the weekly sheet starts in March, so February comes from the order export (paid, 28 days)
+  if (!ms.length || ms[0][0] > FEB) ms.unshift([FEB, 7360.64 / 28 * 30]);
+  const FULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const feb = ms.length ? ms[0][1] : null, febLbl = ms.length ? FULL[ms[0][0] % 12] : "";
+  const bars = ms.map(([mk, v]) => [k(v), v, MON[mk % 12]]).concat([[k(last30), last30, "Last 30d"]]);
+  const max = Math.max(...bars.map(b => b[1]));
+  document.getElementById("smRun").textContent = "$" + Math.round(run / 1000) + "k";
+  document.getElementById("smRunP").textContent = k(last30) + " in the last 30 days, annualised.";
+  if (feb) {
+    document.getElementById("smGrowL").textContent = "Growth since " + febLbl;
+    document.getElementById("smGrow").textContent = (last30 / feb).toFixed(1) + "×";
+    document.getElementById("smGrowP").textContent = "Monthly revenue from " + k(feb) + " in " + febLbl + " to " + k(last30) + " in the last 30 days.";
+  }
+  const el = document.getElementById("smBars");
+  el.style.gridTemplateColumns = "repeat(" + bars.length + ",minmax(0,1fr))";
+  el.innerHTML = bars.map(b => '<div class="bar"><em>' + b[0].slice(1) + '</em><div class="trk"><i style="height:' + Math.round(b[1] / max * 100) + '%"></i></div><span>' + b[2] + '</span></div>').join("");
+  document.getElementById("smNote").textContent = "Last 30 days: the four weeks to " + endLbl + " in the weekly sheet, scaled to 30 days. February comes from the order export. Each month is shown on the same 30-day basis, and the current month is left out until it closes.";
+}
 /* ---------- week-over-week matrices ---------- */
 function scrollMatricesToLatest(){ requestAnimationFrame(() => document.querySelectorAll("#viewDash .scrollx").forEach(s => { if (s.querySelector("table.matrix")) s.scrollLeft = s.scrollWidth; })); }
 function drawMatrices(){
@@ -929,6 +1010,7 @@ function padLaunched(){
 function render(){
   padLaunched();
   applyClusters();
+  try { renderSummary(); } catch (e) { console.warn("summary", e); }
   const cur = periodRows(week), prev = periodRows(week, true);
   const prevB = new Map(prev.map(r => [r.building, r]));
   const clustered = cur.filter(r => r.cluster);
@@ -1699,6 +1781,7 @@ function hideHover(){ const el = hoverEl(); el.classList.remove("on"); el.setAtt
 document.getElementById("navToggle").onclick = () => document.body.classList.toggle("navmin");
 function showView(v){
   document.querySelectorAll("aside.nav a").forEach(a => a.classList.toggle("on", a.dataset.view === v));
+  document.getElementById("viewSummary").classList.toggle("on", v === "summary");
   document.getElementById("viewDash").classList.toggle("on", v === "dash");
   if (v === "dash") scrollMatricesToLatest();
   document.getElementById("viewBuildings").classList.toggle("on", v === "buildings");
@@ -1713,6 +1796,7 @@ function showView(v){
   hideHover();
 }
 document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
+document.querySelectorAll("#viewSummary [data-go]").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.go); window.scrollTo(0,0); });
 
 // per-building facts the sheet does not carry, kept on this device
 let BSET = {
@@ -2600,6 +2684,34 @@ loadCSV(saved, true);
 })();
 </script>
 <script src="cart-data.js"></script>
+<script>
+/* summary: sign-ups, customers and repeat from the same anonymized exports the cart impact uses */
+(function(){
+  if (!window.ZING_CART_USERS || !window.ZING_CART_ORDERS) return;
+  const LIVE = ["thehamilton","forma","bezelmiami","alexanroxy","moderaedgewater","miamiworldtower","muzeatmet"];
+  const k = s => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const rows = t => { const L = t.trim().split(/\r?\n/), hd = L[0].split(",");
+    return L.slice(1).map(l => { const c = []; let cur = "", q = false;
+      for (const ch of l){ if (ch === '"') q = !q; else if (ch === "," && !q){ c.push(cur); cur = ""; } else cur += ch; }
+      c.push(cur); const o = {}; hd.forEach((x, i) => o[x] = c[i]); return o; }); };
+  const live = r => LIVE.includes(k(r.Building));
+  const U = rows(window.ZING_CART_USERS).filter(live);
+  const O = rows(window.ZING_CART_ORDERS).filter(r => live(r) && /^(paid|completed)$/i.test(r.Status || ""));
+  const by = {}; O.forEach(r => (by[r.Email] = by[r.Email] || []).push(r.Date));
+  const ref = Date.parse((window.ZING_CART_PULLED || "") + "T00:00:00Z") || Date.now();
+  let n = 0, two = 0, el = 0, rep = 0;
+  for (const e in by){ const d = [...new Set(by[e])].sort(); n++; if (d.length > 1) two++;
+    const f = Date.parse(d[0] + "T00:00:00Z");
+    if ((ref - f) / 864e5 >= 60){ el++; if (d[1] && (Date.parse(d[1] + "T00:00:00Z") - f) / 864e5 <= 60) rep++; } }
+  const set = (id, v) => { const x = document.getElementById(id); if (x) x.textContent = v; };
+  set("smSign", U.length.toLocaleString());
+  set("smCust", n.toLocaleString());
+  if (n) set("smCustP", Math.round(two / n * 100) + "% have booked two or more visits.");
+  if (el) set("smRep", Math.round(rep / el * 100) + "%");
+  const dt = new Date(ref), MO = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  set("smAsOf", "Summary · sign-ups and customers as of " + MO[dt.getUTCMonth()] + " " + dt.getUTCDate() + ", " + dt.getUTCFullYear());
+})();
+</script>
 <script src="cart-impact.js"></script>
 <script src="cart-gif.js"></script>
 <script src="unit-economics.js"></script>
