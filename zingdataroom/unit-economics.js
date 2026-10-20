@@ -40,7 +40,7 @@ const load = (k, d) => { try { return Object.assign(d, JSON.parse(localStorage.g
 const A = { burden: 0, other: 0 };   // data room: fixed, not read from this browser
 // data room: fixed launch / acquisition costs, shown to every visitor; never read from or written to this browser
 const COSTS = new Proxy({}, { get: (o, b) => (o[b] ||= { launch: 1500 }) });   // every building: $1,500 launch / acquisition
-const UE = { sort: "arr", dir: -1, metric: "resPen", hidden: new Set(), seg: "all", model: null, ready: false };
+const UE = { sort: "launch", dir: -1, metric: "resPen", hidden: new Set(), seg: "all", model: null, ready: false };
 
 /* ---------- building identity: sheet tabs, orders and users all resolve to the registry key ---------- */
 const NAME = { hamilton: "Hamilton" };
@@ -238,8 +238,10 @@ function buildingTable(P){
   let rows; try { rows = buildings().map(b => bm(b, tEnd, TABLE_DAYS)); } finally { EXACT_WEEK = null; }
   rows = rows.filter(r => r.rev > 0 || r.act > 0);
   rows.forEach(r => r.revPerAct = div(r.rev * 30.4 / TABLE_DAYS, r.act));
+  const LO = [/hamilton/, /forma/, /bezel/, /worldtower|mwt/, /muze/, /roxy/, /modera/];
+  const lo = b => { const i = LO.findIndex(re => re.test(b)); return i < 0 ? 99 : i; };
   const col = COLS.find(c => c[0] === UE.sort) || COLS[8];
-  rows.sort((a, b) => { const x = col[2](a), y = col[2](b);
+  if (UE.sort === "launch") rows.sort((a, b) => lo(a.b) - lo(b.b)); else rows.sort((a, b) => { const x = col[2](a), y = col[2](b);
     if (typeof x === "string") return String(x).localeCompare(y) * UE.dir;
     return ((fin(x) ? x : -Infinity) - (fin(y) ? y : -Infinity)) * UE.dir; });
   const head = COLS.map(c => `<th class="ue-s${c[0] === UE.sort ? " on" : ""}" data-k="${c[0]}">${c[1]}${c[0] === UE.sort ? (UE.dir < 0 ? " ↓" : " ↑") : ""}</th>`).join("");
@@ -265,12 +267,12 @@ function buildingTable(P){
     revPerAct: div(T.rev * 30.4 / TABLE_DAYS, T.act), util: div(sum(LH, r => r.hours), sum(LH, r => r.paidH)), rpp: div(sum(L, r => r.rev), sum(L, r => r.paidH)),
     rph: div(sum(H, r => r.rev), sum(H, r => r.hours)), contrib: sum(L, r => r.contrib), cm: div(sum(L, r => r.contrib), sum(L, r => r.rev)) });
   const total = `<tr class="ue-total">${COLS.map(c => c[0] === "name" ? `<td class="name">Portfolio<span class="addr">Labor and contribution: buildings with cleaners</span></td>` : `<td class="num">${c[3](c[2](T))}</td>`).join("")}</tr>`;
-  return `<table class="ue-bt"><thead><tr>${head}</tr></thead><tbody>${rows.map(r => `<tr${r.b === "hamilton" ? ' class="on"' : ""}>${COLS.map(c => td(r, c)).join("")}</tr>`).join("")}${total}</tbody></table>`;
+  return `<table class="ue-bt"><thead><tr>${head}</tr></thead><tbody>${rows.map(r => `<tr>${COLS.map(c => td(r, c)).join("")}</tr>`).join("")}${total}</tbody></table>`;
 }
 
 const METRICS = {
   resPen: ["Resident penetration", p0], actPen: ["Active-customer penetration", p0], rev: ["Monthly revenue", $0], arr: ["Annualized revenue", $k],
-  visits: ["Visits", n0], util: ["Cleaner utilization", p0], rpp: ["Revenue per paid cleaner hour", $2], cm: ["Contribution margin", p0]
+  visits: ["Visits", n0]
 };
 const CURVE_EXCLUDE = ["wynd2728", "paraisobayviews", "paraisobayview"];
 function niceStep(r){ const e = Math.pow(10, Math.floor(Math.log10(r || 1))), f = r / e; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * e; }
@@ -406,7 +408,7 @@ ${group("Retention", ["v2", "v3", "r30", "r60", "r90", "rec"])}</div></section>
 <section class="panel"><div class="phead"><h2>Building maturity curve</h2><p>Complete calendar months only · month 0 is the launch month</p>
 <label class="fld" style="margin-left:auto">Metric<select id="ueMetric">${Object.entries(METRICS).map(([k, v]) => `<option value="${k}"${k === UE.metric ? " selected" : ""}>${v[0]}</option>`).join("")}</select></label></div>
 <div class="ue-cw" id="ueChart">${chart(MS)}</div></section>
-<section class="panel"><div class="phead"><h2>Mature building economics</h2><p>Modelled on ${esc(UE.model.base)} · edit any input</p></div><div id="ueModel">${modelHTML()}</div></section>
+<section class="panel"><div class="phead"><h2>Mature building economics</h2><p>Forecast for ${esc(UE.model.base)}</p></div><div id="ueModel">${modelHTML()}</div></section>
 <section class="panel"><div class="phead"><h2>Building acquisition &amp; payback</h2><p>Monthly contribution since launch · launch and marketing costs are not in the data, type them in to get payback</p></div>
 <div class="scrollx" id="uePay">${paybackHTML(MS)}</div></section>
 <section class="panel"><div class="phead"><h2>Cohorts &amp; repeat behavior</h2><p>Customers grouped by the month of their first realized visit · repeat rates count only customers old enough to have had the chance</p></div>
@@ -463,7 +465,7 @@ const sig = () => [week, typeof ROWS !== "undefined" ? ROWS.length : 0, typeof R
 const refresh = force => { if (!visible() || queued) return; const s = sig(); if (force !== true && s === lastSig) return; lastSig = s; queued = true; setTimeout(() => { queued = false; try { renderAll(); } catch (e) { console.error("unit economics:", e); } }, 0); };
 const baseRender = window.render;
 if (typeof baseRender === "function") window.render = function(){ const out = baseRender.apply(this, arguments); refresh(); return out; };
-window.zingUnitEconomics = { render: () => refresh(true) };
+window.zingUnitEconomics = { render: () => refresh(true), customers: () => CUST };
 
 const text = (p, fb, tag) => fetch(p, { cache: "no-store" }).then(r => r.ok ? r.text() : Promise.reject())
   .then(t => { if (/^\s*</.test(t) || t.indexOf(",") < 0) throw 0; SRC[tag] = "data/" + p.split("/").pop() + " from the server"; return t; })

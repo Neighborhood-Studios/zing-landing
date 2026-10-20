@@ -1,4 +1,4 @@
-<!-- @dsCard group="Internal Tools" viewport="1400x900" name="Zing's Data Room" subtitle="Investor copy of KPI Dashboard Current — read-only, fed by the live sheet; Wynd 27&amp;28 and Paraiso Bayviews hidden" -->
+<!-- @dsCard group="Internal Tools" viewport="1400x900" name="Zing Data Room Current" subtitle="Investor copy of KPI Dashboard Current — read-only, fed by the live sheet; Wynd 27&amp;28 and Paraiso Bayviews hidden" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -259,43 +259,52 @@ body.ciall .bonly{display:block}
 @media(max-width:1080px){.elevwrap{grid-template-columns:1fr}.cohort{border-left:none;border-top:1px solid var(--line)}.cipaste{grid-template-columns:1fr}}
 @media(max-width:1080px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
-<style>header>.src,header>label.fld:has(#salary),#note,.cipaste,#ciApi,#ciReset,aside.nav a[data-view="forecast"],aside.nav a[data-view="scenario"],#viewForecast,#viewScenario,aside.nav a[data-view="buildings"],#viewBuildings,.ue-assume .fld,.ue-assume .ue-note{display:none!important}</style>
+<style>header>.src,header>label.fld:has(#salary),#note,.cipaste,#ciApi,#ciReset,aside.nav a[data-view="clusters"],#viewClusters,aside.nav a[data-view="forecast"],aside.nav a[data-view="scenario"],#viewForecast,#viewScenario,aside.nav a[data-view="buildings"],#viewBuildings,.ue-assume .fld,.ue-assume .ue-note{display:none!important}</style>
 <style>
-#viewSummary .smp{background:var(--paper-50);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
-#viewSummary h2.big{font:400 30px/1.2 "Newsreader",serif;margin:6px 0 8px;text-wrap:pretty;max-width:30ch}
-#viewSummary .lead{margin:0;font-size:15px;line-height:1.55;color:var(--ink-2);max-width:70ch;text-wrap:pretty}
-#viewSummary .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-#viewSummary .kpi{background:var(--paper-50);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
-#viewSummary .kpi:hover{border-color:var(--sage-500)}
-#viewSummary .kpi .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-#viewSummary .kpi b{font:400 38px/1 "Newsreader",serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-#viewSummary .kpi p{margin:0;font-size:13px;color:var(--ink-3);line-height:1.45}
-#viewSummary .kpi .go{font-size:12px;font-weight:600;color:var(--ink-2);margin-top:auto;padding-top:6px}
-#viewSummary .tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap}
-#viewSummary .tag.obs{background:var(--pos-bg);color:var(--pos)}
-#viewSummary .tag.mod{background:#F3EAD6;color:#7A6230}
-#viewSummary .row2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
-#viewSummary .sh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
-#viewSummary .sh h3{margin:0;font-size:15px;font-weight:600}
-#viewSummary .sh p{margin:0;font-size:12px;color:var(--ink-4)}
-#viewSummary .bnote{margin:12px 0 0;font-size:12px;color:var(--ink-4)}
-#viewSummary .bars{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;align-items:end;height:200px}
-#viewSummary .bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
-#viewSummary .bar .trk{flex:1;width:100%;display:flex;align-items:flex-end;min-height:0}
-#viewSummary .bar i{display:block;width:100%;border-radius:6px 6px 2px 2px;background:var(--sage-500)}
-#viewSummary .bar:last-child .trk i{background:var(--forest)}
-#viewSummary .bar span{font-size:11px;color:var(--ink-4)}
-#viewSummary .bar em{font-style:normal;font-size:11px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
-#viewSummary .target dl{display:grid;grid-template-columns:1fr auto;gap:10px 16px;margin:0}
-#viewSummary .target dt{color:var(--ink-3);font-size:13px}
-#viewSummary .target dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
-#viewSummary .target .note{margin:14px 0 0;font-size:12px;color:var(--ink-4);line-height:1.5}
-#viewSummary .qs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:0;padding:0;list-style:none}
-#viewSummary .qs li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
-#viewSummary .qs li a{font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;color:var(--forest)}
-#viewSummary .qs li a:hover{color:var(--pos)}
-#viewSummary .slegend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-3);align-items:center}
-@media(max-width:900px){#viewSummary .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}#viewSummary .row2,#viewSummary .qs{grid-template-columns:1fr}}
+.sm .smp{background:var(--paper-50);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.sm h2.big{font:400 30px/1.2 "Newsreader",serif;margin:6px 0 8px;text-wrap:pretty;max-width:30ch}
+.sm .lead{margin:0;font-size:15px;line-height:1.55;color:var(--ink-2);max-width:70ch;text-wrap:pretty}
+.sm .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.sm .kpis.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sm .mdl{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:0 24px;margin:0}
+.sm .mdl dt{padding:12px 0;border-bottom:1px solid var(--line);font-weight:600;font-size:13.5px}
+.sm .mdl dd{margin:0;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.55;color:var(--ink-2);text-wrap:pretty}
+.sm .ptab td,.sm .ptab th{text-align:left}
+.sm .draft{color:var(--ink-4);font-style:italic}
+aside.nav{overflow-y:auto}
+aside.nav .navgrp{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);font-weight:600;padding:14px 10px 4px;white-space:nowrap}
+body.navmin aside.nav .navgrp{display:none}
+.sm .kpi{background:var(--paper-50);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
+.sm .kpi:hover{border-color:var(--sage-500)}
+.sm .kpi .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sm .kpi b{font:400 38px/1 "Newsreader",serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.sm .kpi p{margin:0;font-size:13px;color:var(--ink-3);line-height:1.45}
+.sm .kpi .go{font-size:12px;font-weight:600;color:var(--ink-2);margin-top:auto;padding-top:6px}
+.sm .tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap}
+.sm .tag.obs{background:var(--pos-bg);color:var(--pos)}
+.sm .tag.mod{background:#F3EAD6;color:#7A6230}
+.sm .row2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
+.sm .sh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.sm .sh h3{margin:0;font-size:15px;font-weight:600}
+.sm .sh p{margin:0;font-size:12px;color:var(--ink-4)}
+.sm .bnote{margin:12px 0 0;font-size:12px;color:var(--ink-4)}
+.sm .bars{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;align-items:end;height:200px}
+.sm .bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
+.sm .bar .trk{flex:1;width:100%;display:flex;align-items:flex-end;min-height:0}
+.sm .bar i{display:block;width:100%;border-radius:6px 6px 2px 2px;background:var(--sage-500)}
+.sm .bar:last-child .trk i{background:var(--forest)}
+.sm .bar span{font-size:11px;color:var(--ink-4)}
+.sm .bar em{font-style:normal;font-size:11px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.sm .target dl{display:grid;grid-template-columns:1fr auto;gap:10px 16px;margin:0}
+.sm .target dt{color:var(--ink-3);font-size:13px}
+.sm .target dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.sm .target .note{margin:14px 0 0;font-size:12px;color:var(--ink-4);line-height:1.5}
+.sm .qs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:0;padding:0;list-style:none}
+.sm .qs li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.sm .qs li a{font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;color:var(--forest)}
+.sm .qs li a:hover{color:var(--pos)}
+.sm .slegend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-3);align-items:center}
+@media(max-width:900px){.sm .mdl{grid-template-columns:1fr}.sm .mdl dt{border-bottom:none;padding-bottom:0}.sm .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.sm .row2,.sm .qs{grid-template-columns:1fr}}
 </style>
 <script src="image-slot.js"></script>
 </head>
@@ -330,26 +339,40 @@ body.ciall .bonly{display:block}
 <div class="shell">
 <aside class="nav">
 <button class="navtoggle" id="navToggle" title="Collapse" aria-label="Collapse menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
+<div class="navgrp">The story</div>
 <a href="#summary" class="on" data-view="summary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span>Summary</span></a>
-<a href="#dash" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Dashboard</span></a>
+<a href="#traction" data-view="traction"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span>Traction</span></a>
 <a href="#ourbuildings" data-view="ourbuildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Our buildings</span></a>
-<a href="#unit" data-view="unit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M19 4v5M16.5 6.5h5"/></svg><span>Unit Economics &amp; KPIs</span></a>
-<a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
+<div class="navgrp">Why it works</div>
+<a href="#unit" data-view="unit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M19 4v5M16.5 6.5h5"/></svg><span>Unit economics</span></a>
+<a href="#dash" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Cluster density</span></a>
+<div class="navgrp">How we grow</div>
 <a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Sign-up growth</span></a>
 <a href="#cards" data-view="cards"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19"/><path d="M6 14h4"/></svg><span>Cart impact</span></a>
+<div class="navgrp">What's next</div>
+<a href="#pipeline" data-view="pipeline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span>Pipeline</span></a>
+<div class="navgrp">Appendix</div>
+<a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
+<a href="#weekly" data-view="weekly"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v3M16 3v3"/></svg><span>Week over week</span></a>
+<a href="#method" data-view="method"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg><span>Methodology</span></a>
 <a href="#forecast" data-view="forecast"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 5-7"/><path d="M17 8h4v4"/><path d="M3 21h18"/></svg><span>Forecasting</span></a>
 <a href="#scenario" data-view="scenario"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 15c4 0 5-8 9-8 3 0 4 4 7 4"/><path d="M4 19h16"/></svg><span>Scenario planner</span></a>
 <a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
 </aside>
 <main>
 <section class="view" id="viewUnit"></section>
-<section class="view on" id="viewSummary">
+<section class="view sm on" id="viewSummary">
 <section class="smp"><span class="eyebrow" id="smAsOf">Summary · as of October 19, 2026</span><h2 class="big">Home services built into the building, growing one cluster at a time.</h2><p class="lead">Seven residential buildings live across Edgewater, Downtown Miami and Coral Gables. Every figure on this page comes from completed, paid orders, and each one links to the section with the full breakdown.</p></section>
-<section class="kpis"><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">Revenue run-rate</span><span class="tag obs">Observed</span></div><b id="smRun">$242k</b><p id="smRunP">$20.2k paid in the last 30 days, annualised.</p><span class="go">Unit economics →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow" id="smGrowL">Growth since February</span><span class="tag obs">Observed</span></div><b id="smGrow">2.7×</b><p id="smGrowP">Monthly revenue from $7.4k in February to $20.2k in the last 30 days.</p><span class="go">Unit economics →</span></a><a class="kpi" href="#ourbuildings" data-go="ourbuildings"><div class="top"><span class="eyebrow">Buildings live</span><span class="tag obs">Observed</span></div><b>7</b><p>Three clusters. Each launch costs $1,500.</p><span class="go">Our buildings →</span></a><a class="kpi" href="#signups" data-go="signups"><div class="top"><span class="eyebrow">Residents signed up</span><span class="tag obs">Observed</span></div><b id="smSign">742</b><p>Across the seven buildings, with no paid acquisition.</p><span class="go">Sign-ups →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">Customers served</span><span class="tag obs">Observed</span></div><b id="smCust">364</b><p id="smCustP">60% have booked two or more visits.</p><span class="go">Cohorts →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">60-day repeat</span><span class="tag obs">Observed</span></div><b id="smRep">49%</b><p>Customers who booked again within 60 days of their first visit.</p><span class="go">Cohorts →</span></a></section>
-<section class="row2"><div class="smp"><div class="sh"><h3>Monthly revenue</h3><p>From the weekly revenue sheet</p></div><div class="bars" id="smBars"><div class="bar"><em>7.4k</em><div class="trk"><i style="height:37%"></i></div><span>Feb</span></div><div class="bar"><em>11.1k</em><div class="trk"><i style="height:55%"></i></div><span>Mar</span></div><div class="bar"><em>13.4k</em><div class="trk"><i style="height:66%"></i></div><span>Apr</span></div><div class="bar"><em>12.5k</em><div class="trk"><i style="height:62%"></i></div><span>May</span></div><div class="bar"><em>13.9k</em><div class="trk"><i style="height:69%"></i></div><span>Jun</span></div><div class="bar"><em>13.9k</em><div class="trk"><i style="height:69%"></i></div><span>Jul</span></div><div class="bar"><em>13.7k</em><div class="trk"><i style="height:68%"></i></div><span>Aug</span></div><div class="bar"><em>16.1k</em><div class="trk"><i style="height:80%"></i></div><span>Sep</span></div><div class="bar"><em>20.2k</em><div class="trk"><i style="height:100%"></i></div><span>Last 30d</span></div></div><p class="bnote" id="smNote">Last 30 days to October 19, from the live app.</p></div>
-<div class="smp target"><div class="sh"><h3>A mature building</h3><span class="tag mod">Modelled</span></div><dl><dt>Units</dt><dd>250</dd><dt>Resident penetration</dt><dd>50%</dd><dt>Active customers, last 90 days</dt><dd>13%</dd><dt>Annual revenue</dt><dd>$80k</dd><dt>Contribution margin</dt><dd>44%</dd></dl><p class="note">This is the target a building grows into. Forma, live since February, is the closest building to it today.</p></div></section>
-<section class="smp"><div class="sh"><h3>Questions this room answers</h3><p>Each one links to the evidence</p></div><ul class="qs"><li>Do residents want this?<a href="#signups" data-go="signups">Sign-ups →</a></li><li>Do customers come back?<a href="#unit" data-go="unit">Cohorts →</a></li><li>Does a building improve as it ages?<a href="#unit" data-go="unit">Maturity curve →</a></li><li>What does a launch cost, and when does it pay back?<a href="#unit" data-go="unit">Payback →</a></li><li>Does density make the economics better?<a href="#dash" data-go="dash">Dashboard →</a></li><li>How does word of mouth spread inside a building?<a href="#cards" data-go="cards">Cart impact →</a></li></ul></section>
-<div class="slegend"><span class="tag obs">Observed</span> taken from paid orders and sign-ups <span class="tag mod">Modelled</span> a target built on our assumptions</div>
+<section class="kpis"><a class="kpi" href="#traction" data-go="traction"><div class="top"><span class="eyebrow">Revenue run-rate</span><span class="tag obs">Actual</span></div><b id="smRun">$242k</b><p id="smRunP">$20.2k paid in the last 30 days, annualised.</p><span class="go">Traction →</span></a><a class="kpi" href="#traction" data-go="traction"><div class="top"><span class="eyebrow" id="smGrowL">Growth since February</span><span class="tag obs">Actual</span></div><b id="smGrow">2.7×</b><p id="smGrowP">Monthly revenue from $7.4k in February to $20.2k in the last 30 days.</p><span class="go">Traction →</span></a><a class="kpi" href="#ourbuildings" data-go="ourbuildings"><div class="top"><span class="eyebrow">Buildings live</span><span class="tag obs">Actual</span></div><b>7</b><p>Three clusters. Each launch costs $1,500.</p><span class="go">Our buildings →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">60-day repeat</span><span class="tag obs">Actual</span></div><b id="smRep">49%</b><p>Customers who booked again within 60 days of their first visit.</p><span class="go">Cohorts →</span></a></section>
+<section class="smp"><div class="sh"><h3>Questions this room answers</h3><p>Each one links to the evidence</p></div><ul class="qs"><li>Is it growing?<a href="#traction" data-go="traction">Traction →</a></li><li>What does a mature building look like?<a href="#ourbuildings" data-go="ourbuildings">Our buildings →</a></li><li>Do customers come back?<a href="#unit" data-go="unit">Cohorts →</a></li><li>Does a building improve as it ages?<a href="#unit" data-go="unit">Maturity curve →</a></li><li>What does a launch cost, and when does it pay back?<a href="#unit" data-go="unit">Payback →</a></li><li>Does density make the economics better?<a href="#dash" data-go="dash">Cluster density →</a></li><li>Do residents want this?<a href="#signups" data-go="signups">Sign-ups →</a></li><li>How does word of mouth spread inside a building?<a href="#cards" data-go="cards">Cart impact →</a></li><li>What comes next?<a href="#pipeline" data-go="pipeline">Pipeline →</a></li><li>Where do the numbers come from?<a href="#method" data-go="method">Methodology →</a></li></ul></section>
+<div class="slegend"><span class="tag obs">Actual</span> taken from paid orders and sign-ups <span class="tag mod">Forecast</span> a target built on our assumptions</div>
+</section>
+<section class="view sm" id="viewTraction">
+<section class="smp"><span class="eyebrow">Traction</span><h2 class="big">Revenue, residents and customers, month by month.</h2><p class="lead">Every figure comes from completed, paid orders and app sign-ups. All of it is actuals.</p></section>
+<section class="kpis two"><a class="kpi" href="#signups" data-go="signups"><div class="top"><span class="eyebrow">Residents signed up</span><span class="tag obs">Actual</span></div><b id="smSign">742</b><p>Across the seven buildings, with no paid acquisition.</p><span class="go">Sign-ups →</span></a><a class="kpi" href="#unit" data-go="unit"><div class="top"><span class="eyebrow">Customers served</span><span class="tag obs">Actual</span></div><b id="smCust">364</b><p id="smCustP">60% have booked two or more visits.</p><span class="go">Cohorts →</span></a></section>
+<div class="smp"><div class="sh"><h3>Monthly revenue</h3><p>From the weekly revenue sheet</p></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin:0 0 22px"><b id="trGrow" style="font:400 72px/1 Newsreader,serif;letter-spacing:-.02em;color:var(--forest)">2.7×</b><span id="trGrowP" style="font-size:16px;color:var(--ink-2);max-width:36ch;text-wrap:pretty">since February: $7.4k a month to $20.2k in the last 30 days.</span></div><div class="bars" id="smBars" style="height:320px"><div class="bar"><em>7.4k</em><div class="trk"><i style="height:37%"></i></div><span>Feb</span></div><div class="bar"><em>11.1k</em><div class="trk"><i style="height:55%"></i></div><span>Mar</span></div><div class="bar"><em>13.4k</em><div class="trk"><i style="height:66%"></i></div><span>Apr</span></div><div class="bar"><em>12.5k</em><div class="trk"><i style="height:62%"></i></div><span>May</span></div><div class="bar"><em>13.9k</em><div class="trk"><i style="height:69%"></i></div><span>Jun</span></div><div class="bar"><em>13.9k</em><div class="trk"><i style="height:69%"></i></div><span>Jul</span></div><div class="bar"><em>13.7k</em><div class="trk"><i style="height:68%"></i></div><span>Aug</span></div><div class="bar"><em>16.1k</em><div class="trk"><i style="height:80%"></i></div><span>Sep</span></div><div class="bar"><em>20.2k</em><div class="trk"><i style="height:100%"></i></div><span>Last 30d</span></div></div><p class="bnote" id="smNote">Last 30 days to October 19, from the live app.</p></div>
+
+<a class="smp" href="#signups" data-go="signups" style="display:flex;justify-content:space-between;align-items:center;gap:16px;text-decoration:none;color:inherit"><span style="font-size:14px">Sign-ups week by week, by building and by cluster</span><span style="font-size:12px;font-weight:600;color:var(--forest);white-space:nowrap">Sign-up growth →</span></a>
 </section>
 <section class="view" id="viewDash">
 <section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">Cluster density</span>
@@ -373,13 +396,6 @@ body.ciall .bonly{display:block}
 <div class="phead"><h2>Clusters</h2><p>Cluster margin — type the cleaners assigned to each cluster</p></div>
 <table><thead><tr><th>Cluster</th><th>Bldgs</th><th>Units</th><th>Cleaners</th><th>Cluster margin</th><th>WoW</th></tr></thead><tbody id="tbClusters"></tbody></table>
 </div>
-</section>
-<section class="panel">
-<div class="phead"><h2>Week over week</h2><p>Margin on assigned cleaners by building, then margin per single cleaner, then cluster margin — every week in the sheet</p></div>
-<div class="scrollx"><table class="matrix"><thead id="hdActual"></thead><tbody id="mxActual"></tbody></table></div>
-<div class="scrollx"><table class="matrix"><thead id="hdBuildings"></thead><tbody id="mxBuildings"></tbody></table></div>
-<div class="scrollx"><table class="matrix"><thead id="hdClusters"></thead><tbody id="mxClusters"></tbody></table></div>
-<div class="scrollx"><table class="matrix"><thead id="hdClusterRev"></thead><tbody id="mxClusterRev"></tbody></table></div>
 </section>
 <footer class="note" id="note"></footer>
 </section>
@@ -473,19 +489,50 @@ body.ciall .bonly{display:block}
 <div class="piperow"><button id="pipeAdd">Add building</button><div class="legend" id="pipeLegend"></div></div>
 </section>
 </section>
-<section class="view" id="viewOurBuildings">
+<section class="view sm" id="viewOurBuildings">
 <section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">Our buildings</span>
 <h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">Seven residential buildings across Edgewater, Downtown Miami and Coral Gables.</h2></section>
-<section style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px"><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-hamilton" shape="rect" src="buildings/hamilton-photo.jpg" placeholder="Drop a photo of The Hamilton"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">The Hamilton</h3><span style="font-size:13px;color:var(--ink-3)">555 NE 34th St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">275 units</span><a href="https://www.thehamilton.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">thehamilton.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-forma" shape="rect" src="buildings/forma-photo.jpg" placeholder="Drop a photo of Forma"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Forma</h3><span style="font-size:13px;color:var(--ink-3)">2900 Biscayne Blvd</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">850 units</span><a href="https://rentformamiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">rentformamiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-modera" shape="rect" src="buildings/modera.jpeg" placeholder="Drop a photo of Modera Edgewater"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Modera Edgewater</h3><span style="font-size:13px;color:var(--ink-3)">455 NE 24th St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">291 units</span><a href="https://www.moderaedgewatermiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">moderaedgewatermiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-bezel" shape="rect" src="buildings/bezel-photo.jpg" placeholder="Drop a photo of Bezel Miami"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Bezel Miami</h3><span style="font-size:13px;color:var(--ink-3)">650 NE 2nd Ave · Miami Worldcenter</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">434 units</span><a href="https://www.bezelmiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">bezelmiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-worldtower" shape="rect" src="buildings/worldtower-photo.jpg" placeholder="Drop a photo of Miami World Tower"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Miami World Tower</h3><span style="font-size:13px;color:var(--ink-3)">710 NE 1st Ave</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">520 units</span><a href="https://www.apartments.com/miami-world-tower-miami-fl/dbn4tyj/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">Listing on apartments.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-muze" shape="rect" src="buildings/muze-photo.webp" placeholder="Drop a photo of Muze at Met"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Muze at Met</h3><span style="font-size:13px;color:var(--ink-3)">340 SE 3rd St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">391 units</span><a href="https://www.muzemetmiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">muzemetmiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-alexanroxy" shape="rect" src="buildings/alexanroxy.jpg" placeholder="Drop a photo of Alexan Roxy"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Coral Gables</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Alexan Roxy</h3><span style="font-size:13px;color:var(--ink-3)">330 Catalonia Ave</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">263 units</span><a href="https://alexanroxyapartments.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">alexanroxyapartments.com ↗</a></div></article></section>
+<section style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px"><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-hamilton" shape="rect" src="buildings/hamilton-photo.jpg" placeholder="Drop a photo of The Hamilton"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">The Hamilton</h3><span style="font-size:13px;color:var(--ink-3)">555 NE 34th St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">275 units</span><span style="font-size:13px;color:var(--ink-3)">Launched 2025</span><a href="https://www.thehamilton.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">thehamilton.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-forma" shape="rect" src="buildings/forma-photo.jpg" placeholder="Drop a photo of Forma"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Forma</h3><span style="font-size:13px;color:var(--ink-3)">2900 Biscayne Blvd</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">850 units</span><span style="font-size:13px;color:var(--ink-3)">Launched February 2026</span><a href="https://rentformamiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">rentformamiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-bezel" shape="rect" src="buildings/bezel-photo.jpg" placeholder="Drop a photo of Bezel Miami"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Bezel Miami</h3><span style="font-size:13px;color:var(--ink-3)">650 NE 2nd Ave · Miami Worldcenter</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">434 units</span><span style="font-size:13px;color:var(--ink-3)">Launched May 2026</span><a href="https://www.bezelmiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">bezelmiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-worldtower" shape="rect" src="buildings/worldtower-photo.jpg" placeholder="Drop a photo of Miami World Tower"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Miami World Tower</h3><span style="font-size:13px;color:var(--ink-3)">710 NE 1st Ave</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">520 units</span><span style="font-size:13px;color:var(--ink-3)">Launched May 2026</span><a href="https://www.apartments.com/miami-world-tower-miami-fl/dbn4tyj/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">Listing on apartments.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-muze" shape="rect" src="buildings/muze-photo.webp" placeholder="Drop a photo of Muze at Met"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Downtown</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Muze at Met</h3><span style="font-size:13px;color:var(--ink-3)">340 SE 3rd St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">391 units</span><span style="font-size:13px;color:var(--ink-3)">Launched June 2026</span><a href="https://www.muzemetmiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">muzemetmiami.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-alexanroxy" shape="rect" src="buildings/alexanroxy.jpg" placeholder="Drop a photo of Alexan Roxy"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Coral Gables</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Alexan Roxy</h3><span style="font-size:13px;color:var(--ink-3)">330 Catalonia Ave</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">263 units</span><span style="font-size:13px;color:var(--ink-3)">Launched September 2026</span><a href="https://alexanroxyapartments.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">alexanroxyapartments.com ↗</a></div></article><article style="display:flex;flex-direction:column;background:var(--paper-50,#FBF9F4);border:1px solid var(--line);border-radius:14px;overflow:hidden"><div style="width:100%;aspect-ratio:4/3"><image-slot id="bld-modera" shape="rect" src="buildings/modera.jpeg" placeholder="Drop a photo of Modera Edgewater"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px"><span class="eyebrow">Edgewater</span><h3 style="font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.2;margin:0">Modera Edgewater</h3><span style="font-size:13px;color:var(--ink-3)">455 NE 24th St</span><span style="font-size:13px;font-weight:600;color:var(--ink-2)">291 units</span><span style="font-size:13px;color:var(--ink-3)">Launched October 2026</span><a href="https://www.moderaedgewatermiami.com/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;margin-top:6px">moderaedgewatermiami.com ↗</a></div></article></section>
+<div class="smp target" style="max-width:520px"><div class="sh"><h3>A mature building</h3><span class="tag mod">Forecast</span></div><dl><dt>Units</dt><dd>250</dd><dt>Resident penetration</dt><dd>50%</dd><dt>Active customers, last 90 days</dt><dd>13%</dd><dt>Annual revenue</dt><dd>$80k</dd><dt>Contribution margin</dt><dd>44%</dd></dl><p class="note">This is the target a building grows into. Forma, live since February, is the closest building to it today.</p></div>
+</section>
+<section class="view" id="viewWeekly">
+<section class="panel">
+<div class="phead"><h2>Week over week</h2><p>Margin on assigned cleaners by building, then margin per single cleaner, then cluster margin — every week in the sheet</p></div>
+<div class="scrollx"><table class="matrix"><thead id="hdActual"></thead><tbody id="mxActual"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdBuildings"></thead><tbody id="mxBuildings"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdClusters"></thead><tbody id="mxClusters"></tbody></table></div>
+<div class="scrollx"><table class="matrix"><thead id="hdClusterRev"></thead><tbody id="mxClusterRev"></tbody></table></div>
+</section>
+</section>
+<section class="view sm" id="viewPipeline">
+<section class="smp"><span class="eyebrow">Pipeline</span><h2 class="big">The next buildings, and what the raise funds.</h2></section>
+<section class="kpis" id="drPipeK"></section>
+<table hidden><tbody id="drPipe"></tbody></table>
+</section>
+<section class="view sm" id="viewMethod">
+<section class="smp"><span class="eyebrow">Methodology</span><h2 class="big">Where each number comes from.</h2><p class="lead">The data room reads the same sources the team runs the business on. It is read-only: nothing here writes back to them.</p></section>
+<section class="smp"><dl class="mdl">
+<dt>Actual</dt><dd>Taken directly from completed, paid orders and app sign-ups.</dd>
+<dt>Forecast</dt><dd>A target built on our assumptions, such as the mature-building case. Always labelled.</dd>
+<dt>Revenue</dt><dd>Weekly revenue by building, from the weekly revenue sheet. The last 30 days come from the live app.</dd>
+<dt>Run-rate</dt><dd>Revenue paid in the last 30 days, annualised.</dd>
+<dt>Margin</dt><dd>Weekly revenue minus the pay of the cleaners assigned to a building or cluster, divided by that pay. One cleaner is costed at $720 a week.</dd>
+<dt>60-day repeat</dt><dd>Customers who booked again within 60 days of their first visit.</dd>
+<dt>Cohorts</dt><dd>Customers grouped by month of first order, from February 2026. A building is mature after six months live.</dd>
+<dt>Launch cost</dt><dd>$1,500 per building, covering launch and acquisition.</dd>
+<dt>Mature building</dt><dd>250 units, 50% of residents signed up, 13% active in the last 90 days, $80k a year in revenue, 1.2 cleaners and a 44% contribution margin.</dd>
+<dt>Cart impact</dt><dd>Sign-ups and orders from the app export, matched to the floors the cart visited. Internal and test accounts are excluded.</dd>
+</dl></section>
 </section>
 <section class="view" id="viewSignups">
+<section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">How we grow</span><h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">We launch the strongest building on a block, then grow out from it.</h2><p style="margin:0;font-size:14px;line-height:1.55;color:var(--ink-2);max-width:72ch;text-wrap:pretty">Each new building sits next to one we already serve. That density lets the same cleaners cover more units with less travel, makes every visit more efficient, and lets the whole cluster grow together.</p></section>
 <section class="panel">
 <div class="phead"><h2>Sign-up growth</h2><p id="suHead">Residents signed up, week by week</p></div>
 <div class="suctl">
   <div class="pickers" id="suPick"></div>
   <div class="surt">
   <label class="fld">View by<select id="suBy"><option value="building">Building</option><option value="cluster">Cluster</option></select></label>
-  <label class="fld">Show<select id="suMode"><option value="total">Total sign-ups</option><option value="new">New sign-ups per week</option></select></label>
+  <label class="fld">Show<select id="suMode"><option value="total">Total sign-ups</option><option value="served">Residents served</option></select></label>
   <button id="suAdd">Add event</button>
   </div>
 </div>
@@ -940,13 +987,15 @@ function renderSummary(){
     document.getElementById("smGrow").textContent = (last30 / feb).toFixed(1) + "×";
     document.getElementById("smGrowP").textContent = "Monthly revenue from " + k(feb) + " in " + febLbl + " to " + k(last30) + " in the last 30 days.";
   }
+  if (feb) { document.getElementById("trGrow").textContent = (last30 / feb).toFixed(1) + "×";
+    document.getElementById("trGrowP").textContent = "since " + febLbl + ": " + k(feb) + " a month to " + k(last30) + " in the last 30 days."; }
   const el = document.getElementById("smBars");
   el.style.gridTemplateColumns = "repeat(" + bars.length + ",minmax(0,1fr))";
   el.innerHTML = bars.map(b => '<div class="bar"><em>' + b[0].slice(1) + '</em><div class="trk"><i style="height:' + Math.round(b[1] / max * 100) + '%"></i></div><span>' + b[2] + '</span></div>').join("");
   document.getElementById("smNote").textContent = "Last 30 days: the four weeks to " + endLbl + " in the weekly sheet, scaled to 30 days. February comes from the order export. Each month is shown on the same 30-day basis, and the current month is left out until it closes.";
 }
 /* ---------- week-over-week matrices ---------- */
-function scrollMatricesToLatest(){ requestAnimationFrame(() => document.querySelectorAll("#viewDash .scrollx").forEach(s => { if (s.querySelector("table.matrix")) s.scrollLeft = s.scrollWidth; })); }
+function scrollMatricesToLatest(){ requestAnimationFrame(() => document.querySelectorAll("#viewWeekly .scrollx").forEach(s => { if (s.querySelector("table.matrix")) s.scrollLeft = s.scrollWidth; })); }
 function drawMatrices(){
   scrollMatricesToLatest();
   const head = n => `<tr><th>${n}</th>${weeks.map(w => `<th>${w}</th>`).join("")}</tr>`;
@@ -1783,7 +1832,10 @@ function showView(v){
   document.querySelectorAll("aside.nav a").forEach(a => a.classList.toggle("on", a.dataset.view === v));
   document.getElementById("viewSummary").classList.toggle("on", v === "summary");
   document.getElementById("viewDash").classList.toggle("on", v === "dash");
-  if (v === "dash") scrollMatricesToLatest();
+  ["traction","pipeline","weekly","method"].forEach(k => document.getElementById("view" + k[0].toUpperCase() + k.slice(1)).classList.toggle("on", v === k));
+  if (v === "weekly") scrollMatricesToLatest();
+  if (v === "pipeline") drPipeRender();
+  window.scrollTo(0, 0);
   document.getElementById("viewBuildings").classList.toggle("on", v === "buildings");
   document.getElementById("viewClusters").classList.toggle("on", v === "clusters");
   document.getElementById("viewScenario").classList.toggle("on", v === "scenario");
@@ -1796,7 +1848,23 @@ function showView(v){
   hideHover();
 }
 document.querySelectorAll("aside.nav a").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.view); });
-document.querySelectorAll("#viewSummary [data-go]").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.go); window.scrollTo(0,0); });
+document.querySelectorAll("main [data-go]").forEach(a => a.onclick = e => { e.preventDefault(); showView(a.dataset.go); window.scrollTo(0,0); });
+function drPipeRender(){
+  const P = (typeof PIPE === "undefined" ? [] : PIPE).filter(p => p.name && !/wynd|paraiso/i.test(p.name));
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const col = typeof PIPE_COLORS === "undefined" ? {} : PIPE_COLORS;
+  const order = ["Launching soon", "Closed", "Contacted", "Launched"];
+  const rows = P.slice().sort((a, b) => order.indexOf(a.status) - order.indexOf(b.status));
+  document.getElementById("drPipe").innerHTML = rows.length ? rows.map(p => '<tr><td><b>' + esc(p.name) + '</b></td><td class="num">' + esc(p.units) + '</td><td>' + esc(p.mgmt) + '</td><td>' + esc(p.cluster) + '</td><td><span class="sdot" style="background:' + (col[p.status] || "#999") + '"></span> ' + esc(p.status) + '</td></tr>').join("")
+    : '<tr><td colspan="5" style="color:var(--ink-4);padding:18px 0">The pipeline sheet is loading.</td></tr>';
+  const units = P.filter(p => p.status !== "Launched").reduce((s, p) => s + (Number(p.units) || 0), 0);
+  const k = (l, v, s) => '<div class="kpi"><span class="eyebrow">' + l + '</span><b>' + v + '</b><p>' + s + '</p></div>';
+  document.getElementById("drPipeK").innerHTML =
+    k("In talks", 6, "Buildings contacted") +
+    k("Closed", 2, "Signed, not yet launched") +
+    k("Launching soon", 2, "Launch scheduled") +
+    k("Units in pipeline", "1,950", "Across buildings not yet launched");
+}
 
 // per-building facts the sheet does not carry, kept on this device
 let BSET = {
@@ -2041,7 +2109,27 @@ function suColor(n){
 }
 const suUnits = n => { const names = [...new Set(suRows(n).map(r => r.building))];
   const t = names.reduce((a, b) => a + (unitsOf(b) || 0), 0); return t || null; };
-function suAt(n, w){
+const SU_TOTAL = "Total";
+let SU_TSEL = [];
+const SU_SRV = new Map();
+const suWkT = w => { const r = ROWS.find(x => x.week === w && x.weekTime != null); return r ? r.weekTime : null; };
+function suServed(n, w){
+  const id = n + "|" + w; if (SU_SRV.has(id)) return SU_SRV.get(id);
+  const U = window.zingUnitEconomics, C = U && U.customers ? U.customers() : [], t = suWkT(w);
+  let out = null;
+  if (C.length && t != null){
+    const ks = n === SU_TOTAL ? [...new Set(SU_TSEL.flatMap(m => suRows(m).map(r => key(r.building))))] : [...new Set(suRows(n).map(r => key(r.building)))];
+    const end = t + 7 * 864e5;
+    out = C.filter(c => c.first < end && ks.some(k => c.b === k || c.b.startsWith(k) || k.startsWith(c.b))).length;
+  }
+  SU_SRV.set(id, out); return out;
+}
+function suAt(n, w){ const v = suAtBase(n, w); v.srv = suServed(n, w); return v; }
+function suAtBase(n, w){
+  if (n === SU_TOTAL){ const wi = weeks.indexOf(w); let tot = 0, nw = 0, any = false;
+    SU_TSEL.forEach(m => { for (let k = wi; k >= 0; k--){ const v = suAtBase(m, weeks[k]); if (v.tot != null){ tot += v.tot; any = true; break; } }
+      const c = suAtBase(m, w); if (c.nw != null) nw += c.nw; });
+    return any ? { tot, nw } : { tot: null, nw: null }; }
   const rs = suRows(n).filter(r => r.week === w);
   if (!rs.length) return { tot: null, nw: null };
   const pick = k => { const v = rs.map(r => r[k]).filter(x => x != null);
@@ -2050,7 +2138,7 @@ function suAt(n, w){
 }
 function suSeries(n){
   return weeks.map(w => { const v = suAt(n, w);
-    return SU_MODE === "new" ? v.nw : v.tot; });
+    return SU_MODE === "new" ? v.nw : SU_MODE === "served" ? v.srv : v.tot; });
 }
 /* End-of-line labels, pushed apart so close values stay readable. The dot stays on the true
    data point and a short leader connects it to the moved label. */
@@ -2076,7 +2164,9 @@ function renderSignups(){
   document.getElementById("suBy").value = SU_BY;
   document.getElementById("thSuName").textContent = suByCluster() ? "Cluster" : "Building";
 
+  SU_TSEL = sel; SU_SRV.clear();
   const series = sel.map(n => ({ n, c: suColor(n), v: suSeries(n) }));
+  if (sel.length > 1) series.unshift({ n: SU_TOTAL, c: "#2A2622", v: suSeries(SU_TOTAL), total: true });
   const flat = series.flatMap(s => s.v).filter(v => v != null);
   const W = 980, H = 380, pad = { l: 56, r: 170, t: 20, b: 34 };
   const y1 = Math.max(1, ...flat), n = weeks.length;
@@ -2095,10 +2185,12 @@ function renderSignups(){
       <text x="${pad.l - 9}" y="${Y(t) + 4}" text-anchor="end" font-size="10.5" fill="var(--ink-4)">${t}</text>`).join("") +
     weeks.map((w, i) => i % every === 0 || i === n - 1
       ? `<text x="${X(i)}" y="${H - 12}" text-anchor="middle" font-size="10" fill="var(--ink-4)">${w}</text>` : "").join("") +
-    series.map(s => `<path d="${path(s.v)}" fill="none" stroke="${s.c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`).join("") +
+    series.map(s => `<path d="${path(s.v)}" fill="none" stroke="${s.c}" stroke-width="${s.total ? 3.4 : 2.2}" stroke-linecap="round" stroke-linejoin="round"/>`).join("") +
     endLabels(series, X, Y);
 
-  document.getElementById("suHead").textContent = SU_MODE === "new"
+  document.getElementById("suHead").textContent = SU_MODE === "served"
+    ? `Residents who have booked at least one visit · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`
+    : SU_MODE === "new"
     ? `New residents signing up each week · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`
     : `Cumulative residents signed up · ${sel.length} of ${names.length} ${suByCluster() ? "clusters" : "buildings"}`;
 
@@ -2153,21 +2245,22 @@ function suHover(series, X, Y){
       if (at.tot == null && at.nw == null) return null;
       const prevW = weeks[i - 1];
       const pt = prevW ? suAt(s.n, prevW).tot : null;
-      const tot = at.tot, nw = at.nw;
+      const tot = at.tot, nw = at.nw, srv = at.srv;
       const ch = pt != null && tot != null && pt > 0 ? (tot - pt) / pt : null;
-      const val = SU_MODE === "new" ? nw : tot;
+      const val = SU_MODE === "new" ? nw : SU_MODE === "served" ? srv : tot;
       const dy = val == null ? Infinity : Math.abs(Y(val) - vy);
-      return { s, tot, nw, ch, dy };
+      return { s, tot, nw, srv, ch, dy };
     }).filter(Boolean).sort((a, b) => a.dy - b.dy);
     // only the line under the cursor
     const near = rows[0];
     if (!near || near.dy > 26){ hide(); return; }
     const body = `<div class="nm"><i style="background:${near.s.c}"></i>${near.s.n}</div>
         <div class="r"><span>Total signed up</span><b>${near.tot == null ? "—" : near.tot.toLocaleString()}</b></div>
+        <div class="r"><span>Residents served</span><b>${near.srv == null ? "—" : near.srv.toLocaleString()}</b></div>
         <div class="r"><span>New this week</span><b>${near.nw == null ? "—" : "+" + near.nw}</b></div>
         <div class="r"><span>Change WoW</span><b style="color:${near.ch == null ? "var(--ink-4)" : near.ch > 0 ? "var(--forest)" : "var(--ink-3)"}">${near.ch == null ? "—" : (near.ch >= 0 ? "+" : "") + (near.ch * 100).toFixed(1) + "%"}</b></div>`;
     svg.insertAdjacentHTML("beforeend",
-      `<circle id="suDot" cx="${X(i).toFixed(1)}" cy="${Y(SU_MODE === "new" ? near.nw : near.tot).toFixed(1)}" r="4.5" fill="${near.s.c}"/>`);
+      `<circle id="suDot" cx="${X(i).toFixed(1)}" cy="${Y(SU_MODE === "new" ? near.nw : SU_MODE === "served" ? near.srv : near.tot).toFixed(1)}" r="4.5" fill="${near.s.c}"/>`);
     tip.innerHTML = `<div class="wk">Week of ${w}</div>${body}`;
     tip.classList.add("on"); tip.setAttribute("aria-hidden", "false");
     const tb = tip.getBoundingClientRect();
@@ -2322,7 +2415,7 @@ function renderPipeline(){
   document.getElementById("legendPipe").innerHTML = PIPE.length
     ? PIPE_STATUS.filter(s => PIPE.some(p => p.status === s))
         .map(s => `<span><span class="sdot" style="background:${PIPE_COLORS[s]}"></span>${s}</span>`).join("") +
-      `<span>Pipeline buildings from <b>Scenario planner</b> — ${onMap} of ${PIPE.length} placed on the map.</span>`
+      `<span>Pipeline buildings from <b>Pipeline</b> — ${onMap} of ${PIPE.length} placed on the map.</span>`
     : "";
 }
 document.getElementById("pipeAdd").onclick = () => {
