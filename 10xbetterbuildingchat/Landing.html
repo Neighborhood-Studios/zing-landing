@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zing Neighbors · Neighbors agree in the chat. Zing makes it happen.</title>
+<meta name="theme-color" content="#FAFAFB">
+<link rel="icon" href="icon-192.png">
+<style>
+:root{--bg:#FAFAFB;--ink:#121826;--ink2:#3A3F4B;--mute:#6B6D74;--line:#E4E5E9;--bub:#EDEEF1;--cobalt:#2747D9;--cobalt-h:#1E3AB8;--bluet:#E7ECFD;--ai:#FFF3C4;--sig:#FFD23F;--ai-lbl:#6B5300;--ok:#2F6B4A;--okt:#E3EFE6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--cobalt);text-decoration:none}a:hover{color:var(--cobalt-h)}
+h1,h2,h3{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;letter-spacing:-.025em;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.nav{position:sticky;top:44px;z-index:40;background:rgba(250,250,251,.86);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink)}.logo i{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--sig);display:grid;place-items:center;font:700 13px system-ui;font-style:normal}
+.nav nav{display:flex;gap:22px;margin-left:auto}.nav .wrap>.btn{margin-left:auto}.nav nav+.btn{margin-left:0}.nav nav a{color:var(--ink2);font-size:15px}.nav nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 24px;border-radius:999px;background:var(--cobalt);color:#fff;font-weight:600;font-size:16px;border:none;cursor:pointer;white-space:nowrap}.btn:hover{background:var(--cobalt-h);color:#fff}
+.btn.sm{height:40px;padding:0 18px;font-size:14.5px}.btn.ghost{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line)}.btn.ghost:hover{box-shadow:0 0 0 1px var(--ink);color:var(--ink)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ai-lbl);background:var(--ai);border-radius:999px;padding:5px 12px}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sig)}
+/* hero */
+.hero{padding:56px 0 40px}.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) auto;gap:64px;align-items:center}
+.hero h1{font-size:clamp(42px,5.6vw,72px);line-height:1.02;font-weight:700;margin-top:18px}
+.hero h1 span{color:var(--cobalt)}
+.hero .lead{font-size:20px;color:var(--ink2);margin-top:20px;max-width:520px}
+.hero .ctas{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.hero .fine{font-size:14px;color:var(--mute);margin-top:14px}
+/* phone demo */
+.demo{display:flex;flex-direction:column;align-items:center;gap:16px}
+.ph{width:350px;height:700px;border-radius:52px;background:#111;padding:10px;box-shadow:0 40px 80px -36px rgba(18,24,38,.45)}
+.sc{position:relative;height:100%;border-radius:43px;overflow:hidden;background:var(--bg)}
+.dhd{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;flex-direction:column;align-items:center;padding:20px 0 26px;background:linear-gradient(var(--bg) 60%,rgba(250,250,251,0))}
+.dhd i{width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--sig);display:grid;place-items:center;font:700 13px system-ui;font-style:normal;border:3px solid var(--bg)}
+.dhd b{margin-top:-6px;font-size:12.5px;font-weight:600;padding:3px 11px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(17,17,17,.08),0 0 0 .5px rgba(17,17,17,.06)}
+.feed{position:absolute;inset:0;padding:100px 14px 86px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden}
+.m{max-width:88%;background:var(--bub);border-radius:20px;padding:9px 13px;font-size:14.5px;line-height:1.4;animation:in .35s ease both}
+.m small{display:block;font-size:11.5px;font-weight:600;color:var(--mute);margin-bottom:1px}
+.m.me{align-self:flex-end;background:var(--cobalt);color:#fff}
+.m.ai{max-width:100%;background:var(--ai)}.m.ai small{color:var(--ai-lbl);display:flex;align-items:center;gap:6px}.m.ai small:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sig)}
+.m.ai .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.m.ai .acts span{font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:#fff}.m.ai .acts span.on{background:var(--cobalt);color:#fff}
+.m.ai .acts span{position:relative;transition:transform .15s,background .2s,color .2s}
+.m .acts span.tap,.po>div.tap{transform:scale(.93)}
+.m .acts span.tap:after,.po>div.tap:after{content:"";position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(39,71,217,.35);animation:rip .42s ease-out forwards;pointer-events:none}
+@keyframes rip{from{transform:scale(.3);opacity:1}to{transform:scale(2.2);opacity:0}}
+.m.poll{max-width:100%;background:#fff;box-shadow:0 0 0 1px var(--line)}.m.poll small{color:var(--cobalt)}.m.poll .pt{display:block;font-size:16px;line-height:1.25;margin-bottom:8px}.m.poll .pw{font-weight:400;font-size:12.5px;color:var(--mute)}
+.po{display:flex;flex-direction:column;gap:6px}.po>div{position:relative;display:grid;grid-template-columns:96px minmax(0,1fr) 26px;align-items:center;gap:8px;padding:7px 10px;border-radius:14px;background:var(--bub);transition:transform .15s,background .2s;font-size:13.5px}
+.po>div.on{background:var(--bluet)}.po>div.on .pl{color:var(--cobalt);font-weight:600}.po i{height:6px;border-radius:9px;background:rgba(18,24,38,.08);overflow:hidden}.po em{display:block;height:100%;width:0;background:var(--cobalt);border-radius:9px}.po b{text-align:right;font-variant-numeric:tabular-nums;font-size:13px}
+.m.poll .pf{display:block;margin-top:7px;font-size:12px;color:var(--mute)}
+.m.done{align-self:center;max-width:94%;background:#fff;box-shadow:0 0 0 1px var(--line);text-align:center;font-size:13.5px}.m.done b{display:block;font-size:20px;letter-spacing:-.02em}
+.m.tag{align-self:flex-start;background:none;padding:0 4px;font-size:12px;color:var(--ai-lbl);font-weight:600}
+.typing{align-self:flex-start;background:var(--bub);border-radius:20px;padding:12px 14px;display:flex;gap:4px;animation:in .25s ease both}.typing i{width:6px;height:6px;border-radius:50%;background:#A0A3AB;animation:dot 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+.dcmp span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;direction:rtl;text-align:left}.dcmp span.on{color:var(--ink)}.dcmp span.on:after{content:"";display:inline-block;width:2px;height:17px;background:var(--cobalt);margin-left:1px;vertical-align:-3px;animation:dot .9s infinite}
+.dcmp b{width:34px;height:34px;margin-right:-10px;border-radius:50%;background:var(--bub);color:#fff;display:grid;place-items:center;font-size:16px;flex-shrink:0;transition:background .2s,transform .15s}.dcmp b.on{background:var(--cobalt)}.dcmp b.go{transform:scale(.85)}
+.dcmp{gap:10px;position:absolute;left:12px;right:12px;bottom:16px;z-index:3;height:48px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 6px 20px rgba(17,17,17,.08),0 0 0 .5px rgba(17,17,17,.06);display:flex;align-items:center;padding:0 18px;color:#9A9CA3;font-size:15px}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes dot{0%,100%{opacity:.3}50%{opacity:1}}
+.cases{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:380px}
+.cases button{font:600 13.5px system-ui;padding:9px 14px;border-radius:999px;border:none;background:var(--bub);color:var(--ink);cursor:pointer}.cases button.on{background:var(--ink);color:#fff}
+.dbar{width:300px;height:4px;border-radius:9px;background:var(--bub);overflow:hidden}.dbar i{display:block;height:100%;width:0;background:var(--cobalt);transition:width .4s linear}
+/* sections */
+section{padding:88px 0}
+.sh{max-width:720px}.sh h2{font-size:clamp(32px,3.8vw,48px);line-height:1.06;font-weight:700}.sh p{font-size:19px;color:var(--ink2);margin-top:14px}
+.problem{background:#fff}
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+.q{background:var(--bub);border-radius:24px;padding:20px 22px;font-size:18px;line-height:1.4}
+.q small{display:block;font-size:13px;color:var(--mute);font-weight:600;margin-bottom:6px}
+.q em{display:block;font-style:normal;margin-top:14px;font-size:14px;color:var(--mute)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+.step{border-radius:28px;background:#fff;box-shadow:0 0 0 1px var(--line);padding:26px}
+.step .n{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--ink);color:#fff;font-size:15px}
+.step:nth-child(2) .n{background:var(--sig);color:var(--ink)}.step:nth-child(3) .n{background:var(--cobalt)}
+.step h3{font-size:24px;margin-top:16px}.step p{color:var(--ink2);margin-top:8px;font-size:16px}
+.uc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:44px}
+.u{border-radius:28px;background:#fff;box-shadow:0 0 0 1px var(--line);padding:26px;display:flex;flex-direction:column;gap:16px}
+.u h3{font-size:24px;line-height:1.15}.u .k{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cobalt)}
+.flow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:8px}
+.flow div{border-radius:18px;padding:12px 14px;font-size:14.5px;line-height:1.4}
+.flow div b{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.flow .c{background:var(--bub)}.flow .c b{color:var(--mute)}.flow .z{background:var(--ai)}.flow .z b{color:var(--ai-lbl)}.flow .o{background:var(--bluet)}.flow .o b{color:var(--cobalt)}
+.u .play{align-self:flex-start;font-weight:600;font-size:15px;background:none;border:none;color:var(--cobalt);cursor:pointer;padding:0}
+.trust{background:var(--ai);color:var(--ink)}.trust .sh p{color:var(--ink2)}
+.tgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}
+.t{border-radius:24px;background:#fff;padding:22px}.t h3{font-size:19px;color:var(--ink)}.t p{color:var(--ink2);font-size:15px;margin-top:8px}
+.t i{display:block;width:10px;height:10px;border-radius:50%;background:var(--sig);margin-bottom:14px}
+.start .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.ways{display:flex;flex-direction:column;gap:10px}
+.way{display:flex;gap:16px;align-items:flex-start;border-radius:22px;background:#fff;box-shadow:0 0 0 1px var(--line);padding:18px 20px}
+.way b{display:block;font-size:17px}.way span{display:block;color:var(--ink2);font-size:15px;margin-top:2px}
+.way i{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--bub);display:grid;place-items:center;font:700 14px system-ui;font-style:normal}
+.final{text-align:center;padding:96px 0 110px}.final h2{font-size:clamp(36px,4.6vw,60px);line-height:1.04;font-weight:700}.final p{font-size:19px;color:var(--ink2);margin:16px auto 0;max-width:560px}.final .btn{margin-top:28px}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mute);font-size:14px}footer .wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
+@media (max-width:980px){.hero .wrap,.start .wrap{grid-template-columns:1fr}.demo{order:2}.quotes,.steps,.tgrid{grid-template-columns:1fr 1fr}.uc{grid-template-columns:1fr}.nav nav{display:none}.nav nav+.btn{margin-left:auto}}
+@media (max-width:620px){.nav{top:0}.quotes,.steps,.tgrid{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.ph{width:320px;height:640px}section{padding:64px 0}}
+@media (prefers-reduced-motion:reduce){.m,.typing{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<script>window.ZPAGE = 'landing';</script>
+<script src="config.js"></script>
+<script src="nav.js"></script>
+<header class="nav"><div class="wrap"><a class="logo" href="#top"><i>Z</i>Zing Neighbors</a>
+<nav><a href="#how">How it works</a><a href="#cases">Use cases</a><a href="#trust">Privacy</a></nav>
+<a class="btn sm" href="Onboarding.html">Start your group</a></div></header>
+
+<main id="top">
+<div class="hero" data-screen-label="Hero"><div class="wrap">
+<div><span class="eyebrow">Front desk built in</span>
+<h1>The neighborhood chat <span>that gets things done.</span></h1>
+<p class="lead">Every building chat is full of “someone should.” Zing is the chat that turns it into done. It notices what neighbors have in common, does the organizing nobody has time for, and gets the group results no one could get alone.</p>
+<div class="ctas"><a class="btn" href="Onboarding.html">Start your building’s group</a><a class="btn ghost" href="#cases">See how it works</a></div>
+<p class="fine">Free for residents. Bring your WhatsApp group’s history with you.</p></div>
+<div class="demo"><div class="ph"><div class="sc"><div class="dhd"><i>BT</i><b>Bayview Towers</b></div><div class="feed" id="feed" aria-live="polite"></div><div class="dcmp"><span id="dtype">Message</span><b id="dsend" aria-hidden="true">↑</b></div></div></div>
+<div class="cases" id="cases-tabs" role="tablist" aria-label="Demo"></div><div class="dbar"><i id="dbar"></i></div></div>
+</div></div>
+
+<section class="problem" data-screen-label="Problem"><div class="wrap">
+<div class="sh"><h2>Group chats are great at agreeing. Terrible at doing.</h2><p>Everyone means well. But nobody has time to collect the names, call three companies, write the email to management or pick a date. So the same messages come back every month.</p></div>
+<div class="quotes">
+<div class="q"><small>Dan · 8E</small>Is anyone else’s AC making that noise? We should all get it serviced.<em>14 thumbs up. Nobody called anyone.</em></div>
+<div class="q"><small>Carlos · 2C</small>The garage gate is stuck open again.<em>Reported 5 times this year, always in the chat.</em></div>
+<div class="q"><small>Priya · 6D</small>We should do something for Halloween this year!<em>Said in September, and again on October 30.</em></div>
+</div></div></section>
+
+<section id="how" data-screen-label="How it works"><div class="wrap">
+<div class="sh"><h2>How Zing gets it done</h2><p>It works inside the chat you already use with your neighbors. Nobody has to learn anything new.</p></div>
+<div class="steps">
+<div class="step"><span class="n">1</span><h3>It listens</h3><p>Zing reads along quietly and remembers what matters: who neighbors recommend, what’s broken, what people are planning. Chit-chat stays chit-chat.</p></div>
+<div class="step"><span class="n">2</span><h3>It notices</h3><p>When several neighbors need the same thing, report the same problem or want the same plan, Zing spots it and offers to help, only to the people involved.</p></div>
+<div class="step"><span class="n">3</span><h3>It organizes</h3><p>Zing does the legwork: texts providers and compares prices, drafts the report, makes the event and collects RSVPs. Nothing goes out until you say yes.</p></div>
+</div></div></section>
+
+<section id="cases" style="padding-top:20px" data-screen-label="Use cases"><div class="wrap">
+<div class="sh"><h2>What neighbors get done with Zing</h2><p>Real situations from real building chats. Tap any one to watch it in the demo.</p></div>
+<div class="uc">
+<div class="u"><span class="k">Better prices together</span><h3>Twelve neighbors need AC service. Zing gets them one price.</h3>
+<div class="flow"><div class="c"><b>In the chat</b>Three neighbors mention AC trouble in one week.</div><div class="z"><b>Zing</b>Asks who else wants in, then texts the three most recommended companies for a group quote.</div><div class="o"><b>Outcome</b>One visit day, a building rate, and each neighbor books a slot.</div></div>
+<button class="play" data-case="ac">Watch it →</button></div>
+<div class="u"><span class="k">Things get fixed</span><h3>Five people reported the gate. Zing sent one report, and it got fixed.</h3>
+<div class="flow"><div class="c"><b>In the chat</b>“The gate is stuck open again,” from different neighbors.</div><div class="z"><b>Zing</b>Links the reports, remembers it happened in August, drafts one clear note to management.</div><div class="o"><b>Outcome</b>Management gets one report with the history. Zing follows up until it’s closed.</div></div>
+<button class="play" data-case="gate">Watch it →</button></div>
+<div class="u"><span class="k">Plans that happen</span><h3>Everyone said “we should do something for Halloween.” Zing made it happen.</h3>
+<div class="flow"><div class="c"><b>In the chat</b>A date, a time and a place come up across a few messages.</div><div class="z"><b>Zing</b>Offers to turn it into an event, with RSVPs and a list of who’s bringing what.</div><div class="o"><b>Outcome</b>An event on everyone’s calendar, and nobody had to be the organizer.</div></div>
+<button class="play" data-case="party">Watch it →</button></div>
+<div class="u"><span class="k">Help, fast</span><h3>A trusted plumber at your door, without asking around for a day.</h3>
+<div class="flow"><div class="c"><b>In the chat</b>“Anybody know a good plumber?”</div><div class="z"><b>Zing</b>Answers you privately with the plumbers neighbors recommend, then texts one for you with the times you’re free.</div><div class="o"><b>Outcome</b>Booked, confirmed and on your calendar.</div></div>
+<button class="play" data-case="plumber">Watch it →</button></div>
+</div></div></section>
+
+<section class="trust" id="trust" data-screen-label="Privacy"><div class="wrap">
+<div class="sh"><h2>Helpful, never pushy</h2><p>Zing works for the neighbors, not for advertisers.</p></div>
+<div class="tgrid">
+<div class="t"><i></i><h3>Only you see its answers</h3><p>When you ask Zing something, the answer is private. The group sees nothing unless you share it.</p></div>
+<div class="t"><i></i><h3>Nothing goes out without you</h3><p>Every text, report or event is a draft until you tap yes.</p></div>
+<div class="t"><i></i><h3>Recommendations can’t be bought</h3><p>Providers rank only by what neighbors say. Paying never changes it.</p></div>
+<div class="t"><i></i><h3>Your number stays yours</h3><p>Zing texts providers from its own number. Your name and unit are shared only after you say yes.</p></div>
+</div></div></section>
+
+<section class="start" data-screen-label="Get started"><div class="wrap">
+<div class="sh"><h2>Up and running in an afternoon</h2><p>Start a group for your HOA, apartment building or neighborhood. If you already have a WhatsApp group, Zing reads its history so the directory starts full on day one.</p><a class="btn" style="margin-top:24px" href="Onboarding.html">Start your building’s group</a></div>
+<div class="ways">
+<div class="way"><i>1</i><div><b>Create the group</b><span>Pick HOA, apartment building or neighborhood, and add the address.</span></div></div>
+<div class="way"><i>2</i><div><b>Bring your old chat</b><span>Export your WhatsApp group and upload it. Zing keeps the recommendations, issues and plans. Not the gossip.</span></div></div>
+<div class="way"><i>3</i><div><b>Invite your neighbors</b><span>Share one link in the old chat. People join with their phone number, no app download needed.</span></div></div>
+</div></div></section>
+
+<div class="final" data-screen-label="Final call"><div class="wrap"><h2>Your neighbors already agree.<br>Let’s make it happen.</h2><p>Start your building’s group in a few minutes. It’s free for residents.</p><a class="btn" href="Onboarding.html">Start your group</a></div></div>
+</main>
+<footer><div class="wrap"><span>Zing Neighbors</span><span><a href="Resident.html">Open the app</a> · <a href="Onboarding.html">Start a group</a> · <a href="Supplier.html">For providers</a></span></div></footer>
+
+<script>
+const S = {
+  ac: { t: 'AC deal', steps: [
+    ['me', '', 'Is anyone else’s AC making a rattling noise? Ours started last night.'],
+    ['m', 'Ana · 11F', 'Same here, and it’s not cooling much.'],
+    ['m', 'Mike · 9A', 'Ours too. Probably time for a service.'],
+    ['ai', 'Only you can see this', '3 neighbors need AC service this week. Companies usually give a better rate for several units. Want me to ask who else is in and get group quotes?', ['Yes, organize it', 'Not now']],
+    ['tag', '', '9 more neighbors joined privately'],
+    ['ai', 'Neighbors AI', 'I texted the 3 AC companies neighbors recommend most. CoolBreeze offered $89 per unit for 12 units, down from $140. Visit day: Thursday.', ['Book my slot', 'See offers']],
+    ['done', '', '<b>12 units · $89 each</b>One visit day, booked by Zing'] ] },
+  gate: { t: 'Broken gate', steps: [
+    ['me', '', 'Heads up, the garage gate is stuck open again.'],
+    ['m', 'Ana · 11F', 'Still open tonight. Anyone can walk right in.'],
+    ['ai', 'Only you can see this', 'You and Ana reported the gate today, and the same problem was fixed in August. Want me to draft one report for management?', ['Draft the report', 'Not now']],
+    ['ai', 'Neighbors AI', '“Hi, the garage gate has been stuck open since yesterday. Two residents reported it today. The motor sensor was replaced in August for the same issue…”', ['Send to management', 'Edit']],
+    ['tag', '', 'Sent · Zing will check back Wednesday'],
+    ['done', '', '<b>Fixed in 2 days</b>One report instead of five complaints'] ] },
+  party: { t: 'Halloween', steps: [
+    ['me', '', 'Should we do something for Halloween? The kids loved it last year.'],
+    ['m', 'Tom · 6A', 'Yes! Lobby on the 31st? I can bring candy and a speaker.'],
+    ['m', 'Liz · 4B', 'Count us in, we have 2 kids.'],
+    ['ai', 'Neighbors AI', 'Halloween is coming together: Oct 31, 6 PM, in the lobby. Want me to make it an event so neighbors can RSVP and say what they’re bringing?', ['Create the event', 'Not now']],
+    ['poll', 'Event · RSVP', 'Halloween in the lobby<br><span class="pw">Fri, Oct 31 · 6 PM · Lobby</span>', [['Going', 23], ['Maybe', 4], ['Can’t make it', 2]]],
+    ['m', 'Mei · 7A', 'We’ll bring pizza for everyone!'],
+    ['done', '', '<b>23 going</b>Candy, a speaker, decorations and pizza'] ] },
+  plumber: { t: 'Plumber', steps: [
+    ['me', '', 'Anybody know a good plumber? Kitchen faucet’s been leaking for two days.'],
+    ['ai', 'Only you can see this', 'Jose Ramirez is the plumber neighbors recommend most: 6 neighbors, about $120 for a faucet. Want me to text him with the times you’re free?', ['Text Jose for me', 'Show others']],
+    ['m', 'Mike · 9A', 'We used Jose last month. In and out in an hour.'],
+    ['ai', 'Neighbors AI', 'Jose replied: “Tuesday at 10am works, $90 plus parts.” Book it?', ['Book it', 'Another time']],
+    ['done', '', '<b>Booked · Tue 10 AM</b>Confirmed by text and added to your calendar'] ] }
+};
+const ty$ = document.getElementById('dtype'), send$ = document.getElementById('dsend');
+const order = ['ac', 'gate', 'party', 'plumber'], feed = document.getElementById('feed'), tabs = document.getElementById('cases-tabs'), bar = document.getElementById('dbar');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cur = 'ac', idx = 0, timer = null;
+const KEY = 'zingN.landing.demo';
+try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && S[s.c]) cur = s.c; } catch (e) {}
+tabs.innerHTML = order.map(k => `<button role="tab" data-k="${k}">${S[k].t}</button>`).join('');
+const el = st => { const [k, who, text, acts] = st, d = document.createElement('div');
+  d.className = 'm' + (k === 'm' ? '' : ' ' + k);
+  if (k === 'poll'){ d.innerHTML = `<small>${who}</small><b class="pt">${text}</b><div class="po">${acts.map(([l, n]) => `<div data-n="${n}"><span class="pl">${l}</span><i><em></em></i><b>0</b></div>`).join('')}</div><span class="pf">Tap to RSVP</span>`; return d; }
+  d.innerHTML = (who ? `<small>${who}</small>` : '') + text + (acts ? `<div class="acts">${acts.map(a => `<span>${a}</span>`).join('')}</div>` : '');
+  return d; };
+let gen = 0;
+function show(k){ clearTimeout(timer); gen++; resetCmp(); cur = k; idx = 0; feed.innerHTML = ''; try { localStorage.setItem(KEY, JSON.stringify({ c: k })); } catch (e) {}
+  tabs.querySelectorAll('button').forEach(b => { b.classList.toggle('on', b.dataset.k === k); b.setAttribute('aria-selected', b.dataset.k === k); });
+  if (reduce){ S[k].steps.forEach(s => { const n = el(s); feed.appendChild(n); const b = n.querySelector('.acts span'); if (b) b.classList.add('on');
+      const rows = [...n.querySelectorAll('.po>div')]; if (rows.length){ const max = Math.max(...rows.map(x => +x.dataset.n)); rows[0].classList.add('on');
+        rows.forEach(x => { x.querySelector('b').textContent = x.dataset.n; x.querySelector('em').style.width = (+x.dataset.n / max * 100) + '%'; }); n.querySelector('.pf').textContent = 'You’re going · results so far'; } });
+    bar.style.width = '100%'; return; }
+  next(); }
+function resetCmp(){ ty$.textContent = 'Message'; ty$.classList.remove('on'); send$.classList.remove('on', 'go'); }
+function typeMe(text, done){ let i = 0; ty$.classList.add('on'); ty$.textContent = '';
+  const tick = () => { i += 1 + (Math.random() < .3 ? 1 : 0); ty$.textContent = '\u200E' + text.slice(0, i) + '\u200E'; if (i > 0) send$.classList.add('on');
+    if (i < text.length) timer = setTimeout(tick, 32 + Math.random() * 40); else timer = setTimeout(() => { send$.classList.add('go'); timer = setTimeout(() => { resetCmp(); done(); }, 160); }, 450); };
+  timer = setTimeout(tick, 350); }
+/* a visible finger tap on a button, then it turns selected */
+function tap(b, done){ b.classList.add('tap'); timer = setTimeout(() => { b.classList.remove('tap'); b.classList.add('on'); done(); }, 420); }
+function results(node, done){ const g = gen, rows = [...node.querySelectorAll('.po>div')], max = Math.max(...rows.map(x => +x.dataset.n)), t0 = performance.now(), D = 1300;
+  node.querySelector('.pf').textContent = 'You’re going · results so far';
+  const step = now => { if (g !== gen) return; const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3);
+    rows.forEach(x => { const n = +x.dataset.n; x.querySelector('b').textContent = Math.round(n * e); x.querySelector('em').style.width = (n / max * 100 * e) + '%'; });
+    if (k < 1) requestAnimationFrame(step); else done(); };
+  requestAnimationFrame(step); }
+function next(){
+  const steps = S[cur].steps;
+  if (idx < steps.length && steps[idx][0] === 'me'){ const st = steps[idx]; return typeMe(st[2], () => { feed.appendChild(el(st)); while (feed.children.length > 7) feed.removeChild(feed.firstChild); idx++; bar.style.width = (idx / steps.length * 100) + '%'; timer = setTimeout(next, 1300); }); }
+  if (idx >= steps.length){ timer = setTimeout(() => show(order[(order.indexOf(cur) + 1) % order.length]), 3200); return; }
+  const st = steps[idx], wait = st[0] === 'ai' ? 900 : st[0] === 'm' ? 650 : 300;
+  const ty = document.createElement('div'); ty.className = 'typing'; ty.innerHTML = '<i></i><i></i><i></i>';
+  if (st[0] === 'm' || st[0] === 'ai') feed.appendChild(ty);
+  timer = setTimeout(() => { ty.remove(); const node = el(st); feed.appendChild(node); while (feed.children.length > 7) feed.removeChild(feed.firstChild);
+    idx++; bar.style.width = (idx / steps.length * 100) + '%';
+    const btn = node.querySelector('.acts span'), rows = node.querySelectorAll('.po>div');
+    if (btn) timer = setTimeout(() => tap(btn, () => { timer = setTimeout(next, 900); }), 1600);
+    else if (rows.length) timer = setTimeout(() => tap(rows[0], () => results(node, () => { timer = setTimeout(next, 1600); })), 1300);
+    else timer = setTimeout(next, 1500); }, wait);
+}
+tabs.addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(b.dataset.k); });
+document.querySelectorAll('.play').forEach(b => b.addEventListener('click', () => { show(b.dataset.case); window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }));
+show(cur);
+</script>
+</body>
+</html>

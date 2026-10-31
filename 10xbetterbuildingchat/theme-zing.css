@@ -1,0 +1,47 @@
+/* Zing Neighbors App · "Lobby · Zing" theme. Loaded after app.css on Resident, Supplier and Onboarding.
+   Mint = the AI (answers, saved tags, the weekly calendar). Cobalt = you (your messages, your picks, the active tab).
+   Orange = actions (Book, send, primary buttons), always with ink text. Type: Schibsted Grotesk. */
+:root{--bg:#F1F3F7;--card:#fff;--ink:#121826;--ink2:#3A4357;--mute:#6B7488;--line:#DCE1EA;--navy:#121826;
+--or:#B9530A;--or2:#FFE6D3;--warn:#A84700;--ok:#2F6B4A;--okt:#DCE6D4;--blue:#2747D9;--bluet:#E7ECFD;--red:#A32626;--redt:#F9DCDC;--wa:#F1F3F7;--out:#2747D9;
+--orange:#FF7A1A;--orange-h:#F06A0A;--cobalt:#2747D9;--mint:#C9D8C2;--mint2:#E9EFE2;--mint-ink:#1F3324;--mint-lbl:#3F5A43}
+body{font-family:'Schibsted Grotesk',system-ui,sans-serif}
+.intro h1,.sheet h3,.obt,.obhero h2,.obmark,.obposter b{font-family:'Schibsted Grotesk',sans-serif!important;font-weight:800!important;letter-spacing:-.02em}
+.eyebrow{color:var(--cobalt)}
+/* actions */
+.btn{background:var(--orange);color:var(--ink)}.btn:hover{background:var(--orange-h)}
+.btn.ghost{background:#fff;border-color:var(--line);color:var(--ink)}.btn.ghost:hover{border-color:var(--ink);background:#fff}
+.sendb{background:var(--orange);color:var(--ink)}.sendb:hover{background:var(--orange-h)}
+.fchip em{background:var(--orange);color:var(--ink)}
+/* your picks */
+.slot{border-color:var(--cobalt);color:var(--cobalt)}.slot.on{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.opt:hover:not(:disabled){border-color:var(--cobalt)}.opt.on{border-color:var(--cobalt);background:var(--bluet)}
+.avc.on{background:var(--cobalt);border-color:var(--cobalt)}
+.obch.on{border-color:var(--cobalt);box-shadow:0 0 0 3px var(--bluet)}
+.askb:hover,.sugg button:hover{border-color:var(--cobalt)}
+.b.hl{box-shadow:0 0 0 3px var(--bluet),0 1px .5px rgba(18,24,38,.12)}.card.hl{border-color:var(--cobalt);box-shadow:0 0 0 3px var(--bluet)}
+/* surfaces */
+.hd,.cmp{background:#fff;border-color:var(--line)}
+.hav{background:var(--cobalt);color:#fff;border-radius:10px}
+.hd-t b{font-weight:800;letter-spacing:-.01em}
+.wa{background-image:none}.agent-bg,.sugg{background-color:var(--bg)}
+.cmp input{border:1px solid var(--line);box-shadow:none;background:var(--bg)}
+.b{border-radius:4px 12px 12px 12px;box-shadow:none;border:1px solid var(--line)}
+.b.out{background:var(--cobalt);color:#fff;border-color:var(--cobalt);border-radius:12px 4px 12px 12px}
+.b.out time,.b.out time em,.b.out small,.b.out .meta{color:#D4DCFB!important}.b.out a{color:#fff}
+.day{box-shadow:none;border:1px solid var(--line)}
+.sys{background:var(--mint2);color:var(--mint-ink)}
+.tabs{border-color:var(--line)}.tabs button.on{color:var(--cobalt)}.tabs button.on .ti{background:var(--bluet);color:var(--cobalt)}
+.seg{background:#E4E8F0}.opt,.bk{background:#fff}.pill.grey{background:#E4E8F0}
+.toast{background:var(--ink)}
+.sav{border-radius:10px}
+/* the AI */
+.b.priv{background:var(--mint);border:none;color:var(--ink)}.privh{color:var(--mint-lbl)!important}.b.priv .opt{background:#fff;border-color:#B2C0A8}.pfoot{color:var(--mint-lbl)}
+.nudge{background:var(--mint);color:var(--ink)}.nudge .nh svg{color:var(--mint-lbl)}.nudge .nb{color:#2C3A2F}
+.nudge .slot{background:#fff;border-color:#9DB096;color:var(--ink)}.nudge .slot.on{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.nudge .qt{background:#fff;color:var(--ink)}.ndone{color:var(--ok)}.nfoot{color:var(--mint-lbl)}
+.nudge .why summary,.nudge .why li{color:var(--mint-ink)}
+.chip.c-suppliers{background:var(--mint);color:var(--mint-ink)}
+.b.agent{border-color:var(--mint);background:#fff}.b.agent small{color:var(--mint-lbl)!important}
+.cub{background:var(--mint2);color:var(--mint-ink)}.cub b{color:var(--cobalt)}
+/* weekly service calendar + nearby visits */
+.swk,.wkv{border-color:var(--mint);background:var(--mint2)}.wkv .lbl,.swk .lbl{color:var(--mint-lbl)}.wkr,.wkr:first-of-type{border-color:#CFDCC8}
