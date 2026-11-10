@@ -270,6 +270,12 @@ body.ciall .bonly{display:block}
 .sm .mdl dt{padding:12px 0;border-bottom:1px solid var(--line);font-weight:600;font-size:13.5px}
 .sm .mdl dd{margin:0;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.55;color:var(--ink-2);text-wrap:pretty}
 .sm .ptab td,.sm .ptab th{text-align:left}
+.sm table.risk{min-width:1100px}
+.sm table.risk th,.sm table.risk td{text-align:left;white-space:normal;vertical-align:top;padding:12px 14px;font-size:13px;line-height:1.5;text-wrap:pretty}
+.sm table.risk td{color:var(--ink-2)}
+.sm table.risk td:first-child{width:190px;color:var(--ink)}
+.sm table.risk td:nth-child(2){width:90px}
+.sm table.risk tbody tr:last-child td{border-bottom:0}
 .sm .draft{color:var(--ink-4);font-style:italic}
 aside.nav{overflow-y:auto}
 aside.nav .navgrp{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);font-weight:600;padding:14px 10px 4px;white-space:nowrap}
@@ -347,7 +353,7 @@ body.navmin aside.nav .navgrp{display:none}
 <a href="#unit" data-view="unit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M19 4v5M16.5 6.5h5"/></svg><span>Unit economics</span></a>
 <a href="#dash" data-view="dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Cluster density</span></a>
 <div class="navgrp">How we grow</div>
-<a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Sign-up growth</span></a>
+<a href="#signups" data-view="signups"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Building ramp up</span></a>
 <a href="#cards" data-view="cards"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19"/><path d="M6 14h4"/></svg><span>Cart impact</span></a>
 <div class="navgrp">What's next</div>
 <a href="#pipeline" data-view="pipeline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span>Pipeline</span></a>
@@ -355,6 +361,7 @@ body.navmin aside.nav .navgrp{display:none}
 <a href="#clusters" data-view="clusters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="4.5"/><circle cx="16.5" cy="15.5" r="4"/></svg><span>Cluster analysis</span></a>
 <a href="#weekly" data-view="weekly"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v3M16 3v3"/></svg><span>Week over week</span></a>
 <a href="#method" data-view="method"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg><span>Methodology</span></a>
+<a href="#risks" data-view="risks"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M12 8v5M12 16.5v.01"/></svg><span>Risks</span></a>
 <a href="#forecast" data-view="forecast"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 5-7"/><path d="M17 8h4v4"/><path d="M3 21h18"/></svg><span>Forecasting</span></a>
 <a href="#scenario" data-view="scenario"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 15c4 0 5-8 9-8 3 0 4 4 7 4"/><path d="M4 19h16"/></svg><span>Scenario planner</span></a>
 <a href="#buildings" data-view="buildings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M14 10h4a2 2 0 0 1 2 2v9"/><path d="M7 8h3M7 12h3M7 16h3M17 14h1M17 18h1"/></svg><span>Building settings</span></a>
@@ -524,10 +531,22 @@ body.navmin aside.nav .navgrp{display:none}
 <dt>Cart impact</dt><dd>Sign-ups and orders from the app export, matched to the floors the cart visited. Internal and test accounts are excluded.</dd>
 </dl></section>
 </section>
+<section class="view sm" id="viewRisks">
+<section class="smp"><span class="eyebrow">Risks</span><h2 class="big">Building relationship risks, and what we have seen so far.</h2></section>
+<section class="smp" style="padding:0;overflow:hidden"><div class="scrollx"><table class="risk"><thead><tr><th>Risk</th><th>Risk level</th><th>Risk Assessment Rationale</th><th>Has something similar happened?</th><th>Outcome</th><th>What we learned</th></tr></thead><tbody>
+<tr><td><b>The building offers the service itself</b></td><td><span class="tag obs">Very low</span></td><td>The service gets better as more nearby buildings use it. That density makes the unit economics work and gives us flexibility and resilience in how we staff and operate. A single building would be unlikely to replicate those advantages on its own.</td><td>No.</td><td>—</td><td>—</td></tr>
+<tr><td><b>The building asks for a larger share of revenue</b></td><td><span class="tag mod">Medium</span></td><td>We can create more value for the building and residents through perks and events than through the typical 1–3% revenue share offered by similar services.</td><td>Yes. Kushner Group asked for revenue share at Hamilton.</td><td>After nine months of negotiation, we agreed to no revenue share. Instead, we’re offering residents perks, including a free Move-in hour for new residents, and holding two coffee events each year. These can benefit residents and help Zing increase penetration.</td><td>There are ways to make the service more valuable to residents and Zing than simply giving the building a cut.</td></tr>
+<tr><td><b>The building withdraws support or changes the relationship</b></td><td><span class="tag obs">Very low</span></td><td>The resident relationship can continue even if the building relationship changes. Our cluster model lets us serve buildings with nearby cleaners within a five-minute walk.</td><td>Yes. Six months into a partnership, a building said that storing Zing’s cleaning carts inside violated its policies.</td><td>We started bringing the carts in each day. The building continued to grow, and residents saw Zing’s carts and cleaners in the building and built relationships with them directly.</td><td>Even when management is the entry point, the resident relationship is built directly. Residents choose whom to invite into their homes, so removing promotional materials or changing building arrangements doesn’t necessarily end that relationship.</td></tr>
+<tr><td><b>The building changes access or operating rules</b></td><td><span class="tag obs">Low</span></td><td>We’ve dealt with different access needs and have solutions for them.</td><td>Yes. At Muze and Bezel, we set up Zing Access Stations where residents can leave a key in a lockbox owned by Zing.</td><td>The stations have worked pretty well.</td><td>We’ve handled several kinds of access arrangements and have a plan for different scenarios.</td></tr>
+<tr><td><b>Usage is too low to support the building model</b></td><td><span class="tag obs">Low</span></td><td>The cluster model can help support smaller buildings by drawing on cleaners serving nearby buildings.</td><td>Yes. Some of our earlier launches, from when we were still refining how we launch, did not get enough traction as single buildings.</td><td>We launched a nearby building, and one cleaner now serves both. Six months in, we are ready to assign more cleaners to them.</td><td>Launching several nearby buildings at the same time makes us more resilient and lets buildings ramp up without hurting the margin on a single cleaner.</td></tr>
+<tr><td><b>The building’s internal champion leaves or priorities change</b></td><td><span class="tag mod">Medium</span></td><td>The resident relationship doesn’t belong to one management contact; it’s built directly with residents.</td><td>No specific example identified yet. Forma may be relevant.</td><td>—</td><td>—</td></tr>
+<tr><td><b>Resident service issues affect management’s confidence</b></td><td><span class="tag obs">Low</span></td><td>Customer support issues go directly to Zing. Both management and residents understand that Zing is separate from the building, and we resolve issues directly with residents.</td><td>No specific example identified yet.</td><td>—</td><td>Keeping support and issue resolution directly with Zing helps keep the building out of day-to-day service problems.</td></tr>
+</tbody></table></div></section>
+</section>
 <section class="view" id="viewSignups">
 <section class="panel" style="display:flex;flex-direction:column;gap:8px;padding:20px 22px"><span class="eyebrow">How we grow</span><h2 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;margin:0;text-wrap:pretty">We launch the strongest building on a block, then grow out from it.</h2><p style="margin:0;font-size:14px;line-height:1.55;color:var(--ink-2);max-width:72ch;text-wrap:pretty">Each new building sits next to one we already serve. That density lets the same cleaners cover more units with less travel, makes every visit more efficient, and lets the whole cluster grow together.</p></section>
 <section class="panel">
-<div class="phead"><h2>Sign-up growth</h2><p id="suHead">Residents signed up, week by week</p></div>
+<div class="phead"><h2>Building ramp up</h2><p id="suHead">Residents signed up, week by week</p></div>
 <div class="suctl">
   <div class="pickers" id="suPick"></div>
   <div class="surt">
@@ -1832,7 +1851,7 @@ function showView(v){
   document.querySelectorAll("aside.nav a").forEach(a => a.classList.toggle("on", a.dataset.view === v));
   document.getElementById("viewSummary").classList.toggle("on", v === "summary");
   document.getElementById("viewDash").classList.toggle("on", v === "dash");
-  ["traction","pipeline","weekly","method"].forEach(k => document.getElementById("view" + k[0].toUpperCase() + k.slice(1)).classList.toggle("on", v === k));
+  ["traction","pipeline","weekly","method","risks"].forEach(k => document.getElementById("view" + k[0].toUpperCase() + k.slice(1)).classList.toggle("on", v === k));
   if (v === "weekly") scrollMatricesToLatest();
   if (v === "pipeline") drPipeRender();
   window.scrollTo(0, 0);
@@ -2166,7 +2185,7 @@ function renderSignups(){
 
   SU_TSEL = sel; SU_SRV.clear();
   const series = sel.map(n => ({ n, c: suColor(n), v: suSeries(n) }));
-  if (sel.length > 1) series.unshift({ n: SU_TOTAL, c: "#2A2622", v: suSeries(SU_TOTAL), total: true });
+  if (sel.length > 1 && sel.length === names.length) series.unshift({ n: SU_TOTAL, c: "#2A2622", v: suSeries(SU_TOTAL), total: true });
   const flat = series.flatMap(s => s.v).filter(v => v != null);
   const W = 980, H = 380, pad = { l: 56, r: 170, t: 20, b: 34 };
   const y1 = Math.max(1, ...flat), n = weeks.length;

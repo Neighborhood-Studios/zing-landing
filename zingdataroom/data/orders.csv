@@ -1,72 +1,348 @@
 Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Access,Cleaner,Type,Source
-2026-10-21,2026-10-12,Yes,,r1gejh4b@resident.zing,,Forma,8.00,1.20,scheduled,be home,Joselyn Izaguirre,Recurring,Web
-2026-10-20,2026-10-12,No,,r159iaai@resident.zing,,Forma,143.00,0.00,scheduled,front desk access,Heyling Chavez,One-Off,Admin
-2026-10-21,2026-10-12,No,,r6avbi4@resident.zing,,Forma,45.00,10.00,scheduled,front desk key pickup,Heyling Chavez,One-Off,Web
-2026-10-22,2026-10-12,No,,r1un2jch@resident.zing,,The Hamilton,55.00,5.50,submitted,be home,,One-Off,Mobile App
-2026-10-19,2026-10-12,No,,r1mzzw1x@resident.zing,,Alexan Roxy,156.00,21.15,submitted,front desk access,,One-Off,Mobile App
-2026-10-13,2026-10-11,No,,r8y10zl@resident.zing,,Bezel Miami,35.00,3.50,scheduled,be home,Elizabeth Cordova,One-Off,Mobile App
-2026-11-03,2026-10-11,No,,r16rlogd@resident.zing,,Modera Edgewater,120.00,10.00,submitted,be home,,One-Off,Mobile App
+2026-11-12,2026-11-10,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,115.00,20.00,scheduled,door unlocked,Lidia Mas,Recurring,Mobile App
+2026-11-20,2026-11-10,Yes,,ry3boks@resident.zing,,Forma,115.20,17.28,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-11,2026-11-10,Yes,,rbkuihr@resident.zing,,Muze at Met,161.00,8.05,scheduled,be home,Daisy,Recurring,Mobile App
+2026-11-11,2026-11-10,No,,r1jjnky@resident.zing,,Forma,120.00,0.00,scheduled,be home,Heyling Chavez,One-Off,Mobile App
+2026-11-17,2026-11-10,No,,r1bjyfp6@resident.zing,,Forma,132.00,13.20,submitted,be home,,One-Off,Mobile App
+2026-11-11,2026-11-10,No,,r1ryz4nc@resident.zing,,Forma,159.00,0.00,submitted,be home,Joselyn Izaguirre,One-Off,Mobile App
+2026-12-01,2026-11-09,No,,rn4duxf@resident.zing,,Alexan Roxy,171.00,17.10,cancelled,be home,,One-Off,Mobile App
+2026-11-27,2026-11-09,No,,rn4duxf@resident.zing,,Alexan Roxy,3.00,0.00,cancelled,be home,,One-Off,Admin
+2026-11-13,2026-11-09,No,,r1v14ddj@resident.zing,,Muze at Met,112.00,0.00,scheduled,be home,Daisy,One-Off,Admin
+2026-11-10,2026-11-09,No,,r1kst0an@resident.zing,,Alexan Roxy,134.40,0.00,completed,be home,Lidia Mas,One-Off,Admin
+2026-11-17,2026-11-09,No,,r1ev12qy@resident.zing,,The Hamilton,120.00,18.00,submitted,be home,,One-Off,Mobile App
+2026-11-17,2026-11-09,No,,rnlc25h@resident.zing,,Miami World Tower,79.00,11.85,scheduled,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-11-20,2026-11-09,No,,r17v2436@resident.zing,,The Hamilton,175.00,0.00,scheduled,be home,Liza Mossucca,One-Off,Admin
+2026-11-09,2026-11-09,No,,r7zelk7@resident.zing,,Alexan Roxy,52.00,55.00,paid,use door code,Lidia Mas,One-Off,Mobile App
+2026-11-23,2026-11-09,Yes,,r7zelk7@resident.zing,,Alexan Roxy,118.00,15.00,submitted,use door code,,Recurring,Mobile App
+2026-11-18,2026-11-08,No,,rn4wh24@resident.zing,,Miami World Tower,80.00,8.00,submitted,be home,,One-Off,Mobile App
+2026-11-06,2026-11-06,No,,rnhvebo@resident.zing,,Alexan Roxy,13.00,1.30,paid,be home,Lidia Mas,One-Off,Mobile App
+2026-11-12,2026-11-06,No,,r16rlogd@resident.zing,,Modera Edgewater,120.00,12.00,scheduled,be home,Misleidy,One-Off,Mobile App
+2026-11-10,2026-11-05,No,,rh8fpdo@resident.zing,,Forma,168.00,25.20,in progress,be home,Heyling Chavez,One-Off,Mobile App
+2026-11-05,2026-11-05,No,,r1y4alpw@resident.zing,,Muze at Met,120.00,12.00,paid,door unlocked,Daisy,One-Off,Mobile App
+2026-11-05,2026-11-04,No,,r1gejh4b@resident.zing,,Forma,45.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Admin
+2026-11-04,2026-11-04,No,,r1fyh7x1@resident.zing,,Miami World Tower,48.00,2.40,cancelled,be home,,One-Off,Mobile App
+2026-11-05,2026-11-04,No,,rulle76@resident.zing,,Modera Edgewater,168.00,16.80,paid,be home,Misleidy,One-Off,Mobile App
+2026-11-11,2026-11-04,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,skipped,be home,,Recurring,Web
+2026-11-04,2026-11-03,No,,r1kvv3xp@resident.zing,,The Hamilton,120.00,0.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-04,2026-11-03,No,,r1vy52z8@resident.zing,,Bezel Miami,61.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-11-10,2026-11-03,No,,r1bjyfp6@resident.zing,,Forma,60.00,10.00,paid,be home,Heyling Chavez,One-Off,Mobile App
+2026-11-06,2026-11-03,Yes,,rex6qtq@resident.zing,,Alexan Roxy,121.00,0.00,refunded,use door code,Lidia Mas,Recurring,Admin
+2026-11-13,2026-11-03,Yes,,rex6qtq@resident.zing,,Alexan Roxy,121.00,0.00,scheduled,use door code,,Recurring,Admin
+2026-11-06,2026-11-03,No,,r1egzolt@resident.zing,,Muze at Met,80.00,8.00,submitted,be home,Daisy,One-Off,Mobile App
+2026-11-10,2026-11-03,Yes,,rqxm2ir@resident.zing,,Bezel Miami,171.00,0.00,completed,be home,Elizabeth Cordova,Recurring,Admin
+2026-11-25,2026-11-03,Yes,,rqxm2ir@resident.zing,,Bezel Miami,171.00,0.00,scheduled,be home,,Recurring,Admin
+2026-12-09,2026-11-03,Yes,,rqxm2ir@resident.zing,,Bezel Miami,171.00,0.00,scheduled,be home,,Recurring,Admin
+2026-11-10,2026-11-03,No,,rnlc25h@resident.zing,,Miami World Tower,45.00,6.75,scheduled,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-11-09,2026-11-03,No,,r101ee0t@resident.zing,,Miami World Tower,120.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
+2026-11-03,2026-11-03,No,,rnlc25h@resident.zing,,Miami World Tower,13.00,7.00,paid,be home,,One-Off,Mobile App
+2026-11-03,2026-11-03,No,,rnlc25h@resident.zing,,Miami World Tower,68.00,4.80,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-11-09,2026-11-03,No,,rx7p4tu@resident.zing,,Alexan Roxy,168.00,16.80,paid,be home,Lidia Mas,One-Off,Mobile App
+2026-11-17,2026-11-03,No,,r10d94wt@resident.zing,,Alexan Roxy,160.00,16.00,scheduled,front desk access,Lidia Mas,One-Off,Mobile App
+2026-11-17,2026-11-03,No,,rl6q5ih@resident.zing,,Forma,120.00,6.00,cancelled,be home,,One-Off,Mobile App
+2026-11-03,2026-11-03,No,,rqoyppa@resident.zing,,Modera Edgewater,90.00,9.00,paid,be home,Misleidy,One-Off,Mobile App
+2026-11-11,2026-11-03,No,,r1fyh7x1@resident.zing,,Miami World Tower,120.00,6.00,cancelled,be home,,One-Off,Mobile App
+2026-11-05,2026-11-03,No,,r16jlfn6@resident.zing,,Muze at Met,45.00,4.50,paid,be home,Daisy,One-Off,Mobile App
+2026-11-04,2026-11-02,No,,rt7rjeu@resident.zing,,The Hamilton,135.00,0.00,paid,be home,Liza Mossucca,One-Off,Admin
+2026-11-16,2026-11-02,No,,r1fom50@resident.zing,,Modera Edgewater,120.00,20.00,submitted,be home,,One-Off,Mobile App
+2026-11-12,2026-11-02,No,,ru2sv1w@resident.zing,,Forma,120.00,0.00,scheduled,front desk access,Joselyn Izaguirre,One-Off,Admin
+2026-11-02,2026-11-02,No,,rf5uedo@resident.zing,,Miami World Tower,80.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
+2026-11-03,2026-11-02,No,,r10d94wt@resident.zing,,Alexan Roxy,197.00,15.50,paid,front desk access,Lidia Mas,One-Off,Mobile App
+2026-11-05,2026-11-01,No,,r16jlfn6@resident.zing,,Muze at Met,64.00,6.40,paid,be home,Daisy,One-Off,Mobile App
+2026-11-04,2026-11-01,No,,rfqzzh9@resident.zing,,Forma,120.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Mobile App
+2026-11-10,2026-10-31,No,,r8f8ghk@resident.zing,,The Hamilton,169.00,0.00,scheduled,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-03,2026-10-31,No,,rjelgn6@resident.zing,,Muze at Met,96.00,0.00,incomplete payment,door unlocked,Daisy,One-Off,Mobile App
+2026-11-03,2026-10-30,No,,rn4duxf@resident.zing,,Alexan Roxy,165.00,0.00,cancelled,be home,,One-Off,Mobile App
+2026-10-30,2026-10-30,No,,rn4duxf@resident.zing,,Alexan Roxy,165.00,0.00,cancelled,be home,Lidia Mas,One-Off,Mobile App
+2026-11-03,2026-10-30,No,,rn4duxf@resident.zing,,Alexan Roxy,45.00,0.00,cancelled,be home,,One-Off,Mobile App
+2026-11-24,2026-10-30,No,,rn4duxf@resident.zing,,Alexan Roxy,168.00,16.80,cancelled,be home,,One-Off,Mobile App
+2026-11-02,2026-10-29,No,,r4x1hw0@resident.zing,,Bezel Miami,120.00,6.00,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-10-29,2026-10-29,No,,rtdgxgy@resident.zing,,Muze at Met,12.00,15.00,skipped,be home,,One-Off,Mobile App
+2026-10-29,2026-10-28,No,,r74o9yf@resident.zing,,Forma,102.40,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Admin
+2026-10-30,2026-10-28,No,,r1u9geug@resident.zing,,The Hamilton,65.00,6.50,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-03,2026-10-28,No,,rnhvebo@resident.zing,,Alexan Roxy,0.00,0.00,completed,be home,Lidia Mas,One-Off,Mobile App
+2026-11-02,2026-10-28,Yes,,r10d94wt@resident.zing,,Alexan Roxy,0.00,0.00,paid,front desk access,Lidia Mas,Recurring,Mobile App
+2026-11-02,2026-10-28,No,,r159iaai@resident.zing,,Forma,143.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Admin
+2026-11-03,2026-10-28,No,,r1bdbu4t@resident.zing,,Alexan Roxy,134.40,0.00,cancelled,front desk access,Lidia Mas,One-Off,Admin
+2026-11-10,2026-10-28,No,,r1mzzw1x@resident.zing,,Alexan Roxy,120.00,12.00,scheduled,front desk access,Lidia Mas,One-Off,Mobile App
+2026-10-28,2026-10-27,No,,r1g3s5yg@resident.zing,,The Hamilton,120.00,12.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-02,2026-10-27,No,,r7d987r@resident.zing,,The Hamilton,120.00,18.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-28,2026-10-26,No,,rqxm2ir@resident.zing,,Bezel Miami,134.40,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
+2026-10-27,2026-10-26,Yes,,r11w0p8t@resident.zing,,Forma,45.00,6.75,paid,be home,Heyling Chavez,Recurring,Web
+2026-10-28,2026-10-26,No,,rl6q5ih@resident.zing,,Forma,120.00,0.00,completed,front desk,Joselyn Izaguirre,One-Off,Admin
+2026-10-28,2026-10-26,No,,r1dft1do@resident.zing,,Modera Edgewater,168.00,0.00,paid,be home,Misleidy,One-Off,Mobile App
+2026-11-09,2026-10-25,Yes,,ra79mxz@resident.zing,,Forma,120.00,6.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-11-02,2026-10-25,No,,r1kst0an@resident.zing,,Alexan Roxy,168.00,16.80,paid,front desk access,Lidia Mas,One-Off,Mobile App
+2026-10-27,2026-10-24,Yes,,rdr0081@resident.zing,,Alexan Roxy,168.00,8.40,paid,front desk access,Lidia Mas,Recurring,Mobile App
+2026-11-10,2026-10-24,No,,remivt3@resident.zing,,Miami World Tower,45.00,2.25,scheduled,door unlocked,Elizabeth Cordova,One-Off,Mobile App
+2026-10-27,2026-10-24,No,,rs3cbm2@resident.zing,,Alexan Roxy,120.00,0.00,paid,door unlocked,Lidia Mas,One-Off,Mobile App
+2026-10-27,2026-10-23,No,,r1fmu9r1@resident.zing,,Muze at Met,80.00,8.00,paid,be home,Daisy,One-Off,Mobile App
+2026-10-28,2026-10-22,No,,rulle76@resident.zing,,Modera Edgewater,87.00,5.00,cancelled,be home,Misleidy,One-Off,Mobile App
+2026-12-09,2026-10-22,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,scheduled,be home,,Recurring,Web
+2026-11-11,2026-10-22,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-30,2026-10-22,Yes,,r6nox0e@resident.zing,,Forma,115.20,17.28,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-30,2026-10-22,Yes,,r10d94wt@resident.zing,,Alexan Roxy,0.00,0.00,skipped,front desk access,Lidia Mas,Recurring,Mobile App
+2026-11-30,2026-10-22,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-30,2026-10-22,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,be home,,Recurring,Mobile App
+2026-11-30,2026-10-22,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,scheduled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-30,2026-10-22,Yes,,r12eusns@resident.zing,,Miami World Tower,80.00,14.40,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-30,2026-10-22,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,scheduled,front desk access,Heyling Chavez,Recurring,Web
+2026-11-27,2026-10-22,Yes,,r3x8yle@resident.zing,,The Hamilton,35.00,0.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-27,2026-10-22,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,scheduled,door unlocked,Daisy,Recurring,Web
+2026-11-23,2026-10-22,Yes,,rmhlbu@resident.zing,,Bezel Miami,120.00,20.00,scheduled,door unlocked,,Recurring,Web
+2026-11-27,2026-10-22,Yes,,rq5usrw@resident.zing,,Miami World Tower,162.00,16.20,scheduled,be home,Elizabeth Cordova,Recurring,Mobile App
+2026-11-27,2026-10-22,Yes,,rgg1jvo@resident.zing,,Forma,115.20,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-27,2026-10-22,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-27,2026-10-22,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,115.00,10.00,scheduled,be home,Elizabeth Cordova,Recurring,Mobile App
+2026-11-27,2026-10-22,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,cancelled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-27,2026-10-22,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,use door code,,Recurring,Mobile App
+2026-11-27,2026-10-22,Yes,,rsi2hnp@resident.zing,,Modera Edgewater,109.00,22.22,scheduled,door unlocked,Misleidy,Recurring,Mobile App
+2026-11-27,2026-10-22,Yes,,r1e8ue5r@resident.zing,,The Hamilton,127.00,12.70,scheduled,be home,Liza Mossucca,Recurring,Mobile App
+2026-11-27,2026-10-22,Yes,,r1g790lo@resident.zing,,The Hamilton,155.00,0.00,scheduled,be home,,Recurring,Web
+2026-11-27,2026-10-22,Yes,,ra35w1n@resident.zing,,Alexan Roxy,139.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-25,2026-10-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,8.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
+2026-11-25,2026-10-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
+2026-11-02,2026-10-22,Yes,,r5u5n5t@resident.zing,,The Hamilton,115.00,20.00,paid,be home,Liza Mossucca,Recurring,Mobile App
+2026-11-02,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,120.00,20.00,cancelled,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-25,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,submitted,be home,,One-Off,Mobile App
+2026-11-23,2026-10-22,Yes,,r10d94wt@resident.zing,,Alexan Roxy,0.00,0.00,skipped,front desk access,Lidia Mas,Recurring,Mobile App
+2026-11-24,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,cancelled,use door code,,One-Off,Mobile App
+2026-11-16,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,submitted,be home,,One-Off,Mobile App
+2026-11-20,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,submitted,be home,,One-Off,Mobile App
+2026-11-16,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,cancelled,be home,,One-Off,Mobile App
+2026-11-13,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,scheduled,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-02,2026-10-22,No,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-11-18,2026-10-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
+2026-11-18,2026-10-22,Yes,,r127pm9w@resident.zing,,Alexan Roxy,8.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
+2026-11-05,2026-10-22,No,,rpz09ep@resident.zing,,Forma,80.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
+2026-11-04,2026-10-22,Yes,,r127pm9w@resident.zing,,Alexan Roxy,8.00,0.00,paid,be home,Lidia Mas,Recurring,Admin
+2026-10-26,2026-10-21,Yes,,r10d94wt@resident.zing,,Alexan Roxy,0.00,0.00,completed,front desk access,Lidia Mas,Recurring,Mobile App
+2026-10-23,2026-10-21,No,,r5cfoxz@resident.zing,,Alexan Roxy,120.00,12.00,payment waived,be home,Lidia Mas,One-Off,Mobile App
+2026-11-13,2026-10-21,Yes,,r1g790lo@resident.zing,,The Hamilton,155.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-13,2026-10-21,Yes,,r1e8ue5r@resident.zing,,The Hamilton,127.00,12.70,scheduled,be home,Liza Mossucca,Recurring,Mobile App
+2026-10-21,2026-10-21,No,,ry1nlt@resident.zing,,Bezel Miami,96.00,0.00,paid,front desk access,Elizabeth Cordova,One-Off,Admin
+2026-11-11,2026-10-21,Yes,,rzt68m3@resident.zing,,Alexan Roxy,8.00,0.00,scheduled,use door code,,Recurring,Admin
+2026-11-06,2026-10-21,Yes,,r1e8ue5r@resident.zing,,The Hamilton,135.00,12.70,paid,be home,Liza Mossucca,Recurring,Mobile App
+2026-11-11,2026-10-21,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
+2026-11-04,2026-10-21,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,paid,use door code,Lidia Mas,Recurring,Admin
+2026-11-26,2026-10-20,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,submitted,door unlocked,,Recurring,Web
+2026-11-26,2026-10-20,Yes,,rbxlmo9@resident.zing,,The Hamilton,120.00,18.00,submitted,be home,,Recurring,Web
+2026-11-25,2026-10-20,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-25,2026-10-20,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-25,2026-10-20,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,skipped,use door code,Liza Mossucca,Recurring,Web
+2026-11-25,2026-10-20,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-11-24,2026-10-20,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,161.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-24,2026-10-20,Yes,,ry1y3b7@resident.zing,,Miami World Tower,105.00,15.75,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-24,2026-10-20,Yes,,ryqb3pe@resident.zing,,Muze at Met,110.00,5.00,scheduled,be home,Daisy,Recurring,Web
+2026-11-24,2026-10-20,Yes,,r11w0p8t@resident.zing,,Forma,35.00,5.25,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-24,2026-10-20,Yes,,r1vmd0fz@resident.zing,,Forma,220.00,33.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-23,2026-10-20,Yes,,r1fj2fof@resident.zing,,Forma,112.00,16.80,scheduled,be home,,Recurring,Web
+2026-11-23,2026-10-20,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,scheduled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-23,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,scheduled,front desk,,Recurring,Web
+2026-11-23,2026-10-20,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-23,2026-10-20,Yes,,rrwi11t@resident.zing,,The Hamilton,75.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-23,2026-10-20,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-23,2026-10-20,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-20,2026-10-20,Yes,,rgqsbkb@resident.zing,,Bezel Miami,159.00,20.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-20,2026-10-20,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,cancelled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-20,2026-10-20,Yes,,r3x8yle@resident.zing,,The Hamilton,35.00,0.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-20,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-20,2026-10-20,Yes,,rf7y606@resident.zing,,Bezel Miami,109.00,16.35,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-20,2026-10-20,Yes,,rgg1jvo@resident.zing,,Forma,115.20,0.00,cancelled,front desk,,Recurring,Web
+2026-11-20,2026-10-20,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-20,2026-10-20,Yes,,ra35w1n@resident.zing,,Alexan Roxy,139.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-19,2026-10-20,Yes,,r1jf61vj@resident.zing,,Alexan Roxy,109.00,16.35,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-19,2026-10-20,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-19,2026-10-20,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,scheduled,door unlocked,Liza Mossucca,Recurring,Web
+2026-11-19,2026-10-20,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-19,2026-10-20,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
+2026-11-19,2026-10-20,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-19,2026-10-20,Yes,,r1m5o85s@resident.zing,,Bezel Miami,99.00,10.00,scheduled,door unlocked,Elizabeth Cordova,Recurring,Web
+2026-11-18,2026-10-20,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-18,2026-10-20,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-18,2026-10-20,Yes,,r1gejh4b@resident.zing,,Forma,8.00,1.20,scheduled,be home,Heyling Chavez,Recurring,Web
+2026-11-18,2026-10-20,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-11-18,2026-10-20,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,scheduled,front desk access,Heyling Chavez,Recurring,Web
+2026-11-17,2026-10-20,Yes,,rpv52fh@resident.zing,,Forma,88.00,0.00,scheduled,front desk access,,Recurring,Web
+2026-11-17,2026-10-20,Yes,,r1q5ugk1@resident.zing,,Forma,115.40,20.77,scheduled,front desk access,,Recurring,Admin
+2026-11-16,2026-10-20,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-16,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,scheduled,front desk,,Recurring,Web
+2026-11-16,2026-10-20,Yes,,r179o9qn@resident.zing,,The Hamilton,120.00,0.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-16,2026-10-20,Yes,,r6nox0e@resident.zing,,Forma,115.20,17.28,scheduled,front desk,,Recurring,Web
+2026-11-16,2026-10-20,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,scheduled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-16,2026-10-20,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-20,2026-10-20,Yes,,r1susr50@resident.zing,,Forma,120.00,0.00,scheduled,front desk,Heyling Chavez,Recurring,Web
+2026-11-16,2026-10-20,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,scheduled,front desk access,Heyling Chavez,Recurring,Web
+2026-11-13,2026-10-20,Yes,,rq5usrw@resident.zing,,Miami World Tower,194.00,16.20,scheduled,be home,Elizabeth Cordova,Recurring,Mobile App
+2026-11-13,2026-10-20,Yes,,r3x8yle@resident.zing,,The Hamilton,35.00,0.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-13,2026-10-20,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-13,2026-10-20,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,scheduled,door unlocked,Daisy,Recurring,Web
+2026-11-13,2026-10-20,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,115.00,10.00,scheduled,be home,Elizabeth Cordova,Recurring,Mobile App
+2026-11-13,2026-10-20,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,cancelled,be home,,Recurring,Web
+2026-11-13,2026-10-20,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,cancelled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-13,2026-10-20,Yes,,rgg1jvo@resident.zing,,Forma,115.20,0.00,cancelled,front desk,,Recurring,Web
+2026-11-13,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-13,2026-10-20,Yes,,rsi2hnp@resident.zing,,Modera Edgewater,109.00,22.22,scheduled,door unlocked,Misleidy,Recurring,Mobile App
+2026-11-13,2026-10-20,Yes,,r66ssus@resident.zing,,Forma,120.00,18.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-13,2026-10-20,Yes,,ra35w1n@resident.zing,,Alexan Roxy,139.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-12,2026-10-20,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,scheduled,door unlocked,Liza Mossucca,Recurring,Web
+2026-11-12,2026-10-20,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-12,2026-10-20,Yes,,rku4dqc@resident.zing,,The Hamilton,65.00,13.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-12,2026-10-20,Yes,,ra4t8ba@resident.zing,,Alexan Roxy,120.00,15.00,skipped,be home,,Recurring,Web
+2026-11-12,2026-10-20,Yes,,r1hvciuo@resident.zing,,Bezel Miami,151.00,30.20,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-12,2026-10-20,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
+2026-11-11,2026-10-20,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-11,2026-10-20,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-11-11,2026-10-20,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,scheduled,use door code,Liza Mossucca,Recurring,Web
+2026-11-11,2026-10-20,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-11-11,2026-10-20,Yes,,r1smz46f@resident.zing,,Muze at Met,110.00,19.80,scheduled,front desk,Daisy,Recurring,Web
+2026-11-10,2026-10-20,Yes,,r11w0p8t@resident.zing,,Forma,45.00,5.25,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-10,2026-10-20,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,12.00,0.00,skipped,be home,,Recurring,Web
+2026-11-10,2026-10-20,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,161.00,0.00,skipped,be home,,Recurring,Web
+2026-11-18,2026-10-20,Yes,,ry1y3b7@resident.zing,,Miami World Tower,105.00,15.75,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-17,2026-10-20,Yes,,rf0umem@resident.zing,,Alexan Roxy,120.00,18.00,scheduled,door unlocked,Lidia Mas,Recurring,Web
+2026-11-09,2026-10-20,Yes,,r18r8vnl@resident.zing,,Forma,45.00,0.00,skipped,be home,,Recurring,Web
+2026-11-09,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-09,2026-10-20,Yes,,rk27wa5@resident.zing,,Alexan Roxy,110.00,14.40,skipped,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-09,2026-10-20,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-11-09,2026-10-20,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-11-09,2026-10-20,Yes,,rrwi11t@resident.zing,,The Hamilton,83.00,0.00,skipped,be home,,Recurring,Web
+2026-11-09,2026-10-20,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,skipped,be home,,Recurring,Web
+2026-11-09,2026-10-20,Yes,,r1fj2fof@resident.zing,,Forma,112.00,16.80,paid,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-06,2026-10-20,Yes,,rvu9p0p@resident.zing,,Modera Edgewater,168.00,25.20,paid,be home,Misleidy,Recurring,Mobile App
+2026-11-06,2026-10-20,Yes,,r3x8yle@resident.zing,,The Hamilton,35.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-11-06,2026-10-20,Yes,,ra35w1n@resident.zing,,Alexan Roxy,139.00,0.00,skipped,be home,Lidia Mas,Recurring,Mobile App
+2026-11-06,2026-10-20,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,cancelled,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-06,2026-10-20,Yes,,rf7y606@resident.zing,,Bezel Miami,109.00,16.35,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-11-06,2026-10-20,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-06,2026-10-20,Yes,,rgg1jvo@resident.zing,,Forma,115.20,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-11-06,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,67.20,0.00,incomplete payment,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-19,2026-10-20,Yes,,rx88zil@resident.zing,,Muze at Met,120.00,0.00,scheduled,be home,Daisy,Recurring,Web
+2026-11-05,2026-10-20,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-05,2026-10-20,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,skipped,be home,,Recurring,Web
+2026-11-05,2026-10-20,Yes,,r1jf61vj@resident.zing,,Alexan Roxy,109.00,16.35,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-11-05,2026-10-20,Yes,,rsoha7u@resident.zing,,The Hamilton,60.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
+2026-11-05,2026-10-20,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,paid,be home,Lidia Mas,Recurring,Admin
+2026-11-05,2026-10-20,Yes,,r8hijhx@resident.zing,,Miami World Tower,48.00,0.00,incomplete payment,be home,Elizabeth Cordova,Recurring,Web
+2026-11-05,2026-10-20,Yes,,r1m5o85s@resident.zing,,Bezel Miami,115.20,10.00,paid,door unlocked,Elizabeth Cordova,Recurring,Web
+2026-11-04,2026-10-20,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,paid,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-11-04,2026-10-20,Yes,,r1gejh4b@resident.zing,,Forma,8.00,1.20,paid,be home,Joselyn Izaguirre,Recurring,Web
+2026-11-05,2026-10-20,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-11-10,2026-10-20,Yes,,ry5hl2k@resident.zing,,The Hamilton,169.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
+2026-11-04,2026-10-20,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-11-04,2026-10-20,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-11-03,2026-10-20,Yes,,r1q5ugk1@resident.zing,,Forma,115.40,20.77,paid,front desk access,Joselyn Izaguirre,Recurring,Admin
+2026-11-03,2026-10-20,Yes,,rpv52fh@resident.zing,,Forma,104.00,0.00,incomplete payment,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-11-02,2026-10-20,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,skipped,be home,Lidia Mas,Recurring,Mobile App
+2026-10-30,2026-10-20,Yes,,r6nox0e@resident.zing,,Forma,115.20,17.28,paid,front desk,Heyling Chavez,Recurring,Web
+2026-11-02,2026-10-20,Yes,,r18zp4u0@resident.zing,,Forma,96.60,0.00,skipped,front desk,,Recurring,Web
+2026-11-02,2026-10-20,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-11-02,2026-10-20,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,cancelled,be home,Elizabeth Cordova,Recurring,Web
+2026-11-02,2026-10-20,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-10-29,2026-10-20,Yes,,rbkuihr@resident.zing,,Muze at Met,80.50,8.05,paid,be home,Daisy,Recurring,Mobile App
+2026-10-20,2026-10-19,No,,r1kst0an@resident.zing,,Alexan Roxy,45.00,4.50,paid,be home,Lidia Mas,One-Off,Mobile App
+2026-10-22,2026-10-19,No,,r7gct8r@resident.zing,,Muze at Met,134.40,25.20,paid,front desk,Daisy,One-Off,Mobile App
+2026-10-28,2026-10-19,No,,r1tfu7yy@resident.zing,,Bezel Miami,120.00,0.00,cancelled,be home,,One-Off,Admin
+2026-11-02,2026-10-19,No,,r1fom50@resident.zing,,Modera Edgewater,120.00,20.00,paid,be home,Misleidy,One-Off,Mobile App
+2026-10-23,2026-10-19,No,,r17kwncd@resident.zing,,The Hamilton,120.00,0.00,paid,be home,Liza Mossucca,One-Off,Admin
+2026-12-15,2026-10-19,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
+2026-12-01,2026-10-19,Yes,,rumldxe@resident.zing,,Forma,211.00,0.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-20,2026-10-19,No,,r17v2436@resident.zing,,The Hamilton,221.00,0.00,refunded,be home,Liza Mossucca,One-Off,Admin
+2026-10-22,2026-10-19,No,,rulle76@resident.zing,,Modera Edgewater,8.00,1.20,cancelled,be home,Misleidy,One-Off,Mobile App
+2026-11-03,2026-10-19,No,,r1bjyfp6@resident.zing,,Forma,168.00,16.80,paid,be home,Heyling Chavez,One-Off,Web
+2026-10-21,2026-10-18,No,,r10qega5@resident.zing,,The Hamilton,52.00,5.20,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-21,2026-10-18,No,,rn8pkjl@resident.zing,,Bezel Miami,116.00,10.30,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-10-21,2026-10-17,No,,r1wgq1hm@resident.zing,,Muze at Met,151.00,0.00,paid,be home,Daisy,One-Off,Mobile App
+2026-10-26,2026-10-17,Yes,,ra35w1n@resident.zing,,Alexan Roxy,13.00,0.00,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-30,2026-10-17,Yes,,ra35w1n@resident.zing,,Alexan Roxy,139.00,0.00,skipped,be home,Lidia Mas,Recurring,Mobile App
+2026-11-02,2026-10-17,No,,remivt3@resident.zing,,Miami World Tower,45.00,4.50,cancelled,door unlocked,Elizabeth Cordova,One-Off,Mobile App
+2026-10-19,2026-10-17,No,,r1nkk7ot@resident.zing,,Alexan Roxy,13.00,1.30,paid,door unlocked,Lidia Mas,One-Off,Mobile App
+2026-10-20,2026-10-17,No,,r10d94wt@resident.zing,,Alexan Roxy,90.00,9.00,paid,front desk access,Lidia Mas,One-Off,Mobile App
+2026-11-13,2026-10-16,Yes,,ra35w1n@resident.zing,,Alexan Roxy,13.00,0.00,cancelled,be home,,Recurring,Mobile App
+2026-10-28,2026-10-16,No,,rp872zw@resident.zing,,Forma,120.00,0.00,cancelled,front desk key pickup,Heyling Chavez,One-Off,Admin
+2026-10-20,2026-10-16,No,,rf5nbw1@resident.zing,,The Hamilton,120.00,18.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-21,2026-10-16,No,,r1czkwxi@resident.zing,,The Hamilton,52.00,5.20,skipped,be home,,One-Off,Mobile App
+2026-10-22,2026-10-16,No,,ro4lmtm@resident.zing,,Modera Edgewater,175.00,17.50,paid,door unlocked,Misleidy,One-Off,Mobile App
+2026-10-19,2026-10-16,No,,r1fom50@resident.zing,,Modera Edgewater,120.00,20.00,paid,be home,Misleidy,One-Off,Mobile App
+2026-10-19,2026-10-15,No,,r1gqus3b@resident.zing,,Bezel Miami,45.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
+2026-10-15,2026-10-14,No,,r1fmu9r1@resident.zing,,Muze at Met,80.00,8.00,paid,front desk,Daisy,One-Off,Mobile App
+2026-10-29,2026-10-14,No,,r1j8pfnq@resident.zing,,Modera Edgewater,80.00,0.00,paid,be home,Misleidy,One-Off,Admin
+2026-10-16,2026-10-14,Yes,,r1e8ue5r@resident.zing,,The Hamilton,127.00,16.90,refunded,be home,Liza Mossucca,Recurring,Mobile App
+2026-10-21,2026-10-13,No,,rpz09ep@resident.zing,,Forma,80.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-10-14,2026-10-13,No,,r1yjs6k1@resident.zing,,Forma,45.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
+2026-10-14,2026-10-12,No,,rkqmojn@resident.zing,,The Hamilton,138.00,0.00,paid,front desk access,Liza Mossucca,One-Off,Admin
+2026-11-17,2026-10-12,Yes,,r1gqus3b@resident.zing,,Bezel Miami,127.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Admin
+2026-11-03,2026-10-12,Yes,,r1gqus3b@resident.zing,,Bezel Miami,127.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Admin
+2026-10-14,2026-10-12,Yes,,r1gqus3b@resident.zing,,Bezel Miami,101.60,0.00,refunded,be home,Elizabeth Cordova,Recurring,Admin
+2026-10-27,2026-10-12,Yes,,r1vmd0fz@resident.zing,,Forma,240.00,0.00,paid,front desk key pickup,Joselyn Izaguirre,Recurring,Admin
+2026-10-14,2026-10-12,Yes,,rbkuihr@resident.zing,,Muze at Met,161.00,8.40,paid,be home,Daisy,Recurring,Mobile App
+2026-10-21,2026-10-12,Yes,,r1gejh4b@resident.zing,,Forma,8.00,1.20,paid,be home,Heyling Chavez,Recurring,Web
+2026-10-20,2026-10-12,No,,r159iaai@resident.zing,,Forma,143.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Admin
+2026-10-21,2026-10-12,No,,r6avbi4@resident.zing,,Forma,45.00,10.00,paid,front desk key pickup,Heyling Chavez,One-Off,Web
+2026-10-22,2026-10-12,No,,r1un2jch@resident.zing,,The Hamilton,3.00,5.50,cancelled,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-19,2026-10-12,No,,r1mzzw1x@resident.zing,,Alexan Roxy,156.00,21.15,paid,front desk access,Lidia Mas,One-Off,Mobile App
+2026-10-14,2026-10-11,No,,r8y10zl@resident.zing,,Bezel Miami,35.00,3.50,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-11-06,2026-10-11,No,,r16rlogd@resident.zing,,Modera Edgewater,120.00,10.00,cancelled,be home,Misleidy,One-Off,Mobile App
 2026-10-14,2026-10-11,No,,r10qega5@resident.zing,,The Hamilton,52.00,5.20,submitted,be home,,One-Off,Mobile App
-2026-10-13,2026-10-11,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-19,2026-10-10,No,,r7d987r@resident.zing,,The Hamilton,52.00,5.20,submitted,be home,,One-Off,Mobile App
-2026-10-13,2026-10-09,No,,r50swqm@resident.zing,,Muze at Met,0.00,7.00,scheduled,be home,Daisy,One-Off,Mobile App
-2026-10-14,2026-10-09,No,,rtxf36d@resident.zing,,Bezel Miami,35.00,3.50,submitted,be home,Elizabeth Cordova,One-Off,Mobile App
-2026-10-20,2026-10-09,No,,r1wcgco0@resident.zing,,Alexan Roxy,52.00,5.20,scheduled,door unlocked,Lidia Mas,One-Off,Mobile App
+2026-10-13,2026-10-11,Yes,,rk27wa5@resident.zing,,Alexan Roxy,110.00,14.40,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-21,2026-10-10,No,,r7d987r@resident.zing,,The Hamilton,52.00,5.20,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-13,2026-10-09,No,,r50swqm@resident.zing,,Muze at Met,0.00,7.00,paid,be home,Daisy,One-Off,Mobile App
+2026-10-14,2026-10-09,No,,rtxf36d@resident.zing,,Bezel Miami,35.00,3.50,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-10-20,2026-10-09,No,,r1wcgco0@resident.zing,,Alexan Roxy,52.00,5.20,paid,door unlocked,Lidia Mas,One-Off,Mobile App
 2026-10-16,2026-10-09,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,submitted,door unlocked,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,115.00,10.00,scheduled,be home,,Recurring,Mobile App
-2026-10-30,2026-10-09,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,scheduled,use door code,,Recurring,Mobile App
-2026-10-09,2026-10-09,No,,rdi6u03@resident.zing,,The Hamilton,140.00,50.00,paid,door unlocked,Misleidy,One-Off,Admin
-2026-10-12,2026-10-09,No,,r3f5zrv@resident.zing,,Bezel Miami,208.00,20.80,scheduled,door unlocked,Daisy,One-Off,Mobile App
+2026-10-30,2026-10-09,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,115.00,10.00,paid,be home,Elizabeth Cordova,Recurring,Mobile App
+2026-10-30,2026-10-09,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-09,2026-10-09,No,,rdi6u03@resident.zing,,The Hamilton,140.00,50.00,paid,door unlocked,Liza Mossucca,One-Off,Admin
+2026-10-12,2026-10-09,No,,r3f5zrv@resident.zing,,Bezel Miami,192.00,20.80,refunded,door unlocked,Elizabeth Cordova,One-Off,Mobile App
 2026-10-30,2026-10-09,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,use door code,,Recurring,Mobile App
-2026-10-30,2026-10-09,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,scheduled,front desk,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,scheduled,use door code,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,scheduled,door unlocked,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,scheduled,be home,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,scheduled,front desk,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,scheduled,front desk access,,Recurring,Web
-2026-10-30,2026-10-09,Yes,,rmhlbu@resident.zing,,Bezel Miami,104.00,20.00,scheduled,door unlocked,,Recurring,Web
+2026-10-30,2026-10-09,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-30,2026-10-09,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-10-30,2026-10-09,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,paid,door unlocked,Daisy,Recurring,Web
+2026-10-30,2026-10-09,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,skipped,be home,,Recurring,Web
+2026-10-30,2026-10-09,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-10-30,2026-10-09,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,cancelled,front desk access,Heyling Chavez,Recurring,Web
+2026-10-30,2026-10-09,Yes,,rmhlbu@resident.zing,,Bezel Miami,104.00,20.00,paid,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-10-09,2026-10-09,No,,ry1nlt@resident.zing,,Bezel Miami,96.00,0.00,paid,door unlocked,Elizabeth Cordova,One-Off,Admin
-2026-10-26,2026-10-09,Yes,,rrwi11t@resident.zing,,The Hamilton,75.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
-2026-10-23,2026-10-09,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,scheduled,front desk,,Recurring,Web
-2026-10-29,2026-10-09,Yes,,r19kq9wd@resident.zing,,Miami World Tower,169.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-29,2026-10-09,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,115.00,20.00,scheduled,door unlocked,Lidia Mas,Recurring,Mobile App
-2026-10-29,2026-10-09,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
-2026-10-29,2026-10-09,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-29,2026-10-09,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,scheduled,door unlocked,Heyling Chavez,Recurring,Web
-2026-10-29,2026-10-09,Yes,,rsoha7u@resident.zing,,The Hamilton,68.00,0.00,scheduled,door unlocked,Heyling Chavez,Recurring,Web
-2026-10-29,2026-10-09,Yes,,rbxlmo9@resident.zing,,The Hamilton,110.00,16.50,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-29,2026-10-09,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,scheduled,door unlocked,Joselyn Izaguirre,Recurring,Web
-2026-10-30,2026-10-09,Yes,,rq5usrw@resident.zing,,Miami World Tower,162.00,16.90,submitted,be home,,Recurring,Mobile App
-2026-10-29,2026-10-09,Yes,,ra35w1n@resident.zing,,Alexan Roxy,13.00,5.00,submitted,be home,,Recurring,Mobile App
-2026-10-29,2026-10-08,No,,r1sod5k9@resident.zing,,Forma,120.00,0.00,scheduled,front desk key pickup,Joselyn Izaguirre,One-Off,Web
+2026-10-26,2026-10-09,Yes,,rrwi11t@resident.zing,,The Hamilton,102.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-23,2026-10-09,Yes,,ry3boks@resident.zing,,Forma,115.20,15.60,paid,front desk,Daisy,Recurring,Web
+2026-11-04,2026-10-09,Yes,,r19kq9wd@resident.zing,,Miami World Tower,169.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-29,2026-10-09,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,115.00,20.00,paid,door unlocked,Lidia Mas,Recurring,Mobile App
+2026-10-29,2026-10-09,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,paid,be home,Lidia Mas,Recurring,Admin
+2026-10-29,2026-10-09,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,incomplete payment,be home,Elizabeth Cordova,Recurring,Web
+2026-10-29,2026-10-09,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
+2026-11-05,2026-10-09,Yes,,rsoha7u@resident.zing,,The Hamilton,87.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
+2026-10-29,2026-10-09,Yes,,rbxlmo9@resident.zing,,The Hamilton,120.00,16.50,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-29,2026-10-09,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,cancelled,door unlocked,Joselyn Izaguirre,Recurring,Web
+2026-10-30,2026-10-09,Yes,,rq5usrw@resident.zing,,Miami World Tower,129.60,16.90,incomplete payment,be home,Daisy,Recurring,Mobile App
+2026-10-20,2026-10-09,Yes,,ra35w1n@resident.zing,,Alexan Roxy,13.00,5.00,skipped,be home,,Recurring,Mobile App
 2026-10-29,2026-10-08,No,,r1sod5k9@resident.zing,,Forma,120.00,0.00,cancelled,front desk key pickup,,One-Off,Web
-2026-10-27,2026-10-08,Yes,,rf11cl2@resident.zing,,Modera Edgewater,120.00,18.00,submitted,door unlocked,,Recurring,Mobile App
-2026-10-27,2026-10-08,Yes,,rf11cl2@resident.zing,,Modera Edgewater,120.00,18.00,scheduled,door unlocked,Misleidy,Recurring,Mobile App
+2026-10-29,2026-10-08,No,,r1sod5k9@resident.zing,,Forma,120.00,0.00,cancelled,front desk key pickup,,One-Off,Web
+2026-10-27,2026-10-08,Yes,,rf11cl2@resident.zing,,Modera Edgewater,120.00,18.00,cancelled,door unlocked,,Recurring,Mobile App
+2026-10-27,2026-10-08,Yes,,rf11cl2@resident.zing,,Modera Edgewater,120.00,18.00,cancelled,door unlocked,Misleidy,Recurring,Mobile App
 2026-10-09,2026-10-07,No,,r1y4alpw@resident.zing,,Muze at Met,96.00,12.00,paid,be home,Daisy,One-Off,Mobile App
 2026-10-13,2026-10-07,No,,rl5iah9@resident.zing,,Blu27,0.00,0.00,scheduled,front desk,Tapan Patel,One-Off,Admin
 2026-10-13,2026-10-07,No,,rl5iah9@resident.zing,,Blu27,0.00,0.00,scheduled,front desk,Tapan Dead,One-Off,Admin
 2026-10-13,2026-10-07,No,,rl5iah9@resident.zing,,Blu27,0.00,0.00,scheduled,front desk,Tapan Dead,One-Off,Admin
-2026-10-22,2026-10-07,Yes,,r1jf61vj@resident.zing,,Alexan Roxy,109.00,16.35,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-12,2026-10-07,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,completed,be home,Lidia Mas,Recurring,Mobile App
-2026-10-23,2026-10-07,Yes,,rsi2hnp@resident.zing,,Modera Edgewater,109.00,22.22,scheduled,door unlocked,,Recurring,Mobile App
-2026-10-16,2026-10-07,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-16,2026-10-07,Yes,,ra35w1n@resident.zing,,Alexan Roxy,134.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-16,2026-10-07,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,115.00,10.00,scheduled,be home,Elizabeth Cordova,Recurring,Mobile App
-2026-10-16,2026-10-07,No,,r1k8lbkj@resident.zing,,Bezel Miami,140.00,10.00,scheduled,door unlocked,Elizabeth Cordova,One-Off,Mobile App
-2026-10-12,2026-10-07,No,,rn4wh24@resident.zing,,Miami World Tower,45.00,6.75,in progress,be home,Elizabeth Cordova,One-Off,Mobile App
-2026-10-19,2026-10-07,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-19,2026-10-07,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-16,2026-10-07,No,,r1ev12qy@resident.zing,,The Hamilton,55.00,10.00,scheduled,use door code,Misleidy,One-Off,Mobile App
+2026-10-22,2026-10-07,Yes,,r1jf61vj@resident.zing,,Alexan Roxy,109.00,16.35,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-12,2026-10-07,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-11-02,2026-10-07,Yes,,rsi2hnp@resident.zing,,Modera Edgewater,109.00,22.22,paid,door unlocked,Misleidy,Recurring,Mobile App
+2026-10-16,2026-10-07,Yes,,rex6qtq@resident.zing,,Alexan Roxy,74.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-16,2026-10-07,Yes,,ra35w1n@resident.zing,,Alexan Roxy,134.00,0.00,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-15,2026-10-07,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,115.00,10.00,paid,be home,Daisy,Recurring,Mobile App
+2026-10-16,2026-10-07,No,,r1k8lbkj@resident.zing,,Bezel Miami,140.00,10.00,completed,door unlocked,Elizabeth Cordova,One-Off,Mobile App
+2026-10-12,2026-10-07,No,,rn4wh24@resident.zing,,Miami World Tower,45.00,6.75,paid,be home,Elizabeth Cordova,One-Off,Mobile App
+2026-10-19,2026-10-07,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,completed,be home,Lidia Mas,Recurring,Mobile App
+2026-10-19,2026-10-07,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,skipped,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-16,2026-10-07,No,,r1ev12qy@resident.zing,,The Hamilton,55.00,10.00,paid,use door code,Liza Mossucca,One-Off,Mobile App
 2026-10-09,2026-10-07,No,,rdr0081@resident.zing,,Alexan Roxy,134.40,0.00,paid,be home,Lidia Mas,One-Off,Admin
-2026-10-26,2026-10-07,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-26,2026-10-07,Yes,,rk27wa5@resident.zing,,Alexan Roxy,80.00,14.40,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-23,2026-10-07,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-23,2026-10-07,Yes,,ra35w1n@resident.zing,,Alexan Roxy,134.00,0.00,scheduled,be home,Lidia Mas,Recurring,Mobile App
+2026-10-26,2026-10-07,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-26,2026-10-07,Yes,,rk27wa5@resident.zing,,Alexan Roxy,110.00,14.40,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-23,2026-10-07,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-23,2026-10-07,Yes,,ra35w1n@resident.zing,,Alexan Roxy,134.00,0.00,skipped,be home,Lidia Mas,Recurring,Mobile App
 2026-10-08,2026-10-07,No,,rd4ncw8@resident.zing,,Alexan Roxy,102.40,0.00,incomplete payment,front desk access,Lidia Mas,One-Off,Admin
-2026-10-09,2026-10-07,No,,rf5nbw1@resident.zing,,The Hamilton,120.00,18.00,paid,be home,Misleidy,One-Off,Mobile App
-2026-10-15,2026-10-06,No,,r1bjyfp6@resident.zing,,Forma,168.00,25.20,scheduled,be home,Heyling Chavez,One-Off,Web
+2026-10-09,2026-10-07,No,,rf5nbw1@resident.zing,,The Hamilton,120.00,18.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-15,2026-10-06,No,,r1bjyfp6@resident.zing,,Forma,168.00,25.20,paid,be home,Heyling Chavez,One-Off,Web
 2026-10-08,2026-10-06,No,,r1jjnky@resident.zing,,Forma,120.00,20.00,paid,be home,Heyling Chavez,One-Off,Web
-2026-10-20,2026-10-06,Yes,,rg8pa9c@resident.zing,,Muze at Met,161.00,40.00,submitted,be home,Daisy,Recurring,Mobile App
+2026-11-23,2026-10-06,Yes,,rg8pa9c@resident.zing,,Muze at Met,188.00,40.00,scheduled,be home,Daisy,Recurring,Mobile App
 2026-10-07,2026-10-06,No,,r1dfj3ex@resident.zing,,Bezel Miami,104.00,15.60,completed,locker,Daisy,One-Off,Mobile App
 2026-11-20,2026-10-06,No,,rn4duxf@resident.zing,,Forma,147.00,0.00,cancelled,be home,,One-Off,Web
 2026-10-07,2026-10-06,No,,r1ylam8s@resident.zing,,Miami World Tower,96.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
@@ -95,20 +371,20 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-10-06,2026-10-05,No,,rl5iah9@resident.zing,,Blu27,0.00,0.00,cancelled,front desk,Tapan Dead,One-Off,Admin
 2026-10-06,2026-10-05,No,,rl5iah9@resident.zing,,Blu27,0.00,0.00,cancelled,front desk,Tapan Patel,One-Off,Admin
 2026-10-05,2026-10-05,No,,rl5iah9@resident.zing,,Blu27,0.00,0.00,cancelled,door unlocked,Tapan Dead,One-Off,Admin
-2026-10-13,2026-10-05,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-12,2026-10-05,Yes,,rvu9p0p@resident.zing,,Modera Edgewater,84.00,25.20,submitted,be home,Misleidy,Recurring,Mobile App
+2026-10-13,2026-10-05,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-10-12,2026-10-05,Yes,,rvu9p0p@resident.zing,,Modera Edgewater,84.00,25.20,completed,be home,Misleidy,Recurring,Mobile App
 2026-10-05,2026-10-04,No,,rhbylx6@resident.zing,,Forma,96.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Admin
-2026-10-29,2026-10-04,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,reschedule request,use door code,,Recurring,Mobile App
+2026-10-29,2026-10-04,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,paid,use door code,Liza Mossucca,Recurring,Mobile App
 2026-10-12,2026-10-04,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,reschedule request,use door code,,Recurring,Mobile App
-2026-10-14,2026-10-04,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,scheduled,use door code,Liza Mossucca,Recurring,Mobile App
+2026-10-14,2026-10-04,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,paid,use door code,Liza Mossucca,Recurring,Mobile App
 2026-10-09,2026-10-04,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,submitted,use door code,,Recurring,Mobile App
-2026-10-21,2026-10-04,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-10-21,2026-10-04,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-10-07,2026-10-04,No,,rh8fpdo@resident.zing,,Forma,168.00,33.60,paid,be home,Joselyn Izaguirre,One-Off,Web
-2026-10-12,2026-10-04,No,,ra5f4py@resident.zing,,The Hamilton,120.00,20.00,scheduled,be home,Heyling Chavez,One-Off,Mobile App
+2026-10-12,2026-10-04,No,,ra5f4py@resident.zing,,The Hamilton,128.00,20.00,paid,be home,Liza Mossucca,One-Off,Mobile App
 2026-10-12,2026-10-04,Yes,,ra5f4py@resident.zing,,The Hamilton,115.00,20.00,cancelled,be home,,Recurring,Mobile App
 2026-10-05,2026-10-03,No,,r13zoa31@resident.zing,,Muze at Met,168.00,20.00,completed,be home,Daisy,One-Off,Mobile App
 2026-10-06,2026-10-03,No,,r10cjh0l@resident.zing,,Bezel Miami,45.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-11-06,2026-10-03,No,,rqydwwp@resident.zing,,Forma,70.00,10.00,scheduled,be home,Heyling Chavez,One-Off,Web
+2026-11-06,2026-10-03,No,,rqydwwp@resident.zing,,Forma,70.00,10.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-10-05,2026-10-02,No,,r1olpk7a@resident.zing,,Modera Edgewater,78.00,11.70,paid,be home,Misleidy,One-Off,Mobile App
 2026-10-05,2026-10-02,No,,r1jf61vj@resident.zing,,Alexan Roxy,24.00,0.00,paid,be home,Lidia Mas,One-Off,Admin
 2026-10-08,2026-10-02,No,,rphu5wz@resident.zing,,Alexan Roxy,85.00,0.00,paid,use door code,Lidia Mas,One-Off,Admin
@@ -117,35 +393,35 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-10-05,2026-10-02,Yes,,r1tihz0w@resident.zing,,Alexan Roxy,0.00,0.00,completed,be home,Lidia Mas,Recurring,Mobile App
 2026-10-06,2026-10-01,No,,r1j8pfnq@resident.zing,,Modera Edgewater,64.00,0.00,paid,be home,Misleidy,One-Off,Mobile App
 2026-10-02,2026-10-01,No,,rkcqw6i@resident.zing,,Miami World Tower,108.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
-2026-10-15,2026-10-01,No,,ra79mxz@resident.zing,,Forma,120.00,0.00,scheduled,front desk access,Joselyn Izaguirre,One-Off,Admin
+2026-10-15,2026-10-01,No,,ra79mxz@resident.zing,,Forma,120.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Admin
 2026-10-09,2026-09-30,Yes,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
 2026-10-07,2026-09-30,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,skipped,be home,,Recurring,Web
-2026-10-07,2026-09-30,No,,rhxu0n3@resident.zing,,The Hamilton,120.00,21.60,paid,be home,Misleidy,One-Off,Mobile App
-2026-10-15,2026-09-30,No,,rcigaf3@resident.zing,,Forma,76.00,0.00,scheduled,front desk key pickup,Heyling Chavez,One-Off,Web
+2026-10-07,2026-09-30,No,,rhxu0n3@resident.zing,,The Hamilton,120.00,21.60,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-15,2026-09-30,No,,rcigaf3@resident.zing,,Forma,76.00,0.00,paid,front desk key pickup,Heyling Chavez,One-Off,Web
 2026-09-30,2026-09-30,No,,rn4duxf@resident.zing,,Test Testing,0.00,0.00,cancelled,be home,,One-Off,Admin
-2026-10-27,2026-09-30,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,submitted,be home,,Recurring,Web
+2026-10-29,2026-09-30,Yes,,rfnh84w@resident.zing,,Forma,60.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-10-06,2026-09-30,No,,r1kvv3xp@resident.zing,,The Hamilton,120.00,0.00,paid,be home,Liza Mossucca,One-Off,Mobile App
-2026-10-08,2026-09-29,No,,r7d987r@resident.zing,,The Hamilton,120.00,24.00,paid,be home,Misleidy,One-Off,Mobile App
-2026-10-13,2026-09-29,Yes,,r11w0p8t@resident.zing,,Forma,35.00,5.25,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-08,2026-09-29,No,,r7d987r@resident.zing,,The Hamilton,120.00,24.00,paid,be home,Liza Mossucca,One-Off,Mobile App
+2026-10-13,2026-09-29,Yes,,r11w0p8t@resident.zing,,Forma,35.00,5.25,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-10-01,2026-09-29,No,,r1dhpyhu@resident.zing,,Test Testing,13.00,0.00,cancelled,be home,Tapan Patel,One-Off,Admin
 2026-09-30,2026-09-29,No,,r1dhpyhu@resident.zing,,Test Testing,35.00,0.00,cancelled,be home,,One-Off,Admin
 2026-10-02,2026-09-29,Yes,,r1jf61vj@resident.zing,,Alexan Roxy,109.00,16.35,paid,be home,Lidia Mas,Recurring,Mobile App
-2026-11-03,2026-09-29,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-29,2026-09-28,Yes,,r1olpk7a@resident.zing,,Modera Edgewater,138.00,20.70,scheduled,be home,Misleidy,Recurring,Mobile App
+2026-11-10,2026-09-29,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,completed,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-26,2026-09-28,Yes,,r1olpk7a@resident.zing,,Modera Edgewater,138.00,20.70,paid,be home,Misleidy,Recurring,Mobile App
 2026-10-09,2026-09-28,No,,r1gejh4b@resident.zing,,Forma,35.00,5.25,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-09-30,2026-09-28,Yes,,rulle76@resident.zing,,Modera Edgewater,168.00,25.20,paid,be home,Misleidy,Recurring,Mobile App
-2026-10-13,2026-09-28,Yes,,rsi2hnp@resident.zing,,Modera Edgewater,109.00,22.22,scheduled,door unlocked,Misleidy,Recurring,Mobile App
+2026-10-13,2026-09-28,Yes,,rsi2hnp@resident.zing,,Modera Edgewater,109.00,22.22,paid,door unlocked,Misleidy,Recurring,Mobile App
 2026-09-28,2026-09-28,No,,r1emt5ez@resident.zing,,Muze at Met,120.00,0.00,scheduled,be home,Daisy,One-Off,Mobile App
 2026-10-05,2026-09-28,No,,rvkklv5@resident.zing,,Forma,120.00,0.00,incomplete payment,be home,Heyling Chavez,One-Off,Admin
-2026-10-16,2026-09-28,No,,r32v8ka@resident.zing,,Muze at Met,120.00,0.00,scheduled,be home,Daisy,One-Off,Admin
+2026-10-16,2026-09-28,No,,r32v8ka@resident.zing,,Muze at Met,120.00,0.00,paid,be home,Daisy,One-Off,Admin
 2026-09-28,2026-09-27,No,,r10d94wt@resident.zing,,Alexan Roxy,75.00,13.50,paid,front desk access,Lidia Mas,One-Off,Mobile App
 2026-10-07,2026-09-27,Yes,,r1gejh4b@resident.zing,,Forma,8.00,1.20,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-10-01,2026-09-27,No,,r1dft1do@resident.zing,,Modera Edgewater,200.00,0.00,paid,be home,Misleidy,One-Off,Mobile App
 2026-09-29,2026-09-26,Yes,,rf11cl2@resident.zing,,Modera Edgewater,120.00,18.00,paid,door unlocked,Misleidy,Recurring,Mobile App
 2026-09-28,2026-09-25,Yes,,r10d94wt@resident.zing,,Alexan Roxy,0.00,0.00,cancelled,front desk access,,Recurring,Mobile App
-2026-11-03,2026-09-25,Yes,,r107di60@resident.zing,,Muze at Met,68.00,12.24,scheduled,be home,Daisy,Recurring,Web
+2026-11-03,2026-09-25,Yes,,r107di60@resident.zing,,Muze at Met,68.00,12.24,paid,be home,Daisy,Recurring,Web
 2026-10-02,2026-09-25,No,,rzwn4jm@resident.zing,,The Hamilton,130.00,0.00,cancelled,front desk access,Liza Mossucca,One-Off,Admin
-2026-10-12,2026-09-25,Yes,,r1vy0gz7@resident.zing,,Alexan Roxy,168.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
+2026-10-12,2026-09-25,Yes,,r1vy0gz7@resident.zing,,Alexan Roxy,168.00,0.00,paid,be home,Lidia Mas,Recurring,Admin
 2026-10-09,2026-09-25,Yes,,ra35w1n@resident.zing,,Alexan Roxy,110.00,0.00,skipped,be home,,Recurring,Mobile App
 2026-10-02,2026-09-25,Yes,,ra35w1n@resident.zing,,Alexan Roxy,24.00,0.00,skipped,be home,,Recurring,Mobile App
 2026-10-08,2026-09-25,No,,ra35w1n@resident.zing,,Alexan Roxy,13.00,0.00,paid,be home,Lidia Mas,One-Off,Mobile App
@@ -161,86 +437,86 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-29,2026-09-24,No,,rn07q1u@resident.zing,,Muze at Met,168.00,0.00,completed,front desk,Daisy,One-Off,Mobile App
 2026-09-28,2026-09-24,No,,r9hnrci@resident.zing,,Forma,48.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Admin
 2026-10-20,2026-09-24,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,skipped,be home,,Recurring,Web
-2026-10-28,2026-09-24,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
-2026-10-28,2026-09-24,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,scheduled,use door code,Heyling Chavez,Recurring,Web
-2026-10-28,2026-09-24,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-28,2026-09-24,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-28,2026-09-24,Yes,,rzt68m3@resident.zing,,Alexan Roxy,8.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
-2026-10-28,2026-09-24,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
-2026-10-27,2026-09-24,Yes,,rowl5is@resident.zing,,Forma,120.00,0.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
-2026-10-27,2026-09-24,Yes,,rowl5is@resident.zing,,Forma,120.00,0.00,submitted,be home,,Recurring,Web
-2026-10-27,2026-09-24,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,161.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-27,2026-09-24,Yes,,ryqb3pe@resident.zing,,Muze at Met,110.00,5.00,scheduled,be home,Daisy,Recurring,Web
-2026-10-27,2026-09-24,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
-2026-10-27,2026-09-24,Yes,,ry1y3b7@resident.zing,,Miami World Tower,89.00,13.35,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r1fj2fof@resident.zing,,Forma,112.00,16.80,scheduled,be home,Joselyn Izaguirre,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
-2026-10-26,2026-09-24,Yes,,rt7xvmp@resident.zing,,Forma,110.00,16.50,scheduled,front desk,,Recurring,Web
-2026-10-26,2026-09-24,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,scheduled,front desk access,Heyling Chavez,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,scheduled,front desk,Daisy,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
-2026-10-26,2026-09-24,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-23,2026-09-24,Yes,,rp872zw@resident.zing,,Forma,110.00,9.00,scheduled,front desk access,Heyling Chavez,Recurring,Web
-2026-10-23,2026-09-24,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-23,2026-09-24,Yes,,rf7y606@resident.zing,,Bezel Miami,109.00,16.35,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-23,2026-09-24,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,scheduled,use door code,Liza Mossucca,Recurring,Web
-2026-10-23,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-28,2026-09-24,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,skipped,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-27,2026-09-24,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-10-28,2026-09-24,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-28,2026-09-24,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-10-28,2026-09-24,Yes,,rzt68m3@resident.zing,,Alexan Roxy,8.00,0.00,paid,use door code,Lidia Mas,Recurring,Admin
+2026-10-28,2026-09-24,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,paid,use door code,Lidia Mas,Recurring,Admin
+2026-10-27,2026-09-24,Yes,,rowl5is@resident.zing,,Forma,120.00,0.00,skipped,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-27,2026-09-24,Yes,,rowl5is@resident.zing,,Forma,120.00,0.00,skipped,be home,,Recurring,Web
+2026-11-04,2026-09-24,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,161.00,0.00,skipped,be home,,Recurring,Web
+2026-11-06,2026-09-24,Yes,,ryqb3pe@resident.zing,,Muze at Met,110.00,5.00,paid,be home,Daisy,Recurring,Web
+2026-10-27,2026-09-24,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
+2026-10-27,2026-09-24,Yes,,ry1y3b7@resident.zing,,Miami World Tower,89.00,13.35,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-26,2026-09-24,Yes,,r1fj2fof@resident.zing,,Forma,112.00,16.80,paid,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-26,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,incomplete payment,front desk,Joselyn Izaguirre,Recurring,Web
+2026-11-02,2026-09-24,Yes,,rt7xvmp@resident.zing,,Forma,110.00,16.50,paid,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-26,2026-09-24,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,cancelled,front desk access,Heyling Chavez,Recurring,Web
+2026-10-31,2026-09-24,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,cancelled,be home,Heyling Chavez,Recurring,Web
+2026-10-26,2026-09-24,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,cancelled,front desk,Daisy,Recurring,Web
+2026-10-28,2026-09-24,Yes,,r12eusns@resident.zing,,Miami World Tower,80.00,13.14,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-26,2026-09-24,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,skipped,be home,Liza Mossucca,Recurring,Web
+2026-10-26,2026-09-24,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,skipped,be home,Elizabeth Cordova,Recurring,Web
+2026-10-23,2026-09-24,Yes,,rp872zw@resident.zing,,Forma,110.00,9.00,cancelled,front desk access,,Recurring,Web
+2026-10-23,2026-09-24,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-26,2026-09-24,Yes,,rf7y606@resident.zing,,Bezel Miami,109.00,16.35,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-23,2026-09-24,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-10-23,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,completed,front desk,Daisy,Recurring,Web
 2026-10-23,2026-09-24,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,140.00,6.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-10-23,2026-09-24,Yes,,ra35w1n@resident.zing,,Alexan Roxy,147.00,22.05,cancelled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-23,2026-09-24,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
-2026-10-23,2026-09-24,Yes,,r1i8r99j@resident.zing,,The Hamilton,136.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-11-06,2026-09-24,Yes,,rgqsbkb@resident.zing,,Bezel Miami,159.00,20.00,reschedule request,be home,,Recurring,Web
-2026-10-22,2026-09-24,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-22,2026-09-24,Yes,,rdi6u03@resident.zing,,The Hamilton,113.00,22.60,cancelled,door unlocked,Heyling Chavez,Recurring,Web
-2026-10-22,2026-09-24,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,scheduled,door unlocked,Heyling Chavez,Recurring,Web
-2026-10-22,2026-09-24,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,scheduled,door unlocked,Joselyn Izaguirre,Recurring,Web
-2026-10-22,2026-09-24,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
-2026-10-22,2026-09-24,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
-2026-10-22,2026-09-24,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-22,2026-09-24,Yes,,r1m5o85s@resident.zing,,Bezel Miami,99.00,10.00,scheduled,door unlocked,Elizabeth Cordova,Recurring,Web
-2026-10-21,2026-09-24,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-21,2026-09-24,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-21,2026-09-24,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-21,2026-09-24,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
+2026-10-23,2026-09-24,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Daisy,Recurring,Web
+2026-10-23,2026-09-24,Yes,,r1i8r99j@resident.zing,,The Hamilton,136.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
+2026-11-08,2026-09-24,Yes,,rgqsbkb@resident.zing,,Bezel Miami,159.00,20.00,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-22,2026-09-24,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-22,2026-09-24,Yes,,rdi6u03@resident.zing,,The Hamilton,113.00,22.60,cancelled,door unlocked,Liza Mossucca,Recurring,Web
+2026-10-21,2026-09-24,Yes,,rsoha7u@resident.zing,,The Hamilton,60.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
+2026-10-22,2026-09-24,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,cancelled,door unlocked,Joselyn Izaguirre,Recurring,Web
+2026-10-22,2026-09-24,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,skipped,be home,,Recurring,Web
+2026-10-22,2026-09-24,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,paid,be home,Lidia Mas,Recurring,Admin
+2026-10-22,2026-09-24,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,incomplete payment,be home,Elizabeth Cordova,Recurring,Web
+2026-10-22,2026-09-24,Yes,,r1m5o85s@resident.zing,,Bezel Miami,99.00,10.00,incomplete payment,door unlocked,Elizabeth Cordova,Recurring,Web
+2026-10-21,2026-09-24,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-10-21,2026-09-24,Yes,,r127pm9w@resident.zing,,Alexan Roxy,75.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-21,2026-09-24,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-10-21,2026-09-24,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,paid,use door code,Lidia Mas,Recurring,Admin
 2026-10-20,2026-09-24,Yes,,rg8pa9c@resident.zing,,Muze at Met,143.00,50.00,cancelled,be home,Daisy,Recurring,Admin
 2026-10-21,2026-09-24,Yes,,r1mbaz0v@resident.zing,,Miami World Tower,155.00,15.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-10-20,2026-09-24,Yes,,r1sgxg6q@resident.zing,,The Hamilton,111.00,16.65,cancelled,be home,,Recurring,Web
 2026-10-20,2026-09-24,Yes,,r1sgxg6q@resident.zing,,The Hamilton,111.00,16.65,cancelled,be home,,Recurring,Web
-2026-10-20,2026-09-24,Yes,,rpv52fh@resident.zing,,Forma,55.00,0.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-20,2026-09-24,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,scheduled,door unlocked,Elizabeth Cordova,Recurring,Web
-2026-10-20,2026-09-24,Yes,,rq6iy8h@resident.zing,,The Hamilton,136.04,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
-2026-10-20,2026-09-24,Yes,,r1q5ugk1@resident.zing,,Forma,104.00,18.72,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
-2026-10-20,2026-09-24,Yes,,rumldxe@resident.zing,,Forma,211.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-26,2026-09-24,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,scheduled,use door code,Liza Mossucca,Recurring,Web
-2026-10-22,2026-09-24,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,reschedule request,use door code,Liza Mossucca,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r179o9qn@resident.zing,,The Hamilton,120.00,0.00,scheduled,use door code,Liza Mossucca,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,scheduled,front desk access,Heyling Chavez,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r6nox0e@resident.zing,,Forma,104.00,15.60,scheduled,front desk,Heyling Chavez,Recurring,Web
-2026-10-19,2026-09-24,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,scheduled,door unlocked,Daisy,Recurring,Web
-2026-10-13,2026-09-24,Yes,,rkq048i@resident.zing,,The Hamilton,136.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r1susr50@resident.zing,,Forma,100.00,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-20,2026-09-24,Yes,,rpv52fh@resident.zing,,Forma,103.00,0.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
+2026-10-20,2026-09-24,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,submitted,door unlocked,,Recurring,Web
+2026-10-20,2026-09-24,Yes,,rq6iy8h@resident.zing,,The Hamilton,136.04,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
+2026-10-20,2026-09-24,Yes,,r1q5ugk1@resident.zing,,Forma,115.40,18.72,paid,front desk,Heyling Chavez,Recurring,Web
+2026-10-20,2026-09-24,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-26,2026-09-24,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-10-22,2026-09-24,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,skipped,use door code,Liza Mossucca,Recurring,Web
+2026-10-19,2026-09-24,Yes,,r179o9qn@resident.zing,,The Hamilton,120.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-10-19,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,67.20,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-19,2026-09-24,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-10-21,2026-09-24,Yes,,r6nox0e@resident.zing,,Forma,115.20,15.60,submitted,front desk,Heyling Chavez,Recurring,Web
+2026-10-19,2026-09-24,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,skipped,door unlocked,,Recurring,Web
+2026-10-13,2026-09-24,Yes,,rkq048i@resident.zing,,The Hamilton,136.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-23,2026-09-24,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-19,2026-09-24,Yes,,r1susr50@resident.zing,,Forma,120.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
 2026-10-19,2026-09-24,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,skipped,be home,Elizabeth Cordova,Recurring,Web
-2026-10-19,2026-09-24,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,scheduled,front desk,Daisy,Recurring,Web
-2026-10-16,2026-09-24,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-16,2026-09-24,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,scheduled,use door code,Misleidy,Recurring,Web
-2026-10-16,2026-09-24,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,submitted,front desk,,Recurring,Web
-2026-10-16,2026-09-24,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,scheduled,be home,Misleidy,Recurring,Web
-2026-10-16,2026-09-24,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,scheduled,front desk,Heyling Chavez,Recurring,Web
-2026-10-16,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,scheduled,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-20,2026-09-24,Yes,,r1um9mh0@resident.zing,,Muze at Met,140.00,8.00,paid,front desk,Daisy,Recurring,Web
+2026-10-16,2026-09-24,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
+2026-10-16,2026-09-24,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
+2026-11-06,2026-09-24,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,paid,front desk,Heyling Chavez,Recurring,Web
+2026-10-27,2026-09-24,Yes,,r1g790lo@resident.zing,,The Hamilton,153.00,0.00,completed,be home,Liza Mossucca,Recurring,Web
+2026-10-16,2026-09-24,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-16,2026-09-24,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-10-16,2026-09-24,Yes,,ra35w1n@resident.zing,,Alexan Roxy,147.00,22.05,cancelled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-16,2026-09-24,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-15,2026-09-24,Yes,,ra4t8ba@resident.zing,,Alexan Roxy,120.00,15.00,scheduled,be home,Lidia Mas,Recurring,Web
+2026-10-16,2026-09-24,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,paid,be home,Heyling Chavez,Recurring,Web
+2026-10-15,2026-09-24,Yes,,ra4t8ba@resident.zing,,Alexan Roxy,120.00,15.00,paid,be home,Lidia Mas,Recurring,Web
 2026-10-13,2026-09-24,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,12.00,0.00,cancelled,be home,,Recurring,Web
-2026-10-13,2026-09-24,Yes,,r18rykws@resident.zing,,Alexan Roxy,168.00,0.00,submitted,use door code,,Recurring,Web
+2026-10-13,2026-09-24,Yes,,r18rykws@resident.zing,,Alexan Roxy,168.00,0.00,skipped,use door code,,Recurring,Web
 2026-10-13,2026-09-24,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,161.00,0.00,cancelled,be home,,Recurring,Web
 2026-10-12,2026-09-24,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,skipped,be home,,Recurring,Web
 2026-10-12,2026-09-24,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,skipped,be home,,Recurring,Web
 2026-10-09,2026-09-24,Yes,,ra35w1n@resident.zing,,Alexan Roxy,147.00,22.05,cancelled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-13,2026-09-24,Yes,,rx88zil@resident.zing,,Muze at Met,120.00,0.00,scheduled,be home,Daisy,Recurring,Web
+2026-10-13,2026-09-24,Yes,,rx88zil@resident.zing,,Muze at Met,120.00,0.00,paid,be home,Daisy,Recurring,Web
 2026-10-05,2026-09-24,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-10-05,2026-09-24,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,skipped,be home,,Recurring,Web
 2026-09-24,2026-09-23,No,,r98kez6@resident.zing,,Alexan Roxy,108.00,19.44,paid,be home,Lidia Mas,One-Off,Mobile App
@@ -251,39 +527,39 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-29,2026-09-23,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,161.00,0.00,skipped,be home,,Recurring,Web
 2026-09-28,2026-09-23,Yes,,r12eusns@resident.zing,,Miami World Tower,73.00,13.14,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-10-06,2026-09-23,Yes,,rpv52fh@resident.zing,,Forma,58.00,10.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-15,2026-09-22,Yes,,r1hvciuo@resident.zing,,Bezel Miami,151.00,30.20,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-15,2026-09-22,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,scheduled,door unlocked,Liza Mossucca,Recurring,Web
-2026-10-15,2026-09-22,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,scheduled,door unlocked,Joselyn Izaguirre,Recurring,Web
-2026-10-15,2026-09-22,Yes,,rku4dqc@resident.zing,,The Hamilton,65.00,13.00,scheduled,be home,Liza Mossucca,Recurring,Web
-2026-10-15,2026-09-22,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,scheduled,be home,Elizabeth Cordova,Recurring,Web
-2026-10-15,2026-09-22,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,scheduled,be home,Lidia Mas,Recurring,Admin
+2026-10-15,2026-09-22,Yes,,r1hvciuo@resident.zing,,Bezel Miami,151.00,30.20,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-15,2026-09-22,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
+2026-10-15,2026-09-22,Yes,,r1fx477y@resident.zing,,Forma,140.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
+2026-10-15,2026-09-22,Yes,,rku4dqc@resident.zing,,The Hamilton,65.00,13.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-15,2026-09-22,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-10-15,2026-09-22,Yes,,r1ydnvz@resident.zing,,Alexan Roxy,102.00,0.00,paid,be home,Lidia Mas,Recurring,Admin
 2026-10-14,2026-09-22,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,submitted,front desk access,,Recurring,Web
-2026-10-14,2026-09-22,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,scheduled,be home,Lidia Mas,Recurring,Mobile App
-2026-10-14,2026-09-22,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-14,2026-09-22,Yes,,r1smz46f@resident.zing,,Muze at Met,110.00,19.80,scheduled,front desk,Daisy,Recurring,Web
-2026-10-14,2026-09-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,8.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
-2026-10-14,2026-09-22,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,scheduled,use door code,Misleidy,Recurring,Web
+2026-10-14,2026-09-22,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
+2026-10-14,2026-09-22,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-10-14,2026-09-22,Yes,,r1smz46f@resident.zing,,Muze at Met,110.00,19.80,paid,front desk,Daisy,Recurring,Web
+2026-10-14,2026-09-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,8.00,0.00,payment waived,use door code,Lidia Mas,Recurring,Admin
+2026-10-19,2026-09-22,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,cancelled,use door code,,Recurring,Web
 2026-10-14,2026-09-22,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,skipped,be home,,Recurring,Web
-2026-10-14,2026-09-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,scheduled,use door code,Lidia Mas,Recurring,Admin
-2026-10-13,2026-09-22,Yes,,rf0umem@resident.zing,,Alexan Roxy,120.00,18.00,scheduled,door unlocked,Lidia Mas,Recurring,Web
+2026-10-14,2026-09-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,53.60,0.00,paid,use door code,Lidia Mas,Recurring,Admin
+2026-10-13,2026-09-22,Yes,,rf0umem@resident.zing,,Alexan Roxy,120.00,18.00,paid,door unlocked,Lidia Mas,Recurring,Web
 2026-09-28,2026-09-22,Yes,,r12eusns@resident.zing,,Miami World Tower,75.00,0.00,cancelled,be home,,Recurring,Admin
-2026-10-13,2026-09-22,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
-2026-10-13,2026-09-22,Yes,,ry1y3b7@resident.zing,,Miami World Tower,89.00,13.35,scheduled,be home,Elizabeth Cordova,Recurring,Web
+2026-10-13,2026-09-22,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-13,2026-09-22,Yes,,ry1y3b7@resident.zing,,Miami World Tower,89.00,13.35,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-10-12,2026-09-22,Yes,,r107di60@resident.zing,,Muze at Met,68.00,12.24,cancelled,be home,Daisy,Recurring,Web
 2026-10-19,2026-09-22,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,reschedule request,use door code,Liza Mossucca,Recurring,Web
-2026-10-12,2026-09-22,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,scheduled,be home,Liza Mossucca,Recurring,Web
-2026-10-12,2026-09-22,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,in progress,front desk,Joselyn Izaguirre,Recurring,Web
+2026-10-12,2026-09-22,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-10-12,2026-09-22,Yes,,r18zp4u0@resident.zing,,Forma,94.40,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-10-12,2026-09-22,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,skipped,front desk access,,Recurring,Web
-2026-10-12,2026-09-22,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,scheduled,front desk,Daisy,Recurring,Web
+2026-10-12,2026-09-22,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,paid,front desk,Daisy,Recurring,Web
 2026-10-12,2026-09-22,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,skipped,be home,Heyling Chavez,Recurring,Web
-2026-10-12,2026-09-22,Yes,,r1fj2fof@resident.zing,,Forma,112.00,15.60,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-12,2026-09-22,Yes,,r1fj2fof@resident.zing,,Forma,112.00,15.60,completed,be home,Joselyn Izaguirre,Recurring,Web
 2026-10-09,2026-09-22,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,completed,use door code,Lidia Mas,Recurring,Mobile App
-2026-10-09,2026-09-22,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Misleidy,Recurring,Web
+2026-10-09,2026-09-22,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-10-09,2026-09-22,Yes,,rf7y606@resident.zing,,Bezel Miami,109.00,16.35,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-10-09,2026-09-22,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,104.00,6.00,cancelled,be home,,Recurring,Web
-2026-10-09,2026-09-22,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,submitted,front desk,,Recurring,Web
+2026-10-09,2026-09-22,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,skipped,front desk,,Recurring,Web
 2026-10-09,2026-09-22,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
-2026-10-08,2026-09-22,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Misleidy,Recurring,Web
+2026-10-08,2026-09-22,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
 2026-10-08,2026-09-22,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-10-08,2026-09-22,Yes,,r12esh5y@resident.zing,,The Hamilton,115.00,23.00,cancelled,be home,,Recurring,Web
 2026-10-08,2026-09-22,Yes,,rdi6u03@resident.zing,,The Hamilton,113.00,22.60,cancelled,door unlocked,,Recurring,Web
@@ -292,20 +568,20 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-10-08,2026-09-22,Yes,,r1m5o85s@resident.zing,,Bezel Miami,99.00,10.00,completed,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-10-07,2026-09-22,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
 2026-10-07,2026-09-22,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,paid,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-10-07,2026-09-22,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-10-07,2026-09-22,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
 2026-10-07,2026-09-22,Yes,,r1mbaz0v@resident.zing,,Miami World Tower,155.00,15.00,cancelled,be home,,Recurring,Web
 2026-10-07,2026-09-22,Yes,,rg8pa9c@resident.zing,,Muze at Met,143.00,50.00,cancelled,be home,,Recurring,Admin
 2026-10-07,2026-09-22,Yes,,ry5hl2k@resident.zing,,The Hamilton,136.00,0.00,skipped,be home,,Recurring,Web
 2026-10-07,2026-09-22,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,paid,use door code,Lidia Mas,Recurring,Admin
 2026-10-06,2026-09-22,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,skipped,door unlocked,,Recurring,Web
-2026-10-08,2026-09-22,Yes,,rq6iy8h@resident.zing,,The Hamilton,108.83,0.00,paid,be home,Misleidy,Recurring,Web
+2026-10-08,2026-09-22,Yes,,rq6iy8h@resident.zing,,The Hamilton,108.83,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-10-06,2026-09-22,Yes,,r1q5ugk1@resident.zing,,Forma,104.00,18.72,paid,front desk,Heyling Chavez,Recurring,Web
 2026-10-06,2026-09-22,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,submitted,be home,,Recurring,Web
 2026-10-05,2026-09-22,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-10-05,2026-09-22,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,skipped,front desk access,,Recurring,Web
 2026-10-05,2026-09-22,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-10-05,2026-09-22,Yes,,r6nox0e@resident.zing,,Forma,104.00,15.60,paid,front desk,Heyling Chavez,Recurring,Web
-2026-10-16,2026-09-22,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,scheduled,door unlocked,Daisy,Recurring,Web
+2026-10-16,2026-09-22,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,paid,door unlocked,Daisy,Recurring,Web
 2026-10-05,2026-09-22,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,paid,front desk,Daisy,Recurring,Web
 2026-10-02,2026-09-22,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-10-09,2026-09-22,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,paid,front desk,Joselyn Izaguirre,Recurring,Web
@@ -318,7 +594,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-29,2026-09-22,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,completed,use door code,Lidia Mas,Recurring,Mobile App
 2026-09-28,2026-09-22,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,paid,use door code,Lidia Mas,Recurring,Mobile App
 2026-09-24,2026-09-22,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,0.00,0.00,completed,use door code,Lidia Mas,Recurring,Mobile App
-2026-09-29,2026-09-22,No,,rpz09ep@resident.zing,,Forma,55.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-09-29,2026-09-22,No,,rpz09ep@resident.zing,,Forma,55.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-09-29,2026-09-22,No,,r11w0p8t@resident.zing,,Forma,35.00,5.25,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-09-28,2026-09-22,Yes,,r8y10zl@resident.zing,,Bezel Miami,120.00,0.00,paid,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-09-22,2026-09-22,No,,r1fx0utl@resident.zing,,Muze at Met,23.50,0.00,completed,be home,Daisy,One-Off,Mobile App
@@ -359,21 +635,21 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-23,2026-09-15,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
 2026-09-23,2026-09-15,Yes,,rzt68m3@resident.zing,,Alexan Roxy,67.00,0.00,paid,use door code,Lidia Mas,Recurring,Admin
 2026-09-18,2026-09-15,No,,r3hce5t@resident.zing,,Alexan Roxy,68.00,10.20,paid,door unlocked,Lidia Mas,One-Off,Mobile App
-2026-09-23,2026-09-15,No,,r1vy0gz7@resident.zing,,Alexan Roxy,176.00,0.00,paid,be home,Daisy,One-Off,Web
+2026-09-23,2026-09-15,No,,r1vy0gz7@resident.zing,,Alexan Roxy,176.00,0.00,paid,be home,Lidia Mas,One-Off,Web
 2026-10-01,2026-09-15,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-09-25,2026-09-15,No,,rex6qtq@resident.zing,,Alexan Roxy,66.00,0.00,paid,door unlocked,Lidia Mas,One-Off,Admin
 2026-09-30,2026-09-15,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,cancelled,be home,,Recurring,Web
 2026-09-18,2026-09-15,No,,rex6qtq@resident.zing,,Alexan Roxy,0.00,0.00,cancelled,door unlocked,,One-Off,Mobile App
-2026-10-14,2026-09-15,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,scheduled,be home,Joselyn Izaguirre,Recurring,Web
+2026-10-14,2026-09-15,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,skipped,be home,Joselyn Izaguirre,Recurring,Web
 2026-09-18,2026-09-15,No,,r1wcgco0@resident.zing,,Alexan Roxy,68.00,10.20,paid,be home,Lidia Mas,One-Off,Mobile App
 2026-09-22,2026-09-15,No,,r101ee0t@resident.zing,,Miami World Tower,120.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
 2026-09-17,2026-09-15,Yes,,r1nkk7ot@resident.zing,,Alexan Roxy,206.00,20.00,paid,door unlocked,Lidia Mas,Recurring,Mobile App
 2026-09-15,2026-09-14,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,108.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-09-15,2026-09-14,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,24.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-09-25,2026-09-14,No,,r1bpb2vo@resident.zing,,Muze at Met,17.50,5.25,paid,be home,Daisy,One-Off,Mobile App
-2026-09-15,2026-09-14,No,,rg6qjrp@resident.zing,,Alexan Roxy,0.00,0.00,completed,be home,Daisy,One-Off,Mobile App
+2026-09-15,2026-09-14,No,,rg6qjrp@resident.zing,,Alexan Roxy,0.00,0.00,completed,be home,Lidia Mas,One-Off,Mobile App
 2026-09-16,2026-09-14,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
-2026-09-16,2026-09-14,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Daisy,Recurring,Mobile App
+2026-09-16,2026-09-14,Yes,,r127pm9w@resident.zing,,Alexan Roxy,67.00,12.06,paid,be home,Lidia Mas,Recurring,Mobile App
 2026-09-23,2026-09-14,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
 2026-09-17,2026-09-14,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,paid,door unlocked,Daisy,Recurring,Web
 2026-09-30,2026-09-14,Yes,,r57yv51@resident.zing,,Forma,110.00,22.00,paid,front desk access,Joselyn Izaguirre,Recurring,Web
@@ -383,7 +659,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-29,2026-09-13,No,,r42yz47@resident.zing,,Forma,168.00,25.20,paid,be home,Heyling Chavez,One-Off,Web
 2026-09-22,2026-09-13,No,,r92fay1@resident.zing,,Forma,120.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-09-17,2026-09-13,No,,remivt3@resident.zing,,Miami World Tower,35.00,0.00,paid,door unlocked,Daisy,One-Off,Web
-2026-09-19,2026-09-12,Yes,,rn4duxf@resident.zing,,The Hamilton,1.00,0.00,skipped,be home,Liza Mossucca,Recurring,Admin
+2026-09-19,2026-09-12,Yes,,rn4duxf@resident.zing,,The Hamilton,1.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Admin
 2026-09-17,2026-09-12,No,,rn4duxf@resident.zing,,The Hamilton,1.00,0.00,cancelled,be home,Liza Mossucca,One-Off,Admin
 2026-09-22,2026-09-12,Yes,,rn4duxf@resident.zing,,The Hamilton,1.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Admin
 2026-09-15,2026-09-12,Yes,,rn4duxf@resident.zing,,The Hamilton,1.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Admin
@@ -411,9 +687,9 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-29,2026-09-01,Yes,,rowl5is@resident.zing,,Forma,120.00,0.00,skipped,be home,,Recurring,Web
 2026-09-23,2026-09-01,Yes,,rf7y606@resident.zing,,Bezel Miami,109.00,16.35,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-09-25,2026-09-01,Yes,,rp872zw@resident.zing,,Forma,110.00,9.00,scheduled,front desk access,Joselyn Izaguirre,Recurring,Web
-2026-09-23,2026-09-01,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,payment waived,front desk access,Heyling Chavez,Recurring,Web
+2026-09-23,2026-09-01,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,payment waived,front desk access,Joselyn Izaguirre,Recurring,Web
 2026-09-23,2026-09-01,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,skipped,be home,,Recurring,Web
-2026-09-21,2026-09-01,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,paid,front desk access,Heyling Chavez,Recurring,Web
+2026-09-21,2026-09-01,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,paid,front desk access,Joselyn Izaguirre,Recurring,Web
 2026-09-18,2026-09-01,Yes,,rkcqw6i@resident.zing,,Miami World Tower,78.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-09-28,2026-09-01,Yes,,r1fj2fof@resident.zing,,Forma,104.00,15.60,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-09-28,2026-09-01,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,completed,front desk,Joselyn Izaguirre,Recurring,Web
@@ -423,7 +699,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-28,2026-09-01,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,paid,front desk access,Heyling Chavez,Recurring,Web
 2026-09-28,2026-09-01,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,skipped,be home,,Recurring,Web
 2026-09-25,2026-09-01,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,104.00,6.00,paid,be home,Elizabeth Cordova,Recurring,Web
-2026-09-26,2026-09-01,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,completed,front desk,Heyling Chavez,Recurring,Web
+2026-09-26,2026-09-01,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-09-16,2026-09-01,Yes,,rzs3cgh@resident.zing,,Miami World Tower,135.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-09-25,2026-09-01,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-09-24,2026-09-01,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
@@ -435,7 +711,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-16,2026-09-01,Yes,,r1fj2fof@resident.zing,,Forma,8.00,1.20,paid,front desk access,Joselyn Izaguirre,Recurring,Web
 2026-09-30,2026-09-01,Yes,,r1mbaz0v@resident.zing,,Miami World Tower,77.50,0.00,refunded,be home,Elizabeth Cordova,Recurring,Web
 2026-09-23,2026-09-01,Yes,,r1kjlsz3@resident.zing,,Forma,3.00,0.00,cancelled,front desk,Joselyn Izaguirre,Recurring,Web
-2026-09-22,2026-09-01,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,cancelled,be home,Daisy,Recurring,Web
+2026-09-22,2026-09-01,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-09-22,2026-09-01,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,skipped,door unlocked,,Recurring,Web
 2026-09-22,2026-09-01,Yes,,r1kowapi@resident.zing,,Forma,100.00,20.00,cancelled,front desk,Heyling Chavez,Recurring,Web
 2026-09-22,2026-09-01,Yes,,r1q5ugk1@resident.zing,,Forma,104.00,18.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
@@ -481,16 +757,16 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-08,2026-09-01,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,paid,front desk,Daisy,Recurring,Web
 2026-09-08,2026-09-01,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,cancelled,door unlocked,,Recurring,Web
 2026-09-08,2026-09-01,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,incomplete payment,be home,Elizabeth Cordova,Recurring,Web
-2026-09-11,2026-09-01,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-09-11,2026-09-01,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-09-10,2026-09-01,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-09-10,2026-09-01,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
 2026-09-10,2026-09-01,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,cancelled,be home,,Recurring,Web
 2026-09-09,2026-09-01,Yes,,r1kjlsz3@resident.zing,,Forma,3.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-09-09,2026-09-01,No,,rf5nbw1@resident.zing,,The Hamilton,169.00,33.80,paid,be home,Liza Mossucca,One-Off,Web
-2026-10-12,2026-09-01,Yes,,r18rykws@resident.zing,,Alexan Roxy,168.00,0.00,in progress,use door code,Lidia Mas,Recurring,Web
+2026-10-12,2026-09-01,Yes,,r18rykws@resident.zing,,Alexan Roxy,168.00,0.00,paid,use door code,Lidia Mas,Recurring,Web
 2026-09-02,2026-08-31,No,,ra28rgh@resident.zing,,Bezel Miami,134.40,0.00,paid,be home,Elizabeth Cordova,One-Off,Admin
 2026-09-04,2026-08-31,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
-2026-09-29,2026-08-31,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,cancelled,be home,Daisy,Recurring,Web
+2026-09-29,2026-08-31,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-09-29,2026-08-31,Yes,,ry1y3b7@resident.zing,,Miami World Tower,89.00,13.35,payment waived,be home,,Recurring,Web
 2026-09-29,2026-08-31,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-09-02,2026-08-31,No,,r7gct8r@resident.zing,,Muze at Met,168.00,33.60,paid,door unlocked,Daisy,One-Off,Web
@@ -501,10 +777,10 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-09-09,2026-08-28,Yes,,r191k9a9@resident.zing,,Forma,123.00,18.45,paid,front desk access,Joselyn Izaguirre,Recurring,Web
 2026-09-07,2026-08-28,Yes,,r1kjlsz3@resident.zing,,Forma,3.00,0.45,scheduled,be home,Joselyn Izaguirre,Recurring,Web
 2026-09-07,2026-08-28,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,skipped,be home,,Recurring,Web
-2026-09-08,2026-08-28,Yes,,r18zp4u0@resident.zing,,Forma,67.20,10.72,completed,front desk,Joselyn Izaguirre,Recurring,Web
+2026-09-08,2026-08-28,Yes,,r18zp4u0@resident.zing,,Forma,67.20,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-09-10,2026-08-28,Yes,,r6nox0e@resident.zing,,Forma,104.00,15.60,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-09-02,2026-08-28,Yes,,r1fj2fof@resident.zing,,Forma,104.00,15.60,paid,be home,Joselyn Izaguirre,Recurring,Web
-2026-10-30,2026-08-28,No,,r13hgpfl@resident.zing,,The Hamilton,120.00,0.00,scheduled,door unlocked,Tapan Patel,One-Off,Admin
+2026-10-30,2026-08-28,No,,r13hgpfl@resident.zing,,The Hamilton,120.00,0.00,submitted,door unlocked,Tapan Patel,One-Off,Admin
 2026-09-03,2026-08-28,No,,r1y2tdu5@resident.zing,,The Hamilton,3.00,0.00,completed,use door code,Liza Mossucca,One-Off,Admin
 2026-09-15,2026-08-28,No,,rl6q5ih@resident.zing,,Forma,120.00,23.04,paid,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-10-01,2026-08-27,Yes,,rsoha7u@resident.zing,,The Hamilton,68.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
@@ -512,7 +788,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-10-02,2026-08-27,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-10-02,2026-08-27,Yes,,rrwi11t@resident.zing,,The Hamilton,75.00,0.00,cancelled,be home,,Recurring,Web
 2026-10-01,2026-08-27,Yes,,rbxlmo9@resident.zing,,The Hamilton,110.00,16.50,paid,be home,Liza Mossucca,Recurring,Web
-2026-09-30,2026-08-27,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,paid,use door code,Heyling Chavez,Recurring,Web
+2026-09-30,2026-08-27,Yes,,r1kjfar5@resident.zing,,The Hamilton,168.10,10.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-09-29,2026-08-27,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-09-28,2026-08-27,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,scheduled,use door code,Liza Mossucca,Recurring,Web
 2026-09-28,2026-08-27,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
@@ -615,7 +891,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-25,2026-08-18,Yes,,r1kowapi@resident.zing,,Forma,100.00,20.00,cancelled,front desk,,Recurring,Web
 2026-09-17,2026-08-18,Yes,,ra4t8ba@resident.zing,,Alexan Roxy,120.00,15.00,submitted,be home,,Recurring,Web
 2026-09-04,2026-08-18,Yes,,rgqsbkb@resident.zing,,Bezel Miami,159.00,20.00,paid,be home,Elizabeth Cordova,Recurring,Web
-2026-09-14,2026-08-18,No,,rfqzzh9@resident.zing,,Forma,132.00,0.00,reschedule request,be home,Heyling Chavez,One-Off,Web
+2026-09-14,2026-08-18,No,,rfqzzh9@resident.zing,,Forma,132.00,0.00,reschedule request,be home,Joselyn Izaguirre,One-Off,Web
 2026-09-01,2026-08-17,Yes,,ry1y3b7@resident.zing,,Miami World Tower,77.60,14.55,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-08-24,2026-08-17,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-08-28,2026-08-17,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
@@ -646,7 +922,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-27,2026-08-12,Yes,,r1m5o85s@resident.zing,,Bezel Miami,99.00,10.00,paid,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-08-13,2026-08-12,No,,ryu7t8o@resident.zing,,Muze at Met,124.00,0.00,paid,front desk,Daisy,One-Off,Web
 2026-08-14,2026-08-12,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,1.00,paid,use door code,Liza Mossucca,Recurring,Web
-2026-08-26,2026-08-12,No,,r1fb7ivv@resident.zing,,Bezel Miami,183.00,0.00,cancelled,be home,Daisy,One-Off,Web
+2026-08-26,2026-08-12,No,,r1fb7ivv@resident.zing,,Bezel Miami,183.00,0.00,cancelled,be home,Elizabeth Cordova,One-Off,Web
 2026-08-12,2026-08-11,No,,r1dfj3ex@resident.zing,,Bezel Miami,120.00,0.00,paid,locker,Elizabeth Cordova,One-Off,Web
 2026-09-09,2026-08-11,Yes,,rx0fllw@resident.zing,,Bezel Miami,0.00,0.00,cancelled,be home,,Recurring,Web
 2026-08-12,2026-08-11,No,,r32v8ka@resident.zing,,Muze at Met,35.00,0.00,paid,door unlocked,Daisy,One-Off,Web
@@ -685,12 +961,12 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-12,2026-08-10,No,,r159iaai@resident.zing,,Forma,128.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-08-25,2026-08-10,Yes,,r1smz46f@resident.zing,,Muze at Met,88.00,19.80,paid,front desk,Daisy,Recurring,Web
 2026-08-19,2026-08-10,No,,rzoiduj@resident.zing,,Muze at Met,35.00,5.00,paid,door unlocked,Daisy,One-Off,Web
-2026-08-11,2026-08-10,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-08-11,2026-08-10,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-19,2026-08-10,No,,rzoiduj@resident.zing,,Muze at Met,120.00,5.00,cancelled,door unlocked,Daisy,One-Off,Web
 2026-08-13,2026-08-10,No,,r1gejh4b@resident.zing,,Forma,8.00,1.20,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-08-12,2026-08-10,No,,rt7rjeu@resident.zing,,The Hamilton,138.00,20.70,paid,door unlocked,Liza Mossucca,One-Off,Web
 2026-08-20,2026-08-09,No,,r1nc0lf2@resident.zing,,Muze at Met,120.00,18.00,paid,door unlocked,Daisy,One-Off,Web
-2026-08-14,2026-08-09,No,,r17imt96@resident.zing,,Forma,64.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
+2026-08-14,2026-08-09,No,,r17imt96@resident.zing,,Forma,64.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-09-03,2026-08-09,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-08-31,2026-08-09,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
 2026-08-14,2026-08-09,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
@@ -707,7 +983,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-13,2026-08-07,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-08-10,2026-08-07,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,paid,front desk,Daisy,Recurring,Web
 2026-08-10,2026-08-07,Yes,,r6nox0e@resident.zing,,Forma,104.00,15.60,paid,front desk,Joselyn Izaguirre,Recurring,Web
-2026-08-07,2026-08-07,No,,r1takpc3@resident.zing,,Forma,0.00,0.00,completed,front desk access,Heyling Chavez,One-Off,Web
+2026-08-07,2026-08-07,No,,r1takpc3@resident.zing,,Forma,0.00,0.00,completed,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-08-10,2026-08-07,Yes,,r191k9a9@resident.zing,,Forma,171.00,20.25,paid,front desk access,Heyling Chavez,Recurring,Web
 2026-08-10,2026-08-06,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-10,2026-08-06,Yes,,r1fj2fof@resident.zing,,Forma,104.00,15.60,paid,be home,Heyling Chavez,Recurring,Web
@@ -722,13 +998,13 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-05,2026-08-05,Yes,,rfnh84w@resident.zing,,Forma,75.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-08-10,2026-08-05,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-08-14,2026-08-05,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
-2026-08-14,2026-08-05,Yes,,r18zp4u0@resident.zing,,Forma,67.20,10.72,paid,front desk,Heyling Chavez,Recurring,Web
+2026-08-14,2026-08-05,Yes,,r18zp4u0@resident.zing,,Forma,67.20,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-07,2026-08-05,Yes,,r1g790lo@resident.zing,,The Hamilton,163.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-08-06,2026-08-05,Yes,,ra79mxz@resident.zing,,Forma,120.00,18.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-08-07,2026-08-04,Yes,,rrwi11t@resident.zing,,The Hamilton,75.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-08-05,2026-08-04,No,,r1y4alpw@resident.zing,,Muze at Met,99.00,14.85,paid,door unlocked,Daisy,One-Off,Web
 2026-08-07,2026-08-04,Yes,,ryqb3pe@resident.zing,,Muze at Met,110.00,5.00,paid,be home,Daisy,Recurring,Web
-2026-08-04,2026-08-04,No,,r92fay1@resident.zing,,Forma,0.00,0.00,completed,be home,Heyling Chavez,One-Off,Web
+2026-08-04,2026-08-04,No,,r92fay1@resident.zing,,Forma,0.00,0.00,completed,be home,Joselyn Izaguirre,One-Off,Web
 2026-08-07,2026-08-03,No,,rrdxbv2@resident.zing,,Forma,148.00,20.00,paid,be home,Heyling Chavez,One-Off,Web
 2026-08-11,2026-08-03,Yes,,r1q5ugk1@resident.zing,,Forma,104.00,18.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-11,2026-08-03,Yes,,rq6iy8h@resident.zing,,The Hamilton,136.04,0.00,paid,be home,Liza Mossucca,Recurring,Web
@@ -739,9 +1015,9 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-04,2026-08-03,No,,rnqi7oi@resident.zing,,Muze at Met,63.75,15.00,paid,be home,Daisy,One-Off,Web
 2026-08-07,2026-08-03,No,,ru2sv1w@resident.zing,,Forma,120.00,0.00,cancelled,front desk access,,One-Off,Web
 2026-08-03,2026-08-03,Yes,,r18r8vnl@resident.zing,,Forma,120.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
-2026-08-12,2026-08-02,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,paid,be home,Daisy,Recurring,Web
+2026-08-12,2026-08-02,Yes,,rsqfaba@resident.zing,,Bezel Miami,102.00,10.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-08-03,2026-08-02,No,,r7d987r@resident.zing,,The Hamilton,168.00,33.60,paid,be home,Liza Mossucca,One-Off,Web
-2026-08-12,2026-08-02,Yes,,r1du18nx@resident.zing,,Bezel Miami,155.00,0.00,cancelled,door unlocked,Daisy,Recurring,Web
+2026-08-12,2026-08-02,Yes,,r1du18nx@resident.zing,,Bezel Miami,155.00,0.00,cancelled,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-08-03,2026-08-01,No,,r1pptp95@resident.zing,,Forma,35.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
 2026-08-14,2026-08-01,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-07,2026-08-01,Yes,,r18zp4u0@resident.zing,,Forma,40.00,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
@@ -756,7 +1032,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-08-03,2026-07-31,No,,r7gct8r@resident.zing,,Muze at Met,159.00,31.80,paid,be home,Daisy,One-Off,Web
 2026-08-05,2026-07-30,No,,remivt3@resident.zing,,Miami World Tower,43.00,6.45,paid,door unlocked,Elizabeth Cordova,One-Off,Web
 2026-07-30,2026-07-30,No,,rdi6u03@resident.zing,,The Hamilton,26.00,0.00,paid,door unlocked,Liza Mossucca,One-Off,Web
-2026-07-31,2026-07-30,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-07-31,2026-07-30,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-18,2026-07-29,No,,r1ylam8s@resident.zing,,Miami World Tower,120.00,0.00,cancelled,be home,Elizabeth Cordova,One-Off,Web
 2026-08-10,2026-07-29,Yes,,rgebz3@resident.zing,,Miami World Tower,102.00,18.36,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-07-29,2026-07-29,No,,rtqbsmj@resident.zing,,Muze at Met,152.00,22.80,paid,be home,Elizabeth Cordova,One-Off,Web
@@ -766,25 +1042,25 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2027-01-28,2026-07-28,Yes,,rgwut03@resident.zing,,Forma,36.00,0.00,cancelled,use door code,,Recurring,Web
 2026-09-25,2026-07-28,No,,rgwut03@resident.zing,,Forma,16.00,0.00,cancelled,use door code,,One-Off,Web
 2026-07-28,2026-07-28,No,,r2um588@resident.zing,,Bezel Miami,5.00,5.25,paid,be home,Daisy,One-Off,Web
-2026-07-30,2026-07-28,No,,rhbylx6@resident.zing,,Forma,120.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-07-30,2026-07-28,No,,rhbylx6@resident.zing,,Forma,120.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-08-03,2026-07-28,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-08-05,2026-07-28,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,cancelled,use door code,,Recurring,Web
 2026-08-07,2026-07-28,Yes,,r5u5n5t@resident.zing,,The Hamilton,3.00,2.00,cancelled,use door code,,Recurring,Web
 2026-08-05,2026-07-28,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-08-06,2026-07-28,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-07-28,2026-07-28,No,,r1gejh4b@resident.zing,,Forma,8.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
-2026-07-29,2026-07-28,No,,r19zy9ac@resident.zing,,Forma,88.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-07-29,2026-07-28,No,,r19zy9ac@resident.zing,,Forma,88.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-07-29,2026-07-27,No,,r1gejh4b@resident.zing,,Forma,55.00,12.60,paid,be home,Heyling Chavez,One-Off,Web
 2026-07-31,2026-07-27,Yes,,r18zp4u0@resident.zing,,Forma,3.00,10.72,cancelled,front desk,,Recurring,Web
 2026-08-28,2026-07-27,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,paid,front desk,Joselyn Izaguirre,Recurring,Web
-2026-08-21,2026-07-27,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-08-21,2026-07-27,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-21,2026-07-27,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-21,2026-07-27,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-08-10,2026-07-27,Yes,,r6nox0e@resident.zing,,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
 2026-08-24,2026-07-27,Yes,,r1fj2fof@resident.zing,,Forma,104.00,15.60,paid,be home,Heyling Chavez,Recurring,Web
 2026-08-24,2026-07-27,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,cancelled,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-24,2026-07-27,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
-2026-08-26,2026-07-27,Yes,,r1vmd0fz@resident.zing,,Forma,220.00,33.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-08-26,2026-07-27,Yes,,r1vmd0fz@resident.zing,,Forma,220.00,33.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-07-27,2026-07-27,Yes,,r18zp4u0@resident.zing,,Forma,3.00,10.72,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-07-31,2026-07-27,No,,rwantkg@resident.zing,,Forma,99.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
 2026-07-29,2026-07-26,No,,r6avbi4@resident.zing,,Forma,35.00,10.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
@@ -800,20 +1076,20 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-07-31,2026-07-23,Yes,,r1m5o85s@resident.zing,,Bezel Miami,144.00,10.00,cancelled,door unlocked,,Recurring,Web
 2026-07-30,2026-07-23,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,payment waived,be home,,Recurring,Web
 2026-07-29,2026-07-23,Yes,,rg8pa9c@resident.zing,,Muze at Met,143.00,50.00,cancelled,be home,,Recurring,Web
-2026-07-28,2026-07-23,Yes,,r99q53s@resident.zing,,Forma,110.00,16.50,paid,be home,Heyling Chavez,Recurring,Web
+2026-07-28,2026-07-23,Yes,,r99q53s@resident.zing,,Forma,110.00,16.50,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-07-28,2026-07-23,Yes,,r1kowapi@resident.zing,,Forma,100.00,20.00,cancelled,front desk,,Recurring,Web
 2026-07-29,2026-07-23,Yes,,r1q5ugk1@resident.zing,,Forma,104.00,18.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-07-28,2026-07-23,Yes,,rc08rs9@resident.zing,,Muze at Met,151.00,0.00,cancelled,be home,,Recurring,Web
 2026-09-01,2026-07-23,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,skipped,be home,,Recurring,Web
-2026-07-28,2026-07-23,No,,rwusqpg@resident.zing,,Bezel Miami,48.00,5.00,paid,be home,Daisy,One-Off,Web
+2026-07-28,2026-07-23,No,,rwusqpg@resident.zing,,Bezel Miami,48.00,5.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-07-30,2026-07-23,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-08-11,2026-07-23,Yes,,rx0fllw@resident.zing,,Bezel Miami,151.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-07-28,2026-07-23,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,cancelled,door unlocked,,Recurring,Web
 2026-07-28,2026-07-23,No,,remivt3@resident.zing,,Miami World Tower,116.00,17.40,paid,door unlocked,Elizabeth Cordova,One-Off,Web
-2026-07-22,2026-07-22,No,,r6cdcxp@resident.zing,,Forma,65.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-07-22,2026-07-22,No,,r6cdcxp@resident.zing,,Forma,65.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-07-23,2026-07-22,No,,r17kwncd@resident.zing,,The Hamilton,3.00,0.00,paid,use door code,Liza Mossucca,One-Off,Web
 2026-08-19,2026-07-22,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,cancelled,front desk,,Recurring,Web
-2026-08-04,2026-07-22,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-08-04,2026-07-22,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-08-04,2026-07-22,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-08-07,2026-07-22,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,cancelled,use door code,,Recurring,Web
 2026-07-24,2026-07-22,Yes,,r6zwj8d@resident.zing,,Bezel Miami,99.00,0.00,cancelled,door unlocked,,Recurring,Web
@@ -844,8 +1120,8 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-07-27,2026-07-18,Yes,,rqpime5@resident.zing,,Bezel Miami,69.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-07-23,2026-07-18,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-08-10,2026-07-18,Yes,,r1k8lbkj@resident.zing,,Bezel Miami,104.00,6.00,paid,be home,Elizabeth Cordova,Recurring,Web
-2026-07-31,2026-07-18,Yes,,ryiama7@resident.zing,,Miami World Tower,32.00,0.00,paid,be home,Daisy,Recurring,Web
-2026-07-29,2026-07-18,Yes,,r1mbaz0v@resident.zing,,Miami World Tower,143.00,23.25,paid,be home,Daisy,Recurring,Web
+2026-07-31,2026-07-18,Yes,,ryiama7@resident.zing,,Miami World Tower,32.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
+2026-07-29,2026-07-18,Yes,,r1mbaz0v@resident.zing,,Miami World Tower,143.00,23.25,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-07-20,2026-07-18,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-07-20,2026-07-18,No,,ru2sv1w@resident.zing,,Forma,113.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
 2026-07-21,2026-07-18,No,,r74o9yf@resident.zing,,Forma,116.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
@@ -879,7 +1155,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-07-27,2026-07-13,Yes,,r179o9qn@resident.zing,,The Hamilton,142.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-07-29,2026-07-13,Yes,,rkq048i@resident.zing,,The Hamilton,136.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-07-20,2026-07-13,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
-2026-07-28,2026-07-13,Yes,,rumldxe@resident.zing,,Forma,157.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-07-28,2026-07-13,Yes,,rumldxe@resident.zing,,Forma,157.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-07-23,2026-07-13,Yes,,rwshm40@resident.zing,,Forma,100.00,0.00,cancelled,front desk,Heyling Chavez,Recurring,Web
 2026-07-23,2026-07-13,Yes,,r1fx477y@resident.zing,,Forma,40.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-07-23,2026-07-13,Yes,,rku4dqc@resident.zing,,The Hamilton,65.00,13.00,paid,be home,Liza Mossucca,Recurring,Web
@@ -920,7 +1196,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-07-13,2026-07-09,Yes,,r6nox0e@resident.zing,,Forma,104.00,15.60,cancelled,front desk,,Recurring,Web
 2026-07-13,2026-07-09,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-07-13,2026-07-09,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
-2026-07-14,2026-07-09,No,,r13ptxbx@resident.zing,,Forma,24.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-07-14,2026-07-09,No,,r13ptxbx@resident.zing,,Forma,24.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-07-10,2026-07-08,No,,r1ev12qy@resident.zing,,The Hamilton,90.00,0.00,paid,front desk access,Liza Mossucca,One-Off,Web
 2026-07-15,2026-07-08,Yes,,ry5hl2k@resident.zing,,The Hamilton,136.00,0.00,cancelled,be home,,Recurring,Web
 2026-07-16,2026-07-08,Yes,,r8hijhx@resident.zing,,Miami World Tower,42.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
@@ -931,9 +1207,9 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-07-08,2026-07-07,No,,r6nox0e@resident.zing,,Forma,116.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-07-23,2026-07-06,Yes,,r1hvciuo@resident.zing,,Bezel Miami,151.00,30.20,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-07-10,2026-07-06,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,cancelled,front desk,Heyling Chavez,Recurring,Web
-2026-07-10,2026-07-06,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-07-10,2026-07-06,Yes,,rgg1jvo@resident.zing,,Forma,104.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-07-07,2026-07-06,No,,r1y4alpw@resident.zing,,Muze at Met,29.00,4.35,paid,be home,Daisy,One-Off,Web
-2026-07-06,2026-07-06,No,,roq8x28@resident.zing,,Forma,8.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
+2026-07-06,2026-07-06,No,,roq8x28@resident.zing,,Forma,8.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-07-16,2026-07-06,No,,r1v14ddj@resident.zing,,Muze at Met,0.00,0.00,completed,be home,Daisy,One-Off,Web
 2026-07-06,2026-07-05,Yes,,rgjk7tn@resident.zing,,Muze at Met,143.00,25.00,paid,door unlocked,Daisy,Recurring,Web
 2026-07-08,2026-07-05,No,,r6avbi4@resident.zing,,Forma,35.00,10.00,paid,front desk access,Heyling Chavez,One-Off,Web
@@ -973,18 +1249,18 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-07-03,2026-07-01,No,,r7gct8r@resident.zing,,Muze at Met,8.00,1.44,cancelled,be home,,One-Off,Web
 2026-07-03,2026-07-01,No,,r7gct8r@resident.zing,,Muze at Met,119.00,19.98,paid,be home,Daisy,One-Off,Web
 2026-07-01,2026-07-01,No,,r7d987r@resident.zing,,The Hamilton,124.00,24.80,paid,use door code,Liza Mossucca,One-Off,Web
-2026-07-03,2026-06-30,No,,r1u7rtfj@resident.zing,,Forma,116.00,20.00,cancelled,front desk access,Heyling Chavez,One-Off,Web
+2026-07-03,2026-06-30,No,,r1u7rtfj@resident.zing,,Forma,116.00,20.00,cancelled,front desk access,Joselyn Izaguirre,One-Off,Web
 2026-07-01,2026-06-30,No,,r12ngekd@resident.zing,,Muze at Met,35.00,7.00,paid,be home,Daisy,One-Off,Web
 2026-07-06,2026-06-30,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
 2026-07-06,2026-06-30,No,,r1szatiz@resident.zing,,The Hamilton,168.00,0.00,paid,use door code,Liza Mossucca,One-Off,Web
-2026-07-02,2026-06-30,No,,r1cak3qp@resident.zing,,The Hamilton,184.00,20.00,paid,be home,Daisy,One-Off,Web
+2026-07-02,2026-06-30,No,,r1cak3qp@resident.zing,,The Hamilton,184.00,20.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-07-03,2026-06-30,No,,rapccj9@resident.zing,,Forma,116.00,23.20,paid,be home,Heyling Chavez,One-Off,Web
 2026-07-01,2026-06-30,No,,r18zp4u0@resident.zing,,Forma,81.00,0.00,completed,be home,Joselyn Izaguirre,One-Off,Web
 2026-06-30,2026-06-30,No,,r17z2473@resident.zing,,Bezel Miami,29.00,0.00,completed,front desk,Tapan Patel,One-Off,Web
 2026-06-30,2026-06-30,No,,r1swufna@resident.zing,,Miami World Tower,12.00,0.00,paid,door unlocked,Elizabeth Cordova,One-Off,Web
 2026-08-07,2026-06-28,No,,rg0xfms@resident.zing,,Bezel Miami,0.00,0.00,cancelled,be home,,One-Off,Web
 2026-07-02,2026-06-28,Yes,,r99q53s@resident.zing,,Forma,88.00,16.50,paid,be home,Heyling Chavez,Recurring,Web
-2026-06-30,2026-06-27,No,,rnjymn9@resident.zing,,Forma,116.00,17.40,paid,be home,Heyling Chavez,One-Off,Web
+2026-06-30,2026-06-27,No,,rnjymn9@resident.zing,,Forma,116.00,17.40,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-07-01,2026-06-26,Yes,,rg8pa9c@resident.zing,,Muze at Met,143.00,50.00,paid,be home,Daisy,Recurring,Web
 2026-07-03,2026-06-26,Yes,,r18zp4u0@resident.zing,,Forma,40.00,10.72,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-07-02,2026-06-26,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
@@ -1024,7 +1300,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-29,2026-06-24,Yes,,r1kjlsz3@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-29,2026-06-24,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-25,2026-06-24,No,,rz29bo3@resident.zing,,Forma,116.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
-2026-06-24,2026-06-24,No,,r18r8vnl@resident.zing,,Forma,89.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-06-24,2026-06-24,No,,r18r8vnl@resident.zing,,Forma,89.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-06-30,2026-06-24,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,cancelled,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-06-25,2026-06-24,No,,r1dkwl6h@resident.zing,,Muze at Met,27.00,0.00,in progress,door unlocked,Daisy,One-Off,Web
 2026-07-23,2026-06-23,No,,r159iaai@resident.zing,,Forma,131.00,0.00,cancelled,front desk access,,One-Off,Web
@@ -1038,7 +1314,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-23,2026-06-23,No,,rn80ety@resident.zing,,Bezel Miami,159.00,23.85,cancelled,door unlocked,,One-Off,Web
 2026-06-23,2026-06-23,No,,rrva7t7@resident.zing,,Forma,41.60,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
 2026-06-25,2026-06-23,Yes,,ryiama7@resident.zing,,Miami World Tower,67.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
-2026-06-26,2026-06-23,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,paid,be home,Heyling Chavez,Recurring,Web
+2026-06-26,2026-06-23,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-19,2026-06-22,No,,r32v8ka@resident.zing,,Muze at Met,52.00,0.00,paid,door unlocked,Daisy,One-Off,Web
 2026-07-23,2026-06-22,Yes,,r32v8ka@resident.zing,,Muze at Met,104.00,0.00,cancelled,door unlocked,Daisy,Recurring,Web
 2026-07-01,2026-06-22,Yes,,rx0fllw@resident.zing,,Bezel Miami,0.00,0.00,completed,be home,Elizabeth Cordova,Recurring,Web
@@ -1053,7 +1329,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-29,2026-06-21,Yes,,r1um9mh0@resident.zing,,Muze at Met,67.00,8.00,paid,front desk,Daisy,Recurring,Web
 2026-06-23,2026-06-21,Yes,,rr7mmgl@resident.zing,,Forma,151.00,0.00,cancelled,be home,,Recurring,Web
 2026-06-23,2026-06-21,No,,r1fx0utl@resident.zing,,Muze at Met,0.00,0.00,completed,be home,Daisy,One-Off,Web
-2026-06-22,2026-06-20,No,,rfnh84w@resident.zing,,Forma,116.00,0.00,cancelled,be home,Heyling Chavez,One-Off,Web
+2026-06-22,2026-06-20,No,,rfnh84w@resident.zing,,Forma,116.00,0.00,cancelled,be home,Joselyn Izaguirre,One-Off,Web
 2026-06-25,2026-06-20,No,,r10nmvnq@resident.zing,,Muze at Met,68.00,13.60,paid,be home,Daisy,One-Off,Web
 2026-06-23,2026-06-19,No,,rqn8nhy@resident.zing,,Muze at Met,25.60,0.00,paid,be home,Daisy,One-Off,Web
 2026-06-24,2026-06-19,No,,r1vy52z8@resident.zing,,Bezel Miami,48.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
@@ -1068,7 +1344,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-18,2026-06-18,No,,r1dkwl6h@resident.zing,,Muze at Met,208.00,0.00,paid,be home,Daisy,One-Off,Web
 2026-06-24,2026-06-18,Yes,,r1fb7ivv@resident.zing,,Bezel Miami,143.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-06-29,2026-06-17,No,,r1pwswu@resident.zing,,Miami World Tower,0.00,24.40,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-07-20,2026-06-17,Yes,,r1vmd0fz@resident.zing,,Forma,292.00,33.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-07-20,2026-06-17,Yes,,r1vmd0fz@resident.zing,,Forma,292.00,33.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-19,2026-06-17,No,,rl6q5ih@resident.zing,,Forma,81.00,0.00,paid,front desk access,Heyling Chavez,One-Off,Web
 2026-06-12,2026-06-17,Yes,,rqn8nhy@resident.zing,,Muze at Met,135.00,0.00,cancelled,door unlocked,Daisy,Recurring,Web
 2026-07-01,2026-06-17,Yes,,ry3boks@resident.zing,,Forma,83.20,15.60,paid,front desk,Heyling Chavez,Recurring,Web
@@ -1121,7 +1397,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-18,2026-06-13,Yes,,rdi6u03@resident.zing,,The Hamilton,113.00,22.60,paid,door unlocked,Liza Mossucca,Recurring,Web
 2026-06-18,2026-06-13,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
 2026-06-18,2026-06-13,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
-2026-06-18,2026-06-13,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-06-18,2026-06-13,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-18,2026-06-13,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-16,2026-06-13,Yes,,rn80ety@resident.zing,,Bezel Miami,104.00,15.60,paid,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-06-19,2026-06-13,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
@@ -1132,7 +1408,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-15,2026-06-13,Yes,,r1kjlsz3@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-15,2026-06-13,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-16,2026-06-13,Yes,,r16waqrf@resident.zing,,Forma,104.00,0.00,incomplete payment,front desk,Heyling Chavez,Recurring,Web
-2026-06-15,2026-06-13,No,,rh8fpdo@resident.zing,,Forma,205.20,34.20,refunded,be home,Yamilet Diaz,One-Off,Web
+2026-06-15,2026-06-13,No,,rh8fpdo@resident.zing,,Forma,205.20,34.20,refunded,be home,Joselyn Izaguirre,One-Off,Web
 2026-06-22,2026-06-12,No,,r19x4ji6@resident.zing,,Muze at Met,40.00,8.00,paid,be home,Daisy,One-Off,Web
 2026-06-17,2026-06-12,Yes,,r19z83et@resident.zing,,Muze at Met,116.00,0.00,cancelled,be home,,Recurring,Web
 2026-06-15,2026-06-12,No,,r4x1hw0@resident.zing,,Bezel Miami,116.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
@@ -1140,12 +1416,12 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-15,2026-06-12,Yes,,ryiama7@resident.zing,,Miami World Tower,69.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-06-18,2026-06-12,No,,r4oitfo@resident.zing,,Muze at Met,116.00,23.20,paid,be home,Daisy,One-Off,Web
 2026-06-19,2026-06-12,Yes,,r32v8ka@resident.zing,,Muze at Met,110.00,0.00,payment waived,door unlocked,Daisy,Recurring,Web
-2026-06-15,2026-06-12,Yes,,rgjk7tn@resident.zing,,Muze at Met,200.00,25.00,paid,door unlocked,Daisy,Recurring,Web
+2026-06-15,2026-06-12,Yes,,rgjk7tn@resident.zing,,Muze at Met,200.00,25.00,paid,door unlocked,Yamilet Diaz,Recurring,Web
 2026-06-12,2026-06-11,No,,rt7rjeu@resident.zing,,The Hamilton,158.70,20.70,refunded,be home,Liza Mossucca,One-Off,Web
 2026-06-18,2026-06-11,No,,rw5o6vh@resident.zing,,Forma,0.00,0.00,completed,be home,Heyling Chavez,One-Off,Web
 2026-06-29,2026-06-11,Yes,,r1mbaz0v@resident.zing,,Miami World Tower,155.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-06-11,2026-06-11,No,,rk8tmgl@resident.zing,,Miami World Tower,133.40,17.40,cancelled,be home,,One-Off,Web
-2026-06-17,2026-06-11,Yes,,r1vmd0fz@resident.zing,,Forma,253.00,33.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-06-17,2026-06-11,Yes,,r1vmd0fz@resident.zing,,Forma,253.00,33.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-11,2026-06-11,No,,r1sod5k9@resident.zing,,Forma,8.00,1.60,cancelled,front desk access,,One-Off,Web
 2026-06-12,2026-06-11,No,,r101ee0t@resident.zing,,Miami World Tower,73.00,20.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-06-11,2026-06-10,No,,rnc1vqu@resident.zing,,Forma,116.00,0.00,paid,front desk access,Joselyn Izaguirre,One-Off,Web
@@ -1162,13 +1438,13 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-10,2026-06-09,No,,rf5nbw1@resident.zing,,The Hamilton,201.60,33.60,paid,be home,Liza Mossucca,One-Off,Web
 2026-06-11,2026-06-09,No,,r182u38n@resident.zing,,Miami World Tower,29.90,3.90,paid,door unlocked,Elizabeth Cordova,One-Off,Web
 2026-06-11,2026-06-09,No,,ru2sv1w@resident.zing,,Forma,124.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
-2026-06-09,2026-06-09,Yes,,rr7mmgl@resident.zing,,Forma,151.00,0.00,cancelled,be home,Heyling Chavez,Recurring,Web
+2026-06-09,2026-06-09,Yes,,rr7mmgl@resident.zing,,Forma,151.00,0.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-09,2026-06-09,No,,rnqi7oi@resident.zing,,Muze at Met,0.00,0.00,completed,be home,Elizabeth Cordova,One-Off,Web
 2026-06-11,2026-06-09,No,,rk6dh32@resident.zing,,Miami World Tower,0.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-06-10,2026-06-09,No,,rimdx68@resident.zing,,Forma,20.00,5.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-07-07,2026-06-08,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
-2026-06-11,2026-06-08,No,,rn4wh24@resident.zing,,Miami World Tower,103.40,17.40,paid,be home,Yamilet Diaz,One-Off,Web
-2026-06-24,2026-06-08,No,,r1qz30f5@resident.zing,,Forma,137.00,0.00,incomplete payment,front desk,Heyling Chavez,One-Off,Web
+2026-06-11,2026-06-08,No,,rn4wh24@resident.zing,,Miami World Tower,103.40,17.40,paid,be home,Elizabeth Cordova,One-Off,Web
+2026-06-24,2026-06-08,No,,r1qz30f5@resident.zing,,Forma,137.00,0.00,incomplete payment,front desk,Joselyn Izaguirre,One-Off,Web
 2026-06-10,2026-06-08,No,,ry0tejc@resident.zing,,Forma,0.00,0.00,completed,front desk,Joselyn Izaguirre,One-Off,Web
 2026-06-12,2026-06-08,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-06-09,2026-06-08,Yes,,r1swufna@resident.zing,,Miami World Tower,135.00,0.00,cancelled,door unlocked,,Recurring,Web
@@ -1181,11 +1457,11 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-08,2026-06-07,Yes,,rpv52fh@resident.zing,,Forma,3.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
 2026-06-08,2026-06-07,No,,rsoha7u@resident.zing,,The Hamilton,55.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-06-08,2026-06-06,No,,r104lqw5@resident.zing,,Bezel Miami,138.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-06-09,2026-06-06,No,,r5yun8a@resident.zing,,Forma,82.80,10.80,paid,be home,Heyling Chavez,One-Off,Web
-2026-06-12,2026-06-06,Yes,,r16waqrf@resident.zing,,Forma,171.00,0.00,incomplete payment,front desk,Heyling Chavez,Recurring,Web
+2026-06-09,2026-06-06,No,,r5yun8a@resident.zing,,Forma,82.80,10.80,paid,be home,Joselyn Izaguirre,One-Off,Web
+2026-06-12,2026-06-06,Yes,,r16waqrf@resident.zing,,Forma,171.00,0.00,incomplete payment,front desk,Joselyn Izaguirre,Recurring,Web
 2026-06-12,2026-06-06,Yes,,ry3boks@resident.zing,,Forma,104.00,15.60,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-06-18,2026-06-06,Yes,,r3x8yle@resident.zing,,The Hamilton,16.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
-2026-06-17,2026-06-06,Yes,,rgg1jvo@resident.zing,,Forma,121.60,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-06-17,2026-06-06,Yes,,rgg1jvo@resident.zing,,Forma,121.60,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-06-12,2026-06-06,Yes,,rmhlbu@resident.zing,,Bezel Miami,104.00,20.00,paid,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-06-11,2026-06-06,Yes,,rbxlmo9@resident.zing,,The Hamilton,110.00,16.50,cancelled,be home,Liza Mossucca,Recurring,Web
 2026-06-11,2026-06-06,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
@@ -1193,7 +1469,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-11,2026-06-06,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-06-10,2026-06-06,Yes,,rzy2zvj@resident.zing,,The Hamilton,124.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
 2026-06-10,2026-06-06,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
-2026-06-08,2026-06-06,Yes,,r2qc01p@resident.zing,,Forma,146.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-06-08,2026-06-06,Yes,,r2qc01p@resident.zing,,Forma,146.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-06-11,2026-06-06,Yes,,r1susr50@resident.zing,,Forma,100.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
 2026-06-08,2026-06-06,Yes,,rt7xvmp@resident.zing,,Forma,110.00,16.50,paid,front desk,Heyling Chavez,Recurring,Web
 2026-06-15,2026-06-05,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
@@ -1210,7 +1486,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-08,2026-06-02,No,,r7d987r@resident.zing,,The Hamilton,183.00,36.60,paid,be home,Liza Mossucca,One-Off,Web
 2026-06-05,2026-06-02,No,,rw4udx7@resident.zing,,Bezel Miami,186.45,27.45,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-06-08,2026-06-01,Yes,,r1lrpeyl@resident.zing,,Miami World Tower,125.00,0.00,cancelled,front desk,,Recurring,Web
-2026-06-02,2026-06-01,Yes,,r16waqrf@resident.zing,,Forma,171.00,0.00,completed,front desk,Heyling Chavez,Recurring,Web
+2026-06-02,2026-06-01,Yes,,r16waqrf@resident.zing,,Forma,171.00,0.00,completed,front desk,Joselyn Izaguirre,Recurring,Web
 2026-06-02,2026-06-01,No,,ra5f4py@resident.zing,,The Hamilton,20.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-06-03,2026-06-01,No,,r1mjp8fr@resident.zing,,The Hamilton,276.00,20.00,paid,door unlocked,Liza Mossucca,One-Off,Web
 2026-06-04,2026-06-01,Yes,,r8hijhx@resident.zing,,Miami World Tower,58.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
@@ -1240,7 +1516,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-06-03,2026-05-28,Yes,,r18zp4u0@resident.zing,,Forma,53.60,10.72,cancelled,front desk,,Recurring,Web
 2026-05-29,2026-05-28,Yes,,rkduo2y@resident.zing,,Miami World Tower,151.00,0.00,submitted,be home,,Recurring,Web
 2026-05-29,2026-05-27,No,,rkr2zb9@resident.zing,,Forma,232.00,0.00,cancelled,front desk,,One-Off,Web
-2026-05-27,2026-05-27,No,,rslr28m@resident.zing,,Forma,105.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-05-27,2026-05-27,No,,rslr28m@resident.zing,,Forma,105.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-05-28,2026-05-27,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-05-27,2026-05-27,No,,r1kjlsz3@resident.zing,,Forma,3.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-06-01,2026-05-26,Yes,,r12o3pdy@resident.zing,,Wynwood25,54.00,0.00,cancelled,be home,,Recurring,Web
@@ -1251,7 +1527,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-26,2026-05-26,No,,rw5o6vh@resident.zing,,Forma,139.20,23.20,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-05-26,2026-05-26,No,,rqi3917@resident.zing,,Wynwood25,116.00,20.88,cancelled,be home,,One-Off,Web
 2026-05-29,2026-05-26,No,,r1l207ho@resident.zing,,The Hamilton,94.00,17.40,paid,use door code,Liza Mossucca,One-Off,Web
-2026-05-27,2026-05-25,No,,r6avbi4@resident.zing,,Forma,45.00,10.00,paid,front desk,Heyling Chavez,One-Off,Web
+2026-05-27,2026-05-25,No,,r6avbi4@resident.zing,,Forma,45.00,10.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-05-27,2026-05-25,Yes,,rr7mmgl@resident.zing,,Forma,151.00,0.00,submitted,be home,Joselyn Izaguirre,Recurring,Web
 2026-06-04,2026-05-25,No,,r182u38n@resident.zing,,Miami World Tower,29.00,0.00,paid,front desk,Elizabeth Cordova,One-Off,Web
 2026-05-28,2026-05-24,Yes,,r16waqrf@resident.zing,,Forma,141.00,0.00,completed,front desk,Heyling Chavez,Recurring,Web
@@ -1271,7 +1547,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-25,2026-05-24,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,cancelled,be home,,Recurring,Web
 2026-05-26,2026-05-24,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-05-26,2026-05-24,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
-2026-05-26,2026-05-24,Yes,,r1jswc36@resident.zing,,Forma,54.00,8.10,cancelled,be home,Heyling Chavez,Recurring,Web
+2026-05-26,2026-05-24,Yes,,r1jswc36@resident.zing,,Forma,54.00,8.10,cancelled,be home,Joselyn Izaguirre,Recurring,Web
 2026-05-26,2026-05-24,Yes,,rh8ysoe@resident.zing,,Forma,71.00,0.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
 2026-05-26,2026-05-23,Yes,,r1swufna@resident.zing,,Miami World Tower,0.00,0.00,paid,door unlocked,Elizabeth Cordova,Recurring,Web
 2026-05-22,2026-05-22,No,,rupt6h2@resident.zing,,The Hamilton,72.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
@@ -1286,7 +1562,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-20,2026-05-20,No,,rr1pfcf@resident.zing,,The Hamilton,55.00,8.25,submitted,be home,Liza Mossucca,One-Off,Web
 2026-05-20,2026-05-20,No,,rng4euk@resident.zing,,The Hamilton,52.00,0.00,submitted,be home,,One-Off,Web
 2026-05-21,2026-05-20,No,,r1d22jev@resident.zing,,Forma,144.00,21.60,paid,front desk,Joselyn Izaguirre,One-Off,Web
-2026-05-20,2026-05-20,No,,r1sod5k9@resident.zing,,Forma,66.00,11.00,paid,front desk,Heyling Chavez,One-Off,Web
+2026-05-20,2026-05-20,No,,r1sod5k9@resident.zing,,Forma,66.00,11.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-05-22,2026-05-19,No,,rdfr2iw@resident.zing,,Miami World Tower,6.80,4.80,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-05-22,2026-05-19,Yes,,r16waqrf@resident.zing,,Forma,38.00,0.00,incomplete payment,front desk,Heyling Chavez,Recurring,Web
 2026-05-25,2026-05-19,No,,r2hesx6@resident.zing,,Bezel Miami,0.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
@@ -1296,7 +1572,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-20,2026-05-19,No,,r1sakw1u@resident.zing,,Miami World Tower,0.00,0.00,paid,door unlocked,Elizabeth Cordova,One-Off,Web
 2026-05-20,2026-05-19,No,,r1tue0bu@resident.zing,,Miami World Tower,0.00,0.00,cancelled,be home,Elizabeth Cordova,One-Off,Web
 2026-05-21,2026-05-19,Yes,,rdi6u03@resident.zing,,The Hamilton,113.00,22.60,paid,door unlocked,Liza Mossucca,Recurring,Web
-2026-05-19,2026-05-19,Yes,,r16waqrf@resident.zing,,Forma,156.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-05-19,2026-05-19,Yes,,r16waqrf@resident.zing,,Forma,156.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-05-20,2026-05-19,No,,rn80ety@resident.zing,,Bezel Miami,116.00,17.40,cancelled,door unlocked,,One-Off,Web
 2026-05-20,2026-05-18,No,,ra5f4py@resident.zing,,The Hamilton,79.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-05-18,2026-05-18,No,,rzy2zvj@resident.zing,,The Hamilton,113.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
@@ -1311,8 +1587,8 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-22,2026-05-17,Yes,,r1jswc36@resident.zing,,Forma,54.00,0.00,submitted,be home,Joselyn Izaguirre,Recurring,Web
 2026-05-22,2026-05-17,Yes,,rapccj9@resident.zing,,Forma,104.00,20.80,incomplete payment,front desk,Heyling Chavez,Recurring,Web
 2026-05-18,2026-05-16,No,,r11h5k7g@resident.zing,,Bezel Miami,122.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-05-15,2026-05-15,No,,rwantkg@resident.zing,,Forma,52.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
-2026-05-18,2026-05-14,Yes,,rzs3cgh@resident.zing,,Miami World Tower,105.00,0.00,paid,be home,Yamilet Diaz,Recurring,Web
+2026-05-15,2026-05-15,No,,rwantkg@resident.zing,,Forma,52.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
+2026-05-18,2026-05-14,Yes,,rzs3cgh@resident.zing,,Miami World Tower,105.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-05-26,2026-05-14,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,cancelled,front desk,,Recurring,Web
 2026-05-28,2026-05-14,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-07-23,2026-05-14,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
@@ -1331,7 +1607,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-14,2026-05-13,No,,r1kjlsz3@resident.zing,,Forma,3.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-05-21,2026-05-12,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
 2026-05-21,2026-05-12,No,,ru2sv1w@resident.zing,,Forma,126.00,10.00,paid,front desk,Heyling Chavez,One-Off,Web
-2026-05-20,2026-05-12,No,,r1gejh4b@resident.zing,,Forma,55.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-05-20,2026-05-12,No,,r1gejh4b@resident.zing,,Forma,55.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-06-02,2026-05-12,Yes,,rumldxe@resident.zing,,Forma,151.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-05-13,2026-05-12,No,,r1kaxjkm@resident.zing,,Wynwood25,29.00,0.00,submitted,front desk,,One-Off,Web
 2026-05-14,2026-05-12,No,,rpz09ep@resident.zing,,Forma,55.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
@@ -1385,14 +1661,14 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-05-11,2026-05-05,Yes,,rxnixyq@resident.zing,,The Hamilton,110.00,10.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-05-06,2026-05-04,No,,r1n0qiis@resident.zing,,Forma,148.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
 2026-05-08,2026-05-04,Yes,,r191k9a9@resident.zing,,Forma,110.00,16.50,cancelled,front desk,,Recurring,Web
-2026-05-07,2026-05-04,Yes,,r191k9a9@resident.zing,,Forma,110.00,16.50,paid,front desk,Heyling Chavez,Recurring,Web
+2026-05-07,2026-05-04,Yes,,r191k9a9@resident.zing,,Forma,110.00,16.50,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-05-06,2026-05-04,Yes,,r128khuf@resident.zing,,The Hamilton,20.00,10.00,cancelled,be home,,Recurring,Web
-2026-05-07,2026-05-04,No,,rowl5is@resident.zing,,Forma,151.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
+2026-05-07,2026-05-04,No,,rowl5is@resident.zing,,Forma,151.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-05-08,2026-05-04,Yes,,r1jswc36@resident.zing,,Forma,54.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
 2026-05-05,2026-05-03,No,,r13ptxbx@resident.zing,,Forma,23.00,1.20,paid,be home,Heyling Chavez,One-Off,Web
 2026-05-06,2026-05-03,No,,rp872zw@resident.zing,,Forma,116.00,10.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-05-04,2026-05-02,Yes,,r9eaw28@resident.zing,,Wynwood25,30.00,5.00,paid,be home,Elizabeth Cordova,Recurring,Web
-2026-05-06,2026-05-01,Yes,,r1jswc36@resident.zing,,Forma,54.00,8.10,paid,be home,Heyling Chavez,Recurring,Web
+2026-05-06,2026-05-01,Yes,,r1jswc36@resident.zing,,Forma,54.00,8.10,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-05-14,2026-05-01,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
 2026-05-15,2026-05-01,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-05-14,2026-05-01,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
@@ -1481,10 +1757,10 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-24,2026-04-22,No,,r2wkcxr@resident.zing,,Forma,69.00,10.35,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-24,2026-04-22,No,,rl6q5ih@resident.zing,,Forma,142.00,0.00,cancelled,front desk,Heyling Chavez,One-Off,Web
 2026-04-22,2026-04-22,No,,r1pw7le0@resident.zing,,The Hamilton,168.00,0.00,refunded,be home,Liza Mossucca,One-Off,Web
-2026-04-22,2026-04-21,No,,rjotgg6@resident.zing,,Forma,116.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
+2026-04-22,2026-04-21,No,,rjotgg6@resident.zing,,Forma,116.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-04-22,2026-04-21,No,,r1tncu0s@resident.zing,,Forma,16.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
 2026-04-23,2026-04-21,No,,rjah4uy@resident.zing,,Forma,116.00,17.40,paid,front desk,Joselyn Izaguirre,One-Off,Web
-2026-04-30,2026-04-21,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Heyling Chavez,Recurring,Web
+2026-04-30,2026-04-21,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-04-23,2026-04-21,No,,ra5f4py@resident.zing,,The Hamilton,96.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-05-01,2026-04-20,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-04-27,2026-04-20,Yes,,rfnh84w@resident.zing,,Forma,16.00,10.00,cancelled,front desk,Heyling Chavez,Recurring,Web
@@ -1494,7 +1770,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-21,2026-04-20,No,,r15b33q4@resident.zing,,Forma,157.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
 2026-04-21,2026-04-20,Yes,,rh8ysoe@resident.zing,,Forma,71.00,0.00,refunded,be home,Joselyn Izaguirre,Recurring,Web
 2026-04-20,2026-04-20,Yes,,r18r8vnl@resident.zing,,Forma,20.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
-2026-04-21,2026-04-20,No,,r17imt96@resident.zing,,Forma,64.00,12.80,paid,be home,Heyling Chavez,One-Off,Web
+2026-04-21,2026-04-20,No,,r17imt96@resident.zing,,Forma,64.00,12.80,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-22,2026-04-20,No,,r1u9geug@resident.zing,,The Hamilton,35.00,0.00,paid,front desk,Liza Mossucca,One-Off,Web
 2026-04-24,2026-04-20,Yes,,rtf8wob@resident.zing,,The Hamilton,113.00,20.00,completed,door unlocked,Liza Mossucca,Recurring,Web
 2026-04-24,2026-04-20,Yes,,rapccj9@resident.zing,,Forma,104.00,20.80,paid,front desk,Heyling Chavez,Recurring,Web
@@ -1541,7 +1817,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-16,2026-04-12,No,,r7d987r@resident.zing,,The Hamilton,26.00,5.20,paid,use door code,Liza Mossucca,One-Off,Web
 2026-04-15,2026-04-12,No,,r7d987r@resident.zing,,The Hamilton,26.00,5.20,paid,use door code,Liza Mossucca,One-Off,Web
 2026-04-15,2026-04-12,Yes,,rumldxe@resident.zing,,Forma,160.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
-2026-04-14,2026-04-12,No,,r15x11n9@resident.zing,,Forma,64.00,10.80,incomplete payment,be home,Heyling Chavez,One-Off,Web
+2026-04-14,2026-04-12,No,,r15x11n9@resident.zing,,Forma,64.00,10.80,incomplete payment,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-14,2026-04-12,No,,r1jswc36@resident.zing,,Forma,89.00,13.35,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-13,2026-04-12,No,,rit9wgy@resident.zing,,Forma,16.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
 2026-04-15,2026-04-12,No,,rit9wgy@resident.zing,,Forma,116.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
@@ -1569,11 +1845,11 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-13,2026-04-10,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-04-10,2026-04-09,No,,r195411o@resident.zing,,Forma,151.00,0.00,paid,door unlocked,Heyling Chavez,One-Off,Web
 2026-04-13,2026-04-08,No,,rqgb00a@resident.zing,,Forma,104.00,9.36,refunded,be home,Heyling Chavez,One-Off,Web
-2026-04-09,2026-04-08,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-04-09,2026-04-08,Yes,,r1u00kew@resident.zing,,Forma,104.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-04-08,2026-04-08,No,,rl6q5ih@resident.zing,,Forma,116.00,17.40,paid,front desk,Heyling Chavez,One-Off,Web
 2026-04-10,2026-04-08,No,,r154skiu@resident.zing,,Forma,116.00,17.40,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-04-08,2026-04-08,No,,r1wx99pn@resident.zing,,Forma,116.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
-2026-04-08,2026-04-07,No,,rt7rjeu@resident.zing,,The Hamilton,44.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
+2026-04-08,2026-04-07,No,,rt7rjeu@resident.zing,,The Hamilton,44.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-04-10,2026-04-07,No,,r7d987r@resident.zing,,The Hamilton,168.00,33.60,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-04-08,2026-04-07,No,,r6avbi4@resident.zing,,Forma,35.00,7.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-04-10,2026-04-06,Yes,,rtf8wob@resident.zing,,The Hamilton,113.00,20.00,paid,door unlocked,Liza Mossucca,Recurring,Web
@@ -1582,10 +1858,10 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-06,2026-04-06,No,,r15x7pvh@resident.zing,,Forma,168.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
 2026-04-06,2026-04-06,No,,rcohgot@resident.zing,,Forma,65.00,9.75,incomplete payment,front desk,Joselyn Izaguirre,One-Off,Web
 2026-04-08,2026-04-05,No,,rf5nbw1@resident.zing,,The Hamilton,168.00,33.60,scheduled,be home,Liza Mossucca,One-Off,Web
-2026-04-07,2026-04-05,Yes,,r1kowapi@resident.zing,,Forma,100.00,20.00,paid,front desk,Heyling Chavez,Recurring,Web
+2026-04-07,2026-04-05,Yes,,r1kowapi@resident.zing,,Forma,100.00,20.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-04-08,2026-04-04,No,,r1jswc36@resident.zing,,Forma,89.00,13.35,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-09,2026-04-04,Yes,,rdi6u03@resident.zing,,The Hamilton,124.00,24.80,paid,door unlocked,Elizabeth Cordova,Recurring,Web
-2026-04-07,2026-04-04,No,,rpv52fh@resident.zing,,Forma,55.00,11.00,paid,front desk,Heyling Chavez,One-Off,Web
+2026-04-07,2026-04-04,No,,rpv52fh@resident.zing,,Forma,55.00,11.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-04-06,2026-04-03,No,,rpz09ep@resident.zing,,Forma,35.00,0.00,scheduled,be home,Heyling Chavez,One-Off,Web
 2026-04-10,2026-04-03,Yes,,r191k9a9@resident.zing,,Forma,110.00,16.50,paid,front desk,Heyling Chavez,Recurring,Web
 2026-04-02,2026-04-02,No,,r1i8r99j@resident.zing,,The Hamilton,20.00,0.00,paid,front desk,Elizabeth Cordova,One-Off,Web
@@ -1616,8 +1892,8 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-01,2026-03-31,No,,r1jswc36@resident.zing,,Forma,89.00,13.35,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-01,2026-03-31,No,,r7kg3fe@resident.zing,,The Hamilton,246.00,0.00,refunded,be home,Liza Mossucca,One-Off,Web
 2026-03-31,2026-03-31,No,,r179o9qn@resident.zing,,The Hamilton,21.00,3.15,cancelled,use door code,,One-Off,Web
-2026-03-31,2026-03-31,No,,rwantkg@resident.zing,,Forma,99.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
-2026-04-02,2026-03-31,No,,rupt6h2@resident.zing,,The Hamilton,52.00,0.00,paid,front desk,Liza Mossucca,One-Off,Web
+2026-03-31,2026-03-31,No,,rwantkg@resident.zing,,Forma,99.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
+2026-04-02,2026-03-31,No,,rupt6h2@resident.zing,,The Hamilton,52.00,0.00,paid,front desk,Elizabeth Cordova,One-Off,Web
 2026-04-02,2026-03-31,Yes,,rrwi11t@resident.zing,,The Hamilton,33.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-04-02,2026-03-31,No,,rl6q5ih@resident.zing,,Forma,142.00,21.30,paid,front desk,Heyling Chavez,One-Off,Web
 2026-03-31,2026-03-30,No,,r2qc01p@resident.zing,,Forma,52.00,0.00,cancelled,front desk,Joselyn Izaguirre,One-Off,Web
@@ -1638,7 +1914,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-01,2026-03-27,Yes,,rzy2zvj@resident.zing,,The Hamilton,124.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
 2026-04-01,2026-03-27,Yes,,r18r8vnl@resident.zing,,Forma,46.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
 2026-03-31,2026-03-27,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
-2026-03-31,2026-03-27,Yes,,rtshco5@resident.zing,,Forma,47.00,5.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-03-31,2026-03-27,Yes,,rtshco5@resident.zing,,Forma,47.00,5.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-03-30,2026-03-27,Yes,,r2qc01p@resident.zing,,Forma,146.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
 2026-03-30,2026-03-27,Yes,,r66ssus@resident.zing,,Forma,107.00,16.05,paid,be home,Heyling Chavez,Recurring,Web
 2026-04-02,2026-03-26,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
@@ -1650,7 +1926,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-02,2026-03-26,Yes,,r1susr50@resident.zing,,Forma,100.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
 2026-03-30,2026-03-26,No,,r1wx99pn@resident.zing,,Forma,116.00,17.40,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-27,2026-03-25,No,,r1pap4rf@resident.zing,,Forma,116.00,17.40,paid,front desk,Joselyn Izaguirre,One-Off,Web
-2026-03-26,2026-03-25,No,,rdi6u03@resident.zing,,The Hamilton,138.00,27.60,paid,use door code,Liza Mossucca,One-Off,Web
+2026-03-26,2026-03-25,No,,rdi6u03@resident.zing,,The Hamilton,138.00,27.60,paid,use door code,Elizabeth Cordova,One-Off,Web
 2026-03-27,2026-03-25,No,,r1jswc36@resident.zing,,Forma,104.00,15.60,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-04-03,2026-03-24,No,,rv8056c@resident.zing,,Forma,72.00,7.80,incomplete payment,be home,Joselyn Izaguirre,One-Off,Web
 2026-03-26,2026-03-24,No,,r1takpc3@resident.zing,,Forma,113.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
@@ -1666,7 +1942,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-03-26,2026-03-22,Yes,,rrwi11t@resident.zing,,The Hamilton,33.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-03-26,2026-03-22,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
 2026-03-24,2026-03-22,Yes,,rq6iy8h@resident.zing,,The Hamilton,136.04,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
-2026-03-26,2026-03-22,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-03-26,2026-03-22,Yes,,r1g790lo@resident.zing,,The Hamilton,93.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-03-23,2026-03-22,No,,r9eaw28@resident.zing,,Wynwood25,30.00,10.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-03-24,2026-03-20,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-03-23,2026-03-20,Yes,,r18zp4u0@resident.zing,,Forma,56.00,11.20,refunded,front desk,Joselyn Izaguirre,Recurring,Web
@@ -1675,7 +1951,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-04-01,2026-03-19,Yes,,r7kg3fe@resident.zing,,The Hamilton,261.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-03-20,2026-03-19,No,,ru2sv1w@resident.zing,,Forma,116.00,0.00,paid,front desk,Elizabeth Cordova,One-Off,Web
 2026-03-19,2026-03-19,No,,r1pap4rf@resident.zing,,Forma,29.00,2.00,cancelled,front desk,,One-Off,Web
-2026-03-19,2026-03-19,Yes,,r1pap4rf@resident.zing,,Forma,125.00,16.50,incomplete payment,front desk,Heyling Chavez,Recurring,Web
+2026-03-19,2026-03-19,Yes,,r1pap4rf@resident.zing,,Forma,125.00,16.50,incomplete payment,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-20,2026-03-18,No,,rowl5is@resident.zing,,Forma,103.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-03-25,2026-03-18,No,,rt7rjeu@resident.zing,,The Hamilton,113.00,0.00,paid,front desk,Liza Mossucca,One-Off,Web
 2026-03-23,2026-03-18,Yes,,r1j0lpaj@resident.zing,,The Hamilton,150.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
@@ -1689,29 +1965,29 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-03-17,2026-03-17,No,,rnxmyvv@resident.zing,,Forma,35.00,0.00,scheduled,be home,Heyling Chavez,One-Off,Web
 2026-03-17,2026-03-17,No,,rk89c6a@resident.zing,,Forma,65.00,0.00,paid,be home,Heyling Chavez,One-Off,Web
 2026-03-17,2026-03-16,No,,rwnm4ki@resident.zing,,Forma,156.00,15.00,incomplete payment,front desk,Joselyn Izaguirre,One-Off,Web
-2026-03-18,2026-03-16,No,,r16wor4k@resident.zing,,Forma,56.00,0.00,incomplete payment,front desk,Heyling Chavez,One-Off,Web
+2026-03-18,2026-03-16,No,,r16wor4k@resident.zing,,Forma,56.00,0.00,incomplete payment,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-20,2026-03-16,No,,rrdxbv2@resident.zing,,Forma,116.00,15.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-03-17,2026-03-15,No,,r7d987r@resident.zing,,The Hamilton,176.00,35.20,paid,be home,Liza Mossucca,One-Off,Web
-2026-03-16,2026-03-15,Yes,,rzy2zvj@resident.zing,,The Hamilton,124.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-03-16,2026-03-15,Yes,,rzy2zvj@resident.zing,,The Hamilton,124.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-03-23,2026-03-14,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,cancelled,use door code,Liza Mossucca,Recurring,Web
 2026-03-20,2026-03-14,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
-2026-03-20,2026-03-14,Yes,,r1srxs5o@resident.zing,,Forma,95.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
+2026-03-20,2026-03-14,Yes,,r1srxs5o@resident.zing,,Forma,95.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-03-31,2026-03-14,Yes,,rpazlvu@resident.zing,,Wynwood25,50.00,9.00,paid,be home,Elizabeth Cordova,Recurring,Web
-2026-03-19,2026-03-14,Yes,,rrwi11t@resident.zing,,The Hamilton,33.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
+2026-03-19,2026-03-14,Yes,,rrwi11t@resident.zing,,The Hamilton,33.00,0.00,cancelled,be home,Elizabeth Cordova,Recurring,Web
 2026-03-19,2026-03-14,Yes,,rsoha7u@resident.zing,,The Hamilton,33.00,0.00,paid,door unlocked,Liza Mossucca,Recurring,Web
-2026-03-18,2026-03-14,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,scheduled,be home,Heyling Chavez,Recurring,Web
+2026-10-31,2026-03-14,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,reschedule request,be home,Heyling Chavez,Recurring,Web
 2026-03-17,2026-03-14,Yes,,r1t71moq@resident.zing,,Forma,54.00,0.00,paid,front desk,Heyling Chavez,Recurring,Web
 2026-03-16,2026-03-14,Yes,,r1rqnsq4@resident.zing,,Forma,26.00,0.00,cancelled,be home,,Recurring,Web
 2026-03-16,2026-03-13,Yes,,rt7xvmp@resident.zing,,Forma,110.00,16.50,paid,front desk,Heyling Chavez,Recurring,Web
 2026-03-13,2026-03-13,No,,r1fx477y@resident.zing,,Forma,24.00,0.00,paid,door unlocked,Heyling Chavez,One-Off,Web
 2026-03-12,2026-03-12,No,,rvep5r6@resident.zing,,Forma,26.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-13,2026-03-12,No,,rqi3917@resident.zing,,Wynwood25,116.00,17.40,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-03-12,2026-03-12,No,,r6nox0e@resident.zing,,Forma,65.00,9.75,paid,front desk,Heyling Chavez,One-Off,Web
-2026-03-12,2026-03-12,No,,r1fx477y@resident.zing,,Forma,3.00,3.00,paid,door unlocked,Heyling Chavez,One-Off,Web
+2026-03-12,2026-03-12,No,,r6nox0e@resident.zing,,Forma,65.00,9.75,paid,front desk,Joselyn Izaguirre,One-Off,Web
+2026-03-12,2026-03-12,No,,r1fx477y@resident.zing,,Forma,3.00,3.00,paid,door unlocked,Joselyn Izaguirre,One-Off,Web
 2026-03-03,2026-03-11,Yes,,rq6iy8h@resident.zing,,The Hamilton,89.00,0.00,paid,be home,,Recurring,Web
 2026-03-12,2026-03-11,No,,r8x1pdc@resident.zing,,The Hamilton,332.00,40.00,paid,be home,Elizabeth Cordova,One-Off,Web
 2026-03-13,2026-03-11,No,,r1wx99pn@resident.zing,,Forma,116.00,17.40,paid,front desk,Heyling Chavez,One-Off,Web
-2026-03-12,2026-03-11,Yes,,rrwi11t@resident.zing,,The Hamilton,118.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-03-12,2026-03-11,Yes,,rrwi11t@resident.zing,,The Hamilton,118.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-03-20,2026-03-10,No,,r4n2d71@resident.zing,,The Hamilton,26.00,2.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-03-11,2026-03-10,No,,rsq0rdi@resident.zing,,Forma,55.00,11.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-12,2026-03-10,No,,r13ptxbx@resident.zing,,Forma,116.00,14.00,paid,door unlocked,Heyling Chavez,One-Off,Web
@@ -1733,8 +2009,8 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-03-13,2026-03-08,Yes,,r18zp4u0@resident.zing,,Forma,56.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-09,2026-03-08,Yes,,r18zp4u0@resident.zing,,Forma,53.60,11.20,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-07,2026-03-07,No,,rzy2zvj@resident.zing,,The Hamilton,26.00,3.90,submitted,door unlocked,,One-Off,Web
-2026-03-12,2026-03-06,Yes,,r1t71moq@resident.zing,,Forma,100.00,0.00,cancelled,be home,Heyling Chavez,Recurring,Web
-2026-03-13,2026-03-06,Yes,,r18zp4u0@resident.zing,,Forma,53.00,0.00,cancelled,front desk,Heyling Chavez,Recurring,Web
+2026-03-12,2026-03-06,Yes,,r1t71moq@resident.zing,,Forma,100.00,0.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
+2026-03-13,2026-03-06,Yes,,r18zp4u0@resident.zing,,Forma,53.00,0.00,cancelled,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-11,2026-03-06,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-03-11,2026-03-06,No,,r1bnzh3g@resident.zing,,Forma,87.00,17.40,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-03-07,2026-03-06,No,,r1l23jm4@resident.zing,,Forma,116.00,0.00,submitted,be home,,One-Off,Web
@@ -1746,29 +2022,29 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-03-11,2026-03-04,Yes,,r1t71moq@resident.zing,,Forma,37.00,7.40,cancelled,be home,Joselyn Izaguirre,Recurring,Web
 2026-03-19,2026-03-04,Yes,,r1t3ndwa@resident.zing,,The Hamilton,85.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
 2026-03-10,2026-03-04,Yes,,rtshco5@resident.zing,,Forma,47.00,0.00,cancelled,be home,Joselyn Izaguirre,Recurring,Web
-2026-03-10,2026-03-04,Yes,,rq6iy8h@resident.zing,,The Hamilton,293.04,0.00,paid,be home,Liza Mossucca,Recurring,Web
+2026-03-10,2026-03-04,Yes,,rq6iy8h@resident.zing,,The Hamilton,293.04,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-03-10,2026-03-04,No,,r16wor4k@resident.zing,,Forma,47.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-11,2026-03-04,No,,r1onu5xs@resident.zing,,Forma,105.00,20.00,paid,be home,Heyling Chavez,One-Off,Web
 2026-03-04,2026-03-04,No,,r17z2473@resident.zing,,Bezel Miami,26.00,0.00,paid,front desk,,One-Off,Web
 2026-03-09,2026-03-03,Yes,,r1rqnsq4@resident.zing,,Forma,26.00,0.00,submitted,be home,Heyling Chavez,Recurring,Web
 2026-03-09,2026-03-03,Yes,,r2qc01p@resident.zing,,Forma,55.00,0.00,cancelled,front desk,,Recurring,Web
 2026-03-09,2026-03-03,Yes,,r2qc01p@resident.zing,,Forma,146.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
-2026-03-09,2026-03-03,Yes,,r18zp4u0@resident.zing,,Forma,53.00,0.00,cancelled,front desk,Heyling Chavez,Recurring,Web
+2026-03-09,2026-03-03,Yes,,r18zp4u0@resident.zing,,Forma,53.00,0.00,cancelled,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-10,2026-03-03,Yes,,r179o9qn@resident.zing,,The Hamilton,120.00,0.00,paid,use door code,Liza Mossucca,Recurring,Web
 2026-03-09,2026-03-03,Yes,,r1j0lpaj@resident.zing,,The Hamilton,150.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-03-06,2026-03-03,No,,r6cdcxp@resident.zing,,Forma,105.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-05,2026-03-03,No,,roq8x28@resident.zing,,Forma,105.00,0.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-04,2026-03-02,Yes,,r18r8vnl@resident.zing,,Forma,26.00,0.00,submitted,be home,Heyling Chavez,Recurring,Web
-2026-04-08,2026-03-02,Yes,,r1u9dskd@resident.zing,,Forma,100.00,0.00,paid,front desk,Elizabeth Cordova,Recurring,Web
+2026-04-08,2026-03-02,Yes,,r1u9dskd@resident.zing,,Forma,100.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-09,2026-03-02,Yes,,rkq048i@resident.zing,,The Hamilton,136.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
-2026-03-04,2026-03-02,No,,r1miclp7@resident.zing,,Forma,113.00,15.00,paid,front desk,Elizabeth Cordova,One-Off,Web
+2026-03-04,2026-03-02,No,,r1miclp7@resident.zing,,Forma,113.00,15.00,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-04,2026-03-02,Yes,,r18r8vnl@resident.zing,,Forma,56.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-03-06,2026-03-01,Yes,,r18zp4u0@resident.zing,,Forma,53.60,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-02,2026-03-01,Yes,,r18zp4u0@resident.zing,,Forma,102.60,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-04,2026-03-01,No,,r7d987r@resident.zing,,The Hamilton,162.00,32.40,paid,be home,Liza Mossucca,One-Off,Web
 2026-03-05,2026-03-01,No,,rdi6u03@resident.zing,,The Hamilton,171.00,25.20,paid,use door code,Liza Mossucca,One-Off,Web
 2026-03-04,2026-02-28,Yes,,r1yj10nc@resident.zing,,The Hamilton,136.00,1.00,cancelled,front desk,Liza Mossucca,Recurring,Web
-2026-03-03,2026-02-28,No,,r1tncu0s@resident.zing,,Forma,75.00,11.25,paid,be home,Heyling Chavez,One-Off,Web
+2026-03-03,2026-02-28,No,,r1tncu0s@resident.zing,,Forma,75.00,11.25,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-03-04,2026-02-28,No,,r9svgr8@resident.zing,,Forma,161.00,16.00,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-03-03,2026-02-28,Yes,,rh8ysoe@resident.zing,,Forma,71.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-03-03,2026-02-27,No,,r31dwso@resident.zing,,The Hamilton,218.00,0.00,paid,use door code,Elizabeth Cordova,One-Off,Web
@@ -1781,7 +2057,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-03-09,2026-02-27,Yes,,rkq048i@resident.zing,,The Hamilton,181.00,0.00,paid,be home,Elizabeth Cordova,Recurring,Web
 2026-03-02,2026-02-27,Yes,,r2dejn1@resident.zing,,The Hamilton,156.00,0.00,paid,be home,Liza Mossucca,Recurring,Web
 2026-03-03,2026-02-27,Yes,,rq6iy8h@resident.zing,,The Hamilton,39.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
-2026-03-06,2026-02-27,Yes,,r18zp4u0@resident.zing,,Forma,0.00,0.00,cancelled,front desk,Heyling Chavez,Recurring,Web
+2026-03-06,2026-02-27,Yes,,r18zp4u0@resident.zing,,Forma,0.00,0.00,cancelled,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-13,2026-02-27,Yes,,r18zp4u0@resident.zing,,Forma,129.00,0.00,cancelled,front desk,,Recurring,Web
 2026-03-05,2026-02-27,Yes,,r1fx477y@resident.zing,,Forma,37.00,0.00,paid,door unlocked,Joselyn Izaguirre,Recurring,Web
 2026-03-05,2026-02-27,Yes,,rwshm40@resident.zing,,Forma,116.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
@@ -1790,17 +2066,17 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-03-04,2026-02-27,No,,rtf8wob@resident.zing,,The Hamilton,115.00,23.00,paid,door unlocked,Liza Mossucca,One-Off,Web
 2026-03-03,2026-02-26,Yes,,rq6iy8h@resident.zing,,The Hamilton,77.00,0.00,cancelled,be home,Liza Mossucca,Recurring,Web
 2026-02-27,2026-02-26,No,,rjotgg6@resident.zing,,Forma,0.00,0.00,cancelled,front desk,,One-Off,Web
-2026-03-05,2026-02-26,No,,rjotgg6@resident.zing,,Forma,105.00,15.75,paid,front desk,Elizabeth Cordova,One-Off,Web
+2026-03-05,2026-02-26,No,,rjotgg6@resident.zing,,Forma,105.00,15.75,paid,front desk,Joselyn Izaguirre,One-Off,Web
 2026-03-13,2026-02-26,No,,r17v2436@resident.zing,,The Hamilton,113.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-02-26,2026-02-26,No,,r1j0lpaj@resident.zing,,The Hamilton,35.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-02-27,2026-02-26,No,,r1wleh7k@resident.zing,,The Hamilton,45.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-03-03,2026-02-25,No,,r1u00kew@resident.zing,,Forma,105.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-03-02,2026-02-25,Yes,,r18zp4u0@resident.zing,,Forma,105.00,0.00,submitted,front desk,Heyling Chavez,Recurring,Web
+2026-03-02,2026-02-25,Yes,,r18zp4u0@resident.zing,,Forma,105.00,0.00,submitted,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-02,2026-02-25,Yes,,r2qc01p@resident.zing,,Forma,94.00,0.00,paid,front desk,Joselyn Izaguirre,Recurring,Web
 2026-03-03,2026-02-25,Yes,,r1rqnsq4@resident.zing,,Forma,26.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
-2026-03-02,2026-02-25,Yes,,r1susr50@resident.zing,,Forma,100.00,0.00,paid,be home,Heyling Chavez,Recurring,Web
-2026-02-26,2026-02-25,No,,rmtu60s@resident.zing,,Forma,130.00,0.00,paid,be home,Elizabeth Cordova,One-Off,Web
-2026-03-04,2026-02-24,Yes,,r1t71moq@resident.zing,,Forma,37.00,7.40,paid,be home,Heyling Chavez,Recurring,Web
+2026-03-02,2026-02-25,Yes,,r1susr50@resident.zing,,Forma,100.00,0.00,paid,be home,Joselyn Izaguirre,Recurring,Web
+2026-02-26,2026-02-25,No,,rmtu60s@resident.zing,,Forma,130.00,0.00,paid,be home,Joselyn Izaguirre,One-Off,Web
+2026-03-04,2026-02-24,Yes,,r1t71moq@resident.zing,,Forma,37.00,7.40,paid,be home,Joselyn Izaguirre,Recurring,Web
 2026-02-25,2026-02-24,No,,r1oao504@resident.zing,,Forma,46.00,0.00,paid,front desk,Heyling Chavez,One-Off,Web
 2026-02-25,2026-02-24,No,,r1oao504@resident.zing,,Forma,46.00,9.20,submitted,front desk,,One-Off,Web
 2026-02-26,2026-02-24,No,,r1czkwxi@resident.zing,,The Hamilton,111.00,40.00,paid,use door code,Liza Mossucca,One-Off,Web
@@ -1879,7 +2155,7 @@ Date,Date created,Recurring,Customer,Email,Phone,Building,Amount,Tip,Status,Acce
 2026-02-17,2026-02-13,No,,rf5nbw1@resident.zing,,The Hamilton,154.00,30.80,scheduled,be home,Liza Mossucca,One-Off,Web
 2026-02-27,2026-02-12,No,,r1h4qoc5@resident.zing,,Forma,52.00,0.00,completed,front desk,Joselyn Izaguirre,One-Off,Web
 2026-02-12,2026-02-12,Yes,,r3x8yle@resident.zing,,The Hamilton,20.00,0.00,cancelled,use door code,,Recurring,Web
-2026-02-26,2026-02-12,No,,rhveui2@resident.zing,,Forma,213.00,38.34,paid,be home,Heyling Chavez,One-Off,Web
+2026-02-26,2026-02-12,No,,rhveui2@resident.zing,,Forma,213.00,38.34,paid,be home,Joselyn Izaguirre,One-Off,Web
 2026-02-13,2026-02-12,No,,r1tncu0s@resident.zing,,Forma,85.00,12.75,scheduled,front desk,Joselyn Izaguirre,One-Off,Web
 2026-02-11,2026-02-11,No,,rt7rjeu@resident.zing,,The Hamilton,126.00,0.00,paid,be home,Liza Mossucca,One-Off,Web
 2026-02-12,2026-02-11,No,,rtf8wob@resident.zing,,The Hamilton,83.00,15.00,paid,door unlocked,Liza Mossucca,One-Off,Web

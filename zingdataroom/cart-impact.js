@@ -109,7 +109,7 @@ function resolve(which, snap){
    If they are missing (or the page is opened from disk) it falls back to the baked-in cart-data.js. */
 const LOCAL = { users: null, orders: null };
 function pullLocalCsv(){
-  return;   // data room: hard-coded to the 2026-10-12 export in cart-data.js
+  return;   // data room: hard-coded to the 2026-11-10 export in cart-data.js
   [["users", "Users"], ["orders", "Orders"]].forEach(([k, W]) => {
     fetch("data/" + k + ".csv", { cache: "no-store" })
       .then(r => r.ok ? r.text() : Promise.reject(new Error("HTTP " + r.status)))
