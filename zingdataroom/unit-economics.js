@@ -40,7 +40,7 @@ const load = (k, d) => { try { return Object.assign(d, JSON.parse(localStorage.g
 const A = { burden: 0, other: 0 };   // data room: fixed, not read from this browser
 // data room: fixed launch / acquisition costs, shown to every visitor; never read from or written to this browser
 const COSTS = new Proxy({}, { get: (o, b) => (o[b] ||= { launch: 1500 }) });   // every building: $1,500 launch / acquisition
-const UE = { sort: "launch", dir: -1, metric: "resPen", hidden: new Set(), seg: "all", model: null, ready: false };
+const UE = { sort: "launch", dir: -1, metric: "resPen", hidden: new Set(), seg: "all", plan: "sub", adj: true, model: null, ready: false };
 
 /* ---------- building identity: sheet tabs, orders and users all resolve to the registry key ---------- */
 const NAME = { hamilton: "Hamilton" };
@@ -372,7 +372,9 @@ function paybackHTML(MS){
 function cohortHTML(t1, P){
   const mat = new Set(P.all.filter(r => r.age >= 6).map(r => r.b));   // data room: mature = 6+ months live
   const set = UE.seg === "mature" ? mat : UE.seg === "newer" ? new Set(buildings().filter(b => !mat.has(b))) : UE.seg !== "all" ? new Set([UE.seg]) : null;
-  const l = CUST.filter(c => c.first >= Date.UTC(2026, 1, 1) && c.first < t1 && (!set || set.has(c.b)));   // data room: cohorts from Feb 2026
+  const isSub = c => c.orders.some(o => o.rec && o.t < t1);   // subscriber: at least one realized recurring visit
+  const plan = UE.plan || "all";
+  const l = CUST.filter(c => c.first >= Date.UTC(2026, 1, 1) && c.first < t1 && (!set || set.has(c.b)) && (plan === "all" || (plan === "sub") === isSub(c)));   // data room: cohorts from Feb 2026
   const g = new Map(); l.forEach(c => { const k = mStart(c.first); if (!g.has(k)) g.set(k, []); g.get(k).push(c); });
   const rep = (cs, N) => { const el = cs.filter(c => c.first <= t1 - N * DAY); return el.length ? el.filter(c => c.days.length > 1 && c.days[1] - c.first <= N * DAY).length / el.length : null; };
   const line = (label, cs) => { const n = cs.length, at = i => cs.filter(c => c.days.length > i && c.days[i] < t1).length / n;
@@ -380,7 +382,46 @@ function cohortHTML(t1, P){
     return `<td class="num">${n0(n)}</td><td class="num">${p0(at(1))}</td><td class="num">${p0(at(2))}</td><td class="num">${p0(rep(cs, 30))}</td><td class="num">${p0(rep(cs, 60))}</td><td class="num">${p0(rep(cs, 90))}</td><td class="num">${p0(rep(cs, 180))}</td><td class="num">${n1(ov / n)}</td><td class="num">${$0(rv / n)}</td>`; };
   const body = [...g.keys()].sort((a, b) => b - a).map(k => `<tr><td class="name">${mstr(k)}</td>${line("", g.get(k))}</tr>`).join("");
   const seg = `<div class="pickers ue-seg">${[["all", "All buildings"], ["mature", "Mature (6+ months live)"], ["newer", "Newer"]].concat(buildings().sort().map(b => [b, NAME[b] || (REGISTRY[b] || {}).name || b])).map(s => `<button data-s="${s[0]}" class="${UE.seg === s[0] ? "on" : ""}">${s[1]}</button>`).join("")}</div>`;
-  return seg + (l.length ? `<div class="scrollx"><table><thead><tr><th>First visit</th><th>Customers</th><th>Visit #2</th><th>Visit #3</th><th>30-day repeat</th><th>60-day repeat</th><th>90-day repeat</th><th>180-day repeat</th><th>Visits / customer</th><th>Revenue / customer</th></tr></thead><tbody>${body}<tr class="ue-total"><td class="name">All cohorts</td>${line("", l)}</tr></tbody></table></div>` : `<p class="ue-empty">No customers in this segment.</p>`);
+  const planPick = `<div class="pickers ue-plan" style="margin:8px 0 0">${[["all", "All customers"], ["sub", "Subscriptions"], ["one", "One-offs only"]].map(s => `<button data-p="${s[0]}" class="${plan === s[0] ? "on" : ""}">${s[1]}</button>`).join("")}</div><dl style="display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 14px;margin:10px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:12.5px;line-height:1.5;color:var(--ink-2)">${[["sub", "Subscriptions", "Residents who have had at least one completed visit on a recurring plan (weekly, every two weeks or monthly). This includes anyone who started with a one-off and later moved to a plan. These are the customers whose bookings repeat without them having to rebook, so this is the core retention curve."], ["one", "One-offs only", "Residents who have only ever booked single visits and never had a completed plan visit. Each return is a fresh booking they chose to make, so this curve shows how often occasional users come back."], ["all", "All customers", "Both groups together, as the data room reports them elsewhere."]].map(d => `<dt style="font-weight:${plan === d[0] ? 700 : 600};color:${plan === d[0] ? "var(--ink)" : "var(--ink-3)"}">${d[1]}</dt><dd style="margin:0;color:${plan === d[0] ? "var(--ink-2)" : "var(--ink-3)"}">${d[2]}</dd>`).join("")}<dt style="font-weight:600;color:var(--ink-3)">How customers are placed</dt><dd style="margin:0;color:var(--ink-3)">Each customer belongs to the cohort of the month of their first completed visit, whichever group they are in. A customer counts as a subscriber from their first visit, even if the plan started later. A plan booked for the future but not yet visited does not count.</dd></dl>`;
+  return seg + planPick + (l.length ? gridHTML(t1, l) : "") + (l.length ? `<h3 class="eyebrow" style="margin:26px 0 10px">Totals to date</h3><div class="scrollx"><table><thead><tr><th>First visit</th><th>Customers</th><th>Visit #2</th><th>Visit #3</th><th>30-day repeat</th><th>60-day repeat</th><th>90-day repeat</th><th>180-day repeat</th><th>Visits / customer</th><th>Revenue / customer</th></tr></thead><tbody>${body}<tr class="ue-total"><td class="name">All cohorts</td>${line("", l)}</tr></tbody></table></div>` : `<p class="ue-empty">No customers in this segment.</p>`);
+}
+
+/* month-by-month cohort grid: each row a first-visit month, each column the Nth calendar month after it */
+const CMODES = { active: ["Active in month", "Share of the cohort with a realized visit in that month"],
+  repeat: ["Repeated by month", "Share of the cohort with a second visit by the end of that month"],
+  rev: ["Revenue / customer", "Cumulative revenue per cohort customer by the end of that month"] };
+function gridHTML(t1, l){
+  const mode = UE.cmode || "active";
+  const mAdd = (k, j) => { const d = new Date(k); return Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + j, 1); };
+  const g = new Map(); l.forEach(c => { const k = mStart(c.first); if (!g.has(k)) g.set(k, []); g.get(k).push(c); });
+  const keys = [...g.keys()].sort((a, b) => a - b);
+  const done = (k, j) => mAdd(k, j + 1) <= t1;
+  const maxJ = Math.max(0, ...keys.map(k => { let j = 0; while (done(k, j + 1)) j++; return done(k, 0) ? j : -1; }));
+  const val = (cs, k, j) => { const a = mAdd(k, j), e = mAdd(k, j + 1), n = cs.length; if (!n) return null;
+    if (mode === "active") return cs.filter(c => c.days.some(d => d >= a && d < e)).length / n;
+    if (mode === "repeat") return cs.filter(c => c.days.length > 1 && c.days[1] < e).length / n;
+    return cs.reduce((s, c) => s + c.orders.reduce((x, o) => x + (o.t < e ? o.amt : 0), 0), 0) / n; };
+  const churn = UE.churn ?? 45, adj = mode === "active" && UE.adj;
+  const stay = j => j === 0 ? 1 : Math.pow(1 - churn / 100, (j + 0.5) / 12);   // share of residents still in the building mid-month j
+  const rows = keys.map(k => ({ k, n: g.get(k).length, v: [...Array(maxJ + 1)].map((_, j) => { if (!done(k, j)) return null;
+    const v = val(g.get(k), k, j); return adj && v != null ? Math.min(1, v / stay(j)) : v; }) }));
+  const pool = [...Array(maxJ + 1)].map((_, j) => { let s = 0, n = 0;
+    rows.forEach(r => { if (r.v[j] != null){ s += r.v[j] * r.n; n += r.n; } }); return n ? s / n : null; });
+  const scale = Math.max(...rows.flatMap(r => r.v.filter((v, j) => v != null && (mode !== "active" || j > 0))), 0.0001);
+  const fmt = v => mode === "rev" ? $0(v) : p0(v);
+  const cell = (v, j) => { if (v == null) return `<td class="num"></td>`;
+    const x = Math.min(1, v / scale), pct = Math.round(8 + x * 72);
+    return `<td class="num" style="background:color-mix(in oklab, var(--forest-600) ${pct}%, white);color:${pct > 48 ? "#fff" : "var(--ink)"}">${fmt(v)}</td>`; };
+  const picker = `<div class="pickers ue-cmode" style="margin:0 0 6px">${Object.entries(CMODES).map(([k, v]) => `<button data-c="${k}" class="${mode === k ? "on" : ""}">${v[0]}</button>`).join("")}</div>`;
+  const churnBox = mode !== "active" ? "" : `<div class="ue-churn" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 12px;padding:12px 14px;background:var(--sage-100);border-radius:10px;font-size:12.5px;line-height:1.5;color:var(--ink-2)">
+<span style="flex:1 1 320px">About <b>${churn}%</b> of a building's residents move out each year, and a customer who moves out cannot book again. <b>As recorded</b> keeps them in the count, so a move-out reads as a lost customer. <b>Excluding move-outs</b> (the default) divides each month by the estimated share of the cohort still living in the building, so the curve shows how many customers keep booking among those who still can.</span>
+<div class="pickers ue-adj" style="margin:0"><button data-a="0" class="${UE.adj ? "" : "on"}">As recorded</button><button data-a="1" class="${UE.adj ? "on" : ""}">Excluding move-outs</button></div>
+<label class="fld">Annual resident turnover<input type="number" min="0" max="95" step="1" id="ueChurn" value="${churn}" style="width:60px"><span class="post">%</span></label></div>`;
+  const stayRow = adj ? `<tr><td class="name" style="color:var(--ink-3);font-weight:500">Est. still in building</td><td class="num"></td>${[...Array(maxJ + 1)].map((_, j) => `<td class="num" style="color:var(--ink-3)">${p0(stay(j))}</td>`).join("")}</tr>` : "";
+  return `<h3 class="eyebrow" style="margin:22px 0 10px">Month by month</h3>${picker}<p class="ue-note" style="margin:0 0 12px">${CMODES[mode][1]}${adj ? ", among customers estimated to still live in the building" : ""} · month 0 is the month of the first visit · complete calendar months only, so newer cohorts have fewer cells</p>${churnBox}
+<div class="scrollx"><table><thead><tr><th>First visit</th><th>Customers</th>${[...Array(maxJ + 1)].map((_, j) => `<th class="num">Month ${j}</th>`).join("")}</tr></thead><tbody>
+${rows.map(r => `<tr><td class="name">${mstr(r.k)}</td><td class="num">${n0(r.n)}</td>${r.v.map(cell).join("")}</tr>`).join("")}
+<tr class="ue-total"><td class="name">Weighted average${adj ? " (excl. move-outs)" : ""}</td><td class="num">${n0(l.length)}</td>${pool.map(v => `<td class="num">${v == null ? "" : fmt(v)}</td>`).join("")}</tr>${stayRow}</tbody></table></div>${adj ? `<p class="ue-note" style="margin:10px 0 0">Estimate, not observed: move-out dates are not in the data. Assumes turnover is spread evenly through the year and that customers move out at the same rate as other residents. Switch to As recorded for the raw figures.</p>` : ""}`;
 }
 
 /* ---------- page ---------- */
@@ -453,7 +494,11 @@ function wire(t1, P, MS){
     const c = COSTS[i.dataset.b] ||= {}; if (i.value === "") delete c[i.dataset.f]; else c[i.dataset.f] = +i.value;
     $("uePay").innerHTML = paybackHTML(MS); wirePay(); });
   wirePay();
-  const wireCoh = () => $("ueCoh").querySelectorAll(".ue-seg button").forEach(b => b.onclick = () => { UE.seg = b.dataset.s; $("ueCoh").innerHTML = cohortHTML(t1, P); wireCoh(); });
+  const wireCoh = () => { $("ueCoh").querySelectorAll(".ue-seg button").forEach(b => b.onclick = () => { UE.seg = b.dataset.s; $("ueCoh").innerHTML = cohortHTML(t1, P); wireCoh(); });
+    $("ueCoh").querySelectorAll(".ue-cmode button").forEach(b => b.onclick = () => { UE.cmode = b.dataset.c; $("ueCoh").innerHTML = cohortHTML(t1, P); wireCoh(); });
+    $("ueCoh").querySelectorAll(".ue-plan button").forEach(b => b.onclick = () => { UE.plan = b.dataset.p; $("ueCoh").innerHTML = cohortHTML(t1, P); wireCoh(); });
+    $("ueCoh").querySelectorAll(".ue-adj button").forEach(b => b.onclick = () => { UE.adj = b.dataset.a === "1"; $("ueCoh").innerHTML = cohortHTML(t1, P); wireCoh(); });
+    const ch = $("ueChurn"); if (ch) ch.onchange = () => { UE.churn = Math.max(0, Math.min(95, +ch.value || 0)); $("ueCoh").innerHTML = cohortHTML(t1, P); wireCoh(); }; };
   wireCoh();
 }
 
